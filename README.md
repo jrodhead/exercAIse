@@ -6,3 +6,4 @@ AI-generated workouts compatible with a really old iPad
 - [Block 1 Week 2 - Full Body Conditioning](workouts/Block1Week2_FullBodyConditioning.md)
 - [Biceps Triceps Core](workouts/Biceps_Triceps_Core_Workout.md)
 - [Upper Body Strength – Block 1, Week 3](workouts/2025-07-29-Upper_Body_Strength_Block1_Week3.md)
+- [Yin Yoga Recovery Flow – Rest Day](workouts/2025-07-30-Yin_Yoga_Recovery_Flow_Rest_Day.md)
