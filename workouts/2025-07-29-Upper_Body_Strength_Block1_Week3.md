@@ -36,7 +36,7 @@
 
 ---
 
-### 3. [Incline Landmine Press (Simulated with Dumbbell)](../exercises/incline_landmine_press.md)
+### 3. [Incline Landmine Press (Simulated with Dumbbell)](../exercises/incline_landmine_press_simulated_with_dumbbell.md)
 **Sets:** 3  
 **Reps:** 8–10 each side  
 **Rest:** 60–75 sec  
@@ -50,7 +50,7 @@
 
 ---
 
-### 4. [Alternating or Supinated Dumbbell Biceps Curl](../exercises/alternating_dumbbell_biceps_curl.md)
+### 4. [Alternating or Supinated Dumbbell Biceps Curl](../exercises/alternating_or_supinated_dumbbell_biceps_curl.md)
 **Sets:** 3  
 **Reps:** 10–12  
 **Rest:** 45–60 sec  
@@ -64,7 +64,7 @@
 
 ---
 
-### 5. [Overhead Triceps Extension (Single DB or Ruck Plate)](../exercises/overhead_triceps_extension.md)
+### 5. [Overhead Triceps Extension (Single DB or Ruck Plate)](../exercises/overhead_triceps_extension_single_db_or_ruck_plate.md)
 **Sets:** 3  
 **Reps:** 10–12  
 **Rest:** 45–60 sec  
@@ -78,7 +78,7 @@
 
 ---
 
-### 6. [Pallof Press (with Ruck or Dumbbell)](../exercises/pallof_press.md)
+### 6. Pallof Press (with Ruck or Dumbbell)
 **Sets:** 2–3  
 **Reps:** 10 each side  
 **Rest:** 30–45 sec  
@@ -89,3 +89,5 @@
 - Brace core and glutes
 - Hold briefly at full extension
 - Return slowly with control
+
+---

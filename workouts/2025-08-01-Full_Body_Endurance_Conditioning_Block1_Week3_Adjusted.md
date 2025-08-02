@@ -17,7 +17,7 @@ Circuit style – move from one exercise to the next
 
 ## 🔄 Circuit
 
-### 1. [Dumbbell Thruster (Squat + Press)](../exercises/dumbbell_thruster.md)  
+### 1. [Dumbbell Thruster (Squat + Press)](../exercises/dumbbell_thruster_squat_plus_press.md)  
 - **Reps:** 10–12  
 - **Weight:** 20–30 lb dumbbells  
 - **Cues:**  
@@ -28,7 +28,7 @@ Circuit style – move from one exercise to the next
 
 ---
 
-### 2. [Renegade Row (Hands on Dumbbells or Floor)](../exercises/renegade_row.md)  
+### 2. [Renegade Row (Hands on Dumbbells or Floor)](../exercises/renegade_row_hands_on_dumbbells_or_floor.md)  
 - **Reps:** 6–8 per side  
 - **Weight:** 15–25 lb dumbbells (or bodyweight if wrists/shoulders feel tight)  
 - **Cues:**  
@@ -39,7 +39,7 @@ Circuit style – move from one exercise to the next
 
 ---
 
-### 3. [Step-Up (Onto Bench or Sturdy Surface)](../exercises/step_up.md)  
+### 3. [Step-Up (Onto Bench or Sturdy Surface)](../exercises/step_up_onto_bench_or_sturdy_surface.md)  
 - **Reps:** 10 per leg  
 - **Weight:** Bodyweight or light dumbbells  
 - **Cues:**  
@@ -60,7 +60,7 @@ Circuit style – move from one exercise to the next
 
 ---
 
-### 5. [Farmer Carry (Dumbbells or Ruck)](../exercises/farmer_carry.md)  
+### 5. [Farmer Carry (Dumbbells or Ruck)](../exercises/farmer_carry_dumbbells_or_ruck.md)  
 - **Duration:** 30–40 sec walk (or hold in place)  
 - **Weight:** Moderate dumbbells or ruck plate  
 - **Cues:**  
@@ -75,4 +75,6 @@ Circuit style – move from one exercise to the next
 - [Standing Quad Stretch](../exercises/standing_quad_stretch.md) – 30 sec per side  
 - [Forward Fold](../exercises/forward_fold.md) – 45 sec  
 - [Seated Spinal Twist](../exercises/seated_spinal_twist.md) – 30 sec per side  
-- [Shoulder Stretch (hands clasped behind back)](../exercises/shoulder_stretch.md) – 45 sec hold  
+- [Shoulder Stretch (hands clasped behind back)](../exercises/shoulder_stretch_hands_clasped_behind_back.md) – 45 sec hold  
+
+---

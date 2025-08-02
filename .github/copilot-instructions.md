@@ -43,7 +43,24 @@
 
 ---
 
-For any new content or edits, always:
-- Follow the persona rules in `.github/instructions/`
-- Use the README as the canonical list of workouts
-- Maintain markdown structure and naming conventions
+## Required Workflow for Workouts and Exercises
+
+### When creating or editing a workout:
+- **Every exercise name in a workout must be a markdown link** to its detail page in the `exercises/` directory (e.g., `[Hammer Curl](../exercises/hammer_curl.md)`).
+- **If an exercise does not already have a detail file in `exercises/`, create a new markdown file** for it, following the format and detail level of existing exercise files.
+- **Never leave an exercise unlinked or without a detail file.**
+- **Update all existing workouts** to maintain this linking convention if new exercises are introduced.
+
+### New Workout Prompt (for Kai):
+Whenever a new workout is requested, always:
+- Ask for injury/pain status before generating the workout.
+- Generate the workout in markdown, following all Kai persona rules.
+- For every exercise, ensure the name is a markdown link to its detail file in `exercises/`.
+- If a new exercise is introduced, create a new detail file for it in `exercises/`.
+- At the end, confirm that all exercises are linked and all new exercises have detail files.
+
+### New Exercise Prompt (for Kai):
+When a new exercise is introduced (not found in `exercises/`):
+- Create a new markdown file in `exercises/` with the exercise name as the title.
+- Include: description, cues, sets/reps (if relevant), equipment, and any safety/injury notes.
+- Use the same markdown structure and detail as existing exercise files.

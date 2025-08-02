@@ -1,7 +1,7 @@
 # Upper Body Strength – Block 1, Week 2 (Modified)
 **Date:** July 29, 2025
 
-## [Neutral-Grip Flat Bench Press (Dumbbells)](../exercises/neutral_grip_flat_bench_press.md)
+## [Neutral-Grip Flat Bench Press (Dumbbells)](../exercises/neutral_grip_flat_bench_press_dumbbells.md)
 - **Sets & Reps:** 3 sets of 10–12 reps
 - **Rest:** Rest 90–120 seconds between sets
 - **How to Perform:**
@@ -11,7 +11,7 @@
   - Keep your feet planted and core braced throughout.
   - Start with ~70–75% of your 5-rep max for first set.
 
-## [One-Arm Dumbbell Row (Bench Supported)](../exercises/one_arm_dumbbell_row.md)
+## [One-Arm Dumbbell Row (Bench Supported)](../exercises/one_arm_dumbbell_row_bench_supported.md)
 - **Sets & Reps:** 3 sets of 10–12 reps per side
 - **Rest:** Rest 60–90 seconds between sets
 - **How to Perform:**
@@ -21,7 +21,7 @@
   - Brace your core and avoid shrugging the shoulder.
   - Choose a weight ~60–70% of your 10-rep max.
 
-## [Biceps Curl (Alternating Dumbbells)](../exercises/biceps_curl.md)
+## [Biceps Curl (Alternating Dumbbells)](../exercises/biceps_curl_alternating_dumbbells.md)
 - **Sets & Reps:** 2 sets of 12–15 reps per side
 - **Rest:** Rest 60 seconds between sets
 - **How to Perform:**
@@ -31,7 +31,7 @@
   - Avoid swinging—control each rep.
   - Start with a moderate weight that allows you to stay near failure by rep 15.
 
-## [Overhead Dumbbell Triceps Extension (Two Hands)](../exercises/overhead_dumbbell_triceps_extension.md)
+## [Overhead Dumbbell Triceps Extension (Two Hands)](../exercises/overhead_dumbbell_triceps_extension_two_hands.md)
 - **Sets & Reps:** 2 sets of 12–15 reps
 - **Rest:** Rest 60–75 seconds between sets
 - **How to Perform:**
@@ -41,7 +41,7 @@
   - Keep your upper arms stable throughout.
   - Choose a light-to-moderate dumbbell you can control.
 
-## [Ruck March Hold (Core & Grip)](../exercises/ruck_march_hold.md)
+## [Ruck March Hold (Core & Grip)](../exercises/ruck_march_hold_core_and_grip.md)
 - **Sets & Reps:** 2 rounds of 30 seconds hold, 30 seconds rest
 - **Rest:** Rest 60 seconds between rounds
 - **How to Perform:**
