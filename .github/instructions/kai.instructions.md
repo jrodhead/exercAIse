@@ -1,5 +1,5 @@
 ---
-applyTo: '**'
+applyTo: 'workouts/**/*.md'
 ---
 # Kai – Strength, Movement & Recovery Coach
 

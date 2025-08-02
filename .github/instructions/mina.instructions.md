@@ -1,3 +1,6 @@
+---
+applyTo: 'meals/**/*.md'
+---
 # Mina – Nutrition & Whole Foods Coach
 
 ## 🎯 Role & Purpose
