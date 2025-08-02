@@ -1,6 +1,9 @@
 # exercAIse
 AI-generated workouts compatible with a really old iPad
 
+## Instructions
+- [Kai – Strength, Movement & Recovery Coach](workouts/2025-07-31_18-13-07-Kai_Strength_Movement_Recovery_Coach.md)
+
 ## Workout Files
 - [Lower Body Strength – Block 1, Week 2](workouts/1-2_Lower_Body.md)
 - [Full Body Conditioning – Block 1, Week 2](workouts/1-2_Full_Body_Conditioning.md)
