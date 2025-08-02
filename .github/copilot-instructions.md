@@ -1,0 +1,49 @@
+# AI Coding Agent Instructions for exercAIse
+
+## Project Overview
+- **exercAIse** is a markdown-based fitness and nutrition program generator, focused on structured, coach-style workout and meal plans for a 40-year-old male with recurring joint issues.
+- The project is organized around two main AI personas:
+  - **Kai** (Strength, Movement & Recovery Coach): workout generation, periodization, injury adaptation, and markdown formatting. See `.github/instructions/kai.instructions.md`.
+  - **Mina** (Nutrition & Whole Foods Coach): meal/recipe suggestions, batch prep, and anti-inflammatory focus. See `.github/instructions/mina.instructions.md`.
+
+## Directory & File Structure
+- **workouts/**: All workout plans in markdown, named as `<blockNumber>-<weekNumber>_<Title>.md` (e.g., `1-3_Upper_Body_Strength.md`).
+  - Each file contains a full session: warm-up, main sets, cues, cooldown, and (if relevant) date at the top.
+  - Example: `1-2_Biceps_Triceps_Core_Workout.md` for accessory/arm/core day.
+- **meals/**: (if present) Nutrition/meal plans, following Mina's conventions.
+- **.github/instructions/**: Persona-specific rules for Kai and Mina. Always consult these before generating or editing workouts/meals.
+- **README.md**: Lists all workouts in descending date order, with links and canonical names. Use as the source of truth for file naming and organization.
+
+## Key Conventions & Patterns
+- **Markdown-Only Content**: All workouts and meals are written in markdown for compatibility with older devices and easy logging.
+- **Workout Structure**: Each workout includes:
+  - Title, date (if applicable), and block/week context
+  - Warm-up, main sets (with sets/reps/rest/weight/cues), accessory/core, cooldown
+  - Bullet-point cues for every exercise
+  - Adaptations for injuries or missed sessions (see Kai's rules)
+- **Naming**: No dates in filenames; dates go in the document body if relevant.
+- **Weekly Plan**: Follows a block periodization model (see Kai's instructions for details).
+- **Recovery/Rest**: Yoga and mobility flows are included as markdown workouts, not separate.
+
+## Developer Workflows
+- **Adding a Workout**: Use the naming convention, update the README in descending date order, and follow Kai's output format.
+- **Editing a Workout**: Always check `.github/instructions/kai.instructions.md` for up-to-date structure and adaptation rules.
+- **Adding/Editing Meals**: Follow Mina's guidelines and file structure.
+- **No Build/Test System**: This project is markdown-only; no build, test, or CI/CD steps are required.
+
+## Integration & Extensibility
+- **No external dependencies**: All content is markdown, no code or package dependencies.
+- **AI Persona Guidance**: All AI agents must read and apply the relevant persona instructions before generating or editing content.
+- **Cross-File Consistency**: When renaming or reorganizing, update all references (especially in README.md).
+
+## Examples
+- See `workouts/1-3_Upper_Body_Strength.md` for a full strength session with cues, weights, and cooldown.
+- See `workouts/1-3_recovery_Yin_Yoga_Rest_Day.md` for a recovery/yoga flow.
+- See `.github/instructions/kai.instructions.md` and `.github/instructions/mina.instructions.md` for persona-specific rules.
+
+---
+
+For any new content or edits, always:
+- Follow the persona rules in `.github/instructions/`
+- Use the README as the canonical list of workouts
+- Maintain markdown structure and naming conventions
