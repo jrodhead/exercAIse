@@ -1,4 +1,4 @@
-# Biceps, Triceps & Core Workout (Neck/Shoulder Friendly, With Suggested Weights)
+# Biceps, Triceps & Core Workout
 
 ## Warm-Up (Optional – 5–7 min)
 - Arm circles (small to large): 30 sec each direction

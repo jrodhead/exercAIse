@@ -2,10 +2,11 @@
 AI-generated workouts compatible with a really old iPad
 
 ## Workout Files
-- [Block 1 Week 2 - Lower Body Strength](workouts/Block1Week2_LowerBody.md)
-- [Block 1 Week 2 - Full Body Conditioning](workouts/Block1Week2_FullBodyConditioning.md)
-- [Biceps Triceps Core](workouts/Biceps_Triceps_Core_Workout.md)
-- [Upper Body Strength – Block 1, Week 3](workouts/2025-07-29-Upper_Body_Strength_Block1_Week3.md)
-- [Yin Yoga Recovery Flow – Rest Day](workouts/2025-07-30-Yin_Yoga_Recovery_Flow_Rest_Day.md)
-- [Lower Body Strength – Block 1, Week 3](workouts/2025-07-31_04-48-28-Lower_Body_Strength_Block1_Week3.md)
-- [Full-Body Endurance / Conditioning – Block 1, Week 3 (Adjusted)](workouts/2025-08-01-Full_Body_Endurance_Conditioning_Block1_Week3_Adjusted.md)
+- [Lower Body Strength – Block 1, Week 2](workouts/1-2_Lower_Body.md)
+- [Full Body Conditioning – Block 1, Week 2](workouts/1-2_Full_Body_Conditioning.md)
+- [Biceps, Triceps & Core Workout](workouts/Biceps_Triceps_Core_Workout.md)
+- [Upper Body Strength – Block 1, Week 2 (Modified)](workouts/1-2_Upper_Body_Strength_Modified.md)
+- [Upper Body Strength – Block 1, Week 3](workouts/1-3_Upper_Body_Strength.md)
+- [Yin Yoga Recovery Flow – Rest Day](workouts/recovery_Yin_Yoga_Rest_Day.md)
+- [Lower Body Strength – Block 1, Week 3](workouts/1-3_Lower_Body_Strength.md)
+- [Full-Body Endurance / Conditioning – Block 1, Week 3 (Adjusted)](workouts/1-3_Full_Body_Endurance_Conditioning_Adjusted.md)

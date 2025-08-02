@@ -1,4 +1,4 @@
-# Thursday – Lower Body Strength (Block 1 – Week 2)
+# Lower Body Strength – Block 1, Week 2
 
 ## Warm-Up (8–10 min)
 - Foam roll (30 sec each):

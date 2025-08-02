@@ -1,4 +1,5 @@
 # Yin Yoga Recovery Flow – Rest Day
+**Date:** July 30, 2025
 
 **Focus:** Flexibility, recovery, and joint health  
 **Duration:** 30–40 minutes  

@@ -1,4 +1,5 @@
 # Full-Body Endurance / Conditioning – Block 1, Week 3 (Adjusted)
+**Date:** August 1, 2025
 
 ### Duration:
 25–30 minutes  
@@ -75,5 +76,3 @@ Circuit style – move from one exercise to the next
 - Forward Fold – 45 sec  
 - Seated Spinal Twist – 30 sec per side  
 - Shoulder Stretch (hands clasped behind back) – 45 sec hold  
-
----

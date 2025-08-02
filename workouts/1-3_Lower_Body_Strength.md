@@ -1,4 +1,5 @@
 # Lower Body Strength – Block 1, Week 3
+**Date:** July 31, 2025
 
 ## Goal
 Strength & endurance base with dumbbell and ruck work
@@ -100,4 +101,3 @@ Tuesday
 ## ✅ Notes
 - Progress weights gradually week to week.
 - Focus on **controlled tempo** (2 sec down, 1 sec up).
-- Quality of form > heavier weight.

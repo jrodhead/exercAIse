@@ -1,4 +1,4 @@
-# Block 1 – Week 2 – Full Body Conditioning
+# Full Body Conditioning – Block 1, Week 2
 
 **Workout Focus:** Full-body muscular endurance, aerobic conditioning, core control  
 **Total Time Goal:** ~40 minutes (excluding warm-up/cooldown)  

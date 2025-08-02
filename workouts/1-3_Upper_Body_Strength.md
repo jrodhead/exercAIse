@@ -1,4 +1,5 @@
 # Upper Body Strength – Block 1, Week 3
+**Date:** July 29, 2025
 
 **Focus:** Strength & Hypertrophy  
 **Status:** Bench press replaces seated dumbbell press due to neck sensitivity
@@ -88,5 +89,3 @@
 - Brace core and glutes
 - Hold briefly at full extension
 - Return slowly with control
-
----
