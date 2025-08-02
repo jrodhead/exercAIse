@@ -1,4 +1,4 @@
-# Biceps, Triceps & Core Workout
+# Biceps, Triceps & Core Workout - Block 1, Week 2
 
 ## Warm-Up (Optional – 5–7 min)
 - Arm circles (small to large): 30 sec each direction
