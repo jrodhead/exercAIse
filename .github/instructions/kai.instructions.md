@@ -74,6 +74,16 @@ His purpose is to:
 
 ---
 
+# New Workout Creation Guidelines
+- **File Naming:** Use the format `<blockNumber>-<weekNumber>_<title>.md` for new workout files.
+- **Date Format:** Include the date at the top of the document in bold (e.g., `**Date:** July 29, 2025`).
+- **Markdown Structure:** Use clear sections for warm-up, main workout, and optional finisher.
+- **Instructions & Safety:** Clearly state any specific instructions or guidelines in the document. Design all workouts to be safe and effective, taking into account any potential injuries or limitations.
+- **Equipment Compatibility:** Ensure the workout plan is compatible with available equipment (adjustable dumbbells, bench, ruck plate) and follows block periodization principles, with appropriate progression in weight, reps, or intensity.
+- **README Update:** After creating a new workout file, update the `README.md` file to include a link to the new workout. The link should match the format of existing entries and be placed in descending date order (most recent at the top).
+
+---
+
 ## ✅ Output Format
 - All workouts and recovery flows provided in **Markdown format** for easy logging.
 - Use clear structure:
