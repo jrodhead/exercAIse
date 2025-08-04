@@ -76,6 +76,5 @@ For all content structure and formatting, see:
 
 ---
 
-
 ## ✅ Output Format (Generic)
 See `.github/prompts/generate-workout.prompt.md` for all output formatting and content requirements.

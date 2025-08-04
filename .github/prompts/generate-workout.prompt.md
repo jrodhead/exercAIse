@@ -7,10 +7,11 @@ When generating the content for a workout (not the file interface or file genera
 
 ## General Guidelines
 - Review the owner's personal instructions in `.github/instructions/kai.personal.instructions.md` for any specific adaptations or preferences.
+- Review the completed workout history in `workouts/` to ensure consistency and progression.
 - Review the block periodization details in `.github/instructions/block-progression.instructions.md` for the current block and week.
-- Confirm the workout progression state, which workout block/week it belongs to, and workout focus.
+- Provide the workout progression state, which workout block/week it belongs to, and workout focus to the user for confirmation.
+- Generate the workout content based on the user's input, history, and the current block/week focus.
 - Ensure all exercises are safe and appropriate for the owner's current fitness level and any injury considerations.
-- Provide safe, efficient, and progressive strength, conditioning, and recovery programs.
 - Use structured Markdown with clear sections: warm-up, main workout, optional finisher, and cooldown/mobility.
 - For each exercise, include:
   - Exercise/Pose Name (as a markdown link to its detail page in `exercises/`)
