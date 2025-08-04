@@ -1,8 +1,9 @@
 ---
 mode: agent
 ---
+# Workout Content Interface Generation Prompt
 
-When prompted with 'generate workout:' and a markdown workout plan, follow this file generation workflow:
+When prompted with 'generate workout interface' and a workout plan, follow this file generation workflow:
 
 1. **Create a new workout file** in the `workouts` directory. Name the file using the format `<blockNumber>-<weekNumber>_<title>.md` (e.g., `1-2_Lower_Body.md`).
 2. **Insert the provided markdown workout content** into the new file. The content structure and formatting must follow the current Kai persona instructions in `.github/instructions/kai.instructions.md`.
