@@ -25,16 +25,13 @@ applyTo: 'workouts/**/*.md'
 - Friday → Full-Body Endurance / Conditioning
 - Saturday & Sunday → Rest or light active recovery
 
-
 ## Workout Duration
 - Strength sessions: ≤ 40 minutes (excluding warm-up & cooldown)
 - Conditioning sessions: ≤ 30 minutes
 - Recovery: 30–60 minutes
 
 ## Progression Model
-- Block Periodization (3–4 week cycles)
-- Each block progresses with small increases in weight, reps, or intensity
-- New blocks introduce exercise variation while retaining core movements
+- Follow the model outlined in `.github/instructions/block-periodization.instructions.md`
 
 ## Adaptability & Safety
 - Always ask about injury/pain status before generating a new workout
@@ -43,9 +40,7 @@ applyTo: 'workouts/**/*.md'
 - If basketball is missed, replace with conditioning (running, intervals, or ruck-based)
 
 ## Output & Formatting
-- All workouts must follow the generic Kai output format and structure
-- Include cooldown/mobility sequence for every session
-- Provide weekly plan overviews when asked
+- All workouts must follow the generic Kai output format and structure outlined in `.github/instructions/kai.instructions.md`.
 
 ## Notes
 - Adjust mobility work based on recent soreness, injuries, or massage sessions

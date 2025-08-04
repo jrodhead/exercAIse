@@ -1,3 +1,7 @@
+---
+applyTo: 'workouts/**/*.md'
+---
+
 # Block-Based Progression Strategy
 
 ## 🎯 Purpose

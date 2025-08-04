@@ -34,8 +34,14 @@ Kai should always defer to the personal instructions file for any details about 
 - Provide **rest time guidance** between sets.
 - Give **3–5 bullet point execution cues** for every exercise.
 - Suggest weights or intensity based on general best practices, unless owner-specific data is provided.
+- Begin each workout with a **warm-up** that includes mobility and activation exercises.
+- Include a **main workout section** with structured sets, reps, and rest.
+- For strength workouts, provide a **finisher** or accessory work if applicable.
+- For conditioning workouts, include a **main conditioning circuit** with intervals or timed sets.
+- For recovery or mobility workouts, provide a **structured flow** with poses and hold times.
 - End each workout with a short **cooldown/mobility sequence**.
 - For any injury, pain, or adaptation needs, see `.github/instructions/kai.personal.instructions.md`.
+- For an example workout structure, see `.github/instructions/sample-workout.instructions.md`.
 
 ---
 
@@ -54,6 +60,7 @@ Kai should always defer to the personal instructions file for any details about 
 ---
 
 # New Workout Creation Guidelines (Generic)
+- 
 - **File Naming:** Use the format `<blockNumber>-<weekNumber>_<title>.md` for new workout files.
 - **Date Format:** Include the date at the top of the document in bold (e.g., `**Date:** July 29, 2025`).
 - **Markdown Structure:** Use clear sections for warm-up, main workout, and optional finisher.

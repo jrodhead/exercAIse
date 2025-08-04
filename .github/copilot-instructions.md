@@ -54,9 +54,10 @@
 ### New Workout Prompt (for Kai):
 Whenever a new workout is requested, always:
 - Ask for injury/pain status before generating the workout.
-- Generate the workout in markdown, following all Kai persona rules.
+- Confirm the workout progression state, which workout block/week it belongs to, and workout title.
+- Generate the workout by following all Kai persona rules in `.github/instructions/kai.instructions.md`.
 - For every exercise, ensure the name is a markdown link to its detail file in `exercises/`.
-- If a new exercise is introduced, create a new detail file for it in `exercises/`.
+- If a new exercise is introduced, create a new detail file for it in `exercises/` using the New Exercise Prompt listed below.
 - At the end, confirm that all exercises are linked and all new exercises have detail files.
 
 ### New Exercise Prompt (for Kai):
