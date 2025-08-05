@@ -10,6 +10,7 @@ AI-generated workouts compatible with a really old iPad
 - [Upper Body Strength – Block 1, Week 2 (Modified)](workouts/1-2_Upper_Body_Strength_Modified.md)
 - [Biceps, Triceps & Core Workout - Block 1, Week 2](workouts/1-2_Biceps_Triceps_Core_Workout.md)
 - [Lower Body Strength – Block 1, Week 2](workouts/1-2_Lower_Body.md)
+- [Upper Body Strength – Block 1, Week 4 (Deload)](workouts/1-4_Upper_Body_Strength_Deload.md)
 
 ## Instructions
 - [Kai – Strength, Movement & Recovery Coach](.github/instructions/kai.instructions.md)
