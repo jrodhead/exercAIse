@@ -2,6 +2,7 @@
 AI-generated workouts compatible with a really old iPad
 
 ## Workouts
+- [Basketball Warm-Up & Cooldown](workouts/basketball_warmup_cooldown.md)
 - [Full-Body Endurance / Conditioning – Block 1, Week 3 (Adjusted)](workouts/1-3_Full_Body_Endurance_Conditioning_Adjusted.md)
 - [Lower Body Strength – Block 1, Week 3](workouts/1-3_Lower_Body_Strength.md)
 - [Yin Yoga Recovery Flow – Rest Day](workouts/recovery_Yin_Yoga_Rest_Day.md)
