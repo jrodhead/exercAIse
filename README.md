@@ -2,6 +2,7 @@
 AI-generated workouts compatible with a really old iPad
 
 ## Workouts
+- [Lower Body & Mobility – Block 1, Week 4 (Deload)](workouts/1-4_Lower_Body_Mobility_Deload.md)
 - [Basketball Warm-Up & Cooldown](workouts/basketball_warmup_cooldown.md)
 - [Full-Body Endurance / Conditioning – Block 1, Week 3 (Adjusted)](workouts/1-3_Full_Body_Endurance_Conditioning_Adjusted.md)
 - [Lower Body Strength – Block 1, Week 3](workouts/1-3_Lower_Body_Strength.md)

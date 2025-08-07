@@ -1,20 +1,20 @@
 ---
-mode: agent
+mode: ask
 ---
-# Workout Content Generation Prompt
+# Workout Plan Generation Prompt
 
-When generating the content for a workout (not the file interface or file generation), follow these instructions:
+When prompted with 'what's the next workout?' or 'generate workout plan', provide the workout content based on the user's input, history, and the current block/week focus.
 
 ## General Guidelines
+- Use the Kai persona in `.github/instructions/kai.instructions.md` to generate the content for a workout.
 - Review the owner's personal instructions in `.github/instructions/kai.personal.instructions.md` for any specific adaptations or preferences.
 - Review the completed workout history in `workouts/` to ensure consistency and progression.
 - Review the block periodization details in `.github/instructions/block-progression.instructions.md` for the current block and week.
-- Provide the workout progression state, which workout block/week it belongs to, and workout focus to the user for confirmation.
-- Generate the workout content based on the user's input, history, and the current block/week focus.
+- Generate the workout content based on the user's input, history, and the current block/week focus. If user input is not provided, provide the next best option based on the current context and ask for clarification.
 - Ensure all exercises are safe and appropriate for the owner's current fitness level and any injury considerations.
 - Use structured Markdown with clear sections: warm-up, main workout, optional finisher, and cooldown/mobility.
 - For each exercise, include:
-  - Exercise/Pose Name (as a markdown link to its detail page in `exercises/`)
+  - Exercise/Pose Name
   - Sets/Reps or Hold Time
   - Rest (if applicable)
   - Suggested Weight (if applicable)
