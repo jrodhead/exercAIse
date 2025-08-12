@@ -1,9 +1,9 @@
 ---
 mode: ask
 ---
-# Workout Plan Generation Prompt
+# Workout Session Generation Prompt
 
-When prompted with 'what's the next workout?' or 'generate workout plan', provide the workout content based on the user's input, history, and the current block/week focus.
+When prompted with 'what's the next workout?' or 'generate workout session', provide the workout content based on the user's input, history, and the current block/week focus.
 
 ## General Guidelines
 - Use the Kai persona in `.github/instructions/kai.instructions.md` to generate the content for a workout.
