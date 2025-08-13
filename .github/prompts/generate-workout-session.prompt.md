@@ -17,7 +17,7 @@ When prompted with 'what's the next workout?' or 'generate workout session', pro
   - Exercise/Pose Name
   - Sets/Reps or Hold Time
   - Rest (if applicable)
-  - Suggested Weight (if applicable)
+  - Suggested Weight (if applicable) based on history and current block/week focus
   - 3–5 bullet-point execution cues
 - Clarify whether exercises are performed as straight sets, supersets, or circuits.
 - Provide rest time guidance between sets or rounds.

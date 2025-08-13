@@ -1,7 +1,8 @@
 # exercAIse
 AI-generated workouts compatible with a really old iPad
 
-## Workouts
+- [Full-Body Conditioning & Core – Block 2, Week 1](workouts/2-1_Full_Body_Conditioning_Core.md)
+- [Lower Body Strength & Mobility – Block 2, Week 1](workouts/2-1_Lower_Body_Strength_Mobility.md)
 - [Upper Body Strength & Mobility – Block 2, Week 1](workouts/2-1_Upper_Body_Strength_Mobility.md)
 - [Lower Body & Mobility – Block 1, Week 4 (Deload)](workouts/1-4_Lower_Body_Mobility_Deload.md)
 - [Basketball Warm-Up & Cooldown](workouts/basketball_warmup_cooldown.md)
