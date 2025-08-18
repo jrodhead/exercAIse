@@ -1,0 +1,25 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Validate Markdown Links",
+			"type": "shell",
+			"command": "python3 scripts/validate_links.py",
+			"isBackground": false,
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Validate Markdown Links",
+			"type": "shell",
+			"command": "python3 scripts/validate_links.py",
+			"isBackground": false,
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build"
+		}
+	]
+}
