@@ -1,6 +1,12 @@
 # exercAIse
 AI-generated workouts compatible with a really old iPad
 
+- [Quality Run – 4 Miles (Tempo) – Block 2, Week 2](workouts/2-2_Quality_Run_4_Miles_Tempo.md)
+- [Full-Body Conditioning & Core – Block 2, Week 2](workouts/2-2_Full_Body_Conditioning_Core.md)
+- [Yin Yoga Recovery Flow – Block 2, Week 2](workouts/2-2_Yin_Yoga_Recovery_Flow.md)
+- [Lower Body Strength & Mobility – Block 2, Week 2](workouts/2-2_Lower_Body_Strength_Mobility.md)
+- [Easy Run – 4 Miles – Block 2, Week 2](workouts/2-2_Easy_Run_4_Miles.md)
+- [Upper Body Strength & Mobility – Block 2, Week 2](workouts/2-2_Upper_Body_Strength_Mobility.md)
 - [Full-Body Conditioning & Core – Block 2, Week 1](workouts/2-1_Full_Body_Conditioning_Core.md)
 - [Lower Body Strength & Mobility – Block 2, Week 1](workouts/2-1_Lower_Body_Strength_Mobility.md)
 - [Upper Body Strength & Mobility – Block 2, Week 1](workouts/2-1_Upper_Body_Strength_Mobility.md)
