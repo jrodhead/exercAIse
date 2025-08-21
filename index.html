@@ -16,14 +16,29 @@
     </header>
 
     <main class="container">
-      <section id="status" class="status">Loading latest workout…</section>
+      <section id="status" class="status">Loading…</section>
+
+      <section id="readme-section" class="readme">
+        <h2>Workout Index</h2>
+  <p class="form-hint">This mirrors README.md. Tap a workout title to open the session and logger.</p>
+        <article id="readme-content" class="workout-content" aria-live="polite"></article>
+      </section>
+
+      <section id="logs-section" class="readme">
+        <h2>Performed Logs</h2>
+        <p class="form-hint">Recent committed logs from the performed/ folder.</p>
+        <ul id="logs-list"></ul>
+      </section>
+
+      <hr />
 
       <section class="workout-meta" id="workout-meta" style="display:none;">
         <div>
-          <strong>Latest Workout:</strong>
+          <strong>Session:</strong>
           <span id="workout-title"></span>
         </div>
         <div class="meta-actions">
+          <a id="back-to-index" href="index.html" class="secondary">Back to Index</a>
           <button id="reload-btn" type="button">Reload</button>
           <a id="open-on-github" href="#" target="_blank" rel="noopener">Open file</a>
         </div>
@@ -43,6 +58,8 @@
           <div class="form-actions">
             <button id="save-local" type="button">Save locally</button>
             <button id="copy-json" type="button">Copy JSON</button>
+            <button id="submit-issue" type="button" class="secondary">Submit via GitHub Issue</button>
+            <a id="open-issue" class="secondary" href="https://github.com/jrodhead/exercAIse/issues/new" target="_blank" rel="noopener" style="display:none;">Open Issue</a>
             <button id="clear-form" type="button" class="danger">Clear</button>
           </div>
         </form>
