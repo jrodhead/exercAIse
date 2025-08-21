@@ -330,19 +330,23 @@
   function buildForm(filePath, raw, isJSON) {
     var exercises = isJSON ? extractExercisesFromJSON(raw) : extractExercisesFromMarkdown(raw);
     var prescriptions = isJSON ? parseJSONPrescriptions(raw) : parseMarkdownPrescriptions(raw);
-    exerciseFormsEl.innerHTML = '';
+    // We now inject exercise forms inline under each exercise link within workoutContent.
+    if (exerciseFormsEl) exerciseFormsEl.innerHTML = '';
 
     var saved = loadSaved(filePath) || { file: filePath, updatedAt: new Date().toISOString(), exercises: {} };
 
-    function addExerciseCard(ex) {
-      var exKey = slugify(ex.title);
-      var card = document.createElement('div');
-      card.className = 'exercise-card';
+  function createExerciseCard(title, presetRows, savedRows) {
+      var exKey = slugify(title);
+  var card = document.createElement('div');
+  card.className = 'exercise-card compact';
+      card.setAttribute('data-exkey', exKey);
 
       var header = document.createElement('header');
-      var h3 = document.createElement('h3');
-      h3.appendChild(document.createTextNode(ex.title));
-      header.appendChild(h3);
+      var toggleBtn = document.createElement('button');
+      toggleBtn.className = 'secondary';
+      toggleBtn.type = 'button';
+      toggleBtn.appendChild(document.createTextNode('Edit'));
+      header.appendChild(toggleBtn);
       var addBtn = document.createElement('button');
       addBtn.className = 'secondary';
       addBtn.type = 'button';
@@ -354,12 +358,24 @@
       setsWrap.className = 'exercise-sets';
       card.appendChild(setsWrap);
 
+      function updateSetLabelsLocal() {
+        var rows = setsWrap.getElementsByClassName('set-row');
+        for (var i = 0; i < rows.length; i++) {
+          var lbl = rows[i].getElementsByClassName('set-label')[0];
+          if (lbl) lbl.textContent = 'Set ' + (i + 1);
+        }
+      }
+
       function addSetRow(row) {
         var r = document.createElement('div');
         r.className = 'set-row';
+        // Non-editable label for set number (inferred by order)
+        var label = document.createElement('span');
+        label.className = 'set-label';
+        label.appendChild(document.createTextNode('Set'));
+        r.appendChild(label);
 
         var inputs = [
-          { name: 'set', placeholder: 'Set', type: 'number', min: 1 },
           { name: 'weight', placeholder: 'Weight', type: 'number', step: 'any' },
           { name: 'reps', placeholder: 'Reps', type: 'number', min: 0 },
           { name: 'rpe', placeholder: 'RPE', type: 'number', step: 'any' }
@@ -379,34 +395,103 @@
         del.type = 'button';
         del.className = 'danger';
         del.appendChild(document.createTextNode('Remove'));
-        del.onclick = function () { setsWrap.removeChild(r); };
+  del.onclick = function () { setsWrap.removeChild(r); updateSetLabelsLocal(); };
         r.appendChild(del);
         setsWrap.appendChild(r);
+  updateSetLabelsLocal();
       }
 
       addBtn.onclick = function () { addSetRow({}); };
+      toggleBtn.onclick = function () {
+        if (card.className.indexOf('collapsed') !== -1) {
+          card.className = card.className.replace('collapsed', '').replace(/\s+$/,'');
+        } else {
+          if (card.className.indexOf('collapsed') === -1) card.className += ' collapsed';
+        }
+      };
 
-      // load saved rows
-      var savedRows = saved.exercises[exKey] || [];
-      if (savedRows.length) {
-        for (var i = 0; i < savedRows.length; i++) addSetRow(savedRows[i]);
-      } else {
-        var preset = prescriptions[exKey] || [];
-        for (var j = 0; j < preset.length; j++) addSetRow(preset[j]);
-      }
-
-      exerciseFormsEl.appendChild(card);
+  var rows = (savedRows && savedRows.length) ? savedRows : (presetRows || []);
+      for (var i = 0; i < rows.length; i++) addSetRow(rows[i]);
+      return card;
     }
 
-    for (var i = 0; i < exercises.length; i++) addExerciseCard(exercises[i]);
+    // Find exercise anchors within the rendered workout content
+    var anchors = workoutContent ? workoutContent.getElementsByTagName('a') : [];
+
+    function nearestBlockContainer(node) {
+      var n = node;
+      while (n && n !== workoutContent) {
+        if (n.tagName && (n.tagName === 'LI' || n.tagName === 'P' || n.tagName === 'DIV')) return n;
+        n = n.parentNode;
+      }
+      return node.parentNode || workoutContent;
+    }
+
+    function findPreviousHeading(node) {
+      var n = node;
+      while (n && n !== workoutContent) {
+        // Walk previous siblings of n
+        var s = n.previousSibling;
+        while (s) {
+          if (s.nodeType === 1 && s.tagName && /^H[1-4]$/.test(s.tagName)) {
+            return (s.textContent || '').trim();
+          }
+          s = s.previousSibling;
+        }
+        n = n.parentNode;
+      }
+      return '';
+    }
+
+    function isWarmOrCool(sectionTitle) {
+      var t = String(sectionTitle || '').toLowerCase();
+      return (
+        t.indexOf('warm') !== -1 ||
+        t.indexOf('warm-up') !== -1 ||
+        t.indexOf('warm up') !== -1 ||
+        t.indexOf('warmup') !== -1 ||
+        t.indexOf('cool') !== -1 ||
+        t.indexOf('cool-down') !== -1 ||
+        t.indexOf('cool down') !== -1 ||
+        t.indexOf('cooldown') !== -1 ||
+        t.indexOf('mobility') !== -1 ||
+        t.indexOf('recovery') !== -1
+      );
+    }
+    var foundCount = 0;
+    for (var ai = 0; ai < anchors.length; ai++) {
+      var a = anchors[ai];
+      var href = a.getAttribute('href') || '';
+      if (!/^(?:\.\.\/)?exercises\/[\w\-]+\.md$/.test(href)) continue;
+      var title = a.textContent || a.innerText || '';
+      if (!title) continue;
+      var exKey = slugify(title);
+      // Determine section by nearest previous heading; skip warm-up/cool-down
+      var container = nearestBlockContainer(a);
+      var sectionTitle = findPreviousHeading(container);
+      if (isWarmOrCool(sectionTitle)) continue;
+      var savedRows = saved.exercises[exKey] || [];
+      var preset = prescriptions[exKey] || [];
+      var card = createExerciseCard(title, preset, savedRows);
+      // Insert after the whole block container (list item/paragraph/div)
+      var parent = container.parentNode || workoutContent;
+      if (parent && parent.insertBefore) {
+        if (container.nextSibling) parent.insertBefore(card, container.nextSibling);
+        else parent.appendChild(card);
+      } else {
+        workoutContent.appendChild(card);
+      }
+      foundCount++;
+    }
 
     function collectData() {
       var data = { file: filePath, updatedAt: new Date().toISOString(), exercises: {} };
-      var cards = exerciseFormsEl.getElementsByClassName('exercise-card');
+    var scope = workoutContent || document;
+    var cards = scope.getElementsByClassName('exercise-card');
       for (var c = 0; c < cards.length; c++) {
         var card = cards[c];
-        var title = card.getElementsByTagName('h3')[0].textContent;
-        var exKey = slugify(title);
+        var exKey = card.getAttribute('data-exkey');
+        if (!exKey) continue;
         var rows = card.getElementsByClassName('set-row');
         data.exercises[exKey] = [];
         for (var r = 0; r < rows.length; r++) {
@@ -418,9 +503,9 @@
             var val = inputs[k].value;
             if (val !== '') obj[name] = Number(val);
           }
-          if (obj.set != null || obj.reps != null || obj.weight != null || obj.rpe != null) {
-            data.exercises[exKey].push(obj);
-          }
+      // Infer set number by order
+      obj.set = r + 1;
+      if (obj.reps != null || obj.weight != null || obj.rpe != null) data.exercises[exKey].push(obj);
         }
       }
       return data;
@@ -479,12 +564,30 @@
 
     clearBtn.onclick = function () {
       if (!confirm('Clear all entries for this workout?')) return;
-      exerciseFormsEl.innerHTML = '';
-      for (var i = 0; i < exercises.length; i++) {
-        // rebuild empty cards
-        var ex = exercises[i];
-        var temp = { title: ex.title };
-        addExerciseCard(temp);
+      // Remove all inline cards
+      var scope = workoutContent || document;
+      var cards = scope.getElementsByClassName('exercise-card');
+      // Convert HTMLCollection to array snapshot
+      var arr = [];
+      for (var i = 0; i < cards.length; i++) arr.push(cards[i]);
+      for (var j = 0; j < arr.length; j++) arr[j].parentNode && arr[j].parentNode.removeChild(arr[j]);
+      // Re-inject from prescriptions (not saved) for each exercise anchor
+      var anchors2 = workoutContent ? workoutContent.getElementsByTagName('a') : [];
+      for (var k = 0; k < anchors2.length; k++) {
+        var a2 = anchors2[k];
+        var href2 = a2.getAttribute('href') || '';
+        if (!/^(?:\.\.\/)?exercises\/[\w\-]+\.md$/.test(href2)) continue;
+        var title2 = a2.textContent || a2.innerText || '';
+        var exKey2 = slugify(title2);
+        var preset2 = prescriptions[exKey2] || [];
+        var card2 = createExerciseCard(title2, preset2, []);
+        var p2 = a2.parentNode || workoutContent;
+        if (p2 && p2.insertBefore) {
+          if (a2.nextSibling) p2.insertBefore(card2, a2.nextSibling);
+          else p2.appendChild(card2);
+        } else {
+          workoutContent.appendChild(card2);
+        }
       }
       status('Cleared form.');
     };
