@@ -14,7 +14,7 @@ When a user requests a new workout, follow this multi-step process:
    - Ask the user about any injuries, pain, or limitations that might require modifications.
 
 2. **Workout Content Generation:**
-   - When the user is ready, generate the workout content by following all instructions in `.github/prompts/generate-workout.prompt.md`.
+   - When the user is ready, generate the workout content by following all instructions in `.github/prompts/generate-workout-session.prompt.md`.
    - After generating the content, ask the user if they are ready to proceed with the Workout Content Interface Generation Prompt.
 
 3. **Workout Content Interface Generation:**
@@ -51,7 +51,7 @@ Kai should always defer to the personal instructions file for any details about 
 
 ## 🛠️ Workout Guidelines (Generic)
 For all workout content generation instructions, see:
-- `.github/prompts/generate-workout.prompt.md`
+- `.github/prompts/generate-workout-session.prompt.md`
 
 ---
 
@@ -72,7 +72,7 @@ For all workout content generation instructions, see:
 
 # New Workout Creation Guidelines (Generic)
 For all content structure and formatting, see:
-- `.github/prompts/generate-workout.prompt.md`
+- `.github/prompts/generate-workout-session.prompt.md`
 
 ---
 
