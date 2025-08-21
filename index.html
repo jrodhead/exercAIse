@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>exercAIse — Latest Workout</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>exercAIse</h1>
+      <nav>
+        <a href="https://github.com/jrodhead/exercAIse" target="_blank" rel="noopener">Repo</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section id="status" class="status">Loading latest workout…</section>
+
+      <section class="workout-meta" id="workout-meta" style="display:none;">
+        <div>
+          <strong>Latest Workout:</strong>
+          <span id="workout-title"></span>
+        </div>
+        <div class="meta-actions">
+          <button id="reload-btn" type="button">Reload</button>
+          <a id="open-on-github" href="#" target="_blank" rel="noopener">Open file</a>
+        </div>
+      </section>
+
+      <section class="workout" id="workout-section" style="display:none;">
+        <article id="workout-content" class="workout-content" aria-live="polite"></article>
+      </section>
+
+      <section class="form" id="form-section" style="display:none;">
+        <h2>Log Performed Values</h2>
+        <p class="form-hint">Add sets for each exercise you performed. Your entries stay on this device (localStorage). You can also copy JSON for backup.</p>
+
+        <form id="performance-form">
+          <div id="exercise-forms"></div>
+
+          <div class="form-actions">
+            <button id="save-local" type="button">Save locally</button>
+            <button id="copy-json" type="button">Copy JSON</button>
+            <button id="clear-form" type="button" class="danger">Clear</button>
+          </div>
+        </form>
+
+        <div id="copy-target-wrapper" class="copy-wrapper" style="display:none;">
+          <label for="copy-target">Copied JSON (manual copy if needed):</label>
+          <textarea id="copy-target" rows="8" readonly></textarea>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <small>© <span id="year"></span> exercAIse. Works offline for logged data via localStorage.</small>
+    </footer>
+
+    <script src="assets/app.js"></script>
+  </body>
+  </html>

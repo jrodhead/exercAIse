@@ -1,0 +1,41 @@
+/* Minimal, old-iPad-friendly styles (no CSS variables) */
+html, body { margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.5; color: #222; background: #fafafa; }
+
+.container { max-width: 860px; margin: 0 auto; padding: 16px; }
+
+.site-header, .site-footer { background: #fff; border-bottom: 1px solid #eee; }
+.site-header { padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; }
+.site-footer { padding: 12px 16px; border-top: 1px solid #eee; border-bottom: none; color: #666; }
+
+.status { background: #fff3cd; color: #5f4b00; border: 1px solid #ffe69c; padding: 10px 12px; margin: 12px 0; border-radius: 6px; }
+
+.workout-meta { display: flex; align-items: center; justify-content: space-between; background: #fff; border: 1px solid #eee; padding: 10px 12px; border-radius: 6px; }
+
+.workout-content { background: #fff; border: 1px solid #eee; padding: 12px; border-radius: 6px; }
+.workout-content pre { white-space: pre-wrap; }
+
+.form { margin-top: 16px; background: #fff; border: 1px solid #eee; padding: 12px; border-radius: 6px; }
+.form h2 { margin-top: 0; }
+.form-hint { color: #555; }
+
+.exercise-card { border: 1px solid #eee; border-radius: 6px; padding: 10px; margin-bottom: 12px; background: #fcfcfc; }
+.exercise-card header { display: flex; align-items: center; justify-content: space-between; }
+.exercise-sets { margin-top: 8px; }
+.set-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+.set-row input { width: 72px; padding: 6px; }
+.set-row button { padding: 6px 8px; }
+
+.form-actions { display: flex; gap: 8px; margin-top: 8px; }
+button { cursor: pointer; background: #1a73e8; color: #fff; border: none; border-radius: 4px; padding: 8px 10px; }
+button.danger { background: #d93025; }
+button.secondary { background: #6c757d; }
+
+.copy-wrapper { margin-top: 10px; }
+textarea { width: 100%; }
+
+@media (prefers-color-scheme: dark) {
+  body { background: #0f0f0f; color: #e5e5e5; }
+  .site-header, .site-footer, .workout-content, .form, .workout-meta { background: #111; border-color: #333; }
+  .status { background: #3a2f00; color: #f3e5ab; border-color: #5a4a00; }
+}
