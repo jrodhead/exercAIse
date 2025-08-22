@@ -1,0 +1,118 @@
+{
+  "file": "workouts/2-2_Upper_Body_Strength_Mobility.md",
+  "updatedAt": "2025-08-22T22:06:04.285Z",
+  "exercises": {
+    "neutral-grip-flat-bench-press": [
+      {
+        "weight": 45,
+        "multiplier": 2,
+        "reps": 8,
+        "set": 1
+      },
+      {
+        "weight": 45,
+        "multiplier": 2,
+        "reps": 8,
+        "set": 2
+      },
+      {
+        "weight": 45,
+        "multiplier": 2,
+        "reps": 8,
+        "set": 3
+      },
+      {
+        "weight": 45,
+        "multiplier": 2,
+        "reps": 8,
+        "set": 4
+      }
+    ],
+    "one-arm-dumbbell-row": [
+      {
+        "weight": 35,
+        "multiplier": 1,
+        "reps": 10,
+        "set": 1
+      },
+      {
+        "weight": 35,
+        "multiplier": 1,
+        "reps": 10,
+        "set": 2
+      },
+      {
+        "weight": 35,
+        "multiplier": 1,
+        "reps": 10,
+        "set": 3
+      },
+      {
+        "weight": 35,
+        "multiplier": 1,
+        "reps": 10,
+        "set": 4
+      }
+    ],
+    "seated-arnold-press": [
+      {
+        "weight": 25,
+        "multiplier": 2,
+        "reps": 10,
+        "set": 1
+      },
+      {
+        "weight": 25,
+        "multiplier": 2,
+        "reps": 10,
+        "set": 2
+      },
+      {
+        "weight": 25,
+        "multiplier": 2,
+        "reps": 10,
+        "set": 3
+      }
+    ],
+    "biceps-curl": [
+      {
+        "weight": 25,
+        "multiplier": 1,
+        "reps": 12,
+        "set": 1
+      },
+      {
+        "weight": 25,
+        "multiplier": 1,
+        "reps": 12,
+        "set": 2
+      },
+      {
+        "weight": 25,
+        "multiplier": 1,
+        "reps": 12,
+        "set": 3
+      }
+    ],
+    "overhead-dumbbell-triceps-extension": [
+      {
+        "weight": 35,
+        "multiplier": 1,
+        "reps": 12,
+        "set": 1
+      },
+      {
+        "weight": 35,
+        "multiplier": 1,
+        "reps": 12,
+        "set": 2
+      },
+      {
+        "weight": 35,
+        "multiplier": 1,
+        "reps": 12,
+        "set": 3
+      }
+    ]
+  }
+}
