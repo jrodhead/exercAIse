@@ -69,7 +69,6 @@ For all workout content generation instructions, see:
 
 ---
 
-
 # New Workout Creation Guidelines (Generic)
 For all content structure and formatting, see:
 - `.github/prompts/generate-workout-session.prompt.md`
@@ -77,4 +76,23 @@ For all content structure and formatting, see:
 ---
 
 ## ✅ Output Format (Generic)
-See `.github/prompts/generate-workout.prompt.md` for all output formatting and content requirements.
+See `.github/prompts/generate-workout-session.prompt.md` for all output formatting and content requirements.
+
+---
+
+## 🔗 Repository Conventions (Explicit)
+- Exercise linking: Every exercise name in a workout must be a markdown link to its detail page in the `exercises/` directory. If an exercise file does not exist, create it following the structure of existing exercise files.
+- File and README: Name workouts `workouts/<block>-<week>_<Title>.md` (no dates in the filename). Add a link to the new workout in `README.md` in descending date order (most recent first).
+- Section headings: Use consistent headers so the logger and readers can parse/skip sections reliably:
+   - Warm-up
+   - Main Work (or Strength/Conditioning)
+   - Accessory/Core (if used)
+   - Cooldown/Recovery
+- Adaptations note: If the session is adapted due to pain, fatigue, or a missed day, add a brief 1–2 line note at the top describing what changed and why.
+
+### Optional pre-flight checklist
+- Confirm injury/pain status and available equipment.
+- Confirm block, week, and title; include a bold date at the top of the workout body.
+- Ensure all exercises are linked and create any missing `exercises/*.md` files.
+- Validate links locally with: `python3 scripts/validate_links.py`.
+- Update `README.md` with the new workout link (most recent first).

@@ -33,3 +33,43 @@ Cues: Minimize hip sway, wide feet if needed
 ---
 
 All exercises are linked to detail pages. Any new exercises have corresponding files in `exercises/`.
+
+```json session-structure
+{
+	"version": "1",
+	"title": "Full-Body Conditioning & Core",
+	"date": "2025-08-22",
+	"block": 2,
+	"week": 2,
+	"sections": [
+			{
+				"type": "Main Work",
+				"title": "Circuit (3–4 rounds)",
+				"rounds": 4,
+			"items": [
+				{ "kind": "exercise", "name": "Dumbbell Thruster (Squat + Press)", "link": "../exercises/dumbbell_thruster.md", "prescription": { "sets": 1, "reps": "10–12" }, "cues": ["Squat deep", "Drive to press", "Core braced"] },
+				{ "kind": "exercise", "name": "Renegade Row", "link": "../exercises/renegade_row.md", "prescription": { "sets": 1, "reps": "6–8/side" }, "cues": ["Hips square", "Row to ribs", "Slow lower"] },
+				{ "kind": "exercise", "name": "Step-Up", "link": "../exercises/step_up.md", "prescription": { "sets": 1, "reps": "10/leg" }, "cues": ["Drive through heel", "Control descent", "Tall posture"] },
+				{ "kind": "exercise", "name": "Plank Shoulder Tap", "link": "../exercises/plank_shoulder_tap.md", "prescription": { "sets": 1, "reps": "20 taps (10/side)" }, "cues": ["Minimize hip sway", "Wide feet if needed"] }
+			]
+		},
+		{
+			"type": "Accessory/Core",
+			"title": "Core Finisher",
+			"items": [
+				{ "kind": "exercise", "name": "Weighted Deadbug", "link": "../exercises/weighted_deadbug.md", "prescription": { "sets": 2, "reps": "12 (6/side)" } },
+				{ "kind": "exercise", "name": "Hollow Hold", "link": "../exercises/hollow_hold.md", "prescription": { "sets": 2, "timeSeconds": 20 } }
+			]
+		},
+		{
+			"type": "Cooldown/Recovery",
+			"title": "Cooldown",
+			"items": [
+				{ "kind": "exercise", "name": "Child’s Pose", "link": "../exercises/childs_pose.md", "prescription": { "holdSeconds": 60 } },
+				{ "kind": "exercise", "name": "Thread the Needle", "link": "../exercises/thread_the_needle.md", "prescription": { "holdSeconds": 60 } },
+				{ "kind": "exercise", "name": "Seated Forward Fold", "link": "../exercises/seated_forward_fold.md", "prescription": { "holdSeconds": 60 } }
+			]
+		}
+	]
+}
+```

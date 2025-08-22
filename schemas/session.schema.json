@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Workout Session (JSON representation)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["title", "block", "week", "sections"],
+  "properties": {
+    "version": { "type": "string", "default": "1" },
+    "title": { "type": "string" },
+    "date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "block": { "type": "integer", "minimum": 0 },
+    "week": { "type": "integer", "minimum": 0 },
+    "notes": { "type": "string" },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/Section" }
+    }
+  },
+  "definitions": {
+    "Section": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "title"],
+      "properties": {
+        "type": { "type": "string", "enum": ["Warm-up", "Main Work", "Strength", "Conditioning", "Accessory/Core", "Cooldown/Recovery", "Recovery", "Mobility"] },
+        "title": { "type": "string" },
+  "rounds": { "type": "integer", "minimum": 1 },
+        "notes": { "type": "string" },
+        "items": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Item" }
+        }
+      }
+    },
+    "Item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "name"],
+      "properties": {
+        "kind": { "type": "string", "enum": ["exercise", "superset", "circuit", "note"] },
+        "name": { "type": "string" },
+        "link": { "type": "string" },
+        "prescription": { "$ref": "#/definitions/Prescription" },
+        "children": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/Item" }
+        },
+        "cues": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "allOf": [
+        { "if": { "properties": { "kind": { "const": "exercise" } } },
+          "then": { "required": ["name"] } },
+        { "if": { "properties": { "kind": { "enum": ["superset", "circuit"] } } },
+          "then": { "required": ["children"], "properties": { "children": { "minItems": 2 } } } }
+      ]
+    },
+    "Prescription": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sets": { "type": "integer", "minimum": 1 },
+        "reps": { "oneOf": [ { "type": "integer", "minimum": 0 }, { "type": "string" } ] },
+        "weight": { "oneOf": [ { "type": "number" }, { "type": "string" } ] },
+        "rpe": { "type": "number", "minimum": 0, "maximum": 10 },
+        "timeSeconds": { "type": "integer", "minimum": 0 },
+        "holdSeconds": { "type": "integer", "minimum": 0 },
+        "distanceMeters": { "type": "number", "minimum": 0 },
+        "distanceMiles": { "type": "number", "minimum": 0 },
+        "tempo": { "type": "string" },
+        "restSeconds": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

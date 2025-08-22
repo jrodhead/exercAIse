@@ -24,3 +24,13 @@ AI-generated workouts compatible with a really old iPad
 ## Instructions
 - [Kai – Strength, Movement & Recovery Coach](.github/instructions/kai.instructions.md)
 - [Mina – Nutrition & Whole Foods Coach](.github/instructions/mina.instructions.md)
+
+## Validation
+- Validate links: run the VS Code task “Validate Markdown Links” or `python3 scripts/validate_links.py`.
+- Validate schemas: run the task “Validate Schemas” or `python3 scripts/validate_schemas.py`.
+ - CI: GitHub Actions runs both validators on pushes and PRs.
+
+## Conventions
+- Dumbbell weights: log as number or string. Examples: `25` (per hand implied), `"25 x2"` (explicit per hand), `"50 total"`.
+- Movements without sets/weights: use time/hold/distance fields (e.g., `timeSeconds`, `holdSeconds`, `distanceMiles`; `distanceMeters` is supported for legacy files).
+- Supersets vs circuits: both are supported; supersets typically pair 2 movements back-to-back, circuits are 3+ movements. In JSON (if used), `kind: "superset" | "circuit"` with `children` items.

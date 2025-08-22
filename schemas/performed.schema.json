@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Performed Workout Log",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["workoutFile", "timestamp", "exercises"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Schema/record version for forwards-compat.",
+      "default": "1"
+    },
+    "workoutFile": {
+      "type": "string",
+      "description": "Relative path to the source workout file (md or json).",
+      "pattern": "^workouts\/.+\\.(md|json)$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 timestamp when the log was created or submitted."
+    },
+    "date": {
+      "type": "string",
+      "description": "Optional calendar date of session (YYYY-MM-DD).",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "block": { "type": "integer", "minimum": 0 },
+    "week": { "type": "integer", "minimum": 0 },
+    "title": { "type": "string" },
+    "notes": { "type": "string" },
+    "device": { "type": "object", "additionalProperties": true },
+    "exercises": {
+      "type": "object",
+      "description": "Map of exercise key/name to performed data.",
+      "minProperties": 1,
+      "additionalProperties": { "$ref": "#/definitions/PerformedExercise" }
+    }
+  },
+  "definitions": {
+    "PerformedExercise": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sets"],
+      "properties": {
+        "name": { "type": "string" },
+        "notes": { "type": "string" },
+        "sets": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/SetEntry" }
+        }
+      }
+    },
+    "SetEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "weight": {
+          "description": "Load used. Allow number (kg/lb assumed by user) or string for 'per hand' or complex notes.",
+          "oneOf": [ { "type": "number" }, { "type": "string" } ]
+        },
+        "reps": { "type": "integer", "minimum": 0 },
+        "rpe": { "type": "number", "minimum": 0, "maximum": 10 },
+        "timeSeconds": { "type": "integer", "minimum": 0 },
+        "holdSeconds": { "type": "integer", "minimum": 0 },
+  "distanceMeters": { "type": "number", "minimum": 0 },
+  "distanceMiles": { "type": "number", "minimum": 0 },
+        "side": { "type": "string", "enum": ["L", "R", "B"] },
+        "tempo": { "type": "string" },
+  "restSeconds": { "type": "integer", "minimum": 0 },
+  "multiplier": { "type": "number", "minimum": 0 },
+        "completed": { "type": "boolean" },
+        "notes": { "type": "string" }
+      },
+      "anyOf": [
+        { "required": ["weight"] },
+        { "required": ["reps"] },
+        { "required": ["rpe"] },
+        { "required": ["timeSeconds"] },
+        { "required": ["holdSeconds"] },
+        { "required": ["distanceMeters"] },
+        { "required": ["distanceMiles"] },
+        { "required": ["notes"] }
+      ]
+    }
+  }
+}

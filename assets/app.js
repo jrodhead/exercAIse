@@ -29,6 +29,8 @@
   var STORAGE_KEY_PREFIX = 'exercAIse-perf-';
   var latestKey = 'exercAIse-latest-file';
   var lastReadmeText = '';
+  // Unit constants
+  var METERS_PER_MILE = 1609.34;
 
   document.getElementById('year').innerHTML = String(new Date().getFullYear());
   reloadBtn.onclick = function () { load(); };
@@ -112,15 +114,17 @@
   }
 
   function renderMarkdownBasic(md) {
-    // Very basic and safe-ish markdown to HTML; no external libs (old iPad friendly).
-    // We only handle headings (#, ##, ###), bold/italic, lists, code fences as pre, and links.
-    var html = md
+  // Very basic and safe-ish markdown to HTML; no external libs (old iPad friendly).
+  // We only handle headings (#, ##, ###), bold/italic, lists, code fences as pre, and links.
+  // Hide embedded machine JSON (session-structure) blocks from display but keep in source for parsing elsewhere.
+  var mdForDisplay = md.replace(/```json[^\n]*session-structure[^\n]*\n([\s\S]*?)\n```/gi, '');
+  var html = mdForDisplay
       .replace(/&/g, '&amp;')
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;');
 
     // code fences ``` -> <pre>
-    html = html.replace(/```([\s\S]*?)```/g, function (_, code) {
+  html = html.replace(/```([\s\S]*?)```/g, function (_, code) {
       return '<pre>' + code.replace(/\n/g, '\n') + '</pre>';
     });
 
@@ -182,6 +186,15 @@
   }
 
   function parseMarkdownPrescriptions(md) {
+    // First try to find a trailing JSON block and parse with parseJSONPrescriptions.
+    var mblock = md.match(/```json(?:[^\n]*)\n([\s\S]*?)\n```/g);
+    if (mblock && mblock.length) {
+      var last = mblock[mblock.length - 1] || '';
+      var inner = last.replace(/^```json[^\n]*\n/, '').replace(/\n```$/, '');
+      var byExFromJson = parseJSONPrescriptions(inner);
+      if (byExFromJson && Object.keys(byExFromJson).length) return byExFromJson;
+    }
+    // Fallback: heuristic parse of MD text
     // Return map exKey -> array of rows {set, reps, weight, rpe}
     var rowsByEx = {};
     var lines = md.split(/\r?\n/);
@@ -231,51 +244,110 @@
 
   function parseJSONPrescriptions(jsonText) {
     var byEx = {};
-    function addFor(name, cfg) {
+
+    function firstNumberFrom(text) {
+      if (typeof text === 'number') return text;
+      if (typeof text !== 'string') return null;
+      var m = text.match(/(\d{1,3})/);
+      return m ? parseInt(m[1], 10) : null;
+    }
+
+    function parseRoundsHint(text) {
+      if (!text) return null;
+      var s = String(text);
+      // Match "3-4 rounds" or "3–4 rounds" or "4 rounds"
+      var m = s.match(/(\d+)\s*[–-]\s*(\d+)\s*rounds?/i);
+      if (m) {
+        var a = parseInt(m[1], 10), b = parseInt(m[2], 10);
+        if (!isNaN(a) && !isNaN(b)) return Math.max(a, b);
+      }
+      m = s.match(/(\d+)\s*rounds?/i);
+      if (m) {
+        var n = parseInt(m[1], 10);
+        if (!isNaN(n)) return n;
+      }
+      return null;
+    }
+
+    function addFor(name, cfg, roundsHint) {
       if (!name) return;
       var exKey = slugify(String(name));
-      var sets = null, reps = null, weight = null, rpe = null;
+  var sets = null, reps = null, weight = null, rpe = null;
+  var timeSeconds = null, holdSeconds = null, distanceMeters = null, distanceMiles = null;
       if (cfg) {
         if (typeof cfg.sets === 'number') sets = cfg.sets;
         if (typeof cfg.reps === 'number') reps = cfg.reps;
-        else if (typeof cfg.reps === 'string') {
-          var m = cfg.reps.match(/(\d{1,3})/);
-          if (m) reps = parseInt(m[1], 10);
-        } else if (Object.prototype.toString.call(cfg.reps) === '[object Array]') {
-          // If array, create per-entry rows
+        else if (typeof cfg.reps === 'string') reps = firstNumberFrom(cfg.reps);
+        else if (Object.prototype.toString.call(cfg.reps) === '[object Array]') {
           var rows = [];
           for (var i = 0; i < cfg.reps.length; i++) {
             var r = parseInt(cfg.reps[i], 10);
-            if (!isNaN(r)) rows.push({ set: i+1, reps: r });
+            if (!isNaN(r)) rows.push({ set: i + 1, reps: r });
           }
           if (rows.length) { byEx[exKey] = rows; return; }
         }
         if (cfg.weight != null) weight = Number(cfg.weight);
         if (cfg.load != null) weight = Number(cfg.load);
         if (cfg.rpe != null) rpe = Number(cfg.rpe);
+  if (cfg.timeSeconds != null) timeSeconds = Number(cfg.timeSeconds);
+  if (cfg.holdSeconds != null) holdSeconds = Number(cfg.holdSeconds);
+  if (cfg.distanceMeters != null) distanceMeters = Number(cfg.distanceMeters);
+  if (cfg.distanceMiles != null) distanceMiles = Number(cfg.distanceMiles);
       }
+      // If inside a circuit with rounds, prefer the rounds count if larger than the declared sets.
+      var count = sets || 0;
+      if (roundsHint && roundsHint > count) count = roundsHint;
+      if (!count) {
+        // Create a single row if any meaningful prescription exists (reps/time/hold/distance/rpe/weight)
+  if (reps != null || timeSeconds != null || holdSeconds != null || distanceMeters != null || distanceMiles != null || rpe != null || weight != null) {
+          count = 1;
+        }
+      }
+
       var rows2 = [];
-      var count = sets || (reps != null ? 1 : 0);
       for (var s = 1; s <= count; s++) {
         var row = { set: s };
         if (reps != null) row.reps = reps;
         if (weight != null) row.weight = weight;
         if (rpe != null) row.rpe = rpe;
+  if (timeSeconds != null) row.timeSeconds = timeSeconds;
+  if (holdSeconds != null) row.holdSeconds = holdSeconds;
+  if (distanceMeters != null) row.distanceMeters = distanceMeters;
+  if (distanceMiles != null) row.distanceMiles = distanceMiles;
         rows2.push(row);
       }
       if (rows2.length) byEx[exKey] = rows2;
     }
+
     try {
       var data = JSON.parse(jsonText);
-      (function walk(node) {
+    (function walk(node, roundsHint) {
         if (!node) return;
-        if (Object.prototype.toString.call(node) === '[object Array]') { for (var i = 0; i < node.length; i++) walk(node[i]); return; }
-        if (typeof node === 'object') {
-          if (node.name && typeof node.name === 'string') addFor(node.name, node);
-          if (node.exercise && typeof node.exercise === 'string') addFor(node.exercise, node);
-          for (var k in node) if (node.hasOwnProperty(k)) walk(node[k]);
+        if (Object.prototype.toString.call(node) === '[object Array]') {
+          for (var i = 0; i < node.length; i++) walk(node[i], roundsHint);
+          return;
         }
-      })(data);
+        if (typeof node === 'object') {
+          // Update rounds hint from section titles or notes
+          var newHint = roundsHint;
+      if (node.rounds && typeof node.rounds === 'number') newHint = node.rounds;
+          if (node.title) {
+            var h = parseRoundsHint(node.title);
+            if (h != null) newHint = h;
+          }
+          if (node.notes && newHint == null) {
+            var h2 = parseRoundsHint(node.notes);
+            if (h2 != null) newHint = h2;
+          }
+
+          if (node.kind === 'exercise' && node.name) addFor(node.name, node.prescription || node, newHint);
+          // Some content may use { name, sets, reps } directly
+          else if (node.name && (node.sets != null || node.reps != null)) addFor(node.name, node, newHint);
+          else if (node.exercise && typeof node.exercise === 'string') addFor(node.exercise, node, newHint);
+
+          for (var k in node) if (node.hasOwnProperty(k)) walk(node[k], newHint);
+        }
+      })(data, null);
     } catch (e) {}
     return byEx;
   }
@@ -366,6 +438,25 @@
         }
       }
 
+      function pickFieldsFromRows(rows) {
+        // Determine which inputs to show based on preset/saved row keys
+  var hasHold = false, hasTime = false, hasDist = false;
+        for (var i = 0; i < rows.length; i++) {
+          var rr = rows[i] || {};
+          if (rr.holdSeconds != null) hasHold = true;
+          if (rr.timeSeconds != null) hasTime = true;
+    if (rr.distanceMeters != null || rr.distanceMiles != null) hasDist = true;
+        }
+  if (hasHold) return ['holdSeconds', 'rpe'];
+  if (hasDist && hasTime) return ['distanceMiles', 'timeSeconds', 'rpe'];
+  if (hasDist) return ['distanceMiles', 'rpe'];
+  if (hasTime) return ['timeSeconds', 'rpe'];
+        return ['weight', 'multiplier', 'reps', 'rpe'];
+      }
+
+      var initialRows = (savedRows && savedRows.length) ? savedRows : (presetRows || []);
+      var fieldOrder = pickFieldsFromRows(initialRows);
+
       function addSetRow(row) {
         var r = document.createElement('div');
         r.className = 'set-row';
@@ -375,19 +466,80 @@
         label.appendChild(document.createTextNode('Set'));
         r.appendChild(label);
 
-        var inputs = [
-          { name: 'weight', placeholder: 'Weight', type: 'number', step: 'any' },
-          { name: 'reps', placeholder: 'Reps', type: 'number', min: 0 },
-          { name: 'rpe', placeholder: 'RPE', type: 'number', step: 'any' }
-        ];
+        var placeholders = {
+          weight: 'Weight',
+          multiplier: 'Multiplier',
+          reps: 'Reps',
+          rpe: 'RPE',
+          timeSeconds: 'Time (sec)',
+          holdSeconds: 'Hold (sec)',
+          distanceMeters: 'Distance (mi)',
+          distanceMiles: 'Distance (mi)'
+        };
+        var types = {
+          weight: { type: 'number', step: 'any' },
+          multiplier: { type: 'number', min: 0, step: '1' },
+          reps: { type: 'number', min: 0 },
+          rpe: { type: 'number', step: 'any' },
+          timeSeconds: { type: 'number', min: 0, step: '1' },
+          holdSeconds: { type: 'number', min: 0, step: '1' },
+          distanceMeters: { type: 'number', min: 0, step: 'any' },
+          distanceMiles: { type: 'number', min: 0, step: 'any' }
+        };
+        var inputs = [];
+        for (var fi = 0; fi < fieldOrder.length; fi++) {
+          var name = fieldOrder[fi];
+          var spec = types[name] || { type: 'text' };
+          inputs.push({ name: name, placeholder: placeholders[name] || name, type: spec.type, min: spec.min, step: spec.step });
+        }
         for (var i = 0; i < inputs.length; i++) {
           var spec = inputs[i];
+          // Special inline label for multiplier: show × before the field
+          if (spec.name === 'multiplier') {
+            var times = document.createElement('span');
+            times.appendChild(document.createTextNode('×'));
+            times.setAttribute('aria-hidden', 'true');
+            times.style.margin = '0 4px 0 8px';
+            r.appendChild(times);
+          }
           var input = document.createElement('input');
           input.type = spec.type;
           input.placeholder = spec.placeholder;
           if (spec.min != null) input.min = spec.min;
           if (spec.step) input.step = spec.step;
-          if (row && row[spec.name] != null) input.value = row[spec.name];
+          if (spec.name === 'multiplier') {
+            input.setAttribute('title', 'Multiplier (e.g., 2 for pair, 1 for single, 0 for bodyweight)');
+            input.setAttribute('aria-label', 'Multiplier (e.g., 2 for pair, 1 for single, 0 for bodyweight)');
+            input.style.maxWidth = '5em';
+          }
+          if (spec.name === 'rpe') {
+            input.setAttribute('title', 'RPE (Rate of Perceived Exertion), 1–10 scale — 4–5 = easy conversational, 7–8 = tempo/comfortably hard');
+            input.setAttribute('aria-label', 'RPE (Rate of Perceived Exertion), 1–10 scale; 4–5 easy conversational, 7–8 tempo/comfortably hard');
+            try { input.min = 0; input.max = 10; } catch (e) {}
+          }
+          if (spec.name === 'distanceMeters' || spec.name === 'distanceMiles') {
+            input.setAttribute('title', 'Distance (miles)');
+            input.setAttribute('aria-label', 'Distance in miles');
+          }
+          if (row) {
+            var v = null;
+            if (row[spec.name] != null) v = row[spec.name];
+            // If UI uses miles but source row provided meters, convert for display
+            if (v == null && spec.name === 'distanceMiles' && row.distanceMeters != null) v = (row.distanceMeters / METERS_PER_MILE);
+            if (v == null && spec.name === 'distanceMeters' && row.distanceMiles != null) v = (row.distanceMiles * METERS_PER_MILE);
+            if (v != null) {
+              if (spec.name === 'distanceMeters') {
+                var miles = v / METERS_PER_MILE;
+                var milesRounded = Math.round(miles * 100) / 100;
+                input.value = String(milesRounded);
+              } else if (spec.name === 'distanceMiles') {
+                var milesRounded2 = Math.round(Number(v) * 100) / 100;
+                input.value = String(milesRounded2);
+              } else {
+                input.value = v;
+              }
+            }
+          }
           input.setAttribute('data-name', spec.name);
           r.appendChild(input);
         }
@@ -410,8 +562,8 @@
         }
       };
 
-  var rows = (savedRows && savedRows.length) ? savedRows : (presetRows || []);
-      for (var i = 0; i < rows.length; i++) addSetRow(rows[i]);
+  var rows = initialRows;
+  for (var i = 0; i < rows.length; i++) addSetRow(rows[i]);
       return card;
     }
 
@@ -463,16 +615,18 @@
       var a = anchors[ai];
       var href = a.getAttribute('href') || '';
       if (!/^(?:\.\.\/)?exercises\/[\w\-]+\.md$/.test(href)) continue;
-      var title = a.textContent || a.innerText || '';
-      if (!title) continue;
-      var exKey = slugify(title);
+  var title = a.textContent || a.innerText || '';
+  // Normalize title by removing parenthetical hints, e.g., "Easy Run (Easy Jog)" -> "Easy Run"
+  var normTitle = title.replace(/\s*\([^\)]*\)\s*$/, '').trim();
+  if (!normTitle) continue;
+  var exKey = slugify(normTitle);
       // Determine section by nearest previous heading; skip warm-up/cool-down
       var container = nearestBlockContainer(a);
       var sectionTitle = findPreviousHeading(container);
       if (isWarmOrCool(sectionTitle)) continue;
-      var savedRows = saved.exercises[exKey] || [];
-      var preset = prescriptions[exKey] || [];
-      var card = createExerciseCard(title, preset, savedRows);
+  var savedRows = saved.exercises[exKey] || [];
+  var preset = prescriptions[exKey] || prescriptions[slugify(title)] || [];
+  var card = createExerciseCard(normTitle, preset, savedRows);
       // Insert after the whole block container (list item/paragraph/div)
       var parent = container.parentNode || workoutContent;
       if (parent && parent.insertBefore) {
@@ -501,11 +655,25 @@
           for (var k = 0; k < inputs.length; k++) {
             var name = inputs[k].getAttribute('data-name');
             var val = inputs[k].value;
-            if (val !== '') obj[name] = Number(val);
+            if (val !== '') {
+              var num = Number(val);
+              if (name === 'distanceMeters') {
+                // Store miles only going forward; interpret this field as miles
+                obj.distanceMiles = num;
+                continue;
+              }
+              if (name === 'distanceMiles') {
+                obj.distanceMiles = num;
+                continue;
+              }
+              obj[name] = num;
+            }
           }
       // Infer set number by order
       obj.set = r + 1;
-      if (obj.reps != null || obj.weight != null || obj.rpe != null) data.exercises[exKey].push(obj);
+      if (obj.reps != null || obj.weight != null || obj.rpe != null || obj.timeSeconds != null || obj.holdSeconds != null || obj.distanceMeters != null || obj.multiplier != null) {
+        data.exercises[exKey].push(obj);
+      }
         }
       }
       return data;
@@ -537,29 +705,40 @@
     issueBtn.onclick = function () {
       var data = collectData();
       var json = JSON.stringify(data, null, 2);
-      // Construct issue URL: https://github.com/<owner>/<repo>/issues/new?title=...&body=...
-      // Keep URL under practical mobile limits; if too large, show copy fallback.
       var owner = 'jrodhead';
       var repo = 'exercAIse';
       var title = 'Workout log ' + (data.file || '') + ' @ ' + new Date().toISOString();
+      // Include the marker and fenced code block so the GitHub Action can detect and parse it
       var header = 'Paste will be committed by Actions.\n\n';
-      var body = header + '```json\n' + json + '\n```\n';
-      var url = 'https://github.com/' + owner + '/' + repo + '/issues/new' +
-        '?title=' + encodeURIComponent(title) +
-        '&body=' + encodeURIComponent(body);
+      var issueBodyTemplate = header + '```json\n' + json + '\n```\n';
 
-      // Heuristic limit: many mobile browsers have issues >2000 chars for URLs. If exceeded, fallback.
-      if (url.length > 1800) {
+      function showTextarea() {
         copyWrapper.style.display = 'block';
-        copyTarget.value = json;
-        copyTarget.focus();
-        copyTarget.select();
-        if (openIssueLink) openIssueLink.style.display = 'inline-block';
-        status('Payload too large for URL. JSON shown below — tap Open Issue and paste it.');
-        return;
+        copyTarget.value = issueBodyTemplate;
+        try { copyTarget.focus(); copyTarget.select(); } catch (e) {}
+        status('Template shown below — paste into the Issue body.');
       }
-      if (openIssueLink) openIssueLink.style.display = 'none';
-      try { window.open(url, '_blank'); } catch (e) { window.location.href = url; }
+      function openIssue() {
+        if (openIssueLink) openIssueLink.style.display = 'none';
+        var url = 'https://github.com/' + owner + '/' + repo + '/issues/new?title=' + encodeURIComponent(title);
+        try { window.open(url, '_blank'); } catch (e) { window.location.href = url; }
+      }
+
+      // Always attempt to copy the full issue body template automatically, then open the Issue page with title-only.
+      if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(issueBodyTemplate)
+          .then(function () {
+            status('Copied template to clipboard. Opening Issue page…');
+            openIssue();
+          })
+          .catch(function () {
+            showTextarea();
+            openIssue();
+          });
+      } else {
+        showTextarea();
+        openIssue();
+      }
     };
 
     clearBtn.onclick = function () {
@@ -577,10 +756,11 @@
         var a2 = anchors2[k];
         var href2 = a2.getAttribute('href') || '';
         if (!/^(?:\.\.\/)?exercises\/[\w\-]+\.md$/.test(href2)) continue;
-        var title2 = a2.textContent || a2.innerText || '';
-        var exKey2 = slugify(title2);
-        var preset2 = prescriptions[exKey2] || [];
-        var card2 = createExerciseCard(title2, preset2, []);
+  var title2 = a2.textContent || a2.innerText || '';
+  var normTitle2 = title2.replace(/\s*\([^\)]*\)\s*$/, '').trim();
+  var exKey2 = slugify(normTitle2);
+  var preset2 = prescriptions[exKey2] || prescriptions[slugify(title2)] || [];
+  var card2 = createExerciseCard(normTitle2, preset2, []);
         var p2 = a2.parentNode || workoutContent;
         if (p2 && p2.insertBefore) {
           if (a2.nextSibling) p2.insertBefore(card2, a2.nextSibling);

@@ -6,19 +6,20 @@
 			"type": "shell",
 			"command": "python3 scripts/validate_links.py",
 			"isBackground": false,
-			"problemMatcher": [
-				"$gcc"
-			],
 			"group": "build"
 		},
 		{
-			"label": "Validate Markdown Links",
+			"label": "Validate Schemas",
 			"type": "shell",
-			"command": "python3 scripts/validate_links.py",
+			"command": "python3 scripts/validate_schemas.py",
 			"isBackground": false,
-			"problemMatcher": [
-				"$gcc"
-			],
+			"group": "build"
+		},
+		{
+			"label": "Validate All",
+			"type": "shell",
+			"command": "python3 scripts/validate_links.py && python3 scripts/validate_schemas.py",
+			"isBackground": false,
 			"group": "build"
 		}
 	]
