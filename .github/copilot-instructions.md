@@ -34,6 +34,9 @@
 ## Integration & Extensibility
 - **No external dependencies**: All content is markdown, no code or package dependencies.
 - **AI Persona Guidance**: All AI agents must read and apply the relevant persona instructions before generating or editing content.
+- **Chat Modes**: Use `.github/chatmodes/kai.chatmode.md` to run in Kai mode (workouts/recovery). Content generation and file integration follow:
+  - Session: `.github/prompts/generate-workout-session.prompt.md`
+  - Interface: `.github/prompts/generate-workout-interface.prompt.md`
 - **Cross-File Consistency**: When renaming or reorganizing, update all references (especially in README.md).
 
 ## Examples

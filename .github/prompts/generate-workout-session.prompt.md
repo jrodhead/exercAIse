@@ -41,3 +41,8 @@ When prompted with 'what's the next workout?' or 'generate workout session', pro
 - Use bullet points and clear section headers.
 - Date must be included at the top in bold (e.g., `**Date:** July 29, 2025`).
 - File naming, README update, and integration are handled separately.
+ - Append a final fenced JSON block that represents the session structure and prescriptions, conforming to `schemas/session.schema.json`. Use a fence like:
+   ```json session-structure
+   { ... }
+   ```
+   This block is used by the logger to prefill values and by validators.

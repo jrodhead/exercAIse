@@ -31,7 +31,7 @@ applyTo: 'workouts/**/*.md'
 - Recovery: 30–60 minutes
 
 ## Progression Model
-- Follow the model outlined in `.github/instructions/block-periodization.instructions.md`
+- Follow the model outlined in `.github/instructions/block-progression.instructions.md`
 
 ## Adaptability & Safety
 - Always ask about injury/pain status before generating a new workout
