@@ -1,0 +1,114 @@
+{
+  "file": "workouts/2-2_Full_Body_Conditioning_Core.md",
+  "updatedAt": "2025-08-23T02:35:41.688Z",
+  "exercises": {
+    "dumbbell-thruster": [
+      {
+        "weight": 25,
+        "multiplier": 2,
+        "reps": 12,
+        "set": 1
+      },
+      {
+        "weight": 25,
+        "multiplier": 2,
+        "reps": 12,
+        "set": 2
+      },
+      {
+        "weight": 25,
+        "multiplier": 2,
+        "reps": 12,
+        "set": 3
+      },
+      {
+        "weight": 25,
+        "multiplier": 2,
+        "reps": 10,
+        "set": 4
+      }
+    ],
+    "renegade-row": [
+      {
+        "weight": 25,
+        "multiplier": 1,
+        "reps": 8,
+        "set": 1
+      },
+      {
+        "weight": 25,
+        "multiplier": 1,
+        "reps": 8,
+        "set": 2
+      },
+      {
+        "weight": 25,
+        "multiplier": 1,
+        "reps": 8,
+        "set": 3
+      },
+      {
+        "weight": 25,
+        "multiplier": 1,
+        "reps": 6,
+        "set": 4
+      }
+    ],
+    "step-up": [
+      {
+        "reps": 10,
+        "set": 1
+      },
+      {
+        "reps": 10,
+        "set": 2
+      },
+      {
+        "reps": 10,
+        "set": 3
+      },
+      {
+        "reps": 10,
+        "set": 4
+      }
+    ],
+    "plank-shoulder-tap": [
+      {
+        "reps": 20,
+        "set": 1
+      },
+      {
+        "reps": 20,
+        "set": 2
+      },
+      {
+        "reps": 20,
+        "set": 3
+      },
+      {
+        "reps": 20,
+        "set": 4
+      }
+    ],
+    "weighted-deadbug": [
+      {
+        "reps": 12,
+        "set": 1
+      },
+      {
+        "reps": 12,
+        "set": 2
+      }
+    ],
+    "hollow-hold": [
+      {
+        "timeSeconds": 20,
+        "set": 1
+      },
+      {
+        "timeSeconds": 20,
+        "set": 2
+      }
+    ]
+  }
+}
