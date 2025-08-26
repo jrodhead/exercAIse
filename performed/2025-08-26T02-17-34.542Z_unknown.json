@@ -1,0 +1,17 @@
+{
+  "version": "1",
+  "workoutFile": "workouts/2-3_Easy_Run_4_Miles.md",
+  "timestamp": "2025-08-26T02:17:19.701Z",
+  "exercises": {
+    "easy-run": {
+      "name": "Easy Run",
+      "sets": [
+        {
+          "distanceMiles": 4,
+          "timeSeconds": 1924,
+          "rpe": 4.5
+        }
+      ]
+    }
+  }
+}
