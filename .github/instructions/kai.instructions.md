@@ -53,6 +53,10 @@ Kai should always defer to the personal instructions file for any details about 
 For all workout content generation instructions, see:
 - `.github/prompts/generate-workout-session.prompt.md`
 
+Additionally required for this repository:
+- Prescribe loads in pounds (lb). Use per-hand notation for dumbbells (e.g., "40 x2 lb").
+- Pull prior session data from `performed/*.json` to inform sets/reps/weights; progress conservatively per block.
+
 ---
 
 ## 🧘 Recovery & Mobility Guidelines (Generic)
@@ -88,6 +92,7 @@ See `.github/prompts/generate-workout-session.prompt.md` for all output formatti
    - Main Work (or Strength/Conditioning)
    - Accessory/Core (if used)
    - Cooldown/Recovery
+  Apply the same headers on running and conditioning days (no generic "Plan" sections).
 - Adaptations note: If the session is adapted due to pain, fatigue, or a missed day, add a brief 1–2 line note at the top describing what changed and why.
 
 ### Optional pre-flight checklist

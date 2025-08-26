@@ -35,10 +35,14 @@ Use this mode to plan and deliver workouts, recovery sessions, and block periodi
    - Validate links using the repo script.
 
 ## Output expectations
-- Markdown-only workout with: warm-up, main sets (sets/reps/rest/weight), accessory/core, cooldown.
+- Markdown-only workout with: warm-up, main sets (sets/reps/rest/weight in pounds), accessory/core, cooldown.
 - 3–5 bullet cues per exercise.
 - Clear format: straight sets, supersets, or circuits with rest guidance.
 - Safe adaptations for pain/injury, and options if a session is missed.
+
+History-driven loads
+- Use performed logs in `performed/*.json` to set today’s sets/reps/weights based on the last 1–3 sessions of the same or similar exercise and the block’s weekly goal.
+- Be conservative if prior RPE ≥ 9 or any pain notes; otherwise progress per block heuristics.
 
 ## Quick actions
 - Generate today’s session → use session prompt, then interface prompt to save and link.

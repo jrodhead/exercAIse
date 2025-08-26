@@ -1,6 +1,12 @@
 # exercAIse
 AI-generated workouts compatible with a really old iPad
 
+- [Quality Run – 4 Miles (Tempo) – Block 2, Week 3](workouts/2-3_Quality_Run_4_Miles_Tempo.md)
+- [Full-Body Conditioning & Core – Block 2, Week 3](workouts/2-3_Full_Body_Conditioning_Core.md)
+- [Yin Yoga Recovery Flow – Block 2, Week 3](workouts/2-3_Yin_Yoga_Recovery_Flow.md)
+- [Lower Body Strength & Mobility – Block 2, Week 3](workouts/2-3_Lower_Body_Strength_Mobility.md)
+- [Easy Run – 4 Miles – Block 2, Week 3](workouts/2-3_Easy_Run_4_Miles.md)
+- [Upper Body Strength & Mobility – Block 2, Week 3](workouts/2-3_Upper_Body_Strength_Mobility.md)
 - [Quality Run – 4 Miles (Tempo) – Block 2, Week 2](workouts/2-2_Quality_Run_4_Miles_Tempo.md)
 - [Full-Body Conditioning & Core – Block 2, Week 2](workouts/2-2_Full_Body_Conditioning_Core.md)
 - [Yin Yoga Recovery Flow – Block 2, Week 2](workouts/2-2_Yin_Yoga_Recovery_Flow.md)
@@ -28,7 +34,7 @@ AI-generated workouts compatible with a really old iPad
 ## Validation
 - Validate links: run the VS Code task “Validate Markdown Links” or `python3 scripts/validate_links.py`.
 - Validate schemas: run the task “Validate Schemas” or `python3 scripts/validate_schemas.py`.
- - CI: GitHub Actions runs both validators on pushes and PRs.
+- CI: GitHub Actions runs both validators on pushes and PRs.
 
 ## Conventions
 - Dumbbell weights: log as number or string. Examples: `25` (per hand implied), `"25 x2"` (explicit per hand), `"50 total"`.

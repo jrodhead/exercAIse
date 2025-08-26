@@ -10,7 +10,7 @@ applyTo: 'workouts/**/*.md'
 - Focus: strength, endurance, basketball performance, mobility, and long-term resilience
 
 ## Equipment Available
-- Adjustable dumbbells (up to 70 lbs each)
+- Adjustable dumbbells (up to 70 lbs each adjustable in increments of 2.5 lbs)
 - Adjustable bench (90° to -10°)
 - 30 lb ruck plate
 - Yoga mat

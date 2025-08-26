@@ -171,6 +171,46 @@
     return s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
   }
 
+  // Time helpers: parse "hh:mm:ss" or "mm:ss" or "ss" into seconds; format seconds to "hh:mm:ss"
+  function parseHMSToSeconds(text) {
+    if (text == null) return null;
+    var s = String(text).trim();
+    if (!s) return null;
+    if (/^\d+$/.test(s)) return parseInt(s, 10);
+    var parts = s.split(':');
+    if (!parts || parts.length === 0) return null;
+    // Accept mm:ss or hh:mm:ss; treat single part already handled
+    var sec = 0;
+    if (parts.length === 2) {
+      var m = parseInt(parts[0], 10);
+      var ss = parseInt(parts[1], 10);
+      if (isNaN(m) || isNaN(ss)) return null;
+      sec = m * 60 + ss;
+    } else if (parts.length >= 3) {
+      // Use last three parts as h:m:s to be forgiving of extra colons
+      var p3 = parts.slice(-3);
+      var h = parseInt(p3[0], 10);
+      var m2 = parseInt(p3[1], 10);
+      var s2 = parseInt(p3[2], 10);
+      if (isNaN(h) || isNaN(m2) || isNaN(s2)) return null;
+      sec = h * 3600 + m2 * 60 + s2;
+    } else {
+      return null;
+    }
+    return sec;
+  }
+
+  function secondsToHHMMSS(totalSeconds) {
+    if (totalSeconds == null || isNaN(totalSeconds)) return '';
+    var sec = Math.max(0, Math.floor(Number(totalSeconds)));
+    var h = Math.floor(sec / 3600);
+    var rem = sec % 3600;
+    var m = Math.floor(rem / 60);
+    var s = rem % 60;
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+    return pad(h) + ':' + pad(m) + ':' + pad(s);
+  }
+
   function extractExercisesFromMarkdown(md) {
     // Heuristic: find markdown links where the URL starts with ../exercises or exercises/
     var re = /\[(.*?)\]\(((?:\.\.\/)?exercises\/[\w\-]+\.md)\)/g;
@@ -198,7 +238,7 @@
     // Return map exKey -> array of rows {set, reps, weight, rpe}
     var rowsByEx = {};
     var lines = md.split(/\r?\n/);
-    for (var i = 0; i < lines.length; i++) {
+  for (var i = 0; i < lines.length; i++) {
       var line = lines[i];
       var linkMatch = line.match(/\[(.*?)\]\(((?:\.\.\/)?exercises\/[\w\-]+\.md)\)/);
       if (!linkMatch) continue;
@@ -206,7 +246,7 @@
       var exKey = slugify(title);
       // Context: current line + next 2 lines
       var ctx = line + ' ' + (lines[i+1] || '') + ' ' + (lines[i+2] || '');
-      var sets = null, reps = null, weight = null, rpe = null;
+  var sets = null, reps = null, weight = null, rpe = null, multiplier = null;
       var m;
       // 3x12 or 3 x 12
       m = ctx.match(/(\d{1,2})\s*[x×]\s*(\d{1,3})/i);
@@ -222,8 +262,11 @@
         if (m) { reps = parseInt(m[1], 10); }
       }
       // weight
-      m = ctx.match(/(\d{1,3}(?:\.\d+)?)\s*(lb|lbs|kg)/i);
-      if (m) { weight = Number(m[1]); }
+  m = ctx.match(/(\d{1,3}(?:\.\d+)?)\s*(lb|lbs|kg)/i);
+  if (m) { weight = Number(m[1]); }
+  // multiplier hints
+  if (/per\s*hand|each|per\s*side|x2|×2/i.test(ctx)) multiplier = 2;
+  if (/bodyweight/i.test(ctx)) multiplier = 0;
       // RPE
       m = ctx.match(/RPE\s*(\d{1,2}(?:\.\d+)?)/i);
       if (m) { rpe = Number(m[1]); }
@@ -234,11 +277,51 @@
         var row = { set: s };
         if (reps != null) row.reps = reps;
         if (weight != null) row.weight = weight;
+        if (multiplier != null) row.multiplier = multiplier;
         if (rpe != null) row.rpe = rpe;
         rows.push(row);
       }
       if (rows.length) rowsByEx[exKey] = rows;
     }
+
+    // Extra fallback for endurance-type markdown without JSON: parse distance/RPE/time from plain text
+    try {
+      var titleMatch2 = md.match(/^#\s+(.+)$/m);
+      var docTitle2 = titleMatch2 ? String(titleMatch2[1]).trim() : '';
+      var docLower2 = md.toLowerCase();
+  var isEnduranceDoc2 = /\b(run|jog|walk|tempo|quality run|easy run|bike|cycle|ride|rower|rowing|erg|swim)\b/.test(docLower2);
+      if (isEnduranceDoc2) {
+        var dist2 = null;
+        var mDist2 = md.match(/(\d+(?:\.\d+)?)\s*(?:mi|miles?|mile)\b/i);
+        if (mDist2) dist2 = Number(mDist2[1]);
+        var rpeVal2 = null;
+        var mRpe2 = md.match(/RPE\s*(\d{1,2}(?:\.\d+)?)/i);
+        if (mRpe2) rpeVal2 = Number(mRpe2[1]);
+        var timeSec2 = null;
+        var mTimeColon2 = md.match(/\b(\d{1,2}):(\d{2})(?::(\d{2}))?\b/);
+        if (mTimeColon2) {
+          var h2 = mTimeColon2[3] != null ? parseInt(mTimeColon2[1], 10) : 0;
+          var mmm2 = mTimeColon2[3] != null ? parseInt(mTimeColon2[2], 10) : parseInt(mTimeColon2[1], 10);
+          var sss2 = mTimeColon2[3] != null ? parseInt(mTimeColon2[3], 10) : parseInt(mTimeColon2[2], 10);
+          if (!isNaN(h2) && !isNaN(mmm2) && !isNaN(sss2)) timeSec2 = (h2 * 3600) + (mmm2 * 60) + sss2;
+        } else {
+          var mTimeMin2 = md.match(/\b(\d{1,3})\s*(?:min|minutes)\b/i);
+          if (mTimeMin2) {
+            var mins2 = parseInt(mTimeMin2[1], 10);
+            if (!isNaN(mins2)) timeSec2 = mins2 * 60;
+          }
+        }
+        var nameGuess2 = docTitle2 || 'Run';
+        var key2 = slugify(nameGuess2);
+        if (!rowsByEx[key2] && (dist2 != null || rpeVal2 != null || timeSec2 != null)) {
+          rowsByEx[key2] = [{ set: 1 }];
+          if (dist2 != null) rowsByEx[key2][0].distanceMiles = dist2;
+          if (rpeVal2 != null) rowsByEx[key2][0].rpe = rpeVal2;
+          if (timeSec2 != null) rowsByEx[key2][0].timeSeconds = timeSec2;
+        }
+      }
+    } catch (e) {}
+
     return rowsByEx;
   }
 
@@ -248,8 +331,22 @@
     function firstNumberFrom(text) {
       if (typeof text === 'number') return text;
       if (typeof text !== 'string') return null;
-      var m = text.match(/(\d{1,3})/);
-      return m ? parseInt(m[1], 10) : null;
+      var m = text.match(/(\d+(?:\.\d+)?)/);
+      return m ? Number(m[1]) : null;
+    }
+
+    function parseWeightSpec(val) {
+      // Accept numbers directly, or strings like "27.5 lb per hand", "40 lb", "bodyweight", "50 total", "25 x2"
+      var out = { weight: null, multiplier: null };
+      if (typeof val === 'number') { out.weight = val; return out; }
+      if (typeof val !== 'string') return out;
+      var s = val.toLowerCase();
+      var n = firstNumberFrom(s);
+      if (n != null) out.weight = n;
+      if (/per\s*hand|each|per\s*side|x2|×2/.test(s)) out.multiplier = 2;
+      else if (/total/.test(s)) out.multiplier = 1;
+      else if (/bodyweight/.test(s)) out.multiplier = 0;
+      return out;
     }
 
     function parseRoundsHint(text) {
@@ -272,7 +369,7 @@
     function addFor(name, cfg, roundsHint) {
       if (!name) return;
       var exKey = slugify(String(name));
-  var sets = null, reps = null, weight = null, rpe = null;
+  var sets = null, reps = null, weight = null, rpe = null, multiplier = null;
   var timeSeconds = null, holdSeconds = null, distanceMeters = null, distanceMiles = null;
       if (cfg) {
         if (typeof cfg.sets === 'number') sets = cfg.sets;
@@ -286,8 +383,22 @@
           }
           if (rows.length) { byEx[exKey] = rows; return; }
         }
-        if (cfg.weight != null) weight = Number(cfg.weight);
-        if (cfg.load != null) weight = Number(cfg.load);
+        if (cfg.weight != null) {
+          if (typeof cfg.weight === 'number') weight = cfg.weight;
+          else {
+            var ws = parseWeightSpec(cfg.weight);
+            if (ws.weight != null) weight = ws.weight;
+            if (ws.multiplier != null) multiplier = ws.multiplier;
+          }
+        }
+        if (cfg.load != null) {
+          if (typeof cfg.load === 'number') weight = cfg.load;
+          else {
+            var ws2 = parseWeightSpec(cfg.load);
+            if (ws2.weight != null) weight = ws2.weight;
+            if (ws2.multiplier != null) multiplier = ws2.multiplier;
+          }
+        }
         if (cfg.rpe != null) rpe = Number(cfg.rpe);
   if (cfg.timeSeconds != null) timeSeconds = Number(cfg.timeSeconds);
   if (cfg.holdSeconds != null) holdSeconds = Number(cfg.holdSeconds);
@@ -309,6 +420,7 @@
         var row = { set: s };
         if (reps != null) row.reps = reps;
         if (weight != null) row.weight = weight;
+        if (multiplier != null) row.multiplier = multiplier;
         if (rpe != null) row.rpe = rpe;
   if (timeSeconds != null) row.timeSeconds = timeSeconds;
   if (holdSeconds != null) row.holdSeconds = holdSeconds;
@@ -340,10 +452,20 @@
             if (h2 != null) newHint = h2;
           }
 
-          if (node.kind === 'exercise' && node.name) addFor(node.name, node.prescription || node, newHint);
-          // Some content may use { name, sets, reps } directly
-          else if (node.name && (node.sets != null || node.reps != null)) addFor(node.name, node, newHint);
-          else if (node.exercise && typeof node.exercise === 'string') addFor(node.exercise, node, newHint);
+          // Prefer the 'prescription' object when present
+          var cfgMaybe = (node && node.prescription) ? node.prescription : node;
+          if (node.kind === 'exercise' && node.name) addFor(node.name, cfgMaybe, newHint);
+          // Some content may use { name, sets, reps } directly or as prescription
+          else if (node.name) {
+            if (cfgMaybe && (
+              cfgMaybe.sets != null || cfgMaybe.reps != null || cfgMaybe.timeSeconds != null || cfgMaybe.holdSeconds != null ||
+              cfgMaybe.distanceMiles != null || cfgMaybe.distanceMeters != null || cfgMaybe.rpe != null ||
+              cfgMaybe.weight != null || cfgMaybe.load != null
+            )) {
+              addFor(node.name, cfgMaybe, newHint);
+            }
+          }
+          else if (node.exercise && typeof node.exercise === 'string') addFor(node.exercise, cfgMaybe, newHint);
 
           for (var k in node) if (node.hasOwnProperty(k)) walk(node[k], newHint);
         }
@@ -407,28 +529,31 @@
 
     var saved = loadSaved(filePath) || { file: filePath, updatedAt: new Date().toISOString(), exercises: {} };
 
+    // Document-level helpers for fallback parsing (e.g., distance in title "4 Miles")
+    function getFirstHeadingText(tagName) {
+      if (!workoutContent) return '';
+      var h = workoutContent.querySelector(tagName);
+      return h ? (h.textContent || '').trim() : '';
+    }
+    var docH1Title = getFirstHeadingText('h1');
+    var fullDocText = workoutContent ? ((workoutContent.textContent || workoutContent.innerText) || '') : '';
+
   function createExerciseCard(title, presetRows, savedRows) {
       var exKey = slugify(title);
   var card = document.createElement('div');
   card.className = 'exercise-card compact';
       card.setAttribute('data-exkey', exKey);
 
-      var header = document.createElement('header');
-      var toggleBtn = document.createElement('button');
-      toggleBtn.className = 'secondary';
-      toggleBtn.type = 'button';
-      toggleBtn.appendChild(document.createTextNode('Edit'));
-      header.appendChild(toggleBtn);
-      var addBtn = document.createElement('button');
-      addBtn.className = 'secondary';
-      addBtn.type = 'button';
-      addBtn.appendChild(document.createTextNode('Add set'));
-      header.appendChild(addBtn);
-      card.appendChild(header);
-
-      var setsWrap = document.createElement('div');
+  var setsWrap = document.createElement('div');
       setsWrap.className = 'exercise-sets';
       card.appendChild(setsWrap);
+
+  // Move the Add set button after the sets
+  var addBtn = document.createElement('button');
+  addBtn.className = 'secondary';
+  addBtn.type = 'button';
+  addBtn.appendChild(document.createTextNode('Add set'));
+  card.appendChild(addBtn);
 
       function updateSetLabelsLocal() {
         var rows = setsWrap.getElementsByClassName('set-row');
@@ -438,26 +563,34 @@
         }
       }
 
-      function pickFieldsFromRows(rows) {
+  function pickFieldsFromRows(rows, titleForHeuristic) {
         // Determine which inputs to show based on preset/saved row keys
-  var hasHold = false, hasTime = false, hasDist = false;
+  var hasHold = false, hasTime = false, hasDist = false, hasWeight = false, hasReps = false;
         for (var i = 0; i < rows.length; i++) {
           var rr = rows[i] || {};
           if (rr.holdSeconds != null) hasHold = true;
           if (rr.timeSeconds != null) hasTime = true;
     if (rr.distanceMeters != null || rr.distanceMiles != null) hasDist = true;
+    if (rr.weight != null) hasWeight = true;
+    if (rr.reps != null) hasReps = true;
         }
   if (hasHold) return ['holdSeconds', 'rpe'];
+  var t = String(titleForHeuristic || '').toLowerCase();
+  var isEndurance = /\b(run|jog|walk|tempo|quality run|easy run|bike|cycle|ride|rower|rowing|erg|swim)\b/.test(t);
+  // Force endurance-style fields when the title looks like endurance
+  if (isEndurance) return ['distanceMiles', 'timeSeconds', 'rpe'];
+  // Timed & weighted (e.g., Farmer Carry): show weight + time + RPE
+  if (hasTime && hasWeight) return ['weight', 'multiplier', 'timeSeconds', 'rpe'];
   if (hasDist && hasTime) return ['distanceMiles', 'timeSeconds', 'rpe'];
   if (hasDist) return ['distanceMiles', 'rpe'];
   if (hasTime) return ['timeSeconds', 'rpe'];
         return ['weight', 'multiplier', 'reps', 'rpe'];
       }
 
-      var initialRows = (savedRows && savedRows.length) ? savedRows : (presetRows || []);
-      var fieldOrder = pickFieldsFromRows(initialRows);
+  var initialRows = (savedRows && savedRows.length) ? savedRows : (presetRows || []);
+  var fieldOrder = pickFieldsFromRows(initialRows, title);
 
-      function addSetRow(row) {
+  function addSetRow(row, idx) {
         var r = document.createElement('div');
         r.className = 'set-row';
         // Non-editable label for set number (inferred by order)
@@ -471,8 +604,8 @@
           multiplier: 'Multiplier',
           reps: 'Reps',
           rpe: 'RPE',
-          timeSeconds: 'Time (sec)',
-          holdSeconds: 'Hold (sec)',
+          timeSeconds: 'Time (hh:mm:ss)',
+          holdSeconds: 'Hold (hh:mm:ss)',
           distanceMeters: 'Distance (mi)',
           distanceMiles: 'Distance (mi)'
         };
@@ -481,8 +614,8 @@
           multiplier: { type: 'number', min: 0, step: '1' },
           reps: { type: 'number', min: 0 },
           rpe: { type: 'number', step: 'any' },
-          timeSeconds: { type: 'number', min: 0, step: '1' },
-          holdSeconds: { type: 'number', min: 0, step: '1' },
+          timeSeconds: { type: 'text' },
+          holdSeconds: { type: 'text' },
           distanceMeters: { type: 'number', min: 0, step: 'any' },
           distanceMiles: { type: 'number', min: 0, step: 'any' }
         };
@@ -527,6 +660,30 @@
             // If UI uses miles but source row provided meters, convert for display
             if (v == null && spec.name === 'distanceMiles' && row.distanceMeters != null) v = (row.distanceMeters / METERS_PER_MILE);
             if (v == null && spec.name === 'distanceMeters' && row.distanceMiles != null) v = (row.distanceMiles * METERS_PER_MILE);
+            // If still missing distance, look up from prescription row (same index or first)
+            if (v == null && spec.name === 'distanceMiles' && presetRows) {
+              var pRow = (typeof idx === 'number' && presetRows[idx]) ? presetRows[idx] : (presetRows[0] || null);
+              if (pRow) {
+                if (pRow.distanceMiles != null) v = Number(pRow.distanceMiles);
+                else if (pRow.distanceMeters != null) v = Number(pRow.distanceMeters) / METERS_PER_MILE;
+              }
+            }
+            // Fallback: parse distance like "4 miles" from the card title
+            if (v == null && spec.name === 'distanceMiles') {
+              var tstr = String(title || '');
+              var mt = tstr.match(/(\d+(?:\.\d+)?)\s*(?:mi|miles?|mile)\b/i);
+              if (mt) v = Number(mt[1]);
+              // Try the document H1 title
+              if (v == null && docH1Title) {
+                var mh1 = docH1Title.match(/(\d+(?:\.\d+)?)\s*(?:mi|miles?|mile)\b/i);
+                if (mh1) v = Number(mh1[1]);
+              }
+              // Try scanning the full document text as a last resort (may pick first match)
+              if (v == null && fullDocText) {
+                var mdoc = fullDocText.match(/(\d+(?:\.\d+)?)\s*(?:mi|miles?|mile)\b/i);
+                if (mdoc) v = Number(mdoc[1]);
+              }
+            }
             if (v != null) {
               if (spec.name === 'distanceMeters') {
                 var miles = v / METERS_PER_MILE;
@@ -535,6 +692,8 @@
               } else if (spec.name === 'distanceMiles') {
                 var milesRounded2 = Math.round(Number(v) * 100) / 100;
                 input.value = String(milesRounded2);
+              } else if (spec.name === 'timeSeconds' || spec.name === 'holdSeconds') {
+                input.value = secondsToHHMMSS(v);
               } else {
                 input.value = v;
               }
@@ -553,17 +712,45 @@
   updateSetLabelsLocal();
       }
 
-      addBtn.onclick = function () { addSetRow({}); };
-      toggleBtn.onclick = function () {
-        if (card.className.indexOf('collapsed') !== -1) {
-          card.className = card.className.replace('collapsed', '').replace(/\s+$/,'');
-        } else {
-          if (card.className.indexOf('collapsed') === -1) card.className += ' collapsed';
+      function snapshotLastRow() {
+        var rows = setsWrap.getElementsByClassName('set-row');
+        if (!rows || !rows.length) return null;
+        var last = rows[rows.length - 1];
+        var inputs = last.getElementsByTagName('input');
+        var obj = {};
+        for (var i = 0; i < inputs.length; i++) {
+          var name = inputs[i].getAttribute('data-name');
+          var val = inputs[i].value;
+          if (val === '') continue;
+          if (name === 'timeSeconds' || name === 'holdSeconds') {
+            var sec = parseHMSToSeconds(val);
+            if (sec != null) obj[name] = sec;
+          } else if (name === 'distanceMeters') {
+            // interpret UI miles field
+            obj.distanceMiles = Number(val);
+          } else if (name === 'distanceMiles') {
+            obj.distanceMiles = Number(val);
+          } else {
+            obj[name] = Number(val);
+          }
         }
+        return obj;
+      }
+
+      addBtn.onclick = function () {
+        var snap = snapshotLastRow();
+        if (snap) {
+          var rowsNow = setsWrap.getElementsByClassName('set-row');
+          addSetRow(snap, rowsNow ? rowsNow.length : undefined);
+          return;
+        }
+        if (presetRows && presetRows.length) { addSetRow(presetRows[0], 0); return; }
+        addSetRow({}, undefined);
       };
+  // Cards are always editable and expanded; no toggle button
 
   var rows = initialRows;
-  for (var i = 0; i < rows.length; i++) addSetRow(rows[i]);
+  for (var i = 0; i < rows.length; i++) addSetRow(rows[i], i);
       return card;
     }
 
@@ -610,7 +797,8 @@
         t.indexOf('recovery') !== -1
       );
     }
-    var foundCount = 0;
+  var foundCount = 0;
+  var foundKeys = {};
     for (var ai = 0; ai < anchors.length; ai++) {
       var a = anchors[ai];
       var href = a.getAttribute('href') || '';
@@ -623,7 +811,11 @@
       // Determine section by nearest previous heading; skip warm-up/cool-down
       var container = nearestBlockContainer(a);
       var sectionTitle = findPreviousHeading(container);
-      if (isWarmOrCool(sectionTitle)) continue;
+      if (isWarmOrCool(sectionTitle)) {
+        // Treat warm-up/cooldown items as matched so they are not injected later
+        foundKeys[exKey] = true;
+        continue;
+      }
   var savedRows = saved.exercises[exKey] || [];
   var preset = prescriptions[exKey] || prescriptions[slugify(title)] || [];
   var card = createExerciseCard(normTitle, preset, savedRows);
@@ -636,7 +828,67 @@
         workoutContent.appendChild(card);
       }
       foundCount++;
+        foundKeys[exKey] = true;
     }
+
+      // Fallback: inject cards for any prescriptions without a visible exercise link (e.g., run main set)
+      function titleCaseFromKey(k) {
+        var parts = String(k || '').split('-');
+        for (var i = 0; i < parts.length; i++) {
+          if (parts[i].length) parts[i] = parts[i].charAt(0).toUpperCase() + parts[i].slice(1);
+        }
+        return parts.join(' ');
+      }
+
+      function findMainHeadingNode() {
+        var headings = workoutContent ? workoutContent.querySelectorAll('h2, h3, h4') : [];
+        for (var i = 0; i < headings.length; i++) {
+          var t = (headings[i].textContent || '').toLowerCase();
+          if (t.indexOf('main') !== -1 || t.indexOf('conditioning') !== -1) return headings[i];
+        }
+        return null;
+      }
+
+  var mainHead = findMainHeadingNode();
+      // Heuristic: detect if this workout is an endurance-style session (to filter injected cards)
+  var docTextForHeuristic = (workoutContent && (workoutContent.textContent || workoutContent.innerText) || '').toLowerCase();
+  var isEnduranceDoc = /\b(run|jog|walk|tempo|quality run|easy run|bike|cycle|ride|rower|rowing|erg|swim)\b/.test(docTextForHeuristic);
+      for (var pKey in prescriptions) {
+        if (!prescriptions.hasOwnProperty(pKey)) continue;
+        if (foundKeys[pKey]) continue;
+        var presetRows = prescriptions[pKey] || [];
+        if (!presetRows || !presetRows.length) continue;
+        // Skip if these look like warm/cool prescriptions (heuristic below)
+        var skip = true;
+        for (var rr = 0; rr < presetRows.length; rr++) {
+          var row = presetRows[rr] || {};
+          var hasDist = (row.distanceMiles != null || row.distanceMeters != null);
+          var hasTime = (row.timeSeconds != null);
+          var hasRpe = (row.rpe != null);
+          var hasWeight = (row.weight != null || row.load != null);
+          var hasReps = (row.reps != null);
+          if (isEnduranceDoc) {
+            // In endurance docs, only inject rows that are endurance-like (distance/time/RPE), and avoid pure weight/reps
+            if ((hasDist || hasTime || hasRpe) && !(hasWeight || hasReps)) { skip = false; break; }
+          } else {
+            // General heuristic: allow if meaningful work (distance/reps/weight) or long timed efforts (>90s)
+            if (hasDist || hasReps || hasWeight) { skip = false; break; }
+            if (hasTime && row.timeSeconds > 90) { skip = false; break; }
+          }
+        }
+        if (skip) continue;
+        var display = titleCaseFromKey(pKey);
+        var savedRows2 = saved.exercises[pKey] || [];
+        var cardX = createExerciseCard(display, presetRows, savedRows2);
+        if (mainHead && mainHead.parentNode) {
+          if (mainHead.nextSibling) mainHead.parentNode.insertBefore(cardX, mainHead.nextSibling);
+          else mainHead.parentNode.appendChild(cardX);
+        } else {
+          workoutContent.appendChild(cardX);
+        }
+        foundCount++;
+        foundKeys[pKey] = true;
+      }
 
     function collectData() {
       var data = { file: filePath, updatedAt: new Date().toISOString(), exercises: {} };
@@ -666,12 +918,17 @@
                 obj.distanceMiles = num;
                 continue;
               }
+              if (name === 'timeSeconds' || name === 'holdSeconds') {
+                var sec = parseHMSToSeconds(val);
+                if (sec != null) obj[name] = sec;
+                continue;
+              }
               obj[name] = num;
             }
           }
       // Infer set number by order
       obj.set = r + 1;
-      if (obj.reps != null || obj.weight != null || obj.rpe != null || obj.timeSeconds != null || obj.holdSeconds != null || obj.distanceMeters != null || obj.multiplier != null) {
+  if (obj.reps != null || obj.weight != null || obj.rpe != null || obj.timeSeconds != null || obj.holdSeconds != null || obj.distanceMeters != null || obj.distanceMiles != null || obj.multiplier != null) {
         data.exercises[exKey].push(obj);
       }
         }
@@ -682,7 +939,7 @@
     saveBtn.onclick = function () {
       var data = collectData();
       saveLocal(filePath, data);
-      status('Saved locally at ' + new Date().toLocaleTimeString());
+      status('Saved locally at ' + new Date().toLocaleTimeString(), { important: true });
     };
 
   copyBtn.onclick = function () {
@@ -691,7 +948,7 @@
       // try clipboard (newer iPads); fallback to show textarea
       var didCopy = false;
       if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(json).then(function () { didCopy = true; status('Copied JSON to clipboard.'); }).catch(function () {});
+        navigator.clipboard.writeText(json).then(function () { didCopy = true; status('Copied JSON to clipboard.', { important: true }); }).catch(function () {});
       }
       if (!didCopy) {
         copyWrapper.style.display = 'block';
@@ -728,7 +985,7 @@
       if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(issueBodyTemplate)
           .then(function () {
-            status('Copied template to clipboard. Opening Issue page…');
+            status('Copied template to clipboard. Opening Issue page…', { important: true });
             openIssue();
           })
           .catch(function () {
@@ -769,19 +1026,33 @@
           workoutContent.appendChild(card2);
         }
       }
-      status('Cleared form.');
+  status('Cleared form.', { important: true });
     };
   }
 
-  function status(msg) {
+  function status(msg, opts) {
+    // Only show status bar for important messages unless explicitly forced
+    opts = opts || {};
+    var isImportant = !!opts.important;
+    if (!msg) {
+      statusEl.innerHTML = '';
+      statusEl.style.display = 'none';
+      return;
+    }
+    if (!isImportant) {
+      // Quiet mode: update text but keep hidden to avoid visual noise
+      statusEl.innerHTML = msg;
+      statusEl.style.display = 'none';
+      return;
+    }
     statusEl.innerHTML = msg;
     statusEl.style.display = 'block';
   }
 
   function loadReadmeAndMaybeOpenSession() {
-    status('Reading README…');
+    status('Reading README…'); // hidden (non-important)
     xhrGet('README.md', function (err, text) {
-      if (err) return status('Error reading README: ' + err.message);
+      if (err) return status('Error reading README: ' + err.message, { important: true });
       // Render README mirror with inline Log links
       lastReadmeText = text || '';
       readmeContent.innerHTML = decorateReadmeWithLogLinks(lastReadmeText);
@@ -866,9 +1137,9 @@
   }
 
   function openSession(path, readmeText) {
-    status('Loading ' + path + ' …');
+    status('Loading ' + path + ' …'); // hidden (non-important)
     xhrGet(path, function (err, text) {
-      if (err) return status('Error loading workout: ' + err.message);
+  if (err) return status('Error loading workout: ' + err.message, { important: true });
       // Save current scroll and hide index
       try { sessionStorage.setItem('indexScrollY', String(window.scrollY || 0)); } catch (e) {}
       setVisibility(readmeSection, false);
@@ -898,7 +1169,7 @@
       openOnGitHubEl.href = 'https://github.com/jrodhead/exercAIse/blob/main/' + path;
       setVisibility(workoutMetaEl, true);
       try { window.scrollTo(0, 0); } catch (e) {}
-      status('Loaded.');
+      status(''); // no noisy success banner
     });
   }
 

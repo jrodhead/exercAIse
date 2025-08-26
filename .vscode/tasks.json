@@ -21,6 +21,30 @@
 			"command": "python3 scripts/validate_links.py && python3 scripts/validate_schemas.py",
 			"isBackground": false,
 			"group": "build"
+		},
+		{
+			"label": "Preview history keys",
+			"type": "shell",
+			"command": "python3 scripts/prescribe_loads.py --list-keys | sed -n '1,60p'",
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "Preview history keys",
+			"type": "shell",
+			"command": "python3 scripts/prescribe_loads.py --list-keys | sed -n '1,60p'",
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "Validate Markdown Links (post Week3)",
+			"type": "shell",
+			"command": "python3 scripts/validate_links.py",
+			"isBackground": false,
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build"
 		}
 	]
 }
