@@ -25,18 +25,18 @@
   "week": 3,
   "sections": [
     {"type": "Warm-up", "title": "Warm-Up", "items": [
-      {"kind": "exercise", "name": "Brisk Walk", "link": "exercises/brisk_walk.md", "prescription": {"timeSeconds": 600}},
-      {"kind": "exercise", "name": "Leg Swings", "link": "exercises/leg_swings.md", "prescription": {"reps": 15}}
+  {"kind": "exercise", "name": "Brisk Walk", "link": "../exercises/brisk_walk.md", "prescription": {"timeSeconds": 600}},
+  {"kind": "exercise", "name": "Leg Swings", "link": "../exercises/leg_swings.md", "prescription": {"reps": 15}}
     ]},
     {"type": "Conditioning", "title": "Main", "items": [
       {"kind": "note", "name": "Easy run", "prescription": {"distanceMiles": 4, "rpe": 4.5}}
     ]},
     {"type": "Accessory/Core", "title": "Strides", "items": [
-      {"kind": "exercise", "name": "Strides", "link": "exercises/strides.md", "prescription": {"sets": 4, "timeSeconds": 20, "restSeconds": 60}}
+  {"kind": "exercise", "name": "Strides", "link": "../exercises/strides.md", "prescription": {"sets": 4, "timeSeconds": 20, "restSeconds": 60}}
     ]},
     {"type": "Cooldown/Recovery", "title": "Cooldown", "items": [
-      {"kind": "exercise", "name": "Brisk Walk", "link": "exercises/brisk_walk.md", "prescription": {"timeSeconds": 600}},
-      {"kind": "exercise", "name": "Calf Stretch", "link": "exercises/calf_stretch.md", "prescription": {"holdSeconds": 45}}
+  {"kind": "exercise", "name": "Brisk Walk", "link": "../exercises/brisk_walk.md", "prescription": {"timeSeconds": 600}},
+  {"kind": "exercise", "name": "Calf Stretch", "link": "../exercises/calf_stretch.md", "prescription": {"holdSeconds": 45}}
     ]}
   ]
 }

@@ -37,10 +37,10 @@ Cues:
       {"kind": "exercise", "name": "Easy Jog", "link": "../exercises/easy_jog.md", "prescription": {"timeSeconds": 600}},
       {"kind": "exercise", "name": "Strides", "link": "../exercises/strides.md", "prescription": {"sets": 4, "timeSeconds": 20, "restSeconds": 60}}
     ]},
-    {"type": "Main Set", "title": "Main Set", "items": [
-      {"kind": "run", "name": "Quality Run ", "prescription": {"distanceMiles": 4, "tempoMinutes": "15–20", "intensity": "RPE 7–8"}}
+    {"type": "Conditioning", "title": "Main Work", "items": [
+      {"kind": "note", "name": "Quality Run (Tempo)", "prescription": {"distanceMiles": 4, "rpe": 7.5, "timeSeconds": 0}}
     ]},
-    {"type": "Cooldown", "title": "Cooldown", "items": [
+    {"type": "Cooldown/Recovery", "title": "Cooldown/Recovery", "items": [
       {"kind": "exercise", "name": "Brisk Walk", "link": "../exercises/brisk_walk.md", "prescription": {"timeSeconds": 600}},
       {"kind": "exercise", "name": "Calf Stretch (Wall or Step)", "link": "../exercises/calf_stretch_wall_or_step.md", "prescription": {"holdSeconds": 60}},
       {"kind": "exercise", "name": "Standing Quad Stretch", "link": "../exercises/standing_quad_stretch.md", "prescription": {"holdSeconds": 60}},

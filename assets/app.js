@@ -543,6 +543,7 @@
   var card = document.createElement('div');
   card.className = 'exercise-card compact';
       card.setAttribute('data-exkey', exKey);
+      card.setAttribute('data-name', title);
 
   var setsWrap = document.createElement('div');
       setsWrap.className = 'exercise-sets';
@@ -891,15 +892,16 @@
       }
 
     function collectData() {
-      var data = { file: filePath, updatedAt: new Date().toISOString(), exercises: {} };
+      var data = { version: '1', workoutFile: filePath, timestamp: new Date().toISOString(), exercises: {} };
     var scope = workoutContent || document;
     var cards = scope.getElementsByClassName('exercise-card');
       for (var c = 0; c < cards.length; c++) {
         var card = cards[c];
         var exKey = card.getAttribute('data-exkey');
+        var exName = card.getAttribute('data-name') || exKey;
         if (!exKey) continue;
         var rows = card.getElementsByClassName('set-row');
-        data.exercises[exKey] = [];
+        var setsArr = [];
         for (var r = 0; r < rows.length; r++) {
           var row = rows[r];
           var inputs = row.getElementsByTagName('input');
@@ -926,11 +928,13 @@
               obj[name] = num;
             }
           }
-      // Infer set number by order
-      obj.set = r + 1;
-  if (obj.reps != null || obj.weight != null || obj.rpe != null || obj.timeSeconds != null || obj.holdSeconds != null || obj.distanceMeters != null || obj.distanceMiles != null || obj.multiplier != null) {
-        data.exercises[exKey].push(obj);
+      // Only push non-empty sets
+      if (obj.reps != null || obj.weight != null || obj.rpe != null || obj.timeSeconds != null || obj.holdSeconds != null || obj.distanceMeters != null || obj.distanceMiles != null || obj.multiplier != null) {
+        setsArr.push(obj);
       }
+        }
+        if (setsArr.length) {
+          data.exercises[exKey] = { name: exName, sets: setsArr };
         }
       }
       return data;
