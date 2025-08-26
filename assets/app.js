@@ -892,7 +892,14 @@
       }
 
     function collectData() {
-      var data = { version: '1', workoutFile: filePath, timestamp: new Date().toISOString(), exercises: {} };
+      // Normalize workoutFile to 'workouts/...'
+      var wf = String(filePath || '');
+      // Strip leading ../ or ./
+      wf = wf.replace(/^(?:\.\.\/)+/, '').replace(/^\.\//, '');
+      // If path includes 'workouts/' later in the string, extract from there
+      var mWf = wf.match(/workouts\/.*$/);
+      if (mWf) wf = mWf[0];
+      var data = { version: '1', workoutFile: wf, timestamp: new Date().toISOString(), exercises: {} };
     var scope = workoutContent || document;
     var cards = scope.getElementsByClassName('exercise-card');
       for (var c = 0; c < cards.length; c++) {
@@ -968,7 +975,7 @@
       var json = JSON.stringify(data, null, 2);
       var owner = 'jrodhead';
       var repo = 'exercAIse';
-      var title = 'Workout log ' + (data.file || '') + ' @ ' + new Date().toISOString();
+  var title = 'Workout log ' + (data.workoutFile || data.file || '') + ' @ ' + new Date().toISOString();
       // Include the marker and fenced code block so the GitHub Action can detect and parse it
       var header = 'Paste will be committed by Actions.\n\n';
       var issueBodyTemplate = header + '```json\n' + json + '\n```\n';

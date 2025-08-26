@@ -48,8 +48,11 @@ jobs:
             const branch = context.payload.repository.default_branch;
 
             const nowIso = new Date().toISOString().replace(/[:]/g, '-');
-            const rawFile = String(data.file || 'unknown').replace(/[\r\n\t]/g, ' ').slice(0, 180);
-            const safeFile = rawFile.replace(/[^A-Za-z0-9._-]+/g, '-');
+            // Prefer new field 'workoutFile'; fall back to legacy 'file'
+            const srcPath = String(data.workoutFile || data.file || 'unknown').replace(/[\r\n\t]/g, ' ').slice(0, 180);
+            // Extract base name without directories so the session name is visible
+            const base = srcPath.split('/').pop();
+            const safeFile = base.replace(/[^A-Za-z0-9._-]+/g, '-');
             const path = `performed/${nowIso}_${safeFile}.json`;
 
             const content = Buffer.from(JSON.stringify(data, null, 2)).toString('base64');
