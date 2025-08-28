@@ -49,7 +49,7 @@
 ## Required Workflow for Workouts and Exercises
 
 ### When creating or editing a workout:
-- Exercise links in workout Markdown remain Markdown anchors pointing to `exercises/<slug>` (the site will route these to the JSON-based exercise viewer). Keep using `[Name](../exercises/<slug>.md)` link text for backwards compatibility; the site intercepts and loads `exercises/<slug>.json` when present.
+- Exercise links in workout Markdown must point directly to the JSON exercise files: use `../../exercises/<slug>.json` when linking from docs inside `.github/`, and `../exercises/<slug>.json` inside `workouts/`. JSON is the source of truth and is rendered by `exercise.html`.
 - If an exercise does not already exist in `exercises/`, create a new JSON file `exercises/<slug>.json` as the source of truth, following `schemas/exercise.schema.json` (v2 fields: setup, steps, cues, mistakes, scaling, prescriptionHints, joints, media). Optionally include a minimal `.md` for legacy viewers.
 - Never leave an exercise unlinked or without a detail file.
 - Update existing workouts if new exercises are introduced to maintain the linking convention.
@@ -59,7 +59,7 @@ Whenever a new workout is requested, always:
 - Ask for injury/pain status before generating the workout.
 - Confirm the workout progression state, which workout block/week it belongs to, and workout title.
 - Generate the workout by following all Kai persona rules in `.github/instructions/kai.instructions.md`.
-- For every exercise, ensure the name is a markdown link to its detail page under `exercises/` (e.g., `[Goblet Squat](../exercises/goblet_squat.md)`). The runtime will route to `exercises/goblet_squat.json` when present.
+- For every exercise, ensure the name is a markdown link to its detail page under `exercises/` (e.g., in workouts: `[Goblet Squat](../exercises/goblet_squat.json)`).
 - If a new exercise is introduced, create a new JSON detail file `exercises/goblet_squat.json` using the New Exercise JSON Prompt below.
 - At the end, confirm that all exercises are linked and all new exercises have detail files.
 

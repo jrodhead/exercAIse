@@ -154,9 +154,9 @@
       var isExternal = /^https?:/i.test(url);
       var finalUrl = url;
       // Normalize exercise links to absolute within repo base
-      var m = String(url || '').match(/(?:^|\/)\.\.\/(?:exercises\/.*)|(?:^|\/)\.\/(?:exercises\/.*)|(?:^|\/)exercises\/[\w\-]+\.md$/);
+      var m = String(url || '').match(/(?:^|\/)\.\.\/(?:exercises\/.*)|(?:^|\/)\.\/(?:exercises\/.*)|(?:^|\/)exercises\/[\w\-]+\.(?:md|json)$/);
       // Simpler: extract trailing `exercises/...` segment if present
-      var seg = String(url || '').match(/(exercises\/[\w\-]+\.md)$/);
+      var seg = String(url || '').match(/(exercises\/[\w\-]+\.(?:md|json))$/);
       if (seg && seg[1]) {
         var base = repoBasePath();
         // Ensure single slash join
@@ -236,8 +236,8 @@
   }
 
   function extractExercisesFromMarkdown(md) {
-    // Heuristic: find markdown links pointing at exercises/*.md (relative or absolute within repo)
-    var re = /\[(.*?)\]\(((?:https?:\/\/[^\)]+\/exercAIse\/)?(?:\.\.\/)?(?:\.\/)?exercises\/[\w\-]+\.md)\)/g;
+    // Heuristic: find markdown links pointing at exercises/*.(md|json) (relative or absolute within repo)
+    var re = /\[(.*?)\]\(((?:https?:\/\/[^\)]+\/exercAIse\/)?(?:\.\.\/)?(?:\.\/)??exercises\/[\w\-]+\.(?:md|json))\)/g;
     var ex = [];
     var m;
     while ((m = re.exec(md))) {
@@ -264,7 +264,7 @@
     var lines = md.split(/\r?\n/);
   for (var i = 0; i < lines.length; i++) {
       var line = lines[i];
-  var linkMatch = line.match(/\[(.*?)\]\(((?:https?:\/\/[^\)]+\/exercAIse\/)?(?:\.\.\/)?(?:\.\/)?exercises\/[\w\-]+\.md)\)/);
+  var linkMatch = line.match(/\[(.*?)\]\(((?:https?:\/\/[^\)]+\/exercAIse\/)?(?:\.\.\/)?(?:\.\/)?exercises\/[\w\-]+\.(?:md|json))\)/);
       if (!linkMatch) continue;
       var title = linkMatch[1];
       var exKey = slugify(title);
@@ -827,7 +827,7 @@
     for (var ai = 0; ai < anchors.length; ai++) {
       var a = anchors[ai];
       var href = a.getAttribute('href') || '';
-  if (!/(?:^|\/)exercises\/[\w\-]+\.md$/.test(href)) continue;
+  if (!/(?:^|\/)exercises\/[\w\-]+\.(?:md|json)$/.test(href)) continue;
   var title = a.textContent || a.innerText || '';
   // Normalize title by removing parenthetical hints, e.g., "Easy Run (Easy Jog)" -> "Easy Run"
   var normTitle = title.replace(/\s*\([^\)]*\)\s*$/, '').trim();
@@ -1260,8 +1260,8 @@
       for (var i = 0; i < anchors.length; i++) {
         var a = anchors[i];
         var href = a.getAttribute('href') || '';
-        // Identify exercise markdown links that might be relative or wrongly absolute
-        var m = href.match(/(?:https?:\/\/[^\/]+)?\/?(exercises\/[\w\-]+\.md)$/);
+  // Identify exercise links (md or json) that might be relative or wrongly absolute
+  var m = href.match(/(?:https?:\/\/[^\/]+)?\/?(exercises\/[\w\-]+\.(?:md|json))$/);
         if (m && m[1]) {
           var fixed = base.replace(/\/?$/, '/') + m[1];
           // collapse duplicate slashes except after protocol

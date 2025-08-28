@@ -3,11 +3,11 @@
 
 Hold each pose 60–90 sec unless noted.
 
-- [Child’s Pose](../exercises/childs_pose.md)
-- [Thread the Needle](../exercises/thread_the_needle.md)
-- [90/90 Hip Stretch](../exercises/90_90_hip_stretch.md)
-- [Seated Forward Fold](../exercises/seated_forward_fold.md)
-- [Lying Spinal Twist](../exercises/lying_spinal_twist.md)
+- [Child’s Pose](../exercises/childs_pose.json)
+- [Thread the Needle](../exercises/thread_the_needle.json)
+- [90/90 Hip Stretch](../exercises/90_90_hip_stretch.json)
+- [Seated Forward Fold](../exercises/seated_forward_fold.json)
+- [Lying Spinal Twist](../exercises/lying_spinal_twist.json)
 
 Breathing: Inhale 4 sec, exhale 6–8 sec. Stay pain-free, ease out of any pinch.
 

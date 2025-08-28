@@ -13,7 +13,7 @@ When prompted with 'what's the next workout?' or 'generate workout session', pro
 - Review the block periodization details in `.github/instructions/block-progression.instructions.md` for the current block and week.
 - Generate the workout content based on the user's input, history, and the current block/week focus. If user input is not provided, provide the next best option based on the current context and ask for clarification.
 - Ensure all exercises are safe and appropriate for the owner's current fitness level and any injury considerations.
-- Link every exercise name to `../exercises/<slug>.md`. The app routes these to `exercises/<slug>.json` when present. If you introduce a new exercise, also create `exercises/<slug>.json` conforming to `schemas/exercise.schema.json` (v2 fields).
+- Link every exercise name to `../exercises/<slug>.json`. JSON is the source of truth. If you introduce a new exercise, create `exercises/<slug>.json` conforming to `schemas/exercise.schema.json` (v2 fields).
  - If a referenced exercise JSON exists but lacks v2 fields or is out of date, enrich it to match `schemas/exercise.schema.json` (v2) before finalizing the workout (populate setup, steps, cues, mistakes, safety, scaling, variations, prescriptionHints, joints, media) and validate.
 - Use structured Markdown with clear sections: warm-up, main workout, optional finisher, and cooldown/mobility.
  - Use structured Markdown with standard section headers (exact text):
