@@ -137,11 +137,32 @@
     html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                .replace(/\*(.*?)\*/g, '<em>$1</em>');
 
-    // links [text](url) — external links open in new tab, internal links replace page
+    // Helper to compute repo base path (e.g., '/exercAIse/') for GitHub Pages
+    function repoBasePath() {
+      try {
+        var p = window.location && window.location.pathname || '';
+        var idx = p.indexOf('/exercAIse/');
+        if (idx !== -1) return p.slice(0, idx + '/exercAIse/'.length);
+      } catch (e) {}
+      return './';
+    }
+    // links [text](url) — external links open in new tab; rewrite exercise links for Pages base
     html = html.replace(/\[(.*?)\]\((.*?)\)/g, function(_, text, url) {
       var isExternal = /^https?:/i.test(url);
+      var finalUrl = url;
+      // Normalize exercise links to absolute within repo base
+      var m = String(url || '').match(/(?:^|\/)\.\.\/(?:exercises\/.*)|(?:^|\/)\.\/(?:exercises\/.*)|(?:^|\/)exercises\/[\w\-]+\.md$/);
+      // Simpler: extract trailing `exercises/...` segment if present
+      var seg = String(url || '').match(/(exercises\/[\w\-]+\.md)$/);
+      if (seg && seg[1]) {
+        var base = repoBasePath();
+        // Ensure single slash join
+        finalUrl = base.replace(/\/?$/, '/') + seg[1];
+        // Collapse duplicate slashes
+        finalUrl = finalUrl.replace(/([^:])\/+/g, function (m0, p1) { return p1 + '/'; });
+      }
       var attrs = isExternal ? ' target="_blank" rel="noopener"' : '';
-      return '<a href="' + url + '"' + attrs + '>' + text + '</a>';
+      return '<a href="' + finalUrl + '"' + attrs + '>' + text + '</a>';
     });
 
     // unordered lists
@@ -212,8 +233,8 @@
   }
 
   function extractExercisesFromMarkdown(md) {
-    // Heuristic: find markdown links where the URL starts with ../exercises or exercises/
-    var re = /\[(.*?)\]\(((?:\.\.\/)?exercises\/[\w\-]+\.md)\)/g;
+    // Heuristic: find markdown links pointing at exercises/*.md (relative or absolute within repo)
+    var re = /\[(.*?)\]\(((?:https?:\/\/[^\)]+\/exercAIse\/)?(?:\.\.\/)?(?:\.\/)?exercises\/[\w\-]+\.md)\)/g;
     var ex = [];
     var m;
     while ((m = re.exec(md))) {
@@ -240,7 +261,7 @@
     var lines = md.split(/\r?\n/);
   for (var i = 0; i < lines.length; i++) {
       var line = lines[i];
-      var linkMatch = line.match(/\[(.*?)\]\(((?:\.\.\/)?exercises\/[\w\-]+\.md)\)/);
+  var linkMatch = line.match(/\[(.*?)\]\(((?:https?:\/\/[^\)]+\/exercAIse\/)?(?:\.\.\/)?(?:\.\/)?exercises\/[\w\-]+\.md)\)/);
       if (!linkMatch) continue;
       var title = linkMatch[1];
       var exKey = slugify(title);
@@ -803,7 +824,7 @@
     for (var ai = 0; ai < anchors.length; ai++) {
       var a = anchors[ai];
       var href = a.getAttribute('href') || '';
-      if (!/^(?:\.\.\/)?exercises\/[\w\-]+\.md$/.test(href)) continue;
+  if (!/(?:^|\/)exercises\/[\w\-]+\.md$/.test(href)) continue;
   var title = a.textContent || a.innerText || '';
   // Normalize title by removing parenthetical hints, e.g., "Easy Run (Easy Jog)" -> "Easy Run"
   var normTitle = title.replace(/\s*\([^\)]*\)\s*$/, '').trim();
@@ -1023,7 +1044,7 @@
       for (var k = 0; k < anchors2.length; k++) {
         var a2 = anchors2[k];
         var href2 = a2.getAttribute('href') || '';
-        if (!/^(?:\.\.\/)?exercises\/[\w\-]+\.md$/.test(href2)) continue;
+  if (!/(?:^|\/)exercises\/[\w\-]+\.md$/.test(href2)) continue;
   var title2 = a2.textContent || a2.innerText || '';
   var normTitle2 = title2.replace(/\s*\([^\)]*\)\s*$/, '').trim();
   var exKey2 = slugify(normTitle2);
