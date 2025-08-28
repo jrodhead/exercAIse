@@ -1,0 +1,25 @@
+{
+  "name": "Biceps Curl (Alternating Dumbbells)",
+  "equipment": [
+    "barbell",
+    "dumbbell"
+  ],
+  "tags": [
+    "curl"
+  ],
+  "cues": [
+    "Stand tall with a dumbbell in each hand, palms facing forward",
+    "Curl one dumbbell to shoulder level while keeping the other arm still",
+    "Lower slowly and alternate sides",
+    "Avoid swinging—control each rep",
+    "Start with a moderate weight that allows you to stay near failure by the last rep",
+    "Keep your elbows close to your body",
+    "Do not use momentum to lift the weights",
+    "Focus on a full range of motion"
+  ],
+  "variations": [
+    "Seated Alternating Curl",
+    "Barbell Curl",
+    "Hammer Curl"
+  ]
+}

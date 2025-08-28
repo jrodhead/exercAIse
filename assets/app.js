@@ -1108,6 +1108,15 @@
           var href = t.getAttribute('href') || '';
           if (!href) return;
           var path = null;
+          // Route exercise links to the new exercise.html viewer (JSON counterpart if available)
+          var exMatch = href.match(/(exercises\/[\w\-]+)\.(?:md|json)$/);
+          if (exMatch) {
+            var base = exMatch[1];
+            var jsonPath = base + '.json';
+            try { e.preventDefault(); } catch (ex) {}
+            try { window.location.href = 'exercise.html?file=' + encodeURIComponent(jsonPath); } catch (ex) {}
+            return;
+          }
           if (href.indexOf('index.html?file=') === 0) {
             path = decodeURIComponent(href.split('file=')[1] || '');
           } else if (href.indexOf('workouts/') === 0) {
@@ -1194,6 +1203,24 @@
       }
       setVisibility(formSection, true);
       buildForm(path, text || '', isJSON);
+      // Intercept clicks on exercise links inside the session view and route to exercise.html
+      if (workoutSection && !workoutSection.__wiredExLinks) {
+        workoutSection.addEventListener('click', function (e) {
+          var t = e.target || e.srcElement;
+          if (!t) return;
+          while (t && t !== workoutSection && !(t.tagName && t.tagName.toLowerCase() === 'a')) t = t.parentNode;
+          if (!t || t === workoutSection) return;
+          var href = t.getAttribute('href') || '';
+          var exMatch = href.match(/(?:^|\/)exercises\/([\w\-]+)\.(?:md|json)$/);
+          if (exMatch) {
+            try { e.preventDefault(); } catch (ex) {}
+            var jsonPath = 'exercises/' + exMatch[1] + '.json';
+            try { window.location.href = 'exercise.html?file=' + encodeURIComponent(jsonPath); } catch (ex) {}
+            return;
+          }
+        }, false);
+        workoutSection.__wiredExLinks = true;
+      }
       // Meta
       var title = path;
       if (readmeText) {

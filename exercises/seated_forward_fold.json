@@ -1,0 +1,65 @@
+{
+  "name": "Seated Forward Fold",
+  "equipment": [
+    "bodyweight"
+  ],
+  "tags": [
+    "hamstrings",
+    "stretch",
+    "yoga"
+  ],
+  "setup": [
+    "Sit with legs extended and feet flexed; sit on a folded blanket if needed",
+    "Long spine—hinge from hips"
+  ],
+  "steps": [
+    "On exhale, hinge forward reaching toward feet or shins",
+    "Hold a comfortable stretch; breathe evenly",
+    "Exit slowly, stacking spine back up"
+  ],
+  "cues": [
+    "Length, then fold",
+    "Keep belly soft and jaw relaxed",
+    "Micro-bend knees if hamstrings are tight"
+  ],
+  "mistakes": [
+    "Rounding aggressively through low back",
+    "Pulling on feet to force range",
+    "Holding breath"
+  ],
+  "safety": "Stay in mild–moderate stretch, not pain. Use strap around feet or bend knees to reduce strain.",
+  "scaling": {
+    "regressions": [
+      "Knees slightly bent",
+      "Sit on cushion",
+      "Use a strap"
+    ],
+    "progressions": [
+      "Longer hold",
+      "Contract–relax pulses"
+    ]
+  },
+  "variations": [
+    "Single-leg forward fold",
+    "Wide-angle forward fold"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "—",
+    "time": "45–90s",
+    "distance": "—",
+    "rpe": "3–5",
+    "notes": "Use after training to downshift and restore."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "lower back",
+      "hips"
+    ],
+    "notes": "Hinge first; avoid aggressive lumbar flexion."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

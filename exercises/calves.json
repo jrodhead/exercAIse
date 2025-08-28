@@ -1,0 +1,14 @@
+{
+  "name": "Calves (Mobility)",
+  "equipment": [
+    "bodyweight"
+  ],
+  "tags": [
+    "conditioning",
+    "stretch"
+  ],
+  "cues": [
+    "[Calf Stretch](calf_stretch.md)",
+    "[Standing Calf Raise](standing_calf_raise.md)"
+  ]
+}

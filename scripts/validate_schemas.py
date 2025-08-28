@@ -21,6 +21,7 @@ from glob import glob
 SCHEMA_DIR = os.path.join(os.path.dirname(__file__), '..', 'schemas')
 PERFORMED_SCHEMA_PATH = os.path.abspath(os.path.join(SCHEMA_DIR, 'performed.schema.json'))
 SESSION_SCHEMA_PATH = os.path.abspath(os.path.join(SCHEMA_DIR, 'session.schema.json'))
+EXERCISE_SCHEMA_PATH = os.path.abspath(os.path.join(SCHEMA_DIR, 'exercise.schema.json'))
 
 
 def load_json(path):
@@ -37,6 +38,7 @@ def main():
 
     performed_schema = load_json(PERFORMED_SCHEMA_PATH)
     session_schema = load_json(SESSION_SCHEMA_PATH)
+    exercise_schema = load_json(EXERCISE_SCHEMA_PATH)
 
     # Prepare validators
     base_uri = 'file://' + os.path.abspath(SCHEMA_DIR) + '/'
@@ -44,6 +46,7 @@ def main():
     session_resolver = RefResolver(base_uri=base_uri, referrer=session_schema)
     performed_validator = Draft7Validator(performed_schema, resolver=performed_resolver)
     session_validator = Draft7Validator(session_schema, resolver=session_resolver)
+    exercise_validator = Draft7Validator(exercise_schema, resolver=performed_resolver)
 
     errors = []
 
@@ -72,6 +75,17 @@ def main():
             errors.append((path, err.message))
 
     # Validate embedded JSON blocks in Markdown workouts (if present)
+    # Validate exercises JSON
+    ex_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'exercises'))
+    ex_json = sorted(glob(os.path.join(ex_dir, '*.json')))
+    for path in ex_json:
+        try:
+            data = load_json(path)
+        except Exception as e:
+            errors.append((path, f'Invalid JSON: {e}'))
+            continue
+        for err in exercise_validator.iter_errors(data):
+            errors.append((path, err.message))
     workout_md_files = sorted(glob(os.path.join(workouts_dir, '*.md')))
     for path in workout_md_files:
         try:
