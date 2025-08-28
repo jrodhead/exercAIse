@@ -110,7 +110,10 @@
 
   function decorateReadmeWithLogLinks(md) {
   // Render README as-is; workout title links open the session view.
-  return renderMarkdownBasic(md);
+  var html = renderMarkdownBasic(md);
+  // After rendering, DOM-fix any exercise links to include repo base on GitHub Pages
+  // We can't fix inside string safely for all cases; do it after insertion below.
+  return html;
   }
 
   function renderMarkdownBasic(md) {
@@ -1087,7 +1090,8 @@
       if (err) return status('Error reading README: ' + err.message, { important: true });
       // Render README mirror with inline Log links
       lastReadmeText = text || '';
-      readmeContent.innerHTML = decorateReadmeWithLogLinks(lastReadmeText);
+  readmeContent.innerHTML = decorateReadmeWithLogLinks(lastReadmeText);
+  fixExerciseAnchors(readmeContent);
       if (readmeSection) readmeSection.style.display = 'block';
 
   // Load logs list from GitHub API (unauthenticated)
@@ -1186,6 +1190,7 @@
       } else {
         // render markdown (basic)
         workoutContent.innerHTML = renderMarkdownBasic(text || '');
+        fixExerciseAnchors(workoutContent);
       }
       setVisibility(formSection, true);
       buildForm(path, text || '', isJSON);
@@ -1203,6 +1208,41 @@
       try { window.scrollTo(0, 0); } catch (e) {}
       status(''); // no noisy success banner
     });
+  }
+
+  // Compute repo base for GitHub Pages; if on *.github.io, prefix with '/exercAIse/'
+  function getRepoBase() {
+    var base = './';
+    try {
+      var loc = window.location || {};
+      var host = String(loc.hostname || '');
+      if (/github\.io$/i.test(host)) {
+        base = '/exercAIse/';
+      } else if (String(loc.pathname || '').indexOf('/exercAIse/') !== -1) {
+        base = '/exercAIse/';
+      }
+    } catch (e) {}
+    return base;
+  }
+
+  // After content is in the DOM, normalize any exercise links to the correct base
+  function fixExerciseAnchors(scope) {
+    try {
+      var base = getRepoBase();
+      var anchors = (scope || document).getElementsByTagName('a');
+      for (var i = 0; i < anchors.length; i++) {
+        var a = anchors[i];
+        var href = a.getAttribute('href') || '';
+        // Identify exercise markdown links that might be relative or wrongly absolute
+        var m = href.match(/(?:https?:\/\/[^\/]+)?\/?(exercises\/[\w\-]+\.md)$/);
+        if (m && m[1]) {
+          var fixed = base.replace(/\/?$/, '/') + m[1];
+          // collapse duplicate slashes except after protocol
+          fixed = fixed.replace(/([^:])\/+/g, function (m0, p1) { return p1 + '/'; });
+          a.setAttribute('href', fixed);
+        }
+      }
+    } catch (e) {}
   }
 
   function load() { loadReadmeAndMaybeOpenSession(); }
