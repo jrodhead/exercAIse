@@ -562,12 +562,20 @@
     var docH1Title = getFirstHeadingText('h1');
     var fullDocText = workoutContent ? ((workoutContent.textContent || workoutContent.innerText) || '') : '';
 
-  function createExerciseCard(title, presetRows, savedRows) {
+  function createExerciseCard(title, presetRows, savedRows, headerHTML) {
       var exKey = slugify(title);
   var card = document.createElement('div');
   card.className = 'exercise-card compact';
       card.setAttribute('data-exkey', exKey);
       card.setAttribute('data-name', title);
+
+  // Optional header area to include the original exercise text (name + notes) inside the card
+  if (headerHTML) {
+        var header = document.createElement('div');
+        header.className = 'exercise-header';
+        header.innerHTML = headerHTML;
+        card.appendChild(header);
+      }
 
   var setsWrap = document.createElement('div');
       setsWrap.className = 'exercise-sets';
@@ -780,7 +788,7 @@
     }
 
     // Find exercise anchors within the rendered workout content
-    var anchors = workoutContent ? workoutContent.getElementsByTagName('a') : [];
+  var anchors = workoutContent ? Array.prototype.slice.call(workoutContent.getElementsByTagName('a')) : [];
 
     function nearestBlockContainer(node) {
       var n = node;
@@ -791,7 +799,51 @@
       return node.parentNode || workoutContent;
     }
 
-    function findPreviousHeading(node) {
+  // Find the actual nearest heading element (H1-H4) above a node
+  function findNearestHeadingEl(node) {
+      var n = node;
+      while (n && n !== workoutContent) {
+        var s = n.previousSibling;
+        while (s) {
+          if (s.nodeType === 1 && s.tagName && /^H[1-4]$/.test(s.tagName)) return s;
+          s = s.previousSibling;
+        }
+        n = n.parentNode;
+      }
+      return null;
+    }
+
+    // Collect following sibling nodes (prescriptions/cues) until next heading or next exercise anchor section
+    function collectFollowingBlocks(startEl) {
+      var htmlParts = [];
+      var toHide = [];
+      if (!startEl) return { html: '', nodes: [] };
+      var s = startEl.nextSibling;
+      while (s) {
+        if (s.nodeType === 1 && s.tagName && /^H[1-4]$/.test(s.tagName)) break; // stop at next heading
+        // If this block contains another exercise link, stop to avoid swallowing next exercise
+        var hasNextExercise = false;
+        try {
+          var testHtml = s.outerHTML || (s.textContent || '');
+          hasNextExercise = /(\b|\/)(exercises\/[\w\-]+\.(?:md|json))\b/.test(String(testHtml || ''));
+        } catch (e) {}
+        if (hasNextExercise) break;
+        // Serialize this node
+        if (s.nodeType === 1) {
+          htmlParts.push(s.outerHTML);
+        } else if (s.nodeType === 3) {
+          var txt = String(s.textContent || '');
+          // preserve line breaks visually
+          var safe = txt.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>');
+          if (safe.trim()) htmlParts.push('<div class="md-text">' + safe + '</div>');
+        }
+        toHide.push(s);
+        s = s.nextSibling;
+      }
+      return { html: htmlParts.join(''), nodes: toHide };
+    }
+
+  function findPreviousHeading(node) {
       var n = node;
       while (n && n !== workoutContent) {
         // Walk previous siblings of n
@@ -842,15 +894,44 @@
         continue;
       }
   var savedRows = saved.exercises[exKey] || [];
+  var savedRows = saved.exercises[exKey] || [];
   var preset = prescriptions[exKey] || prescriptions[slugify(title)] || [];
-  var card = createExerciseCard(normTitle, preset, savedRows);
-      // Insert after the whole block container (list item/paragraph/div)
-      var parent = container.parentNode || workoutContent;
-      if (parent && parent.insertBefore) {
-        if (container.nextSibling) parent.insertBefore(card, container.nextSibling);
-        else parent.appendChild(card);
+  var headEl = findNearestHeadingEl(a) || null;
+  // Prefer the full container (often contains link + prescription text); fallback to heading only
+  var headerHTML = container ? (container.innerHTML || '') : (headEl ? (headEl.outerHTML || '') : '');
+  var card = createExerciseCard(normTitle, preset, savedRows, headerHTML);
+      // Pull prescription/cues following this container into the card
+      var extra = collectFollowingBlocks(container);
+      if (extra && extra.html) {
+        var notes = document.createElement('div');
+        notes.className = 'exercise-notes';
+        notes.innerHTML = extra.html;
+        card.appendChild(notes);
+      }
+      // Place card and remove original blocks.
+      if (container && container.tagName === 'LI') {
+        // Keep list structure valid: replace LI contents with the card
+        try { container.innerHTML = ''; } catch (e) {}
+        try { container.appendChild(card); } catch (e) { /* fallback below */ }
       } else {
-        workoutContent.appendChild(card);
+        var parent = container.parentNode || workoutContent;
+        if (parent && parent.insertBefore) {
+          if (container.nextSibling) parent.insertBefore(card, container.nextSibling);
+          else parent.appendChild(card);
+        } else {
+          workoutContent.appendChild(card);
+        }
+        // Remove the original container entirely
+        try { container.parentNode && container.parentNode.removeChild(container); } catch (e) {}
+      }
+      // Remove any collected following blocks now that they're inside the card
+      if (extra && extra.nodes) {
+        for (var hideIdx = 0; hideIdx < extra.nodes.length; hideIdx++) {
+          var nodeToHide = extra.nodes[hideIdx];
+          try {
+            if (nodeToHide && nodeToHide.parentNode) nodeToHide.parentNode.removeChild(nodeToHide);
+          } catch (e) {}
+        }
       }
       foundCount++;
         foundKeys[exKey] = true;
@@ -1035,33 +1116,18 @@
 
     clearBtn.onclick = function () {
       if (!confirm('Clear all entries for this workout?')) return;
-      // Remove all inline cards
-      var scope = workoutContent || document;
-      var cards = scope.getElementsByClassName('exercise-card');
-      // Convert HTMLCollection to array snapshot
-      var arr = [];
-      for (var i = 0; i < cards.length; i++) arr.push(cards[i]);
-      for (var j = 0; j < arr.length; j++) arr[j].parentNode && arr[j].parentNode.removeChild(arr[j]);
-      // Re-inject from prescriptions (not saved) for each exercise anchor
-      var anchors2 = workoutContent ? workoutContent.getElementsByTagName('a') : [];
-      for (var k = 0; k < anchors2.length; k++) {
-        var a2 = anchors2[k];
-        var href2 = a2.getAttribute('href') || '';
-  if (!/(?:^|\/)exercises\/[\w\-]+\.md$/.test(href2)) continue;
-  var title2 = a2.textContent || a2.innerText || '';
-  var normTitle2 = title2.replace(/\s*\([^\)]*\)\s*$/, '').trim();
-  var exKey2 = slugify(normTitle2);
-  var preset2 = prescriptions[exKey2] || prescriptions[slugify(title2)] || [];
-  var card2 = createExerciseCard(normTitle2, preset2, []);
-        var p2 = a2.parentNode || workoutContent;
-        if (p2 && p2.insertBefore) {
-          if (a2.nextSibling) p2.insertBefore(card2, a2.nextSibling);
-          else p2.appendChild(card2);
-        } else {
-          workoutContent.appendChild(card2);
-        }
+      // Re-render the workout content from the original raw text to restore hidden blocks
+      if (isJSON) {
+        var pretty = '';
+        try { pretty = JSON.stringify(JSON.parse(raw || '{}'), null, 2); } catch (e) { pretty = raw || ''; }
+        workoutContent.innerHTML = '<pre>' + (pretty || '') + '</pre>';
+      } else {
+        workoutContent.innerHTML = renderMarkdownBasic(raw || '');
+        fixExerciseAnchors(workoutContent);
       }
-  status('Cleared form.', { important: true });
+      // Rebuild the form and re-inject fresh cards (no saved rows)
+      buildForm(filePath, raw, isJSON);
+      status('Cleared form.', { important: true });
     };
   }
 

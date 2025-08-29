@@ -20,6 +20,15 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helve
 .form-hint { color: #555; }
 
 .exercise-card { border: 1px solid #e5e5e5; border-radius: 6px; padding: 8px; margin: 8px 0 10px; background: #fcfcfc; }
+.exercise-card .exercise-header { font-weight: 600; margin-bottom: 6px; }
+.exercise-card .exercise-header h1,
+.exercise-card .exercise-header h2,
+.exercise-card .exercise-header h3,
+.exercise-card .exercise-header h4 { margin: 0 0 4px; font-size: 15px; }
+.exercise-card .exercise-header p { margin: 2px 0; }
+.exercise-card .exercise-notes { color: #333; font-size: 14px; margin: 4px 0 6px; }
+.exercise-card .exercise-notes ul { margin: 4px 0 4px 18px; }
+.exercise-card .exercise-notes li { margin: 2px 0; }
 .exercise-card.compact header { gap: 6px; }
 .exercise-card header { display: flex; align-items: center; justify-content: flex-start; gap: 8px; }
 .exercise-card.collapsed .exercise-sets { display: none; }
