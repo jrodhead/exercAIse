@@ -1,0 +1,67 @@
+{
+  "name": "Dumbbell Thruster (Squat + Press)",
+  "equipment": [
+    "dumbbell"
+  ],
+  "tags": [
+    "squat",
+    "press",
+    "conditioning"
+  ],
+  "setup": [
+    "Stand feet shoulder-width, dumbbells at shoulders (neutral grip)",
+    "Brace and keep ribs stacked"
+  ],
+  "steps": [
+    "Descend into a front squat keeping elbows slightly forward",
+    "Drive up powerfully and continue into an overhead press",
+    "Lock out overhead with biceps near ears; return DBs to shoulders and repeat"
+  ],
+  "cues": [
+    "Sit tall; knees track",
+    "Legs drive the press",
+    "No over-arch overhead"
+  ],
+  "mistakes": [
+    "Pressing early before finishing the leg drive",
+    "Caving knees in the squat",
+    "Overextending lumbar spine at lockout"
+  ],
+  "safety": "Choose a load you can control in both phases. If shoulders are sensitive, reduce range or switch to push press or front squat only.",
+  "scaling": {
+    "regressions": [
+      "Front squat only",
+      "Push press (no squat depth)",
+      "Lighter DBs with slower tempo"
+    ],
+    "progressions": [
+      "Heavier load",
+      "Tempo descent or pause at bottom",
+      "Single DB thruster (unilateral)"
+    ]
+  },
+  "variations": [
+    "Barbell thruster",
+    "Single DB/KB thruster"
+  ],
+  "prescriptionHints": {
+    "load": "Moderate DBs—form stays crisp",
+    "reps": "6–12",
+    "time": "—",
+    "distance": "—",
+    "rpe": "7–9",
+    "notes": "Use legs to finish the press; avoid lumbar overextension."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "knees",
+      "shoulders",
+      "lower back"
+    ],
+    "notes": "Keep heels down and brace; reduce depth if knees complain."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

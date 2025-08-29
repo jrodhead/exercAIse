@@ -1,0 +1,66 @@
+{
+  "name": "Plank Shoulder Tap",
+  "equipment": [
+    "bodyweight"
+  ],
+  "tags": [
+    "core",
+    "anti-rotation"
+  ],
+  "setup": [
+    "High plank: hands under shoulders, feet shoulder-width for stability",
+    "Brace core and squeeze glutes"
+  ],
+  "steps": [
+    "Lift one hand to tap opposite shoulder while resisting hip shift",
+    "Place hand back under shoulder and repeat other side",
+    "Maintain steady breathing and rigid torso"
+  ],
+  "cues": [
+    "Feet wider = more stable",
+    "Glue ribs to hips",
+    "Slow taps; minimize sway"
+  ],
+  "mistakes": [
+    "Rocking hips side to side",
+    "Hands too far forward",
+    "Holding breath"
+  ],
+  "safety": "Elevate hands to a bench/box if wrists or core strength limit position.",
+  "scaling": {
+    "regressions": [
+      "Plank hold only",
+      "Knees-down taps",
+      "Hands elevated"
+    ],
+    "progressions": [
+      "Narrow feet",
+      "Add 1–2s pause per tap",
+      "Band around wrists for tension"
+    ]
+  },
+  "variations": [
+    "Shoulder tap from forearm plank",
+    "Shoulder tap with sliders"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "10–20 taps total",
+    "time": "20–40s",
+    "distance": "—",
+    "rpe": "6–8",
+    "notes": "Wider feet reduce sway; prioritize trunk stiffness."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "wrists",
+      "shoulders",
+      "lower back"
+    ],
+    "notes": "Stack joints and keep neutral spine."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

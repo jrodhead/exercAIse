@@ -85,7 +85,9 @@ See `.github/prompts/generate-workout-session.prompt.md` for all output formatti
 ---
 
 ## 🔗 Repository Conventions (Explicit)
-- Exercise linking: Every exercise name in a workout must be a markdown link to its detail page in the `exercises/` directory. If an exercise file does not exist, create it following the structure of existing exercise files.
+- Exercise linking: Every exercise name in a workout must be a Markdown link that points directly to the JSON detail under `exercises/`, e.g., `[Goblet Squat](../../exercises/goblet_squat.json)`. JSON is the source of truth and is rendered by the viewer.
+- Source of truth for exercises is JSON: create `exercises/<slug>.json` conforming to `schemas/exercise.schema.json` (v2: setup, steps, cues, mistakes, safety, scaling, variations, prescriptionHints, joints, media). If legacy Markdown exists, keep it minimal; JSON is preferred.
+- Enrichment rule: If a referenced exercise’s JSON is missing v2 fields or doesn’t match the current schema, enrich/update it immediately (populate setup, steps, cues, mistakes, safety, scaling, variations, prescriptionHints, joints, media) before finalizing the session.
 - File and README: Name workouts `workouts/<block>-<week>_<Title>.md` (no dates in the filename). Add a link to the new workout in `README.md` in descending date order (most recent first).
 - Section headings: Use consistent headers so the logger and readers can parse/skip sections reliably:
    - Warm-up

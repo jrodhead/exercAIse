@@ -1,0 +1,15 @@
+{
+  "name": "Dynamic Flow (Warm-Up Template)",
+  "equipment": [
+    "bodyweight"
+  ],
+  "tags": [
+    "conditioning",
+    "stretch"
+  ],
+  "cues": [
+    "[Leg Swings](leg_swings.md) x 10–15/dir/leg",
+    "[World’s Greatest Stretch](worlds_greatest_stretch.md) x 3–4/side",
+    "[Arm Circles](arm_circles.md) x 20–30 sec/dir"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "Brisk Walk",
+  "equipment": ["Shoes"],
+  "tags": ["warm-up", "endurance", "low-impact"],
+  "cues": [
+    "Upright posture, slight forward lean",
+    "Short, quick steps",
+    "Arms swing relaxed"
+  ],
+  "safety": "Stay on even surfaces; keep pain < 3/10 for knees/ankles.",
+  "variations": ["Incline treadmill walk", "Nose-breathing walk"]
+}

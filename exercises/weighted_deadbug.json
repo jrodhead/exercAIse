@@ -1,0 +1,68 @@
+{
+  "name": "Weighted Deadbug",
+  "equipment": [
+    "dumbbell",
+    "kettlebell",
+    "ruck",
+    "band"
+  ],
+  "tags": [
+    "core",
+    "anti-extension"
+  ],
+  "setup": [
+    "Lie on back with arms up holding a light weight above chest",
+    "Hips/knees at 90°; gently press low back to floor with an exhale"
+  ],
+  "steps": [
+    "Maintain brace and extend opposite arm (with/without weight) and leg toward floor",
+    "Pause near end range without losing lumbar contact",
+    "Return with control and alternate sides"
+  ],
+  "cues": [
+    "Ribs down; breathe out to brace",
+    "Reach long; keep slow tempo",
+    "Only go as far as you can keep back flat"
+  ],
+  "mistakes": [
+    "Low back popping off floor",
+    "Rushing reps",
+    "Elbows locked hard while gripping weight overhead"
+  ],
+  "safety": "Use very light loads. Stop if back irritation. Reduce range or switch to bodyweight deadbug if form slips.",
+  "scaling": {
+    "regressions": [
+      "Bodyweight deadbug",
+      "Arms-only or legs-only",
+      "Heels on box with alternating arms"
+    ],
+    "progressions": [
+      "Heavier but still light DB/KB",
+      "Band-resisted overhead (band anchored behind)",
+      "Iso hold with alternating taps"
+    ]
+  },
+  "variations": [
+    "Stability ball squeeze deadbug",
+    "Cross-body band deadbug"
+  ],
+  "prescriptionHints": {
+    "load": "Very light—2–10 lb total",
+    "reps": "5–10/side or 20–40s holds",
+    "time": "—",
+    "distance": "—",
+    "rpe": "6–8",
+    "notes": "Quality trumps load. Maintain lumbar contact with the floor."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "lower back",
+      "shoulders"
+    ],
+    "notes": "Neutral neck; keep ribs down."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

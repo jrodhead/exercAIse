@@ -1,0 +1,71 @@
+{
+  "name": "Renegade Row (Hands on Dumbbells or Floor)",
+  "equipment": [
+    "dumbbell"
+  ],
+  "tags": [
+    "core",
+    "row",
+    "anti-rotation"
+  ],
+  "setup": [
+    "High plank with hands on dumbbells (hex DBs preferred) or on floor",
+    "Feet set wider than hips for stability",
+    "Wrists stacked under shoulders; squeeze glutes and brace"
+  ],
+  "steps": [
+    "Shift weight slightly to the planted hand without rotating",
+    "Row the opposite dumbbell toward ribs, keeping elbow close",
+    "Pause and squeeze the back; lower with control",
+    "Repeat on the other side, maintaining square hips throughout"
+  ],
+  "cues": [
+    "Zipper the ribs to hips (brace)",
+    "Glutes on; feet wide",
+    "Pull to pocket, not armpit",
+    "Minimal sway; move slow"
+  ],
+  "mistakes": [
+    "Hips twisting or rotating to the side",
+    "Shrugging shoulder toward ear",
+    "Cranking neck up or down",
+    "Rowing too fast and losing control"
+  ],
+  "safety": "Prefer flat, non-rolling dumbbells if loading heavy. If wrists bother you, perform from fists on floor or elevate hands to a box/bench.",
+  "scaling": {
+    "regressions": [
+      "Hands elevated renegade row (bench/box)",
+      "Knee plank rows",
+      "1-arm dumbbell row from split stance"
+    ],
+    "progressions": [
+      "Pause at top (1–2s)",
+      "Tempo (2-0-2)",
+      "Add push-up between rows"
+    ]
+  },
+  "variations": [
+    "Alternating renegade row",
+    "Renegade row + push-up combo"
+  ],
+  "prescriptionHints": {
+    "load": "DBs 10–40 lb each to start; pick load that lets you resist rotation",
+    "reps": "6–10/side",
+    "time": "—",
+    "distance": "—",
+    "rpe": "6–8",
+    "notes": "Set feet wide enough to keep hips square. Quality over load."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "wrists",
+      "shoulders",
+      "lower back"
+    ],
+    "notes": "Keep neutral spine and packed shoulders; elevate hands if wrist extension is limited."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

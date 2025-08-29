@@ -1,0 +1,20 @@
+{
+  "name": "Dumbbell Romanian Deadlift",
+  "equipment": [
+    "dumbbell"
+  ],
+  "tags": [
+    "hinge",
+    "stretch"
+  ],
+  "cues": [
+    "Stand with feet hip-width apart, holding dumbbells in front of thighs",
+    "Hinge at hips, pushing them back, slight bend in knees",
+    "Lower dumbbells to mid-shin, keeping back flat",
+    "Drive hips forward to stand tall",
+    "Keep dumbbells close to legs",
+    "Feel stretch in hamstrings",
+    "Avoid rounding your back"
+  ],
+  "safety": "Do not let weights pull your shoulders forward."
+}

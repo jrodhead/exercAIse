@@ -1,0 +1,66 @@
+{
+  "name": "World’s Greatest Stretch",
+  "equipment": [
+    "bodyweight"
+  ],
+  "tags": [
+    "mobility",
+    "stretch",
+    "warm-up"
+  ],
+  "setup": [
+    "Start in a long lunge with hands on floor inside front foot",
+    "Back knee can be down or up based on mobility"
+  ],
+  "steps": [
+    "Rotate and reach same-side arm to the ceiling; eyes follow hand",
+    "Lower elbow toward instep for adductor/hip opening",
+    "Straighten front knee slightly to add hamstring bias",
+    "Return to plank and switch sides"
+  ],
+  "cues": [
+    "Long spine; breathe into the stretch",
+    "Move smoothly through positions",
+    "Keep front foot flat and knee tracking"
+  ],
+  "mistakes": [
+    "Rushing without breath control",
+    "Collapsing arch of front foot",
+    "Overarching low back"
+  ],
+  "safety": "Stay in pain-free ranges. Support with yoga blocks or reduce depth as needed.",
+  "scaling": {
+    "regressions": [
+      "Shorter lunge with blocks under hands",
+      "Keep back knee down"
+    ],
+    "progressions": [
+      "Add thoracic rotation pulses",
+      "Flow into hamstring stretch between reps"
+    ]
+  },
+  "variations": [
+    "With thoracic rotation",
+    "With hamstring floss"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "3–6/side",
+    "time": "20–40s per position",
+    "distance": "—",
+    "rpe": "3–5",
+    "notes": "Great warm-up sequence covering hips, T-spine, and hamstrings."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "hips",
+      "lower back",
+      "knees"
+    ],
+    "notes": "Use blocks and shorter range if joints are irritable."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

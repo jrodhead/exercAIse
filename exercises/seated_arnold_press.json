@@ -1,0 +1,19 @@
+{
+  "name": "Seated Arnold Press",
+  "equipment": [
+    "bench",
+    "dumbbell"
+  ],
+  "tags": [
+    "press"
+  ],
+  "cues": [
+    "Sit on a bench with back support, hold dumbbells at shoulder height, palms facing you",
+    "Press dumbbells overhead while rotating palms to face forward",
+    "Lower back down, rotating palms to face you",
+    "Keep back against bench",
+    "Move smoothly through the rotation",
+    "Do not lock out elbows at the top"
+  ],
+  "safety": "Use a weight you can control through the full range."
+}

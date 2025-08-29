@@ -4,15 +4,15 @@
 ---
 
 ## Warm-Up (5–7 min)
-- [Arm Circles](../exercises/arm_circles.md): 30 sec each direction
-- [Band Pull-Aparts](../exercises/band_pull_aparts.md): 2 sets x 12 reps
-- [Cat-Cow to Cobra Stretch](../exercises/cat_cow_to_cobra_stretch.md): 5 reps each
+- [Arm Circles](../exercises/arm_circles.json): 30 sec each direction
+- [Band Pull-Aparts](../exercises/band_pull_aparts.json): 2 sets x 12 reps
+- [Cat-Cow to Cobra Stretch](../exercises/cat_cow_to_cobra_stretch.json): 5 reps each
 
 ---
 
 ## Main Workout
 
-### 1. [Neutral-Grip Flat Bench Press (Dumbbells)](../exercises/neutral_grip_flat_bench_press.md)
+### 1. [Neutral-Grip Flat Bench Press (Dumbbells)](../exercises/neutral_grip_flat_bench_press.json)
 - **Sets & Reps:** 4 sets x 8–10 reps
 - **Rest:** 90 sec
 - **Suggested Weight:** Moderate-heavy (75–80% 1RM)
@@ -22,7 +22,7 @@
   - Press up with control, avoid arching back
   - Feet planted, core braced
 
-### 2. [One-Arm Dumbbell Row (Bench Supported)](../exercises/one_arm_dumbbell_row.md)
+### 2. [One-Arm Dumbbell Row (Bench Supported)](../exercises/one_arm_dumbbell_row.json)
 - **Sets & Reps:** 4 sets x 10 reps per side
 - **Rest:** 75 sec
 - **Suggested Weight:** Moderate
@@ -31,7 +31,7 @@
   - Row to hip, elbow close to body
   - Pause at top, lower slowly
 
-### 3. [Seated Arnold Press](../exercises/seated_arnold_press.md)
+### 3. [Seated Arnold Press](../exercises/seated_arnold_press.json)
 - **Sets & Reps:** 3 sets x 10–12 reps
 - **Rest:** 75 sec
 - **Suggested Weight:** Moderate
@@ -40,7 +40,7 @@
   - Keep back against bench
   - Control the descent
 
-### 4. [Hammer Curl](../exercises/hammer_curl.md)
+### 4. [Hammer Curl](../exercises/hammer_curl.json)
 - **Sets & Reps:** 3 sets x 12 reps
 - **Rest:** 60 sec
 - **Cues:**
@@ -48,7 +48,7 @@
   - Avoid swinging
   - Lower with control
 
-### 5. [Overhead Dumbbell Triceps Extension (Two Hands)](../exercises/overhead_dumbbell_triceps_extension.md)
+### 5. [Overhead Dumbbell Triceps Extension (Two Hands)](../exercises/overhead_dumbbell_triceps_extension.json)
 - **Sets & Reps:** 3 sets x 12 reps
 - **Rest:** 60 sec
 - **Cues:**
@@ -59,14 +59,14 @@
 ---
 
 ## Optional Finisher
-- [Plank Shoulder Tap](../exercises/plank_shoulder_tap.md): 2 sets x 20 taps (10/side), rest 45 sec
+- [Plank Shoulder Tap](../exercises/plank_shoulder_tap.json): 2 sets x 20 taps (10/side), rest 45 sec
 
 ---
 
 ## Cooldown & Mobility (5–8 min)
-- [Child’s Pose with Deep Breathing](../exercises/childs_pose.md): 1–2 min
-- [Thread the Needle Stretch](../exercises/thread_the_needle.md): 1 min per side
-- [Seated Forward Fold](../exercises/seated_forward_fold.md): 1 min
+- [Child’s Pose with Deep Breathing](../exercises/childs_pose.json): 1–2 min
+- [Thread the Needle Stretch](../exercises/thread_the_needle.json): 1 min per side
+- [Seated Forward Fold](../exercises/seated_forward_fold.json): 1 min
 
 ---
 

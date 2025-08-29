@@ -1,0 +1,64 @@
+{
+  "name": "Child’s Pose (with Deep Breathing)",
+  "equipment": [
+    "bodyweight"
+  ],
+  "tags": [
+    "yoga",
+    "recovery",
+    "mobility"
+  ],
+  "setup": [
+    "Kneel, big toes together; knees comfortable width",
+    "Fold hips back toward heels; arms forward or alongside"
+  ],
+  "steps": [
+    "Rest forehead on mat or block",
+    "Breathe slowly into back and sides of ribcage",
+    "Relax shoulders and jaw; stay for prescribed time"
+  ],
+  "cues": [
+    "Melt chest toward floor",
+    "Three-dimensional breaths",
+    "Soften neck and face"
+  ],
+  "mistakes": [
+    "Forcing hips to heels",
+    "Holding breath",
+    "Shoulders shrugged toward ears"
+  ],
+  "safety": "Pad knees/ankles as needed. If hip/knee discomfort, widen knees or place bolster under torso.",
+  "scaling": {
+    "regressions": [
+      "Bolster under chest",
+      "Arms alongside body"
+    ],
+    "progressions": [
+      "Thread-the-needle arms",
+      "Add side bend by walking hands to one side"
+    ]
+  },
+  "variations": [
+    "Wide-knee child’s pose",
+    "Supported child’s pose"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "—",
+    "time": "1–3 min",
+    "distance": "—",
+    "rpe": "2–4",
+    "notes": "Recovery-focused. Breathe into back ribs."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "knees",
+      "ankles"
+    ],
+    "notes": "Pad and adjust knee width for comfort."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

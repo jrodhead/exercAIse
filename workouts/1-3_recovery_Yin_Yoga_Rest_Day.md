@@ -9,7 +9,7 @@
 
 ## 🧘 Sequence
 
-### 1. [Butterfly Pose (Seated Forward Fold)](../exercises/butterfly_pose_seated_forward_fold.md)
+### 1. [Butterfly Pose (Seated Forward Fold)](../exercises/butterfly_pose_seated_forward_fold.json)
 **Hold:** 3–4 minutes  
 **Props:** Sit on a cushion or place pillows under knees
 - Sit with soles of feet together, knees falling open
@@ -20,7 +20,7 @@
 
 ---
 
-### 2. [Supported Child's Pose](../exercises/supported_childs_pose.md)
+### 2. [Supported Child's Pose](../exercises/supported_childs_pose.json)
 **Hold:** 3 minutes  
 **Props:** Pillow or bolster under torso
 - Kneel with big toes together, knees wide
@@ -31,7 +31,7 @@
 
 ---
 
-### 3. [Dragon Pose (Low Lunge Yin Style)](../exercises/dragon_pose_low_lunge_yin_style.md)
+### 3. [Dragon Pose (Low Lunge Yin Style)](../exercises/dragon_pose_low_lunge_yin_style.json)
 **Hold:** 2–3 minutes per side  
 **Props:** Pillow under back knee if tender
 - Step one foot forward into a deep lunge
@@ -42,7 +42,7 @@
 
 ---
 
-### 4. [Sleeping Swan (Yin Pigeon)](../exercises/sleeping_swan_yin_pigeon.md)
+### 4. [Sleeping Swan (Yin Pigeon)](../exercises/sleeping_swan_yin_pigeon.json)
 **Hold:** 3 minutes per side  
 **Props:** Pillow under hip or chest if needed
 - From hands and knees, bring one leg forward, shin angled
@@ -53,7 +53,7 @@
 
 ---
 
-### 5. [Supported Fish Pose](../exercises/supported_fish_pose.md)
+### 5. [Supported Fish Pose](../exercises/supported_fish_pose.json)
 **Hold:** 3–4 minutes  
 **Props:** Place pillow/bolster under mid-back and head
 - Lie back with support under thoracic spine
@@ -64,7 +64,7 @@
 
 ---
 
-### 6. [Reclined Twist](../exercises/reclined_twist.md)
+### 6. [Reclined Twist](../exercises/reclined_twist.json)
 **Hold:** 2 minutes per side
 - Lie on back, knees bent
 - Drop both knees to one side
@@ -74,7 +74,7 @@
 
 ---
 
-### 7. [Happy Baby](../exercises/happy_baby.md)
+### 7. [Happy Baby](../exercises/happy_baby.json)
 **Hold:** 2–3 minutes
 - Lie on back, draw knees toward armpits
 - Hold outer feet or shins

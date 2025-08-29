@@ -2,17 +2,17 @@
 **Date:** August 28, 2025
 
 ## Warm-up
-- [Child’s Pose with Deep Breathing](../exercises/childs_pose_with_deep_breathing.md): 2–3 min
+- [Child’s Pose with Deep Breathing](../exercises/childs_pose_with_deep_breathing.json): 2–3 min
 
 ## Mobility / Recovery
-- [Thread the Needle](../exercises/thread_the_needle.md): 60–90 sec/side
-- [90/90 Hip Stretch](../exercises/90_90_hip_stretch.md): 60–90 sec/side
-- [Seated Forward Fold](../exercises/seated_forward_fold.md): 60–90 sec
-- [Lying Spinal Twist](../exercises/lying_spinal_twist.md): 60–90 sec/side
-- [Supported Fish Pose](../exercises/supported_fish_pose.md): 60–90 sec
+- [Thread the Needle](../exercises/thread_the_needle.json): 60–90 sec/side
+- [90/90 Hip Stretch](../exercises/90_90_hip_stretch.json): 60–90 sec/side
+- [Seated Forward Fold](../exercises/seated_forward_fold.json): 60–90 sec
+- [Lying Spinal Twist](../exercises/lying_spinal_twist.json): 60–90 sec/side
+- [Supported Fish Pose](../exercises/supported_fish_pose.json): 60–90 sec
 
 ## Cooldown/Recovery
-- [Brisk Walk](../exercises/brisk_walk.md): 5 min easy (optional)
+- [Brisk Walk](../exercises/brisk_walk.json): 5 min easy (optional)
 
 Notes: Stay under pain threshold; adjust holds to comfort. Breathe 4–6 in / 6–8 out.
 

@@ -1,0 +1,22 @@
+{
+  "name": "Zottman Curl",
+  "equipment": [
+    "dumbbell"
+  ],
+  "tags": [
+    "curl"
+  ],
+  "cues": [
+    "Stand tall with a dumbbell in each hand, palms facing forward",
+    "Curl the weights up with palms up (supinated grip)",
+    "At the top, rotate your palms to face down (pronated grip) and lower the weights slowly",
+    "Rotate your palms back up at the bottom and repeat",
+    "Move slowly and with control, especially on the lowering phase",
+    "Keep elbows close to your body",
+    "Use a moderate weight to maintain good form"
+  ],
+  "variations": [
+    "Seated Zottman Curl",
+    "Alternating Zottman Curl"
+  ]
+}

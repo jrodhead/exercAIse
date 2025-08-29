@@ -2,19 +2,19 @@
 **Date:** August 26, 2025
 
 ## Warm-up
-- [Brisk Walk](../exercises/brisk_walk.md): 5–10 min
-- [Leg Swings](../exercises/leg_swings.md): 10–15 per direction/leg
+- [Brisk Walk](../exercises/brisk_walk.json): 5–10 min
+- [Leg Swings](../exercises/leg_swings.json): 10–15 per direction/leg
 
 ## Conditioning (Main Work)
 - Easy Run: 4 miles at conversational pace (RPE 4–5/10)
 - Cues: Soft surface if possible, cadence ~170–180, relaxed shoulders, pain-free pacing
 
 ## Accessory/Core
-- [Strides](../exercises/strides.md) (optional): 4 x 15–20 sec, full walk-back recovery
+- [Strides](../exercises/strides.json) (optional): 4 x 15–20 sec, full walk-back recovery
 
 ## Cooldown/Recovery
-- [Brisk Walk](../exercises/brisk_walk.md): 5–10 min
-- [Calf Stretch](../exercises/calf_stretch.md): 45 sec per side
+- [Brisk Walk](../exercises/brisk_walk.json): 5–10 min
+- [Calf Stretch](../exercises/calf_stretch.json): 45 sec per side
 
 ```json session-structure
 {

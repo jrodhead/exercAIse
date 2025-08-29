@@ -1,0 +1,63 @@
+{
+  "name": "Deadbug",
+  "equipment": [],
+  "tags": [
+    "core",
+    "anti-extension"
+  ],
+  "setup": [
+    "Lie on back, arms toward ceiling, hips/knees at 90°",
+    "Flatten low back gently to floor by exhaling and bracing"
+  ],
+  "steps": [
+    "Inhale through nose; on exhale, extend opposite arm and leg toward floor",
+    "Keep low back pressed down; pause briefly, then return",
+    "Alternate sides with control, maintaining rib-to-pelvis connection"
+  ],
+  "cues": [
+    "Ribs down; zipper ribs to hips",
+    "Exhale to brace, inhale to reset",
+    "Reach long; move slow"
+  ],
+  "mistakes": [
+    "Low back arching off floor",
+    "Rushing reps",
+    "Neck tension from craning up"
+  ],
+  "safety": "If low back discomfort appears, reduce range (shorten lever), elevate legs on a box, or switch to iso deadbug holds.",
+  "scaling": {
+    "regressions": [
+      "Iso deadbug hold (alternate only arms or only legs)",
+      "Heels on box with alternating arms",
+      "90/90 heel taps"
+    ],
+    "progressions": [
+      "Weighted deadbug (light DB/KB in hands)",
+      "Band-resisted deadbug (band overhead)",
+      "Tempo 3-1-3"
+    ]
+  },
+  "variations": [
+    "Deadbug with stability ball squeeze",
+    "Cross-body band deadbug"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight; 2–10 lb per hand if weighted",
+    "reps": "5–10/side or 20–40s holds",
+    "time": "—",
+    "distance": "—",
+    "rpe": "6–8",
+    "notes": "Quality breathing and rib position first; fewer, better reps."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "lower back",
+      "hips"
+    ],
+    "notes": "Posteriorly tilt pelvis to keep lumbar spine neutral against floor."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

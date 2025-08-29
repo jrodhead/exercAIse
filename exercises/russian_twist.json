@@ -1,0 +1,68 @@
+{
+  "name": "Russian Twist",
+  "equipment": [
+    "dumbbell",
+    "medicine ball",
+    "plate"
+  ],
+  "tags": [
+    "core",
+    "anti-rotation",
+    "rotation"
+  ],
+  "setup": [
+    "Sit with knees bent and heels down; lean torso back slightly with long spine",
+    "Hold a light implement at chest or hands together bodyweight"
+  ],
+  "steps": [
+    "Rotate torso to one side keeping arms relatively fixed to chest",
+    "Return to center and rotate to the other side",
+    "Optionally lift heels slightly for more challenge"
+  ],
+  "cues": [
+    "Turn the torso, not just the hands",
+    "Chest proud; ribs down",
+    "Breathe out each side"
+  ],
+  "mistakes": [
+    "Rounding low back and collapsing chest",
+    "Swinging arms only with minimal trunk rotation",
+    "Holding breath"
+  ],
+  "safety": "Keep rotation mostly in the upper back. If lumbar discomfort, keep heels down, reduce range, or switch to Pallof press.",
+  "scaling": {
+    "regressions": [
+      "Heels down, bodyweight only",
+      "Smaller range of motion",
+      "Hands to chest instead of arms extended"
+    ],
+    "progressions": [
+      "Light load",
+      "Feet elevated",
+      "Tempo or pause at end range"
+    ]
+  },
+  "variations": [
+    "Seated trunk rotations",
+    "Cable/band Russian twist"
+  ],
+  "prescriptionHints": {
+    "load": "Very light—form first",
+    "reps": "8–20 total or per side",
+    "time": "—",
+    "distance": "—",
+    "rpe": "6–8",
+    "notes": "Keep spine long; rotate through T-spine."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "lower back",
+      "hips"
+    ],
+    "notes": "Neutral lumbar; avoid end-range lumbar rotation."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

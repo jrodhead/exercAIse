@@ -6,14 +6,14 @@
 ---
 
 ## Warm-Up (5–7 min)
-- [Bodyweight Squat](../exercises/bodyweight_squat.md): 2 sets x 12 reps
-- [Glute Bridge](../exercises/glute_bridge.md): 2 sets x 10 reps
-- [World’s Greatest Stretch](../exercises/worlds_greatest_stretch.md): 5 reps per side
+- [Bodyweight Squat](../exercises/bodyweight_squat.json): 2 sets x 12 reps
+- [Glute Bridge](../exercises/glute_bridge.json): 2 sets x 10 reps
+- [World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 5 reps per side
 
 ---
 
 ## Main Sets
-### 1. [Goblet Squat](../exercises/goblet_squat.md)
+### 1. [Goblet Squat](../exercises/goblet_squat.json)
 - **Sets & Reps:** 2 sets of 10 reps (light)
 - **Rest:** 90 sec
 - **Cues:**  
@@ -21,7 +21,7 @@
   - Keep chest tall, knees tracking over toes.
   - Lower slowly, pause at the bottom.
 
-### 2. [Dumbbell Romanian Deadlift](../exercises/dumbbell_romanian_deadlift.md)
+### 2. [Dumbbell Romanian Deadlift](../exercises/dumbbell_romanian_deadlift.json)
 - **Sets & Reps:** 2 sets of 10 reps (light)
 - **Rest:** 90 sec
 - **Cues:**  
@@ -29,7 +29,7 @@
   - Lower dumbbells to mid-shin, slight knee bend.
   - Drive hips forward to stand.
 
-### 3. [Reverse Lunge](../exercises/reverse_lunge.md)
+### 3. [Reverse Lunge](../exercises/reverse_lunge.json)
 - **Sets & Reps:** 2 sets of 8 reps per leg
 - **Rest:** 60 sec
 - **Cues:**  
@@ -37,7 +37,7 @@
   - Keep front knee over ankle.
   - Push through front heel to return.
 
-### 4. [Standing Calf Raise](../exercises/standing_calf_raise.md)
+### 4. [Standing Calf Raise](../exercises/standing_calf_raise.json)
 - **Sets & Reps:** 2 sets of 15 reps
 - **Rest:** 45 sec
 - **Cues:**  
@@ -47,9 +47,9 @@
 ---
 
 ## Mobility & Cooldown (5–8 min)
-- [90/90 Hip Stretch](../exercises/90_90_hip_stretch.md): 1 min per side
-- [Seated Forward Fold or Toe Touch](../exercises/seated_forward_fold_or_toe_touch.md): 1 min
-- [Lying Spinal Twist](../exercises/lying_spinal_twist.md): 1 min per side
+- [90/90 Hip Stretch](../exercises/90_90_hip_stretch.json): 1 min per side
+- [Seated Forward Fold or Toe Touch](../exercises/seated_forward_fold_or_toe_touch.json): 1 min
+- [Lying Spinal Twist](../exercises/lying_spinal_twist.json): 1 min per side
 
 ---
 

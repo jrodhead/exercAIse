@@ -1,0 +1,72 @@
+{
+  "name": "Farmer Carry (Dumbbells or Ruck)",
+  "equipment": [
+    "dumbbell",
+    "ruck"
+  ],
+  "tags": [
+    "carry",
+    "conditioning",
+    "core",
+    "grip"
+  ],
+  "setup": [
+    "Stand tall with a weight in each hand at your sides",
+    "Set ribs stacked over pelvis; pack shoulders down/back"
+  ],
+  "steps": [
+    "Brace lightly and begin walking with short, controlled steps",
+    "Keep torso tall and avoid leaning or swaying",
+    "Turn carefully; maintain control of weights",
+    "Set weights down safely by hinging hips when ending a set"
+  ],
+  "cues": [
+    "Grow tall; zipper ribs to hips",
+    "Shoulders down, pockets tight",
+    "Quiet feet; short steps",
+    "Crush the handles but keep elbows soft"
+  ],
+  "mistakes": [
+    "Leaning to one side or overextending lower back",
+    "Taking long, stompy steps",
+    "Shrugging shoulders toward ears",
+    "Dropping weights without a safe hinge"
+  ],
+  "safety": "Choose a load that preserves posture and breathing. Use a hinge to pick up and set down the weights to protect your back.",
+  "scaling": {
+    "regressions": [
+      "Static suitcase hold (one side) or double DB hold",
+      "Lighter load or shorter distance/time",
+      "Trap bar carry if available"
+    ],
+    "progressions": [
+      "Heavier load",
+      "Longer distances or timed sets",
+      "Uneven or suitcase carry for anti-lateral flexion"
+    ]
+  },
+  "variations": [
+    "Suitcase carry (one side only)",
+    "Rack carry (KBs in rack)",
+    "Trap bar carry"
+  ],
+  "prescriptionHints": {
+    "load": "DBs 20–70 lb each depending on intent",
+    "reps": "—",
+    "time": "20–60s per set or 40–100 m",
+    "distance": "40–100 m or shuttle in small space",
+    "rpe": "6–9 depending on goal",
+    "notes": "Timed + weighted. Prioritize posture; stop before grip fails."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "shoulders",
+      "lower back"
+    ],
+    "notes": "Keep ribs stacked and avoid side-bending; hinge to pick/park weights."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

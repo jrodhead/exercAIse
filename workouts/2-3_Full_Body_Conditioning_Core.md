@@ -2,26 +2,26 @@
 **Date:** August 29, 2025
 
 ## Warm-up
-- [Jumping Jacks](../exercises/jumping_jacks.md): 30–40 sec
-- [Loaded March](../exercises/loaded_march.md): 20 steps (light ruck or DBs)
-- [World’s Greatest Stretch](../exercises/worlds_greatest_stretch.md): 4/side
+- [Jumping Jacks](../exercises/jumping_jacks.json): 30–40 sec
+- [Loaded March](../exercises/loaded_march.json): 20 steps (light ruck or DBs)
+- [World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4/side
 
 ## Conditioning (Main Work) – 3 Rounds
-- [Dumbbell Thruster](../exercises/dumbbell_thruster.md): 10–12 reps @ 27.5 lb per hand  
-- [Renegade Row](../exercises/renegade_row.md): 6–8/side @ 27.5 lb per hand  
-- [Step-Up](../exercises/step_up.md): 10/leg (knee-height step) @ 20 lb per hand  
-- [Farmer Carry](../exercises/farmer_carry.md): 40–50 sec @ 40 lb per hand  
+- [Dumbbell Thruster](../exercises/dumbbell_thruster.json): 10–12 reps @ 27.5 lb per hand  
+- [Renegade Row](../exercises/renegade_row.json): 6–8/side @ 27.5 lb per hand  
+- [Step-Up](../exercises/step_up.json): 10/leg (knee-height step) @ 20 lb per hand  
+- [Farmer Carry](../exercises/farmer_carry.json): 40–50 sec @ 40 lb per hand  
 - Rest 60–75 sec between rounds
 
 ## Accessory/Core – 3 Rounds
-- [Weighted Deadbug](../exercises/weighted_deadbug.md): 8/side (slow 2–1–2)
-- [Russian Twist](../exercises/russian_twist.md): 20 taps (10/side)
-- [Plank Shoulder Tap](../exercises/plank_shoulder_tap.md): 20 taps (10/side)
+- [Weighted Deadbug](../exercises/weighted_deadbug.json): 8/side (slow 2–1–2)
+- [Russian Twist](../exercises/russian_twist.json): 20 taps (10/side)
+- [Plank Shoulder Tap](../exercises/plank_shoulder_tap.json): 20 taps (10/side)
 
 ## Cooldown/Recovery
-- [Child’s Pose](../exercises/childs_pose.md): 1–2 min
-- [Thread the Needle](../exercises/thread_the_needle.md): 45–60 sec/side
-- [Seated Forward Fold](../exercises/seated_forward_fold.md): 1 min
+- [Child’s Pose](../exercises/childs_pose.json): 1–2 min
+- [Thread the Needle](../exercises/thread_the_needle.json): 45–60 sec/side
+- [Seated Forward Fold](../exercises/seated_forward_fold.json): 1 min
 
 Notes: Pinned loads based on Week 2 (thruster/row at 25 lb per hand). Small bump to 27.5 lb per hand this week. Keep quality high, not a race; scale down if joints feel cranky.
 

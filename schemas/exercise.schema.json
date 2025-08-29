@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Exercise JSON v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name"],
+  "properties": {
+    "name": { "type": "string" },
+    "equipment": { "type": "array", "items": { "type": "string" } },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "setup": { "type": "array", "items": { "type": "string" } },
+    "steps": { "type": "array", "items": { "type": "string" } },
+    "cues": { "type": "array", "items": { "type": "string" } },
+    "mistakes": { "type": "array", "items": { "type": "string" } },
+    "safety": { "type": "string" },
+    "scaling": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "regressions": { "type": "array", "items": { "type": "string" } },
+        "progressions": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "variations": { "type": "array", "items": { "type": "string" } },
+    "prescriptionHints": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "load": { "type": "string" },
+        "reps": { "type": "string" },
+        "time": { "type": "string" },
+        "distance": { "type": "string" },
+        "rpe": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    },
+    "joints": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "sensitiveJoints": { "type": "array", "items": { "type": "string" } },
+        "notes": { "type": "string" }
+      }
+    },
+    "media": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "video": { "type": "string" },
+        "images": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

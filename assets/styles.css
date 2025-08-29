@@ -2,7 +2,7 @@
 html, body { margin: 0; padding: 0; }
 body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.5; color: #222; background: #fafafa; }
 
-.container { max-width: 860px; margin: 0 auto; padding: 16px; }
+.container { max-width: 860px; margin: 0 auto; padding: 12px 14px; }
 
 .site-header, .site-footer { background: #fff; border-bottom: 1px solid #eee; }
 .site-header { padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; }
@@ -10,7 +10,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helve
 
 .status { background: #fff3cd; color: #5f4b00; border: 1px solid #ffe69c; padding: 10px 12px; margin: 12px 0; border-radius: 6px; }
 
-.workout-meta { display: flex; align-items: center; justify-content: space-between; background: #fff; border: 1px solid #eee; padding: 10px 12px; border-radius: 6px; }
+.workout-meta { display: flex; align-items: center; justify-content: space-between; background: #fff; border: 1px solid #eee; padding: 10px 12px; border-radius: 6px; gap: 8px; flex-wrap: wrap; }
+.workout-meta .meta-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 
 .workout-content { background: #fff; border: 1px solid #eee; padding: 12px; border-radius: 6px; }
 .workout-content pre { white-space: pre-wrap; }
@@ -20,22 +21,49 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helve
 .form-hint { color: #555; }
 
 .exercise-card { border: 1px solid #e5e5e5; border-radius: 6px; padding: 8px; margin: 8px 0 10px; background: #fcfcfc; }
+.exercise-card .exercise-header { font-weight: 600; margin-bottom: 6px; }
+.exercise-card .exercise-header h1,
+.exercise-card .exercise-header h2,
+.exercise-card .exercise-header h3,
+.exercise-card .exercise-header h4 { margin: 0 0 4px; font-size: 15px; }
+.exercise-card .exercise-header p { margin: 2px 0; }
+.exercise-card .exercise-notes { color: #333; font-size: 14px; margin: 4px 0 6px; }
+.exercise-card .exercise-notes ul { margin: 4px 0 4px 18px; }
+.exercise-card .exercise-notes li { margin: 2px 0; }
 .exercise-card.compact header { gap: 6px; }
 .exercise-card header { display: flex; align-items: center; justify-content: flex-start; gap: 8px; }
 .exercise-card.collapsed .exercise-sets { display: none; }
 .exercise-sets { margin-top: 6px; }
 .set-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 4px; }
 .set-row .set-label { font-size: 13px; color: #666; min-width: 46px; }
-.set-row input { width: 72px; padding: 4px 6px; font-size: 14px; }
-.set-row button { padding: 6px 8px; }
+.set-row input { width: 84px; padding: 8px 10px; font-size: 16px; }
+.set-row button { padding: 8px 10px; }
 
-.form-actions { display: flex; gap: 8px; margin-top: 8px; }
-button { cursor: pointer; background: #1a73e8; color: #fff; border: none; border-radius: 4px; padding: 8px 10px; }
+.form-actions { display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; }
+button { cursor: pointer; background: #1a73e8; color: #fff; border: none; border-radius: 6px; padding: 10px 12px; font-size: 16px; }
 button.danger { background: #d93025; }
 button.secondary { background: #6c757d; }
 
 .copy-wrapper { margin-top: 10px; }
 textarea { width: 100%; }
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  .container { padding: 10px; }
+  .site-header { padding: 10px; }
+  .workout-meta { flex-direction: column; align-items: flex-start; }
+  .workout-content { padding: 10px; }
+  .exercise-card { padding: 10px; }
+  .exercise-card .exercise-header h1,
+  .exercise-card .exercise-header h2,
+  .exercise-card .exercise-header h3,
+  .exercise-card .exercise-header h4 { font-size: 16px; }
+  .set-row { gap: 8px; }
+  .set-row .set-label { min-width: 44px; }
+  .set-row input { width: 100%; flex: 1 1 120px; max-width: none; }
+  .form-actions { position: sticky; bottom: 0; background: rgba(250, 250, 250, 0.95); padding: 8px 6px; border-top: 1px solid #eee; z-index: 5; }
+  .form-actions button, .form-actions a { flex: 1 1 auto; text-align: center; }
+}
 
 @media (prefers-color-scheme: dark) {
   body { background: #0f0f0f; color: #e5e5e5; }

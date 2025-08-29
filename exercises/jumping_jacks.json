@@ -1,0 +1,67 @@
+{
+  "name": "Jumping Jacks",
+  "equipment": [
+    "bodyweight"
+  ],
+  "tags": [
+    "conditioning",
+    "cardio",
+    "warm-up"
+  ],
+  "setup": [
+    "Stand tall, feet together, arms at sides",
+    "Brace lightly and keep ribs stacked over pelvis"
+  ],
+  "steps": [
+    "Jump feet wider than hips while raising arms overhead",
+    "Land softly and immediately jump feet back together while arms return to sides",
+    "Maintain steady rhythm and breathing"
+  ],
+  "cues": [
+    "Soft, quiet landings",
+    "Stay tall—no over-arching",
+    "Arms smooth; don’t slam hands",
+    "Exhale every 1–2 reps"
+  ],
+  "mistakes": [
+    "Hard, noisy landings",
+    "Over-arching low back",
+    "Flailing arms or losing rhythm"
+  ],
+  "safety": "If impact-sensitive, use step jacks (step one foot out at a time) and keep range small.",
+  "scaling": {
+    "regressions": [
+      "Step jacks (no jump)",
+      "Slower cadence with smaller range"
+    ],
+    "progressions": [
+      "Power jacks (deeper squat)",
+      "Seal jacks (arms swing horizontally)",
+      "Light DB jacks (very light load)"
+    ]
+  },
+  "variations": [
+    "Step jack",
+    "Seal jack",
+    "Star jump (advanced)"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "—",
+    "time": "20–60s",
+    "distance": "—",
+    "rpe": "5–7",
+    "notes": "Keep impact tolerable; use as warm-up or light conditioning."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "ankles",
+      "knees"
+    ],
+    "notes": "Land softly; reduce range or switch to step jacks if joints complain."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

@@ -4,15 +4,15 @@
 ---
 
 ## Warm-Up (5–7 min)
-- [Bodyweight Squat](../exercises/bodyweight_squat.md): 2 sets x 12 reps
-- [Glute Bridge](../exercises/glute_bridge.md): 2 sets x 10 reps
-- [World’s Greatest Stretch](../exercises/worlds_greatest_stretch.md): 5 reps per side
+- [Bodyweight Squat](../exercises/bodyweight_squat.json): 2 sets x 12 reps
+- [Glute Bridge](../exercises/glute_bridge.json): 2 sets x 10 reps
+- [World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 5 reps per side
 
 ---
 
 ## Main Workout
 
-### 1. [Goblet Squat](../exercises/goblet_squat.md)
+### 1. [Goblet Squat](../exercises/goblet_squat.json)
 - **Sets & Reps:** 4 sets x 8–10 reps
 - **Rest:** 90 sec
 - **Suggested Weight:** Moderate-heavy (dumbbell or kettlebell)
@@ -22,7 +22,7 @@
   - Knees track over toes
   - Pause at bottom, drive up through heels
 
-### 2. [Dumbbell Romanian Deadlift](../exercises/dumbbell_romanian_deadlift.md)
+### 2. [Dumbbell Romanian Deadlift](../exercises/dumbbell_romanian_deadlift.json)
 - **Sets & Reps:** 4 sets x 10 reps
 - **Rest:** 90 sec
 - **Suggested Weight:** Moderate
@@ -32,7 +32,7 @@
   - Feel stretch in hamstrings
   - Drive hips forward to stand
 
-### 3. [Reverse Lunge](../exercises/reverse_lunge.md)
+### 3. [Reverse Lunge](../exercises/reverse_lunge.json)
 - **Sets & Reps:** 3 sets x 10 reps per leg
 - **Rest:** 75 sec
 - **Suggested Weight:** Bodyweight or light dumbbells
@@ -41,7 +41,7 @@
   - Keep front knee over ankle
   - Push through front heel to return
 
-### 4. [Standing Calf Raise](../exercises/standing_calf_raise.md)
+### 4. [Standing Calf Raise](../exercises/standing_calf_raise.json)
 - **Sets & Reps:** 3 sets x 15 reps
 - **Rest:** 45 sec
 - **Cues:**
@@ -51,14 +51,14 @@
 ---
 
 ## Optional Finisher
-- [Wall Sit](../exercises/wall_sit.md): 2 sets x 45 sec hold, rest 45 sec
+- [Wall Sit](../exercises/wall_sit.json): 2 sets x 45 sec hold, rest 45 sec
 
 ---
 
 ## Cooldown & Mobility (5–8 min)
-- [90/90 Hip Stretch](../exercises/90_90_hip_stretch.md): 1 min per side
-- [Seated Forward Fold](../exercises/seated_forward_fold.md): 1 min
-- [Lying Spinal Twist](../exercises/lying_spinal_twist.md): 1 min per side
+- [90/90 Hip Stretch](../exercises/90_90_hip_stretch.json): 1 min per side
+- [Seated Forward Fold](../exercises/seated_forward_fold.json): 1 min
+- [Lying Spinal Twist](../exercises/lying_spinal_twist.json): 1 min per side
 
 ---
 

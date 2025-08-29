@@ -1,0 +1,26 @@
+{
+  "name": "Incline Landmine Press (Simulated with Dumbbell)",
+  "equipment": [
+    "dumbbell"
+  ],
+  "tags": [
+    "core",
+    "press"
+  ],
+  "cues": [
+    "Kneel on the floor, holding a dumbbell in one hand at shoulder height",
+    "Press the dumbbell upward and slightly forward at a 45° angle",
+    "Keep your core engaged and torso stable throughout the movement",
+    "Avoid shrugging your shoulder as you press",
+    "Control both the press and the return to the starting position",
+    "Keep your elbow tracking under your wrist",
+    "Start with a light weight to master the movement",
+    "Focus on a smooth, controlled press",
+    "Keep your glutes and abs tight for stability"
+  ],
+  "variations": [
+    "Perform standing or seated for different core demands",
+    "Use a landmine attachment if available",
+    "Alternate arms or perform both arms simultaneously"
+  ]
+}

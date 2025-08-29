@@ -1,0 +1,63 @@
+{
+  "name": "Thread the Needle",
+  "equipment": [
+    "bodyweight"
+  ],
+  "tags": [
+    "mobility",
+    "stretch"
+  ],
+  "setup": [
+    "Quadruped (hands under shoulders, knees under hips)",
+    "Neutral spine"
+  ],
+  "steps": [
+    "Reach one arm under the other, palm up, resting shoulder and ear to floor",
+    "Relax and breathe into upper back; hold for time",
+    "Unwind slowly and switch sides"
+  ],
+  "cues": [
+    "Hips stay square",
+    "Breathe into upper back",
+    "Go only to a comfortable range"
+  ],
+  "mistakes": [
+    "Collapsing weight onto neck",
+    "Twisting hips open excessively",
+    "Forcing range"
+  ],
+  "safety": "Support head/shoulder with a block or pillow if needed. Move gently.",
+  "scaling": {
+    "regressions": [
+      "Smaller reach",
+      "Head supported on block"
+    ],
+    "progressions": [
+      "Add opposite arm reach overhead",
+      "Light thoracic rotation pulses"
+    ]
+  },
+  "variations": [
+    "Thread the needle with block",
+    "Side-lying open book"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "—",
+    "time": "30–60s/side",
+    "distance": "—",
+    "rpe": "3–5",
+    "notes": "Gentle T-spine rotation focus."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "shoulders",
+      "neck"
+    ],
+    "notes": "Support as needed; avoid end-range pressure."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}
