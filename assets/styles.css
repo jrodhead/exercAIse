@@ -33,6 +33,9 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helve
 .exercise-card.compact header { gap: 6px; }
 .exercise-card header { display: flex; align-items: center; justify-content: flex-start; gap: 8px; }
 .exercise-card.collapsed .exercise-sets { display: none; }
+.exercise-card.readonly .exercise-sets,
+.exercise-card.readonly .set-row,
+.exercise-card.readonly button { display: none; }
 .exercise-sets { margin-top: 6px; }
 .set-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 4px; }
 .set-row .set-label { font-size: 13px; color: #666; min-width: 46px; }

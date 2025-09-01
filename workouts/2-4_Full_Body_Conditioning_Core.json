@@ -1,0 +1,44 @@
+{
+  "version": "1",
+  "title": "Full-Body Conditioning & Core – Block 2, Week 4 (Deload)",
+  "date": "2025-09-04",
+  "block": 2,
+  "week": 4,
+  "notes": "Deload conditioning: RPE ~6–7. 2 rounds suggested; move clean and finish fresh.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "General Warm-up (5–7 min)",
+      "items": [
+        { "kind": "exercise", "name": "Jumping Jacks", "link": "exercises/jumping_jacks.json", "prescription": { "timeSeconds": 60 } },
+        { "kind": "exercise", "name": "Bodyweight Squat", "link": "exercises/bodyweight_squat.json", "prescription": { "reps": 12 } },
+        { "kind": "exercise", "name": "Arm Circles", "link": "exercises/arm_circles.json", "prescription": { "timeSeconds": 45 } }
+      ]
+    },
+    {
+      "type": "Conditioning",
+  "title": "Circuit – 2 rounds",
+  "rounds": 2,
+      "items": [
+        {
+          "kind": "circuit",
+          "name": "DB + Core Circuit",
+          "children": [
+            { "kind": "exercise", "name": "Dumbbell Thruster", "link": "exercises/dumbbell_thruster.json", "prescription": { "reps": 8, "weight": "25 x2 lb" }, "cues": ["Full depth, punch up", "Ribs stacked"] },
+            { "kind": "exercise", "name": "Renegade Row", "link": "exercises/renegade_row.json", "prescription": { "reps": 8, "weight": "25 x2 lb" }, "cues": ["Wide feet, quiet hips"] },
+            { "kind": "exercise", "name": "Farmer Carry", "link": "exercises/farmer_carry.json", "prescription": { "distanceMeters": 30, "weight": "35 x2 lb" } },
+            { "kind": "exercise", "name": "Hollow Hold", "link": "exercises/hollow_hold.json", "prescription": { "holdSeconds": 30 } }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Downshift (4–6 min)",
+      "items": [
+        { "kind": "exercise", "name": "Calf Stretch (Wall or Step)", "link": "exercises/calf_stretch_wall_or_step.json", "prescription": { "holdSeconds": 45 } },
+        { "kind": "exercise", "name": "Seated Spinal Twist", "link": "exercises/seated_spinal_twist.json", "prescription": { "holdSeconds": 45 } }
+      ]
+    }
+  ]
+}

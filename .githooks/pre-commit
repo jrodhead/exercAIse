@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$ROOT_DIR"
+
+echo "Running schema validation…"
+if ! .venv/bin/python scripts/validate_schemas.py; then
+  echo "Schema validation failed. Commit aborted." >&2
+  exit 1
+fi
+
+echo "Running link validation…"
+if ! .venv/bin/python scripts/validate_links.py; then
+  echo "Link validation failed. Commit aborted." >&2
+  exit 1
+fi
+
+echo "All checks passed."

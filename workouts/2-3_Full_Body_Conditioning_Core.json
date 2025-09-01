@@ -1,0 +1,129 @@
+{
+  "version": "1",
+  "title": "Full-Body Conditioning & Core",
+  "date": "2025-08-29",
+  "block": 2,
+  "week": 3,
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Warm-up",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Jumping Jacks",
+          "link": "../exercises/jumping_jacks.md",
+          "prescription": { "timeSeconds": 40 }
+        },
+        {
+          "kind": "exercise",
+          "name": "Loaded March",
+          "link": "../exercises/loaded_march.md",
+          "prescription": { "reps": 20 }
+        },
+        {
+          "kind": "exercise",
+          "name": "World’s Greatest Stretch",
+          "link": "../exercises/worlds_greatest_stretch.md",
+          "prescription": { "reps": 4 }
+        }
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "Conditioning (Main Work)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Thruster",
+          "link": "../exercises/dumbbell_thruster.md",
+          "prescription": {
+            "sets": 3,
+            "reps": "10–12",
+            "weight": "27.5 lb per hand",
+            "restSeconds": 60
+          }
+        },
+        {
+          "kind": "exercise",
+          "name": "Renegade Row",
+          "link": "../exercises/renegade_row.md",
+          "prescription": {
+            "sets": 3,
+            "reps": "6–8/side",
+            "weight": "27.5 lb per hand"
+          }
+        },
+        {
+          "kind": "exercise",
+          "name": "Step-Up",
+          "link": "../exercises/step_up.md",
+          "prescription": {
+            "sets": 3,
+            "reps": "10/leg",
+            "weight": "20 lb per hand"
+          }
+        },
+        {
+          "kind": "exercise",
+          "name": "Farmer Carry",
+          "link": "../exercises/farmer_carry.md",
+          "prescription": {
+            "sets": 3,
+            "timeSeconds": 45,
+            "weight": "40 lb per hand",
+            "restSeconds": 60
+          }
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Accessory/Core",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Weighted Deadbug",
+          "link": "../exercises/weighted_deadbug.md",
+          "prescription": { "sets": 3, "reps": "8/side" }
+        },
+        {
+          "kind": "exercise",
+          "name": "Russian Twist",
+          "link": "../exercises/russian_twist.md",
+          "prescription": { "sets": 3, "reps": "20 taps" }
+        },
+        {
+          "kind": "exercise",
+          "name": "Plank Shoulder Tap",
+          "link": "../exercises/plank_shoulder_tap.md",
+          "prescription": { "sets": 3, "reps": "20 taps" }
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Cooldown/Recovery",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Child’s Pose",
+          "link": "../exercises/childs_pose.md",
+          "prescription": { "timeSeconds": 90 }
+        },
+        {
+          "kind": "exercise",
+          "name": "Thread the Needle",
+          "link": "../exercises/thread_the_needle.md",
+          "prescription": { "holdSeconds": 45 }
+        },
+        {
+          "kind": "exercise",
+          "name": "Seated Forward Fold",
+          "link": "../exercises/seated_forward_fold.md",
+          "prescription": { "holdSeconds": 60 }
+        }
+      ]
+    }
+  ]
+}

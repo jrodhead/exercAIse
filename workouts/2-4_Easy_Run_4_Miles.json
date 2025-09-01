@@ -1,0 +1,38 @@
+{
+  "version": "1",
+  "title": "Easy Run – 3 Miles – Block 2, Week 4 (Deload)",
+  "date": "2025-09-02",
+  "block": 2,
+  "week": 4,
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "5–8 min warm-up",
+      "items": [
+        { "kind": "exercise", "name": "Brisk Walk", "link": "exercises/brisk_walk.json", "prescription": { "timeSeconds": 180 } },
+        { "kind": "exercise", "name": "Leg Swings", "link": "exercises/leg_swings.json", "prescription": { "timeSeconds": 60 } }
+      ]
+    },
+    {
+      "type": "Conditioning",
+  "title": "Easy 3 miles",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Easy Run",
+          "link": "exercises/easy_jog.json",
+          "prescription": { "sets": 1, "distanceMiles": 3, "timeSeconds": 1350, "rpe": 4 },
+          "cues": ["Nasal breathing if possible", "Keep cadence light"]
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "3–5 min cool-down",
+      "items": [
+        { "kind": "exercise", "name": "Walk", "link": "exercises/brisk_walk.json", "prescription": { "timeSeconds": 180 } },
+        { "kind": "exercise", "name": "Standing Calf Stretch", "link": "exercises/calf_stretch.json", "prescription": { "holdSeconds": 45 } }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "version": "1",
+  "title": "Yin Yoga Recovery Flow \u2013 Rest Day",
+  "block": 0,
+  "week": 0,
+  "sections": [
+    {
+      "type": "Main Work",
+      "title": "\ud83e\uddd8 Sequence",
+      "items": []
+    },
+    {
+      "type": "Main Work",
+      "title": "1. [Butterfly Pose (Seated Forward Fold)](../exercises/butterfly_pose_seated_forward_fold.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Butterfly Pose (Seated Forward Fold)",
+          "link": "exercises/butterfly_pose_seated_forward_fold.json",
+          "cues": []
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "2. [Supported Child's Pose](../exercises/supported_childs_pose.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Supported Child's Pose",
+          "link": "exercises/supported_childs_pose.json",
+          "cues": []
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "3. [Dragon Pose (Low Lunge Yin Style)](../exercises/dragon_pose_low_lunge_yin_style.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Dragon Pose (Low Lunge Yin Style)",
+          "link": "exercises/dragon_pose_low_lunge_yin_style.json",
+          "cues": []
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "4. [Sleeping Swan (Yin Pigeon)](../exercises/sleeping_swan_yin_pigeon.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Sleeping Swan (Yin Pigeon)",
+          "link": "exercises/sleeping_swan_yin_pigeon.json",
+          "cues": []
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "5. [Supported Fish Pose](../exercises/supported_fish_pose.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Supported Fish Pose",
+          "link": "exercises/supported_fish_pose.json",
+          "cues": []
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "6. [Reclined Twist](../exercises/reclined_twist.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Reclined Twist",
+          "link": "exercises/reclined_twist.json",
+          "cues": []
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "7. [Happy Baby](../exercises/happy_baby.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Happy Baby",
+          "link": "exercises/happy_baby.json",
+          "cues": []
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "8. Final Savasana",
+      "items": []
+    },
+    {
+      "type": "Main Work",
+      "title": "\ud83c\udf19 Notes",
+      "items": []
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "version": "1",
+  "title": "Easy Run \u2013 4 Miles (Block 2, Week 3, Tuesday)",
+  "block": 0,
+  "week": 0,
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Warm-up",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Brisk Walk",
+          "link": "exercises/brisk_walk.json",
+          "cues": []
+        },
+        {
+          "kind": "exercise",
+          "name": "Leg Swings",
+          "link": "exercises/leg_swings.json",
+          "cues": []
+        }
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "Conditioning (Main Work)",
+      "items": []
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Accessory/Core",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Strides",
+          "link": "exercises/strides.json",
+          "cues": []
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Cooldown/Recovery",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Brisk Walk",
+          "link": "exercises/brisk_walk.json",
+          "cues": []
+        },
+        {
+          "kind": "exercise",
+          "name": "Calf Stretch",
+          "link": "exercises/calf_stretch.json",
+          "cues": [
+            "[Brisk Walk](../exercises/brisk_walk.json): 5\u201310 min",
+            "[Leg Swings](../exercises/leg_swings.json): 10\u201315 per direction/leg"
+          ]
+        }
+      ]
+    }
+  ]
+}

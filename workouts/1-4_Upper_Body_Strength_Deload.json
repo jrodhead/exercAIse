@@ -1,0 +1,53 @@
+{
+  "version": "1",
+  "title": "Upper Body Strength \u2013 Block 1, Week 4 (Deload)",
+  "block": 1,
+  "week": 4,
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "\ud83c\udfcb\ufe0f Main Workout",
+      "items": []
+    },
+    {
+      "type": "Main Work",
+      "title": "1. Dumbbell Bench Press",
+      "items": []
+    },
+    {
+      "type": "Main Work",
+      "title": "2. Neutral-Grip Seated Dumbbell Press",
+      "items": []
+    },
+    {
+      "type": "Conditioning",
+      "title": "3. Chest-Supported Row (Incline Bench)",
+      "items": []
+    },
+    {
+      "type": "Main Work",
+      "title": "4. Incline Landmine Press (Simulated with Dumbbell)",
+      "items": []
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "\ud83c\udfaf Accessory Core",
+      "items": []
+    },
+    {
+      "type": "Main Work",
+      "title": "5. Pallof Press (Dumbbell or Ruck Plate)",
+      "items": []
+    },
+    {
+      "type": "Main Work",
+      "title": "6. Ruck March Hold",
+      "items": []
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "\ud83e\uddca Cooldown (5 minutes)",
+      "items": []
+    }
+  ]
+}

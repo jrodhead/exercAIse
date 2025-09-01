@@ -1,0 +1,163 @@
+{
+  "version": "1",
+  "title": "Upper Body Strength & Mobility – Block 2, Week 4 (Deload)",
+  "date": "2025-08-31",
+  "block": 2,
+  "week": 4,
+  "notes": "Deload week: reduce volume by ~25% and load by ~10–15%. Keep RPE ~6–7, move clean, and finish fresh.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Shoulders, T-Spine, Light Pump (6–8 min)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Arm Circles",
+          "link": "exercises/arm_circles.json",
+          "prescription": { "timeSeconds": 60 },
+          "cues": [
+            "Small to big circles",
+            "Relax neck and jaw",
+            "Smooth breathing"
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Band Pull-Aparts",
+          "link": "exercises/band_pull_aparts.json",
+          "prescription": { "reps": 20 },
+          "cues": [
+            "Ribs down, long neck",
+            "Pinch shoulder blades gently",
+            "Control back in"
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Cat-Cow to Cobra Stretch",
+          "link": "exercises/cat_cow_to_cobra_stretch.json",
+          "prescription": { "timeSeconds": 90 },
+          "cues": [
+            "Segment the spine",
+            "Press the floor away",
+            "Breathe into the ribs"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Press + Row",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Neutral-Grip Flat Bench Press",
+          "link": "exercises/neutral_grip_flat_bench_press.json",
+          "prescription": { "sets": 3, "reps": 6, "weight": "45 x2 lb", "restSeconds": 120, "rpe": 6.5 },
+          "cues": [
+            "Feet planted, light arch",
+            "Wrists neutral, elbows ~45°",
+            "Touch lower-mid chest, pause softly",
+            "Drive evenly through both hands"
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "One-Arm Dumbbell Row",
+          "link": "exercises/one_arm_dumbbell_row.json",
+          "prescription": { "sets": 3, "reps": 10, "weight": 37.5, "restSeconds": 90, "rpe": 6.5 },
+          "cues": [
+            "Hips square, spine long",
+            "Row to hip, not rib cage",
+            "Pause briefly, control down"
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Seated Arnold Press",
+          "link": "exercises/seated_arnold_press.json",
+          "prescription": { "sets": 3, "reps": "6–8", "weight": "25 x2 lb", "restSeconds": 120, "rpe": 7 },
+          "cues": [
+            "Ribs stacked, no lean back",
+            "Rotate as you press",
+            "Finish with biceps by ears"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Arms + Anti-rotation",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Biceps Curl",
+          "link": "exercises/biceps_curl.json",
+          "prescription": { "sets": 2, "reps": 10, "weight": "25 x2 lb", "restSeconds": 60, "rpe": 6.5 },
+          "cues": [
+            "Elbows pinned, no sway",
+            "Squeeze top, slow down"
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Overhead Dumbbell Triceps Extension",
+          "link": "exercises/overhead_dumbbell_triceps_extension.json",
+          "prescription": { "sets": 2, "reps": 10, "weight": 35, "restSeconds": 60, "rpe": 6.5 },
+          "cues": [
+            "Ribs down, squeeze glutes",
+            "Elbows narrow, full ROM",
+            "Don’t jam the neck"
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Plank Shoulder Tap",
+          "link": "exercises/plank_shoulder_tap.json",
+          "prescription": { "sets": 2, "reps": 16, "restSeconds": 45 },
+          "cues": [
+            "Wide feet, hips quiet",
+            "Exhale as you tap",
+            "Push the floor away"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Downshift (5–8 min)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Child's Pose with Deep Breathing",
+          "link": "exercises/childs_pose_with_deep_breathing.json",
+          "prescription": { "holdSeconds": 60 },
+          "cues": [
+            "Long exhales",
+            "Soften the belly"
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Supported Fish Pose",
+          "link": "exercises/supported_fish_pose.json",
+          "prescription": { "holdSeconds": 60 },
+          "cues": [
+            "Open chest, relax jaw",
+            "No pinching in low back"
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Seated Spinal Twist",
+          "link": "exercises/seated_spinal_twist.json",
+          "prescription": { "holdSeconds": 45 },
+          "cues": [
+            "Grow tall, twist on exhale",
+            "Keep hips heavy"
+          ]
+        }
+      ]
+    }
+  ]
+}
