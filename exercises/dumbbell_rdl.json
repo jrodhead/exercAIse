@@ -1,0 +1,27 @@
+{
+  "name": "Dumbbell Romanian Deadlift (RDL)",
+  "equipment": [
+    "barbell",
+    "dumbbell",
+    "kettlebell"
+  ],
+  "tags": [
+    "hinge",
+    "stretch"
+  ],
+  "cues": [
+    "Stand with feet hip-width apart, holding dumbbells in front of your thighs, palms facing in",
+    "Hinge at your hips, pushing them back with a soft bend in your knees",
+    "Lower the dumbbells until you feel a stretch in your hamstrings, keeping your back flat",
+    "Pause, then drive your hips forward to stand tall",
+    "Keep the dumbbells close to your legs throughout the movement",
+    "Do not round your back",
+    "Move slowly and with control",
+    "Focus on feeling the stretch in your hamstrings"
+  ],
+  "variations": [
+    "Single-Leg Dumbbell RDL",
+    "Barbell RDL",
+    "Kettlebell RDL"
+  ]
+}

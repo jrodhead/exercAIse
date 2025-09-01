@@ -17,7 +17,7 @@ Circuit style – move from one exercise to the next
 
 ## 🔄 Circuit
 
-### 1. [Dumbbell Thruster (Squat + Press)](../exercises/dumbbell_thruster.md)  
+### 1. [Dumbbell Thruster (Squat + Press)](../exercises/dumbbell_thruster.json)  
 - **Reps:** 10–12  
 - **Weight:** 20–30 lb dumbbells  
 - **Cues:**  
@@ -28,7 +28,7 @@ Circuit style – move from one exercise to the next
 
 ---
 
-### 2. [Renegade Row (Hands on Dumbbells or Floor)](../exercises/renegade_row.md)  
+### 2. [Renegade Row (Hands on Dumbbells or Floor)](../exercises/renegade_row.json)  
 - **Reps:** 6–8 per side  
 - **Weight:** 15–25 lb dumbbells (or bodyweight if wrists/shoulders feel tight)  
 - **Cues:**  
@@ -39,7 +39,7 @@ Circuit style – move from one exercise to the next
 
 ---
 
-### 3. [Step-Up (Onto Bench or Sturdy Surface)](../exercises/step_up.md)  
+### 3. [Step-Up (Onto Bench or Sturdy Surface)](../exercises/step_up.json)  
 - **Reps:** 10 per leg  
 - **Weight:** Bodyweight or light dumbbells  
 - **Cues:**  
@@ -50,7 +50,7 @@ Circuit style – move from one exercise to the next
 
 ---
 
-### 4. [Side Plank with Hip Dips](../exercises/side_plank_with_hip_dips.md)  
+### 4. [Side Plank with Hip Dips](../exercises/side_plank_with_hip_dips.json)  
 - **Duration:** 20–30 sec per side  
 - **Cues:**  
   - Elbow under shoulder  
@@ -60,7 +60,7 @@ Circuit style – move from one exercise to the next
 
 ---
 
-### 5. [Farmer Carry (Dumbbells or Ruck)](../exercises/farmer_carry.md)  
+### 5. [Farmer Carry (Dumbbells or Ruck)](../exercises/farmer_carry.json)  
 - **Duration:** 30–40 sec walk (or hold in place)  
 - **Weight:** Moderate dumbbells or ruck plate  
 - **Cues:**  
@@ -72,7 +72,7 @@ Circuit style – move from one exercise to the next
 ---
 
 ## 🧊 Cooldown (5 minutes)  
-- [Standing Quad Stretch](../exercises/standing_quad_stretch.md) – 30 sec per side  
-- [Forward Fold](../exercises/forward_fold.md) – 45 sec  
-- [Seated Spinal Twist](../exercises/seated_spinal_twist.md) – 30 sec per side  
-- [Shoulder Stretch (hands clasped behind back)](../exercises/shoulder_stretch.md) – 45 sec hold  
+- [Standing Quad Stretch](../exercises/standing_quad_stretch.json) – 30 sec per side  
+- [Forward Fold](../exercises/forward_fold.json) – 45 sec  
+- [Seated Spinal Twist](../exercises/seated_spinal_twist.json) – 30 sec per side  
+- [Shoulder Stretch (hands clasped behind back)](../exercises/shoulder_stretch.json) – 45 sec hold  

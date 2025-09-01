@@ -1,0 +1,19 @@
+{
+  "name": "Glute Bridge",
+  "equipment": [
+    "bodyweight"
+  ],
+  "tags": [
+    "core",
+    "press"
+  ],
+  "cues": [
+    "Lie on your back, knees bent, feet flat on the floor",
+    "Press through your heels to lift hips up, squeezing glutes",
+    "Pause at the top, then lower slowly",
+    "Keep core engaged",
+    "Do not overarch your back",
+    "Squeeze glutes at the top"
+  ],
+  "safety": "Stop if you feel pain in your lower back."
+}

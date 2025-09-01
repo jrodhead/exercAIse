@@ -1,0 +1,70 @@
+{
+  "name": "Step-Up (Onto Bench or Sturdy Surface)",
+  "equipment": [
+    "bench",
+    "box",
+    "dumbbell"
+  ],
+  "tags": [
+    "unilateral",
+    "knee-dominant",
+    "legs"
+  ],
+  "setup": [
+    "Face a stable box/bench roughly knee height",
+    "Hold DBs at sides or perform bodyweight"
+  ],
+  "steps": [
+    "Place whole foot on box and drive through mid-foot/heel to stand tall",
+    "Avoid pushing off the back leg; control the down phase",
+    "Alternate legs or complete all reps on one side"
+  ],
+  "cues": [
+    "Knee tracks over toes",
+    "Stand tall at the top",
+    "Slow, controlled descent"
+  ],
+  "mistakes": [
+    "Pushing off trailing leg excessively",
+    "Letting knee cave in",
+    "Only toes on the box (incomplete foot contact)"
+  ],
+  "safety": "Use a stable, non-slip surface and set a height that allows control. Lower step height if knee discomfort.",
+  "scaling": {
+    "regressions": [
+      "Lower step height",
+      "Bodyweight only",
+      "Assisted with hand support"
+    ],
+    "progressions": [
+      "Heavier DBs",
+      "Front rack or goblet loading",
+      "Slow eccentric (3–4s down)"
+    ]
+  },
+  "variations": [
+    "Lateral step-up",
+    "Crossover step-up",
+    "Deficit step-down"
+  ],
+  "prescriptionHints": {
+    "load": "Light–moderate DBs",
+    "reps": "6–12/leg",
+    "time": "—",
+    "distance": "—",
+    "rpe": "6–8",
+    "notes": "Own the top and control the down. Choose a height you can control."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "knees",
+      "hips",
+      "ankles"
+    ],
+    "notes": "Full foot contact and vertical shin bias can reduce knee stress."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

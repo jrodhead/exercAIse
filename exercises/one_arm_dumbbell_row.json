@@ -1,0 +1,29 @@
+{
+  "name": "One-Arm Dumbbell Row (Bench Supported)",
+  "equipment": [
+    "barbell",
+    "bench",
+    "dumbbell",
+    "kettlebell",
+    "ruck"
+  ],
+  "tags": [
+    "core",
+    "row"
+  ],
+  "cues": [
+    "Place one knee and hand on a bench, keeping your spine neutral",
+    "Hold a dumbbell in the other hand, arm extended toward the floor",
+    "Row the dumbbell up to your ribcage, keeping your elbow close to your body",
+    "Lower slowly and fully extend your arm without twisting your torso",
+    "Brace your core and avoid shrugging your shoulder",
+    "Keep your back flat and avoid rotating your torso",
+    "Focus on squeezing your back muscles at the top",
+    "Use a weight that allows full range of motion"
+  ],
+  "variations": [
+    "Standing One-Arm Row",
+    "Use a kettlebell or ruck instead of a dumbbell",
+    "Meadows Row (barbell)"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "Quads (Mobility)",
+  "equipment": [
+    "foam roller"
+  ],
+  "tags": [
+    "conditioning",
+    "stretch"
+  ],
+  "cues": [
+    "[Standing Quad Stretch](standing_quad_stretch.md)",
+    "[Foam Roll](foam_roll.md)"
+  ]
+}

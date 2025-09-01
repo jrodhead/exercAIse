@@ -30,7 +30,7 @@ def is_external(href: str) -> bool:
 
 def find_markdown_files(root: Path) -> List[Path]:
     files: List[Path] = []
-    candidates = [root / "README.md", root / "workouts", root / "exercises"]
+    candidates = [root / "README.md", root / "workouts", root / "exercises", root / ".github"]
     for c in candidates:
         if c.is_file():
             files.append(c)

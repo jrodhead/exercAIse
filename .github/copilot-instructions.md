@@ -49,22 +49,33 @@
 ## Required Workflow for Workouts and Exercises
 
 ### When creating or editing a workout:
-- **Every exercise name in a workout must be a markdown link** to its detail page in the `exercises/` directory (e.g., `[Hammer Curl](../exercises/hammer_curl.md)`).
-- **If an exercise does not already have a detail file in `exercises/`, create a new markdown file** for it, following the format and detail level of existing exercise files.
-- **Never leave an exercise unlinked or without a detail file.**
-- **Update all existing workouts** to maintain this linking convention if new exercises are introduced.
+- Exercise links in workout Markdown must point directly to the JSON exercise files: use `../../exercises/<slug>.json` when linking from docs inside `.github/`, and `../exercises/<slug>.json` inside `workouts/`. JSON is the source of truth and is rendered by `exercise.html`.
+- If an exercise does not already exist in `exercises/`, create a new JSON file `exercises/<slug>.json` as the source of truth, following `schemas/exercise.schema.json` (v2 fields: setup, steps, cues, mistakes, scaling, prescriptionHints, joints, media). Optionally include a minimal `.md` for legacy viewers.
+- Never leave an exercise unlinked or without a detail file.
+- Update existing workouts if new exercises are introduced to maintain the linking convention.
 
 ### New Workout Prompt (for Kai):
 Whenever a new workout is requested, always:
 - Ask for injury/pain status before generating the workout.
 - Confirm the workout progression state, which workout block/week it belongs to, and workout title.
 - Generate the workout by following all Kai persona rules in `.github/instructions/kai.instructions.md`.
-- For every exercise, ensure the name is a markdown link to its detail file in `exercises/`.
-- If a new exercise is introduced, create a new detail file for it in `exercises/` using the New Exercise Prompt listed below.
+- For every exercise, ensure the name is a markdown link to its detail page under `exercises/` (e.g., in workouts: `[Goblet Squat](../exercises/goblet_squat.json)`).
+- If a new exercise is introduced, create a new JSON detail file `exercises/goblet_squat.json` using the New Exercise JSON Prompt below.
 - At the end, confirm that all exercises are linked and all new exercises have detail files.
 
-### New Exercise Prompt (for Kai):
+### New Exercise JSON Prompt (for Kai):
 When a new exercise is introduced (not found in `exercises/`):
-- Create a new markdown file in `exercises/` with the exercise name as the title.
-- Include: description, cues, sets/reps (if relevant), equipment, and any safety/injury notes.
-- Use the same markdown structure and detail as existing exercise files.
+- Create `exercises/<slug>.json` conforming to `schemas/exercise.schema.json` (v2) with fields:
+  - `name` (required), `equipment` (string[]), `tags` (string[])
+  - `setup` (string[]): how to position
+  - `steps` (string[]): 3–7 ordered execution steps
+  - `cues` (string[]): 3–5 short reminders (breath/alignment included)
+  - `mistakes` (string[]): 2–4 common faults to avoid
+  - `safety` (string): brief injury and pain-adaptation notes
+  - `scaling` (regressions[], progressions[]): clear options for easier/harder
+  - `variations` (string[]): lateral alternatives
+  - `prescriptionHints` (load/reps/time/distance/rpe/notes)
+  - `joints` (sensitiveJoints[], notes)
+  - `media` (video, images[])
+- Optionally add a minimal Markdown file `exercises/<slug>.md` with an H1 header for backwards compatibility; the site prefers JSON.
+- Validate with `python3 scripts/validate_schemas.py`.

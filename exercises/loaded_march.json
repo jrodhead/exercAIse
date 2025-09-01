@@ -1,0 +1,71 @@
+{
+  "name": "Loaded March",
+  "equipment": [
+    "dumbbell",
+    "kettlebell",
+    "ruck",
+    "band"
+  ],
+  "tags": [
+    "carry",
+    "core",
+    "conditioning",
+    "balance"
+  ],
+  "setup": [
+    "Stand tall with load held suitcase (sides) or in rack/at chest",
+    "Stack ribs over pelvis; pack shoulders"
+  ],
+  "steps": [
+    "Lift one knee to ~hip height while balancing on the other foot",
+    "Pause briefly, then lower and switch legs",
+    "Keep torso tall; avoid leaning back or to the side"
+  ],
+  "cues": [
+    "Grow tall; zipper ribs to hips",
+    "Quiet feet; slow tempo",
+    "Hips level; no sway"
+  ],
+  "mistakes": [
+    "Leaning back and overextending",
+    "Speeding up and losing balance",
+    "Shrugging shoulders toward ears"
+  ],
+  "safety": "Choose a load that allows balance and posture. Reduce load or elevate to march against a wall/fingertip support if needed.",
+  "scaling": {
+    "regressions": [
+      "Unloaded march",
+      "Fingertip support on wall/rig",
+      "Lower knee height"
+    ],
+    "progressions": [
+      "Heavier load",
+      "Suitcase-only (one side) for anti-lateral flexion",
+      "Overhead march (light)"
+    ]
+  },
+  "variations": [
+    "Farmer carry march",
+    "Rack march",
+    "Overhead march"
+  ],
+  "prescriptionHints": {
+    "load": "Light–moderate DB/KB/ruck",
+    "reps": "—",
+    "time": "20–60s",
+    "distance": "In place or 10–30 m",
+    "rpe": "5–7",
+    "notes": "Use as primer or accessory. Prioritize posture and balance."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "hips",
+      "lower back"
+    ],
+    "notes": "Neutral spine; avoid sway."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

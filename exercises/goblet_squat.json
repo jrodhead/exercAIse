@@ -1,0 +1,77 @@
+{
+  "name": "Goblet Squat",
+  "equipment": [
+    "dumbbell",
+    "kettlebell"
+  ],
+  "tags": [
+    "squat",
+    "legs",
+    "strength"
+  ],
+  "setup": [
+    "Feet shoulder-width with slight toe-out (5–15°)",
+    "Hold bell at chest (horns for KB or one end of DB), forearms vertical",
+    "Brace lightly and keep ribs stacked over pelvis"
+  ],
+  "steps": [
+    "Inhale, sit hips back slightly and bend knees to descend",
+    "Track knees over mid-foot; keep torso tall and elbows pointing down",
+    "Pause briefly near parallel (or to comfortable depth)",
+    "Exhale, drive through mid-foot/heels to stand tall",
+    "Finish with glutes squeezed softly, ribs down"
+  ],
+  "cues": [
+    "Elbows down; bell tight to chest",
+    "Knees track over toes",
+    "Chest tall, ribs stacked",
+    "Sit between the ankles, not onto the toes",
+    "Own the bottom, then drive up"
+  ],
+  "mistakes": [
+    "Heels lifting or weight shifting to toes",
+    "Knees collapsing inward (valgus)",
+    "Elbows flaring away from torso",
+    "Lumbar rounding or excessive arch",
+    "Cutting depth too high without intent"
+  ],
+  "safety": "If knees or low back get cranky, reduce depth, elevate heels on plates, or squat to a box. Keep spine neutral and bell close to chest.",
+  "scaling": {
+    "regressions": [
+      "Box goblet squat (set box to pain-free depth)",
+      "Heels-elevated goblet squat (small plates or wedge)",
+      "Counterbalance squat holding a light plate at arms-length"
+    ],
+    "progressions": [
+      "Tempo goblet (3-2-1) or 2s pause at bottom",
+      "Cyclist goblet squat (narrow stance, heels elevated)",
+      "Double kettlebell front squat"
+    ]
+  },
+  "variations": [
+    "Goblet squat to box",
+    "Front squat",
+    "Split squat"
+  ],
+  "prescriptionHints": {
+    "load": "KB 12–24 kg or DB 25–60 lb depending on reps and experience",
+    "reps": "6–12 for strength/hypertrophy; 10–15 for endurance",
+    "time": "—",
+    "distance": "—",
+    "rpe": "6–8",
+    "notes": "Start conservative; aim to leave 2–3 reps in reserve. Use box/heels as needed."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "knees",
+      "hips",
+      "ankles",
+      "lower back"
+    ],
+    "notes": "Maintain mid-foot balance; keep knees tracking over toes and spine neutral."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

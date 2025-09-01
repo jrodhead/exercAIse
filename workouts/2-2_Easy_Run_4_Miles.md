@@ -2,18 +2,18 @@
 **Date:** August 19, 2025
 
 ## Warm-up
-- [Easy Jog](../exercises/easy_jog.md) – 5 min
-- [Leg Swings](../exercises/leg_swings.md) – 10/side
+- [Easy Jog](../exercises/easy_jog.json) – 5 min
+- [Leg Swings](../exercises/leg_swings.json) – 10/side
 
 ## Conditioning
-- [Easy Run (Easy Jog)](../exercises/easy_jog.md) – 4 miles at easy conversational pace (RPE 4–5/10)
+- [Easy Run (Easy Jog)](../exercises/easy_jog.json) – 4 miles at easy conversational pace (RPE 4–5/10)
 
 ## Accessory/Core
-- [Strides](../exercises/strides.md) (optional): 4 × 20 sec fast-but-relaxed, full walk-back
+- [Strides](../exercises/strides.json) (optional): 4 × 20 sec fast-but-relaxed, full walk-back
 
 ## Cooldown/Recovery
-- [Brisk Walk](../exercises/brisk_walk.md) – 5 min
-- [Calf Stretch](../exercises/calf_stretch.md) – 60 sec
+- [Brisk Walk](../exercises/brisk_walk.json) – 5 min
+- [Calf Stretch](../exercises/calf_stretch.json) – 60 sec
 
 Cues: Soft surface if possible, quick cadence (170–180), relaxed shoulders, pain-free pacing.
 
