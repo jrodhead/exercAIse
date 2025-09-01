@@ -1,0 +1,80 @@
+{
+  "version": "1",
+  "title": "Full-Body Conditioning & Core \u2013 Block 2, Week 2 (Friday)",
+  "block": 0,
+  "week": 0,
+  "sections": [
+    {
+      "type": "Main Work",
+      "title": "Format: Circuit, 3\u20134 rounds; Rest 60\u201375 sec between rounds",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Thruster (Squat + Press)",
+          "link": "exercises/dumbbell_thruster.json",
+          "cues": []
+        },
+        {
+          "kind": "exercise",
+          "name": "Renegade Row",
+          "link": "exercises/renegade_row.json",
+          "cues": []
+        },
+        {
+          "kind": "exercise",
+          "name": "Step-Up",
+          "link": "exercises/step_up.json",
+          "cues": []
+        },
+        {
+          "kind": "exercise",
+          "name": "Plank Shoulder Tap",
+          "link": "exercises/plank_shoulder_tap.json",
+          "cues": []
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Core Finisher",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Weighted Deadbug",
+          "link": "exercises/weighted_deadbug.json",
+          "cues": []
+        },
+        {
+          "kind": "exercise",
+          "name": "Hollow Hold",
+          "link": "exercises/hollow_hold.json",
+          "cues": []
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Cooldown (5\u20138 min)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Child\u2019s Pose",
+          "link": "exercises/childs_pose.json",
+          "cues": []
+        },
+        {
+          "kind": "exercise",
+          "name": "Thread the Needle",
+          "link": "exercises/thread_the_needle.json",
+          "cues": []
+        },
+        {
+          "kind": "exercise",
+          "name": "Seated Forward Fold",
+          "link": "exercises/seated_forward_fold.json",
+          "cues": []
+        }
+      ]
+    }
+  ]
+}

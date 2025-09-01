@@ -1,0 +1,172 @@
+{
+  "version": "1",
+  "title": "Lower Body Strength \u2013 Block 1, Week 3",
+  "block": 1,
+  "week": 3,
+  "sections": [
+    {
+      "type": "Main Work",
+      "title": "Goal",
+      "items": []
+    },
+    {
+      "type": "Main Work",
+      "title": "Day",
+      "items": []
+    },
+    {
+      "type": "Strength",
+      "title": "\ud83c\udfcb\ufe0f\u200d\u2642\ufe0f Main Workout (Straight Sets \u2013 finish all sets before moving on)",
+      "items": []
+    },
+    {
+      "type": "Main Work",
+      "title": "1. Dumbbell Goblet Squat",
+      "items": []
+    },
+    {
+      "type": "Main Work",
+      "title": "1. [Dumbbell Goblet Squat](../exercises/dumbbell_goblet_squat.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Goblet Squat",
+          "link": "exercises/dumbbell_goblet_squat.json",
+          "cues": []
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "2. Dumbbell Romanian Deadlift",
+      "items": []
+    },
+    {
+      "type": "Main Work",
+      "title": "2. [Dumbbell Romanian Deadlift](../exercises/dumbbell_romanian_deadlift.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Romanian Deadlift",
+          "link": "exercises/dumbbell_romanian_deadlift.json",
+          "cues": []
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "3. Reverse Lunge (Alternating)",
+      "items": []
+    },
+    {
+      "type": "Main Work",
+      "title": "3. [Reverse Lunge (Alternating)](../exercises/reverse_lunge_alternating.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Reverse Lunge (Alternating)",
+          "link": "exercises/reverse_lunge_alternating.json",
+          "cues": []
+        }
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "4. Ruck Deadlift to Row",
+      "items": []
+    },
+    {
+      "type": "Conditioning",
+      "title": "4. [Ruck Deadlift to Row](../exercises/ruck_deadlift_to_row.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Ruck Deadlift to Row",
+          "link": "exercises/ruck_deadlift_to_row.json",
+          "cues": []
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "\ud83c\udfaf Accessory Core & Stability",
+      "items": []
+    },
+    {
+      "type": "Main Work",
+      "title": "5. Seated Leg Extension with Ruck",
+      "items": []
+    },
+    {
+      "type": "Main Work",
+      "title": "5. [Seated Leg Extension with Ruck](../exercises/seated_leg_extension_with_ruck.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Seated Leg Extension with Ruck",
+          "link": "exercises/seated_leg_extension_with_ruck.json",
+          "cues": []
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "6. Hollow Hold",
+      "items": []
+    },
+    {
+      "type": "Main Work",
+      "title": "6. [Hollow Hold](../exercises/hollow_hold.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Hollow Hold",
+          "link": "exercises/hollow_hold.json",
+          "cues": []
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "\ud83e\uddca Cooldown (5\u20137 minutes)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Supine Twist",
+          "link": "exercises/supine_twist.json",
+          "cues": []
+        },
+        {
+          "kind": "exercise",
+          "name": "Low Lunge Stretch",
+          "link": "exercises/low_lunge_stretch.json",
+          "cues": []
+        },
+        {
+          "kind": "exercise",
+          "name": "Calf Stretch (wall or step)",
+          "link": "exercises/calf_stretch_wall_or_step.json",
+          "cues": [
+            "**Rest:** 90 sec",
+            "**Suggested Weight:** 40\u201355 lb dumbbell or ruck plate",
+            "Keep chest upright, core braced",
+            "Drive through heels to return to standing"
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Seated Forward Fold",
+          "link": "exercises/seated_forward_fold.json",
+          "cues": [
+            "Drive through heels to return to standing"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "\u2705 Notes",
+      "items": []
+    }
+  ]
+}

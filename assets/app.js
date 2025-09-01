@@ -110,9 +110,9 @@
 
   function decorateReadmeWithLogLinks(md) {
   // Render README as-is; workout title links open the session view.
-  var html = renderMarkdownBasic(md);
-  // After rendering, DOM-fix any exercise links to include repo base on GitHub Pages
-  // We can't fix inside string safely for all cases; do it after insertion below.
+  // Prefer .json links if a corresponding JSON is referenced alongside.
+  var updated = md.replace(/\((workouts\/[\w\-]+)\.md\)/g, '($1.json)');
+  var html = renderMarkdownBasic(updated);
   return html;
   }
 
@@ -352,6 +352,16 @@
   function parseJSONPrescriptions(jsonText) {
     var byEx = {};
 
+    function plainName(name) {
+      var s = String(name == null ? '' : name).trim();
+      // Drop leading numbering like "1)", "1.", "1 -"
+      s = s.replace(/^\s*\d+[\)\.-]\s*/, '');
+      // If markdown-style link, extract the text inside []
+      var m = s.match(/^\s*\[([^\]]+)\]\(([^)]+)\)/);
+      if (m) return m[1];
+      return s;
+    }
+
     function firstNumberFrom(text) {
       if (typeof text === 'number') return text;
       if (typeof text !== 'string') return null;
@@ -392,7 +402,7 @@
 
     function addFor(name, cfg, roundsHint) {
       if (!name) return;
-      var exKey = slugify(String(name));
+      var exKey = slugify(plainName(String(name)));
   var sets = null, reps = null, weight = null, rpe = null, multiplier = null;
   var timeSeconds = null, holdSeconds = null, distanceMeters = null, distanceMiles = null;
       if (cfg) {
@@ -503,10 +513,14 @@
     var seen = {};
     function add(name) {
       if (!name) return;
-      var key = slugify(String(name));
+  var s = String(name);
+  s = s.replace(/^\s*\d+[\)\.-]\s*/, '');
+  var m = s.match(/^\s*\[([^\]]+)\]\(([^)]+)\)/);
+  if (m) s = m[1];
+  var key = slugify(s);
       if (seen[key]) return;
       seen[key] = true;
-      ex.push({ title: String(name) });
+  ex.push({ title: s });
     }
     function walk(node) {
       if (!node) return;
@@ -561,11 +575,23 @@
     }
     var docH1Title = getFirstHeadingText('h1');
     var fullDocText = workoutContent ? ((workoutContent.textContent || workoutContent.innerText) || '') : '';
+    // Heuristic: detect suggested rounds/sets from headings like "3 Rounds" or "4 sets"
+    function detectRoundsHint(scopeText) {
+      var t = String(scopeText || '');
+      var m = t.match(/(\d+)\s*(?:x|×)?\s*rounds?/i);
+      if (m) return parseInt(m[1], 10) || null;
+      m = t.match(/(\d+)\s*sets?/i);
+      if (m) return parseInt(m[1], 10) || null;
+      return null;
+    }
+    var docRoundsHint = detectRoundsHint(fullDocText);
 
-  function createExerciseCard(title, presetRows, savedRows, headerHTML) {
+  function createExerciseCard(title, presetRows, savedRows, headerHTML, opts) {
+      var options = opts || {};
+      var isReadOnly = !!options.readOnly;
       var exKey = slugify(title);
   var card = document.createElement('div');
-  card.className = 'exercise-card compact';
+  card.className = 'exercise-card compact' + (isReadOnly ? ' readonly' : '');
       card.setAttribute('data-exkey', exKey);
       card.setAttribute('data-name', title);
 
@@ -577,18 +603,24 @@
         card.appendChild(header);
       }
 
-  var setsWrap = document.createElement('div');
-      setsWrap.className = 'exercise-sets';
-      card.appendChild(setsWrap);
+  // In read-only mode (warm-up/mobility/recovery), don't render logging inputs
+      var setsWrap = null;
+      var addBtn = null;
+      if (!isReadOnly) {
+        setsWrap = document.createElement('div');
+        setsWrap.className = 'exercise-sets';
+        card.appendChild(setsWrap);
 
-  // Move the Add set button after the sets
-  var addBtn = document.createElement('button');
-  addBtn.className = 'secondary';
-  addBtn.type = 'button';
-  addBtn.appendChild(document.createTextNode('Add set'));
-  card.appendChild(addBtn);
+        // Move the Add set button after the sets
+        addBtn = document.createElement('button');
+        addBtn.className = 'secondary';
+        addBtn.type = 'button';
+        addBtn.appendChild(document.createTextNode('Add set'));
+        card.appendChild(addBtn);
+      }
 
       function updateSetLabelsLocal() {
+        if (isReadOnly) return;
         var rows = setsWrap.getElementsByClassName('set-row');
         for (var i = 0; i < rows.length; i++) {
           var lbl = rows[i].getElementsByClassName('set-label')[0];
@@ -621,10 +653,11 @@
       }
 
   var initialRows = (savedRows && savedRows.length) ? savedRows : (presetRows || []);
-  var fieldOrder = pickFieldsFromRows(initialRows, title);
+  var fieldOrder = isReadOnly ? [] : pickFieldsFromRows(initialRows, title);
 
   function addSetRow(row, idx) {
-        var r = document.createElement('div');
+  if (isReadOnly || !setsWrap) return; // no set rows in read-only mode and ensure container exists
+  var r = document.createElement('div');
         r.className = 'set-row';
         // Non-editable label for set number (inferred by order)
         var label = document.createElement('span');
@@ -770,20 +803,39 @@
         return obj;
       }
 
-      addBtn.onclick = function () {
-        var snap = snapshotLastRow();
-        if (snap) {
-          var rowsNow = setsWrap.getElementsByClassName('set-row');
-          addSetRow(snap, rowsNow ? rowsNow.length : undefined);
-          return;
-        }
-        if (presetRows && presetRows.length) { addSetRow(presetRows[0], 0); return; }
-        addSetRow({}, undefined);
-      };
+      if (!isReadOnly && addBtn) {
+        addBtn.onclick = function () {
+          var snap = snapshotLastRow();
+          if (snap) {
+            var rowsNow = setsWrap.getElementsByClassName('set-row');
+            addSetRow(snap, rowsNow ? rowsNow.length : undefined);
+            return;
+          }
+          if (presetRows && presetRows.length) { addSetRow(presetRows[0], 0); return; }
+          addSetRow({}, undefined);
+        };
+      }
   // Cards are always editable and expanded; no toggle button
 
   var rows = initialRows;
   for (var i = 0; i < rows.length; i++) addSetRow(rows[i], i);
+      // Sanitize: remove any extra exercise-link bullets accidentally pulled into header/notes
+      try {
+        var mainKey = slugify(title);
+        var extraAnchors = card.querySelectorAll('a[href*="exercises/"]');
+        for (var ai = 0; ai < extraAnchors.length; ai++) {
+          var ahref = extraAnchors[ai].getAttribute('href') || '';
+          var m = ahref.match(/exercises\/([\w\-]+)\.(?:md|json)$/);
+          if (!m || !m[1]) continue;
+          var slug = m[1];
+          if (slugify(slug) !== mainKey) {
+            // Remove the closest list item or the anchor itself
+            var n = extraAnchors[ai];
+            while (n && n !== card && !(n.tagName && (n.tagName === 'LI' || n.tagName === 'P' || n.className === 'exercise-notes'))) n = n.parentNode;
+            if (n && n !== card && n.parentNode) n.parentNode.removeChild(n);
+          }
+        }
+      } catch (e) {}
       return card;
     }
 
@@ -797,6 +849,15 @@
         n = n.parentNode;
       }
       return node.parentNode || workoutContent;
+    }
+
+    function findListParent(node) {
+      var n = node;
+      while (n && n !== workoutContent) {
+        if (n.tagName && (n.tagName === 'UL' || n.tagName === 'OL')) return n;
+        n = n.parentNode;
+      }
+      return null;
     }
 
   // Find the actual nearest heading element (H1-H4) above a node
@@ -888,17 +949,57 @@
       // Determine section by nearest previous heading; skip warm-up/cool-down
       var container = nearestBlockContainer(a);
       var sectionTitle = findPreviousHeading(container);
-      if (isWarmOrCool(sectionTitle)) {
-        // Treat warm-up/cooldown items as matched so they are not injected later
+      var inWarmCool = isWarmOrCool(sectionTitle);
+      var savedRows = saved.exercises[exKey] || [];
+      var savedRows = saved.exercises[exKey] || [];
+      var preset = prescriptions[exKey] || prescriptions[slugify(title)] || [];
+      // If no prescription rows were parsed and we're in a loggable section, seed default rows
+      if (!inWarmCool && (!preset || !preset.length)) {
+        var secRounds = detectRoundsHint(sectionTitle) || docRoundsHint || 3;
+        var defaults = [];
+        for (var di = 1; di <= Math.max(1, secRounds); di++) defaults.push({ set: di });
+        preset = defaults;
+      }
+      var headEl = findNearestHeadingEl(a) || null;
+      // Prefer a simple header with the clean exercise name as a link
+      var headerHTML = '';
+      if (a) {
+        var cleanText = (a.textContent || a.innerText || '').replace(/^\s*\d+[\)\.-]\s*/, '').trim();
+        var hrefFixed = a.getAttribute('href') || '';
+        // Meta (cues/prescription) passed via data-exmeta on anchor from JSON renderer
+        var metaRaw = a.getAttribute('data-exmeta') || '';
+        var meta = null;
+        try { meta = metaRaw ? JSON.parse(metaRaw) : null; } catch (e) { meta = null; }
+        var extraBits = '';
+        if (meta && meta.prescription) {
+          var p = meta.prescription;
+          var parts = [];
+          if (p.sets != null && p.reps != null) parts.push(String(p.sets) + ' x ' + String(p.reps));
+          if (p.weight != null) parts.push(String(p.weight) + ' lb');
+          if (p.multiplier === 2) parts.push('x2');
+          if (p.multiplier === 0) parts.push('bodyweight');
+          if (p.timeSeconds != null) {
+            // reuse secondsToHHMMSS
+            try { parts.push(secondsToHHMMSS(p.timeSeconds)); } catch (e) {}
+          }
+          if (p.distanceMiles != null) parts.push(String(p.distanceMiles) + ' mi');
+          if (p.rpe != null) parts.push('RPE ' + String(p.rpe));
+          if (parts.length) extraBits += ' — ' + parts.join(' · ');
+        }
+        if (meta && meta.cues && meta.cues.length) {
+          extraBits += '<ul>' + meta.cues.map(function(c){ return '<li>' + c + '</li>'; }).join('') + '</ul>';
+        }
+        headerHTML = '<a href="' + hrefFixed + '">' + cleanText + '</a>' + extraBits;
+      } else if (container) {
+        headerHTML = container.innerHTML || '';
+      } else if (headEl) {
+        headerHTML = headEl.outerHTML || '';
+      }
+      if (inWarmCool) {
+        // Do not inject cards for warm-up/cooldown/mobility; mark as handled so we don't auto-inject later
         foundKeys[exKey] = true;
         continue;
       }
-  var savedRows = saved.exercises[exKey] || [];
-  var savedRows = saved.exercises[exKey] || [];
-  var preset = prescriptions[exKey] || prescriptions[slugify(title)] || [];
-  var headEl = findNearestHeadingEl(a) || null;
-  // Prefer the full container (often contains link + prescription text); fallback to heading only
-  var headerHTML = container ? (container.innerHTML || '') : (headEl ? (headEl.outerHTML || '') : '');
   var card = createExerciseCard(normTitle, preset, savedRows, headerHTML);
       // Pull prescription/cues following this container into the card
       var extra = collectFollowingBlocks(container);
@@ -910,9 +1011,25 @@
       }
       // Place card and remove original blocks.
       if (container && container.tagName === 'LI') {
-        // Keep list structure valid: replace LI contents with the card
-        try { container.innerHTML = ''; } catch (e) {}
-        try { container.appendChild(card); } catch (e) { /* fallback below */ }
+        // Insert the card OUTSIDE the list (after UL/OL) to avoid any bullet rendering
+        var parentList = findListParent(container);
+        var listHolder = parentList && parentList.parentNode ? parentList.parentNode : workoutContent;
+        var insertAfter = parentList && parentList.__lastCard ? parentList.__lastCard : parentList;
+        if (listHolder && listHolder.insertBefore) {
+          if (insertAfter && insertAfter.nextSibling) listHolder.insertBefore(card, insertAfter.nextSibling);
+          else listHolder.appendChild(card);
+        } else {
+          workoutContent.appendChild(card);
+        }
+        if (parentList) parentList.__lastCard = card;
+        // Remove the original LI
+        try { container.parentNode && container.parentNode.removeChild(container); } catch (e) {}
+        // If the list is now empty of LI children, remove it
+        try {
+          if (parentList && !parentList.querySelector('li')) {
+            parentList.parentNode && parentList.parentNode.removeChild(parentList);
+          }
+        } catch (e) {}
       } else {
         var parent = container.parentNode || workoutContent;
         if (parent && parent.insertBefore) {
@@ -1258,10 +1375,101 @@
       setVisibility(workoutSection, true);
       var isJSON = /\.json$/i.test(path);
       if (isJSON) {
-        // Render a simple view of the JSON workout
-        var pretty = '';
-        try { pretty = JSON.stringify(JSON.parse(text || '{}'), null, 2); } catch (e) { pretty = text || ''; }
-        workoutContent.innerHTML = '<pre>' + (pretty || '') + '</pre>';
+        // Render a structured view of the JSON workout that pairs with card injection
+        function esc(s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+        function renderItem(it, opts) {
+          if (!it || typeof it !== 'object') return '';
+          var options = opts || {};
+          var kind = String(it.kind || 'exercise');
+          var name = String(it.name || '');
+          var link = String(it.link || '');
+          // Normalize exercise link to exercises/<slug>.json when missing
+          if (!link && name) {
+            var slug = slugify(name);
+            link = 'exercises/' + slug + '.json';
+          }
+          function inlineMarkdown(text) {
+            var s = String(text == null ? '' : text);
+            // Escape basic HTML
+            s = s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+            // Replace [text](url) with anchors (simple)
+            s = s.replace(/\[(.*?)\]\((.*?)\)/g, function(_, t, u){ return '<a href="' + u + '">' + t + '</a>'; });
+            return s;
+          }
+          function attrEscape(s) {
+            return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+          }
+          if (kind === 'note') {
+            return '<p>' + esc(name) + '</p>';
+          }
+          if (kind === 'exercise') {
+            var clean = String(name).replace(/^\s*\d+[\)\.-]\s*/, '');
+            var meta = { cues: (it.cues || []), prescription: (it.prescription || null) };
+            var html = '<li><a href="' + esc(link) + '" data-exmeta="' + attrEscape(JSON.stringify(meta)) + '">' + esc(clean) + '</a>';
+            // Inline cues under the item so they migrate into the card header
+            if (!options.suppressCues && it.cues && it.cues.length) {
+              html += '<ul>' + it.cues.map(function(c){ return '<li>' + inlineMarkdown(c) + '</li>'; }).join('') + '</ul>';
+            }
+            html += '</li>';
+            return html;
+          }
+          if (kind === 'superset' || kind === 'circuit') {
+            var cap = kind.charAt(0).toUpperCase() + kind.slice(1);
+            var inner = '';
+            if (it.children && it.children.length) {
+              inner = it.children.map(function(ch){ return renderItem(ch, options); }).join('');
+              if (inner && inner.indexOf('<li') !== -1) inner = '<ul>' + inner + '</ul>';
+            }
+            return '<div><h3>' + esc(cap + (it.name ? (': ' + it.name) : '')) + '</h3>' + inner + '</div>';
+          }
+          return '';
+        }
+        function renderSection(sec) {
+          if (!sec) return '';
+          var title = String(sec.title || '');
+          // Clean markdown link syntax in titles like "1) [Goblet Squat](...)"
+          title = title.replace(/^\s*\d+[\)\.-]\s*/, '');
+          var mt = title.match(/^\s*\[([^\]]+)\]\(([^)]+)\)/);
+          if (mt) title = mt[1];
+          var type = String(sec.type || '');
+          var rounds = (sec.rounds != null) ? (' — ' + sec.rounds + ' rounds') : '';
+          var h = '<section><h2>' + esc(title || type || 'Section') + esc(rounds) + '</h2>';
+          // Detect warm-up / cooldown / mobility / recovery sections
+          var tlow = (title + ' ' + type).toLowerCase();
+          var isWarmish = (tlow.indexOf('warm') !== -1 || tlow.indexOf('cool') !== -1 || tlow.indexOf('mobility') !== -1 || tlow.indexOf('recovery') !== -1);
+          // Render notes as basic markdown (so links and bullets render) and, for warm/cool/mobility, prefer notes over items to avoid duplication
+          if (sec.notes) {
+            try { h += renderMarkdownBasic(String(sec.notes)); } catch (e) { h += '<p>' + esc(sec.notes) + '</p>'; }
+          }
+          var shouldRenderItems = true;
+          if (isWarmish && sec.notes) shouldRenderItems = false;
+          if (shouldRenderItems && sec.items && sec.items.length) {
+            // Suppress rendering inline cues; cards will show cues/prescriptions
+            var itemsHtml = sec.items.map(function(it){ return renderItem(it, { suppressCues: true }); }).join('');
+            // Wrap loose <li> in a <ul>
+            if (itemsHtml.indexOf('<li') !== -1) itemsHtml = '<ul>' + itemsHtml + '</ul>';
+            h += itemsHtml;
+          }
+          h += '</section>';
+          return h;
+        }
+        var obj = null;
+        try { obj = JSON.parse(text || '{}'); } catch (e) { obj = null; }
+        if (!obj || !obj.sections) {
+          // Fallback to pretty JSON
+          var pretty = '';
+          try { pretty = JSON.stringify(JSON.parse(text || '{}'), null, 2); } catch (e) { pretty = text || ''; }
+          workoutContent.innerHTML = '<pre>' + (pretty || '') + '</pre>';
+        } else {
+          var parts = [];
+          // Title
+          var titleTop = obj.title ? '<h1>' + esc(obj.title) + '</h1>' : '';
+          if (obj.date) titleTop += '<p class="muted">' + esc(obj.date) + '</p>';
+          if (titleTop) parts.push(titleTop);
+          for (var si = 0; si < obj.sections.length; si++) parts.push(renderSection(obj.sections[si]));
+          workoutContent.innerHTML = parts.join('\n');
+        }
+        fixExerciseAnchors(workoutContent);
       } else {
         // render markdown (basic)
         workoutContent.innerHTML = renderMarkdownBasic(text || '');

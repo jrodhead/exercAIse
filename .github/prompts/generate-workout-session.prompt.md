@@ -1,7 +1,7 @@
 ---
 mode: ask
 ---
-# Workout Session Generation Prompt
+# Workout Session Generation Prompt (JSON Output)
 
 When prompted with 'what's the next workout?' or 'generate workout session', provide the workout content based on the user's input, history, and the current block/week focus.
 
@@ -13,21 +13,14 @@ When prompted with 'what's the next workout?' or 'generate workout session', pro
 - Review the block periodization details in `.github/instructions/block-progression.instructions.md` for the current block and week.
 - Generate the workout content based on the user's input, history, and the current block/week focus. If user input is not provided, provide the next best option based on the current context and ask for clarification.
 - Ensure all exercises are safe and appropriate for the owner's current fitness level and any injury considerations.
-- Link every exercise name to `../exercises/<slug>.json`. JSON is the source of truth. If you introduce a new exercise, create `exercises/<slug>.json` conforming to `schemas/exercise.schema.json` (v2 fields).
+- Ensure every exercise item has a `link` to `exercises/<slug>.json`. JSON is the source of truth. If you introduce a new exercise, create `exercises/<slug>.json` conforming to `schemas/exercise.schema.json` (v2 fields).
  - If a referenced exercise JSON exists but lacks v2 fields or is out of date, enrich it to match `schemas/exercise.schema.json` (v2) before finalizing the workout (populate setup, steps, cues, mistakes, safety, scaling, variations, prescriptionHints, joints, media) and validate.
-- Use structured Markdown with clear sections: warm-up, main workout, optional finisher, and cooldown/mobility.
- - Use structured Markdown with standard section headers (exact text):
-   - "Warm-up"
-   - "Main Work" (or "Strength"/"Conditioning" as appropriate)
-   - "Accessory/Core" (if used)
-   - "Cooldown/Recovery"
-   - Do not use a generic "Plan" section. Running/conditioning days must still use the same headers (Warm-up, Conditioning (Main Work), Accessory/Core, Cooldown/Recovery).
-- For each exercise, include:
-  - Exercise/Pose Name
-  - Sets/Reps or Hold Time
-  - Rest (if applicable)
-  - Suggested Weight in pounds (if applicable), based on performed history and current block/week focus
-  - 3–5 bullet-point execution cues
+- Structure the JSON into `sections` with consistent `type` values (e.g., Warm-up, Strength/Conditioning, Accessory/Core, Cooldown/Recovery). Avoid generic names like "Plan".
+- For each exercise item, include:
+  - `name`
+  - `link` (to exercises JSON)
+  - `prescription` with sets/reps/weight/rpe/time/distance as appropriate
+  - optional `cues` array (3–5 brief execution cues)
 - Clarify whether exercises are performed as straight sets, supersets, or circuits.
 - Provide rest time guidance between sets or rounds.
 - Begin each workout with a warm-up (mobility/activation).
@@ -64,18 +57,10 @@ When prompted with 'what's the next workout?' or 'generate workout session', pro
 - Deload weeks:
   - Reduce volume (sets) by 30–50% and/or load by 10–20%; keep movements crisp and pain-free.
 
-### Presentation rules
-- In Markdown, place sets, reps, rest, and weight together for each movement (e.g., "4 x 8 @ 45 x2 lb, Rest 90 sec").
-- In the final JSON, include the weight value in the `prescription.weight` field. Use a string for per-hand notation (e.g., "45 x2 lb").
+### JSON details
+- Put sets, reps, rest and weight under `prescription`. Use a string for per-hand notation if needed (e.g., "45 x2 lb").
 
 ## Output Format
-- All workouts must be in Markdown for easy logging.
-- Use bullet points and clear section headers.
-- Date must be included at the top in bold (e.g., `**Date:** July 29, 2025`).
-- File naming, README update, and integration are handled separately.
- - Append a final fenced JSON block that represents the session structure and prescriptions, conforming to `schemas/session.schema.json`. Use a fence like:
-   ```json session-structure
-   { ... }
-   ```
-   This block is used by the logger to prefill values and by validators.
+- Return ONLY a single JSON object conforming to `schemas/session.schema.json`.
+- Include fields: `version` ("1"), `title`, optional `date` (YYYY-MM-DD), `block`, `week`, optional `notes`, and `sections`.
   - Ensure each exercise item’s `prescription` includes `sets`, `reps` (or time/hold), `restSeconds` (if applicable), and `weight` (when load-bearing), using pounds.

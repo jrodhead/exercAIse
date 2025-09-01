@@ -1,0 +1,133 @@
+{
+  "version": "1",
+  "title": "Lower Body Strength & Mobility \u2013 Block 2, Week 1",
+  "block": 2,
+  "week": 1,
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Warm-Up (5\u20137 min)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Bodyweight Squat",
+          "link": "exercises/bodyweight_squat.json",
+          "cues": []
+        },
+        {
+          "kind": "exercise",
+          "name": "Glute Bridge",
+          "link": "exercises/glute_bridge.json",
+          "cues": [
+            "[Bodyweight Squat](../exercises/bodyweight_squat.json): 2 sets x 12 reps",
+            "[Glute Bridge](../exercises/glute_bridge.json): 2 sets x 10 reps",
+            "[World\u2019s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 5 reps per side"
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "World\u2019s Greatest Stretch",
+          "link": "exercises/worlds_greatest_stretch.json",
+          "cues": [
+            "[Glute Bridge](../exercises/glute_bridge.json): 2 sets x 10 reps",
+            "[World\u2019s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 5 reps per side"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Main Workout",
+      "items": []
+    },
+    {
+      "type": "Main Work",
+      "title": "1. [Goblet Squat](../exercises/goblet_squat.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Goblet Squat",
+          "link": "exercises/goblet_squat.json",
+          "cues": []
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "2. [Dumbbell Romanian Deadlift](../exercises/dumbbell_romanian_deadlift.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Romanian Deadlift",
+          "link": "exercises/dumbbell_romanian_deadlift.json",
+          "cues": []
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "3. [Reverse Lunge](../exercises/reverse_lunge.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Reverse Lunge",
+          "link": "exercises/reverse_lunge.json",
+          "cues": []
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "4. [Standing Calf Raise](../exercises/standing_calf_raise.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Standing Calf Raise",
+          "link": "exercises/standing_calf_raise.json",
+          "cues": []
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "Optional Finisher",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Wall Sit",
+          "link": "exercises/wall_sit.json",
+          "cues": []
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Cooldown & Mobility (5\u20138 min)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "90/90 Hip Stretch",
+          "link": "exercises/90_90_hip_stretch.json",
+          "cues": []
+        },
+        {
+          "kind": "exercise",
+          "name": "Seated Forward Fold",
+          "link": "exercises/seated_forward_fold.json",
+          "cues": [
+            "[Glute Bridge](../exercises/glute_bridge.json): 2 sets x 10 reps",
+            "[World\u2019s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 5 reps per side"
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Lying Spinal Twist",
+          "link": "exercises/lying_spinal_twist.json",
+          "cues": [
+            "[World\u2019s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 5 reps per side"
+          ]
+        }
+      ]
+    }
+  ]
+}

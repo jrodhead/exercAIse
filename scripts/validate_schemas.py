@@ -31,7 +31,7 @@ def load_json(path):
 
 def main():
     try:
-        from jsonschema import Draft7Validator, RefResolver
+        from jsonschema import Draft7Validator
     except Exception:
         print("Schema validation requires the 'jsonschema' package.\nInstall with: pip install jsonschema", file=sys.stderr)
         sys.exit(2)
@@ -40,13 +40,10 @@ def main():
     session_schema = load_json(SESSION_SCHEMA_PATH)
     exercise_schema = load_json(EXERCISE_SCHEMA_PATH)
 
-    # Prepare validators
-    base_uri = 'file://' + os.path.abspath(SCHEMA_DIR) + '/'
-    performed_resolver = RefResolver(base_uri=base_uri, referrer=performed_schema)
-    session_resolver = RefResolver(base_uri=base_uri, referrer=session_schema)
-    performed_validator = Draft7Validator(performed_schema, resolver=performed_resolver)
-    session_validator = Draft7Validator(session_schema, resolver=session_resolver)
-    exercise_validator = Draft7Validator(exercise_schema, resolver=performed_resolver)
+    # Prepare validators (schemas only use internal refs)
+    performed_validator = Draft7Validator(performed_schema)
+    session_validator = Draft7Validator(session_schema)
+    exercise_validator = Draft7Validator(exercise_schema)
 
     errors = []
 
