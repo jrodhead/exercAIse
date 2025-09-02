@@ -19,6 +19,7 @@
       "type": "Conditioning",
   "title": "Circuit – 2 rounds",
   "rounds": 2,
+      "notes": "Circuit flow: move station-to-station with brisk transitions; do not rest between exercises. Rest 60–90 seconds between rounds (deload).",
       "items": [
         {
           "kind": "circuit",

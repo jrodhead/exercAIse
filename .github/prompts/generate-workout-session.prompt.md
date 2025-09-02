@@ -23,6 +23,10 @@ When prompted with 'what's the next workout?' or 'generate workout session', pro
   - optional `cues` array (3–5 brief execution cues)
 - Clarify whether exercises are performed as straight sets, supersets, or circuits.
 - Provide rest time guidance between sets or rounds.
+  - Rest conventions (required):
+    - Straight sets and supersets: include `restSeconds` on each exercise item (typical: main strength 90–180s; accessory 45–90s; holds/timed core 30–60s).
+    - Circuits (3+ moves): do NOT include `restSeconds` on the child exercises. Instead, state round-rest clearly in the section or circuit notes (e.g., "Rest 60–90s between rounds; move briskly between stations").
+    - Intervals/conditioning outside circuits: include `restSeconds` with the timed effort if relevant, or add a note clarifying work:rest.
 - Begin each workout with a warm-up (mobility/activation).
 - For strength: include a finisher or accessory work if applicable.
 - For conditioning: include a main circuit with intervals or timed sets.
@@ -58,7 +62,7 @@ When prompted with 'what's the next workout?' or 'generate workout session', pro
   - Reduce volume (sets) by 30–50% and/or load by 10–20%; keep movements crisp and pain-free.
 
 ### JSON details
-- Put sets, reps, rest and weight under `prescription`. Use a string for per-hand notation if needed (e.g., "45 x2 lb").
+- Put sets, reps, rest and weight under `prescription`. Use a string for per-hand notation if needed (e.g., "45 x2 lb"). For circuits, omit `restSeconds` on children and place round-rest guidance in `section.notes`.
 
 ## Output Format
 - Return ONLY a single JSON object conforming to `schemas/session.schema.json`.

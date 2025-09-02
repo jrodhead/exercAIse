@@ -920,8 +920,15 @@
       return '';
     }
 
-    function isWarmOrCool(sectionTitle) {
-      var t = String(sectionTitle || '').toLowerCase();
+    function isWarmOrCool(sectionTitle, anchorEl) {
+      // Prefer explicit section type if available
+      var secType = '';
+      try {
+        var secEl = anchorEl;
+        while (secEl && secEl !== workoutContent && !(secEl.tagName && secEl.tagName.toLowerCase() === 'section')) secEl = secEl.parentNode;
+        if (secEl && secEl.getAttribute) secType = (secEl.getAttribute('data-sectype') || '');
+      } catch (e) {}
+      var t = String((secType || sectionTitle) || '').toLowerCase();
       return (
         t.indexOf('warm') !== -1 ||
         t.indexOf('warm-up') !== -1 ||
@@ -949,8 +956,7 @@
       // Determine section by nearest previous heading; skip warm-up/cool-down
       var container = nearestBlockContainer(a);
       var sectionTitle = findPreviousHeading(container);
-      var inWarmCool = isWarmOrCool(sectionTitle);
-      var savedRows = saved.exercises[exKey] || [];
+  var inWarmCool = isWarmOrCool(sectionTitle, a);
       var savedRows = saved.exercises[exKey] || [];
       var preset = prescriptions[exKey] || prescriptions[slugify(title)] || [];
       // If no prescription rows were parsed and we're in a loggable section, seed default rows
@@ -975,19 +981,26 @@
           var p = meta.prescription;
           var parts = [];
           if (p.sets != null && p.reps != null) parts.push(String(p.sets) + ' x ' + String(p.reps));
-          if (p.weight != null) parts.push(String(p.weight) + ' lb');
-          if (p.multiplier === 2) parts.push('x2');
-          if (p.multiplier === 0) parts.push('bodyweight');
+          // Weight: append ' lb' only when numeric; if string, use as-is (may include x2/units)
+          if (p.weight != null) {
+            if (typeof p.weight === 'number') parts.push(String(p.weight) + ' lb');
+            else parts.push(String(p.weight));
+          }
+          // Multiplier tag only if not already expressed in a weight string
+          var weightStr = (typeof p.weight === 'string') ? p.weight.toLowerCase() : '';
+          if (p.multiplier === 2 && !(weightStr && /(x2|×2|per\s*hand|each|per\s*side)/.test(weightStr))) parts.push('x2');
+          if (p.multiplier === 0 && !(weightStr && /bodyweight/.test(weightStr))) parts.push('bodyweight');
           if (p.timeSeconds != null) {
             // reuse secondsToHHMMSS
             try { parts.push(secondsToHHMMSS(p.timeSeconds)); } catch (e) {}
           }
           if (p.distanceMiles != null) parts.push(String(p.distanceMiles) + ' mi');
           if (p.rpe != null) parts.push('RPE ' + String(p.rpe));
-          if (parts.length) extraBits += ' — ' + parts.join(' · ');
+          if (p.restSeconds != null) parts.push('Rest ' + String(p.restSeconds) + 's');
+          if (parts.length) extraBits += ' — <span class="ex-presc">' + parts.join(' · ') + '</span>';
         }
         if (meta && meta.cues && meta.cues.length) {
-          extraBits += '<ul>' + meta.cues.map(function(c){ return '<li>' + c + '</li>'; }).join('') + '</ul>';
+          extraBits += '<ul class="ex-cues">' + meta.cues.map(function(c){ return '<li>' + c + '</li>'; }).join('') + '</ul>';
         }
         headerHTML = '<a href="' + hrefFixed + '">' + cleanText + '</a>' + extraBits;
       } else if (container) {
@@ -1433,7 +1446,12 @@
           if (mt) title = mt[1];
           var type = String(sec.type || '');
           var rounds = (sec.rounds != null) ? (' — ' + sec.rounds + ' rounds') : '';
-          var h = '<section><h2>' + esc(title || type || 'Section') + esc(rounds) + '</h2>';
+          function attrEscapeLocal(s) {
+            return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+          }
+          var typeText = type || 'Section';
+          var display = typeText + (title ? (' — ' + title) : '');
+          var h = '<section data-sectype="' + attrEscapeLocal(typeText) + '"><h2>' + esc(display) + esc(rounds) + '</h2>';
           // Detect warm-up / cooldown / mobility / recovery sections
           var tlow = (title + ' ' + type).toLowerCase();
           var isWarmish = (tlow.indexOf('warm') !== -1 || tlow.indexOf('cool') !== -1 || tlow.indexOf('mobility') !== -1 || tlow.indexOf('recovery') !== -1);
@@ -1466,6 +1484,11 @@
           var titleTop = obj.title ? '<h1>' + esc(obj.title) + '</h1>' : '';
           if (obj.date) titleTop += '<p class="muted">' + esc(obj.date) + '</p>';
           if (titleTop) parts.push(titleTop);
+          // Session-level notes before sections
+          if (obj.notes) {
+            try { parts.push(renderMarkdownBasic(String(obj.notes))); }
+            catch (e) { parts.push('<p>' + esc(obj.notes) + '</p>'); }
+          }
           for (var si = 0; si < obj.sections.length; si++) parts.push(renderSection(obj.sections[si]));
           workoutContent.innerHTML = parts.join('\n');
         }
