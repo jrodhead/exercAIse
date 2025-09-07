@@ -1,0 +1,93 @@
+{
+  "version": "1",
+  "workoutFile": "workouts/2-4_Lower_Body_Strength_Mobility.json",
+  "timestamp": "2025-09-04T14:14:05.277Z",
+  "exercises": {
+    "goblet-squat": {
+      "name": "Goblet Squat",
+      "sets": [
+        {
+          "weight": 55,
+          "reps": 8,
+          "rpe": 6.5
+        },
+        {
+          "weight": 55,
+          "reps": 8,
+          "rpe": 6.5
+        },
+        {
+          "weight": 55,
+          "reps": 8,
+          "rpe": 6.5
+        }
+      ]
+    },
+    "dumbbell-romanian-deadlift": {
+      "name": "Dumbbell Romanian Deadlift",
+      "sets": [
+        {
+          "weight": 55,
+          "multiplier": 2,
+          "reps": 8,
+          "rpe": 6.5
+        },
+        {
+          "weight": 55,
+          "multiplier": 2,
+          "reps": 8,
+          "rpe": 6.5
+        },
+        {
+          "weight": 55,
+          "multiplier": 2,
+          "reps": 8,
+          "rpe": 6.5
+        }
+      ]
+    },
+    "bulgarian-split-squat": {
+      "name": "Bulgarian Split Squat",
+      "sets": [
+        {
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 6.5
+        },
+        {
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 6.5
+        }
+      ]
+    },
+    "standing-calf-raise": {
+      "name": "Standing Calf Raise",
+      "sets": [
+        {
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 12
+        },
+        {
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 12
+        }
+      ]
+    },
+    "side-plank": {
+      "name": "Side Plank",
+      "sets": [
+        {
+          "timeSeconds": 35
+        },
+        {
+          "timeSeconds": 35
+        }
+      ]
+    }
+  }
+}
