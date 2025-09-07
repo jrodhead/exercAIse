@@ -1,0 +1,36 @@
+{
+  "name": "Bench Dip",
+  "equipment": ["bench", "bodyweight"],
+  "tags": ["triceps", "arms", "bodyweight"],
+  "setup": [
+    "Sit on bench edge, hands beside hips fingers forward",
+    "Extend legs with heels on floor (knees can stay slightly bent for easier version)",
+    "Scoot hips off edge, arms supporting body"
+  ],
+  "steps": [
+    "Inhale as you bend elbows, lowering body straight down—shoulders stay open",
+    "Descend until elbows ~90° (or comfortable)",
+    "Exhale and press through palms to extend elbows back to start without locking hard"
+  ],
+  "cues": [
+    "Elbows track back",
+    "Chest tall, no shoulder roll",
+    "Control the bottom",
+    "Press evenly"
+  ],
+  "mistakes": [
+    "Shoulders collapsing forward",
+    "Flaring elbows excessively",
+    "Going too deep causing anterior shoulder strain",
+    "Using legs to jump body up"
+  ],
+  "safety": "If anterior shoulder discomfort, reduce range or switch to triceps bench push-up or cable press-down.",
+  "scaling": {
+    "regressions": ["Feet closer (knees bent)", "Assisted with light leg drive", "Parallel bar dip negative partial"],
+    "progressions": ["Add plate to lap", "Straight-leg elevated feet", "Tempo or 2s pause at bottom"]
+  },
+  "variations": ["Feet elevated dip", "Band-assisted dip (parallel bars)", "Triceps bench push-up"],
+  "prescriptionHints": {"reps": "8–15", "rpe": "6–8", "notes": "Stop 1–2 reps before joint strain; maintain shoulder position."},
+  "joints": {"sensitiveJoints": ["shoulders", "wrists", "elbows"], "notes": "Keep scapulae retracted lightly; wrists under shoulders."},
+  "media": {"video": "", "images": []}
+}

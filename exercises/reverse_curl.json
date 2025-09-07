@@ -1,0 +1,37 @@
+{
+  "name": "Reverse Curl",
+  "equipment": ["dumbbell", "barbell", "ez bar"],
+  "tags": ["arms", "biceps", "forearms", "strength"],
+  "setup": [
+    "Stand tall with feet hip-width, shoulders relaxed",
+    "Hold dumbbells (or bar) with overhand (pronated) grip, hands about shoulder-width",
+    "Elbows stay close to torso, wrists neutral (no excessive extension)"
+  ],
+  "steps": [
+    "Inhale; brace lightly while keeping ribs stacked",
+    "Curl the weight by flexing at the elbows—avoid swinging shoulders",
+    "Stop just before elbows drift forward; squeeze briefly",
+    "Lower under control (2–3 sec) to full extension without locking hard"
+  ],
+  "cues": [
+    "Knuckles to ceiling",
+    "Elbows stay pinned",
+    "Slow on the way down",
+    "Wrists straight"
+  ],
+  "mistakes": [
+    "Shrugging shoulders up",
+    "Using hip swing/momentum",
+    "Letting wrists extend back",
+    "Elbows drifting forward early"
+  ],
+  "safety": "Use a lighter load than standard curl; overhand grip stresses forearms more. If wrist discomfort, use EZ bar or lighten weight.",
+  "scaling": {
+    "regressions": ["Lighter dumbbells", "Use EZ bar", "Seated reverse curl"],
+    "progressions": ["Add slow eccentric (3–4s)", "Pause halfway down", "Barbell reverse curl heavier load"]
+  },
+  "variations": ["Reverse curl to press (complex)", "Cable reverse curl"],
+  "prescriptionHints": {"reps": "8–15", "load": "Light-moderate (RPE 6–8)", "rpe": "6–8", "notes": "Forearm/brachialis focus; prioritize clean wrist position."},
+  "joints": {"sensitiveJoints": ["wrists", "elbows"], "notes": "Keep wrists neutral; avoid excessive grip squeeze if elbows irritated."},
+  "media": {"video": "", "images": []}
+}

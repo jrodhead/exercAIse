@@ -1,0 +1,36 @@
+{
+  "name": "Triceps Kickback",
+  "equipment": ["dumbbell", "bench"],
+  "tags": ["triceps", "arms", "isolation"],
+  "setup": [
+    "Stand in a staggered stance or use a bench for support",
+    "Hinge torso forward ~30–45° with neutral spine",
+    "Hold a dumbbell, elbow bent 90°, upper arm parallel to torso"
+  ],
+  "steps": [
+    "Exhale as you extend the elbow, pushing the dumbbell back until arm is straight (not hyperextended)",
+    "Briefly squeeze triceps at full extension",
+    "Inhale while controlling the return to 90° elbow bend (no swing)"
+  ],
+  "cues": [
+    "Upper arm stays still",
+    "Squeeze at full lockout",
+    "Control back in",
+    "Neutral neck"
+  ],
+  "mistakes": [
+    "Swinging the upper arm",
+    "Using body momentum",
+    "Dropping shoulder or rounding back",
+    "Overextending elbow joint"
+  ],
+  "safety": "Use strict form with lighter load; protect lower back with light brace. If shoulder discomfort, reduce range or use cable.",
+  "scaling": {
+    "regressions": ["Lighter dumbbell", "Two-arm kickback (both arms supported)", "Cable kickback light load"],
+    "progressions": ["Pause at extension 1–2s", "Tempo eccentric 3s", "Add band around wrists for tension"]
+  },
+  "variations": ["Band kickback", "Cable kickback", "Incline bench supported kickback"],
+  "prescriptionHints": {"reps": "10–15", "load": "Light (strict)", "rpe": "6–8", "notes": "Prioritize elbow isolation; stop if shoulder swings."},
+  "joints": {"sensitiveJoints": ["elbows", "lower back"], "notes": "Maintain light core brace and neutral spine."},
+  "media": {"video": "", "images": []}
+}

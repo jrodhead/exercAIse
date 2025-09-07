@@ -25,10 +25,49 @@
           "kind": "circuit",
           "name": "DB + Core Circuit",
           "children": [
-            { "kind": "exercise", "name": "Dumbbell Thruster", "link": "exercises/dumbbell_thruster.json", "prescription": { "reps": 8, "weight": "25 x2 lb" }, "cues": ["Full depth, punch up", "Ribs stacked"] },
-            { "kind": "exercise", "name": "Renegade Row", "link": "exercises/renegade_row.json", "prescription": { "reps": 8, "weight": "25 x2 lb" }, "cues": ["Wide feet, quiet hips"] },
-            { "kind": "exercise", "name": "Farmer Carry", "link": "exercises/farmer_carry.json", "prescription": { "distanceMeters": 30, "weight": "35 x2 lb" } },
+            { "kind": "exercise", "name": "Dumbbell Thruster", "link": "exercises/dumbbell_thruster.json", "prescription": { "reps": 8, "weight": "25 lb per hand" }, "cues": ["Full depth, punch up", "Ribs stacked"] },
+            { "kind": "exercise", "name": "Renegade Row", "link": "exercises/renegade_row.json", "prescription": { "reps": 8, "weight": "25 lb per hand" }, "cues": ["Wide feet, quiet hips"] },
+            { "kind": "exercise", "name": "Farmer Carry", "link": "exercises/farmer_carry.json", "prescription": { "sets": 2, "timeSeconds": 45, "weight": "35 lb per hand", "restSeconds": 60 } },
             { "kind": "exercise", "name": "Hollow Hold", "link": "exercises/hollow_hold.json", "prescription": { "holdSeconds": 30 } }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Arm Finisher Circuit 1 (1 cycle)",
+      "rounds": 1,
+      "notes": "Use 15 lb per hand for all dumbbell moves. Smooth continuous flow; no rest between exercises.",
+      "items": [
+        {
+          "kind": "circuit",
+          "name": "Arm Circuit 1",
+          "children": [
+            { "kind": "exercise", "name": "Biceps Curl", "link": "exercises/biceps_curl.json", "prescription": { "sets": 1, "reps": 10, "weight": "15 lb per hand" } },
+            { "kind": "exercise", "name": "Hammer Curl", "link": "exercises/hammer_curl.json", "prescription": { "sets": 1, "reps": 10, "weight": "15 lb per hand" } },
+            { "kind": "exercise", "name": "Reverse Curl", "link": "exercises/reverse_curl.json", "prescription": { "sets": 1, "reps": 10, "weight": "15 lb per hand" } },
+            { "kind": "exercise", "name": "Overhead Triceps Extension", "link": "exercises/overhead_triceps_extension.json", "prescription": { "sets": 1, "reps": 10, "weight": "15 lb per hand" } },
+            { "kind": "exercise", "name": "Triceps Kickback", "link": "exercises/triceps_kickback.json", "prescription": { "sets": 1, "reps": 10, "weight": "15 lb per hand" } },
+            { "kind": "exercise", "name": "Bench Dip", "link": "exercises/bench_dip.json", "prescription": { "sets": 1, "reps": 10, "weight": "bodyweight" } }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Arm Finisher Circuit 2 (1 cycle)",
+      "rounds": 1,
+      "notes": "Second pass with slight variation (Zottman). Same load: 15 lb per hand.",
+      "items": [
+        {
+          "kind": "circuit",
+          "name": "Arm Circuit 2",
+          "children": [
+            { "kind": "exercise", "name": "Zottman Curl", "link": "exercises/zottman_curl.json", "prescription": { "sets": 1, "reps": 10, "weight": "15 lb per hand" } },
+            { "kind": "exercise", "name": "Hammer Curl", "link": "exercises/hammer_curl.json", "prescription": { "sets": 1, "reps": 10, "weight": "15 lb per hand" } },
+            { "kind": "exercise", "name": "Overhead Triceps Extension", "link": "exercises/overhead_triceps_extension.json", "prescription": { "sets": 1, "reps": 10, "weight": "15 lb per hand" } },
+            { "kind": "exercise", "name": "Triceps Kickback", "link": "exercises/triceps_kickback.json", "prescription": { "sets": 1, "reps": 10, "weight": "15 lb per hand" } },
+            { "kind": "exercise", "name": "Bench Dip", "link": "exercises/bench_dip.json", "prescription": { "sets": 1, "reps": 10, "weight": "bodyweight" } }
           ]
         }
       ]
