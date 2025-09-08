@@ -1,0 +1,132 @@
+{
+  "version": "1",
+  "workoutFile": "workouts/2-4_Full_Body_Conditioning_Core.json",
+  "timestamp": "2025-09-05T01:22:46.955Z",
+  "exercises": {
+    "dumbbell-thruster": {
+      "name": "Dumbbell Thruster",
+      "sets": [
+        {
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 8
+        },
+        {
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 8
+        }
+      ]
+    },
+    "renegade-row": {
+      "name": "Renegade Row",
+      "sets": [
+        {
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 8
+        },
+        {
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 8
+        }
+      ]
+    },
+    "farmer-carry": {
+      "name": "Farmer Carry",
+      "sets": [
+        {
+          "weight": 35,
+          "multiplier": 2,
+          "timeSeconds": 45
+        },
+        {
+          "weight": 35,
+          "multiplier": 2,
+          "timeSeconds": 45
+        }
+      ]
+    },
+    "hollow-hold": {
+      "name": "Hollow Hold",
+      "sets": [
+        {
+          "holdSeconds": 30
+        },
+        {
+          "holdSeconds": 30
+        }
+      ]
+    },
+    "biceps-curl": {
+      "name": "Biceps Curl",
+      "sets": [
+        {
+          "weight": 15,
+          "multiplier": 2,
+          "reps": 10
+        }
+      ]
+    },
+    "hammer-curl": {
+      "name": "Hammer Curl",
+      "sets": [
+        {
+          "weight": 15,
+          "multiplier": 2,
+          "reps": 10
+        }
+      ]
+    },
+    "reverse-curl": {
+      "name": "Reverse Curl",
+      "sets": [
+        {
+          "weight": 15,
+          "multiplier": 2,
+          "reps": 10
+        }
+      ]
+    },
+    "overhead-triceps-extension": {
+      "name": "Overhead Triceps Extension",
+      "sets": [
+        {
+          "weight": 15,
+          "multiplier": 2,
+          "reps": 10
+        }
+      ]
+    },
+    "triceps-kickback": {
+      "name": "Triceps Kickback",
+      "sets": [
+        {
+          "weight": 15,
+          "multiplier": 2,
+          "reps": 10
+        }
+      ]
+    },
+    "bench-dip": {
+      "name": "Bench Dip",
+      "sets": [
+        {
+          "multiplier": 0,
+          "reps": 10
+        }
+      ]
+    },
+    "zottman-curl": {
+      "name": "Zottman Curl",
+      "sets": [
+        {
+          "weight": 15,
+          "multiplier": 2,
+          "reps": 10
+        }
+      ]
+    }
+  }
+}
