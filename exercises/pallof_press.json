@@ -1,27 +1,15 @@
 {
   "name": "Pallof Press",
-  "equipment": [
-    "band",
-    "cable",
-    "dumbbell",
-    "ruck"
-  ],
-  "tags": [
-    "core",
-    "press"
-  ],
-  "cues": [
-    "Stand tall holding a dumbbell or ruck at your chest, feet shoulder-width apart",
-    "Press the weight straight out from your chest, resisting any rotational pull",
-    "Hold briefly at full extension, then return slowly with control",
-    "Brace your core and glutes throughout the movement",
-    "Perform for the prescribed reps, then switch sides if using a band or cable",
-    "Keep your hips and shoulders square",
-    "Focus on resisting rotation, not just moving the weight",
-    "Start with a light weight to master the movement"
-  ],
-  "variations": [
-    "Use a resistance band anchored to the side for more anti-rotation challenge",
-    "Half-kneeling or tall-kneeling Pallof Press"
-  ]
+  "equipment": ["band", "cable", "dumbbell", "ruck"],
+  "tags": ["core", "anti-rotation"],
+  "setup": ["Stand perpendicular to anchor (if using band)", "Handle at sternum, feet shoulder-width"],
+  "steps": ["Brace and press arms straight out resisting rotation", "Pause 1s at full reach", "Return handle under control to chest"],
+  "cues": ["Ribs down", "Brace + exhale", "No twist"],
+  "mistakes": ["Torso turning", "Letting band yank back", "Hyperextending low back"],
+  "safety": "Use moderate tension you can control; stop if low back or shoulder pain.",
+  "scaling": {"regressions": ["Lighter band", "Tall/half-kneeling"], "progressions": ["Longer lever (arms wider)", "Tempo hold 2s"]},
+  "variations": ["Tall-kneeling", "Half-kneeling", "Overhead Pallof press"],
+  "prescriptionHints": {"load": "Band tension / light DB", "reps": "6–12/side", "time": "—", "distance": "—", "rpe": "6–7", "notes": "Quality anti-rotation; exhale on press."},
+  "joints": {"sensitiveJoints": ["shoulders", "lower back"], "notes": "Keep pelvis neutral; avoid anterior tilt."},
+  "media": {"video": "", "images": []}
 }

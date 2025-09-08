@@ -1,22 +1,22 @@
 {
   "name": "Hammer Curl",
-  "equipment": [
-    "dumbbell"
+  "equipment": ["dumbbell"],
+  "tags": ["arms", "biceps", "brachialis"],
+  "setup": [
+    "Stand tall, feet hip-width",
+    "Hold DBs neutral grip at sides"
   ],
-  "tags": [
-    "curl"
+  "steps": [
+    "Curl both (or alternating) DBs keeping elbows near torso",
+    "Brief squeeze near top without forward elbow drift",
+    "Lower under control to full extension"
   ],
-  "cues": [
-    "Stand tall with a dumbbell in each hand, palms facing your body (neutral grip)",
-    "Curl the weights up while keeping your wrists neutral and elbows close to your body",
-    "Lower the weights with control to the starting position",
-    "Avoid swinging the weights",
-    "Keep your upper arms stationary",
-    "Use a moderate weight to maintain good form"
-  ],
-  "variations": [
-    "Seated Hammer Curl",
-    "Cross-Body Hammer Curl",
-    "Alternating or simultaneous curls"
-  ]
+  "cues": ["Neutral wrists", "Elbows stay", "Control down"],
+  "mistakes": ["Swinging body", "Shrugging shoulders", "Wrist flexion/extension"],
+  "safety": "Choose load that keeps trunk still; stop if anterior elbow pain.",
+  "scaling": {"regressions": ["Seated", "One arm at a time"], "progressions": ["Slow eccentric 3–4s", "Pause mid-range"]},
+  "variations": ["Cross-body hammer", "Alternating", "Rope cable hammer"],
+  "prescriptionHints": {"load": "Light–moderate", "reps": "8–15", "time": "—", "distance": "—", "rpe": "6–8", "notes": "Keep 1–2 reps in reserve early block."},
+  "joints": {"sensitiveJoints": ["elbows", "wrists"], "notes": "Maintain neutral wrist to unload forearm tendons."},
+  "media": {"video": "", "images": []}
 }

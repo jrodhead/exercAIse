@@ -1,29 +1,15 @@
 {
   "name": "One-Arm Dumbbell Row (Bench Supported)",
-  "equipment": [
-    "barbell",
-    "bench",
-    "dumbbell",
-    "kettlebell",
-    "ruck"
-  ],
-  "tags": [
-    "core",
-    "row"
-  ],
-  "cues": [
-    "Place one knee and hand on a bench, keeping your spine neutral",
-    "Hold a dumbbell in the other hand, arm extended toward the floor",
-    "Row the dumbbell up to your ribcage, keeping your elbow close to your body",
-    "Lower slowly and fully extend your arm without twisting your torso",
-    "Brace your core and avoid shrugging your shoulder",
-    "Keep your back flat and avoid rotating your torso",
-    "Focus on squeezing your back muscles at the top",
-    "Use a weight that allows full range of motion"
-  ],
-  "variations": [
-    "Standing One-Arm Row",
-    "Use a kettlebell or ruck instead of a dumbbell",
-    "Meadows Row (barbell)"
-  ]
+  "equipment": ["bench", "dumbbell"],
+  "tags": ["row", "upper back", "unilateral"],
+  "setup": ["One knee + same-side hand on bench", "Spine neutral, off-hand holds DB"],
+  "steps": ["Set light brace and pack shoulder", "Row DB toward lower ribs elbow tight", "Pause squeeze, lower under control"],
+  "cues": ["No torso twist", "Elbow to hip", "Neck long"],
+  "mistakes": ["Torso rotating up", "Shrugging top", "Yanking with momentum"],
+  "safety": "Pick load allowing control; keep spine neutral to avoid lumbar strain.",
+  "scaling": {"regressions": ["Lighter load", "Chest-supported row"], "progressions": ["Slow eccentric", "Pause mid + top"]},
+  "variations": ["Kettlebell row", "Ruck row", "Meadows row"],
+  "prescriptionHints": {"load": "Moderate", "reps": "6–12/side", "time": "—", "distance": "—", "rpe": "6–8", "notes": "Keep hips level; full scap retraction."},
+  "joints": {"sensitiveJoints": ["shoulders", "lower back"], "notes": "Maintain brace; avoid overreaching bottom."},
+  "media": {"video": "", "images": []}
 }

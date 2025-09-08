@@ -1,0 +1,31 @@
+{
+  "version": "1",
+  "title": "Yin Yoga Recovery Flow – Block 3, Week 1 (Sunday)",
+  "date": "2025-09-14",
+  "block": 3,
+  "week": 1,
+  "notes": "Deep parasympathetic downshift. Focus: hips, thoracic rotation, posterior chain, gentle cervical decompression. 30–40 min; breathe nasal/light. Avoid aggressive end-range neck extension.",
+  "sections": [
+    { "type": "Warm-up", "title": "Arrival Breath (3–4 min)", "items": [
+      { "kind": "exercise", "name": "Deep Breathing", "link": "exercises/deep_breathing.json", "prescription": { "timeSeconds": 180 }, "cues": ["4s inhale", "6s exhale"] }
+    ] },
+    { "type": "Mobility", "title": "Spine + Thoracic", "items": [
+      { "kind": "exercise", "name": "Cat-Cow to Cobra Stretch", "link": "exercises/cat_cow_to_cobra_stretch.json", "prescription": { "reps": 6 }, "cues": ["Segment slow"] },
+      { "kind": "exercise", "name": "Thread the Needle", "link": "exercises/thread_the_needle.json", "prescription": { "holdSeconds": 45 }, "cues": ["Reach + rotate"] }
+    ] },
+    { "type": "Mobility", "title": "Hips / Posterior Chain", "items": [
+      { "kind": "exercise", "name": "90/90 Hip Stretch", "link": "exercises/90_90_hip_stretch.json", "prescription": { "holdSeconds": 60 }, "cues": ["Both sides"] },
+      { "kind": "exercise", "name": "Sleeping Swan Yin Pigeon", "link": "exercises/sleeping_swan_yin_pigeon.json", "prescription": { "holdSeconds": 75 }, "cues": ["Soften exhale"] },
+      { "kind": "exercise", "name": "Forward Fold", "link": "exercises/forward_fold.json", "prescription": { "holdSeconds": 60 }, "cues": ["Let neck go"] }
+    ] },
+    { "type": "Recovery", "title": "Lower Legs / Ankles", "items": [
+      { "kind": "exercise", "name": "Calf Stretch (Wall or Step)", "link": "exercises/calf_stretch_wall_or_step.json", "prescription": { "holdSeconds": 45 }, "cues": ["Heel heavy"] },
+      { "kind": "exercise", "name": "Standing Calf Raise", "link": "exercises/standing_calf_raise.json", "prescription": { "reps": 12 }, "cues": ["Slow lower"] }
+    ] },
+    { "type": "Recovery", "title": "Decompression / Finish", "items": [
+      { "kind": "exercise", "name": "Supported Child’s Pose", "link": "exercises/supported_childs_pose.json", "prescription": { "holdSeconds": 90 }, "cues": ["Belly expand"] },
+      { "kind": "exercise", "name": "Supine Twist", "link": "exercises/supine_twist.json", "prescription": { "holdSeconds": 60 }, "cues": ["Shoulders grounded"] },
+      { "kind": "exercise", "name": "Deep Breathing", "link": "exercises/deep_breathing.json", "prescription": { "timeSeconds": 120 }, "cues": ["Long exhale"] }
+    ] }
+  ]
+}

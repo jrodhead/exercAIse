@@ -1,0 +1,47 @@
+{
+  "version": "1",
+  "title": "Easy Run – 4 Miles (Block 3, Week 1, Monday)",
+  "date": "2025-09-08",
+  "block": 3,
+  "week": 1,
+  "notes": "Block 3 Week 1 aerobic reset: single weekly run. Keep RPE 5–6 (conversational). Focus on relaxed cadence, soft landings, ankle/foot prep, post-run calf + hip mobility. Overhead volume capped this block—running replaces Monday basketball.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Run Warm-up (8–10 min)",
+      "notes": "Progressively elevate HR; prime ankles/hips.",
+      "items": [
+        { "kind": "exercise", "name": "Brisk Walk", "link": "exercises/brisk_walk.json", "prescription": { "timeSeconds": 180 }, "cues": ["Easy pace", "Nasal breathe"] },
+        { "kind": "exercise", "name": "Leg Swings", "link": "exercises/leg_swings.json", "prescription": { "reps": "10/leg fwd-back + 10 side" }, "cues": ["Tall posture", "Smooth arc"] },
+        { "kind": "exercise", "name": "Loaded March", "link": "exercises/loaded_march.json", "prescription": { "timeSeconds": 60 }, "cues": ["Core tall", "Drive knee"] },
+        { "kind": "exercise", "name": "Calf Stretch (Wall or Step)", "link": "exercises/calf_stretch_wall_or_step.json", "prescription": { "holdSeconds": 30 }, "cues": ["Light pressure", "Heel down"] }
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "Main Run",
+      "notes": "Relaxed aerobic—no pushing pace first mile.",
+      "items": [
+        { "kind": "exercise", "name": "Easy Jog", "link": "exercises/easy_jog.json", "prescription": { "distanceMiles": 4, "rpe": 6 }, "cues": ["Short stride", "Relax shoulders", "Even breathing"] }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Strides (Optional)",
+      "notes": "Only if legs feel fresh—neuromuscular pop.",
+      "items": [
+        { "kind": "exercise", "name": "Strides", "link": "exercises/strides.json", "prescription": { "sets": 4, "timeSeconds": 15, "restSeconds": 60 }, "cues": ["Build 70–85%", "Stay relaxed"] }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Cooldown (6–8 min)",
+      "items": [
+        { "kind": "exercise", "name": "Brisk Walk", "link": "exercises/brisk_walk.json", "prescription": { "timeSeconds": 300 }, "cues": ["Downshift HR"] },
+        { "kind": "exercise", "name": "Standing Calf Raise", "link": "exercises/standing_calf_raise.json", "prescription": { "sets": 1, "reps": 12 }, "cues": ["Full ROM", "Pause top"] },
+        { "kind": "exercise", "name": "Low Lunge Stretch", "link": "exercises/low_lunge_stretch.json", "prescription": { "holdSeconds": 40 }, "cues": ["Hip forward", "Tall chest"] },
+        { "kind": "exercise", "name": "Supine Twist", "link": "exercises/supine_twist.json", "prescription": { "holdSeconds": 40 }, "cues": ["Shoulders heavy"] }
+      ]
+    }
+  ]
+}

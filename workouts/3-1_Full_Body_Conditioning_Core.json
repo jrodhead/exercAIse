@@ -1,0 +1,69 @@
+{
+  "version": "1",
+  "title": "Full-Body Conditioning & Core – Block 3, Week 1 (Friday)",
+  "date": "2025-09-12",
+  "block": 3,
+  "week": 1,
+  "notes": "Block 3 W1 conditioning: mixed strength-density at RPE \u2264 7. Limit overhead volume; focus on flow + core integrity. 3 total circuits (A = strength-skill, B = metabolic, C = core finisher).",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Prep (6–8 min)",
+      "notes": "Light HR rise; pattern hinges + plank bracing.",
+      "items": [
+        { "kind": "exercise", "name": "Jumping Jacks", "link": "exercises/jumping_jacks.json", "prescription": { "timeSeconds": 40 }, "cues": ["Rhythm", "Soft land"] },
+        { "kind": "exercise", "name": "Glute Bridge", "link": "exercises/glute_bridge.json", "prescription": { "reps": 12 }, "cues": ["Squeeze top", "Ribs down"] },
+        { "kind": "exercise", "name": "Deadbug", "link": "exercises/deadbug.json", "prescription": { "reps": "6/side" }, "cues": ["Exhale press", "Slow lower"] },
+        { "kind": "exercise", "name": "Pallof Press", "link": "exercises/pallof_press.json", "prescription": { "reps": "8/side" }, "cues": ["Brace", "No rotation"] }
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "Circuit A – Strength-Skill (2 rounds)",
+      "rounds": 2,
+      "notes": "Controlled cadence. Rest 45–60s after each round.",
+      "items": [
+        { "kind": "circuit", "name": "A", "children": [
+          { "kind": "exercise", "name": "Goblet Squat", "link": "exercises/goblet_squat.json", "prescription": { "reps": 10, "weight": "45 lb" }, "cues": ["Tall chest", "Mid-foot"] },
+          { "kind": "exercise", "name": "One-Arm Dumbbell Row (Bench Supported)", "link": "exercises/one_arm_dumbbell_row.json", "prescription": { "reps": "8/side", "weight": "45 lb" }, "cues": ["Tight elbow path"] },
+          { "kind": "exercise", "name": "Reverse Lunge (Alternating)", "link": "exercises/reverse_lunge_alternating.json", "prescription": { "reps": "8/leg", "weight": "25 lb per hand" }, "cues": ["Step back long", "Front knee stable"] }
+        ] }
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "Circuit B – Metabolic Flow (3 rounds)",
+      "rounds": 3,
+      "notes": "Brisk transitions; steady breathing. Rest 60–75s between rounds.",
+      "items": [
+        { "kind": "circuit", "name": "B", "children": [
+          { "kind": "exercise", "name": "Dumbbell Thruster", "link": "exercises/dumbbell_thruster.json", "prescription": { "reps": 8, "weight": "25 lb per hand" }, "cues": ["Full depth", "Punch overhead"] },
+          { "kind": "exercise", "name": "Renegade Row", "link": "exercises/renegade_row.json", "prescription": { "reps": 8, "weight": "25 lb per hand" }, "cues": ["Hips quiet", "Row strict"] },
+          { "kind": "exercise", "name": "Farmer Carry", "link": "exercises/farmer_carry.json", "prescription": { "timeSeconds": 40, "weight": "35 lb per hand" }, "cues": ["Tall + breathe"] }
+        ] }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Circuit C – Core Finisher (2 rounds)",
+      "rounds": 2,
+      "notes": "Quality over speed. Little to no rest within; 45s between rounds.",
+      "items": [
+        { "kind": "circuit", "name": "C", "children": [
+          { "kind": "exercise", "name": "Hollow Hold", "link": "exercises/hollow_hold.json", "prescription": { "holdSeconds": 25 }, "cues": ["Ribs down", "Reach long"] },
+          { "kind": "exercise", "name": "Side Plank", "link": "exercises/side_plank.json", "prescription": { "holdSeconds": 25 }, "cues": ["Hips stacked", "Neck neutral"] },
+          { "kind": "exercise", "name": "Pallof Press", "link": "exercises/pallof_press.json", "prescription": { "reps": "8/side" }, "cues": ["Brace + exhale"] }
+        ] }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Downshift (5–6 min)",
+      "items": [
+        { "kind": "exercise", "name": "Forward Fold", "link": "exercises/forward_fold.json", "prescription": { "holdSeconds": 40 }, "cues": ["Exhale soften"] },
+        { "kind": "exercise", "name": "Child’s Pose", "link": "exercises/childs_pose.json", "prescription": { "holdSeconds": 45 }, "cues": ["Reach long"] },
+        { "kind": "exercise", "name": "Supported Fish Pose", "link": "exercises/supported_fish_pose.json", "prescription": { "holdSeconds": 45 }, "cues": ["Open chest"] }
+      ]
+    }
+  ]
+}

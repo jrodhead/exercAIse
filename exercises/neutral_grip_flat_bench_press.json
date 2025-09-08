@@ -1,26 +1,15 @@
 {
   "name": "Neutral-Grip Flat Bench Press (Dumbbells)",
-  "equipment": [
-    "bench",
-    "dumbbell"
-  ],
-  "tags": [
-    "core",
-    "press"
-  ],
-  "cues": [
-    "Lie flat on a bench with a dumbbell in each hand, palms facing each other (neutral grip)",
-    "Lower the dumbbells slowly to chest level, keeping elbows at about a 45° angle",
-    "Pause briefly at the bottom before pressing back up to full extension",
-    "Keep your feet planted and core braced throughout",
-    "Start with a moderate weight and focus on control",
-    "Keep wrists straight and avoid letting them bend backward",
-    "Do not bounce the weights off your chest",
-    "Use a spotter if lifting heavy"
-  ],
-  "variations": [
-    "Standard Flat Bench Press (palms forward)",
-    "Incline or Decline Neutral-Grip Press",
-    "Single-Arm Neutral-Grip Press"
-  ]
+  "equipment": ["bench", "dumbbell"],
+  "tags": ["press", "horizontal", "upper body"],
+  "setup": ["Lie supine, feet planted", "DBs above chest neutral grip"],
+  "steps": ["Lower DBs with forearms vertical to mild chest touch", "Pause softly, maintain shoulder blade set", "Press to near lockout without protracting excessively"],
+  "cues": ["Wrists stacked", "Elbows ~45°", "Press evenly"],
+  "mistakes": ["Elbows flaring wide", "Bouncing off chest", "Overarching low back"],
+  "safety": "Neutral grip reduces shoulder stress; keep wrists neutral and spot heavy loads.",
+  "scaling": {"regressions": ["Lighter load", "Floor press"], "progressions": ["Tempo 3s lower", "Pause 1–2s bottom"]},
+  "variations": ["Single-arm", "Incline", "Swiss/neutral bar press"],
+  "prescriptionHints": {"load": "Moderate DBs", "reps": "6–12", "time": "—", "distance": "—", "rpe": "6–9", "notes": "Stop 1–2 reps shy early block."},
+  "joints": {"sensitiveJoints": ["shoulders", "wrists"], "notes": "Maintain scapular retraction + slight arch only."},
+  "media": {"video": "", "images": []}
 }

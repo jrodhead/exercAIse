@@ -1,18 +1,33 @@
 {
   "name": "Arm Circles",
-  "equipment": [
-    "band"
+  "equipment": ["bodyweight"],
+  "tags": ["shoulder", "warm-up", "mobility"],
+  "setup": [
+    "Stand tall, feet hip-width, arms relaxed at sides",
+    "Light brace; ribs stacked over pelvis"
   ],
-  "tags": [
-    "core",
-    "press",
-    "row"
+  "steps": [
+    "Lift arms to the sides and begin small forward circles",
+    "Gradually increase diameter to comfortable range",
+    "Reverse direction after prescribed time"
   ],
   "cues": [
-    "Think “reach wide” to create space in the shoulder joint",
-    "Keep ribs down—avoid flaring the chest",
-    "Motion comes from the shoulder joint, not swinging the torso",
-    "Smooth, controlled, and pain‑free arcs only"
+    "Reach wide, not shrug",
+    "Ribs down, smooth breath",
+    "Motion from shoulder joint"
   ],
-  "safety": "Stop if sharp or radiating pain occurs. Mild warmth or light fatigue is normal; joint discomfort is not."
+  "mistakes": [
+    "Shrugging shoulders toward ears",
+    "Arching low back / flaring ribs",
+    "Fast, jerky circles"
+  ],
+  "safety": "Pain-free range only. Reduce arc or lower arms if pinching occurs.",
+  "scaling": {
+    "regressions": ["Smaller arcs", "One arm at a time"],
+    "progressions": ["Add light 1–2 lb load", "Tempo control (3s each direction)"]
+  },
+  "variations": ["Forward only", "Backward only", "Alternating"],
+  "prescriptionHints": {"load": "Bodyweight", "reps": "—", "time": "20–45s each direction", "distance": "—", "rpe": "2–3", "notes": "Use early in warm-up to lubricate shoulder joint."},
+  "joints": {"sensitiveJoints": ["shoulders", "neck"], "notes": "Keep upper traps relaxed; stop with sharp pain."},
+  "media": {"video": "", "images": []}
 }

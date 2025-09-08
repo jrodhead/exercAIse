@@ -9,6 +9,12 @@ python3 scripts/md_to_session_json.py
 Links in the index prefer the `.json` counterpart automatically.
 AI-generated workouts compatible with a really old iPad
 
+- [Yin Yoga Recovery Flow – Block 3, Week 1 (Sunday)](workouts/3-1_Yin_Yoga_Recovery_Flow.json)
+- [Full-Body Conditioning & Core – Block 3, Week 1 (Friday)](workouts/3-1_Full_Body_Conditioning_Core.json)
+- [Lower Body Strength & Mobility – Block 3, Week 1 (Thursday)](workouts/3-1_Lower_Body_Strength_Mobility.json)
+- [Upper Body Strength & Mobility – Block 3, Week 1 (Tuesday)](workouts/3-1_Upper_Body_Strength_Mobility.json)
+- [Easy Run – 4 Miles – Block 3, Week 1 (Monday)](workouts/3-1_Easy_Run_4_Miles.json)
+
 - [Full-Body Conditioning & Core – Block 2, Week 4 (Deload)](workouts/2-4_Full_Body_Conditioning_Core.json)
 - [Yin Yoga Recovery Flow – Block 2, Week 4 (Deload)](workouts/2-4_Yin_Yoga_Recovery_Flow.json)
 - [Easy Run – 3 Miles – Block 2, Week 4 (Deload)](workouts/2-4_Easy_Run_4_Miles.json)

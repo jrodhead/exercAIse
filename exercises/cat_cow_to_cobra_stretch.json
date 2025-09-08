@@ -1,18 +1,34 @@
 {
   "name": "Cat-Cow to Cobra Stretch",
-  "equipment": [
-    "bodyweight"
+  "equipment": ["bodyweight"],
+  "tags": ["spine", "mobility", "yoga"],
+  "setup": [
+    "Quadruped: hands under shoulders, knees under hips",
+    "Neutral cervical alignment; light brace"
   ],
-  "tags": [
-    "press",
-    "stretch",
-    "yoga"
+  "steps": [
+    "Cat-Cow: Flex (cat) then extend (cow) spine segmentally for reps",
+    "Transition onto hips lowering chest forward to prone",
+    "Press gently into Cobra (low or mid) opening front body",
+    "Return to quadruped and repeat"
   ],
   "cues": [
-    "Segment the spine—think wave rolling from tailbone to head",
-    "In Cobra: lift through sternum, not by shrugging",
-    "Keep glutes relaxed in Cobra to avoid excessive lumbar compression",
-    "Breathe rhythmically; let breath guide motion"
+    "Wave the spine",
+    "Lift through sternum, no shrug",
+    "Glutes soft in Cobra"
   ],
-  "safety": "Discontinue if numbness, tingling, or sharp back pain occurs. Mild muscular stretch across abdominals/hip flexors is normal."
+  "mistakes": [
+    "Forcing end-range lumbar extension",
+    "Dropping head back excessively",
+    "Rushing spinal segments"
+  ],
+  "safety": "Stay below sharp pain or nerve symptoms. Use low Cobra if lumbar sensitive.",
+  "scaling": {
+    "regressions": ["Cat-Cow only", "Sphinx pose instead of Cobra"],
+    "progressions": ["Add thoracic rotation after Cobra", "Pause 2s in each segment"]
+  },
+  "variations": ["Cat-Cow only", "Cobra only", "Thread-the-needle blend"],
+  "prescriptionHints": {"load": "Bodyweight", "reps": "3–6 cycles", "time": "—", "distance": "—", "rpe": "2–4", "notes": "Gentle neural and fascial warm-up."},
+  "joints": {"sensitiveJoints": ["spine", "wrists"], "notes": "Stack joints; reduce extension if lumbar discomfort."},
+  "media": {"video": "", "images": []}
 }

@@ -1,24 +1,15 @@
 {
   "name": "Chest-Supported Dumbbell Row",
-  "equipment": [
-    "bench",
-    "dumbbell"
-  ],
-  "tags": [
-    "row"
-  ],
-  "cues": [
-    "Lie chest-down on an incline bench or propped bench, feet on the floor",
-    "Hold a dumbbell in each hand, arms extended toward the floor",
-    "Pull the dumbbells toward your lower ribs, keeping elbows close to your body",
-    "Squeeze your shoulder blades together at the top of the movement",
-    "Lower the dumbbells with control to the starting position",
-    "Avoid shrugging your shoulders",
-    "Keep your chest in contact with the bench at all times",
-    "Focus on squeezing your back muscles, not just moving the weight"
-  ],
-  "variations": [
-    "Single-Arm Chest-Supported Row",
-    "Use different bench angles for varied emphasis"
-  ]
+  "equipment": ["bench", "dumbbell"],
+  "tags": ["row", "upper back", "posterior"],
+  "setup": ["Chest on incline bench (30–45°)", "Feet grounded, DBs hanging"],
+  "steps": ["Set light brace and retract scaps", "Row DBs toward lower ribs elbows ~30–45°", "Pause squeeze, lower under control"],
+  "cues": ["Chest glued", "Elbows track", "Squeeze then smooth lower"],
+  "mistakes": ["Shrugging top", "Bouncing off bottom", "Letting chest lift"],
+  "safety": "Bench support reduces spinal load; keep neck neutral.",
+  "scaling": {"regressions": ["Lighter load", "One DB alternating"], "progressions": ["Tempo eccentric", "Iso hold top 2s"]},
+  "variations": ["Single-arm", "Different bench angles", "Neutral grip"],
+  "prescriptionHints": {"load": "Moderate", "reps": "8–15", "time": "—", "distance": "—", "rpe": "6–8", "notes": "Control bottom stretch—no jerk."},
+  "joints": {"sensitiveJoints": ["shoulders", "elbows"], "notes": "Avoid internal rotation at bottom; keep wrists neutral."},
+  "media": {"video": "", "images": []}
 }

@@ -1,28 +1,15 @@
 {
   "name": "Overhead Triceps Extension",
-  "equipment": [
-    "band",
-    "cable",
-    "dumbbell",
-    "ruck"
-  ],
-  "tags": [
-    "core",
-    "triceps"
-  ],
-  "cues": [
-    "Hold a dumbbell or ruck plate overhead with both hands, elbows facing forward",
-    "Lower the weight behind your head, keeping elbows close to your ears",
-    "Extend your arms fully to raise the weight back overhead, without overextending",
-    "Brace your core to protect your low back",
-    "Avoid flaring your elbows outward",
-    "Use a light-to-moderate weight you can control",
-    "Keep your upper arms stable throughout the movement",
-    "Perform the movement slowly and with control"
-  ],
-  "variations": [
-    "Seated or standing position",
-    "Single-arm triceps extension",
-    "Use a resistance band or cable"
-  ]
+  "equipment": ["dumbbell", "band", "cable", "ruck"],
+  "tags": ["triceps", "arms"],
+  "setup": ["Stand or sit tall", "Hold DB with palms under inner plate"],
+  "steps": ["Start elbows flexed ~90° behind head", "Extend elbows without flaring", "Control return to stretch"],
+  "cues": ["Elbows in", "Brace midline", "Soft lockout"],
+  "mistakes": ["Elbows drifting wide", "Lumbar overextension", "Dropping head forward"],
+  "safety": "Keep ribs stacked; reduce load if shoulder or elbow discomfort.",
+  "scaling": {"regressions": ["Single DB lighter", "Band overhead"], "progressions": ["Slow eccentric 3s", "Pause stretch 1s"]},
+  "variations": ["Single-arm", "Incline bench support", "Rope cable"],
+  "prescriptionHints": {"load": "Light–moderate", "reps": "8–15", "time": "—", "distance": "—", "rpe": "6–8", "notes": "Protect shoulder by keeping elbows slightly forward."},
+  "joints": {"sensitiveJoints": ["elbows", "shoulders", "neck"], "notes": "Avoid excessive cervical extension."},
+  "media": {"video": "", "images": []}
 }

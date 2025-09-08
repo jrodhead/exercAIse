@@ -1,26 +1,15 @@
 {
   "name": "Incline Landmine Press (Simulated with Dumbbell)",
-  "equipment": [
-    "dumbbell"
-  ],
-  "tags": [
-    "core",
-    "press"
-  ],
-  "cues": [
-    "Kneel on the floor, holding a dumbbell in one hand at shoulder height",
-    "Press the dumbbell upward and slightly forward at a 45° angle",
-    "Keep your core engaged and torso stable throughout the movement",
-    "Avoid shrugging your shoulder as you press",
-    "Control both the press and the return to the starting position",
-    "Keep your elbow tracking under your wrist",
-    "Start with a light weight to master the movement",
-    "Focus on a smooth, controlled press",
-    "Keep your glutes and abs tight for stability"
-  ],
-  "variations": [
-    "Perform standing or seated for different core demands",
-    "Use a landmine attachment if available",
-    "Alternate arms or perform both arms simultaneously"
-  ]
+  "equipment": ["dumbbell"],
+  "tags": ["press", "shoulder", "anti-extension"],
+  "setup": ["Half-kneeling (inside knee down)", "DB held close at shoulder, neutral grip"],
+  "steps": ["Brace and press DB up/out on 45° path", "Reach without shrug", "Lower with elbow tracking under wrist"],
+  "cues": ["Ribs stacked", "Arc press", "Punch then control"],
+  "mistakes": ["Shrugging shoulder", "Overarching lumbar", "Pressing straight up"],
+  "safety": "Use light–moderate load; avoid pain at shoulder front.",
+  "scaling": {"regressions": ["Standing with lighter load", "Tall-kneeling"], "progressions": ["Add pause at top", "Tempo 3s eccentric"]},
+  "variations": ["True landmine press", "Single-arm incline DB press", "Tall-kneeling arc press"],
+  "prescriptionHints": {"load": "Light–moderate", "reps": "8–12/side", "time": "—", "distance": "—", "rpe": "6–8", "notes": "Arc path reduces overhead compression; suitable when limiting vertical press."},
+  "joints": {"sensitiveJoints": ["shoulders", "neck", "wrists"], "notes": "Keep neck neutral; avoid aggressive lockout shrug."},
+  "media": {"video": "", "images": []}
 }
