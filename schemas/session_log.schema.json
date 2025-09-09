@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://exercAIse.app/schemas/session_log.schema.json",
+  "title": "SessionLog",
+  "type": "object",
+  "required": ["version", "userId", "sessionId", "date", "exercises"],
+  "properties": {
+    "version": { "type": "string", "enum": ["1.0"] },
+    "userId": { "type": "string", "description": "Pseudonymous user id; email not stored" },
+    "sessionId": { "type": "string" },
+    "date": { "type": "string", "format": "date" },
+    "title": { "type": "string" },
+    "block": { "type": "integer" },
+    "week": { "type": "integer" },
+    "notes": { "type": "string" },
+    "exercises": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slug", "name", "sets"],
+        "properties": {
+          "slug": { "type": "string", "description": "matches exercises/<slug>.json" },
+          "name": { "type": "string" },
+          "prescribed": {
+            "type": "object",
+            "properties": {
+              "sets": { "type": "integer" },
+              "reps": { "type": ["integer", "string"] },
+              "load": { "type": ["number", "string", "null"] },
+              "tempo": { "type": ["string", "null"] },
+              "restSec": { "type": ["integer", "null"] },
+              "rpe": { "type": ["number", "null"] }
+            }
+          },
+          "sets": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["set", "reps"],
+              "properties": {
+                "set": { "type": "integer" },
+                "reps": { "type": "integer" },
+                "load": { "type": ["number", "string", "null"] },
+                "rpe": { "type": ["number", "null"] },
+                "timeSec": { "type": ["integer", "null"] },
+                "distanceM": { "type": ["number", "null"] },
+                "notes": { "type": ["string", "null"] }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

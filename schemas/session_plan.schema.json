@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://exercAIse.app/schemas/session_plan.schema.json",
+  "title": "SessionPlan",
+  "type": "object",
+  "required": ["version", "title", "date", "exercises"],
+  "properties": {
+    "version": { "type": "string", "enum": ["1.0"] },
+    "title": { "type": "string" },
+    "date": { "type": "string", "format": "date" },
+    "block": { "type": ["integer", "null"] },
+    "week": { "type": ["integer", "null"] },
+    "notes": { "type": ["string", "null"] },
+    "exercises": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slug", "name", "prescribed"],
+        "properties": {
+          "slug": { "type": "string", "description": "matches exercises/<slug>.json" },
+          "name": { "type": "string" },
+          "prescribed": {
+            "type": "object",
+            "required": ["sets"],
+            "properties": {
+              "sets": { "type": "integer" },
+              "reps": { "type": ["integer", "string"] },
+              "load": { "type": ["number", "string", "null"] },
+              "tempo": { "type": ["string", "null"] },
+              "restSec": { "type": ["integer", "null"] },
+              "rpe": { "type": ["number", "null"] }
+            }
+          },
+          "cues": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}
