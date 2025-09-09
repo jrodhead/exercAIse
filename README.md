@@ -1,12 +1,5 @@
 # exercAIse
 
-Note: Sessions are moving to JSON format (`workouts/*.json`) using `schemas/session.schema.json`. If you have a Markdown session, convert it with:
-
-```
-python3 scripts/md_to_session_json.py
-```
-
-Links in the index prefer the `.json` counterpart automatically.
 AI-generated workouts compatible with a really old iPad
 
 - [Yin Yoga Recovery Flow – Block 3, Week 1 (Sunday)](workouts/3-1_Yin_Yoga_Recovery_Flow.json)
