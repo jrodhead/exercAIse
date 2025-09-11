@@ -6,11 +6,11 @@ mode: agent
 When prompted with 'generate workout interface' and a workout plan, follow this file generation workflow:
 
 1. **Create a new workout file** in the `workouts` directory. Name the file using the format `<blockNumber>-<weekNumber>_<title>.json` (e.g., `1-2_Lower_Body.json`).
-2. **Insert the provided JSON session content** into the new file, validating against `schemas/session.schema.json`.
-3. **Each exercise name in the workout must be a markdown link** to its JSON detail page in the `exercises/` directory (e.g., `[Hammer Curl](../../exercises/hammer_curl.json)`).
+2. **Insert the provided JSON session content** into the new file, validating against `schemas/session.schema.json`. Ensure each exercise has `link` and `logType`.
+3. **Ensure every exercise item in the JSON has a `link` field** pointing to its JSON detail in the `exercises/` directory (e.g., `"exercises/hammer_curl.json"`).
    - If an exercise does not already have a detail file in `exercises/`, create a new JSON file for it conforming to `schemas/exercise.schema.json`.
-   - Never leave an exercise unlinked or without a detail file.
-   - Update all existing workouts to maintain this linking convention if new exercises are introduced.
+   - Never leave an exercise without a `link` or without a detail JSON file.
+   - When editing Markdown docs (not session JSON), use markdown links to the exercise JSON as usual.
 3. **Add a link to the new workout file** in the `README.md` under the Workouts section, in descending date order (most recent at the top). Use the same link format as existing entries.
 
 4. **Validate** after changes:

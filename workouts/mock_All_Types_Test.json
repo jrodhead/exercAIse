@@ -1,0 +1,71 @@
+{
+  "version": "1",
+  "title": "Mock — All Types & Sections",
+  "date": "2025-09-10",
+  "block": 3,
+  "week": 1,
+  "notes": "Test session to exercise all renderers: warm-up, main sets (strength, carry, endurance), circuits, supersets, accessory/core, cooldown. Includes loggable=false item.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "General Warm-up (8–10 min)",
+      "notes": "Light ramp; joint prep.",
+      "items": [
+        { "kind": "exercise", "name": "Brisk Walk", "link": "exercises/brisk_walk.json", "logType": "endurance", "prescription": { "timeSeconds": 180 }, "cues": ["Easy pace", "Nasal breathe"] },
+        { "kind": "exercise", "name": "90/90 Hip Stretch", "link": "exercises/90_90_hip_stretch.json", "logType": "mobility", "prescription": { "holdSeconds": 30 }, "cues": ["Tall spine", "Gentle pressure"] },
+        { "kind": "exercise", "name": "Band Pull-Aparts", "link": "exercises/band_pull_aparts.json", "logType": "mobility", "prescription": { "reps": 15 }, "cues": ["Ribs down", "Scap squeeze"] },
+        { "kind": "exercise", "name": "Elbow Openers", "link": "exercises/elbow_openers.json", "logType": "mobility", "prescription": { "reps": 10 }, "cues": ["Slow and smooth"] }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Strength — Lower/Push",
+      "items": [
+        { "kind": "exercise", "name": "Goblet Squat", "link": "exercises/goblet_squat.json", "logType": "strength", "prescription": { "sets": 3, "reps": 8, "rpe": 7 }, "cues": ["Elbows down; bell tight", "Knees over toes"] },
+        { "kind": "superset", "name": "Bench + Row", "children": [
+          { "kind": "exercise", "name": "Flat DB Bench Press", "link": "exercises/flat_dumbbell_bench_press.json", "logType": "strength", "prescription": { "sets": 3, "reps": 10, "rpe": 7 }, "cues": ["Wrists stacked", "Soft lockout"] },
+          { "kind": "exercise", "name": "Chest Supported Dumbbell Row", "link": "exercises/chest_supported_dumbbell_row.json", "logType": "strength", "prescription": { "sets": 3, "reps": 10, "rpe": 7 }, "cues": ["Elbows to ribs", "Pause squeeze"] }
+        ]},
+        { "kind": "exercise", "name": "Farmer Carry", "link": "exercises/farmer_carry.json", "logType": "carry", "prescription": { "sets": 3, "timeSeconds": 45, "rpe": 6 }, "cues": ["Tall posture", "Quiet steps"] },
+        { "kind": "exercise", "name": "Dynamic Flow", "link": "exercises/dynamic_flow.json", "logType": "mobility", "loggable": false, "prescription": { "timeSeconds": 60 }, "cues": ["Move smoothly"] }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Conditioning Circuit",
+      "rounds": 3,
+      "items": [
+        { "kind": "circuit", "name": "RDL + Thruster + Deadbug", "children": [
+          { "kind": "exercise", "name": "Dumbbell RDL", "link": "exercises/dumbbell_rdl.json", "logType": "strength", "prescription": { "reps": 10, "rpe": 7 }, "cues": ["Hips back", "Shins vertical"] },
+          { "kind": "exercise", "name": "Dumbbell Thruster", "link": "exercises/dumbbell_thruster.json", "logType": "strength", "prescription": { "reps": 8, "rpe": 7 }, "cues": ["Drive from legs", "Strong lockout"] },
+          { "kind": "exercise", "name": "Deadbug", "link": "exercises/deadbug.json", "logType": "mobility", "prescription": { "holdSeconds": 30 }, "cues": ["Ribs down", "Low back heavy"] }
+        ]}
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "Easy Aerobic",
+      "items": [
+        { "kind": "exercise", "name": "Easy Jog", "link": "exercises/easy_jog.json", "logType": "endurance", "prescription": { "distanceMiles": 1, "rpe": 6 }, "cues": ["Relax shoulders", "Even breathing"] }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Arms & Core",
+      "items": [
+        { "kind": "exercise", "name": "Hammer Curl", "link": "exercises/hammer_curl.json", "logType": "strength", "prescription": { "sets": 2, "reps": 12, "rpe": 7 }, "cues": ["Elbows pinned", "Full range"] },
+        { "kind": "exercise", "name": "Dumbbell Floor Skullcrushers", "link": "exercises/dumbbell_floor_skullcrushers.json", "logType": "strength", "prescription": { "sets": 2, "reps": 12, "rpe": 7 }, "cues": ["Slow down", "Control elbow flare"] }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Cooldown & Reset",
+      "items": [
+        { "kind": "exercise", "name": "Calf Stretch (Wall or Step)", "link": "exercises/calf_stretch_wall_or_step.json", "logType": "stretch", "prescription": { "holdSeconds": 40 }, "cues": ["Heel down", "Moderate pressure"] },
+        { "kind": "exercise", "name": "Child's Pose", "link": "exercises/childs_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 45 }, "cues": ["Soft belly", "Wide knees"] },
+        { "kind": "exercise", "name": "Happy Baby", "link": "exercises/happy_baby.json", "logType": "stretch", "prescription": { "holdSeconds": 45 }, "cues": ["Relax jaw", "Gentle rock"] },
+        { "kind": "exercise", "name": "Forward Fold", "link": "exercises/forward_fold.json", "logType": "stretch", "prescription": { "holdSeconds": 45 }, "cues": ["Long exhale", "Heavy head"] }
+      ]
+    }
+  ]
+}

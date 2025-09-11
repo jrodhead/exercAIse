@@ -41,6 +41,8 @@
         "kind": { "type": "string", "enum": ["exercise", "superset", "circuit", "note"] },
         "name": { "type": "string" },
         "link": { "type": "string" },
+  "logType": { "type": "string", "enum": ["strength", "endurance", "carry", "mobility", "stretch"] },
+  "loggable": { "type": "boolean" },
         "prescription": { "$ref": "#/definitions/Prescription" },
         "children": {
           "type": "array",

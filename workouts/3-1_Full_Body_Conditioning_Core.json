@@ -11,10 +11,10 @@
       "title": "Prep (6–8 min)",
       "notes": "Light HR rise; pattern hinges + plank bracing.",
       "items": [
-        { "kind": "exercise", "name": "Jumping Jacks", "link": "exercises/jumping_jacks.json", "prescription": { "timeSeconds": 40 }, "cues": ["Rhythm", "Soft land"] },
-        { "kind": "exercise", "name": "Glute Bridge", "link": "exercises/glute_bridge.json", "prescription": { "reps": 12 }, "cues": ["Squeeze top", "Ribs down"] },
-        { "kind": "exercise", "name": "Deadbug", "link": "exercises/deadbug.json", "prescription": { "reps": "6/side" }, "cues": ["Exhale press", "Slow lower"] },
-        { "kind": "exercise", "name": "Pallof Press", "link": "exercises/pallof_press.json", "prescription": { "reps": "8/side" }, "cues": ["Brace", "No rotation"] }
+  { "kind": "exercise", "name": "Jumping Jacks", "link": "exercises/jumping_jacks.json", "logType": "endurance", "prescription": { "timeSeconds": 40 }, "cues": ["Rhythm", "Soft land"] },
+  { "kind": "exercise", "name": "Glute Bridge", "link": "exercises/glute_bridge.json", "logType": "strength", "prescription": { "reps": 12 }, "cues": ["Squeeze top", "Ribs down"] },
+  { "kind": "exercise", "name": "Deadbug", "link": "exercises/deadbug.json", "logType": "strength", "prescription": { "reps": "6/side" }, "cues": ["Exhale press", "Slow lower"] },
+  { "kind": "exercise", "name": "Pallof Press", "link": "exercises/pallof_press.json", "logType": "strength", "prescription": { "reps": "8/side" }, "cues": ["Brace", "No rotation"] }
       ]
     },
     {
@@ -24,9 +24,9 @@
       "notes": "Controlled cadence. Rest 45–60s after each round.",
       "items": [
         { "kind": "circuit", "name": "A", "children": [
-          { "kind": "exercise", "name": "Goblet Squat", "link": "exercises/goblet_squat.json", "prescription": { "reps": 10, "weight": "45 lb" }, "cues": ["Tall chest", "Mid-foot"] },
-          { "kind": "exercise", "name": "One-Arm Dumbbell Row (Bench Supported)", "link": "exercises/one_arm_dumbbell_row.json", "prescription": { "reps": "8/side", "weight": "45 lb" }, "cues": ["Tight elbow path"] },
-          { "kind": "exercise", "name": "Reverse Lunge (Alternating)", "link": "exercises/reverse_lunge_alternating.json", "prescription": { "reps": "8/leg", "weight": "25 lb per hand" }, "cues": ["Step back long", "Front knee stable"] }
+          { "kind": "exercise", "name": "Goblet Squat", "link": "exercises/goblet_squat.json", "logType": "strength", "prescription": { "reps": 10, "weight": "45 lb" }, "cues": ["Tall chest", "Mid-foot"] },
+          { "kind": "exercise", "name": "One-Arm Dumbbell Row (Bench Supported)", "link": "exercises/one_arm_dumbbell_row.json", "logType": "strength", "prescription": { "reps": "8/side", "weight": "45 lb" }, "cues": ["Tight elbow path"] },
+          { "kind": "exercise", "name": "Reverse Lunge (Alternating)", "link": "exercises/reverse_lunge_alternating.json", "logType": "strength", "prescription": { "reps": "8/leg", "weight": "25 lb per hand" }, "cues": ["Step back long", "Front knee stable"] }
         ] }
       ]
     },
@@ -37,9 +37,9 @@
       "notes": "Brisk transitions; steady breathing. Rest 60–75s between rounds.",
       "items": [
         { "kind": "circuit", "name": "B", "children": [
-          { "kind": "exercise", "name": "Dumbbell Thruster", "link": "exercises/dumbbell_thruster.json", "prescription": { "reps": 8, "weight": "25 lb per hand" }, "cues": ["Full depth", "Punch overhead"] },
-          { "kind": "exercise", "name": "Renegade Row", "link": "exercises/renegade_row.json", "prescription": { "reps": 8, "weight": "25 lb per hand" }, "cues": ["Hips quiet", "Row strict"] },
-          { "kind": "exercise", "name": "Farmer Carry", "link": "exercises/farmer_carry.json", "prescription": { "timeSeconds": 40, "weight": "35 lb per hand" }, "cues": ["Tall + breathe"] }
+          { "kind": "exercise", "name": "Dumbbell Thruster", "link": "exercises/dumbbell_thruster.json", "logType": "strength", "prescription": { "reps": 8, "weight": "25 lb per hand" }, "cues": ["Full depth", "Punch overhead"] },
+          { "kind": "exercise", "name": "Renegade Row", "link": "exercises/renegade_row.json", "logType": "strength", "prescription": { "reps": 8, "weight": "25 lb per hand" }, "cues": ["Hips quiet", "Row strict"] },
+          { "kind": "exercise", "name": "Farmer Carry", "link": "exercises/farmer_carry.json", "logType": "carry", "prescription": { "timeSeconds": 40, "weight": "35 lb per hand" }, "cues": ["Tall + breathe"] }
         ] }
       ]
     },
@@ -50,9 +50,9 @@
       "notes": "Quality over speed. Little to no rest within; 45s between rounds.",
       "items": [
         { "kind": "circuit", "name": "C", "children": [
-          { "kind": "exercise", "name": "Hollow Hold", "link": "exercises/hollow_hold.json", "prescription": { "holdSeconds": 25 }, "cues": ["Ribs down", "Reach long"] },
-          { "kind": "exercise", "name": "Side Plank", "link": "exercises/side_plank.json", "prescription": { "holdSeconds": 25 }, "cues": ["Hips stacked", "Neck neutral"] },
-          { "kind": "exercise", "name": "Pallof Press", "link": "exercises/pallof_press.json", "prescription": { "reps": "8/side" }, "cues": ["Brace + exhale"] }
+          { "kind": "exercise", "name": "Hollow Hold", "link": "exercises/hollow_hold.json", "logType": "mobility", "prescription": { "holdSeconds": 25 }, "cues": ["Ribs down", "Reach long"] },
+          { "kind": "exercise", "name": "Side Plank", "link": "exercises/side_plank.json", "logType": "mobility", "prescription": { "holdSeconds": 25 }, "cues": ["Hips stacked", "Neck neutral"] },
+          { "kind": "exercise", "name": "Pallof Press", "link": "exercises/pallof_press.json", "logType": "strength", "prescription": { "reps": "8/side" }, "cues": ["Brace + exhale"] }
         ] }
       ]
     },
@@ -60,9 +60,9 @@
       "type": "Cooldown/Recovery",
       "title": "Downshift (5–6 min)",
       "items": [
-        { "kind": "exercise", "name": "Forward Fold", "link": "exercises/forward_fold.json", "prescription": { "holdSeconds": 40 }, "cues": ["Exhale soften"] },
-        { "kind": "exercise", "name": "Child’s Pose", "link": "exercises/childs_pose.json", "prescription": { "holdSeconds": 45 }, "cues": ["Reach long"] },
-        { "kind": "exercise", "name": "Supported Fish Pose", "link": "exercises/supported_fish_pose.json", "prescription": { "holdSeconds": 45 }, "cues": ["Open chest"] }
+  { "kind": "exercise", "name": "Forward Fold", "link": "exercises/forward_fold.json", "logType": "stretch", "prescription": { "holdSeconds": 40 }, "cues": ["Exhale soften"] },
+  { "kind": "exercise", "name": "Child’s Pose", "link": "exercises/childs_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 45 }, "cues": ["Reach long"] },
+  { "kind": "exercise", "name": "Supported Fish Pose", "link": "exercises/supported_fish_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 45 }, "cues": ["Open chest"] }
       ]
     }
   ]
