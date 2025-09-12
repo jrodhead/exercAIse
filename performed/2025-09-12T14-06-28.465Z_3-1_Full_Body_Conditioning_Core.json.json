@@ -1,0 +1,111 @@
+{
+  "version": "1",
+  "workoutFile": "workouts/3-1_Full_Body_Conditioning_Core.json",
+  "timestamp": "2025-09-12T14:06:11.348Z",
+  "exercises": {
+    "flat-db-bench-press": {
+      "name": "Flat DB Bench Press",
+      "sets": [
+        {
+          "weight": 50,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 7
+        },
+        {
+          "weight": 50,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 7
+        },
+        {
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 7
+        },
+        {
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 7
+        }
+      ]
+    },
+    "alternating-dumbbell-biceps-curl": {
+      "name": "Alternating Dumbbell Biceps Curl",
+      "sets": [
+        {
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 7
+        },
+        {
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 7
+        },
+        {
+          "weight": 20,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 7
+        },
+        {
+          "weight": 20,
+          "multiplier": 2,
+          "reps": 8,
+          "rpe": 7
+        }
+      ]
+    },
+    "hammer-curl": {
+      "name": "Hammer Curl",
+      "sets": [
+        {
+          "weight": 20,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 7
+        },
+        {
+          "weight": 20,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 7
+        },
+        {
+          "weight": 20,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 7
+        }
+      ]
+    },
+    "dumbbell-floor-skullcrushers": {
+      "name": "Dumbbell Floor Skullcrushers",
+      "sets": [
+        {
+          "weight": 20,
+          "multiplier": 2,
+          "reps": 8,
+          "rpe": 7
+        },
+        {
+          "weight": 10,
+          "multiplier": 2,
+          "reps": 12,
+          "rpe": 7
+        },
+        {
+          "weight": 15,
+          "multiplier": 2,
+          "reps": 15,
+          "rpe": 7
+        }
+      ]
+    }
+  }
+}
