@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { setupClipboard } from './_helpers';
 
 // New focus: verify copied JSON output (structural + modified first-set values) rather than localStorage persistence.
 // Steps:
@@ -44,15 +45,7 @@ const PLAN: Record<string, ExerciseCopyPlan> = {
 };
 
 // Override clipboard for deterministic capture
-test.beforeEach(async ({ page }) => {
-  await page.addInitScript(() => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    window.__copiedJSON = null;
-    const api = { writeText: (txt: string) => { (window as any).__copiedJSON = txt; return Promise.resolve(); } };
-    try { (navigator as any).clipboard = api; } catch (e) { /* ignore */ }
-  });
-});
+test.beforeEach(async ({ page }) => { await setupClipboard(page); });
 
 test('copy JSON reflects first-set modifications only', async ({ page }) => {
   const url = '/index.html?file=' + encodeURIComponent(MOCK_PATH);

@@ -1198,6 +1198,28 @@
       }
   }
 
+    function inferLogTypeFromCard(card) {
+      try {
+        // Look for header anchor meta
+        var a = card.querySelector('a[data-exmeta]');
+        if (a) {
+          var raw = a.getAttribute('data-exmeta') || '';
+          if (raw) { var m = JSON.parse(raw); if (m && m.logType) return m.logType; }
+        }
+      } catch (e) {}
+      // Heuristic fallback based on which inputs exist
+      var hasHold = card.querySelector('input[data-name="holdSeconds"]');
+      var hasDistance = card.querySelector('input[data-name="distanceMiles"]');
+      var hasTime = card.querySelector('input[data-name="timeSeconds"]');
+      var hasReps = card.querySelector('input[data-name="reps"]');
+      var hasWeight = card.querySelector('input[data-name="weight"]');
+      if (hasHold && !hasReps && !hasWeight) return 'mobility';
+      if (hasHold) return 'stretch';
+      if (hasDistance || (hasTime && !hasWeight && !hasReps)) return 'endurance';
+      if (hasTime && hasWeight && !hasReps) return 'carry';
+      return 'strength';
+    }
+
     function collectData() {
       // Normalize workoutFile to 'workouts/...'
       var wf = String(filePath || '');
@@ -1206,7 +1228,7 @@
       // If path includes 'workouts/' later in the string, extract from there
       var mWf = wf.match(/workouts\/.*$/);
       if (mWf) wf = mWf[0];
-      var data = { version: '1', workoutFile: wf, timestamp: new Date().toISOString(), exercises: {} };
+      var data = { version: 'perf-1', workoutFile: wf, timestamp: new Date().toISOString(), exercises: {} };
     var scope = workoutContent || document;
     var cards = scope.getElementsByClassName('exercise-card');
       for (var c = 0; c < cards.length; c++) {
@@ -1217,41 +1239,71 @@
         var rows = card.getElementsByClassName('set-row');
         var setsArr = [];
         for (var r = 0; r < rows.length; r++) {
-          var row = rows[r];
-          var inputs = row.getElementsByTagName('input');
-          var obj = {};
+          var rowEl = rows[r];
+          var inputs = rowEl.getElementsByTagName('input');
+          var obj = { set: (r + 1) };
           for (var k = 0; k < inputs.length; k++) {
-            var name = inputs[k].getAttribute('data-name');
-            var val = inputs[k].value;
-            if (val !== '') {
-              var num = Number(val);
-              if (name === 'distanceMeters') {
-                // Store miles only going forward; interpret this field as miles
-                obj.distanceMiles = num;
-                continue;
-              }
-              if (name === 'distanceMiles') {
-                obj.distanceMiles = num;
-                continue;
-              }
-              if (name === 'timeSeconds' || name === 'holdSeconds') {
-                var sec = parseHMSToSeconds(val);
-                if (sec != null) obj[name] = sec;
-                continue;
-              }
-              obj[name] = num;
+            var inEl = inputs[k];
+            var name = inEl.getAttribute('data-name');
+            var val = inEl.value;
+            if (val === '') continue; // untouched field => rely on prescription absence
+            if (name === 'distanceMeters' || name === 'distanceMiles') {
+              var numDist = Number(val);
+              if (!isNaN(numDist)) obj.distanceMiles = numDist; // store only miles
+              continue;
             }
+            if (name === 'timeSeconds' || name === 'holdSeconds') {
+              var sec = parseHMSToSeconds(val);
+              if (sec != null) obj[name] = sec;
+              continue;
+            }
+            var num = Number(val);
+            if (!isNaN(num)) obj[name] = num;
           }
-      // Only push non-empty sets
-      if (obj.reps != null || obj.weight != null || obj.rpe != null || obj.timeSeconds != null || obj.holdSeconds != null || obj.distanceMeters != null || obj.distanceMiles != null || obj.multiplier != null) {
-        setsArr.push(obj);
-      }
+          // Include even if only weight/multiplier zero values
+          var hasAny = (obj.weight != null || obj.multiplier != null || obj.reps != null || obj.rpe != null || obj.timeSeconds != null || obj.holdSeconds != null || obj.distanceMiles != null);
+          if (!hasAny) {
+            // Keep empty set placeholder? We retain set if prescription existed. For now skip empty.
+            continue;
+          }
+          setsArr.push(obj);
         }
         if (setsArr.length) {
-          data.exercises[exKey] = { name: exName, sets: setsArr };
+          data.exercises[exKey] = { name: exName, logType: inferLogTypeFromCard(card), sets: setsArr };
         }
       }
       return data;
+    }
+
+    function validatePerformance(data) {
+      var errors = [];
+      function isNum(v) { return typeof v === 'number' && !isNaN(v); }
+      if (!data || typeof data !== 'object') { errors.push('root: not object'); return errors; }
+      if (data.version !== 'perf-1') errors.push('version must be perf-1');
+      if (!data.workoutFile || typeof data.workoutFile !== 'string') errors.push('workoutFile missing');
+      if (!data.timestamp || typeof data.timestamp !== 'string') errors.push('timestamp missing');
+      if (!data.exercises || typeof data.exercises !== 'object') errors.push('exercises missing');
+      else {
+        for (var k in data.exercises) if (data.exercises.hasOwnProperty(k)) {
+          var ex = data.exercises[k];
+          if (!ex || typeof ex !== 'object') { errors.push('exercise ' + k + ' not object'); continue; }
+            if (!ex.name) errors.push(k + ': name missing');
+            if (!ex.logType || ['strength','endurance','carry','mobility','stretch'].indexOf(ex.logType) === -1) errors.push(k + ': invalid logType');
+            if (!ex.sets || Object.prototype.toString.call(ex.sets) !== '[object Array]' || !ex.sets.length) errors.push(k + ': sets missing');
+            else {
+              for (var i = 0; i < ex.sets.length; i++) {
+                var s = ex.sets[i];
+                if (typeof s !== 'object') { errors.push(k + ' set ' + (i+1) + ': not object'); continue; }
+                if (!isNum(s.set) || s.set < 1) errors.push(k + ' set ' + (i+1) + ': invalid set index');
+                ['weight','multiplier','reps','rpe','timeSeconds','holdSeconds','distanceMiles'].forEach(function(f){
+                  if (s[f] != null && !isNum(s[f])) errors.push(k + ' set ' + (i+1) + ': ' + f + ' not number');
+                });
+                if (s.rpe != null && (s.rpe < 0 || s.rpe > 10)) errors.push(k + ' set ' + (i+1) + ': rpe out of range');
+              }
+            }
+        }
+      }
+      return errors;
     }
 
     saveBtn.onclick = function () {
@@ -1262,18 +1314,23 @@
 
   copyBtn.onclick = function () {
       var data = collectData();
+      var errs = validatePerformance(data);
+      if (errs.length) {
+        // Attach errors for debugging (not schema-defined) but do not block copy
+        data.validationErrors = errs.slice(0);
+        console.warn('Performance validation errors:', errs);
+      }
       var json = JSON.stringify(data, null, 2);
-      // try clipboard (newer iPads); fallback to show textarea
       var didCopy = false;
       if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(json).then(function () { didCopy = true; status('Copied JSON to clipboard.', { important: true }); }).catch(function () {});
+        navigator.clipboard.writeText(json).then(function () { didCopy = true; status('Copied performance JSON' + (errs.length ? ' (WITH WARNINGS)' : '') + '.', { important: true }); }).catch(function () {});
       }
       if (!didCopy) {
         copyWrapper.style.display = 'block';
         copyTarget.value = json;
         copyTarget.focus();
         copyTarget.select();
-        status('Copy JSON shown below; select-all and copy manually.');
+        status('Copy JSON shown below; select-all and copy manually.' + (errs.length ? ' (Validation warnings in console)' : ''));
       }
     };
 

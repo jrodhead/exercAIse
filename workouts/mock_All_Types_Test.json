@@ -21,12 +21,12 @@
       "type": "Strength",
       "title": "Strength — Lower/Push",
       "items": [
-        { "kind": "exercise", "name": "Goblet Squat", "link": "exercises/goblet_squat.json", "logType": "strength", "prescription": { "sets": 3, "reps": 8, "rpe": 7 }, "cues": ["Elbows down; bell tight", "Knees over toes"] },
+  { "kind": "exercise", "name": "Goblet Squat", "link": "exercises/goblet_squat.json", "logType": "strength", "prescription": { "sets": 3, "reps": 8, "weight": 60, "rpe": 7 }, "cues": ["Elbows down; bell tight", "Knees over toes"] },
         { "kind": "superset", "name": "Bench + Row", "children": [
-          { "kind": "exercise", "name": "Flat DB Bench Press", "link": "exercises/flat_dumbbell_bench_press.json", "logType": "strength", "prescription": { "sets": 3, "reps": 10, "rpe": 7 }, "cues": ["Wrists stacked", "Soft lockout"] },
-          { "kind": "exercise", "name": "Chest Supported Dumbbell Row", "link": "exercises/chest_supported_dumbbell_row.json", "logType": "strength", "prescription": { "sets": 3, "reps": 10, "rpe": 7 }, "cues": ["Elbows to ribs", "Pause squeeze"] }
+          { "kind": "exercise", "name": "Flat DB Bench Press", "link": "exercises/flat_dumbbell_bench_press.json", "logType": "strength", "prescription": { "sets": 3, "reps": 10, "weight": 50, "rpe": 7 }, "cues": ["Wrists stacked", "Soft lockout"] },
+          { "kind": "exercise", "name": "Chest Supported Dumbbell Row", "link": "exercises/chest_supported_dumbbell_row.json", "logType": "strength", "prescription": { "sets": 3, "reps": 10, "weight": 35, "rpe": 7 }, "cues": ["Elbows to ribs", "Pause squeeze"] }
         ]},
-        { "kind": "exercise", "name": "Farmer Carry", "link": "exercises/farmer_carry.json", "logType": "carry", "prescription": { "sets": 3, "timeSeconds": 45, "rpe": 6 }, "cues": ["Tall posture", "Quiet steps"] },
+        { "kind": "exercise", "name": "Farmer Carry", "link": "exercises/farmer_carry.json", "logType": "carry", "prescription": { "sets": 3, "timeSeconds": 45, "weight": 60, "rpe": 6 }, "cues": ["Tall posture", "Quiet steps"] },
         { "kind": "exercise", "name": "Dynamic Flow", "link": "exercises/dynamic_flow.json", "logType": "mobility", "loggable": false, "prescription": { "timeSeconds": 60 }, "cues": ["Move smoothly"] }
       ]
     },
@@ -36,8 +36,8 @@
       "rounds": 3,
       "items": [
         { "kind": "circuit", "name": "RDL + Thruster + Deadbug", "children": [
-          { "kind": "exercise", "name": "Dumbbell RDL", "link": "exercises/dumbbell_rdl.json", "logType": "strength", "prescription": { "reps": 10, "rpe": 7 }, "cues": ["Hips back", "Shins vertical"] },
-          { "kind": "exercise", "name": "Dumbbell Thruster", "link": "exercises/dumbbell_thruster.json", "logType": "strength", "prescription": { "reps": 8, "rpe": 7 }, "cues": ["Drive from legs", "Strong lockout"] },
+          { "kind": "exercise", "name": "Dumbbell RDL", "link": "exercises/dumbbell_rdl.json", "logType": "strength", "prescription": { "reps": 10, "weight": 65, "rpe": 7 }, "cues": ["Hips back", "Shins vertical"] },
+          { "kind": "exercise", "name": "Dumbbell Thruster", "link": "exercises/dumbbell_thruster.json", "logType": "strength", "prescription": { "reps": 8, "weight": 35, "rpe": 7 }, "cues": ["Drive from legs", "Strong lockout"] },
           { "kind": "exercise", "name": "Deadbug", "link": "exercises/deadbug.json", "logType": "mobility", "prescription": { "holdSeconds": 30 }, "cues": ["Ribs down", "Low back heavy"] }
         ]}
       ]
@@ -53,8 +53,8 @@
       "type": "Accessory/Core",
       "title": "Arms & Core",
       "items": [
-        { "kind": "exercise", "name": "Hammer Curl", "link": "exercises/hammer_curl.json", "logType": "strength", "prescription": { "sets": 2, "reps": 12, "rpe": 7 }, "cues": ["Elbows pinned", "Full range"] },
-        { "kind": "exercise", "name": "Dumbbell Floor Skullcrushers", "link": "exercises/dumbbell_floor_skullcrushers.json", "logType": "strength", "prescription": { "sets": 2, "reps": 12, "rpe": 7 }, "cues": ["Slow down", "Control elbow flare"] }
+        { "kind": "exercise", "name": "Hammer Curl", "link": "exercises/hammer_curl.json", "logType": "strength", "prescription": { "sets": 2, "reps": 12, "weight": 25, "rpe": 7 }, "cues": ["Elbows pinned", "Full range"] },
+        { "kind": "exercise", "name": "Dumbbell Floor Skullcrushers", "link": "exercises/dumbbell_floor_skullcrushers.json", "logType": "strength", "prescription": { "sets": 2, "reps": 12, "weight": 20, "rpe": 7 }, "cues": ["Slow down", "Control elbow flare"] }
       ]
     },
     {
