@@ -11,10 +11,10 @@
       "title": "Prep (6–8 min)",
       "notes": "Light HR rise; pattern hinges + plank bracing.",
       "items": [
-  { "kind": "exercise", "name": "Jumping Jacks", "link": "exercises/jumping_jacks.json", "logType": "endurance", "prescription": { "timeSeconds": 40 }, "cues": ["Rhythm", "Soft land"] },
-  { "kind": "exercise", "name": "Glute Bridge", "link": "exercises/glute_bridge.json", "logType": "strength", "prescription": { "reps": 12 }, "cues": ["Squeeze top", "Ribs down"] },
-  { "kind": "exercise", "name": "Deadbug", "link": "exercises/deadbug.json", "logType": "strength", "prescription": { "reps": "6/side" }, "cues": ["Exhale press", "Slow lower"] },
-  { "kind": "exercise", "name": "Pallof Press", "link": "exercises/pallof_press.json", "logType": "strength", "prescription": { "reps": "8/side" }, "cues": ["Brace", "No rotation"] }
+        { "kind": "exercise", "name": "Jumping Jacks", "link": "exercises/jumping_jacks.json", "logType": "endurance", "prescription": { "timeSeconds": 40 }, "cues": ["Rhythm", "Soft land"] },
+        { "kind": "exercise", "name": "Glute Bridge", "link": "exercises/glute_bridge.json", "logType": "strength", "prescription": { "reps": 12 }, "cues": ["Squeeze top", "Ribs down"] },
+        { "kind": "exercise", "name": "Deadbug", "link": "exercises/deadbug.json", "logType": "strength", "prescription": { "reps": "6/side" }, "cues": ["Exhale press", "Slow lower"] },
+        { "kind": "exercise", "name": "Pallof Press", "link": "exercises/pallof_press.json", "logType": "strength", "prescription": { "reps": "8/side" }, "cues": ["Brace", "No rotation"] }
       ]
     },
     {

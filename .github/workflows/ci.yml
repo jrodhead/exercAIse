@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [ main, convert-to-web-app ]
   push:
-    branches: [ convert-to-web-app ]
+    branches: [ main, convert-to-web-app ]
 
 jobs:
   validate:

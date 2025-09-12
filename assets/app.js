@@ -670,6 +670,9 @@
   if (explicitLogType === 'endurance') return ['distanceMiles', 'timeSeconds', 'rpe'];
   if (explicitLogType === 'carry') return ['weight', 'multiplier', 'timeSeconds', 'rpe'];
   if (explicitLogType === 'strength') return ['weight', 'multiplier', 'reps', 'rpe'];
+  // Ensure reps are not hidden when both weight & reps are prescribed, even if time is also present
+  if (hasReps && hasWeight && hasTime) return ['weight', 'multiplier', 'reps', 'timeSeconds', 'rpe'];
+  if (hasReps && hasWeight) return ['weight', 'multiplier', 'reps', 'rpe'];
   if (hasHold) return ['holdSeconds', 'rpe'];
   var t = String(titleForHeuristic || '').toLowerCase();
   var isEndurance = /\b(run|jog|walk|tempo|quality run|easy run|bike|cycle|ride|rower|rowing|erg|swim)\b/.test(t);
@@ -685,17 +688,20 @@
 
   var initialRows = (savedRows && savedRows.length) ? savedRows : (presetRows || []);
   var explicitType = null;
-  try {
-    // Attempt to read explicit logType from header meta if present
-    var headerProbe = document.createElement('div');
-    headerProbe.innerHTML = headerHTML || '';
-    var aProbe = headerProbe.querySelector('a[data-exmeta]');
-    if (aProbe) {
-      var raw = aProbe.getAttribute('data-exmeta') || '';
-      var m = raw ? JSON.parse(raw) : null;
-      if (m && m.logType) explicitType = m.logType;
-    }
-  } catch (e) {}
+  if (opts && opts.explicitLogType) {
+    explicitType = opts.explicitLogType;
+  } else {
+    try {
+      var headerProbe = document.createElement('div');
+      headerProbe.innerHTML = headerHTML || '';
+      var aProbe = headerProbe.querySelector('a[data-exmeta]');
+      if (aProbe) {
+        var raw = aProbe.getAttribute('data-exmeta') || '';
+        var m = raw ? JSON.parse(raw) : null;
+        if (m && m.logType) explicitType = m.logType;
+      }
+    } catch (e) {}
+  }
   var fieldOrder = isReadOnly ? [] : pickFieldsFromRows(initialRows, title, explicitType);
 
   function addSetRow(row, idx) {
@@ -1053,7 +1059,10 @@
         if (meta && meta.cues && meta.cues.length) {
           extraBits += '<ul class="ex-cues">' + meta.cues.map(function(c){ return '<li>' + c + '</li>'; }).join('') + '</ul>';
         }
-        headerHTML = '<a href="' + hrefFixed + '">' + cleanText + '</a>' + extraBits;
+  // Preserve original meta so downstream field selection can read explicit logType without re-parsing the DOM
+  // Inline escape for attribute context (avoid relying on later attrEscape definitions)
+  var _escAttr = function(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); };
+  headerHTML = '<a href="' + hrefFixed + '" data-exmeta="' + _escAttr(metaRaw) + '">' + cleanText + '</a>' + extraBits;
       } else if (container) {
         headerHTML = container.innerHTML || '';
       } else if (headEl) {
@@ -1066,7 +1075,7 @@
         foundKeys[exKey] = true;
         continue;
       }
-  var card = createExerciseCard(normTitle, preset, savedRows, headerHTML);
+  var card = createExerciseCard(normTitle, preset, savedRows, headerHTML, { explicitLogType: (meta0 && meta0.logType) ? meta0.logType : null });
       // Pull prescription/cues following this container into the card
       var extra = collectFollowingBlocks(container);
       if (extra && extra.html) {
