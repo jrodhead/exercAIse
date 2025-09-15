@@ -15,6 +15,16 @@
   var readmeSection = document.getElementById('readme-section');
   var readmeContent = document.getElementById('readme-content');
   var logsSection = document.getElementById('logs-section');
+  var generateSection = document.getElementById('generate-section');
+  var genForm = document.getElementById('generate-form');
+  var genGoals = document.getElementById('gen-goals');
+  var genPain = document.getElementById('gen-pain');
+  var genEquipment = document.getElementById('gen-equipment');
+  var genInstr = document.getElementById('gen-instructions');
+  var genSubmit = document.getElementById('gen-submit');
+  var genClear = document.getElementById('gen-clear');
+  var genJSON = document.getElementById('gen-json');
+  var genLoadJSON = document.getElementById('gen-load-json');
   var backToIndex = document.getElementById('back-to-index');
   var logsList = document.getElementById('logs-list');
   var formSection = document.getElementById('form-section');
@@ -59,6 +69,7 @@
     try { y = parseInt(sessionStorage.getItem('indexScrollY') || '0', 10) || 0; } catch (e) {}
     setVisibility(readmeSection, true);
     setVisibility(logsSection, true);
+  setVisibility(generateSection, true);
     setVisibility(workoutSection, false);
     setVisibility(formSection, false);
     setVisibility(workoutMetaEl, false);
@@ -71,6 +82,7 @@
     // Show index sections, hide session
     if (readmeSection) readmeSection.style.display = 'block';
     if (logsSection) logsSection.style.display = 'block';
+  if (generateSection) generateSection.style.display = 'block';
     workoutMetaEl.style.display = 'none';
     workoutSection.style.display = 'none';
     formSection.style.display = 'none';
@@ -89,6 +101,21 @@
         }
       };
       req.send();
+    } catch (e) { cb(e); }
+  }
+
+  function xhrPostJSON(path, payload, cb) {
+    try {
+      var req = new XMLHttpRequest();
+      req.open('POST', path, true);
+      req.setRequestHeader('Content-Type', 'application/json');
+      req.onreadystatechange = function () {
+        if (req.readyState === 4) {
+          if (req.status >= 200 && req.status < 300) cb(null, req.responseText);
+          else cb(new Error('HTTP ' + req.status + ' for ' + path));
+        }
+      };
+      req.send(JSON.stringify(payload || {}));
     } catch (e) { cb(e); }
   }
 
@@ -565,7 +592,7 @@
     // We now inject exercise forms inline under each exercise link within workoutContent.
     if (exerciseFormsEl) exerciseFormsEl.innerHTML = '';
 
-    var saved = loadSaved(filePath) || { file: filePath, updatedAt: new Date().toISOString(), exercises: {} };
+  var saved = loadSaved(filePath) || { file: filePath, updatedAt: new Date().toISOString(), exercises: {} };
 
     // Document-level helpers for fallback parsing (e.g., distance in title "4 Miles")
     function getFirstHeadingText(tagName) {
@@ -628,7 +655,7 @@
         }
       }
 
-  function pickFieldsFromRows(rows, titleForHeuristic) {
+  function pickFieldsFromRows(rows, titleForHeuristic, explicitLogType) {
         // Determine which inputs to show based on preset/saved row keys
   var hasHold = false, hasTime = false, hasDist = false, hasWeight = false, hasReps = false;
         for (var i = 0; i < rows.length; i++) {
@@ -639,6 +666,13 @@
     if (rr.weight != null) hasWeight = true;
     if (rr.reps != null) hasReps = true;
         }
+  if (explicitLogType === 'mobility' || explicitLogType === 'stretch') return ['holdSeconds', 'rpe'];
+  if (explicitLogType === 'endurance') return ['distanceMiles', 'timeSeconds', 'rpe'];
+  if (explicitLogType === 'carry') return ['weight', 'multiplier', 'timeSeconds', 'rpe'];
+  if (explicitLogType === 'strength') return ['weight', 'multiplier', 'reps', 'rpe'];
+  // Ensure reps are not hidden when both weight & reps are prescribed, even if time is also present
+  if (hasReps && hasWeight && hasTime) return ['weight', 'multiplier', 'reps', 'timeSeconds', 'rpe'];
+  if (hasReps && hasWeight) return ['weight', 'multiplier', 'reps', 'rpe'];
   if (hasHold) return ['holdSeconds', 'rpe'];
   var t = String(titleForHeuristic || '').toLowerCase();
   var isEndurance = /\b(run|jog|walk|tempo|quality run|easy run|bike|cycle|ride|rower|rowing|erg|swim)\b/.test(t);
@@ -653,7 +687,22 @@
       }
 
   var initialRows = (savedRows && savedRows.length) ? savedRows : (presetRows || []);
-  var fieldOrder = isReadOnly ? [] : pickFieldsFromRows(initialRows, title);
+  var explicitType = null;
+  if (opts && opts.explicitLogType) {
+    explicitType = opts.explicitLogType;
+  } else {
+    try {
+      var headerProbe = document.createElement('div');
+      headerProbe.innerHTML = headerHTML || '';
+      var aProbe = headerProbe.querySelector('a[data-exmeta]');
+      if (aProbe) {
+        var raw = aProbe.getAttribute('data-exmeta') || '';
+        var m = raw ? JSON.parse(raw) : null;
+        if (m && m.logType) explicitType = m.logType;
+      }
+    } catch (e) {}
+  }
+  var fieldOrder = isReadOnly ? [] : pickFieldsFromRows(initialRows, title, explicitType);
 
   function addSetRow(row, idx) {
   if (isReadOnly || !setsWrap) return; // no set rows in read-only mode and ensure container exists
@@ -953,14 +1002,22 @@
   var normTitle = title.replace(/\s*\([^\)]*\)\s*$/, '').trim();
   if (!normTitle) continue;
   var exKey = slugify(normTitle);
+      // Inspect anchor meta for explicit loggable flag
+      var metaRaw0 = a.getAttribute('data-exmeta') || '';
+      var meta0 = null; try { meta0 = metaRaw0 ? JSON.parse(metaRaw0) : null; } catch (e) { meta0 = null; }
       // Determine section by nearest previous heading; skip warm-up/cool-down
       var container = nearestBlockContainer(a);
       var sectionTitle = findPreviousHeading(container);
-  var inWarmCool = isWarmOrCool(sectionTitle, a);
-      var savedRows = saved.exercises[exKey] || [];
+      var inWarmCool = isWarmOrCool(sectionTitle, a);
+      var savedEntry = saved.exercises[exKey];
+      var savedRows = [];
+      if (savedEntry) {
+        if (Object.prototype.toString.call(savedEntry) === '[object Array]') savedRows = savedEntry;
+        else if (savedEntry.sets && Object.prototype.toString.call(savedEntry.sets) === '[object Array]') savedRows = savedEntry.sets;
+      }
       var preset = prescriptions[exKey] || prescriptions[slugify(title)] || [];
-      // If no prescription rows were parsed and we're in a loggable section, seed default rows
-      if (!inWarmCool && (!preset || !preset.length)) {
+      // Do not seed defaults for JSON-driven sessions; rely on explicit prescriptions
+      if (!isJSON && !inWarmCool && (!preset || !preset.length)) {
         var secRounds = detectRoundsHint(sectionTitle) || docRoundsHint || 3;
         var defaults = [];
         for (var di = 1; di <= Math.max(1, secRounds); di++) defaults.push({ set: di });
@@ -1002,18 +1059,23 @@
         if (meta && meta.cues && meta.cues.length) {
           extraBits += '<ul class="ex-cues">' + meta.cues.map(function(c){ return '<li>' + c + '</li>'; }).join('') + '</ul>';
         }
-        headerHTML = '<a href="' + hrefFixed + '">' + cleanText + '</a>' + extraBits;
+  // Preserve original meta so downstream field selection can read explicit logType without re-parsing the DOM
+  // Inline escape for attribute context (avoid relying on later attrEscape definitions)
+  var _escAttr = function(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); };
+  headerHTML = '<a href="' + hrefFixed + '" data-exmeta="' + _escAttr(metaRaw) + '">' + cleanText + '</a>' + extraBits;
       } else if (container) {
         headerHTML = container.innerHTML || '';
       } else if (headEl) {
         headerHTML = headEl.outerHTML || '';
       }
-      if (inWarmCool) {
+  // Respect explicit loggable=false or warm-up/cooldown/mobility sections: do not inject logging card
+  var isExplicitNonLoggable = !!(meta0 && meta0.loggable === false);
+  if (inWarmCool || isExplicitNonLoggable) {
         // Do not inject cards for warm-up/cooldown/mobility; mark as handled so we don't auto-inject later
         foundKeys[exKey] = true;
         continue;
       }
-  var card = createExerciseCard(normTitle, preset, savedRows, headerHTML);
+  var card = createExerciseCard(normTitle, preset, savedRows, headerHTML, { explicitLogType: (meta0 && meta0.logType) ? meta0.logType : null });
       // Pull prescription/cues following this container into the card
       var extra = collectFollowingBlocks(container);
       if (extra && extra.html) {
@@ -1089,6 +1151,10 @@
       // Heuristic: detect if this workout is an endurance-style session (to filter injected cards)
   var docTextForHeuristic = (workoutContent && (workoutContent.textContent || workoutContent.innerText) || '').toLowerCase();
   var isEnduranceDoc = /\b(run|jog|walk|tempo|quality run|easy run|bike|cycle|ride|rower|rowing|erg|swim)\b/.test(docTextForHeuristic);
+      // If this is a JSON session (isJSON) and we already rendered items with anchors, do not inject fallback cards
+      if (isJSON) {
+        // Skip fallback injection
+      } else {
       for (var pKey in prescriptions) {
         if (!prescriptions.hasOwnProperty(pKey)) continue;
         if (foundKeys[pKey]) continue;
@@ -1114,7 +1180,12 @@
         }
         if (skip) continue;
         var display = titleCaseFromKey(pKey);
-        var savedRows2 = saved.exercises[pKey] || [];
+        var savedEnt2 = saved.exercises[pKey];
+        var savedRows2 = [];
+        if (savedEnt2) {
+          if (Object.prototype.toString.call(savedEnt2) === '[object Array]') savedRows2 = savedEnt2;
+          else if (savedEnt2.sets && Object.prototype.toString.call(savedEnt2.sets) === '[object Array]') savedRows2 = savedEnt2.sets;
+        }
         var cardX = createExerciseCard(display, presetRows, savedRows2);
         if (mainHead && mainHead.parentNode) {
           if (mainHead.nextSibling) mainHead.parentNode.insertBefore(cardX, mainHead.nextSibling);
@@ -1125,6 +1196,29 @@
         foundCount++;
         foundKeys[pKey] = true;
       }
+  }
+
+    function inferLogTypeFromCard(card) {
+      try {
+        // Look for header anchor meta
+        var a = card.querySelector('a[data-exmeta]');
+        if (a) {
+          var raw = a.getAttribute('data-exmeta') || '';
+          if (raw) { var m = JSON.parse(raw); if (m && m.logType) return m.logType; }
+        }
+      } catch (e) {}
+      // Heuristic fallback based on which inputs exist
+      var hasHold = card.querySelector('input[data-name="holdSeconds"]');
+      var hasDistance = card.querySelector('input[data-name="distanceMiles"]');
+      var hasTime = card.querySelector('input[data-name="timeSeconds"]');
+      var hasReps = card.querySelector('input[data-name="reps"]');
+      var hasWeight = card.querySelector('input[data-name="weight"]');
+      if (hasHold && !hasReps && !hasWeight) return 'mobility';
+      if (hasHold) return 'stretch';
+      if (hasDistance || (hasTime && !hasWeight && !hasReps)) return 'endurance';
+      if (hasTime && hasWeight && !hasReps) return 'carry';
+      return 'strength';
+    }
 
     function collectData() {
       // Normalize workoutFile to 'workouts/...'
@@ -1134,7 +1228,7 @@
       // If path includes 'workouts/' later in the string, extract from there
       var mWf = wf.match(/workouts\/.*$/);
       if (mWf) wf = mWf[0];
-      var data = { version: '1', workoutFile: wf, timestamp: new Date().toISOString(), exercises: {} };
+      var data = { version: 'perf-1', workoutFile: wf, timestamp: new Date().toISOString(), exercises: {} };
     var scope = workoutContent || document;
     var cards = scope.getElementsByClassName('exercise-card');
       for (var c = 0; c < cards.length; c++) {
@@ -1145,41 +1239,71 @@
         var rows = card.getElementsByClassName('set-row');
         var setsArr = [];
         for (var r = 0; r < rows.length; r++) {
-          var row = rows[r];
-          var inputs = row.getElementsByTagName('input');
-          var obj = {};
+          var rowEl = rows[r];
+          var inputs = rowEl.getElementsByTagName('input');
+          var obj = { set: (r + 1) };
           for (var k = 0; k < inputs.length; k++) {
-            var name = inputs[k].getAttribute('data-name');
-            var val = inputs[k].value;
-            if (val !== '') {
-              var num = Number(val);
-              if (name === 'distanceMeters') {
-                // Store miles only going forward; interpret this field as miles
-                obj.distanceMiles = num;
-                continue;
-              }
-              if (name === 'distanceMiles') {
-                obj.distanceMiles = num;
-                continue;
-              }
-              if (name === 'timeSeconds' || name === 'holdSeconds') {
-                var sec = parseHMSToSeconds(val);
-                if (sec != null) obj[name] = sec;
-                continue;
-              }
-              obj[name] = num;
+            var inEl = inputs[k];
+            var name = inEl.getAttribute('data-name');
+            var val = inEl.value;
+            if (val === '') continue; // untouched field => rely on prescription absence
+            if (name === 'distanceMeters' || name === 'distanceMiles') {
+              var numDist = Number(val);
+              if (!isNaN(numDist)) obj.distanceMiles = numDist; // store only miles
+              continue;
             }
+            if (name === 'timeSeconds' || name === 'holdSeconds') {
+              var sec = parseHMSToSeconds(val);
+              if (sec != null) obj[name] = sec;
+              continue;
+            }
+            var num = Number(val);
+            if (!isNaN(num)) obj[name] = num;
           }
-      // Only push non-empty sets
-      if (obj.reps != null || obj.weight != null || obj.rpe != null || obj.timeSeconds != null || obj.holdSeconds != null || obj.distanceMeters != null || obj.distanceMiles != null || obj.multiplier != null) {
-        setsArr.push(obj);
-      }
+          // Include even if only weight/multiplier zero values
+          var hasAny = (obj.weight != null || obj.multiplier != null || obj.reps != null || obj.rpe != null || obj.timeSeconds != null || obj.holdSeconds != null || obj.distanceMiles != null);
+          if (!hasAny) {
+            // Keep empty set placeholder? We retain set if prescription existed. For now skip empty.
+            continue;
+          }
+          setsArr.push(obj);
         }
         if (setsArr.length) {
-          data.exercises[exKey] = { name: exName, sets: setsArr };
+          data.exercises[exKey] = { name: exName, logType: inferLogTypeFromCard(card), sets: setsArr };
         }
       }
       return data;
+    }
+
+    function validatePerformance(data) {
+      var errors = [];
+      function isNum(v) { return typeof v === 'number' && !isNaN(v); }
+      if (!data || typeof data !== 'object') { errors.push('root: not object'); return errors; }
+      if (data.version !== 'perf-1') errors.push('version must be perf-1');
+      if (!data.workoutFile || typeof data.workoutFile !== 'string') errors.push('workoutFile missing');
+      if (!data.timestamp || typeof data.timestamp !== 'string') errors.push('timestamp missing');
+      if (!data.exercises || typeof data.exercises !== 'object') errors.push('exercises missing');
+      else {
+        for (var k in data.exercises) if (data.exercises.hasOwnProperty(k)) {
+          var ex = data.exercises[k];
+          if (!ex || typeof ex !== 'object') { errors.push('exercise ' + k + ' not object'); continue; }
+            if (!ex.name) errors.push(k + ': name missing');
+            if (!ex.logType || ['strength','endurance','carry','mobility','stretch'].indexOf(ex.logType) === -1) errors.push(k + ': invalid logType');
+            if (!ex.sets || Object.prototype.toString.call(ex.sets) !== '[object Array]' || !ex.sets.length) errors.push(k + ': sets missing');
+            else {
+              for (var i = 0; i < ex.sets.length; i++) {
+                var s = ex.sets[i];
+                if (typeof s !== 'object') { errors.push(k + ' set ' + (i+1) + ': not object'); continue; }
+                if (!isNum(s.set) || s.set < 1) errors.push(k + ' set ' + (i+1) + ': invalid set index');
+                ['weight','multiplier','reps','rpe','timeSeconds','holdSeconds','distanceMiles'].forEach(function(f){
+                  if (s[f] != null && !isNum(s[f])) errors.push(k + ' set ' + (i+1) + ': ' + f + ' not number');
+                });
+                if (s.rpe != null && (s.rpe < 0 || s.rpe > 10)) errors.push(k + ' set ' + (i+1) + ': rpe out of range');
+              }
+            }
+        }
+      }
+      return errors;
     }
 
     saveBtn.onclick = function () {
@@ -1190,18 +1314,23 @@
 
   copyBtn.onclick = function () {
       var data = collectData();
+      var errs = validatePerformance(data);
+      if (errs.length) {
+        // Attach errors for debugging (not schema-defined) but do not block copy
+        data.validationErrors = errs.slice(0);
+        console.warn('Performance validation errors:', errs);
+      }
       var json = JSON.stringify(data, null, 2);
-      // try clipboard (newer iPads); fallback to show textarea
       var didCopy = false;
       if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(json).then(function () { didCopy = true; status('Copied JSON to clipboard.', { important: true }); }).catch(function () {});
+        navigator.clipboard.writeText(json).then(function () { didCopy = true; status('Copied performance JSON' + (errs.length ? ' (WITH WARNINGS)' : '') + '.', { important: true }); }).catch(function () {});
       }
       if (!didCopy) {
         copyWrapper.style.display = 'block';
         copyTarget.value = json;
         copyTarget.focus();
         copyTarget.select();
-        status('Copy JSON shown below; select-all and copy manually.');
+        status('Copy JSON shown below; select-all and copy manually.' + (errs.length ? ' (Validation warnings in console)' : ''));
       }
     };
 
@@ -1288,7 +1417,8 @@
       lastReadmeText = text || '';
   readmeContent.innerHTML = decorateReadmeWithLogLinks(lastReadmeText);
   fixExerciseAnchors(readmeContent);
-      if (readmeSection) readmeSection.style.display = 'block';
+  if (readmeSection) readmeSection.style.display = 'block';
+  if (generateSection) generateSection.style.display = 'block';
 
   // Load logs list from GitHub API (unauthenticated)
   loadLogsList();
@@ -1348,10 +1478,11 @@
           try { window.history.replaceState({ view: 'session', file: targetPath }, '', 'index.html?file=' + encodeURIComponent(targetPath)); } catch (ex) {}
         }
         openSession(targetPath, lastReadmeText);
-      } else {
+  } else {
         // Ensure index view is visible
         showIndexView();
       }
+  handleGenerateButtons();
     });
   }
 
@@ -1385,6 +1516,7 @@
       try { sessionStorage.setItem('indexScrollY', String(window.scrollY || 0)); } catch (e) {}
       setVisibility(readmeSection, false);
       setVisibility(logsSection, false);
+  setVisibility(generateSection, false);
       setVisibility(workoutSection, true);
       var isJSON = /\.json$/i.test(path);
       if (isJSON) {
@@ -1418,7 +1550,40 @@
           if (kind === 'exercise') {
             var clean = String(name).replace(/^\s*\d+[\)\.-]\s*/, '');
             var meta = { cues: (it.cues || []), prescription: (it.prescription || null) };
+            if (it.logType) meta.logType = it.logType;
+            if (it.loggable === false) meta.loggable = false;
             var html = '<li><a href="' + esc(link) + '" data-exmeta="' + attrEscape(JSON.stringify(meta)) + '">' + esc(clean) + '</a>';
+            // For list-only render (warm-up/cooldown/mobility), append a compact prescription summary inline
+            if (it.prescription && typeof it.prescription === 'object') {
+              try {
+                var p = it.prescription || {};
+                var parts = [];
+                if (p.sets != null && p.reps != null) {
+                  var setsNum = Number(p.sets);
+                  var setsLabel = (setsNum === 1 ? 'set' : 'sets');
+                  parts.push(String(p.sets) + ' ' + setsLabel + ' × ' + String(p.reps) + ' reps');
+                } else {
+                  if (p.sets != null) {
+                    var setsNum2 = Number(p.sets);
+                    var setsLabel2 = (setsNum2 === 1 ? 'set' : 'sets');
+                    parts.push(String(p.sets) + ' ' + setsLabel2);
+                  }
+                  if (p.reps != null) parts.push(String(p.reps) + ' reps');
+                }
+                if (p.weight != null) parts.push(typeof p.weight === 'number' ? (String(p.weight) + ' lb') : String(p.weight));
+                // Multiplier hint when not already expressed in weight string
+                var weightStr2 = (typeof p.weight === 'string') ? p.weight.toLowerCase() : '';
+                if (p.multiplier === 2 && !(weightStr2 && /(x2|×2|per\s*hand|each|per\s*side)/.test(weightStr2))) parts.push('x2');
+                if (p.multiplier === 0 && !(weightStr2 && /bodyweight/.test(weightStr2))) parts.push('bodyweight');
+                if (p.timeSeconds != null) { parts.push(String(p.timeSeconds) + ' seconds'); }
+                if (p.holdSeconds != null) { parts.push(String(p.holdSeconds) + ' seconds'); }
+                if (p.distanceMiles != null) parts.push(String(p.distanceMiles) + ' miles');
+                if (p.distanceMeters != null) parts.push(String(p.distanceMeters) + ' m');
+                if (p.rpe != null) parts.push('RPE ' + String(p.rpe));
+                if (p.restSeconds != null) parts.push('Rest ' + String(p.restSeconds) + ' seconds');
+                if (parts.length) html += ' — <span class="ex-presc">' + parts.join(' · ') + '</span>';
+              } catch (e) {}
+            }
             // Inline cues under the item so they migrate into the card header
             if (!options.suppressCues && it.cues && it.cues.length) {
               html += '<ul>' + it.cues.map(function(c){ return '<li>' + inlineMarkdown(c) + '</li>'; }).join('') + '</ul>';
@@ -1459,9 +1624,8 @@
           if (sec.notes) {
             try { h += renderMarkdownBasic(String(sec.notes)); } catch (e) { h += '<p>' + esc(sec.notes) + '</p>'; }
           }
-          var shouldRenderItems = true;
-          if (isWarmish && sec.notes) shouldRenderItems = false;
-          if (shouldRenderItems && sec.items && sec.items.length) {
+          // Always render items even for warm-up/cooldown/mobility/recovery when notes exist
+          if (sec.items && sec.items.length) {
             // Suppress rendering inline cues; cards will show cues/prescriptions
             var itemsHtml = sec.items.map(function(it){ return renderItem(it, { suppressCues: true }); }).join('');
             // Wrap loose <li> in a <ul>
@@ -1532,6 +1696,212 @@
       try { window.scrollTo(0, 0); } catch (e) {}
       status(''); // no noisy success banner
     });
+  }
+
+  function validateSessionPlan(obj) {
+    if (!obj || typeof obj !== 'object') return 'Not an object';
+    if (obj.version !== '1.0') return 'version must be "1.0"';
+    if (!obj.title || !obj.exercises) return 'Missing title or exercises';
+    if (Object.prototype.toString.call(obj.exercises) !== '[object Array]') return 'exercises must be an array';
+    for (var i = 0; i < obj.exercises.length; i++) {
+      var ex = obj.exercises[i];
+      if (!ex || typeof ex !== 'object') return 'exercise[' + i + '] invalid';
+      if (!ex.slug || !ex.name) return 'exercise[' + i + '] missing slug/name';
+      if (ex.prescribed && typeof ex.prescribed !== 'object') return 'exercise[' + i + '].prescribed invalid';
+    }
+    return null;
+  }
+
+  function openGeneratedSession(obj) {
+    // Render using same path rendering by writing to a blob URL
+    var pretty = JSON.stringify(obj || {}, null, 2);
+    var blob = null; try { blob = new Blob([pretty], { type: 'application/json' }); } catch (e) {}
+    if (!blob) { return status('Your browser cannot render the generated session.', { important: true }); }
+    var url = null; try { url = URL.createObjectURL(blob); } catch (e) {}
+    if (!url) { return status('Unable to open generated session.', { important: true }); }
+    // Reuse openSession by pretending this is a JSON path
+    setVisibility(readmeSection, false);
+    setVisibility(logsSection, false);
+    setVisibility(generateSection, false);
+    setVisibility(workoutSection, true);
+    // Directly render JSON branch without XHR by injecting content
+    try {
+      var text = pretty;
+      // render structured JSON like in openSession JSON branch
+      var obj = JSON.parse(text || '{}');
+      function esc(s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+      function renderItem(it, opts) {
+        if (!it || typeof it !== 'object') return '';
+        var options = opts || {};
+        var kind = String(it.kind || 'exercise');
+        var name = String(it.name || '');
+        var link = 'exercises/' + (String(it.slug || '').replace(/[^a-z0-9\-]+/g,'') || '') + '.json';
+        function inlineMarkdown(text) {
+          var s = String(text == null ? '' : text);
+          s = s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+          s = s.replace(/\[(.*?)\]\((.*?)\)/g, function(_, t, u){ return '<a href="' + u + '">' + t + '</a>'; });
+          return s;
+        }
+        function attrEscape(s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+        if (kind === 'exercise') {
+          var meta = { cues: (it.cues || []), prescription: (it.prescribed || null) };
+          if (it.logType) meta.logType = it.logType;
+          if (it.loggable === false) meta.loggable = false;
+          var html = '<li><a href="' + esc(link) + '" data-exmeta="' + attrEscape(JSON.stringify(meta)) + '">' + esc(name) + '</a>';
+          // Append compact prescription summary inline for list-only display
+          if (it.prescribed && typeof it.prescribed === 'object') {
+            try {
+              var p = it.prescribed || {};
+              var parts = [];
+              if (p.sets != null && p.reps != null) {
+                var setsNumG = Number(p.sets);
+                var setsLabelG = (setsNumG === 1 ? 'set' : 'sets');
+                parts.push(String(p.sets) + ' ' + setsLabelG + ' × ' + String(p.reps) + ' reps');
+              } else {
+                if (p.sets != null) {
+                  var setsNumG2 = Number(p.sets);
+                  var setsLabelG2 = (setsNumG2 === 1 ? 'set' : 'sets');
+                  parts.push(String(p.sets) + ' ' + setsLabelG2);
+                }
+                if (p.reps != null) parts.push(String(p.reps) + ' reps');
+              }
+              if (p.weight != null) parts.push(typeof p.weight === 'number' ? (String(p.weight) + ' lb') : String(p.weight));
+              var weightStr3 = (typeof p.weight === 'string') ? p.weight.toLowerCase() : '';
+              if (p.multiplier === 2 && !(weightStr3 && /(x2|×2|per\s*hand|each|per\s*side)/.test(weightStr3))) parts.push('x2');
+              if (p.multiplier === 0 && !(weightStr3 && /bodyweight/.test(weightStr3))) parts.push('bodyweight');
+              if (p.timeSeconds != null) { parts.push(String(p.timeSeconds) + ' seconds'); }
+              if (p.holdSeconds != null) { parts.push(String(p.holdSeconds) + ' seconds'); }
+              if (p.distanceMiles != null) parts.push(String(p.distanceMiles) + ' miles');
+              if (p.distanceMeters != null) parts.push(String(p.distanceMeters) + ' m');
+              if (p.rpe != null) parts.push('RPE ' + String(p.rpe));
+              if (p.restSeconds != null) parts.push('Rest ' + String(p.restSeconds) + ' seconds');
+              if (parts.length) html += ' — <span class="ex-presc">' + parts.join(' · ') + '</span>';
+            } catch (e) {}
+          }
+          if (!options.suppressCues && it.cues && it.cues.length) {
+            html += '<ul>' + it.cues.map(function(c){ return '<li>' + inlineMarkdown(c) + '</li>'; }).join('') + '</ul>';
+          }
+          html += '</li>';
+          return html;
+        }
+        return '';
+      }
+      function renderSection(sec) {
+        if (!sec) return '';
+        var title = String(sec.title || '');
+        var type = String(sec.type || '');
+        var rounds = (sec.rounds != null) ? (' — ' + sec.rounds + ' rounds') : '';
+        function attrEscapeLocal(s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+        var typeText = type || 'Section';
+        var display = typeText + (title ? (' — ' + title) : '');
+        var h = '<section data-sectype="' + attrEscapeLocal(typeText) + '"><h2>' + esc(display) + esc(rounds) + '</h2>';
+        if (sec.notes) { try { h += renderMarkdownBasic(String(sec.notes)); } catch (e) { h += '<p>' + esc(sec.notes) + '</p>'; } }
+        if (sec.items && sec.items.length) {
+          var itemsHtml = sec.items.map(function(it){ return renderItem(it, { suppressCues: true }); }).join('');
+          if (itemsHtml.indexOf('<li') !== -1) itemsHtml = '<ul>' + itemsHtml + '</ul>';
+          h += itemsHtml;
+        }
+        h += '</section>';
+        return h;
+      }
+      // If no sections provided, map exercises into a default section for display
+      if ((!obj.sections || !obj.sections.length) && obj.exercises && obj.exercises.length) {
+        var items = [];
+        for (var ei = 0; ei < obj.exercises.length; ei++) {
+          var ex = obj.exercises[ei] || {};
+          var pres = ex.prescribed || {};
+          // Accept top-level sets/reps as well
+          if (!pres.sets && ex.sets != null) pres.sets = ex.sets;
+          if (!pres.reps && ex.reps != null) pres.reps = ex.reps;
+          if (!pres.load && ex.load != null) pres.load = ex.load;
+          if (!pres.rpe && ex.rpe != null) pres.rpe = ex.rpe;
+          items.push({
+            kind: 'exercise',
+            name: ex.name || ex.slug || 'Exercise',
+            cues: ex.cues || [],
+            prescription: pres,
+            link: (ex.slug ? ('exercises/' + String(ex.slug).replace(/[^a-z0-9\-]+/g,'') + '.json') : '')
+          });
+        }
+        obj.sections = [{ type: 'Main', title: 'Main Sets', items: items }];
+      }
+
+      var parts = [];
+      var titleTop = obj.title ? '<h1>' + esc(obj.title) + '</h1>' : '';
+      if (obj.date) titleTop += '<p class="muted">' + esc(obj.date) + '</p>';
+      if (titleTop) parts.push(titleTop);
+      if (obj.notes) { try { parts.push(renderMarkdownBasic(String(obj.notes))); } catch (e) { parts.push('<p>' + esc(obj.notes) + '</p>'); } }
+      if (obj.sections && obj.sections.length) {
+        for (var si = 0; si < obj.sections.length; si++) parts.push(renderSection(obj.sections[si]));
+      }
+      workoutContent.innerHTML = parts.join('\n');
+      fixExerciseAnchors(workoutContent);
+      setVisibility(formSection, true);
+      buildForm('generated://session.json', JSON.stringify(obj), true);
+      workoutTitleEl.innerHTML = obj.title || 'Generated Session';
+      openOnGitHubEl.href = '#';
+      setVisibility(workoutMetaEl, true);
+      try { window.scrollTo(0, 0); } catch (e) {}
+      status('');
+    } catch (e) {
+      status('Failed to render generated session: ' + (e && e.message || e), { important: true });
+    }
+  }
+
+  function handleGenerateButtons() {
+    if (!genForm || genForm.__wired) return;
+    genForm.__wired = true;
+    if (genClear) genClear.onclick = function () {
+      if (genGoals) genGoals.value = '';
+      if (genPain) genPain.value = '';
+      if (genEquipment) genEquipment.value = '';
+      if (genInstr) genInstr.value = '';
+      if (genJSON) genJSON.value = '';
+      status('Cleared.', { important: false });
+    };
+    if (genLoadJSON) genLoadJSON.onclick = function () {
+      var text = (genJSON && genJSON.value) || '';
+      if (!text) return status('Paste JSON first.', { important: true });
+      var obj = null; try { obj = JSON.parse(text); } catch (e) { return status('Invalid JSON: ' + (e && e.message || e), { important: true }); }
+      var err = validateSessionPlan(obj);
+      if (err) return status('SessionPlan invalid: ' + err, { important: true });
+      openGeneratedSession(obj);
+    };
+    if (genSubmit) genSubmit.onclick = function () {
+      var payload = {
+        goals: (genGoals && genGoals.value) || '',
+        pain: ((genPain && genPain.value) || '').split(/,\s*/).filter(Boolean),
+        equipment: ((genEquipment && genEquipment.value) || '').split(/,\s*/).filter(Boolean),
+        personalInstructions: (genInstr && genInstr.value) || ''
+      };
+      status('Contacting Kai…');
+      xhrPostJSON('/api/kai/session-plan', payload, function (err, text) {
+        if (err) {
+          // Fallback: generate a local deterministic plan using known exercises
+          var today = new Date();
+          var iso = today.toISOString().slice(0,10);
+          var local = {
+            version: '1.0',
+            title: 'Home Strength (Auto) — ' + iso,
+            date: iso,
+            notes: 'Local fallback plan. Adjust loads conservatively.',
+            exercises: [
+              { slug: 'goblet_squat', name: 'Goblet Squat', prescribed: { sets: 3, reps: 8, rpe: 7 }, cues: ['Elbows down; bell tight', 'Knees track over toes'] },
+              { slug: 'flat_dumbbell_bench_press', name: 'Flat DB Bench Press', prescribed: { sets: 3, reps: 10, rpe: 7 }, cues: ['Wrists stacked', 'Soft lockout'] },
+              { slug: 'dumbbell_rdl', name: 'Dumbbell RDL', prescribed: { sets: 3, reps: 8, rpe: 7 }, cues: ['Hips back', 'Shins vertical'] },
+              { slug: 'farmer_carry', name: 'Farmer Carry', prescribed: { sets: 3, timeSeconds: 45, rpe: 6 }, cues: ['Tall posture', 'Quiet steps'] }
+            ]
+          };
+          var verr = validateSessionPlan(local);
+          if (verr) return status('Fallback plan invalid: ' + verr, { important: true });
+          return openGeneratedSession(local);
+        }
+        var obj = null; try { obj = JSON.parse(text); } catch (e) { return status('Kai returned invalid JSON', { important: true }); }
+        var v = validateSessionPlan(obj);
+        if (v) return status('SessionPlan invalid: ' + v, { important: true });
+        openGeneratedSession(obj);
+      });
+    };
   }
 
   // Compute repo base for GitHub Pages; if on *.github.io, prefix with '/exercAIse/'

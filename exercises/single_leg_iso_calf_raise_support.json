@@ -1,0 +1,25 @@
+{
+  "name": "Single-Leg Isometric Calf Raise (Support)",
+  "equipment": ["bodyweight", "wall", "dumbbell"],
+  "tags": ["calves", "isometric", "unilateral"],
+  "setup": [
+    "Stand near wall or stable object for fingertip balance",
+    "Shift weight onto working foot, opposite knee flexed slightly",
+    "Ball of foot centered, heel just off floor"
+  ],
+  "steps": [
+    "Rise onto ball of foot to strong but comfortable height",
+    "Hold isometric maintaining steady breathing",
+    "Keep ankle stacked (no roll out/in)",
+    "Lower slowly after hold, rest briefly, repeat other side as needed",
+    "Add light load in free hand only after stable bodyweight mastery"
+  ],
+  "cues": ["Tall posture", "Even big toe pressure", "Don't bounce", "Steady breath"],
+  "mistakes": ["Rolling ankle outward", "Holding breath", "Allowing heel to drift inward", "Shrugging shoulders"],
+  "safety": "Discontinue if sharp Achilles or plantar fascia pain; use bilateral version if unstable.",
+  "scaling": {"regressions": ["Bilateral isometric", "Lower height partial hold", "Shorter holds 10–15s"], "progressions": ["Add dumbbell load", "Longer holds 30–45s", "Extended eccentric after hold"]},
+  "variations": ["Bilateral isometric calf raise", "Dynamic calf raise", "Tempo eccentric calf raise"],
+  "prescriptionHints": {"load": "Bodyweight to moderate dumbbell", "reps": "—", "time": "15–45s holds", "distance": "—", "rpe": "6–8", "notes": "Gradually extend hold duration before adding load."},
+  "joints": {"sensitiveJoints": ["ankles", "Achilles"], "notes": "Maintain controlled midfoot pressure; stop if tendon pain persists."},
+  "media": {"video": "", "images": []}
+}

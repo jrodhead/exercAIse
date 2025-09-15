@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://exercAIse.app/schemas/session_v1.schema.json",
+  "title": "Workout Session v1",
+  "type": "object",
+  "required": ["version", "title", "date", "sections"],
+  "properties": {
+    "version": { "type": ["string", "number"], "enum": ["1", 1] },
+    "title": { "type": "string" },
+    "date": { "type": "string" },
+    "block": { "type": ["integer", "null"] },
+    "week": { "type": ["integer", "null"] },
+    "notes": { "type": ["string", "null"] },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "items"],
+        "properties": {
+          "type": { "type": "string" },
+          "title": { "type": ["string", "null"] },
+          "notes": { "type": ["string", "null"] },
+          "rounds": { "type": ["integer", "null"] },
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["kind", "name"],
+              "properties": {
+                "kind": { "type": "string", "enum": ["exercise", "note", "superset", "circuit"] },
+                "name": { "type": "string" },
+                "link": { "type": ["string", "null"] },
+                "cues": { "type": "array", "items": { "type": "string" } },
+                "logType": { "type": "string", "enum": ["strength", "endurance", "carry", "mobility", "stretch" ] },
+                "loggable": { "type": "boolean" },
+                "prescription": {
+                  "type": "object",
+                  "properties": {
+                    "sets": { "type": "integer" },
+                    "reps": { "type": ["integer", "string"] },
+                    "weight": { "type": ["number", "string"] },
+                    "load": { "type": ["number", "string"] },
+                    "multiplier": { "type": ["integer", "null"] },
+                    "rpe": { "type": ["number", "null"] },
+                    "timeSeconds": { "type": ["integer", "null"] },
+                    "holdSeconds": { "type": ["integer", "null"] },
+                    "distanceMiles": { "type": ["number", "null"] },
+                    "distanceMeters": { "type": ["number", "null"] },
+                    "restSeconds": { "type": ["integer", "null"] }
+                  },
+                  "minProperties": 1
+                },
+                "children": { "$ref": "#/properties/sections/properties/items/items" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

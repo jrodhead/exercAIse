@@ -1,1 +1,68 @@
-{ "version": "1", "title": "Upper Body Foot-Offload Adaptation – Block 3, Week 1 (Friday Alt)", "date": "2025-09-12", "block": 3, "week": 1, "notes": "Adapted for lateral/right foot irritation (pain 5–6 while walking). Remove standing / impact / unilateral lower-body loading. All work seated, supine, bench- or floor-supported. Keep RPE ≤7; stop any exercise if foot discomfort >2/10 or symptoms linger >30 min post.", "sections": [ { "type": "Warm-up", "title": "Upper Prep (6–8 min)", "notes": "Smooth circulation + shoulder/scap activation. All low foot demand.", "items": [ { "kind": "exercise", "name": "Arm Circles", "link": "exercises/arm_circles.json", "logType": "mobility", "prescription": { "reps": 20 }, "cues": ["Smooth arcs", "No shrug"] }, { "kind": "exercise", "name": "Band Pull-Aparts", "link": "exercises/band_pull_aparts.json", "logType": "mobility", "prescription": { "reps": 12 }, "cues": ["Scap squeeze", "Ribs quiet"] }, { "kind": "exercise", "name": "Elbow Openers", "link": "exercises/elbow_openers.json", "logType": "mobility", "prescription": { "reps": 10 }, "cues": ["Controlled", "Full range"] }, { "kind": "exercise", "name": "Deadbug", "link": "exercises/deadbug.json", "logType": "mobility", "prescription": { "reps": 5 }, "cues": ["Exhale reach", "Low back heavy"] } ] }, { "type": "Strength", "title": "Superset A – Press + Curl (4 rounds)", "rounds": 4, "notes": "Alternate exercises; 45–60s rest after each full round. Perform curls seated to unload foot.", "items": [ { "kind": "superset", "name": "A", "children": [ { "kind": "exercise", "name": "Flat DB Bench Press", "link": "exercises/flat_dumbbell_bench_press.json", "logType": "strength", "prescription": { "sets": 4, "reps": 8, "rpe": 7 }, "cues": ["Wrists stacked", "Controlled lower", "Soft lockout"] }, { "kind": "exercise", "name": "Alternating Dumbbell Biceps Curl", "link": "exercises/alternating_dumbbell_biceps_curl.json", "logType": "strength", "prescription": { "sets": 4, "reps": 8, "rpe": 7 }, "cues": ["Elbows still", "Supinate fully", "No sway"] } ] } ] }, { "type": "Strength", "title": "Superset B – Arm Strength (3 rounds)", "rounds": 3, "notes": "Seated or lying; 45–60s between rounds. Maintain smooth tempo.", "items": [ { "kind": "superset", "name": "B", "children": [ { "kind": "exercise", "name": "Hammer Curl", "link": "exercises/hammer_curl.json", "logType": "strength", "prescription": { "sets": 3, "reps": 10, "rpe": 7 }, "cues": ["Neutral grip", "Elbows pinned", "Full range"] }, { "kind": "exercise", "name": "Dumbbell Floor Skullcrushers", "link": "exercises/dumbbell_floor_skullcrushers.json", "logType": "strength", "prescription": { "sets": 3, "reps": 12, "rpe": 7 }, "cues": ["Upper arms still", "Soft lockout", "Controlled descent"] } ] } ] }, { "type": "Accessory/Core", "title": "Circuit C – Pump & Posture (2 rounds)", "rounds": 2, "notes": "Minimal rest; 30–45s after each round. Quality contractions, no grind.", "items": [ { "kind": "circuit", "name": "C", "children": [ { "kind": "exercise", "name": "Biceps Curl", "link": "exercises/biceps_curl.json", "logType": "strength", "prescription": { "reps": 12 }, "cues": ["Even tempo", "No shoulder sway"] }, { "kind": "exercise", "name": "Band Pull-Aparts", "link": "exercises/band_pull_aparts.json", "logType": "strength", "prescription": { "reps": 15 }, "cues": ["Scaps retract", "Finish level"] }, { "kind": "exercise", "name": "Deadbug", "link": "exercises/deadbug.json", "logType": "mobility", "prescription": { "reps": 6 }, "cues": ["Exhale reach", "Core brace"] } ] } ] }, { "type": "Cooldown/Recovery", "title": "Downshift (5–6 min)", "notes": "All supine or low-load positions—no standing stretch load on foot.", "items": [ { "kind": "exercise", "name": "Child's Pose", "link": "exercises/childs_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 45 }, "cues": ["Wide knees", "Relax shoulders"] }, { "kind": "exercise", "name": "Supported Fish Pose", "link": "exercises/supported_fish_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 45 }, "cues": ["Open chest", "Easy breath"] }, { "kind": "exercise", "name": "Deep Breathing", "link": "exercises/deep_breathing.json", "logType": "mobility", "prescription": { "timeSeconds": 120 }, "cues": ["Slow exhale", "Ribs expand 360°"] } ] } ] }
+{
+  "version": "1",
+  "title": "Upper Body Foot-Offload Adaptation – Block 3, Week 1 (Friday Alt)",
+  "date": "2025-09-12",
+  "block": 3,
+  "week": 1,
+  "notes": "Adapted due to lateral/right foot pain (rest 1/10, walking 5–6/10). Remove impact, unilateral lower body, carries, and prolonged standing load. All work seated, supine, bench- or floor-supported. Keep RPE ≤7. Stop if pain >2/10 or lingers >30 min post.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Upper Prep (6–8 min)",
+      "notes": "Circulation + shoulder/scap activation; all low foot demand.",
+      "items": [
+        { "kind": "exercise", "name": "Arm Circles", "link": "exercises/arm_circles.json", "logType": "mobility", "prescription": { "reps": 20 }, "cues": ["Smooth arcs", "No shrug"] },
+        { "kind": "exercise", "name": "Band Pull-Aparts", "link": "exercises/band_pull_aparts.json", "logType": "mobility", "prescription": { "reps": 12 }, "cues": ["Scap squeeze", "Ribs quiet"] },
+        { "kind": "exercise", "name": "Elbow Openers", "link": "exercises/elbow_openers.json", "logType": "mobility", "prescription": { "reps": 10 }, "cues": ["Controlled", "Full range"] },
+        { "kind": "exercise", "name": "Deadbug", "link": "exercises/deadbug.json", "logType": "mobility", "prescription": { "reps": 5 }, "cues": ["Exhale reach", "Low back heavy"] }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Superset A – Press + Curl (4 rounds)",
+      "rounds": 4,
+      "notes": "Alternate moves; 45–60s rest after each round. Curls seated.",
+      "items": [
+        { "kind": "superset", "name": "A", "children": [
+          { "kind": "exercise", "name": "Flat DB Bench Press", "link": "exercises/flat_dumbbell_bench_press.json", "logType": "strength", "prescription": { "sets": 4, "reps": 8, "rpe": 7 }, "cues": ["Wrists stacked", "Controlled lower", "Soft lockout"] },
+          { "kind": "exercise", "name": "Alternating Dumbbell Biceps Curl", "link": "exercises/alternating_dumbbell_biceps_curl.json", "logType": "strength", "prescription": { "sets": 4, "reps": 8, "rpe": 7 }, "cues": ["Elbows still", "Supinate fully", "No sway"] }
+        ] }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Superset B – Arm Strength (3 rounds)",
+      "rounds": 3,
+      "notes": "Seated or lying; 45–60s between rounds.",
+      "items": [
+        { "kind": "superset", "name": "B", "children": [
+          { "kind": "exercise", "name": "Hammer Curl", "link": "exercises/hammer_curl.json", "logType": "strength", "prescription": { "sets": 3, "reps": 10, "rpe": 7 }, "cues": ["Neutral grip", "Elbows pinned", "Full range"] },
+          { "kind": "exercise", "name": "Dumbbell Floor Skullcrushers", "link": "exercises/dumbbell_floor_skullcrushers.json", "logType": "strength", "prescription": { "sets": 3, "reps": 12, "rpe": 7 }, "cues": ["Upper arms still", "Soft lockout", "Controlled descent"] }
+        ] }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Circuit C – Pump & Posture (2 rounds)",
+      "rounds": 2,
+      "notes": "Minimal rest; 30–45s between rounds.",
+      "items": [
+        { "kind": "circuit", "name": "C", "children": [
+          { "kind": "exercise", "name": "Biceps Curl", "link": "exercises/biceps_curl.json", "logType": "strength", "prescription": { "reps": 12 }, "cues": ["Even tempo", "No shoulder sway"] },
+          { "kind": "exercise", "name": "Band Pull-Aparts", "link": "exercises/band_pull_aparts.json", "logType": "strength", "prescription": { "reps": 15 }, "cues": ["Scaps retract", "Finish level"] },
+          { "kind": "exercise", "name": "Deadbug", "link": "exercises/deadbug.json", "logType": "mobility", "prescription": { "reps": 6 }, "cues": ["Exhale reach", "Core brace"] }
+        ] }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Downshift (5–6 min)",
+      "notes": "All supine or low-load positions to keep foot unloaded.",
+      "items": [
+        { "kind": "exercise", "name": "Child's Pose", "link": "exercises/childs_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 45 }, "cues": ["Wide knees", "Relax shoulders"] },
+        { "kind": "exercise", "name": "Supported Fish Pose", "link": "exercises/supported_fish_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 45 }, "cues": ["Open chest", "Easy breath"] },
+        { "kind": "exercise", "name": "Deep Breathing", "link": "exercises/deep_breathing.json", "logType": "mobility", "prescription": { "timeSeconds": 120 }, "cues": ["Slow exhale", "Ribs expand 360°"] }
+      ]
+    }
+  ]
+}

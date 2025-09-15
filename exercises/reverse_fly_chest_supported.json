@@ -1,0 +1,28 @@
+{
+  "name": "Reverse Fly (Chest-Supported)",
+  "equipment": ["dumbbell", "bench"],
+  "tags": ["upper back", "rear delts", "scapular", "isolation"],
+  "setup": [
+    "Set adjustable bench to low incline (15–30°) or flat and lie prone with chest supported",
+    "Hold light dumbbells with neutral or slight pronated grip, arms hanging below shoulders",
+    "Head neutral, core lightly braced, feet planted for stability"
+  ],
+  "steps": [
+    "Inhale, set shoulder blades gently (no hard pinch)",
+    "Raise arms in a wide arc out to T position squeezing mid / upper back",
+    "Pause briefly when elbows are level with torso (avoid shrug)",
+    "Exhale and lower under control resisting gravity",
+    "Reset tension and repeat keeping tempo smooth"
+  ],
+  "cues": ["Lead with elbows slightly bent", "No shrugging", "Wide arc, don't swing", "Neck long", "Control the lower"],
+  "mistakes": ["Shrugging into upper traps", "Using momentum / swinging", "Elbows locked out stiff", "Neck extension / craning"],
+  "safety": "Keep loads light—movement is for tension not strain. Stop if sharp shoulder pain; reduce ROM or lighten weight.",
+  "scaling": {
+    "regressions": ["Decrease load", "Perform on higher incline for easier ROM", "Single-arm with other arm supporting bench frame"],
+    "progressions": ["Add 2–3s eccentric", "Add 1s peak pause", "Slight pronation and longer lever (straighter arms)"]
+  },
+  "variations": ["Standing bent-over reverse fly", "Cable reverse fly", "Band pull-apart"],
+  "prescriptionHints": {"load": "5–20 lb per hand", "reps": "10–20", "time": "—", "distance": "—", "rpe": "6–8", "notes": "Higher reps for mind-muscle; stay shy of failure to preserve scap mechanics."},
+  "joints": {"sensitiveJoints": ["shoulders", "neck"], "notes": "Maintain gentle scapular set; avoid cervical extension."},
+  "media": {"video": "", "images": []}
+}

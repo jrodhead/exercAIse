@@ -19,6 +19,11 @@ When prompted with 'what's the next workout?' or 'generate workout session', pro
 - For each exercise item, include:
   - `name`
   - `link` (to exercises JSON)
+  - `logType` to drive the logger UI. Allowed: `"strength" | "endurance" | "carry" | "mobility" | "stretch"`.
+    - Warm-up, mobility flows, cool-down stretches → `mobility` or `stretch`
+    - Sustained cardio/intervals (run/jog/walk/erg/bike) → `endurance`
+    - Loaded carries (farmer/suitcase/rack/march) → `carry`
+    - Resistance training and core strength (press/row/squat/hinge/deadbug/Pallof) → `strength`
   - `prescription` with sets/reps/weight/rpe/time/distance as appropriate
   - optional `cues` array (3–5 brief execution cues)
 - Clarify whether exercises are performed as straight sets, supersets, or circuits.
@@ -63,8 +68,9 @@ When prompted with 'what's the next workout?' or 'generate workout session', pro
 
 ### JSON details
 - Put sets, reps, rest and weight under `prescription`. Use a string for per-hand notation if needed (e.g., "45 x2 lb"). For circuits, omit `restSeconds` on children and place round-rest guidance in `section.notes`.
+ - Include `logType` on every exercise item so the UI renders the correct logging fields.
 
 ## Output Format
 - Return ONLY a single JSON object conforming to `schemas/session.schema.json`.
 - Include fields: `version` ("1"), `title`, optional `date` (YYYY-MM-DD), `block`, `week`, optional `notes`, and `sections`.
-  - Ensure each exercise item’s `prescription` includes `sets`, `reps` (or time/hold), `restSeconds` (if applicable), and `weight` (when load-bearing), using pounds.
+  - Ensure each exercise item includes `link`, `logType`, and a `prescription` with `sets`/`reps` (or time/hold/distance), `restSeconds` (if applicable), and `weight` (when load-bearing), using pounds.

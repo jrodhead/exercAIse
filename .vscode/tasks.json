@@ -41,10 +41,52 @@
 			"type": "shell",
 			"command": "python3 scripts/validate_links.py",
 			"isBackground": false,
-			"problemMatcher": [
-				"$gcc"
-			],
 			"group": "build"
+		}
+		,
+		{
+			"label": "Lint Sessions",
+			"type": "shell",
+			"command": "python3 scripts/lint_sessions.py",
+			"isBackground": false,
+			"group": "build"
+		},
+		{
+			"label": "Lint Sessions (strict)",
+			"type": "shell",
+			"command": "python3 scripts/lint_sessions.py --strict",
+			"isBackground": false,
+			"group": "build"
+		}
+		,
+		{
+			"label": "Validate + Lint",
+			"type": "shell",
+			"command": "python3 scripts/validate_links.py && python3 scripts/validate_schemas.py && python3 scripts/lint_sessions.py --strict",
+			"isBackground": false,
+			"group": "build"
+		}
+		,
+		{
+			"label": "UI Tests: Install",
+			"type": "shell",
+			"command": "npm ci || npm i && npx playwright install",
+			"isBackground": false,
+			"group": "test"
+		},
+		{
+			"label": "UI Tests: Serve (background)",
+			"type": "shell",
+			"command": "python3 scripts/serve.py",
+			"isBackground": true,
+			"group": "test"
+		},
+		{
+			"label": "UI Tests: Run",
+			"type": "shell",
+			"command": "npx playwright test",
+			"isBackground": false,
+			"group": "test"
 		}
 	]
 }

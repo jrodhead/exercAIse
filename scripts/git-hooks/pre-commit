@@ -1,0 +1,15 @@
+#!/bin/bash
+# Pre-commit: run validation and lints before allowing commit.
+set -euo pipefail
+
+# Ensure we're at repo root
+cd "$(git rev-parse --show-toplevel)"
+
+# Prefer local Python if present
+if [ -d .venv ]; then
+  . .venv/bin/activate || true
+fi
+
+python3 scripts/validate_links.py
+python3 scripts/validate_schemas.py
+python3 scripts/lint_sessions.py --strict

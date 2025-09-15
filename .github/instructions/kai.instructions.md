@@ -15,6 +15,7 @@ When a user requests a new workout, follow this multi-step process:
 2. **Workout Content Generation:**
    - When the user is ready, generate the workout content by following `.github/prompts/generate-workout-session.prompt.md`.
    - Output must be a JSON session conforming to `schemas/session.schema.json` (no Markdown body).
+    - Output must be a JSON session conforming to `schemas/session.schema.json` (no Markdown body). Include `link` and `logType` on every exercise item.
    - After generating the content, ask the user if they are ready to proceed with the Workout Content Interface Generation Prompt.
 
 3. **Workout Content Interface Generation:**
@@ -86,6 +87,7 @@ See `.github/prompts/generate-workout-session.prompt.md` for all output formatti
 
 ## 🔗 Repository Conventions (Explicit)
 - Exercise linking: In session JSON, every exercise item must include a `link` pointing to the JSON detail under `exercises/`, e.g., `"exercises/goblet_squat.json"`. JSON is the source of truth and is rendered by the viewer.
+ - Exercise typing: Add `logType` to each exercise item to drive the logger UI: `strength | endurance | carry | mobility | stretch`.
 - Source of truth for exercises is JSON: create `exercises/<slug>.json` conforming to `schemas/exercise.schema.json` (v2: setup, steps, cues, mistakes, safety, scaling, variations, prescriptionHints, joints, media). If legacy Markdown exists, keep it minimal; JSON is preferred.
 - Enrichment rule: If a referenced exercise’s JSON is missing v2 fields or doesn’t match the current schema, enrich/update it immediately (populate setup, steps, cues, mistakes, safety, scaling, variations, prescriptionHints, joints, media) before finalizing the session.
 - File and README: Name workouts `workouts/<block>-<week>_<Title>.json` (no dates in the filename). Add a link to the new workout in `README.md` in descending date order (most recent first).
