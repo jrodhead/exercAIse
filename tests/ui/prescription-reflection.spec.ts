@@ -117,7 +117,7 @@ test('copy JSON reflects first-set modifications only', async ({ page }) => {
         if (field === 'weight' || field === 'distanceMiles') {
           const firstVal = firstSet[field];
             if (secondSet[field] === firstVal) {
-              throw new Error(`${name} second set unexpectedly copied field ${field}`);
+              expect(secondSet[field], `${name} second set ${field} should not be copied from first set`).not.toBe(firstVal);
             }
         }
       }
