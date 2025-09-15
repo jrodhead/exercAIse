@@ -1,0 +1,31 @@
+{
+  "version": "1",
+  "title": "Arms Volume & Pump – Block 3, Week 2 (Friday)",
+  "date": "2025-09-19",
+  "block": 3,
+  "week": 2,
+  "notes": "Block 3 W2: Focus systemic arm volume (biceps/triceps/forearms) + delt cap without heavy axial load. Keep joints friendly, neutral/hammer grips. No Farmer Carry this week.",
+  "sections": [
+    { "type": "Warm-up", "title": "Prep (5–6 min)", "notes": "Joint lube + light activation.", "items": [
+      { "kind": "exercise", "name": "Arm Circles", "link": "exercises/arm_circles.json", "logType": "mobility", "prescription": { "timeSeconds": 40 }, "cues": ["Both ways", "Relax traps"] },
+      { "kind": "exercise", "name": "Band Pull-Aparts", "link": "exercises/band_pull_aparts.json", "logType": "strength", "prescription": { "sets": 1, "reps": 18 }, "cues": ["Scaps glide", "No shrug"] },
+      { "kind": "exercise", "name": "Elbow Openers", "link": "exercises/elbow_openers.json", "logType": "mobility", "prescription": { "reps": 10 }, "cues": ["Smooth range"] }
+    ] },
+    { "type": "Strength", "title": "A1/A2 Alternating Curl + Extension", "notes": "Alternate; rest ~45s between movements.", "items": [
+      { "kind": "exercise", "name": "Alternating Dumbbell Biceps Curl", "link": "exercises/alternating_dumbbell_biceps_curl.json", "logType": "strength", "prescription": { "sets": 4, "reps": "10/arm", "weight": "25 lb per hand", "rpe": 8, "restSeconds": 45 }, "cues": ["Elbows stay", "Supinate strong"] },
+      { "kind": "exercise", "name": "Dumbbell Floor Skullcrushers", "link": "exercises/dumbbell_floor_skullcrushers.json", "logType": "strength", "prescription": { "sets": 4, "reps": 10, "weight": "20 lb per hand", "rpe": 8, "restSeconds": 45 }, "cues": ["Elbows vertical", "Soft lockout"] }
+    ] },
+    { "type": "Main Work", "title": "B1/B2/B3 Delt + Curl + Extension Giant Set", "notes": "2–3 rounds; 15–20s between moves.", "items": [
+      { "kind": "exercise", "name": "Reverse Fly (Chest-Supported)", "link": "exercises/reverse_fly_chest_supported.json", "logType": "strength", "prescription": { "sets": 3, "reps": 15, "weight": "10 lb per hand" }, "cues": ["Wide arc", "Pause squeeze"] },
+      { "kind": "exercise", "name": "Hammer Curl", "link": "exercises/hammer_curl.json", "logType": "strength", "prescription": { "sets": 3, "reps": 12, "weight": "22.5 lb per hand" }, "cues": ["Neutral wrist", "Smooth lower"] },
+      { "kind": "exercise", "name": "Overhead Triceps Extension", "link": "exercises/overhead_triceps_extension.json", "logType": "strength", "prescription": { "sets": 3, "reps": 12, "weight": "20 lb" }, "cues": ["Elbows narrow", "No sway"] }
+    ] },
+    { "type": "Accessory/Core", "title": "C1/C2 Forearm + Core Pair", "notes": "Optional 1–2 rounds if time.", "items": [
+      { "kind": "exercise", "name": "Hollow Hold", "link": "exercises/hollow_hold.json", "logType": "strength", "prescription": { "sets": 2, "holdSeconds": 25 }, "cues": ["Lower back press", "Controlled breath"] }
+    ] },
+    { "type": "Cooldown/Recovery", "title": "Downshift (4–5 min)", "items": [
+      { "kind": "exercise", "name": "Child’s Pose", "link": "exercises/childs_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 40 }, "cues": ["Slow exhale"] },
+      { "kind": "exercise", "name": "Seated Forward Fold", "link": "exercises/seated_forward_fold.json", "logType": "stretch", "prescription": { "holdSeconds": 45 }, "cues": ["Long spine"] }
+    ] }
+  ]
+}
