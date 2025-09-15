@@ -15,6 +15,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
+      - name: Install Python dependencies
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Run link validation
         run: python3 scripts/validate_links.py
       - name: Run schema validation
