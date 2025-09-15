@@ -106,7 +106,7 @@ test('copy JSON reflects first-set modifications only', async ({ page }) => {
     for (const [field, rawVal] of Object.entries(cfg.modify)) {
       const transformer = cfg.transform?.[field] || ((v: string) => Number(v));
       const expected = transformer(rawVal);
-      expect(firstSet[field] ?? firstSet[field === 'timeSeconds' || field === 'holdSeconds' ? field : field], `${name} first set ${field}`).toBe(expected);
+      expect(firstSet[field], `${name} first set ${field}`).toBe(expected);
     }
 
     // Ensure subsequent set (if exists) does NOT contain modified field value duplication (unless inherent from prescription). Only enforce absence for fields we changed when they were originally blank.
