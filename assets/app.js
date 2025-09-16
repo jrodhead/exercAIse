@@ -1522,7 +1522,7 @@
       if (isJSON) {
         // Render a structured view of the JSON workout that pairs with card injection
         function esc(s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-        function renderItem(it, opts) {
+    function renderItem(it, opts) {
           if (!it || typeof it !== 'object') return '';
           var options = opts || {};
           var kind = String(it.kind || 'exercise');
@@ -1730,12 +1730,16 @@
       // render structured JSON like in openSession JSON branch
       var obj = JSON.parse(text || '{}');
       function esc(s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-      function renderItem(it, opts) {
+  function renderItem(it, opts) {
         if (!it || typeof it !== 'object') return '';
         var options = opts || {};
         var kind = String(it.kind || 'exercise');
         var name = String(it.name || '');
-        var link = 'exercises/' + (String(it.slug || '').replace(/[^a-z0-9\-]+/g,'') || '') + '.json';
+        var link = String(it.link || '');
+        if (!link) {
+          var s = String(it.slug || '').replace(/[^a-z0-9_\-]+/g,'');
+          if (s) link = 'exercises/' + s + '.json';
+        }
         function inlineMarkdown(text) {
           var s = String(text == null ? '' : text);
           s = s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -1820,7 +1824,7 @@
             name: ex.name || ex.slug || 'Exercise',
             cues: ex.cues || [],
             prescription: pres,
-            link: (ex.slug ? ('exercises/' + String(ex.slug).replace(/[^a-z0-9\-]+/g,'') + '.json') : '')
+            link: (ex.slug ? ('exercises/' + String(ex.slug).replace(/[^a-z0-9_\-]+/g,'') + '.json') : '')
           });
         }
         obj.sections = [{ type: 'Main', title: 'Main Sets', items: items }];
@@ -1848,6 +1852,45 @@
     }
   }
 
+  // Guardrails: validate SessionPlan slugs and exercise link existence
+  function validateSessionPlanLinks(obj, cb) {
+    try {
+      if (!obj || !obj.exercises || !obj.exercises.length) return cb(null);
+      var invalid = [];
+      var missing = [];
+      var pending = 0;
+      function doneOnce(err) { try { cb(err); } catch (e) {} }
+      for (var i = 0; i < obj.exercises.length; i++) {
+        var ex = obj.exercises[i] || {};
+        var slug = String(ex.slug || '').trim();
+        if (!slug || !/^[a-z0-9_\-]+$/.test(slug)) { invalid.push(slug || ('#' + i)); continue; }
+        // Probe existence
+        (function (s) {
+          pending++;
+          var path = 'exercises/' + s + '.json';
+          xhrGet(path, function (err, text) {
+            if (err || !text) missing.push(s);
+            pending--;
+            if (pending === 0) {
+              if (invalid.length || missing.length) {
+                var msgs = [];
+                if (invalid.length) msgs.push('Invalid slugs: ' + invalid.join(', '));
+                if (missing.length) msgs.push('Unknown slugs (no file in exercises/): ' + missing.join(', '));
+                return doneOnce(msgs.join(' | '));
+              }
+              return doneOnce(null);
+            }
+          });
+        })(slug);
+      }
+      // If loop added zero pending (e.g., all invalid), finish now
+      if (pending === 0) {
+        if (invalid.length) return doneOnce('Invalid slugs: ' + invalid.join(', '));
+        return doneOnce(null);
+      }
+    } catch (e) { return cb('Validation error: ' + (e && e.message || e)); }
+  }
+
   function handleGenerateButtons() {
     if (!genForm || genForm.__wired) return;
     genForm.__wired = true;
@@ -1865,7 +1908,10 @@
       var obj = null; try { obj = JSON.parse(text); } catch (e) { return status('Invalid JSON: ' + (e && e.message || e), { important: true }); }
       var err = validateSessionPlan(obj);
       if (err) return status('SessionPlan invalid: ' + err, { important: true });
-      openGeneratedSession(obj);
+      validateSessionPlanLinks(obj, function (linkErr) {
+        if (linkErr) return status('Link validation failed: ' + linkErr, { important: true });
+        openGeneratedSession(obj);
+      });
     };
     if (genSubmit) genSubmit.onclick = function () {
       var payload = {
@@ -1889,17 +1935,23 @@
               { slug: 'goblet_squat', name: 'Goblet Squat', prescribed: { sets: 3, reps: 8, rpe: 7 }, cues: ['Elbows down; bell tight', 'Knees track over toes'] },
               { slug: 'flat_dumbbell_bench_press', name: 'Flat DB Bench Press', prescribed: { sets: 3, reps: 10, rpe: 7 }, cues: ['Wrists stacked', 'Soft lockout'] },
               { slug: 'dumbbell_rdl', name: 'Dumbbell RDL', prescribed: { sets: 3, reps: 8, rpe: 7 }, cues: ['Hips back', 'Shins vertical'] },
-              { slug: 'farmer_carry', name: 'Farmer Carry', prescribed: { sets: 3, timeSeconds: 45, rpe: 6 }, cues: ['Tall posture', 'Quiet steps'] }
+              // Intentionally omit Farmer Carry to respect current block preference
             ]
           };
           var verr = validateSessionPlan(local);
           if (verr) return status('Fallback plan invalid: ' + verr, { important: true });
-          return openGeneratedSession(local);
+          return validateSessionPlanLinks(local, function (linkErrA) {
+            if (linkErrA) return status('Fallback link validation failed: ' + linkErrA, { important: true });
+            openGeneratedSession(local);
+          });
         }
         var obj = null; try { obj = JSON.parse(text); } catch (e) { return status('Kai returned invalid JSON', { important: true }); }
         var v = validateSessionPlan(obj);
         if (v) return status('SessionPlan invalid: ' + v, { important: true });
-        openGeneratedSession(obj);
+        validateSessionPlanLinks(obj, function (linkErrB) {
+          if (linkErrB) return status('Link validation failed: ' + linkErrB, { important: true });
+          openGeneratedSession(obj);
+        });
       });
     };
   }
