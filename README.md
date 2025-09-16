@@ -4,6 +4,7 @@ AI-generated workouts compatible with a really old iPad
 
 ## This Week
 
+- [Foot Rehab – Lateral Right Foot (Tuesday)](workouts/3-2_Foot_Rehab_Lateral_Right_Foot.json)
 - [Upper Body Hypertrophy – Block 3, Week 2 (Tuesday)](workouts/3-2_Upper_Body_Hypertrophy.json)
 - [Yin Yoga Recovery Flow – Block 3, Week 2 (Wednesday)](workouts/3-2_Yin_Yoga_Recovery_Flow.json)
 - [Lower Body Strength & Calves – Block 3, Week 2 (Thursday)](workouts/3-2_Lower_Body_Strength_Calves.json)

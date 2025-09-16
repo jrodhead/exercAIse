@@ -1522,7 +1522,7 @@
       if (isJSON) {
         // Render a structured view of the JSON workout that pairs with card injection
         function esc(s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-    function renderItem(it, opts) {
+        function renderItem(it, opts) {
           if (!it || typeof it !== 'object') return '';
           var options = opts || {};
           var kind = String(it.kind || 'exercise');
@@ -1730,7 +1730,7 @@
       // render structured JSON like in openSession JSON branch
       var obj = JSON.parse(text || '{}');
       function esc(s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-  function renderItem(it, opts) {
+      function renderItem(it, opts) {
         if (!it || typeof it !== 'object') return '';
         var options = opts || {};
         var kind = String(it.kind || 'exercise');
@@ -1935,7 +1935,7 @@
               { slug: 'goblet_squat', name: 'Goblet Squat', prescribed: { sets: 3, reps: 8, rpe: 7 }, cues: ['Elbows down; bell tight', 'Knees track over toes'] },
               { slug: 'flat_dumbbell_bench_press', name: 'Flat DB Bench Press', prescribed: { sets: 3, reps: 10, rpe: 7 }, cues: ['Wrists stacked', 'Soft lockout'] },
               { slug: 'dumbbell_rdl', name: 'Dumbbell RDL', prescribed: { sets: 3, reps: 8, rpe: 7 }, cues: ['Hips back', 'Shins vertical'] },
-              // Intentionally omit Farmer Carry to respect current block preference
+              { slug: 'farmer_carry', name: 'Farmer Carry', prescribed: { sets: 3, timeSeconds: 45, rpe: 6 }, cues: ['Tall posture', 'Quiet steps'] }
             ]
           };
           var verr = validateSessionPlan(local);
