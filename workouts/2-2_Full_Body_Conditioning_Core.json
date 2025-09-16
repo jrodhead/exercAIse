@@ -1,36 +1,40 @@
 {
   "version": "1",
-  "title": "Full-Body Conditioning & Core \u2013 Block 2, Week 2 (Friday)",
+  "title": "Full-Body Conditioning & Core – Block 2, Week 2 (Friday)",
   "block": 0,
   "week": 0,
   "sections": [
     {
       "type": "Main Work",
-      "title": "Format: Circuit, 3\u20134 rounds; Rest 60\u201375 sec between rounds",
+      "title": "Format: Circuit, 3–4 rounds; Rest 60–75 sec between rounds",
       "items": [
         {
           "kind": "exercise",
           "name": "Dumbbell Thruster (Squat + Press)",
           "link": "exercises/dumbbell_thruster.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         },
         {
           "kind": "exercise",
           "name": "Renegade Row",
           "link": "exercises/renegade_row.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         },
         {
           "kind": "exercise",
           "name": "Step-Up",
           "link": "exercises/step_up.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         },
         {
           "kind": "exercise",
           "name": "Plank Shoulder Tap",
           "link": "exercises/plank_shoulder_tap.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -42,37 +46,42 @@
           "kind": "exercise",
           "name": "Weighted Deadbug",
           "link": "exercises/weighted_deadbug.json",
-          "cues": []
+          "cues": [],
+          "logType": "mobility"
         },
         {
           "kind": "exercise",
           "name": "Hollow Hold",
           "link": "exercises/hollow_hold.json",
-          "cues": []
+          "cues": [],
+          "logType": "mobility"
         }
       ]
     },
     {
       "type": "Cooldown/Recovery",
-      "title": "Cooldown (5\u20138 min)",
+      "title": "Cooldown (5–8 min)",
       "items": [
         {
           "kind": "exercise",
-          "name": "Child\u2019s Pose",
+          "name": "Child’s Pose",
           "link": "exercises/childs_pose.json",
-          "cues": []
+          "cues": [],
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
           "name": "Thread the Needle",
           "link": "exercises/thread_the_needle.json",
-          "cues": []
+          "cues": [],
+          "logType": "mobility"
         },
         {
           "kind": "exercise",
           "name": "Seated Forward Fold",
           "link": "exercises/seated_forward_fold.json",
-          "cues": []
+          "cues": [],
+          "logType": "stretch"
         }
       ]
     }

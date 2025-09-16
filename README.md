@@ -56,6 +56,14 @@ AI-generated workouts compatible with a really old iPad
 - Validate schemas: run the task “Validate Schemas” or `python3 scripts/validate_schemas.py`.
 - CI: GitHub Actions runs both validators on pushes and PRs.
 
+## Schemas
+- `schemas/session.schema.json`: Canonical committed workout session files in `workouts/`.
+- `schemas/exercise.schema.json`: Source of truth for exercise detail files in `exercises/`.
+- `schemas/performance.schema.json`: Export format (`perf-1`) produced by the logger UI.
+- Legacy (historical only): `performed.schema.json` (older performed logs); no longer exported by the app.
+
+Deprecated schemas removed: session_plan, session_v1, session_log (superseded by unified session + perf-1 export).
+
 ## Conventions
 - Dumbbell weights: log as number or string. Examples: `25` (per hand implied), `"25 x2"` (explicit per hand), `"50 total"`.
 - Movements without sets/weights: use time/hold/distance fields (e.g., `timeSeconds`, `holdSeconds`, `distanceMiles`; `distanceMeters` is supported for legacy files).

@@ -1748,14 +1748,16 @@
         }
         function attrEscape(s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
         if (kind === 'exercise') {
-          var meta = { cues: (it.cues || []), prescription: (it.prescribed || null) };
+          // Accept both 'prescribed' (plan) and 'prescription' (workout) shapes
+          var presObj = (it.prescribed != null ? it.prescribed : it.prescription);
+          var meta = { cues: (it.cues || []), prescription: (presObj || null) };
           if (it.logType) meta.logType = it.logType;
           if (it.loggable === false) meta.loggable = false;
           var html = '<li><a href="' + esc(link) + '" data-exmeta="' + attrEscape(JSON.stringify(meta)) + '">' + esc(name) + '</a>';
           // Append compact prescription summary inline for list-only display
-          if (it.prescribed && typeof it.prescribed === 'object') {
+          if (presObj && typeof presObj === 'object') {
             try {
-              var p = it.prescribed || {};
+              var p = presObj || {};
               var parts = [];
               if (p.sets != null && p.reps != null) {
                 var setsNumG = Number(p.sets);
@@ -1813,7 +1815,8 @@
         var items = [];
         for (var ei = 0; ei < obj.exercises.length; ei++) {
           var ex = obj.exercises[ei] || {};
-          var pres = ex.prescribed || {};
+          // Accept either 'prescribed' (plan) or 'prescription' (workout-style)
+          var pres = (ex.prescribed != null ? ex.prescribed : ex.prescription) || {};
           // Accept top-level sets/reps as well
           if (!pres.sets && ex.sets != null) pres.sets = ex.sets;
           if (!pres.reps && ex.reps != null) pres.reps = ex.reps;
@@ -1891,6 +1894,76 @@
     } catch (e) { return cb('Validation error: ' + (e && e.message || e)); }
   }
 
+  // Detect if object looks like a repository workout JSON (has sections/items tree)
+  function isWorkoutJSONShape(obj) {
+    if (!obj || typeof obj !== 'object') return false;
+    if (!obj.sections || Object.prototype.toString.call(obj.sections) !== '[object Array]') return false;
+    // Consider it a workout if any section has items
+    for (var i = 0; i < obj.sections.length; i++) {
+      var sec = obj.sections[i];
+      if (sec && sec.items && Object.prototype.toString.call(sec.items) === '[object Array]' && sec.items.length) return true;
+    }
+    // Or if empty sections array is present, still treat as workout
+    return true;
+  }
+
+  function looksLikeSessionPlan(obj) {
+    return !!(obj && obj.version === '1.0' && obj.exercises && Object.prototype.toString.call(obj.exercises) === '[object Array]');
+  }
+
+  // Validate links/slugs inside a workout JSON (sections/items, including supersets/circuits)
+  function validateWorkoutLinks(obj, cb) {
+    try {
+      var invalid = [];
+      var missing = [];
+      var pending = 0;
+      function doneOnce(err) { try { cb(err); } catch (e) {} }
+      function extractSlugFromLink(link) {
+        if (!link) return '';
+        var m = String(link).match(/(?:^|\/)exercises\/([a-z0-9_\-]+)\.(?:json|md)$/i);
+        return m && m[1] ? m[1] : '';
+      }
+      function walkItem(it) {
+        if (!it || typeof it !== 'object') return;
+        var kind = String(it.kind || 'exercise');
+        if (kind === 'exercise') {
+          var link = String(it.link || '');
+          var slug = extractSlugFromLink(link);
+          if (!slug && it.slug) slug = String(it.slug).trim();
+          if (!slug) { invalid.push((it.name || '(unnamed)') + ' (no link/slug)'); return; }
+          if (!/^[a-z0-9_\-]+$/.test(slug)) { invalid.push(slug); return; }
+          pending++;
+          var path = 'exercises/' + slug + '.json';
+          xhrGet(path, function (err, text) {
+            if (err || !text) missing.push(slug);
+            pending--;
+            if (pending === 0) {
+              if (invalid.length || missing.length) {
+                var msgs = [];
+                if (invalid.length) msgs.push('Invalid/missing link entries: ' + invalid.join(', '));
+                if (missing.length) msgs.push('Unknown slugs (no file in exercises/): ' + missing.join(', '));
+                return doneOnce(msgs.join(' | '));
+              }
+              return doneOnce(null);
+            }
+          });
+        } else if ((kind === 'superset' || kind === 'circuit') && it.children && it.children.length) {
+          for (var i = 0; i < it.children.length; i++) walkItem(it.children[i]);
+        }
+      }
+      if (!obj || !obj.sections || !obj.sections.length) return cb(null);
+      for (var s = 0; s < obj.sections.length; s++) {
+        var sec = obj.sections[s];
+        if (!sec || !sec.items || !sec.items.length) continue;
+        for (var j = 0; j < sec.items.length; j++) walkItem(sec.items[j]);
+      }
+      if (pending === 0) {
+        if (invalid.length) return doneOnce('Invalid/missing link entries: ' + invalid.join(', '));
+        return doneOnce(null);
+      }
+    } catch (e) { return cb('Validation error: ' + (e && e.message || e)); }
+  }
+
   function handleGenerateButtons() {
     if (!genForm || genForm.__wired) return;
     genForm.__wired = true;
@@ -1906,12 +1979,48 @@
       var text = (genJSON && genJSON.value) || '';
       if (!text) return status('Paste JSON first.', { important: true });
       var obj = null; try { obj = JSON.parse(text); } catch (e) { return status('Invalid JSON: ' + (e && e.message || e), { important: true }); }
-      var err = validateSessionPlan(obj);
-      if (err) return status('SessionPlan invalid: ' + err, { important: true });
-      validateSessionPlanLinks(obj, function (linkErr) {
-        if (linkErr) return status('Link validation failed: ' + linkErr, { important: true });
-        openGeneratedSession(obj);
-      });
+      // Accept either a workout JSON (sections/items) or a SessionPlan (version/exercises)
+      if (isWorkoutJSONShape(obj)) {
+        validateWorkoutLinks(obj, function (linkErrW) {
+          if (linkErrW) {
+            status('Some exercises are missing: ' + linkErrW + ' — rendering anyway and providing stubs below.', { important: true });
+            try {
+              var m = String(linkErrW).match(/Unknown slugs \(no file in exercises\/\):\s*(.+)$/);
+              var miss = m && m[1] ? m[1].split(/\s*,\s*/).filter(Boolean) : [];
+              if (miss.length) {
+                var stubs = generateExerciseStubsFromObj(obj, miss);
+                if (stubs) {
+                  copyWrapper.style.display = 'block';
+                  copyTarget.value = stubs;
+                }
+              }
+            } catch (e) {}
+          }
+          openGeneratedSession(obj);
+        });
+      } else if (looksLikeSessionPlan(obj)) {
+        var err = validateSessionPlan(obj);
+        if (err) return status('SessionPlan invalid: ' + err, { important: true });
+        validateSessionPlanLinks(obj, function (linkErr) {
+          if (linkErr) {
+            status('Some exercises are missing: ' + linkErr + ' — rendering anyway and providing stubs below.', { important: true });
+            try {
+              var m2 = String(linkErr).match(/Unknown slugs \(no file in exercises\/\):\s*(.+)$/);
+              var miss2 = m2 && m2[1] ? m2[1].split(/\s*,\s*/).filter(Boolean) : [];
+              if (miss2.length) {
+                var stubs2 = generateExerciseStubsFromPlan(obj, miss2);
+                if (stubs2) {
+                  copyWrapper.style.display = 'block';
+                  copyTarget.value = stubs2;
+                }
+              }
+            } catch (e) {}
+          }
+          openGeneratedSession(obj);
+        });
+      } else {
+        return status('Unsupported JSON shape: expected workout {sections[]} or plan {version:"1.0", exercises[]}', { important: true });
+      }
     };
     if (genSubmit) genSubmit.onclick = function () {
       var payload = {
@@ -1935,7 +2044,7 @@
               { slug: 'goblet_squat', name: 'Goblet Squat', prescribed: { sets: 3, reps: 8, rpe: 7 }, cues: ['Elbows down; bell tight', 'Knees track over toes'] },
               { slug: 'flat_dumbbell_bench_press', name: 'Flat DB Bench Press', prescribed: { sets: 3, reps: 10, rpe: 7 }, cues: ['Wrists stacked', 'Soft lockout'] },
               { slug: 'dumbbell_rdl', name: 'Dumbbell RDL', prescribed: { sets: 3, reps: 8, rpe: 7 }, cues: ['Hips back', 'Shins vertical'] },
-              { slug: 'farmer_carry', name: 'Farmer Carry', prescribed: { sets: 3, timeSeconds: 45, rpe: 6 }, cues: ['Tall posture', 'Quiet steps'] }
+              { slug: 'hammer_curl', name: 'Hammer Curl', prescribed: { sets: 3, reps: 12, rpe: 7 }, cues: ['Neutral grip', 'Control the lower'] }
             ]
           };
           var verr = validateSessionPlan(local);
@@ -1946,14 +2055,120 @@
           });
         }
         var obj = null; try { obj = JSON.parse(text); } catch (e) { return status('Kai returned invalid JSON', { important: true }); }
-        var v = validateSessionPlan(obj);
-        if (v) return status('SessionPlan invalid: ' + v, { important: true });
-        validateSessionPlanLinks(obj, function (linkErrB) {
-          if (linkErrB) return status('Link validation failed: ' + linkErrB, { important: true });
-          openGeneratedSession(obj);
-        });
+        // Accept either shape from Kai
+        if (isWorkoutJSONShape(obj)) {
+          validateWorkoutLinks(obj, function (linkErrW2) {
+            if (linkErrW2) {
+              status('Some exercises are missing: ' + linkErrW2 + ' — rendering anyway and providing stubs below.', { important: true });
+              try {
+                var m3 = String(linkErrW2).match(/Unknown slugs \(no file in exercises\/\):\s*(.+)$/);
+                var miss3 = m3 && m3[1] ? m3[1].split(/\s*,\s*/).filter(Boolean) : [];
+                if (miss3.length) {
+                  var stubs3 = generateExerciseStubsFromObj(obj, miss3);
+                  if (stubs3) { copyWrapper.style.display = 'block'; copyTarget.value = stubs3; }
+                }
+              } catch (e) {}
+            }
+            openGeneratedSession(obj);
+          });
+        } else if (looksLikeSessionPlan(obj)) {
+          var v = validateSessionPlan(obj);
+          if (v) return status('SessionPlan invalid: ' + v, { important: true });
+          validateSessionPlanLinks(obj, function (linkErrB) {
+            if (linkErrB) {
+              status('Some exercises are missing: ' + linkErrB + ' — rendering anyway and providing stubs below.', { important: true });
+              try {
+                var m4 = String(linkErrB).match(/Unknown slugs \(no file in exercises\/\):\s*(.+)$/);
+                var miss4 = m4 && m4[1] ? m4[1].split(/\s*,\s*/).filter(Boolean) : [];
+                if (miss4.length) {
+                  var stubs4 = generateExerciseStubsFromPlan(obj, miss4);
+                  if (stubs4) { copyWrapper.style.display = 'block'; copyTarget.value = stubs4; }
+                }
+              } catch (e) {}
+            }
+            openGeneratedSession(obj);
+          });
+        } else {
+          return status('Kai returned unsupported JSON shape (expected workout or plan).', { important: true });
+        }
       });
     };
+  }
+
+  function generateExerciseStub(slug, name) {
+    var display = name || (slug || '').replace(/_/g, ' ').replace(/\b\w/g, function(m){ return m.toUpperCase(); });
+    var stub = {
+      name: display,
+      equipment: [],
+      tags: [],
+      setup: [""],
+      steps: [""],
+      cues: [],
+      mistakes: [],
+      safety: "",
+      scaling: { regressions: [], progressions: [] },
+      variations: [],
+      prescriptionHints: { load: "", reps: "", time: "", distance: "", rpe: "", notes: "" },
+      joints: { sensitiveJoints: [], notes: "" },
+      media: { video: "", images: [] }
+    };
+    return { path: 'exercises/' + slug + '.json', json: JSON.stringify(stub, null, 2) };
+  }
+
+  function generateExerciseStubsFromObj(obj, missingSlugs) {
+    try {
+      var nameBySlug = {};
+      function slugFromLink(link) {
+        var m = String(link || '').match(/(?:^|\/)exercises\/([a-z0-9_\-]+)\.(?:json|md)$/i);
+        return m && m[1] ? m[1] : '';
+      }
+      function walkItem(it) {
+        if (!it || typeof it !== 'object') return;
+        var kind = String(it.kind || 'exercise');
+        if (kind === 'exercise') {
+          var s = it.slug || slugFromLink(it.link);
+          if (s) nameBySlug[s] = it.name || nameBySlug[s] || s;
+        } else if ((kind === 'superset' || kind === 'circuit') && it.children && it.children.length) {
+          for (var i = 0; i < it.children.length; i++) walkItem(it.children[i]);
+        }
+      }
+      if (obj && obj.sections && obj.sections.length) {
+        for (var si = 0; si < obj.sections.length; si++) {
+          var sec = obj.sections[si];
+          if (!sec || !sec.items) continue;
+          for (var j = 0; j < sec.items.length; j++) walkItem(sec.items[j]);
+        }
+      }
+      var parts = [];
+      for (var k = 0; k < missingSlugs.length; k++) {
+        var slug = missingSlugs[k];
+        var name = nameBySlug[slug] || slug;
+        var stub = generateExerciseStub(slug, name);
+        parts.push('// ' + stub.path + '\n' + stub.json);
+      }
+      return parts.join('\n\n');
+    } catch (e) { return ''; }
+  }
+
+  function generateExerciseStubsFromPlan(plan, missingSlugs) {
+    try {
+      var nameBySlug = {};
+      if (plan && plan.exercises && plan.exercises.length) {
+        for (var i = 0; i < plan.exercises.length; i++) {
+          var ex = plan.exercises[i] || {};
+          var s = String(ex.slug || '').trim();
+          if (s) nameBySlug[s] = ex.name || nameBySlug[s] || s;
+        }
+      }
+      var parts = [];
+      for (var k = 0; k < missingSlugs.length; k++) {
+        var slug = missingSlugs[k];
+        var name = nameBySlug[slug] || slug;
+        var stub = generateExerciseStub(slug, name);
+        parts.push('// ' + stub.path + '\n' + stub.json);
+      }
+      return parts.join('\n\n');
+    } catch (e) { return ''; }
   }
 
   // Compute repo base for GitHub Pages; if on *.github.io, prefix with '/exercAIse/'

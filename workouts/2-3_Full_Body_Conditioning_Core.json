@@ -12,20 +12,29 @@
         {
           "kind": "exercise",
           "name": "Jumping Jacks",
-          "link": "../exercises/jumping_jacks.md",
-          "prescription": { "timeSeconds": 40 }
+          "link": "exercises/jumping_jacks.json",
+          "prescription": {
+            "timeSeconds": 40
+          },
+          "logType": "mobility"
         },
         {
           "kind": "exercise",
           "name": "Loaded March",
-          "link": "../exercises/loaded_march.md",
-          "prescription": { "reps": 20 }
+          "link": "exercises/loaded_march.json",
+          "prescription": {
+            "reps": 20
+          },
+          "logType": "mobility"
         },
         {
           "kind": "exercise",
           "name": "World’s Greatest Stretch",
-          "link": "../exercises/worlds_greatest_stretch.md",
-          "prescription": { "reps": 4 }
+          "link": "exercises/worlds_greatest_stretch.json",
+          "prescription": {
+            "reps": 4
+          },
+          "logType": "stretch"
         }
       ]
     },
@@ -36,44 +45,48 @@
         {
           "kind": "exercise",
           "name": "Dumbbell Thruster",
-          "link": "../exercises/dumbbell_thruster.md",
+          "link": "exercises/dumbbell_thruster.json",
           "prescription": {
             "sets": 3,
             "reps": "10–12",
             "weight": "27.5 lb per hand",
             "restSeconds": 60
-          }
+          },
+          "logType": "strength"
         },
         {
           "kind": "exercise",
           "name": "Renegade Row",
-          "link": "../exercises/renegade_row.md",
+          "link": "exercises/renegade_row.json",
           "prescription": {
             "sets": 3,
             "reps": "6–8/side",
             "weight": "27.5 lb per hand"
-          }
+          },
+          "logType": "strength"
         },
         {
           "kind": "exercise",
           "name": "Step-Up",
-          "link": "../exercises/step_up.md",
+          "link": "exercises/step_up.json",
           "prescription": {
             "sets": 3,
             "reps": "10/leg",
             "weight": "20 lb per hand"
-          }
+          },
+          "logType": "strength"
         },
         {
           "kind": "exercise",
           "name": "Farmer Carry",
-          "link": "../exercises/farmer_carry.md",
+          "link": "exercises/farmer_carry.json",
           "prescription": {
             "sets": 3,
             "timeSeconds": 45,
             "weight": "40 lb per hand",
             "restSeconds": 60
-          }
+          },
+          "logType": "carry"
         }
       ]
     },
@@ -84,20 +97,32 @@
         {
           "kind": "exercise",
           "name": "Weighted Deadbug",
-          "link": "../exercises/weighted_deadbug.md",
-          "prescription": { "sets": 3, "reps": "8/side" }
+          "link": "exercises/weighted_deadbug.json",
+          "prescription": {
+            "sets": 3,
+            "reps": "8/side"
+          },
+          "logType": "mobility"
         },
         {
           "kind": "exercise",
           "name": "Russian Twist",
-          "link": "../exercises/russian_twist.md",
-          "prescription": { "sets": 3, "reps": "20 taps" }
+          "link": "exercises/russian_twist.json",
+          "prescription": {
+            "sets": 3,
+            "reps": "20 taps"
+          },
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
           "name": "Plank Shoulder Tap",
-          "link": "../exercises/plank_shoulder_tap.md",
-          "prescription": { "sets": 3, "reps": "20 taps" }
+          "link": "exercises/plank_shoulder_tap.json",
+          "prescription": {
+            "sets": 3,
+            "reps": "20 taps"
+          },
+          "logType": "strength"
         }
       ]
     },
@@ -108,20 +133,29 @@
         {
           "kind": "exercise",
           "name": "Child’s Pose",
-          "link": "../exercises/childs_pose.md",
-          "prescription": { "timeSeconds": 90 }
+          "link": "exercises/childs_pose.json",
+          "prescription": {
+            "timeSeconds": 90
+          },
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
           "name": "Thread the Needle",
-          "link": "../exercises/thread_the_needle.md",
-          "prescription": { "holdSeconds": 45 }
+          "link": "exercises/thread_the_needle.json",
+          "prescription": {
+            "holdSeconds": 45
+          },
+          "logType": "mobility"
         },
         {
           "kind": "exercise",
           "name": "Seated Forward Fold",
-          "link": "../exercises/seated_forward_fold.md",
-          "prescription": { "holdSeconds": 60 }
+          "link": "exercises/seated_forward_fold.json",
+          "prescription": {
+            "holdSeconds": 60
+          },
+          "logType": "stretch"
         }
       ]
     }

@@ -1,18 +1,19 @@
 {
   "version": "1",
-  "title": "Lower Body Strength & Mobility \u2013 Block 2, Week 2",
+  "title": "Lower Body Strength & Mobility – Block 2, Week 2",
   "block": 0,
   "week": 0,
   "sections": [
     {
       "type": "Warm-up",
-      "title": "Warm-Up (5\u20137 min)",
+      "title": "Warm-Up (5–7 min)",
       "items": [
         {
           "kind": "exercise",
           "name": "Bodyweight Squat",
           "link": "exercises/bodyweight_squat.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         },
         {
           "kind": "exercise",
@@ -21,17 +22,19 @@
           "cues": [
             "[Bodyweight Squat](../exercises/bodyweight_squat.json): 2 x 12",
             "[Glute Bridge](../exercises/glute_bridge.json): 2 x 10",
-            "[World\u2019s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 5/side"
-          ]
+            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 5/side"
+          ],
+          "logType": "mobility"
         },
         {
           "kind": "exercise",
-          "name": "World\u2019s Greatest Stretch",
+          "name": "World’s Greatest Stretch",
           "link": "exercises/worlds_greatest_stretch.json",
           "cues": [
             "[Glute Bridge](../exercises/glute_bridge.json): 2 x 10",
-            "[World\u2019s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 5/side"
-          ]
+            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 5/side"
+          ],
+          "logType": "stretch"
         }
       ]
     },
@@ -48,7 +51,8 @@
           "kind": "exercise",
           "name": "Goblet Squat",
           "link": "exercises/goblet_squat.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -60,7 +64,8 @@
           "kind": "exercise",
           "name": "Dumbbell Romanian Deadlift",
           "link": "exercises/dumbbell_romanian_deadlift.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -72,7 +77,8 @@
           "kind": "exercise",
           "name": "Bulgarian Split Squat",
           "link": "exercises/bulgarian_split_squat.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -84,7 +90,8 @@
           "kind": "exercise",
           "name": "Standing Calf Raise",
           "link": "exercises/standing_calf_raise.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -96,19 +103,21 @@
           "kind": "exercise",
           "name": "Side Plank",
           "link": "exercises/side_plank.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
     {
       "type": "Cooldown/Recovery",
-      "title": "Mobility & Cooldown (5\u20138 min)",
+      "title": "Mobility & Cooldown (5–8 min)",
       "items": [
         {
           "kind": "exercise",
           "name": "90/90 Hip Stretch",
           "link": "exercises/90_90_hip_stretch.json",
-          "cues": []
+          "cues": [],
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
@@ -116,16 +125,18 @@
           "link": "exercises/lying_spinal_twist.json",
           "cues": [
             "[Glute Bridge](../exercises/glute_bridge.json): 2 x 10",
-            "[World\u2019s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 5/side"
-          ]
+            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 5/side"
+          ],
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
           "name": "Seated Forward Fold",
           "link": "exercises/seated_forward_fold.json",
           "cues": [
-            "[World\u2019s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 5/side"
-          ]
+            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 5/side"
+          ],
+          "logType": "stretch"
         }
       ]
     }

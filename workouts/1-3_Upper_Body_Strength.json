@@ -1,12 +1,12 @@
 {
   "version": "1",
-  "title": "Upper Body Strength \u2013 Block 1, Week 3",
+  "title": "Upper Body Strength – Block 1, Week 3",
   "block": 1,
   "week": 3,
   "sections": [
     {
       "type": "Strength",
-      "title": "\ud83c\udfcb\ufe0f\u200d\u2642\ufe0f Main Workout",
+      "title": "🏋️‍♂️ Main Workout",
       "items": []
     },
     {
@@ -17,7 +17,8 @@
           "kind": "exercise",
           "name": "Flat Dumbbell Bench Press",
           "link": "exercises/flat_dumbbell_bench_press.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -29,7 +30,8 @@
           "kind": "exercise",
           "name": "Chest-Supported Dumbbell Row",
           "link": "exercises/chest_supported_dumbbell_row.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -41,7 +43,8 @@
           "kind": "exercise",
           "name": "Incline Landmine Press (Simulated with Dumbbell)",
           "link": "exercises/incline_landmine_press.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -53,7 +56,8 @@
           "kind": "exercise",
           "name": "Alternating or Supinated Dumbbell Biceps Curl",
           "link": "exercises/alternating_dumbbell_biceps_curl.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -65,7 +69,8 @@
           "kind": "exercise",
           "name": "Overhead Triceps Extension (Single DB or Ruck Plate)",
           "link": "exercises/overhead_triceps_extension.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -77,7 +82,8 @@
           "kind": "exercise",
           "name": "Pallof Press (with Ruck or Dumbbell)",
           "link": "exercises/pallof_press.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     }

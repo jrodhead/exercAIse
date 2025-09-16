@@ -1,6 +1,6 @@
 {
   "version": "1",
-  "title": "Yin Yoga Recovery Flow \u2013 Block 2, Week 2 (Thursday)",
+  "title": "Yin Yoga Recovery Flow – Block 2, Week 2 (Thursday)",
   "block": 0,
   "week": 0,
   "sections": [
@@ -10,14 +10,15 @@
       "items": [
         {
           "kind": "exercise",
-          "name": "Child\u2019s Pose",
+          "name": "Child’s Pose",
           "link": "exercises/childs_pose.json",
           "cues": [
             "[Thread the Needle](../exercises/thread_the_needle.json)",
             "[90/90 Hip Stretch](../exercises/90_90_hip_stretch.json)",
             "[Seated Forward Fold](../exercises/seated_forward_fold.json)",
             "[Lying Spinal Twist](../exercises/lying_spinal_twist.json)"
-          ]
+          ],
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
@@ -27,7 +28,8 @@
             "[90/90 Hip Stretch](../exercises/90_90_hip_stretch.json)",
             "[Seated Forward Fold](../exercises/seated_forward_fold.json)",
             "[Lying Spinal Twist](../exercises/lying_spinal_twist.json)"
-          ]
+          ],
+          "logType": "mobility"
         },
         {
           "kind": "exercise",
@@ -36,7 +38,8 @@
           "cues": [
             "[Seated Forward Fold](../exercises/seated_forward_fold.json)",
             "[Lying Spinal Twist](../exercises/lying_spinal_twist.json)"
-          ]
+          ],
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
@@ -44,13 +47,15 @@
           "link": "exercises/seated_forward_fold.json",
           "cues": [
             "[Lying Spinal Twist](../exercises/lying_spinal_twist.json)"
-          ]
+          ],
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
           "name": "Lying Spinal Twist",
           "link": "exercises/lying_spinal_twist.json",
-          "cues": []
+          "cues": [],
+          "logType": "stretch"
         }
       ]
     }

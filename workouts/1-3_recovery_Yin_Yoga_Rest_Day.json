@@ -1,12 +1,12 @@
 {
   "version": "1",
-  "title": "Yin Yoga Recovery Flow \u2013 Rest Day",
+  "title": "Yin Yoga Recovery Flow – Rest Day",
   "block": 0,
   "week": 0,
   "sections": [
     {
       "type": "Main Work",
-      "title": "\ud83e\uddd8 Sequence",
+      "title": "🧘 Sequence",
       "items": []
     },
     {
@@ -17,7 +17,8 @@
           "kind": "exercise",
           "name": "Butterfly Pose (Seated Forward Fold)",
           "link": "exercises/butterfly_pose_seated_forward_fold.json",
-          "cues": []
+          "cues": [],
+          "logType": "stretch"
         }
       ]
     },
@@ -29,7 +30,8 @@
           "kind": "exercise",
           "name": "Supported Child's Pose",
           "link": "exercises/supported_childs_pose.json",
-          "cues": []
+          "cues": [],
+          "logType": "stretch"
         }
       ]
     },
@@ -41,7 +43,8 @@
           "kind": "exercise",
           "name": "Dragon Pose (Low Lunge Yin Style)",
           "link": "exercises/dragon_pose_low_lunge_yin_style.json",
-          "cues": []
+          "cues": [],
+          "logType": "stretch"
         }
       ]
     },
@@ -53,7 +56,8 @@
           "kind": "exercise",
           "name": "Sleeping Swan (Yin Pigeon)",
           "link": "exercises/sleeping_swan_yin_pigeon.json",
-          "cues": []
+          "cues": [],
+          "logType": "stretch"
         }
       ]
     },
@@ -65,7 +69,8 @@
           "kind": "exercise",
           "name": "Supported Fish Pose",
           "link": "exercises/supported_fish_pose.json",
-          "cues": []
+          "cues": [],
+          "logType": "stretch"
         }
       ]
     },
@@ -77,7 +82,8 @@
           "kind": "exercise",
           "name": "Reclined Twist",
           "link": "exercises/reclined_twist.json",
-          "cues": []
+          "cues": [],
+          "logType": "stretch"
         }
       ]
     },
@@ -89,7 +95,8 @@
           "kind": "exercise",
           "name": "Happy Baby",
           "link": "exercises/happy_baby.json",
-          "cues": []
+          "cues": [],
+          "logType": "stretch"
         }
       ]
     },
@@ -100,7 +107,7 @@
     },
     {
       "type": "Main Work",
-      "title": "\ud83c\udf19 Notes",
+      "title": "🌙 Notes",
       "items": []
     }
   ]

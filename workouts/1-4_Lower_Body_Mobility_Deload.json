@@ -1,30 +1,33 @@
 {
   "version": "1",
-  "title": "Lower Body & Mobility \u2013 Block 1, Week 4 (Deload)",
+  "title": "Lower Body & Mobility – Block 1, Week 4 (Deload)",
   "block": 1,
   "week": 4,
   "sections": [
     {
       "type": "Warm-up",
-      "title": "Warm-Up (5\u20137 min)",
+      "title": "Warm-Up (5–7 min)",
       "items": [
         {
           "kind": "exercise",
           "name": "Bodyweight Squat",
           "link": "exercises/bodyweight_squat.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         },
         {
           "kind": "exercise",
           "name": "Glute Bridge",
           "link": "exercises/glute_bridge.json",
-          "cues": []
+          "cues": [],
+          "logType": "mobility"
         },
         {
           "kind": "exercise",
-          "name": "World\u2019s Greatest Stretch",
+          "name": "World’s Greatest Stretch",
           "link": "exercises/worlds_greatest_stretch.json",
-          "cues": []
+          "cues": [],
+          "logType": "stretch"
         }
       ]
     },
@@ -41,7 +44,8 @@
           "kind": "exercise",
           "name": "Goblet Squat",
           "link": "exercises/goblet_squat.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -53,7 +57,8 @@
           "kind": "exercise",
           "name": "Dumbbell Romanian Deadlift",
           "link": "exercises/dumbbell_romanian_deadlift.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -65,7 +70,8 @@
           "kind": "exercise",
           "name": "Reverse Lunge",
           "link": "exercises/reverse_lunge.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -77,31 +83,35 @@
           "kind": "exercise",
           "name": "Standing Calf Raise",
           "link": "exercises/standing_calf_raise.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
     {
       "type": "Cooldown/Recovery",
-      "title": "Mobility & Cooldown (5\u20138 min)",
+      "title": "Mobility & Cooldown (5–8 min)",
       "items": [
         {
           "kind": "exercise",
           "name": "90/90 Hip Stretch",
           "link": "exercises/90_90_hip_stretch.json",
-          "cues": []
+          "cues": [],
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
           "name": "Seated Forward Fold or Toe Touch",
           "link": "exercises/seated_forward_fold_or_toe_touch.json",
-          "cues": []
+          "cues": [],
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
           "name": "Lying Spinal Twist",
           "link": "exercises/lying_spinal_twist.json",
-          "cues": []
+          "cues": [],
+          "logType": "stretch"
         }
       ]
     }
