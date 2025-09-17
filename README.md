@@ -46,10 +46,10 @@ AI-generated workouts compatible with a really old iPad
 - [Biceps, Triceps & Core Workout - Block 1, Week 2](workouts/1-2_Biceps_Triceps_Core_Workout.json)
 - [Lower Body Strength – Block 1, Week 2](workouts/1-2_Lower_Body.json)
 - [Upper Body Strength – Block 1, Week 4 (Deload)](workouts/1-4_Upper_Body_Strength_Deload.json)
+- [Mock Session](workouts/mock_All_Types_Test.json)
 
 ## Instructions
 - [Kai – Strength, Movement & Recovery Coach](.github/instructions/kai.instructions.md)
-- [Mina – Nutrition & Whole Foods Coach](.github/instructions/mina.instructions.md)
 
 ## Validation
 - Validate links: run the VS Code task “Validate Markdown Links” or `python3 scripts/validate_links.py`.

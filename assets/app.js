@@ -31,6 +31,7 @@
   var exerciseFormsEl = document.getElementById('exercise-forms');
   var saveBtn = document.getElementById('save-local');
   var copyBtn = document.getElementById('copy-json');
+  var downloadBtn = document.getElementById('download-json');
   var issueBtn = document.getElementById('submit-issue');
   var clearBtn = document.getElementById('clear-form');
   var openIssueLink = document.getElementById('open-issue');
@@ -1331,6 +1332,37 @@
         copyTarget.focus();
         copyTarget.select();
         status('Copy JSON shown below; select-all and copy manually.' + (errs.length ? ' (Validation warnings in console)' : ''));
+      }
+    };
+
+  if (downloadBtn) downloadBtn.onclick = function () {
+      var data = collectData();
+      var errs = validatePerformance(data);
+      if (errs.length) {
+        data.validationErrors = errs.slice(0);
+        console.warn('Performance validation errors:', errs);
+      }
+      var json = JSON.stringify(data, null, 2);
+      var wf = data.workoutFile || 'session';
+      // Derive a safe base name (strip folders, extension)
+      var base = wf.split('/').pop().replace(/\.[^.]+$/, '') || 'session';
+      var ts = (new Date().toISOString().replace(/[:]/g,'').replace(/\..+/, ''));
+      var fileName = base + '_' + ts + '_perf1.json';
+      try {
+        var blob = new Blob([json], { type: 'application/json' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function(){ try { document.body.removeChild(a); URL.revokeObjectURL(url); } catch(e){} }, 250);
+        status('Downloaded ' + fileName + (errs.length ? ' (WITH WARNINGS)' : ''), { important: true });
+      } catch (e) {
+        // Fallback: reveal JSON for manual save
+        copyWrapper.style.display = 'block';
+        copyTarget.value = json;
+        status('Download unsupported; JSON shown for manual copy.' + (errs.length ? ' (Warnings in console)' : ''), { important: true });
       }
     };
 
