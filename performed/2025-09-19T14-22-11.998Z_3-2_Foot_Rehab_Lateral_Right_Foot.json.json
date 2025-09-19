@@ -1,0 +1,91 @@
+{
+  "version": "perf-1",
+  "workoutFile": "workouts/3-2_Foot_Rehab_Lateral_Right_Foot.json",
+  "timestamp": "2025-09-19T14:21:57.799Z",
+  "exercises": {
+    "ankle-eversion-isometric": {
+      "name": "Ankle Eversion Isometric",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "reps": 5
+        },
+        {
+          "set": 2,
+          "reps": 5
+        },
+        {
+          "set": 3,
+          "reps": 5
+        }
+      ]
+    },
+    "short-foot": {
+      "name": "Short Foot",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "reps": 8
+        },
+        {
+          "set": 2,
+          "reps": 8
+        },
+        {
+          "set": 3,
+          "reps": 8
+        }
+      ]
+    },
+    "single-leg-isometric-calf-raise": {
+      "name": "Single-Leg Isometric Calf Raise",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "reps": 10
+        },
+        {
+          "set": 2,
+          "reps": 10
+        },
+        {
+          "set": 3,
+          "reps": 10
+        }
+      ]
+    },
+    "glute-bridge": {
+      "name": "Glute Bridge",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "reps": 12
+        },
+        {
+          "set": 2,
+          "reps": 12
+        }
+      ]
+    },
+    "ruck-march-hold": {
+      "name": "Ruck March Hold",
+      "logType": "carry",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 0,
+          "timeSeconds": 180
+        },
+        {
+          "set": 2,
+          "weight": 0,
+          "timeSeconds": 180
+        }
+      ]
+    }
+  }
+}
