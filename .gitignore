@@ -1,3 +1,6 @@
 node_modules/
+playwright-report/
+test-results/
+node_modules/
 test-results/
 product-design

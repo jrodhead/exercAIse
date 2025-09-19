@@ -19,8 +19,9 @@
           },
           "cues": [
             "[Glute Bridge](../exercises/glute_bridge.json): 2 x 10",
-            "[World\u2019s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4/side"
-          ]
+            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4/side"
+          ],
+          "logType": "strength"
         },
         {
           "kind": "exercise",
@@ -31,16 +32,18 @@
             "reps": 10
           },
           "cues": [
-            "[World\u2019s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4/side"
-          ]
+            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4/side"
+          ],
+          "logType": "mobility"
         },
         {
           "kind": "exercise",
-          "name": "World\u2019s Greatest Stretch",
+          "name": "World’s Greatest Stretch",
           "link": "exercises/worlds_greatest_stretch.json",
           "prescription": {
             "reps": 4
-          }
+          },
+          "logType": "stretch"
         }
       ]
     },
@@ -54,17 +57,18 @@
           "link": "exercises/goblet_squat.json",
           "prescription": {
             "sets": 4,
-            "reps": "6\u20138",
+            "reps": "6–8",
             "weight": "60 lb",
             "restSeconds": 90
           },
           "cues": [
-            "4 x 6\u20138 @ 60 lb, Rest 90 sec",
+            "4 x 6–8 @ 60 lb, Rest 90 sec",
             "Cues:",
             "Brace and keep chest tall",
             "Knees track over toes",
             "Pause briefly at bottom; drive through mid-foot"
-          ]
+          ],
+          "logType": "strength"
         },
         {
           "kind": "exercise",
@@ -72,17 +76,18 @@
           "link": "exercises/dumbbell_romanian_deadlift.json",
           "prescription": {
             "sets": 4,
-            "reps": "8\u201310",
+            "reps": "8–10",
             "weight": "57.5 lb per hand",
             "restSeconds": 90
           },
           "cues": [
-            "4 x 8\u201310 @ 57.5 lb per hand, Rest 90 sec",
+            "4 x 8–10 @ 57.5 lb per hand, Rest 90 sec",
             "Cues:",
             "Soft knees, hinge at hips",
             "Back flat, lats tight",
             "Squeeze glutes to stand"
-          ]
+          ],
+          "logType": "strength"
         },
         {
           "kind": "exercise",
@@ -90,17 +95,18 @@
           "link": "exercises/bulgarian_split_squat.json",
           "prescription": {
             "sets": 3,
-            "reps": "8\u201310/leg",
-            "weight": "27.5\u201330 lb per hand",
+            "reps": "8–10/leg",
+            "weight": "27.5–30 lb per hand",
             "restSeconds": 75
           },
           "cues": [
-            "3 x 8\u201310/leg @ 27.5\u201330 lb per hand, Rest 75 sec",
+            "3 x 8–10/leg @ 27.5–30 lb per hand, Rest 75 sec",
             "Cues:",
             "Front knee over mid-foot",
             "Slight forward torso, tall posture",
-            "Control the bottom\u2014no bounce"
-          ]
+            "Control the bottom—no bounce"
+          ],
+          "logType": "strength"
         },
         {
           "kind": "exercise",
@@ -108,16 +114,17 @@
           "link": "exercises/standing_calf_raise.json",
           "prescription": {
             "sets": 3,
-            "reps": "12\u201315",
+            "reps": "12–15",
             "weight": "bodyweight or 15 lb per hand",
             "restSeconds": 45
           },
           "cues": [
-            "3 x 12\u201315 @ bodyweight or 15 lb per hand, Rest 45 sec",
+            "3 x 12–15 @ bodyweight or 15 lb per hand, Rest 45 sec",
             "Cues:",
             "Pause at top 1 sec",
-            "Slow lower\u2014full range"
-          ]
+            "Slow lower—full range"
+          ],
+          "logType": "strength"
         }
       ]
     },
@@ -133,7 +140,8 @@
             "sets": 2,
             "timeSeconds": 45,
             "restSeconds": 45
-          }
+          },
+          "logType": "strength"
         }
       ]
     },
@@ -151,7 +159,8 @@
           "cues": [
             "[Lying Spinal Twist](../exercises/lying_spinal_twist.json): 1 min/side",
             "[Seated Forward Fold](../exercises/seated_forward_fold.json): 1 min"
-          ]
+          ],
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
@@ -162,7 +171,8 @@
           },
           "cues": [
             "[Seated Forward Fold](../exercises/seated_forward_fold.json): 1 min"
-          ]
+          ],
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
@@ -170,7 +180,8 @@
           "link": "exercises/seated_forward_fold.json",
           "prescription": {
             "holdSeconds": 60
-          }
+          },
+          "logType": "stretch"
         }
       ]
     }

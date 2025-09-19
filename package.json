@@ -1,0 +1,12 @@
+{
+  "name": "exercaise-ui-tests",
+  "private": true,
+  "devDependencies": {
+    "@playwright/test": "^1.46.0"
+  },
+  "scripts": {
+    "test:ui": "playwright test",
+    "test:ui:headed": "playwright test --headed",
+    "pw:install": "playwright install"
+  }
+}

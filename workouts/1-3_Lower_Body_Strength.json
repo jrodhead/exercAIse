@@ -1,6 +1,6 @@
 {
   "version": "1",
-  "title": "Lower Body Strength \u2013 Block 1, Week 3",
+  "title": "Lower Body Strength – Block 1, Week 3",
   "block": 1,
   "week": 3,
   "sections": [
@@ -16,7 +16,7 @@
     },
     {
       "type": "Strength",
-      "title": "\ud83c\udfcb\ufe0f\u200d\u2642\ufe0f Main Workout (Straight Sets \u2013 finish all sets before moving on)",
+      "title": "🏋️‍♂️ Main Workout (Straight Sets – finish all sets before moving on)",
       "items": []
     },
     {
@@ -32,7 +32,8 @@
           "kind": "exercise",
           "name": "Dumbbell Goblet Squat",
           "link": "exercises/dumbbell_goblet_squat.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -49,7 +50,8 @@
           "kind": "exercise",
           "name": "Dumbbell Romanian Deadlift",
           "link": "exercises/dumbbell_romanian_deadlift.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -66,7 +68,8 @@
           "kind": "exercise",
           "name": "Reverse Lunge (Alternating)",
           "link": "exercises/reverse_lunge_alternating.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -83,13 +86,14 @@
           "kind": "exercise",
           "name": "Ruck Deadlift to Row",
           "link": "exercises/ruck_deadlift_to_row.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
     {
       "type": "Accessory/Core",
-      "title": "\ud83c\udfaf Accessory Core & Stability",
+      "title": "🎯 Accessory Core & Stability",
       "items": []
     },
     {
@@ -105,7 +109,8 @@
           "kind": "exercise",
           "name": "Seated Leg Extension with Ruck",
           "link": "exercises/seated_leg_extension_with_ruck.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -122,25 +127,28 @@
           "kind": "exercise",
           "name": "Hollow Hold",
           "link": "exercises/hollow_hold.json",
-          "cues": []
+          "cues": [],
+          "logType": "mobility"
         }
       ]
     },
     {
       "type": "Cooldown/Recovery",
-      "title": "\ud83e\uddca Cooldown (5\u20137 minutes)",
+      "title": "🧊 Cooldown (5–7 minutes)",
       "items": [
         {
           "kind": "exercise",
           "name": "Supine Twist",
           "link": "exercises/supine_twist.json",
-          "cues": []
+          "cues": [],
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
           "name": "Low Lunge Stretch",
           "link": "exercises/low_lunge_stretch.json",
-          "cues": []
+          "cues": [],
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
@@ -148,10 +156,11 @@
           "link": "exercises/calf_stretch_wall_or_step.json",
           "cues": [
             "**Rest:** 90 sec",
-            "**Suggested Weight:** 40\u201355 lb dumbbell or ruck plate",
+            "**Suggested Weight:** 40–55 lb dumbbell or ruck plate",
             "Keep chest upright, core braced",
             "Drive through heels to return to standing"
-          ]
+          ],
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
@@ -159,13 +168,14 @@
           "link": "exercises/seated_forward_fold.json",
           "cues": [
             "Drive through heels to return to standing"
-          ]
+          ],
+          "logType": "stretch"
         }
       ]
     },
     {
       "type": "Main Work",
-      "title": "\u2705 Notes",
+      "title": "✅ Notes",
       "items": []
     }
   ]

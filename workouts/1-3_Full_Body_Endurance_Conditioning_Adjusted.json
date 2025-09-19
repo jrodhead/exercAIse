@@ -1,6 +1,6 @@
 {
   "version": "1",
-  "title": "Full-Body Endurance / Conditioning \u2013 Block 1, Week 3 (Adjusted)",
+  "title": "Full-Body Endurance / Conditioning – Block 1, Week 3 (Adjusted)",
   "block": 1,
   "week": 3,
   "sections": [
@@ -26,7 +26,7 @@
     },
     {
       "type": "Main Work",
-      "title": "\ud83d\udd04 Circuit",
+      "title": "🔄 Circuit",
       "items": []
     },
     {
@@ -37,7 +37,8 @@
           "kind": "exercise",
           "name": "Dumbbell Thruster (Squat + Press)",
           "link": "exercises/dumbbell_thruster.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -49,7 +50,8 @@
           "kind": "exercise",
           "name": "Renegade Row (Hands on Dumbbells or Floor)",
           "link": "exercises/renegade_row.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -61,7 +63,8 @@
           "kind": "exercise",
           "name": "Step-Up (Onto Bench or Sturdy Surface)",
           "link": "exercises/step_up.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -73,7 +76,8 @@
           "kind": "exercise",
           "name": "Side Plank with Hip Dips",
           "link": "exercises/side_plank_with_hip_dips.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -85,37 +89,42 @@
           "kind": "exercise",
           "name": "Farmer Carry (Dumbbells or Ruck)",
           "link": "exercises/farmer_carry.json",
-          "cues": []
+          "cues": [],
+          "logType": "carry"
         }
       ]
     },
     {
       "type": "Cooldown/Recovery",
-      "title": "\ud83e\uddca Cooldown (5 minutes)",
+      "title": "🧊 Cooldown (5 minutes)",
       "items": [
         {
           "kind": "exercise",
           "name": "Standing Quad Stretch",
           "link": "exercises/standing_quad_stretch.json",
-          "cues": []
+          "cues": [],
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
           "name": "Forward Fold",
           "link": "exercises/forward_fold.json",
-          "cues": []
+          "cues": [],
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
           "name": "Seated Spinal Twist",
           "link": "exercises/seated_spinal_twist.json",
-          "cues": []
+          "cues": [],
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
           "name": "Shoulder Stretch (hands clasped behind back)",
           "link": "exercises/shoulder_stretch.json",
-          "cues": []
+          "cues": [],
+          "logType": "stretch"
         }
       ]
     }

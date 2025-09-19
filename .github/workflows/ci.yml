@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ main, convert-to-web-app ]
+  push:
+    branches: [ main, convert-to-web-app ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install Python dependencies
+        run: |
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Run link validation
+        run: python3 scripts/validate_links.py
+      - name: Run schema validation
+        run: python3 scripts/validate_schemas.py
+      - name: Session lint
+        run: python3 scripts/lint_sessions.py --strict
+
+  ui:
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install Playwright
+        run: |
+          npm ci || npm i
+          npx playwright install --with-deps
+      - name: Start server
+        run: |
+          python3 scripts/serve.py &
+          sleep 2
+      - name: Run UI tests (with trace on failure)
+        env:
+          PLAYWRIGHT_BASE_URL: http://localhost:8000
+        run: npx playwright test --reporter=line --trace=on-first-retry
+      - name: Upload Playwright artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-artifacts
+          path: playwright-report
+          if-no-files-found: ignore

@@ -1,0 +1,25 @@
+{
+  "name": "Tibialis Raise (Wall Lean)",
+  "equipment": ["bodyweight", "wall"],
+  "tags": ["anterior shin", "tibialis", "lower leg"],
+  "setup": [
+    "Stand with back against wall, heels 6–12 inches forward",
+    "Legs straight but not locked, core lightly braced",
+    "Feet flat, weight mostly through heels"
+  ],
+  "steps": [
+    "Dorsiflex ankles lifting toes toward shins (keep heels down)",
+    "Pause briefly at top (1s) feeling anterior shin contract",
+    "Lower toes under control to just above floor (no slam)",
+    "Maintain steady breathing and posture",
+    "Repeat keeping reps smooth"
+  ],
+  "cues": ["Lift toes high", "Heels heavy", "Smooth tempo", "No knee bend"],
+  "mistakes": ["Rocking torso", "Bending knees for momentum", "Partial ROM", "Rushing reps"],
+  "safety": "If anterior shin cramps, reduce reps or ROM; build gradually.",
+  "scaling": {"regressions": ["Closer to wall (less lever)", "Fewer reps with longer rest"], "progressions": ["Further from wall (longer lever)", "Add isometric 2s hold top", "High-rep endurance sets 20+"]},
+  "variations": ["Seated dorsiflexion", "Band-resisted tib raise"],
+  "prescriptionHints": {"load": "Bodyweight", "reps": "10–25", "time": "—", "distance": "—", "rpe": "6–8", "notes": "Gentle burn okay; stop if sharp tendon pain."},
+  "joints": {"sensitiveJoints": ["ankles"], "notes": "Keep motion at ankle; avoid knee flex compensation."},
+  "media": {"video": "", "images": []}
+}

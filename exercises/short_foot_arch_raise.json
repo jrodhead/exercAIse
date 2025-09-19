@@ -1,0 +1,56 @@
+{
+  "name": "Short Foot (Arch Raise)",
+  "equipment": [],
+  "tags": ["foot", "intrinsics", "arch", "rehab"],
+  "setup": [
+    "Stand barefoot or in socks near a wall/chair for light support",
+    "Feet hip-width, weight centered over mid-foot",
+    "Keep big toe pads in contact with the floor"
+  ],
+  "steps": [
+    "Gently draw the ball of the foot toward the heel to lift the arch",
+    "Keep all toes relaxed on the ground—avoid curling",
+    "Hold the arch lift for 2–3 seconds, then slowly relax",
+    "Maintain even pressure through big toe and mid-foot"
+  ],
+  "cues": [
+    "Lift arch, don’t scrunch toes",
+    "Big toe stays heavy",
+    "Small motion is fine",
+    "Breathe and move slowly"
+  ],
+  "mistakes": [
+    "Curling the toes instead of lifting the arch",
+    "Rolling the ankle outward",
+    "Shifting weight to the outside edge of the foot",
+    "Rushing reps"
+  ],
+  "safety": "Keep effort gentle and pain-free. Stop if sharp pain occurs in the lateral foot or arch.",
+  "scaling": {
+    "regressions": [
+      "Seated short foot with partial weight",
+      "Two-foot balance with minimal arch lift"
+    ],
+    "progressions": [
+      "Single-leg short foot",
+      "Add small heel raise while maintaining arch"
+    ]
+  },
+  "variations": [
+    "Toe yoga (lift big toe while others down, then switch)",
+    "Arch lift with towel feedback under arch"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "6–12 reps per side",
+    "time": "Hold 2–3s each rep",
+    "distance": "—",
+    "rpe": "Easy to moderate—no pain",
+    "notes": "Prioritize quality over range; small motion is effective"
+  },
+  "joints": {
+    "sensitiveJoints": ["ankles", "midfoot"],
+    "notes": "Keep big toe engaged and ankle stacked to avoid rolling outward"
+  },
+  "media": { "video": "", "images": [] }
+}

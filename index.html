@@ -16,9 +16,34 @@
     </header>
 
     <main class="container">
+      <section id="generate-section" class="readme">
+        <h2>Generate Session (JSON-only MVP)</h2>
+        <p class="form-hint">Enter your goals, pain, and equipment. We’ll ask Kai to generate a session plan (JSON) and render it for logging.</p>
+        <form id="generate-form">
+          <label for="gen-goals">Goals</label>
+          <textarea id="gen-goals" rows="3" placeholder="e.g., 30–40 min full-body strength, knee-friendly"></textarea>
+          <label for="gen-pain">Pain/Injury</label>
+          <input id="gen-pain" type="text" placeholder="e.g., knees, lower back" />
+          <label for="gen-equipment">Equipment</label>
+          <input id="gen-equipment" type="text" placeholder="e.g., dumbbells, bands, bench" />
+          <label for="gen-instructions">Personal instructions (optional, not stored)</label>
+          <textarea id="gen-instructions" rows="3" placeholder="Any preferences, constraints, or schedule details"></textarea>
+          <div class="form-actions">
+            <button id="gen-submit" type="button">Generate with Kai</button>
+            <button id="gen-clear" type="button" class="secondary">Clear</button>
+          </div>
+          <details>
+            <summary>Or paste a SessionPlan JSON</summary>
+            <textarea id="gen-json" rows="8" placeholder='{"version":"1.0","title":"...","exercises":[...]}'></textarea>
+            <div class="form-actions">
+              <button id="gen-load-json" type="button" class="secondary">Load JSON</button>
+            </div>
+          </details>
+        </form>
+      </section>
       <section id="status" class="status">Loading…</section>
 
-      <section id="readme-section" class="readme">
+  <section id="readme-section" class="readme">
         <h2>Workout Index</h2>
   <p class="form-hint">This mirrors README.md. Tap a workout title to open the session and logger.</p>
         <article id="readme-content" class="workout-content" aria-live="polite"></article>
@@ -26,7 +51,7 @@
 
       <section id="logs-section" class="readme">
         <h2>Performed Logs</h2>
-        <p class="form-hint">Recent committed logs from the performed/ folder.</p>
+        <p class="form-hint">Recent committed logs from the performed/ folder (perf-1 schema).</p>
         <ul id="logs-list"></ul>
       </section>
 
@@ -58,6 +83,7 @@
           <div class="form-actions">
             <button id="save-local" type="button">Save locally</button>
             <button id="copy-json" type="button">Copy JSON</button>
+            <button id="download-json" type="button">Download JSON</button>
             <button id="submit-issue" type="button" class="secondary">Submit via GitHub Issue</button>
             <a id="open-issue" class="secondary" href="https://github.com/jrodhead/exercAIse/issues/new" target="_blank" rel="noopener" style="display:none;">Open Issue</a>
             <button id="clear-form" type="button" class="danger">Clear</button>

@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "title": "Home Strength — Sample",
+  "date": "2025-09-09",
+  "notes": "Sample response from mock; replace with real agent output.",
+  "exercises": [
+    { "slug": "goblet_squat", "name": "Goblet Squat", "prescribed": { "sets": 3, "reps": 8, "rpe": 7 }, "cues": ["Elbows down; bell tight", "Knees track over toes"] },
+    { "slug": "flat_dumbbell_bench_press", "name": "Flat DB Bench Press", "prescribed": { "sets": 3, "reps": 10, "rpe": 7 }, "cues": ["Wrists stacked", "Soft lockout"] },
+    { "slug": "dumbbell_rdl", "name": "Dumbbell RDL", "prescribed": { "sets": 3, "reps": 8, "rpe": 7 }, "cues": ["Hips back", "Shins vertical"] },
+    { "slug": "farmer_carry", "name": "Farmer Carry", "prescribed": { "sets": 3, "timeSeconds": 45, "rpe": 6 }, "cues": ["Tall posture", "Quiet steps"] }
+  ]
+}

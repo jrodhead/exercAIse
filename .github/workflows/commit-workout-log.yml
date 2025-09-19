@@ -37,9 +37,13 @@ jobs:
               return;
             }
 
-            // Basic shape check
+            // Basic shape + perf-1 check
             if (!data || typeof data !== 'object' || !data.exercises) {
               core.setFailed('JSON missing expected "exercises" field.');
+              return;
+            }
+            if (data.version !== 'perf-1') {
+              core.setFailed('Expected performance export with version "perf-1".');
               return;
             }
 
@@ -47,13 +51,14 @@ jobs:
             const repo = context.repo.repo;
             const branch = context.payload.repository.default_branch;
 
-            const nowIso = new Date().toISOString().replace(/[:]/g, '-');
+            const nowIso = new Date().toISOString().replace(/[:]/g, '').replace(/\..+/, '');
             // Prefer new field 'workoutFile'; fall back to legacy 'file'
             const srcPath = String(data.workoutFile || data.file || 'unknown').replace(/[\r\n\t]/g, ' ').slice(0, 180);
             // Extract base name without directories so the session name is visible
             const base = srcPath.split('/').pop();
-            const safeFile = base.replace(/[^A-Za-z0-9._-]+/g, '-');
-            const path = `performed/${nowIso}_${safeFile}.json`;
+            const baseNoExt = base.replace(/\.[^.]+$/, '') || 'session';
+            const safeBase = baseNoExt.replace(/[^A-Za-z0-9._-]+/g, '-');
+            const path = `performed/${nowIso}_${safeBase}_perf1.json`;
 
             const content = Buffer.from(JSON.stringify(data, null, 2)).toString('base64');
 

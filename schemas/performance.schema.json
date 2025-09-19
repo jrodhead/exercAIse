@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "performance.schema.json",
+  "title": "Performance Export",
+  "type": "object",
+  "required": ["version", "workoutFile", "timestamp", "exercises"],
+  "properties": {
+    "version": { "type": "string", "const": "perf-1" },
+    "workoutFile": { "type": "string", "pattern": "^workouts/.+\\.(json|md)$" },
+    "timestamp": { "type": "string" },
+    "exercises": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["name", "logType", "sets"],
+        "properties": {
+          "name": { "type": "string" },
+          "logType": { "type": "string", "enum": ["strength", "endurance", "carry", "mobility", "stretch"] },
+          "sets": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["set"],
+              "properties": {
+                "set": { "type": "integer", "minimum": 1 },
+                "weight": { "type": "number" },
+                "multiplier": { "type": "number", "minimum": 0 },
+                "reps": { "type": "number", "minimum": 0 },
+                "rpe": { "type": "number", "minimum": 0, "maximum": 10 },
+                "timeSeconds": { "type": "number", "minimum": 0 },
+                "holdSeconds": { "type": "number", "minimum": 0 },
+                "distanceMiles": { "type": "number", "minimum": 0 }
+              },
+              "additionalProperties": false
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

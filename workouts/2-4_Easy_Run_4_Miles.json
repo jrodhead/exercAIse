@@ -9,20 +9,45 @@
       "type": "Warm-up",
       "title": "5–8 min warm-up",
       "items": [
-        { "kind": "exercise", "name": "Brisk Walk", "link": "exercises/brisk_walk.json", "prescription": { "timeSeconds": 180 } },
-        { "kind": "exercise", "name": "Leg Swings", "link": "exercises/leg_swings.json", "prescription": { "timeSeconds": 60 } }
+        {
+          "kind": "exercise",
+          "name": "Brisk Walk",
+          "link": "exercises/brisk_walk.json",
+          "prescription": {
+            "timeSeconds": 180
+          },
+          "logType": "endurance"
+        },
+        {
+          "kind": "exercise",
+          "name": "Leg Swings",
+          "link": "exercises/leg_swings.json",
+          "prescription": {
+            "timeSeconds": 60
+          },
+          "logType": "mobility"
+        }
       ]
     },
     {
       "type": "Conditioning",
-  "title": "Easy 3 miles",
+      "title": "Easy 3 miles",
       "items": [
         {
           "kind": "exercise",
           "name": "Easy Run",
           "link": "exercises/easy_jog.json",
-          "prescription": { "sets": 1, "distanceMiles": 3, "timeSeconds": 1350, "rpe": 4 },
-          "cues": ["Nasal breathing if possible", "Keep cadence light"]
+          "prescription": {
+            "sets": 1,
+            "distanceMiles": 3,
+            "timeSeconds": 1350,
+            "rpe": 4
+          },
+          "cues": [
+            "Nasal breathing if possible",
+            "Keep cadence light"
+          ],
+          "logType": "mobility"
         }
       ]
     },
@@ -30,8 +55,24 @@
       "type": "Cooldown/Recovery",
       "title": "3–5 min cool-down",
       "items": [
-        { "kind": "exercise", "name": "Walk", "link": "exercises/brisk_walk.json", "prescription": { "timeSeconds": 180 } },
-        { "kind": "exercise", "name": "Standing Calf Stretch", "link": "exercises/calf_stretch.json", "prescription": { "holdSeconds": 45 } }
+        {
+          "kind": "exercise",
+          "name": "Walk",
+          "link": "exercises/brisk_walk.json",
+          "prescription": {
+            "timeSeconds": 180
+          },
+          "logType": "endurance"
+        },
+        {
+          "kind": "exercise",
+          "name": "Standing Calf Stretch",
+          "link": "exercises/calf_stretch.json",
+          "prescription": {
+            "holdSeconds": 45
+          },
+          "logType": "stretch"
+        }
       ]
     }
   ]

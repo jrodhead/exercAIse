@@ -1,0 +1,56 @@
+{
+  "name": "Ankle Eversion Isometric (Wall Push)",
+  "equipment": ["wall"],
+  "tags": ["ankle", "peroneals", "eversion", "isometric", "rehab"],
+  "setup": [
+    "Stand sideways next to a wall with the outside of the foot near the wall",
+    "Feet hip-width; slight knee softness; tall posture",
+    "Place the outer edge of the foot/lightly the ankle against the wall (pain-free)"
+  ],
+  "steps": [
+    "Gently press the outside of your foot into the wall as if turning the sole outward (eversion)",
+    "Ramp tension from light to moderate over 2 seconds—no pain spike",
+    "Hold for the prescribed time while breathing steadily",
+    "Release slowly and relax before the next effort"
+  ],
+  "cues": [
+    "Slow ramp up",
+    "Keep arch lifted (no collapse)",
+    "Hips stacked over mid-foot",
+    "Only light-to-moderate effort"
+  ],
+  "mistakes": [
+    "Jamming hard into pain",
+    "Rolling ankle or collapsing arch",
+    "Holding breath",
+    "Leaning body into wall instead of using ankle"
+  ],
+  "safety": "Isometrics should be pain-free or minimal discomfort ≤ 2–3/10. Use very light pressure initially and stop if pain increases during or after.",
+  "scaling": {
+    "regressions": [
+      "Seated eversion isometric with towel between foot and wall",
+      "Very light fingertip support and micro-pressure"
+    ],
+    "progressions": [
+      "Longer holds (10–20s)",
+      "Standing single-leg stance during press"
+    ]
+  },
+  "variations": [
+    "Banded ankle eversion (very light band)",
+    "Side-lying ankle eversion raises"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight isometric",
+    "reps": "3–8 reps of 3–10s holds",
+    "time": "—",
+    "distance": "—",
+    "rpe": "Light-to-moderate (≤ 4/10)",
+    "notes": "Place a folded towel between foot and wall if sensitive"
+  },
+  "joints": {
+    "sensitiveJoints": ["ankles", "midfoot"],
+    "notes": "Maintain arch and ankle alignment; do not jam into end range"
+  },
+  "media": { "video": "", "images": [] }
+}
