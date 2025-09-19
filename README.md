@@ -37,6 +37,7 @@ AI-generated workouts compatible with a really old iPad
 - [Lower Body Strength & Mobility – Block 2, Week 1](workouts/2-1_Lower_Body_Strength_Mobility.json)
 - [Upper Body Strength & Mobility – Block 2, Week 1](workouts/2-1_Upper_Body_Strength_Mobility.json)
 - [Lower Body & Mobility – Block 1, Week 4 (Deload)](workouts/1-4_Lower_Body_Mobility_Deload.json)
+- [Upper Body Strength – Block 1, Week 4 (Deload)](workouts/1-4_Upper_Body_Strength_Deload.json)
 - [Basketball Warm-Up & Cooldown](workouts/basketball_warmup_cooldown.json)
 - [Full-Body Endurance / Conditioning – Block 1, Week 3 (Adjusted)](workouts/1-3_Full_Body_Endurance_Conditioning_Adjusted.json)
 - [Lower Body Strength – Block 1, Week 3](workouts/1-3_Lower_Body_Strength.json)
@@ -45,7 +46,6 @@ AI-generated workouts compatible with a really old iPad
 - [Upper Body Strength – Block 1, Week 2 (Modified)](workouts/1-2_Upper_Body_Strength_Modified.json)
 - [Biceps, Triceps & Core Workout - Block 1, Week 2](workouts/1-2_Biceps_Triceps_Core_Workout.json)
 - [Lower Body Strength – Block 1, Week 2](workouts/1-2_Lower_Body.json)
-- [Upper Body Strength – Block 1, Week 4 (Deload)](workouts/1-4_Upper_Body_Strength_Deload.json)
 - [Mock Session](workouts/mock_All_Types_Test.json)
 
 ## Instructions
