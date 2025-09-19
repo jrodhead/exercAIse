@@ -1520,14 +1520,12 @@
 
   function loadLogsList() {
     if (!logsList) return;
-    // Use GitHub contents API in raw mode via JSON: https://api.github.com/repos/:owner/:repo/contents/performed
     var api = 'https://api.github.com/repos/jrodhead/exercAIse/contents/performed?ref=main';
     xhrGet(api, function (err, text) {
       if (err) { logsList.innerHTML = '<li>Unable to load logs.</li>'; return; }
       var items = [];
       try { items = JSON.parse(text); } catch (e) {}
       if (!items || Object.prototype.toString.call(items) !== '[object Array]') { logsList.innerHTML = '<li>No logs yet.</li>'; return; }
-      // Sort by name desc (timestamp prefixed)
       items.sort(function (a, b) { return a.name < b.name ? 1 : -1; });
       var html = '';
       for (var i = 0; i < Math.min(items.length, 20); i++) {

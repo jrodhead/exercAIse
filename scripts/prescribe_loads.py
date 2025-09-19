@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Helper: surface recent performed loads for an exercise name to guide prescriptions.
-- Normalizes exercise names to slugs (lowercase, alnum->-, collapse dashes).
-- Scans performed/*.json and aggregates the last 1–3 entries per normalized key.
-- Prints a compact summary and suggested conservative progression heuristic.
+Helper: surface recent performed (perf-1) export loads for an exercise name to guide prescriptions.
+ - Normalizes exercise names to slugs (lowercase, alnum->-, collapse dashes).
+ - Scans performed/*.json (perf-1 schema) and aggregates the last 1–3 entries per normalized key.
+ - Prints a compact summary and suggested conservative progression heuristic.
 
 Usage:
   python3 scripts/prescribe_loads.py --exercise "Neutral-Grip Flat Bench Press (Dumbbells)" --n 3
@@ -57,8 +57,7 @@ class SetRow:
 
 
 def collect(repo_root: Path) -> Dict[str, List[Tuple[str, List[SetRow]]]]:
-    performed_dir = repo_root / "performed"
-    logs = sorted(performed_dir.glob("*.json"))
+    logs = sorted((repo_root / "performed").glob("*.json"))
     out: Dict[str, List[Tuple[str, List[SetRow]]]] = {}
     for path in logs:
         try:
