@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Validate performed logs and JSON workout sessions against JSON Schemas.
+Validate performance exports and JSON workout sessions against JSON Schemas.
 
 Usage:
   python3 scripts/validate_schemas.py
 
 Behavior:
-  - Validates all JSON files under performed/ against schemas/performed.schema.json
+        - Validates all JSON files under performed/ against schemas/performance.schema.json (perf-1 exports)
     - Validates any JSON files under workouts/ against schemas/session.schema.json
     - If a Markdown workout contains a trailing fenced JSON block (```json or ```json session-structure), validate that block against the session schema
   - Exits non-zero on validation errors; prints a concise summary.
@@ -19,7 +19,7 @@ import sys
 from glob import glob
 
 SCHEMA_DIR = os.path.join(os.path.dirname(__file__), '..', 'schemas')
-PERFORMED_SCHEMA_PATH = os.path.abspath(os.path.join(SCHEMA_DIR, 'performed.schema.json'))
+PERFORMANCE_SCHEMA_PATH = os.path.abspath(os.path.join(SCHEMA_DIR, 'performance.schema.json'))
 SESSION_SCHEMA_PATH = os.path.abspath(os.path.join(SCHEMA_DIR, 'session.schema.json'))
 EXERCISE_SCHEMA_PATH = os.path.abspath(os.path.join(SCHEMA_DIR, 'exercise.schema.json'))
 
@@ -36,27 +36,30 @@ def main():
         print("Schema validation requires the 'jsonschema' package.\nInstall with: pip install jsonschema", file=sys.stderr)
         sys.exit(2)
 
-    performed_schema = load_json(PERFORMED_SCHEMA_PATH)
+    performance_schema = load_json(PERFORMANCE_SCHEMA_PATH)
     session_schema = load_json(SESSION_SCHEMA_PATH)
     exercise_schema = load_json(EXERCISE_SCHEMA_PATH)
 
     # Prepare validators (schemas only use internal refs)
-    performed_validator = Draft7Validator(performed_schema)
+    performance_validator = Draft7Validator(performance_schema)
     session_validator = Draft7Validator(session_schema)
     exercise_validator = Draft7Validator(exercise_schema)
 
     errors = []
 
-    # Validate performed logs
-    performed_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'performed'))
-    performed_files = sorted(glob(os.path.join(performed_dir, '*.json')))
-    for path in performed_files:
+    # Validate performance exports (perf-1)
+    perf_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'performed'))
+    perf_files = sorted(glob(os.path.join(perf_dir, '*.json')))
+    for path in perf_files:
         try:
             data = load_json(path)
         except Exception as e:
             errors.append((path, f'Invalid JSON: {e}'))
             continue
-        for err in performed_validator.iter_errors(data):
+        # Skip legacy performed logs that are not perf-1 yet (allow gradual migration)
+        if data.get('version') != 'perf-1':
+            continue
+        for err in performance_validator.iter_errors(data):
             errors.append((path, err.message))
 
     # Validate JSON workouts (if any)
@@ -115,7 +118,7 @@ def main():
         sys.exit(1)
     else:
         print('Schema validation OK (no issues found).')
-        if not performed_files and not workout_json_files:
+        if not perf_files and not workout_json_files:
             print('(No JSON files found under performed/ or workouts/ to validate.)')
 
 

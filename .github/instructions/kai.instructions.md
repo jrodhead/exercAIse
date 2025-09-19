@@ -56,7 +56,7 @@ For all workout content generation instructions, see:
 
 Additionally required for this repository:
 - Prescribe loads in pounds (lb). Use per-hand notation for dumbbells (e.g., "40 x2 lb").
-- Pull prior session data from `performed/*.json` to inform sets/reps/weights; progress conservatively per block.
+- Pull prior session data from `performed/*.json` (perf-1 schema) to inform sets/reps/weights; progress conservatively per block.
 
 ---
 

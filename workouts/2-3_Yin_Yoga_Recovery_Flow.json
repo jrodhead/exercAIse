@@ -12,8 +12,11 @@
         {
           "kind": "exercise",
           "name": "Child’s Pose with Deep Breathing",
-          "link": "../exercises/childs_pose_with_deep_breathing.md",
-          "prescription": { "timeSeconds": 120 }
+          "link": "exercises/childs_pose_with_deep_breathing.json",
+          "prescription": {
+            "timeSeconds": 120
+          },
+          "logType": "stretch"
         }
       ]
     },
@@ -24,32 +27,47 @@
         {
           "kind": "exercise",
           "name": "Thread the Needle",
-          "link": "../exercises/thread_the_needle.md",
-          "prescription": { "holdSeconds": 60 }
+          "link": "exercises/thread_the_needle.json",
+          "prescription": {
+            "holdSeconds": 60
+          },
+          "logType": "mobility"
         },
         {
           "kind": "exercise",
           "name": "90/90 Hip Stretch",
-          "link": "../exercises/90_90_hip_stretch.md",
-          "prescription": { "holdSeconds": 60 }
+          "link": "exercises/90_90_hip_stretch.json",
+          "prescription": {
+            "holdSeconds": 60
+          },
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
           "name": "Seated Forward Fold",
-          "link": "../exercises/seated_forward_fold.md",
-          "prescription": { "holdSeconds": 60 }
+          "link": "exercises/seated_forward_fold.json",
+          "prescription": {
+            "holdSeconds": 60
+          },
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
           "name": "Lying Spinal Twist",
-          "link": "../exercises/lying_spinal_twist.md",
-          "prescription": { "holdSeconds": 60 }
+          "link": "exercises/lying_spinal_twist.json",
+          "prescription": {
+            "holdSeconds": 60
+          },
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
           "name": "Supported Fish Pose",
-          "link": "../exercises/supported_fish_pose.md",
-          "prescription": { "holdSeconds": 60 }
+          "link": "exercises/supported_fish_pose.json",
+          "prescription": {
+            "holdSeconds": 60
+          },
+          "logType": "stretch"
         }
       ]
     },
@@ -60,8 +78,11 @@
         {
           "kind": "exercise",
           "name": "Brisk Walk",
-          "link": "../exercises/brisk_walk.md",
-          "prescription": { "timeSeconds": 300 }
+          "link": "exercises/brisk_walk.json",
+          "prescription": {
+            "timeSeconds": 300
+          },
+          "logType": "endurance"
         }
       ]
     }

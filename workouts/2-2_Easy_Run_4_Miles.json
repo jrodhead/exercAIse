@@ -1,6 +1,6 @@
 {
   "version": "1",
-  "title": "Easy Run \u2013 4 Miles (Block 2, Week 2, Tuesday)",
+  "title": "Easy Run – 4 Miles (Block 2, Week 2, Tuesday)",
   "block": 0,
   "week": 0,
   "sections": [
@@ -12,13 +12,15 @@
           "kind": "exercise",
           "name": "Easy Jog",
           "link": "exercises/easy_jog.json",
-          "cues": []
+          "cues": [],
+          "logType": "endurance"
         },
         {
           "kind": "exercise",
           "name": "Leg Swings",
           "link": "exercises/leg_swings.json",
-          "cues": []
+          "cues": [],
+          "logType": "mobility"
         }
       ]
     },
@@ -30,7 +32,8 @@
           "kind": "exercise",
           "name": "Easy Run (Easy Jog)",
           "link": "exercises/easy_jog.json",
-          "cues": []
+          "cues": [],
+          "logType": "endurance"
         }
       ]
     },
@@ -42,7 +45,8 @@
           "kind": "exercise",
           "name": "Strides",
           "link": "exercises/strides.json",
-          "cues": []
+          "cues": [],
+          "logType": "mobility"
         }
       ]
     },
@@ -54,16 +58,18 @@
           "kind": "exercise",
           "name": "Brisk Walk",
           "link": "exercises/brisk_walk.json",
-          "cues": []
+          "cues": [],
+          "logType": "endurance"
         },
         {
           "kind": "exercise",
           "name": "Calf Stretch",
           "link": "exercises/calf_stretch.json",
           "cues": [
-            "[Easy Jog](../exercises/easy_jog.json) \u2013 5 min",
-            "[Leg Swings](../exercises/leg_swings.json) \u2013 10/side"
-          ]
+            "[Easy Jog](../exercises/easy_jog.json) – 5 min",
+            "[Leg Swings](../exercises/leg_swings.json) – 10/side"
+          ],
+          "logType": "stretch"
         }
       ]
     }

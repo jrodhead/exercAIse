@@ -1,6 +1,6 @@
 {
   "version": "1",
-  "title": "Upper Body Strength \u2013 Block 1, Week 2 (Modified)",
+  "title": "Upper Body Strength – Block 1, Week 2 (Modified)",
   "block": 1,
   "week": 2,
   "sections": [
@@ -12,7 +12,8 @@
           "kind": "exercise",
           "name": "Neutral-Grip Flat Bench Press (Dumbbells)",
           "link": "exercises/neutral_grip_flat_bench_press.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -24,7 +25,8 @@
           "kind": "exercise",
           "name": "One-Arm Dumbbell Row (Bench Supported)",
           "link": "exercises/one_arm_dumbbell_row.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -36,7 +38,8 @@
           "kind": "exercise",
           "name": "Biceps Curl (Alternating Dumbbells)",
           "link": "exercises/biceps_curl.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -48,7 +51,8 @@
           "kind": "exercise",
           "name": "Overhead Dumbbell Triceps Extension (Two Hands)",
           "link": "exercises/overhead_dumbbell_triceps_extension.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -60,7 +64,8 @@
           "kind": "exercise",
           "name": "Ruck March Hold (Core & Grip)",
           "link": "exercises/ruck_march_hold.json",
-          "cues": []
+          "cues": [],
+          "logType": "mobility"
         }
       ]
     }

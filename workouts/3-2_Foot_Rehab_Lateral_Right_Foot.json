@@ -1,0 +1,135 @@
+{
+  "version": "1",
+  "title": "Foot Rehab – Lateral Right Foot (Block 3, Week 2)",
+  "date": "2025-09-16",
+  "block": 3,
+  "week": 2,
+  "notes": "Rehab insertion during Block 3, Week 2 for lateral right foot pain likely related to peroneals/lateral midfoot from barefoot shoe transition. Keep pain ≤ 3/10; use fingertip support as needed. No impact or plyometrics.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Circulation + Gentle Mobility (6–8 min)",
+      "notes": "Easy blood flow and ankle ROM without irritation.",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Brisk Walk",
+          "link": "exercises/brisk_walk.json",
+          "logType": "endurance",
+          "prescription": { "timeSeconds": 300 },
+          "cues": ["Easy pace", "Stay on flat surface", "Pain ≤ 3/10"]
+        },
+        {
+          "kind": "exercise",
+          "name": "Tibialis Raise (Wall Lean)",
+          "link": "exercises/tibialis_raise_wall_lean.json",
+          "logType": "strength",
+          "prescription": { "sets": 1, "reps": 15 },
+          "cues": ["Heels heavy", "Smooth lift-lower", "No knee bend"]
+        },
+        {
+          "kind": "exercise",
+          "name": "Calf Stretch (Wall or Step)",
+          "link": "exercises/calf_stretch_wall_or_step.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 30 },
+          "cues": ["Heel down", "Gentle stretch only", "Breathe slow"]
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Isometrics + Foot Control (pain-guided)",
+      "notes": "2–3 easy rounds; rest 20–40s between moves. Fingertip wall support ok.",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Ankle Eversion Isometric (Wall Push)",
+          "link": "exercises/ankle_eversion_isometric_wall_push.json",
+          "logType": "strength",
+          "prescription": { "sets": 3, "reps": "5 x 5s/side", "restSeconds": 20 },
+          "cues": ["Press outer foot gently", "No pain spike", "Ramp tension slowly"]
+        },
+        {
+          "kind": "exercise",
+          "name": "Short Foot (Arch Raise)",
+          "link": "exercises/short_foot_arch_raise.json",
+          "logType": "strength",
+          "prescription": { "sets": 3, "reps": "8–10/side", "tempo": "3s squeeze/rep", "restSeconds": 30 },
+          "cues": ["Lift arch, no toe curl", "Big toe stays down", "Even mid-foot pressure"]
+        },
+        {
+          "kind": "exercise",
+          "name": "Single-Leg Isometric Calf Raise (Support)",
+          "link": "exercises/single_leg_iso_calf_raise_support.json",
+          "logType": "strength",
+          "prescription": { "sets": 3, "holdSeconds": 20, "restSeconds": 30 },
+          "cues": ["Light fingertip support", "Even big-toe pressure", "No ankle roll-out"]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Hip/Balance Support (keep truly pain-free)",
+      "notes": "2 easy rounds.",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Glute Bridge",
+          "link": "exercises/glute_bridge.json",
+          "logType": "strength",
+          "prescription": { "sets": 2, "reps": 12 },
+          "cues": ["Ribs down", "Squeeze glutes", "No hamstring cramp"]
+        },
+        {
+          "kind": "exercise",
+          "name": "Ruck March Hold (Core & Grip)",
+          "link": "exercises/ruck_march_hold.json",
+          "logType": "carry",
+          "prescription": { "sets": 2, "timeSeconds": 30, "weight": "0–10 lb" },
+          "cues": ["Small march or quiet stand", "Hips stacked", "Stop if pain > 2/10"]
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Downshift",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Calf Stretch (Wall or Step)",
+          "link": "exercises/calf_stretch_wall_or_step.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 30 },
+          "cues": ["Easy tension", "Heel heavy", "Breathe slow"]
+        },
+        {
+          "kind": "exercise",
+          "name": "90/90 Hip Stretch",
+          "link": "exercises/90_90_hip_stretch.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 45 },
+          "cues": ["Tall posture", "Gentle forward fold", "Relax jaw/shoulders"]
+        },
+        {
+          "kind": "exercise",
+          "name": "Child’s Pose with Deep Breathing",
+          "link": "exercises/childs_pose_with_deep_breathing.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 60 },
+          "cues": ["Long exhales", "Soften ankles", "No pinch"]
+        }
+      ]
+    },
+    {
+      "type": "Recovery",
+      "title": "Return-to-Run Guidance (note)",
+      "items": [
+        {
+          "kind": "note",
+          "name": "Once walking and these drills are pain ≤ 2/10 for 48 hours, test 5 x (1:00 easy jog, 1:00 walk) on flat ground. Stop if pain increases during or after."
+        }
+      ]
+    }
+  ]
+}

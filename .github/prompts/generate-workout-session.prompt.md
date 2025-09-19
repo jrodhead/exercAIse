@@ -9,7 +9,7 @@ When prompted with 'what's the next workout?' or 'generate workout session', pro
 - Use the Kai persona in `.github/instructions/kai.instructions.md` to generate the content for a workout.
 - Review the owner's personal instructions in `.github/instructions/kai.personal.instructions.md` for any specific adaptations or preferences.
 - Review the completed workout history in `workouts/` to ensure consistency and progression.
-- Pull prior performed session data from `performed/*.json` to guide today’s prescriptions. Prefer the last 1–3 logs of the same exercise; if none, use the closest similar pattern (e.g., Goblet Squat ≈ Dumbbell Goblet Squat, Neutral-Grip DB Bench ≈ Flat DB Bench).
+- Pull prior performed log data from `performed/*.json` (perf-1 exports) to guide today’s prescriptions. Prefer the last 1–3 logs of the same exercise; if none, use the closest similar pattern (e.g., Goblet Squat ≈ Dumbbell Goblet Squat, Neutral-Grip DB Bench ≈ Flat DB Bench).
 - Review the block periodization details in `.github/instructions/block-progression.instructions.md` for the current block and week.
 - Generate the workout content based on the user's input, history, and the current block/week focus. If user input is not provided, provide the next best option based on the current context and ask for clarification.
 - Ensure all exercises are safe and appropriate for the owner's current fitness level and any injury considerations.
@@ -48,7 +48,7 @@ When prompted with 'what's the next workout?' or 'generate workout session', pro
 - For sample structure, see `.github/instructions/sample-workout.instructions.md`.
 
 ### History-driven prescriptions (required)
-- Data source: `performed/*.json` files conforming to `schemas/performed.schema.json`.
+- Data source: `performed/*.json` files conforming to `schemas/performance.schema.json` (version `perf-1`).
 - Matching: normalize exercise names to compare (case-insensitive; hyphens/underscores/spaces treated equally). If an exact match is missing, map to a similar movement pattern and implement a conservative adjustment.
 - Units: Prescribe in pounds (lb). For dumbbells, specify per-hand load (e.g., "40 lb per hand") or "40 x2 lb". On machines/bodyweight, use RPE/time/holds as appropriate.
 - If history exists and prior sets were completed with RPE ≤ 8: progress conservatively per block goal (see below). If RPE was ≥ 9, reps missed, or pain noted: hold or reduce 5–10%.

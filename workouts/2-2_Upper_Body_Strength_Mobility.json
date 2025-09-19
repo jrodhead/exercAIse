@@ -1,18 +1,19 @@
 {
   "version": "1",
-  "title": "Upper Body Strength & Mobility \u2013 Block 2, Week 2",
+  "title": "Upper Body Strength & Mobility – Block 2, Week 2",
   "block": 0,
   "week": 0,
   "sections": [
     {
       "type": "Warm-up",
-      "title": "Warm-Up (5\u20137 min)",
+      "title": "Warm-Up (5–7 min)",
       "items": [
         {
           "kind": "exercise",
           "name": "Arm Circles",
           "link": "exercises/arm_circles.json",
-          "cues": []
+          "cues": [],
+          "logType": "mobility"
         },
         {
           "kind": "exercise",
@@ -22,7 +23,8 @@
             "[Arm Circles](../exercises/arm_circles.json): 30 sec each direction",
             "[Band Pull-Aparts](../exercises/band_pull_aparts.json): 2 x 12",
             "[Cat-Cow to Cobra Stretch](../exercises/cat_cow_to_cobra_stretch.json): 5 reps each"
-          ]
+          ],
+          "logType": "mobility"
         },
         {
           "kind": "exercise",
@@ -31,7 +33,8 @@
           "cues": [
             "[Band Pull-Aparts](../exercises/band_pull_aparts.json): 2 x 12",
             "[Cat-Cow to Cobra Stretch](../exercises/cat_cow_to_cobra_stretch.json): 5 reps each"
-          ]
+          ],
+          "logType": "mobility"
         }
       ]
     },
@@ -48,7 +51,8 @@
           "kind": "exercise",
           "name": "Neutral-Grip Flat Bench Press (Dumbbells)",
           "link": "exercises/neutral_grip_flat_bench_press.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -60,7 +64,8 @@
           "kind": "exercise",
           "name": "One-Arm Dumbbell Row (Bench Supported)",
           "link": "exercises/one_arm_dumbbell_row.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -72,7 +77,8 @@
           "kind": "exercise",
           "name": "Seated Arnold Press",
           "link": "exercises/seated_arnold_press.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -84,7 +90,8 @@
           "kind": "exercise",
           "name": "Biceps Curl (Alternating Dumbbells)",
           "link": "exercises/biceps_curl.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
@@ -96,25 +103,28 @@
           "kind": "exercise",
           "name": "Overhead Dumbbell Triceps Extension (Two Hands)",
           "link": "exercises/overhead_dumbbell_triceps_extension.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         }
       ]
     },
     {
       "type": "Cooldown/Recovery",
-      "title": "Cooldown (5\u20138 min)",
+      "title": "Cooldown (5–8 min)",
       "items": [
         {
           "kind": "exercise",
-          "name": "Child\u2019s Pose",
+          "name": "Child’s Pose",
           "link": "exercises/childs_pose.json",
-          "cues": []
+          "cues": [],
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
           "name": "Thread the Needle",
           "link": "exercises/thread_the_needle.json",
-          "cues": []
+          "cues": [],
+          "logType": "mobility"
         },
         {
           "kind": "exercise",
@@ -123,7 +133,8 @@
           "cues": [
             "[Band Pull-Aparts](../exercises/band_pull_aparts.json): 2 x 12",
             "[Cat-Cow to Cobra Stretch](../exercises/cat_cow_to_cobra_stretch.json): 5 reps each"
-          ]
+          ],
+          "logType": "stretch"
         }
       ]
     }

@@ -10,9 +10,45 @@
       "type": "Warm-up",
       "title": "Hips, Ankles, Hamstrings (6–8 min)",
       "items": [
-        { "kind": "exercise", "name": "Leg Swings", "link": "exercises/leg_swings.json", "prescription": { "timeSeconds": 60 }, "cues": ["Front/back + side/side", "Light and snappy"] },
-        { "kind": "exercise", "name": "World's Greatest Stretch", "link": "exercises/worlds_greatest_stretch.json", "prescription": { "timeSeconds": 120 }, "cues": ["Open T-spine", "Press through the back heel"] },
-        { "kind": "exercise", "name": "Glute Bridge", "link": "exercises/glute_bridge.json", "prescription": { "reps": 12 }, "cues": ["Ribs down, full squeeze", "No arching"] }
+        {
+          "kind": "exercise",
+          "name": "Leg Swings",
+          "link": "exercises/leg_swings.json",
+          "prescription": {
+            "timeSeconds": 60
+          },
+          "cues": [
+            "Front/back + side/side",
+            "Light and snappy"
+          ],
+          "logType": "mobility"
+        },
+        {
+          "kind": "exercise",
+          "name": "World's Greatest Stretch",
+          "link": "exercises/worlds_greatest_stretch.json",
+          "prescription": {
+            "timeSeconds": 120
+          },
+          "cues": [
+            "Open T-spine",
+            "Press through the back heel"
+          ],
+          "logType": "stretch"
+        },
+        {
+          "kind": "exercise",
+          "name": "Glute Bridge",
+          "link": "exercises/glute_bridge.json",
+          "prescription": {
+            "reps": 12
+          },
+          "cues": [
+            "Ribs down, full squeeze",
+            "No arching"
+          ],
+          "logType": "mobility"
+        }
       ]
     },
     {
@@ -23,22 +59,55 @@
           "kind": "exercise",
           "name": "Goblet Squat",
           "link": "exercises/goblet_squat.json",
-          "prescription": { "sets": 3, "reps": 8, "weight": 55, "restSeconds": 120, "rpe": 6.5 },
-          "cues": ["Bell tight to chest", "Knees track over toes", "Own the bottom"]
+          "prescription": {
+            "sets": 3,
+            "reps": 8,
+            "weight": 55,
+            "restSeconds": 120,
+            "rpe": 6.5
+          },
+          "cues": [
+            "Bell tight to chest",
+            "Knees track over toes",
+            "Own the bottom"
+          ],
+          "logType": "strength"
         },
         {
           "kind": "exercise",
           "name": "Dumbbell Romanian Deadlift",
           "link": "exercises/dumbbell_romanian_deadlift.json",
-          "prescription": { "sets": 3, "reps": 8, "weight": "55 x2 lb", "restSeconds": 120, "rpe": 6.5 },
-          "cues": ["Hips back, shins vertical", "Lats on, soft knees", "Feel hamstrings load"]
+          "prescription": {
+            "sets": 3,
+            "reps": 8,
+            "weight": "55 x2 lb",
+            "restSeconds": 120,
+            "rpe": 6.5
+          },
+          "cues": [
+            "Hips back, shins vertical",
+            "Lats on, soft knees",
+            "Feel hamstrings load"
+          ],
+          "logType": "strength"
         },
         {
           "kind": "exercise",
           "name": "Bulgarian Split Squat",
           "link": "exercises/bulgarian_split_squat.json",
-          "prescription": { "sets": 2, "reps": 10, "weight": "25 x2 lb", "restSeconds": 90, "rpe": 6.5 },
-          "cues": ["Torso tall, slight forward lean", "Knee tracks over toes", "Drive through mid-foot"]
+          "prescription": {
+            "sets": 2,
+            "reps": 10,
+            "weight": "25 x2 lb",
+            "restSeconds": 90,
+            "rpe": 6.5
+          },
+          "cues": [
+            "Torso tall, slight forward lean",
+            "Knee tracks over toes",
+            "Drive through mid-foot"
+          ],
+          "logType": "strength"
         }
       ]
     },
@@ -50,15 +119,32 @@
           "kind": "exercise",
           "name": "Standing Calf Raise",
           "link": "exercises/standing_calf_raise.json",
-          "prescription": { "sets": 2, "reps": 12, "weight": "25 x2 lb", "restSeconds": 60 },
-          "cues": ["Pause at top and bottom", "Even pressure big toe + heel"]
+          "prescription": {
+            "sets": 2,
+            "reps": 12,
+            "weight": "25 x2 lb",
+            "restSeconds": 60
+          },
+          "cues": [
+            "Pause at top and bottom",
+            "Even pressure big toe + heel"
+          ],
+          "logType": "strength"
         },
         {
           "kind": "exercise",
           "name": "Side Plank",
           "link": "exercises/side_plank.json",
-          "prescription": { "sets": 2, "timeSeconds": 35, "restSeconds": 45 },
-          "cues": ["Hips stacked, neck long", "Exhale to set ribs"]
+          "prescription": {
+            "sets": 2,
+            "timeSeconds": 35,
+            "restSeconds": 45
+          },
+          "cues": [
+            "Hips stacked, neck long",
+            "Exhale to set ribs"
+          ],
+          "logType": "strength"
         }
       ]
     },
@@ -66,9 +152,33 @@
       "type": "Cooldown/Recovery",
       "title": "Lengthen + Breathe (5–8 min)",
       "items": [
-        { "kind": "exercise", "name": "Standing Quad Stretch", "link": "exercises/standing_quad_stretch.json", "prescription": { "holdSeconds": 45 } },
-        { "kind": "exercise", "name": "Calf Stretch (Wall or Step)", "link": "exercises/calf_stretch_wall_or_step.json", "prescription": { "holdSeconds": 45 } },
-        { "kind": "exercise", "name": "Seated Forward Fold", "link": "exercises/seated_forward_fold.json", "prescription": { "holdSeconds": 60 } }
+        {
+          "kind": "exercise",
+          "name": "Standing Quad Stretch",
+          "link": "exercises/standing_quad_stretch.json",
+          "prescription": {
+            "holdSeconds": 45
+          },
+          "logType": "stretch"
+        },
+        {
+          "kind": "exercise",
+          "name": "Calf Stretch (Wall or Step)",
+          "link": "exercises/calf_stretch_wall_or_step.json",
+          "prescription": {
+            "holdSeconds": 45
+          },
+          "logType": "stretch"
+        },
+        {
+          "kind": "exercise",
+          "name": "Seated Forward Fold",
+          "link": "exercises/seated_forward_fold.json",
+          "prescription": {
+            "holdSeconds": 60
+          },
+          "logType": "stretch"
+        }
       ]
     }
   ]

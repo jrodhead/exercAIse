@@ -1,42 +1,45 @@
 {
   "version": "1",
-  "title": "Full-Body Conditioning & Core \u2013 Block 2, Week 1",
+  "title": "Full-Body Conditioning & Core – Block 2, Week 1",
   "block": 2,
   "week": 1,
   "sections": [
     {
       "type": "Warm-up",
-      "title": "Warm-Up (6\u20137 min)",
+      "title": "Warm-Up (6–7 min)",
       "items": [
         {
           "kind": "exercise",
           "name": "Jumping Jacks",
           "link": "exercises/jumping_jacks.json",
-          "cues": []
+          "cues": [],
+          "logType": "mobility"
         },
         {
           "kind": "exercise",
           "name": "Loaded March",
           "link": "exercises/loaded_march.json",
           "cues": [
-            "[Jumping Jacks](../exercises/jumping_jacks.json): 30\u201340 sec",
+            "[Jumping Jacks](../exercises/jumping_jacks.json): 30–40 sec",
             "[Loaded March](../exercises/loaded_march.json): 2 x 20 steps (light weight or ruck)",
-            "[World\u2019s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
-          ]
+            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
+          ],
+          "logType": "mobility"
         },
         {
           "kind": "exercise",
-          "name": "World\u2019s Greatest Stretch",
+          "name": "World’s Greatest Stretch",
           "link": "exercises/worlds_greatest_stretch.json",
           "cues": [
-            "[World\u2019s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
-          ]
+            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
+          ],
+          "logType": "stretch"
         }
       ]
     },
     {
       "type": "Conditioning",
-      "title": "Circuit A (Strength-Endurance Primer) \u2013 3 Rounds",
+      "title": "Circuit A (Strength-Endurance Primer) – 3 Rounds",
       "items": [
         {
           "kind": "exercise",
@@ -44,64 +47,72 @@
           "link": "exercises/dumbbell_thruster.json",
           "cues": [
             "[Loaded March](../exercises/loaded_march.json): 2 x 20 steps (light weight or ruck)",
-            "[World\u2019s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
-          ]
+            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
+          ],
+          "logType": "strength"
         },
         {
           "kind": "exercise",
           "name": "Renegade Row",
           "link": "exercises/renegade_row.json",
           "cues": [
-            "[World\u2019s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
-          ]
+            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
+          ],
+          "logType": "strength"
         },
         {
           "kind": "exercise",
           "name": "Step Up",
           "link": "exercises/step_up.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         },
         {
           "kind": "exercise",
           "name": "Farmer Carry",
           "link": "exercises/farmer_carry.json",
-          "cues": []
+          "cues": [],
+          "logType": "carry"
         }
       ]
     },
     {
       "type": "Accessory/Core",
-      "title": "Circuit B (Core & Capacity) \u2013 3 Rounds",
+      "title": "Circuit B (Core & Capacity) – 3 Rounds",
       "items": [
         {
           "kind": "exercise",
           "name": "Weighted Deadbug",
           "link": "exercises/weighted_deadbug.json",
           "cues": [
-            "[Jumping Jacks](../exercises/jumping_jacks.json): 30\u201340 sec",
+            "[Jumping Jacks](../exercises/jumping_jacks.json): 30–40 sec",
             "[Loaded March](../exercises/loaded_march.json): 2 x 20 steps (light weight or ruck)",
-            "[World\u2019s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
-          ]
+            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
+          ],
+          "logType": "mobility"
         },
         {
           "kind": "exercise",
           "name": "Russian Twist",
           "link": "exercises/russian_twist.json",
           "cues": [
-            "[World\u2019s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
-          ]
+            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
+          ],
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
           "name": "Plank Shoulder Tap",
           "link": "exercises/plank_shoulder_tap.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         },
         {
           "kind": "exercise",
           "name": "Loaded March",
           "link": "exercises/loaded_march.json",
-          "cues": []
+          "cues": [],
+          "logType": "mobility"
         }
       ]
     },
@@ -113,7 +124,8 @@
           "kind": "exercise",
           "name": "Goblet Squat",
           "link": "exercises/goblet_squat.json",
-          "cues": []
+          "cues": [],
+          "logType": "strength"
         },
         {
           "kind": "exercise",
@@ -121,38 +133,42 @@
           "link": "exercises/farmer_carry.json",
           "cues": [
             "[Loaded March](../exercises/loaded_march.json): 2 x 20 steps (light weight or ruck)",
-            "[World\u2019s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
-          ]
+            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
+          ],
+          "logType": "carry"
         }
       ]
     },
     {
       "type": "Cooldown/Recovery",
-      "title": "Cooldown (5\u20136 min)",
+      "title": "Cooldown (5–6 min)",
       "items": [
         {
           "kind": "exercise",
-          "name": "Child\u2019s Pose",
+          "name": "Child’s Pose",
           "link": "exercises/childs_pose.json",
-          "cues": []
+          "cues": [],
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
           "name": "Thread the Needle",
           "link": "exercises/thread_the_needle.json",
           "cues": [
-            "[Jumping Jacks](../exercises/jumping_jacks.json): 30\u201340 sec",
+            "[Jumping Jacks](../exercises/jumping_jacks.json): 30–40 sec",
             "[Loaded March](../exercises/loaded_march.json): 2 x 20 steps (light weight or ruck)",
-            "[World\u2019s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
-          ]
+            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
+          ],
+          "logType": "mobility"
         },
         {
           "kind": "exercise",
           "name": "Seated Forward Fold",
           "link": "exercises/seated_forward_fold.json",
           "cues": [
-            "[World\u2019s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
-          ]
+            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
+          ],
+          "logType": "stretch"
         }
       ]
     }

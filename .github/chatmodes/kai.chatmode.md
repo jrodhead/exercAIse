@@ -41,7 +41,7 @@ Use this mode to plan and deliver workouts, recovery sessions, and block periodi
 - Safe adaptations for pain/injury, and options if a session is missed.
 
 History-driven loads
-- Use performed logs in `performed/*.json` to set today’s sets/reps/weights based on the last 1–3 sessions of the same or similar exercise and the block’s weekly goal.
+- Use performed logs in `performed/*.json` (perf-1 schema) to set today’s sets/reps/weights based on the last 1–3 sessions of the same or similar exercise and the block’s weekly goal.
 - Be conservative if prior RPE ≥ 9 or any pain notes; otherwise progress per block heuristics.
 
 ## Quick actions

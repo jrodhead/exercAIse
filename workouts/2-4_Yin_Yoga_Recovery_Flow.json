@@ -4,33 +4,100 @@
   "date": "2025-09-03",
   "block": 2,
   "week": 4,
-  "notes": "20–30 minutes. Quiet the system; breathe slowly."
-  ,
+  "notes": "20–30 minutes. Quiet the system; breathe slowly.",
   "sections": [
     {
       "type": "Recovery",
       "title": "Settle + Breathe",
       "items": [
-        { "kind": "exercise", "name": "Deep Breathing", "link": "exercises/deep_breathing.json", "prescription": { "timeSeconds": 120 }, "cues": ["4s inhale, 6s exhale", "Relax the jaw"] }
+        {
+          "kind": "exercise",
+          "name": "Deep Breathing",
+          "link": "exercises/deep_breathing.json",
+          "prescription": {
+            "timeSeconds": 120
+          },
+          "cues": [
+            "4s inhale, 6s exhale",
+            "Relax the jaw"
+          ],
+          "logType": "mobility"
+        }
       ]
     },
     {
       "type": "Mobility",
       "title": "Hips & T-Spine",
       "items": [
-        { "kind": "exercise", "name": "Sleeping Swan (Yin Pigeon)", "link": "exercises/sleeping_swan_yin_pigeon.json", "prescription": { "holdSeconds": 120 } },
-        { "kind": "exercise", "name": "Dragon Pose (Low Lunge, Yin)", "link": "exercises/dragon_pose_low_lunge_yin_style.json", "prescription": { "holdSeconds": 120 } },
-        { "kind": "exercise", "name": "Supported Child's Pose", "link": "exercises/supported_childs_pose.json", "prescription": { "holdSeconds": 120 } },
-        { "kind": "exercise", "name": "Thread the Needle", "link": "exercises/thread_the_needle.json", "prescription": { "holdSeconds": 90 } },
-        { "kind": "exercise", "name": "Reclined Twist", "link": "exercises/reclined_twist.json", "prescription": { "holdSeconds": 90 } }
+        {
+          "kind": "exercise",
+          "name": "Sleeping Swan (Yin Pigeon)",
+          "link": "exercises/sleeping_swan_yin_pigeon.json",
+          "prescription": {
+            "holdSeconds": 120
+          },
+          "logType": "stretch"
+        },
+        {
+          "kind": "exercise",
+          "name": "Dragon Pose (Low Lunge, Yin)",
+          "link": "exercises/dragon_pose_low_lunge_yin_style.json",
+          "prescription": {
+            "holdSeconds": 120
+          },
+          "logType": "stretch"
+        },
+        {
+          "kind": "exercise",
+          "name": "Supported Child's Pose",
+          "link": "exercises/supported_childs_pose.json",
+          "prescription": {
+            "holdSeconds": 120
+          },
+          "logType": "stretch"
+        },
+        {
+          "kind": "exercise",
+          "name": "Thread the Needle",
+          "link": "exercises/thread_the_needle.json",
+          "prescription": {
+            "holdSeconds": 90
+          },
+          "logType": "mobility"
+        },
+        {
+          "kind": "exercise",
+          "name": "Reclined Twist",
+          "link": "exercises/reclined_twist.json",
+          "prescription": {
+            "holdSeconds": 90
+          },
+          "logType": "stretch"
+        }
       ]
     },
     {
       "type": "Recovery",
       "title": "Downshift",
       "items": [
-        { "kind": "exercise", "name": "Supported Fish Pose", "link": "exercises/supported_fish_pose.json", "prescription": { "holdSeconds": 120 } },
-        { "kind": "exercise", "name": "Seated Forward Fold", "link": "exercises/seated_forward_fold.json", "prescription": { "holdSeconds": 90 } }
+        {
+          "kind": "exercise",
+          "name": "Supported Fish Pose",
+          "link": "exercises/supported_fish_pose.json",
+          "prescription": {
+            "holdSeconds": 120
+          },
+          "logType": "stretch"
+        },
+        {
+          "kind": "exercise",
+          "name": "Seated Forward Fold",
+          "link": "exercises/seated_forward_fold.json",
+          "prescription": {
+            "holdSeconds": 90
+          },
+          "logType": "stretch"
+        }
       ]
     }
   ]
