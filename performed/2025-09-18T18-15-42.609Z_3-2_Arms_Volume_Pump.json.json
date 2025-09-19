@@ -1,0 +1,158 @@
+{
+  "version": "perf-1",
+  "workoutFile": "workouts/3-2_Arms_Volume_Pump.json",
+  "timestamp": "2025-09-18T18:15:27.888Z",
+  "exercises": {
+    "alternating-dumbbell-biceps-curl": {
+      "name": "Alternating Dumbbell Biceps Curl",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 8
+        },
+        {
+          "set": 2,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 8
+        },
+        {
+          "set": 3,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 8
+        },
+        {
+          "set": 4,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 8
+        }
+      ]
+    },
+    "dumbbell-floor-skullcrushers": {
+      "name": "Dumbbell Floor Skullcrushers",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 15,
+          "multiplier": 2,
+          "reps": 12,
+          "rpe": 8
+        },
+        {
+          "set": 2,
+          "weight": 15,
+          "multiplier": 2,
+          "reps": 12,
+          "rpe": 8
+        },
+        {
+          "set": 3,
+          "weight": 15,
+          "multiplier": 2,
+          "reps": 12,
+          "rpe": 8
+        },
+        {
+          "set": 4,
+          "weight": 15,
+          "multiplier": 2,
+          "reps": 12,
+          "rpe": 8
+        }
+      ]
+    },
+    "reverse-fly": {
+      "name": "Reverse Fly",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 5,
+          "multiplier": 2,
+          "reps": 15
+        },
+        {
+          "set": 2,
+          "weight": 5,
+          "multiplier": 2,
+          "reps": 15
+        },
+        {
+          "set": 3,
+          "weight": 5,
+          "multiplier": 2,
+          "reps": 15
+        }
+      ]
+    },
+    "hammer-curl": {
+      "name": "Hammer Curl",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 12
+        },
+        {
+          "set": 2,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 12
+        },
+        {
+          "set": 3,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 12
+        }
+      ]
+    },
+    "overhead-triceps-extension": {
+      "name": "Overhead Triceps Extension",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 25,
+          "reps": 12
+        },
+        {
+          "set": 2,
+          "weight": 25,
+          "reps": 12
+        },
+        {
+          "set": 3,
+          "weight": 25,
+          "reps": 12
+        }
+      ]
+    },
+    "hollow-hold": {
+      "name": "Hollow Hold",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "reps": 40
+        },
+        {
+          "set": 2,
+          "reps": 40
+        }
+      ]
+    }
+  }
+}
