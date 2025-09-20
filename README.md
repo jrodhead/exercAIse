@@ -69,8 +69,28 @@ Deprecated schemas removed: session_plan, session_v1, session_log (superseded by
 - Movements without sets/weights: use time/hold/distance fields (e.g., `timeSeconds`, `holdSeconds`, `distanceMiles`; `distanceMeters` is supported for legacy files).
 - Supersets vs circuits: both are supported; supersets typically pair 2 movements back-to-back, circuits are 3+ movements. In JSON (if used), `kind: "superset" | "circuit"` with `children` items.
 
+### Dumbbell Ladder Personalization
+- First encountered dumbbell load in a generated session establishes that session's ladder anchor (no snap on first load).
+- Subsequent dumbbell loads are normalized upward to the nearest valid rung (5 lb spacing anchored to initial offset) to create predictable increments.
+- If a prescribed load would jump multiple rungs, reps may be auto-reduced per Kai's ladder-induced adjustment rules.
+- UI does not mutate loads post-generation; enforcement occurs in the generation backend for transparency.
+
+### Offline (PWA) Minimal Support
+- Basic app shell (index, assets, exercises, workouts JSON) cached by `sw.js` for offline viewing & logging continuity.
+- Network-first strategy for generation API; falls back gracefully if offline (local deterministic generation still available).
+- Icons currently placeholder (manifest `icons` array empty) — future enhancement before public release.
+
 ## Generate
 - Form: open `index.html`, use the "Generate Session" form (goals, pain, equipment, optional instructions) or paste a `SessionPlan` JSON.
 - API: client posts to `POST /api/kai/session-plan` (local server mock via `scripts/serve.py`).
 - Validation: client hard-fails if the plan schema is invalid or if any exercise slug lacks a matching file in `exercises/<slug>.json`.
 - Fallback: if the API call fails, a local deterministic plan is generated and validated with the same guardrails.
+
+## Roadmap (Coach Intelligence – Upcoming)
+- History-based load progression (use recent performed logs to propose next rung or rep tweak).
+- RPE auto-fill suggestions per set (phase-aware target effort guidance).
+- Adaptive session modulation (pre-session soreness/joint input adjusts volume & substitutions).
+- Missed session rescheduling (merge/shift/compress with guardrails).
+- Exercise substitution engine (equipment gaps or joint protection with ranked alternatives).
+
+See `product-design/backlog/coach-intelligence-epic.md` and related user stories.
