@@ -1,0 +1,11 @@
+
+=== Session Plan (Raw) ===
+{"version":"1.0","title":"Generated Session — 2025-09-19","date":"2025-09-19","notes":"Prototype generation with ladder application. Ladder normalization applied.","exercises":[{"slug":"goblet_squat","name":"Goblet Squat","prescribed":{"sets":3,"reps":8,"rpe":7}},{"slug":"flat_dumbbell_bench_press","name":"Flat DB Bench Press","prescribed":{"sets":3,"reps":9,"rpe":7,"weight":35,"priorWeekRPE":7.5,"notes":"[LADDER snap+2.5 reps->9]"}},{"slug":"dumbbell_rdl","name":"Dumbbell RDL","prescribed":{"sets":3,"reps":8,"rpe":7,"weight":55,"priorWeekRPE":8}},{"slug":"hammer_curl","name":"Hammer Curl","prescribed":{"sets":3,"reps":12,"rpe":7,"weight":22.5,"priorWeekRPE":7}}]}
+
+=== Dumbbell Summary ===
+┌─────────┬─────────────────────────────┬───────────────────────┬──────┬──────┬─────┬────────┬─────────────────────────────┐
+│ (index) │ slug                        │ name                  │ sets │ reps │ rpe │ weight │ notes                       │
+├─────────┼─────────────────────────────┼───────────────────────┼──────┼──────┼─────┼────────┼─────────────────────────────┤
+│ 0       │ 'flat_dumbbell_bench_press' │ 'Flat DB Bench Press' │ 3    │ 9    │ 7   │ 35     │ '[LADDER snap+2.5 reps->9]' │
+│ 1       │ 'dumbbell_rdl'              │ 'Dumbbell RDL'        │ 3    │ 8    │ 7   │ 55     │ undefined                   │
+└─────────┴─────────────────────────────┴───────────────────────┴──────┴──────┴─────┴────────┴─────────────────────────────┘

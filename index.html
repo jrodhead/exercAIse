@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>exercAIse — Latest Workout</title>
     <link rel="stylesheet" href="assets/styles.css" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#111111" />
   </head>
   <body>
     <header class="site-header">
@@ -102,5 +104,13 @@
     </footer>
 
     <script src="assets/app.js"></script>
+    <script>
+      // Register service worker (graceful failure on old browsers)
+      (function(){
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('./sw.js').catch(function(){});
+        }
+      })();
+    </script>
   </body>
   </html>

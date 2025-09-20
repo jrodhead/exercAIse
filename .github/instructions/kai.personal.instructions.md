@@ -45,3 +45,8 @@ applyTo: 'workouts/**/*.md'
 ## Notes
 - Adjust mobility work based on recent soreness, injuries, or massage sessions
 - Support active recovery options (light run, ruck walk, easy yoga)
+- Dumbbell loading preference: minimize micro-adjustments. After the first working dumbbell load is chosen each session, keep all subsequent dumbbell exercises on a single ladder:
+	- If first per-hand load ends in 5 → use 5/15/25/35/... sequence.
+	- Otherwise round first per-hand load up to nearest 10 → use 10/20/30/40/... sequence.
+	- Snap later dumbbell prescriptions upward to nearest ladder value unless that would exceed intended RPE; then hold the lower ladder step.
+	- Maintain clear per-hand notation (e.g., "35 lb per hand" or "35 x2 lb").
