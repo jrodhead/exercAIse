@@ -1,0 +1,34 @@
+{
+  "version": "1",
+  "title": "Arms, Chest & Core Volume/Pump – Block 3, Week 3 (Friday)",
+  "date": "2025-09-26",
+  "block": 3,
+  "week": 3,
+  "notes": "Peak hypertrophy emphasis before Week 4 slight taper. Maintain joint-friendly neutral/landmine bias. Mild progression vs W2 via added reps on select top sets or an added round for circuit if RPE ≤8. Keep lateral foot calm—no loaded carries; mostly static or supported stances.",
+  "sections": [
+    { "type": "Warm-up", "title": "Prep (6–7 min)", "notes": "Light shoulder + elbow prep; minimal fatigue.", "items": [
+      { "kind": "exercise", "name": "Arm Circles", "link": "exercises/arm_circles.json", "logType": "mobility", "prescription": { "timeSeconds": 40 }, "cues": ["Both directions", "Relax neck"] },
+      { "kind": "exercise", "name": "Band Pull-Aparts", "link": "exercises/band_pull_aparts.json", "logType": "strength", "prescription": { "sets": 1, "reps": 18 }, "cues": ["Scaps glide", "No shrug"] },
+      { "kind": "exercise", "name": "Pallof Press", "link": "exercises/pallof_press.json", "logType": "strength", "prescription": { "sets": 1, "reps": "8/side" }, "cues": ["Brace + exhale", "Level pelvis"] }
+    ]},
+    { "type": "Strength", "title": "A1/A2 Chest + Back Pair", "notes": "Alternate; ~60–70s between. Small rep bump option only if RPE ≤7.5.", "items": [
+      { "kind": "exercise", "name": "Neutral-Grip Flat Bench Press (Dumbbells)", "link": "exercises/neutral_grip_flat_bench_press.json", "logType": "strength", "prescription": { "sets": 3, "reps": "9–10", "weight": "50 lb per hand", "rpe": 8, "restSeconds": 70 }, "cues": ["Wrists neutral", "Drive evenly", "Shoulder blades set"] },
+      { "kind": "exercise", "name": "Chest-Supported Dumbbell Row", "link": "exercises/chest_supported_dumbbell_row.json", "logType": "strength", "prescription": { "sets": 3, "reps": 11, "weight": "35 lb per hand", "restSeconds": 70 }, "cues": ["No shrug", "Elbows drive back", "Pause squeeze"] }
+    ]},
+    { "type": "Main Work", "title": "B1/B2/B3 Triset (2–3 Rounds)", "notes": "30s between moves; 75s after round. Add 3rd round only if joints fresh.", "items": [
+      { "kind": "exercise", "name": "Incline Landmine Press", "link": "exercises/incline_landmine_press.json", "logType": "strength", "prescription": { "sets": 3, "reps": "10–11/side", "rpe": 8 }, "cues": ["Arc press", "Ribs down", "Control lower"] },
+      { "kind": "exercise", "name": "One-Arm Dumbbell Row (Bench Supported)", "link": "exercises/one_arm_dumbbell_row.json", "logType": "strength", "prescription": { "sets": 3, "reps": "9–10/side", "weight": "50 lb" }, "cues": ["Elbow tight", "Pause squeeze", "Neck neutral"] },
+      { "kind": "exercise", "name": "Reverse Fly (Chest-Supported)", "link": "exercises/reverse_fly_chest_supported.json", "logType": "strength", "prescription": { "sets": 3, "reps": 15, "weight": "10 lb per hand" }, "cues": ["Wide arc", "No neck tension"] }
+    ]},
+    { "type": "Accessory/Core", "title": "C1/C2/C3 Arm + Core Pump (2–3 Rounds)", "notes": "20–25s between exercises; 60s between rounds.", "items": [
+      { "kind": "exercise", "name": "Hammer Curl", "link": "exercises/hammer_curl.json", "logType": "strength", "prescription": { "sets": 3, "reps": 12, "weight": "22.5 lb per hand" }, "cues": ["Elbows stay", "Controlled lower"] },
+      { "kind": "exercise", "name": "Overhead Triceps Extension", "link": "exercises/overhead_triceps_extension.json", "logType": "strength", "prescription": { "sets": 3, "reps": 12, "weight": "20 lb" }, "cues": ["Elbows narrow", "Soft lockout"] },
+      { "kind": "exercise", "name": "Deadbug", "link": "exercises/deadbug.json", "logType": "strength", "prescription": { "sets": 3, "reps": "8/side" }, "cues": ["Exhale press", "Low back neutral"] }
+    ]},
+    { "type": "Cooldown/Recovery", "title": "Downshift (5–6 min)", "items": [
+      { "kind": "exercise", "name": "Child’s Pose", "link": "exercises/childs_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 45 }, "cues": ["Melt hips back"] },
+      { "kind": "exercise", "name": "Thread the Needle", "link": "exercises/thread_the_needle.json", "logType": "stretch", "prescription": { "holdSeconds": 40 }, "cues": ["Reach long", "Gentle rotate"] },
+      { "kind": "exercise", "name": "Seated Forward Fold", "link": "exercises/seated_forward_fold.json", "logType": "stretch", "prescription": { "holdSeconds": 45 }, "cues": ["Long spine", "Exhale soften"] }
+    ]}
+  ]
+}
