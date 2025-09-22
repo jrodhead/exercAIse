@@ -1,0 +1,204 @@
+{
+  "version": "perf-1",
+  "workoutFile": "workouts/3-3_Upper_Body_Hypertrophy.json",
+  "timestamp": "2025-09-22T12:39:06.612Z",
+  "exercises": {
+    "neutral-grip-flat-bench-press": {
+      "name": "Neutral-Grip Flat Bench Press",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 50,
+          "multiplier": 2,
+          "reps": 8,
+          "rpe": 8
+        },
+        {
+          "set": 2,
+          "weight": 50,
+          "multiplier": 2,
+          "reps": 6,
+          "rpe": 10
+        },
+        {
+          "set": 3,
+          "weight": 50,
+          "multiplier": 2,
+          "reps": 5,
+          "rpe": 9
+        },
+        {
+          "set": 4,
+          "weight": 50,
+          "multiplier": 2,
+          "reps": 4,
+          "rpe": 9
+        }
+      ]
+    },
+    "one-arm-dumbbell-row": {
+      "name": "One-Arm Dumbbell Row",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 50,
+          "reps": 9,
+          "rpe": 7
+        },
+        {
+          "set": 2,
+          "weight": 50,
+          "reps": 9,
+          "rpe": 7
+        },
+        {
+          "set": 3,
+          "weight": 50,
+          "reps": 9,
+          "rpe": 7
+        },
+        {
+          "set": 4,
+          "weight": 50,
+          "reps": 9,
+          "rpe": 7
+        }
+      ]
+    },
+    "incline-landmine-press": {
+      "name": "Incline Landmine Press",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 20,
+          "reps": 11,
+          "rpe": 7
+        },
+        {
+          "set": 2,
+          "weight": 20,
+          "reps": 11,
+          "rpe": 7
+        },
+        {
+          "set": 3,
+          "weight": 20,
+          "reps": 14,
+          "rpe": 8
+        },
+        {
+          "set": 4,
+          "weight": 20,
+          "reps": 14,
+          "rpe": 8
+        }
+      ]
+    },
+    "chest-supported-dumbbell-row": {
+      "name": "Chest-Supported Dumbbell Row",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 40,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 6
+        },
+        {
+          "set": 2,
+          "weight": 40,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 6
+        },
+        {
+          "set": 3,
+          "weight": 40,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 6
+        },
+        {
+          "set": 4,
+          "weight": 40,
+          "multiplier": 2,
+          "reps": 15,
+          "rpe": 8
+        }
+      ]
+    },
+    "hammer-curl": {
+      "name": "Hammer Curl",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 20,
+          "multiplier": 2,
+          "reps": 15
+        },
+        {
+          "set": 2,
+          "weight": 20,
+          "multiplier": 2,
+          "reps": 15
+        },
+        {
+          "set": 3,
+          "weight": 20,
+          "multiplier": 2,
+          "reps": 12
+        }
+      ]
+    },
+    "overhead-triceps-extension": {
+      "name": "Overhead Triceps Extension",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 20,
+          "reps": 15
+        },
+        {
+          "set": 2,
+          "weight": 20,
+          "reps": 15
+        },
+        {
+          "set": 3,
+          "weight": 20,
+          "reps": 15
+        }
+      ]
+    },
+    "reverse-fly": {
+      "name": "Reverse Fly",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 10,
+          "multiplier": 2,
+          "reps": 15
+        },
+        {
+          "set": 2,
+          "weight": 10,
+          "multiplier": 2,
+          "reps": 15
+        },
+        {
+          "set": 3,
+          "weight": 10,
+          "multiplier": 2,
+          "reps": 15
+        }
+      ]
+    }
+  }
+}
