@@ -1,56 +1,56 @@
 {
-  "name": "Ankle Eversion Isometric (Wall Push)",
-  "equipment": ["wall"],
-  "tags": ["ankle", "peroneals", "eversion", "isometric", "rehab"],
-  "setup": [
-    "Stand sideways next to a wall with the outside of the foot near the wall",
-    "Feet hip-width; slight knee softness; tall posture",
-    "Place the outer edge of the foot/lightly the ankle against the wall (pain-free)"
-  ],
-  "steps": [
-    "Gently press the outside of your foot into the wall as if turning the sole outward (eversion)",
-    "Ramp tension from light to moderate over 2 seconds—no pain spike",
-    "Hold for the prescribed time while breathing steadily",
-    "Release slowly and relax before the next effort"
-  ],
-  "cues": [
-    "Slow ramp up",
-    "Keep arch lifted (no collapse)",
-    "Hips stacked over mid-foot",
-    "Only light-to-moderate effort"
-  ],
-  "mistakes": [
-    "Jamming hard into pain",
-    "Rolling ankle or collapsing arch",
-    "Holding breath",
-    "Leaning body into wall instead of using ankle"
-  ],
-  "safety": "Isometrics should be pain-free or minimal discomfort ≤ 2–3/10. Use very light pressure initially and stop if pain increases during or after.",
-  "scaling": {
-    "regressions": [
-      "Seated eversion isometric with towel between foot and wall",
-      "Very light fingertip support and micro-pressure"
-    ],
-    "progressions": [
-      "Longer holds (10–20s)",
-      "Standing single-leg stance during press"
-    ]
-  },
-  "variations": [
-    "Banded ankle eversion (very light band)",
-    "Side-lying ankle eversion raises"
-  ],
-  "prescriptionHints": {
-    "load": "Bodyweight isometric",
-    "reps": "3–8 reps of 3–10s holds",
-    "time": "—",
-    "distance": "—",
-    "rpe": "Light-to-moderate (≤ 4/10)",
-    "notes": "Place a folded towel between foot and wall if sensitive"
-  },
-  "joints": {
-    "sensitiveJoints": ["ankles", "midfoot"],
-    "notes": "Maintain arch and ankle alignment; do not jam into end range"
-  },
-  "media": { "video": "", "images": [] }
+	"name": "Ankle Eversion Isometric (Wall Push)",
+	"equipment": ["wall", "mini band (optional)"] ,
+	"tags": ["ankle", "rehab", "isometric", "eversion", "tendon"],
+	"setup": [
+		"Stand side-on to a wall with the working foot closest, shoes off if possible",
+		"Place the outside (lateral) edge of the forefoot lightly against the wall",
+		"Knee slightly bent, hips level, core gently braced"
+	],
+	"steps": [
+		"Gently press the lateral forefoot into the wall as if trying to push it away",
+		"Ramp tension over 2 seconds to target effort (start 30–40% max)",
+		"Hold steady without letting the arch collapse or ankle invert",
+		"Maintain normal breathing (avoid breath hold)",
+		"Ease off slowly after the hold before the next rep"
+	],
+	"cues": [
+		"Pressure out, not up",
+		"Arch tall, heel heavy",
+		"Slow ramp, smooth release",
+		"Breathe behind the brace"
+	],
+	"mistakes": [
+		"Jamming max force instantly",
+		"Letting the arch collapse inward",
+		"Pelvis drifting toward wall",
+		"Holding breath"
+	],
+	"safety": "Stay sub-painful (≤2/10). Reduce intensity or shorter holds if tingling or sharp pain. Maintain tripod foot contact (heel, base big toe, base little toe).",
+	"scaling": {
+		"regressions": [
+			"Reduce effort to 20–30% with shorter 10s holds",
+			"Perform seated with knee bent 90° pushing foot into yoga block",
+			"Use a lighter contact (toe only) to decrease leverage"
+		],
+		"progressions": [
+			"Add a mini band pulling foot into inversion (resist band)",
+			"Increase hold to 30–40s at moderate (50–60%) effort",
+			"Cluster holds: 3 x 10s with 5s relax (one rep)"
+		]
+	},
+	"variations": ["Band-Resisted Eversion Isometric", "Seated Eversion Isometric"],
+	"prescriptionHints": {
+		"load": "Bodyweight isometric (option: light band)",
+		"reps": "4–6 holds",
+		"time": "15–25s each",
+		"distance": "—",
+		"rpe": "Target submax 5–6/10 effort first week",
+		"notes": "2–3 sessions/week early; focus on quality tension not max force."
+	},
+	"joints": {
+		"sensitiveJoints": ["ankle", "foot"],
+		"notes": "Keep calcaneus neutral; avoid rolling heel outward while pressing."
+	},
+	"media": { "video": "", "images": [] }
 }
