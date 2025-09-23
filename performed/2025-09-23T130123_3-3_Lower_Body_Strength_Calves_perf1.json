@@ -1,0 +1,154 @@
+{
+  "version": "perf-1",
+  "workoutFile": "workouts/3-3_Lower_Body_Strength_Calves.json",
+  "timestamp": "2025-09-23T13:01:04.068Z",
+  "exercises": {
+    "goblet-squat": {
+      "name": "Goblet Squat",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 45,
+          "reps": 8,
+          "rpe": 7
+        },
+        {
+          "set": 2,
+          "weight": 45,
+          "reps": 8,
+          "rpe": 7
+        },
+        {
+          "set": 3,
+          "weight": 45,
+          "reps": 10,
+          "rpe": 8
+        }
+      ]
+    },
+    "dumbbell-romanian-deadlift": {
+      "name": "Dumbbell Romanian Deadlift",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 45,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 7
+        },
+        {
+          "set": 2,
+          "weight": 45,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 7
+        },
+        {
+          "set": 3,
+          "weight": 45,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 8
+        }
+      ]
+    },
+    "bulgarian-split-squat": {
+      "name": "Bulgarian Split Squat",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 8,
+          "rpe": 5
+        },
+        {
+          "set": 2,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 6
+        },
+        {
+          "set": 3,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 6
+        }
+      ]
+    },
+    "glute-bridge": {
+      "name": "Glute Bridge",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "reps": 12,
+          "rpe": 3
+        },
+        {
+          "set": 2,
+          "reps": 12,
+          "rpe": 3
+        },
+        {
+          "set": 3,
+          "reps": 12,
+          "rpe": 3
+        }
+      ]
+    },
+    "standing-calf-raise": {
+      "name": "Standing Calf Raise",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 15,
+          "rpe": 6
+        },
+        {
+          "set": 2,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 15,
+          "rpe": 7
+        },
+        {
+          "set": 3,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 15,
+          "rpe": 7
+        }
+      ]
+    },
+    "tibialis-raise": {
+      "name": "Tibialis Raise",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "reps": 15,
+          "rpe": 4
+        },
+        {
+          "set": 2,
+          "reps": 15,
+          "rpe": 4
+        },
+        {
+          "set": 3,
+          "reps": 15,
+          "rpe": 4
+        }
+      ]
+    }
+  }
+}
