@@ -134,28 +134,52 @@ module.exports = async function handler(req, res) {
   var useProvider = process.env.KAI_USE_PROVIDER === '1';
   var plan = null;
   if (useProvider) {
+    var llmRaw = null; // capture for error reporting
     try {
       var bits = lazyProviderBits();
       var provider = bits.createKaiProvider();
       var promptInput = await bits.assemblePrompt(payload);
-      var llmRaw = await provider.generateSession(promptInput);
-      // Attempt parse directly; if fails, strip fences and retry once.
-      var parsed = parseJSONSafe(llmRaw, null);
+      llmRaw = await provider.generateSession(promptInput);
+      if (process.env.KAI_DEBUG === '1') {
+        console.log('[kai][debug] raw provider output (first 400 chars):\n' + (llmRaw || '').slice(0,400));
+      }
+      // Robust extraction: try direct, code fences, first balanced JSON
+      var sanitized = bits.jsonRepair.sanitizeLooseJSON(llmRaw);
+      var parsed = parseJSONSafe(sanitized, null);
       if (!parsed) {
-        var cleaned = bits.jsonRepair.stripCodeFences(llmRaw);
-        parsed = parseJSONSafe(cleaned, null);
+        parsed = bits.jsonRepair.extractFirstJSONValue(sanitized);
       }
       if (!parsed) throw new Error('Invalid JSON from provider');
       plan = parsed;
-      if (!plan.exercises && plan.sections) {
-        // Minimal compatibility: flatten sections into exercises if needed (legacy shape)
-        plan.exercises = []; // keep ladder logic from breaking; real implementation will adapt.
+      // Legacy shapes normalization
+      if (!plan.exercises && plan.workouts && Array.isArray(plan.workouts)) {
+        plan.exercises = plan.workouts.map(function(w,i){
+          var exName = w.exercise || w.name || ('Exercise '+(i+1));
+          var reps = w.reps;
+          if (typeof reps === 'string' && /-/.test(reps)) reps = reps; // keep range string
+          return {
+            slug: exName.toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'').slice(0,60),
+            name: exName,
+            prescribed: {
+              sets: w.sets || w.set || 3,
+              reps: reps || w.rep || 8,
+              rpe: w.rpe || 7,
+              weight: typeof w.weight === 'number' ? w.weight : undefined,
+              notes: w.notes || undefined
+            }
+          };
+        });
+      } else if (!plan.exercises && plan.sections) {
+        plan.exercises = [];
       }
       if (!plan.notes) plan.notes = '';
       plan.notes += (plan.notes ? ' ' : '') + '[provider=' + provider.name() + ']';
     } catch (e) {
       plan = buildFallbackPlan();
       plan.meta = { fallback: true, error: e.message };
+      if (llmRaw && e.message === 'Invalid JSON from provider') {
+        plan.meta.rawSnippet = llmRaw.slice(0,600);
+      }
     }
   } else {
     plan = buildFallbackPlan();

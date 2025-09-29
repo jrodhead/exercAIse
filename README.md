@@ -100,3 +100,15 @@ export GPT_OSS_MODEL=meta-llama/Meta-Llama-3-8B-Instruct
 node scripts/test_session_plan.js --provider '{"goals":"upper strength","block":3,"week":2}'
 ```
 If the provider fails or returns invalid JSON, the handler falls back to a static plan (see `serverless/api/kai/session-plan.js`).
+
+#### Ollama (CPU Friendly Alternative)
+```bash
+brew install ollama
+ollama pull llama3
+export KAI_USE_PROVIDER=1
+export KAI_PROVIDER=ollama
+export OLLAMA_MODEL=llama3
+node scripts/test_provider_health.js
+node scripts/test_session_plan.js --provider '{"goals":"upper strength","block":3,"week":2}'
+```
+Set `OLLAMA_ENDPOINT` if not default. Falls back automatically on errors.
