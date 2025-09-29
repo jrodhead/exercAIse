@@ -4,19 +4,23 @@ AI-generated workouts compatible with a really old iPad
 
 ## This Week
 
+- [Upper Body Pump Finisher – Block 3, Week 4 (Friday)](workouts/3-4_Upper_Body_Pump_Finisher.json)
+- [Lower Body Strength & Mobility – Block 3, Week 4 (Thursday)](workouts/3-4_Lower_Body_Strength_Mobility.json)
+- [Yin Yoga Recovery Flow – Block 3, Week 4 (Wednesday)](workouts/3-4_Yin_Yoga_Recovery_Flow.json)
+- [Upper Body Strength & Mobility – Block 3, Week 4 (Tuesday)](workouts/3-4_Upper_Body_Strength_Mobility.json)
+- [Easy Run – 2.75–3.0 Mile Progression – Block 3, Week 4 (Monday)](workouts/3-4_Easy_Run_Progression.json)
+
+## Archive
+
 - [Arms, Chest & Core Volume/Pump – Block 3, Week 3 (Friday)](workouts/3-3_Arms_Chest_Core_Volume_Pump.json)
 - [Lower Body Strength & Calves – Block 3, Week 3 (Thursday)](workouts/3-3_Lower_Body_Strength_Calves.json)
 - [Yin Yoga Recovery Flow – Block 3, Week 3 (Wednesday)](workouts/3-3_Yin_Yoga_Recovery_Flow.json)
 - [Upper Body Hypertrophy – Block 3, Week 3 (Tuesday)](workouts/3-3_Upper_Body_Hypertrophy.json)
-
-## Archive
-
 - [Easy Run – 3.0 Mile Progression Toward 4 – Block 3, Week 3 (Monday)](workouts/3-3_Easy_Run_Progression.json)
 - [Upper Body Hypertrophy – Block 3, Week 2 (Tuesday)](workouts/3-2_Upper_Body_Hypertrophy.json)
 - [Yin Yoga Recovery Flow – Block 3, Week 2 (Wednesday)](workouts/3-2_Yin_Yoga_Recovery_Flow.json)
 - [Lower Body Strength & Calves – Block 3, Week 2 (Thursday)](workouts/3-2_Lower_Body_Strength_Calves.json)
 - [Arms Volume & Pump – Block 3, Week 2 (Friday)](workouts/3-2_Arms_Volume_Pump.json)
-- [Yin Yoga Recovery Flow – Block 3, Week 2 (Wednesday)](workouts/3-2_Yin_Yoga_Recovery_Flow.json)
 - [Yin Yoga Recovery Flow – Block 3, Week 1 (Sunday)](workouts/3-1_Yin_Yoga_Recovery_Flow.json)
 - [Full-Body Conditioning & Core – Block 3, Week 1 (Friday)](workouts/3-1_Full_Body_Conditioning_Core.json)
 - [Lower Body Strength & Mobility – Block 3, Week 1 (Thursday)](workouts/3-1_Lower_Body_Strength_Mobility.json)
