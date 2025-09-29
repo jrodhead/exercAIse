@@ -44,6 +44,37 @@
   var METERS_PER_MILE = 1609.34;
 
   document.getElementById('year').innerHTML = String(new Date().getFullYear());
+  // Simple UI feature flag: hide Kai generation by default
+  var kaiUiEnabled = (function(){
+    try {
+      var params = window.location.search || '';
+      if (/([?&])enableKai=1\b/.test(params)) return true;
+      var ls = localStorage.getItem('features.kaiUi');
+      if (ls === '1' || ls === 'true') return true;
+    } catch (e) {}
+    return false;
+  })();
+  if (!kaiUiEnabled) {
+    // Hide Kai generation fields for a cleaner MVP experience
+    function hideElById(id) {
+      try {
+        var el = document.getElementById(id);
+        if (el) { el.style.display = 'none'; el.setAttribute('aria-hidden','true'); }
+      } catch (e) {}
+    }
+    function hideLabelFor(id) {
+      try {
+        var lbl = document.querySelector('label[for="' + id + '"]');
+        if (lbl) { lbl.style.display = 'none'; lbl.setAttribute('aria-hidden','true'); }
+      } catch (e) {}
+    }
+    hideElById('gen-goals'); hideLabelFor('gen-goals');
+    hideElById('gen-pain'); hideLabelFor('gen-pain');
+    hideElById('gen-equipment'); hideLabelFor('gen-equipment');
+    hideElById('gen-instructions'); hideLabelFor('gen-instructions');
+    if (genSubmit) { genSubmit.style.display = 'none'; }
+    if (genClear) { genClear.style.display = 'none'; }
+  }
   reloadBtn.onclick = function () { load(); };
   if (backToIndex) {
     backToIndex.onclick = function (e) {
@@ -68,9 +99,9 @@
     // Restore scroll
     var y = 0;
     try { y = parseInt(sessionStorage.getItem('indexScrollY') || '0', 10) || 0; } catch (e) {}
-    setVisibility(readmeSection, true);
-    setVisibility(logsSection, true);
-  setVisibility(generateSection, true);
+    setVisibility(readmeSection, false);
+    setVisibility(logsSection, false);
+    setVisibility(generateSection, true);
     setVisibility(workoutSection, false);
     setVisibility(formSection, false);
     setVisibility(workoutMetaEl, false);
@@ -81,14 +112,14 @@
     // Return to index by navigating to the base page without query params
     try { window.history.pushState({}, '', 'index.html'); } catch (e) {}
     // Show index sections, hide session
-    if (readmeSection) readmeSection.style.display = 'block';
-    if (logsSection) logsSection.style.display = 'block';
-  if (generateSection) generateSection.style.display = 'block';
+    if (readmeSection) readmeSection.style.display = 'none';
+    if (logsSection) logsSection.style.display = 'none';
+    if (generateSection) generateSection.style.display = 'block';
     workoutMetaEl.style.display = 'none';
     workoutSection.style.display = 'none';
     formSection.style.display = 'none';
-    // Reload README and logs content to ensure fresh state
-    loadReadmeAndMaybeOpenSession();
+    // Return to simple home view
+    handleGenerateButtons();
   };
 
   function xhrGet(path, cb) {
@@ -1455,42 +1486,7 @@
   // Load logs list from GitHub API (unauthenticated)
   loadLogsList();
 
-      // Intercept clicks on Log links for in-page navigation
-      if (readmeSection && !readmeSection.__wired) {
-        readmeSection.addEventListener('click', function (e) {
-          var t = e.target || e.srcElement;
-          if (!t) return;
-          // Find nearest anchor
-          while (t && t !== readmeSection && !(t.tagName && t.tagName.toLowerCase() === 'a')) t = t.parentNode;
-          if (!t || t === readmeSection) return;
-          var href = t.getAttribute('href') || '';
-          if (!href) return;
-          var path = null;
-          // Route exercise links to the new exercise.html viewer (JSON counterpart if available)
-          var exMatch = href.match(/(exercises\/[\w\-]+)\.(?:md|json)$/);
-          if (exMatch) {
-            var base = exMatch[1];
-            var jsonPath = base + '.json';
-            try { e.preventDefault(); } catch (ex) {}
-            try { window.location.href = 'exercise.html?file=' + encodeURIComponent(jsonPath); } catch (ex) {}
-            return;
-          }
-          if (href.indexOf('index.html?file=') === 0) {
-            path = decodeURIComponent(href.split('file=')[1] || '');
-          } else if (href.indexOf('workouts/') === 0) {
-            path = href;
-          }
-          if (path) {
-            if (e && e.preventDefault) e.preventDefault();
-            try { sessionStorage.setItem('indexScrollY', String(window.scrollY || 0)); } catch (ex) {}
-            if (window.history && window.history.pushState) {
-              try { window.history.pushState({ view: 'session', file: path }, '', 'index.html?file=' + encodeURIComponent(path)); } catch (ex) {}
-            }
-            openSession(path, lastReadmeText);
-          }
-        }, false);
-        readmeSection.__wired = true;
-      }
+      wireReadmeClicks();
 
       // If ?file= is present, open that session; else also preview the first/latest.
       var params = (function () {
@@ -1518,23 +1514,93 @@
     });
   }
 
+  function wireReadmeClicks() {
+    // Intercept clicks on workout links for in-page navigation
+    if (readmeSection && !readmeSection.__wired) {
+      readmeSection.addEventListener('click', function (e) {
+        var t = e.target || e.srcElement;
+        if (!t) return;
+        // Find nearest anchor
+        while (t && t !== readmeSection && !(t.tagName && t.tagName.toLowerCase() === 'a')) t = t.parentNode;
+        if (!t || t === readmeSection) return;
+        var href = t.getAttribute('href') || '';
+        if (!href) return;
+        var path = null;
+        // Route exercise links to the new exercise.html viewer (JSON counterpart if available)
+        var exMatch = href.match(/(exercises\/[\w\-]+)\.(?:md|json)$/);
+        if (exMatch) {
+          var base = exMatch[1];
+          var jsonPath = base + '.json';
+          try { e.preventDefault(); } catch (ex) {}
+          try { window.location.href = 'exercise.html?file=' + encodeURIComponent(jsonPath); } catch (ex) {}
+          return;
+        }
+        if (href.indexOf('index.html?file=') === 0) {
+          path = decodeURIComponent(href.split('file=')[1] || '');
+        } else if (href.indexOf('workouts/') === 0) {
+          path = href;
+        }
+        if (path) {
+          if (e && e.preventDefault) e.preventDefault();
+          try { sessionStorage.setItem('indexScrollY', String(window.scrollY || 0)); } catch (ex) {}
+          if (window.history && window.history.pushState) {
+            try { window.history.pushState({ view: 'session', file: path }, '', 'index.html?file=' + encodeURIComponent(path)); } catch (ex) {}
+          }
+          openSession(path, lastReadmeText);
+        }
+      }, false);
+      readmeSection.__wired = true;
+    }
+  }
+
   function loadLogsList() {
     if (!logsList) return;
-    var api = 'https://api.github.com/repos/jrodhead/exercAIse/contents/performed?ref=main';
-    xhrGet(api, function (err, text) {
-      if (err) { logsList.innerHTML = '<li>Unable to load logs.</li>'; return; }
-      var items = [];
-      try { items = JSON.parse(text); } catch (e) {}
-      if (!items || Object.prototype.toString.call(items) !== '[object Array]') { logsList.innerHTML = '<li>No logs yet.</li>'; return; }
-      items.sort(function (a, b) { return a.name < b.name ? 1 : -1; });
+    // Load local manifest (performed/index.json). If missing, show unavailable message.
+    function renderFromLocal(text) {
+      var data = null;
+      try { data = JSON.parse(text || '{}'); } catch (e) { data = null; }
+      var list = [];
+      if (!data) return false;
+      // Accept either { files: [...] } or a bare array
+      if (Object.prototype.toString.call(data) === '[object Array]') list = data;
+      else if (data.files && Object.prototype.toString.call(data.files) === '[object Array]') list = data.files;
+      if (!list.length) return 'empty';
+      // Normalize to objects with { name, path }
+      var rows = [];
+      for (var i = 0; i < list.length; i++) {
+        var it = list[i];
+        if (typeof it === 'string') rows.push({ name: it, path: 'performed/' + it });
+        else if (it && typeof it === 'object') rows.push({ name: it.name || it.path || ('file-' + i), path: it.path || ('performed/' + (it.name || '')) });
+      }
+      // Sort descending by name (timestamps in name) or by mtime if provided
+      rows.sort(function(a, b){
+        var ma = (typeof a.mtimeMs === 'number') ? a.mtimeMs : 0;
+        var mb = (typeof b.mtimeMs === 'number') ? b.mtimeMs : 0;
+        if (ma && mb && ma !== mb) return mb - ma;
+        return a.name < b.name ? 1 : -1;
+      });
       var html = '';
-      for (var i = 0; i < Math.min(items.length, 20); i++) {
-        var it = items[i];
-        if (it.type !== 'file') continue;
-        var url = it.html_url || ('https://github.com/jrodhead/exercAIse/blob/main/performed/' + encodeURIComponent(it.name));
-        html += '<li><a target="_blank" rel="noopener" href="' + url + '">' + it.name + '</a></li>';
+      for (var j = 0; j < Math.min(rows.length, 50); j++) {
+        var r = rows[j];
+        // Link to local file path; will be served as static content
+        var href = r.path || ('performed/' + r.name);
+        html += '<li><a target="_blank" rel="noopener" href="' + href + '">' + r.name + '</a></li>';
       }
       logsList.innerHTML = html || '<li>No logs yet.</li>';
+      return true;
+    }
+
+    xhrGet('performed/index.json', function (err, text) {
+      if (err || !text) {
+        logsList.innerHTML = '<li>History unavailable (no local manifest). Run scripts/build_performed_index.js to generate, or add logs.</li>';
+        return;
+      }
+      var res = renderFromLocal(text);
+      if (res === 'empty') {
+        logsList.innerHTML = '<li>No logs yet.</li>';
+      } else if (!res) {
+        logsList.innerHTML = '<li>History unavailable (invalid manifest).</li>';
+      }
     });
   }
 
@@ -1667,12 +1733,27 @@
         }
         var obj = null;
         try { obj = JSON.parse(text || '{}'); } catch (e) { obj = null; }
-        if (!obj || !obj.sections) {
-          // Fallback to pretty JSON
-          var pretty = '';
-          try { pretty = JSON.stringify(JSON.parse(text || '{}'), null, 2); } catch (e) { pretty = text || ''; }
-          workoutContent.innerHTML = '<pre>' + (pretty || '') + '</pre>';
-        } else {
+        // Normalize SessionPlan shape (version + exercises) into a displayable sections/items structure
+        if (obj && (!obj.sections || !obj.sections.length) && obj.exercises && Object.prototype.toString.call(obj.exercises) === '[object Array]') {
+          var itemsFromPlan = [];
+          for (var ei2 = 0; ei2 < obj.exercises.length; ei2++) {
+            var ex2 = obj.exercises[ei2] || {};
+            var pres2 = (ex2.prescribed != null ? ex2.prescribed : ex2.prescription) || {};
+            if (!pres2.sets && ex2.sets != null) pres2.sets = ex2.sets;
+            if (!pres2.reps && ex2.reps != null) pres2.reps = ex2.reps;
+            if (!pres2.load && ex2.load != null) pres2.load = ex2.load;
+            if (!pres2.rpe && ex2.rpe != null) pres2.rpe = ex2.rpe;
+            itemsFromPlan.push({
+              kind: 'exercise',
+              name: ex2.name || ex2.slug || 'Exercise',
+              cues: ex2.cues || [],
+              prescription: pres2,
+              link: (ex2.slug ? ('exercises/' + String(ex2.slug).replace(/[^a-z0-9_\-]+/g,'') + '.json') : '')
+            });
+          }
+          obj.sections = [{ type: 'Main', title: 'Main Sets', items: itemsFromPlan }];
+        }
+        if (obj && obj.sections) {
           var parts = [];
           // Title
           var titleTop = obj.title ? '<h1>' + esc(obj.title) + '</h1>' : '';
@@ -1685,6 +1766,11 @@
           }
           for (var si = 0; si < obj.sections.length; si++) parts.push(renderSection(obj.sections[si]));
           workoutContent.innerHTML = parts.join('\n');
+        } else {
+          // Fallback to pretty JSON when structure is unknown
+          var pretty = '';
+          try { pretty = JSON.stringify(JSON.parse(text || '{}'), null, 2); } catch (e) { pretty = text || ''; }
+          workoutContent.innerHTML = '<pre>' + (pretty || '') + '</pre>';
         }
         fixExerciseAnchors(workoutContent);
       } else {
@@ -2052,7 +2138,7 @@
         return status('Unsupported JSON shape: expected workout {sections[]} or plan {version:"1.0", exercises[]}', { important: true });
       }
     };
-    if (genSubmit) genSubmit.onclick = function () {
+  if (kaiUiEnabled && genSubmit) genSubmit.onclick = function () {
       var payload = {
         goals: (genGoals && genGoals.value) || '',
         pain: ((genPain && genPain.value) || '').split(/,\s*/).filter(Boolean),
@@ -2236,22 +2322,112 @@
     } catch (e) {}
   }
 
-  function load() { loadReadmeAndMaybeOpenSession(); }
+  // Navigation handlers
+  (function setupNav(){
+    try {
+      var navHome = document.getElementById('nav-home');
+      var navWorkouts = document.getElementById('nav-workouts');
+      var navHistory = document.getElementById('nav-history');
+      if (navHome) navHome.onclick = function(e){
+        if (e && e.preventDefault) e.preventDefault();
+        try { window.history.pushState({ view: 'home' }, '', 'index.html'); } catch (ex) {}
+        showIndexView();
+      };
+      if (navWorkouts) navWorkouts.onclick = function(e){
+        if (e && e.preventDefault) e.preventDefault();
+        try { window.history.pushState({ view: 'workouts' }, '', 'index.html?view=workouts'); } catch (ex) {}
+        openWorkouts();
+      };
+      if (navHistory) navHistory.onclick = function(e){
+        if (e && e.preventDefault) e.preventDefault();
+        try { window.history.pushState({ view: 'history' }, '', 'index.html?view=history'); } catch (ex) {}
+        openHistory();
+      };
+    } catch (e) {}
+  })();
+
+  function openWorkouts(){
+    setVisibility(generateSection, false);
+    setVisibility(logsSection, false);
+    setVisibility(readmeSection, true);
+    // Lazy-load README when first opened
+    if (!lastReadmeText) {
+      xhrGet('README.md', function (err, text) {
+        if (err) return status('Error reading README: ' + err.message, { important: true });
+        lastReadmeText = text || '';
+        readmeContent.innerHTML = decorateReadmeWithLogLinks(lastReadmeText);
+        fixExerciseAnchors(readmeContent);
+        wireReadmeClicks();
+        handleGenerateButtons();
+      });
+    }
+  }
+
+  function openHistory(){
+    setVisibility(generateSection, false);
+    setVisibility(readmeSection, false);
+    setVisibility(logsSection, true);
+    loadLogsList();
+  }
+
+  function load() {
+    // Respect deep link params on initial load
+    var params = (function () {
+      var q = {};
+      try {
+        var s = (window.location.search || '').replace(/^\?/, '').split('&');
+        for (var i = 0; i < s.length; i++) {
+          var kv = s[i].split('=');
+          if (kv[0]) q[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1] || '');
+        }
+      } catch (e) {}
+      return q;
+    })();
+    if (params.file) {
+      // Open a specific session
+      openSession(params.file, lastReadmeText || '');
+      return;
+    }
+    if (params.view === 'workouts') {
+      openWorkouts();
+      return;
+    }
+    if (params.view === 'history') {
+      openHistory();
+      return;
+    }
+    // Default home view
+    showIndexView();
+    handleGenerateButtons();
+  }
 
   // Handle back/forward navigation
   window.addEventListener('popstate', function () {
     var s = window.location.search || '';
-    if (s.indexOf('file=') === -1) {
-      showIndexView();
-    } else {
-      var parts = s.replace(/^\?/, '').split('&');
-      var file = null;
-      for (var i = 0; i < parts.length; i++) {
-        var kv = parts[i].split('=');
-        if (kv[0] === 'file') { file = decodeURIComponent(kv[1] || ''); break; }
-      }
-      if (file) openSession(file, lastReadmeText);
+    var params = (function () {
+      var q = {};
+      try {
+        var arr = s.replace(/^\?/, '').split('&');
+        for (var i = 0; i < arr.length; i++) {
+          var kv = arr[i].split('=');
+          if (kv[0]) q[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1] || '');
+        }
+      } catch (e) {}
+      return q;
+    })();
+    if (params.file) {
+      openSession(params.file, lastReadmeText || '');
+      return;
     }
+    if (params.view === 'workouts') {
+      openWorkouts();
+      return;
+    }
+    if (params.view === 'history') {
+      openHistory();
+      return;
+    }
+    showIndexView();
   }, false);
 
   // kickoff

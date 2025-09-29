@@ -129,6 +129,14 @@ function readBody(req) {
 }
 
 module.exports = async function handler(req, res) {
+  // Optional server guard: if Kai UI is disabled, block generation calls unless explicitly allowed
+  var uiEnabled = process.env.KAI_UI_ENABLED === '1';
+  var allowBackend = process.env.KAI_ALLOW_API === '1';
+  if (!uiEnabled && !allowBackend) {
+    res.statusCode = 403;
+    res.setHeader('Content-Type','application/json');
+    return res.end(JSON.stringify({ error: 'Kai generation is disabled in MVP. Paste a SessionPlan JSON in the UI instead.' }));
+  }
   var raw = await readBody(req);
   var payload = parseJSONSafe(raw, {});
   var useProvider = process.env.KAI_USE_PROVIDER === '1';
