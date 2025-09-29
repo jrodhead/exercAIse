@@ -1,6 +1,19 @@
+/* Muted button when disabled via feature flag */
+.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
 /* Minimal, old-iPad-friendly styles (no CSS variables) */
 html, body { margin: 0; padding: 0; }
 body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.5; color: #222; background: #fafafa; }
+
+/* Accessible link styles (high contrast, visible underline, clear focus) */
+a { color: #0b57d0; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
+a:hover { color: #0a5be1; }
+a:active { color: #0849b9; }
+a:visited { color: #6a35d4; }
+a:focus { outline: none; }
+a:focus-visible { outline: 2px solid #0a5be1; outline-offset: 2px; border-radius: 2px; }
 
 .container { max-width: 860px; margin: 0 auto; padding: 12px 14px; }
 
@@ -99,11 +112,25 @@ textarea { width: 100%; }
 @media (prefers-color-scheme: dark) {
   body { background: #0d0e11; color: #e6e8ec; }
   .site-header, .site-footer, .workout-content, .form, .workout-meta { background: #14161a; border-color: #2a2d33; }
+  /* Increase footer text contrast */
+  .site-footer { color: #aeb5bf; }
   .status { background: #3a2f00; color: #f3e5ab; border-color: #5a4a00; }
   .exercise-card { background: #181b20; border-color: #2a2d33; }
   .exercise-card .exercise-header .ex-presc { color: #fafafa; }
+  /* Improve readability of gray helper/cue text in dark mode */
+  .form-hint { color: #c2c8d1; }
+  .exercise-card .exercise-header .ex-cues { color: #d4d9e1; }
+  .exercise-card .exercise-notes { color: #d7dbe3; }
+  .set-row .set-label { color: #b5bcc7; }
   .exercise-detail section { background: #181b20; border-color: #2a2d33; }
   .exercise-detail .meta-badges .badge { background: #232830; color: #d5d9df; }
   .exercise-detail section h2 { color: #c1c7d0; }
   .exercise-detail .prescription-hints code { background: #232830; }
+
+  /* Dark mode link colors tuned for contrast on #0d0e11/#181b20 */
+  a { color: #8ab4f8; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
+  a:hover { color: #a8c7fa; }
+  a:active { color: #79a7f5; }
+  a:visited { color: #c58af9; }
+  a:focus-visible { outline: 2px solid #a8c7fa; outline-offset: 2px; border-radius: 2px; }
 }

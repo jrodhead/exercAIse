@@ -13,14 +13,17 @@
     <header class="site-header">
       <h1>exercAIse</h1>
       <nav>
-        <a href="https://github.com/jrodhead/exercAIse" target="_blank" rel="noopener">Repo</a>
+        <a href="#" id="nav-home">Home</a>
+        <a href="#" id="nav-workouts">Workouts</a>
+        <a href="#" id="nav-history">History</a>
+        <a href="https://github.com/jrodhead/exercAIse#readme" target="_blank" rel="noopener">README</a>
       </nav>
     </header>
 
     <main class="container">
       <section id="generate-section" class="readme">
-        <h2>Generate Session (JSON-only MVP)</h2>
-        <p class="form-hint">Enter your goals, pain, and equipment. We’ll ask Kai to generate a session plan (JSON) and render it for logging.</p>
+        <h2>Session Plan (JSON)</h2>
+        <p class="form-hint">Paste a SessionPlan JSON to preview and log.</p>
         <form id="generate-form">
           <label for="gen-goals">Goals</label>
           <textarea id="gen-goals" rows="3" placeholder="e.g., 30–40 min full-body strength, knee-friendly"></textarea>
@@ -34,16 +37,14 @@
             <button id="gen-submit" type="button">Generate with Kai</button>
             <button id="gen-clear" type="button" class="secondary">Clear</button>
           </div>
-          <details>
-            <summary>Or paste a SessionPlan JSON</summary>
-            <textarea id="gen-json" rows="8" placeholder='{"version":"1.0","title":"...","exercises":[...]}'></textarea>
-            <div class="form-actions">
-              <button id="gen-load-json" type="button" class="secondary">Load JSON</button>
-            </div>
-          </details>
+          <p class="form-hint">Expected keys: version, title, date (optional), notes (optional), exercises[]. Each exercise: slug, name, prescribed{ sets, reps or "x-y", rpe?, weight? }.</p>
+          <textarea id="gen-json" rows="8" placeholder='{"version":"1.0","title":"My Session","exercises":[{"slug":"goblet_squat","name":"Goblet Squat","prescribed":{"sets":3,"reps":"8-12","rpe":7}}]}'></textarea>
+          <div class="form-actions">
+            <button id="gen-load-json" type="button" class="secondary">Load JSON</button>
+          </div>
         </form>
       </section>
-      <section id="status" class="status">Loading…</section>
+  <section id="status" class="status"></section>
 
   <section id="readme-section" class="readme">
         <h2>Workout Index</h2>
@@ -51,9 +52,9 @@
         <article id="readme-content" class="workout-content" aria-live="polite"></article>
       </section>
 
-      <section id="logs-section" class="readme">
-        <h2>Performed Logs</h2>
-        <p class="form-hint">Recent committed logs from the performed/ folder (perf-1 schema).</p>
+      <section id="logs-section" class="readme" style="display:none;">
+        <h2>History</h2>
+        <p class="form-hint">Latest performed logs (from the GitHub repo). Opens in a new tab.</p>
         <ul id="logs-list"></ul>
       </section>
 

@@ -7,6 +7,8 @@
   "scripts": {
     "test:ui": "playwright test",
     "test:ui:headed": "playwright test --headed",
-    "pw:install": "playwright install"
+    "pw:install": "playwright install",
+    "serve": "node scripts/serve.js",
+    "test:menu": "playwright test tests/ui/index-menu.spec.ts"
   }
 }

@@ -1,6 +1,11 @@
 #!/usr/bin/env node
 // Quick harness to invoke the session-plan serverless handler directly.
-// Usage: node scripts/test_session_plan.js '{"goals":"upper strength","equipment":["dumbbells"],"pain":["knee"]}'
+// Usage:
+//   node scripts/test_session_plan.js '{"goals":"upper strength"}'
+// Flags:
+//   --provider  Enable provider pipeline (sets KAI_USE_PROVIDER=1)
+//   --endpoint  Override GPT_OSS_ENDPOINT
+//   --model     Override GPT_OSS_MODEL
 // If no payload provided, uses a minimal default.
 
 const fs = require('fs');
@@ -15,7 +20,17 @@ if (!fs.existsSync(handlerPath)) {
 const handler = require(handlerPath);
 
 // Build mock req/res
-const arg = process.argv[2];
+// Parse args
+let jsonArg = null;
+for (let i=2;i<process.argv.length;i++) {
+  const a = process.argv[i];
+  if (a === '--provider') process.env.KAI_USE_PROVIDER = '1';
+  else if (a === '--endpoint') { process.env.GPT_OSS_ENDPOINT = process.argv[++i]; }
+  else if (a === '--model') { process.env.GPT_OSS_MODEL = process.argv[++i]; }
+  else if (!jsonArg) jsonArg = a; // first non-flag treated as payload
+}
+
+const arg = jsonArg;
 let payload = {};
 if (arg) {
   try { payload = JSON.parse(arg); } catch (e) { console.warn('Invalid JSON arg, using default.'); }

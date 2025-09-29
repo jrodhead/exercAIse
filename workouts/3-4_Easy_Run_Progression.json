@@ -1,0 +1,44 @@
+{
+  "version": "1",
+  "title": "Easy Run – 2.75–3.0 Mile Progression (Block 3, Week 4, Monday)",
+  "date": "2025-09-29",
+  "block": 3,
+  "week": 4,
+  "notes": "Deload week run while progressing distance from a recent 2 mi base. New barefoot shoes + low residual foot sensations: keep cadence up, short stride, RPE 5–6. Segment the run with brief walk resets to keep tissues calm. Stop if lateral foot pain >2/10 or gait changes.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Run Warm-up (7–8 min)",
+      "notes": "Prime ankles/feet and elevate HR gradually.",
+      "items": [
+        { "kind": "exercise", "name": "Brisk Walk", "link": "exercises/brisk_walk.json", "logType": "endurance", "prescription": { "timeSeconds": 180 }, "cues": ["Nasal breathe", "Relax shoulders"] },
+        { "kind": "exercise", "name": "Leg Swings", "link": "exercises/leg_swings.json", "logType": "mobility", "prescription": { "reps": "10/leg fwd-back + 10 side" }, "cues": ["Smooth arc", "Tall posture"] },
+        { "kind": "exercise", "name": "Calf Stretch (Wall or Step)", "link": "exercises/calf_stretch_wall_or_step.json", "logType": "stretch", "prescription": { "holdSeconds": 30 }, "cues": ["Light pressure", "Heel down"] },
+        { "kind": "exercise", "name": "Short Foot (Arch Raise)", "link": "exercises/short_foot_arch_raise.json", "logType": "strength", "prescription": { "sets": 1, "reps": "8/side" }, "cues": ["Lift arch", "No toe curl"] }
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "Segmented Easy Run",
+      "notes": "Walk resets between segments; monitor foot each block.",
+      "items": [
+        { "kind": "exercise", "name": "Easy Jog Segment 1", "link": "exercises/easy_jog.json", "logType": "endurance", "prescription": { "distanceMiles": 1, "rpe": 5 }, "cues": ["Short stride", "Soft land"] },
+        { "kind": "exercise", "name": "Walk Reset", "link": "exercises/brisk_walk.json", "logType": "endurance", "prescription": { "timeSeconds": 90 }, "cues": ["Relax foot", "Check pain"] },
+        { "kind": "exercise", "name": "Easy Jog Segment 2", "link": "exercises/easy_jog.json", "logType": "endurance", "prescription": { "distanceMiles": 1, "rpe": 5 }, "cues": ["Even cadence", "Nasal first half"] },
+        { "kind": "exercise", "name": "Walk Reset 2", "link": "exercises/brisk_walk.json", "logType": "endurance", "prescription": { "timeSeconds": 60 }, "cues": ["Monitor foot", "Shake ankles"] },
+        { "kind": "exercise", "name": "Easy Jog Segment 3", "link": "exercises/easy_jog.json", "logType": "endurance", "prescription": { "distanceMiles": 0.75, "rpe": 6 }, "cues": ["Stay relaxed", "No hard toe-off" ] },
+        { "kind": "exercise", "name": "Optional Easy Jog Segment 4", "link": "exercises/easy_jog.json", "logType": "endurance", "prescription": { "distanceMiles": 0.25, "rpe": 6 }, "cues": ["Only if 0–1 pain", "Finish smooth" ] }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Cooldown (6–7 min)",
+      "items": [
+        { "kind": "exercise", "name": "Brisk Walk", "link": "exercises/brisk_walk.json", "logType": "endurance", "prescription": { "timeSeconds": 240 }, "cues": ["Downshift HR"] },
+        { "kind": "exercise", "name": "Standing Calf Raise", "link": "exercises/standing_calf_raise.json", "logType": "strength", "prescription": { "sets": 1, "reps": 12 }, "cues": ["Full ROM", "Pause top"] },
+        { "kind": "exercise", "name": "Low Lunge Stretch", "link": "exercises/low_lunge_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 40 }, "cues": ["Hip forward", "Tall chest"] },
+        { "kind": "exercise", "name": "Supine Twist", "link": "exercises/supine_twist.json", "logType": "stretch", "prescription": { "holdSeconds": 40 }, "cues": ["Shoulders heavy"] }
+      ]
+    }
+  ]
+}

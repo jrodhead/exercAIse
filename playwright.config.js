@@ -1,4 +1,3 @@
-// @ts-check
 const { defineConfig, devices } = require('@playwright/test');
 
 module.exports = defineConfig({
@@ -9,8 +8,17 @@ module.exports = defineConfig({
   workers: process.env.CI ? 2 : undefined,
   reporter: [['list']],
   use: {
-    baseURL: process.env.PLAYWRIGHT_BASE_URL || 'http://localhost:8000',
+    baseURL: 'http://localhost:8000',
+    headless: true,
     trace: 'on-first-retry'
+  },
+  webServer: {
+    command: 'node ./scripts/serve.js',
+    url: 'http://localhost:8000',
+    reuseExistingServer: true,
+    timeout: 30000,
+    env: { PORT: '8000' },
+    cwd: __dirname,
   },
   projects: [
     {
