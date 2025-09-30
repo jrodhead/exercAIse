@@ -11,13 +11,13 @@
       { "kind": "exercise", "name": "Band Pull-Aparts", "link": "exercises/band_pull_aparts.json", "logType": "strength", "prescription": { "sets": 1, "reps": 15 }, "cues": ["Scaps glide", "No shrug"] }
     ]},
     { "type": "Accessory/Core", "title": "A/B/C Pump Circuit (2–3 Rounds)", "notes": "20–25s between moves; 60s after round.", "items": [
-      { "kind": "exercise", "name": "Neutral-Grip Flat Bench Press (Dumbbells)", "link": "exercises/neutral_grip_flat_bench_press.json", "logType": "strength", "prescription": { "sets": 3, "reps": 10, "weight": "40–45 lb per hand" }, "cues": ["Wrists neutral", "Drive evenly", "Pause 1s near chest"] },
-      { "kind": "exercise", "name": "Chest-Supported Dumbbell Row", "link": "exercises/chest_supported_dumbbell_row.json", "logType": "strength", "prescription": { "sets": 3, "reps": 12, "weight": "30–35 lb per hand" }, "cues": ["No shrug", "Elbows back", "Squeeze 1s"] },
-      { "kind": "exercise", "name": "Incline Landmine Press", "link": "exercises/incline_landmine_press.json", "logType": "strength", "prescription": { "sets": 3, "reps": "10/side" }, "cues": ["Arc press", "Ribs down", "Control lower"] }
+    { "kind": "exercise", "name": "Neutral-Grip Flat Bench Press (Dumbbells)", "link": "exercises/neutral_grip_flat_bench_press.json", "logType": "strength", "prescription": { "sets": 3, "reps": 10, "weight": "40 lb per hand" }, "cues": ["Wrists neutral", "Drive evenly", "Pause 1s near chest"] },
+    { "kind": "exercise", "name": "Chest-Supported Dumbbell Row", "link": "exercises/chest_supported_dumbbell_row.json", "logType": "strength", "prescription": { "sets": 3, "reps": 12, "weight": "30 lb per hand" }, "cues": ["No shrug", "Elbows back", "Squeeze 1s"] },
+  { "kind": "exercise", "name": "Incline Landmine Press", "link": "exercises/incline_landmine_press.json", "logType": "strength", "prescription": { "sets": 3, "reps": "10/side", "weight": "30 lb per hand" }, "cues": ["Arc press", "Ribs down", "Control lower"] }
     ]},
     { "type": "Accessory/Core", "title": "D/E/F Arm & Core Pump (2 Rounds)", "notes": "Short rests; smooth tempo.", "items": [
-      { "kind": "exercise", "name": "Hammer Curl", "link": "exercises/hammer_curl.json", "logType": "strength", "prescription": { "sets": 2, "reps": 12, "weight": "20–22.5 lb per hand" }, "cues": ["Elbows stay", "Controlled lower"] },
-      { "kind": "exercise", "name": "Overhead Triceps Extension", "link": "exercises/overhead_triceps_extension.json", "logType": "strength", "prescription": { "sets": 2, "reps": 12, "weight": "15–20 lb" }, "cues": ["Elbows narrow", "Soft lockout"] },
+  { "kind": "exercise", "name": "Hammer Curl", "link": "exercises/hammer_curl.json", "logType": "strength", "prescription": { "sets": 2, "reps": 12, "weight": "30 lb per hand" }, "cues": ["Elbows stay", "Controlled lower"] },
+  { "kind": "exercise", "name": "Overhead Triceps Extension", "link": "exercises/overhead_triceps_extension.json", "logType":"strength", "prescription": { "sets": 2, "reps": 12, "weight": "15 lb" }, "cues": ["Elbows narrow", "Soft lockout"] },
       { "kind": "exercise", "name": "Deadbug", "link": "exercises/deadbug.json", "logType": "strength", "prescription": { "sets": 2, "reps": "8/side" }, "cues": ["Exhale press", "Low back neutral"] }
     ]},
     { "type": "Cooldown/Recovery", "title": "Downshift (5–6 min)", "items": [

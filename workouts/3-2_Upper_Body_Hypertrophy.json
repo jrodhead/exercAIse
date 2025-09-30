@@ -31,7 +31,7 @@
       "title": "B1/B2 Incline + Row Pair",
       "notes": "Add a 4th set or small rep bump over W1.",
       "items": [
-        { "kind": "exercise", "name": "Incline Landmine Press", "link": "exercises/incline_landmine_press.json", "logType": "strength", "prescription": { "sets": 4, "reps": "10/side", "rpe": 8, "restSeconds": 60 }, "cues": ["Arc press", "Ribs down", "Controlled lower"] },
+  { "kind": "exercise", "name": "Incline Landmine Press", "link": "exercises/incline_landmine_press.json", "logType": "strength", "prescription": { "sets": 4, "reps": "10/side", "weight": "20–30 lb per hand", "rpe": 8, "restSeconds": 60 }, "cues": ["Arc press", "Ribs down", "Controlled lower"] },
         { "kind": "exercise", "name": "Chest-Supported Dumbbell Row", "link": "exercises/chest_supported_dumbbell_row.json", "logType": "strength", "prescription": { "sets": 4, "reps": 10, "weight": "35 lb per hand", "restSeconds": 60 }, "cues": ["No shrug", "Elbows drive back", "Squeeze mid-back"] }
       ]
     },

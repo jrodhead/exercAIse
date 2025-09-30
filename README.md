@@ -4,14 +4,14 @@ AI-generated workouts compatible with a really old iPad
 
 ## This Week
 
-- [Upper Body Pump Finisher – Block 3, Week 4 (Friday)](workouts/3-4_Upper_Body_Pump_Finisher.json)
 - [Lower Body Strength & Mobility – Block 3, Week 4 (Thursday)](workouts/3-4_Lower_Body_Strength_Mobility.json)
 - [Yin Yoga Recovery Flow – Block 3, Week 4 (Wednesday)](workouts/3-4_Yin_Yoga_Recovery_Flow.json)
-- [Upper Body Strength & Mobility – Block 3, Week 4 (Tuesday)](workouts/3-4_Upper_Body_Strength_Mobility.json)
 - [Easy Run – 2.75–3.0 Mile Progression – Block 3, Week 4 (Monday)](workouts/3-4_Easy_Run_Progression.json)
+- [Upper Body Pump Finisher – Block 3, Week 4 (Friday)](workouts/3-4_Upper_Body_Pump_Finisher.json)
 
 ## Archive
 
+- [Upper Body Strength & Mobility – Block 3, Week 4 (Tuesday)](workouts/3-4_Upper_Body_Strength_Mobility.json)
 - [Arms, Chest & Core Volume/Pump – Block 3, Week 3 (Friday)](workouts/3-3_Arms_Chest_Core_Volume_Pump.json)
 - [Lower Body Strength & Calves – Block 3, Week 3 (Thursday)](workouts/3-3_Lower_Body_Strength_Calves.json)
 - [Yin Yoga Recovery Flow – Block 3, Week 3 (Wednesday)](workouts/3-3_Yin_Yoga_Recovery_Flow.json)
@@ -79,7 +79,10 @@ Deprecated schemas removed: session_plan, session_v1, session_log (superseded by
 
 ### Dumbbell Ladder Personalization
 - First encountered dumbbell load in a generated session establishes that session's ladder anchor (no snap on first load).
-- Subsequent dumbbell loads are normalized upward to the nearest valid rung (5 lb spacing anchored to initial offset) to create predictable increments.
+- Subsequent dumbbell loads are normalized upward to the nearest valid rung using 10 lb steps anchored to the first per-hand load:
+	- If the first load ends in .5 (e.g., 7.5) → keep the .5 anchor: 7.5/17.5/27.5/...
+	- If it ends in 5 → use 5/15/25/35/...
+	- Otherwise round the first load up to the nearest 10 → 10/20/30/40/...
 - If a prescribed load would jump multiple rungs, reps may be auto-reduced per Kai's ladder-induced adjustment rules.
 - UI does not mutate loads post-generation; enforcement occurs in the generation backend for transparency.
 
