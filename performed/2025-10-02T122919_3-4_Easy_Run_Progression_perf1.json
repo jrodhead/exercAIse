@@ -1,0 +1,64 @@
+{
+  "version": "perf-1",
+  "workoutFile": "workouts/3-4_Easy_Run_Progression.json",
+  "timestamp": "2025-10-02T12:29:03.577Z",
+  "exercises": {
+    "easy-jog-segment-1": {
+      "name": "Easy Jog Segment 1",
+      "logType": "endurance",
+      "sets": [
+        {
+          "set": 1,
+          "distanceMiles": 1,
+          "timeSeconds": 456,
+          "rpe": 5
+        }
+      ]
+    },
+    "walk-reset": {
+      "name": "Walk Reset",
+      "logType": "endurance",
+      "sets": [
+        {
+          "set": 1,
+          "timeSeconds": 120
+        }
+      ]
+    },
+    "easy-jog-segment-2": {
+      "name": "Easy Jog Segment 2",
+      "logType": "endurance",
+      "sets": [
+        {
+          "set": 1,
+          "distanceMiles": 1,
+          "timeSeconds": 403,
+          "rpe": 5
+        }
+      ]
+    },
+    "walk-reset-2": {
+      "name": "Walk Reset 2",
+      "logType": "endurance",
+      "sets": [
+        {
+          "set": 1,
+          "distanceMiles": 3,
+          "timeSeconds": 60
+        }
+      ]
+    },
+    "easy-jog-segment-3": {
+      "name": "Easy Jog Segment 3",
+      "logType": "endurance",
+      "sets": [
+        {
+          "set": 1,
+          "distanceMiles": 1,
+          "timeSeconds": 422,
+          "rpe": 6
+        }
+      ]
+    }
+  }
+}
