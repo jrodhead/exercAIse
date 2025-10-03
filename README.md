@@ -4,13 +4,13 @@ AI-generated workouts compatible with a really old iPad
 
 ## This Week
 
-- [Lower Body Strength & Mobility – Block 3, Week 4 (Thursday)](workouts/3-4_Lower_Body_Strength_Mobility.json)
-- [Yin Yoga Recovery Flow – Block 3, Week 4 (Wednesday)](workouts/3-4_Yin_Yoga_Recovery_Flow.json)
-- [Easy Run – 2.75–3.0 Mile Progression – Block 3, Week 4 (Monday)](workouts/3-4_Easy_Run_Progression.json)
 - [Upper Body Pump Finisher – Block 3, Week 4 (Friday)](workouts/3-4_Upper_Body_Pump_Finisher.json)
 
 ## Archive
 
+- [Lower Body Strength & Mobility – Block 3, Week 4 (Thursday)](workouts/3-4_Lower_Body_Strength_Mobility.json)
+- [Yin Yoga Recovery Flow – Block 3, Week 4 (Wednesday)](workouts/3-4_Yin_Yoga_Recovery_Flow.json)
+- [Easy Run – 2.75–3.0 Mile Progression – Block 3, Week 4 (Monday)](workouts/3-4_Easy_Run_Progression.json)
 - [Upper Body Strength & Mobility – Block 3, Week 4 (Tuesday)](workouts/3-4_Upper_Body_Strength_Mobility.json)
 - [Arms, Chest & Core Volume/Pump – Block 3, Week 3 (Friday)](workouts/3-3_Arms_Chest_Core_Volume_Pump.json)
 - [Lower Body Strength & Calves – Block 3, Week 3 (Thursday)](workouts/3-3_Lower_Body_Strength_Calves.json)
@@ -96,6 +96,8 @@ Deprecated schemas removed: session_plan, session_v1, session_log (superseded by
 - API: client posts to `POST /api/kai/session-plan` (local server mock via `scripts/serve.py`).
 - Validation: client hard-fails if the plan schema is invalid or if any exercise slug lacks a matching file in `exercises/<slug>.json`.
 - Fallback: if the API call fails, a local deterministic plan is generated and validated with the same guardrails.
+
+Tip: Want to use your own LLM outside this app? See `product-design/prompts/sessionplan-external.prompt.md` for a copy-paste prompt and the minimal SessionPlan JSON shape the app accepts when you paste it.
 
 ### Provider (LLM) Generation (Optional)
 To enable gpt-oss / vLLM local model generation instead of static fallback:
