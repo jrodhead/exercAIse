@@ -1,0 +1,47 @@
+{
+  "version": "1",
+  "title": "Arms, Chest & Calves Hypertrophy",
+  "block": 4,
+  "week": 1,
+  "notes": "Hypertrophy focus: 10–15 reps, short rests, controlled eccentrics. Use the dumbbell ladder and trim reps 1–2 on a rung jump if RPE would exceed 8.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Warm-Up",
+      "items": [
+  { "kind": "exercise", "name": "Arm Circles", "link": "exercises/arm_circles.json", "logType": "mobility", "prescription": { "timeSeconds": 30 } },
+  { "kind": "exercise", "name": "Band Pull-Aparts", "link": "exercises/band_pull_aparts.json", "logType": "mobility", "prescription": { "sets": 2, "reps": 12 } }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Supersets",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "A) Chest + Row",
+          "children": [
+            { "kind": "exercise", "name": "Flat Dumbbell Bench Press", "link": "exercises/flat_dumbbell_bench_press.json", "logType": "strength", "prescription": { "sets": 3, "reps": 10, "weight": "40 x2", "restSeconds": 60, "rpe": 7 }, "cues": ["Touch chest softly", "Drive evenly", "No elbow flare"] },
+            { "kind": "exercise", "name": "Chest-Supported Dumbbell Row", "link": "exercises/chest_supported_dumbbell_row.json", "logType": "strength", "prescription": { "sets": 3, "reps": 12, "weight": "40 x2", "restSeconds": 60, "rpe": 7 }, "cues": ["Row to lower ribs", "Squeeze blades", "Control descent"] }
+          ]
+        },
+        {
+          "kind": "superset",
+          "name": "B) Biceps + Triceps",
+          "children": [
+            { "kind": "exercise", "name": "Biceps Curl", "link": "exercises/biceps_curl.json", "logType": "strength", "prescription": { "sets": 3, "reps": 12, "weight": "30 x2", "restSeconds": 60, "rpe": 7 }, "cues": ["Elbows tucked", "No sway", "Squeeze at top"] },
+            { "kind": "exercise", "name": "Overhead Dumbbell Triceps Extension", "link": "exercises/overhead_dumbbell_triceps_extension.json", "logType": "strength", "prescription": { "sets": 3, "reps": 12, "weight": 40, "restSeconds": 60, "rpe": 7 }, "cues": ["Elbows narrow", "Full stretch", "Smooth lockout"] }
+          ]
+        },
+  { "kind": "exercise", "name": "Standing Calf Raise", "link": "exercises/standing_calf_raise.json", "logType": "strength", "prescription": { "sets": 4, "reps": 12, "weight": "25 x2", "restSeconds": 45, "rpe": 7 }, "cues": ["Pause peak", "Slow 3s lower", "Full ROM"] }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Cooldown",
+      "items": [
+  { "kind": "exercise", "name": "Seated Forward Fold", "link": "exercises/seated_forward_fold.json", "logType": "stretch", "prescription": { "holdSeconds": 60 } }
+      ]
+    }
+  ]
+}

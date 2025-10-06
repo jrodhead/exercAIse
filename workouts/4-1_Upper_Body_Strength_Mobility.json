@@ -1,0 +1,72 @@
+{
+  "version": "1",
+  "title": "Upper Body Strength & Mobility",
+  "block": 4,
+  "week": 1,
+  "notes": "New block shift: main presses/rows at 6–8 reps with a small bump if last exposures were ≤ RPE 8. Use dumbbell ladder snapping; if a rung jump pushes RPE >8, reduce reps 1–2 or hold prior load.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Warm-Up",
+      "items": [
+  { "kind": "exercise", "name": "Arm Circles", "link": "exercises/arm_circles.json", "logType": "mobility", "prescription": { "timeSeconds": 45 } },
+  { "kind": "exercise", "name": "Band Pull-Aparts", "link": "exercises/band_pull_aparts.json", "logType": "mobility", "prescription": { "sets": 2, "reps": 12 } },
+  { "kind": "exercise", "name": "Cat-Cow to Cobra Stretch", "link": "exercises/cat_cow_to_cobra_stretch.json", "logType": "mobility", "prescription": { "reps": 6 } }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Main Sets",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Neutral-Grip Flat Bench Press",
+          "link": "exercises/neutral_grip_flat_bench_press.json",
+          "logType": "strength",
+          "prescription": { "sets": 3, "reps": 8, "weight": "50 x2", "restSeconds": 120, "rpe": 7 },
+          "cues": ["Elbows ~45°", "Pause 0.5s on chest", "Ribs down, feet set"]
+        },
+        {
+          "kind": "exercise",
+          "name": "One-Arm Dumbbell Row",
+          "link": "exercises/one_arm_dumbbell_row.json",
+          "logType": "strength",
+          "prescription": { "sets": 3, "reps": 8, "weight": 45, "restSeconds": 90, "rpe": 7 },
+          "cues": ["Row toward hip", "Hips square", "2s lower"]
+        },
+        {
+          "kind": "exercise",
+          "name": "Chest-Supported Dumbbell Row",
+          "link": "exercises/chest_supported_dumbbell_row.json",
+          "logType": "strength",
+          "prescription": { "sets": 2, "reps": 10, "weight": "35 x2", "restSeconds": 75, "rpe": 7 },
+          "cues": ["Row to lower ribs", "Pause squeeze", "No shrugging"]
+        },
+        {
+          "kind": "exercise",
+          "name": "Hammer Curl",
+          "link": "exercises/hammer_curl.json",
+          "logType": "strength",
+          "prescription": { "sets": 2, "reps": 12, "weight": "25 x2", "restSeconds": 60, "rpe": 7 },
+          "cues": ["Elbows tight", "Neutral grip", "Control down"]
+        },
+        {
+          "kind": "exercise",
+          "name": "Overhead Triceps Extension",
+          "link": "exercises/overhead_triceps_extension.json",
+          "logType": "strength",
+          "prescription": { "sets": 2, "reps": 12, "weight": 25, "restSeconds": 60, "rpe": 7 },
+          "cues": ["Elbows narrow", "Deep stretch", "Ribs stacked"]
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Cooldown",
+      "items": [
+  { "kind": "exercise", "name": "Child's Pose", "link": "exercises/childs_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 60 } },
+  { "kind": "exercise", "name": "Thread the Needle", "link": "exercises/thread_the_needle.json", "logType": "stretch", "prescription": { "holdSeconds": 60 } }
+      ]
+    }
+  ]
+}

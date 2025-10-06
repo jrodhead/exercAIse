@@ -4,10 +4,15 @@ AI-generated workouts compatible with a really old iPad
 
 ## This Week
 
-- [Upper Body Pump Finisher – Block 3, Week 4 (Friday)](workouts/3-4_Upper_Body_Pump_Finisher.json)
+- [Easy Run – 3.25–3.5 Mile Progression – Block 4, Week 1 (Monday)](workouts/4-1_Easy_Run_Progression.json)
+- [Upper Body Strength & Mobility – Block 4, Week 1 (Tuesday)](workouts/4-1_Upper_Body_Strength_Mobility.json)
+- [Yin Yoga Recovery Flow – Block 4, Week 1 (Wednesday)](workouts/4-1_Yin_Yoga_Recovery_Flow.json)
+- [Lower Body Strength & Mobility – Block 4, Week 1 (Thursday)](workouts/4-1_Lower_Body_Strength_Mobility.json)
+- [Arms, Chest & Calves Hypertrophy – Block 4, Week 1 (Friday)](workouts/4-1_Arms_Chest_Calves_Hypertrophy.json)
 
 ## Archive
 
+- [Upper Body Pump Finisher – Block 3, Week 4 (Friday)](workouts/3-4_Upper_Body_Pump_Finisher.json)
 - [Lower Body Strength & Mobility – Block 3, Week 4 (Thursday)](workouts/3-4_Lower_Body_Strength_Mobility.json)
 - [Yin Yoga Recovery Flow – Block 3, Week 4 (Wednesday)](workouts/3-4_Yin_Yoga_Recovery_Flow.json)
 - [Easy Run – 2.75–3.0 Mile Progression – Block 3, Week 4 (Monday)](workouts/3-4_Easy_Run_Progression.json)

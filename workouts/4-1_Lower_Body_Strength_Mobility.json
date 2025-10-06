@@ -1,0 +1,65 @@
+{
+  "version": "1",
+  "title": "Lower Body Strength & Mobility",
+  "block": 4,
+  "week": 1,
+  "notes": "Main lifts at 6–8 with small load bump from last block if RPE ≤8. Use heels-elevated or box as needed; protect knees/low back.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Warm-up",
+      "items": [
+  { "kind": "exercise", "name": "Bodyweight Squat", "link": "exercises/bodyweight_squat.json", "logType": "mobility", "prescription": { "sets": 2, "reps": 10 } },
+  { "kind": "exercise", "name": "Glute Bridge", "link": "exercises/glute_bridge.json", "logType": "mobility", "prescription": { "sets": 2, "reps": 10 } },
+  { "kind": "exercise", "name": "World's Greatest Stretch", "link": "exercises/worlds_greatest_stretch.json", "logType": "mobility", "prescription": { "reps": 4 } }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Main Work",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Goblet Squat",
+          "link": "exercises/goblet_squat.json",
+          "logType": "strength",
+          "prescription": { "sets": 3, "reps": 8, "weight": 60, "restSeconds": 120, "rpe": 7 },
+          "cues": ["Elbows down; bell tight", "Knees track over toes", "Own the bottom"]
+        },
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Romanian Deadlift",
+          "link": "exercises/dumbbell_romanian_deadlift.json",
+          "logType": "strength",
+          "prescription": { "sets": 3, "reps": 8, "weight": "60 x2", "restSeconds": 120, "rpe": 7 },
+          "cues": ["Hinge at hips", "Back flat", "Feel hamstrings"]
+        },
+        {
+          "kind": "exercise",
+          "name": "Bulgarian Split Squat",
+          "link": "exercises/bulgarian_split_squat.json",
+          "logType": "strength",
+          "prescription": { "sets": 2, "reps": "8/leg", "weight": "35 x2", "restSeconds": 90, "rpe": 6 },
+          "cues": ["Front knee tracks", "Slight forward torso", "Control the bottom"]
+        },
+        {
+          "kind": "exercise",
+          "name": "Standing Calf Raise",
+          "link": "exercises/standing_calf_raise.json",
+          "logType": "strength",
+          "prescription": { "sets": 3, "reps": 12, "weight": "25 x2", "restSeconds": 60, "rpe": 6 },
+          "cues": ["Pause at top", "Slow 3s lower", "Full range"]
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Cooldown",
+      "items": [
+  { "kind": "exercise", "name": "90/90 Hip Stretch", "link": "exercises/90_90_hip_stretch.json", "logType": "mobility", "prescription": { "holdSeconds": 60 } },
+  { "kind": "exercise", "name": "Lying Spinal Twist", "link": "exercises/lying_spinal_twist.json", "logType": "stretch", "prescription": { "holdSeconds": 60 } },
+  { "kind": "exercise", "name": "Seated Forward Fold", "link": "exercises/seated_forward_fold.json", "logType": "stretch", "prescription": { "holdSeconds": 60 } }
+      ]
+    }
+  ]
+}

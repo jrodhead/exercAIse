@@ -1,0 +1,40 @@
+{
+  "version": "1",
+  "title": "Easy Run – 3.25–3.5 Mile Progression",
+  "block": 4,
+  "week": 1,
+  "notes": "Foot improving—progress total distance conservatively with short walk resets. Keep easy aerobic effort (RPE 5–6) and smooth cadence. If any foot discomfort >2/10, cut last segment.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Warm-Up",
+      "items": [
+  { "kind": "exercise", "name": "Brisk Walk", "link": "exercises/brisk_walk.json", "logType": "endurance", "prescription": { "timeSeconds": 300 } },
+  { "kind": "exercise", "name": "Leg Swings", "link": "exercises/leg_swings.json", "logType": "mobility", "prescription": { "sets": 1, "reps": 15 }, "cues": ["Front-back then side-side", "Keep torso tall"] },
+  { "kind": "exercise", "name": "Calf Stretch", "link": "exercises/calf_stretch.json", "logType": "stretch", "prescription": { "sets": 1, "holdSeconds": 30 }, "cues": ["Knee straight then bent", "Gentle stretch only"] }
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "Main Run",
+      "notes": "Jog segments with optional 60–120s walk resets. Keep light, quiet steps; quick cadence (170–180).",
+      "items": [
+  { "kind": "exercise", "name": "Easy Jog Segment 1", "link": "exercises/easy_jog.json", "logType": "endurance", "prescription": { "distanceMiles": 1.0, "rpe": 5 }, "cues": ["Relax shoulders", "Nose+mouth breathing"] },
+  { "kind": "exercise", "name": "Walk Reset", "link": "exercises/brisk_walk.json", "logType": "endurance", "prescription": { "timeSeconds": 60 } },
+  { "kind": "exercise", "name": "Easy Jog Segment 2", "link": "exercises/easy_jog.json", "logType": "endurance", "prescription": { "distanceMiles": 1.0, "rpe": 5 }, "cues": ["Mid-foot strike", "Cadence steady"] },
+  { "kind": "exercise", "name": "Walk Reset 2", "link": "exercises/brisk_walk.json", "logType": "endurance", "prescription": { "timeSeconds": 60 } },
+  { "kind": "exercise", "name": "Easy Jog Segment 3", "link": "exercises/easy_jog.json", "logType": "endurance", "prescription": { "distanceMiles": 1.0, "rpe": 6 }, "cues": ["Stay relaxed", "Keep steps quiet"] },
+  { "kind": "exercise", "name": "Optional Easy Jog Segment 4", "link": "exercises/easy_jog.json", "logType": "endurance", "prescription": { "distanceMiles": 0.25, "rpe": 6 }, "cues": ["Only if foot feels good", "Finish easy"] }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Cooldown",
+      "items": [
+  { "kind": "exercise", "name": "Brisk Walk", "link": "exercises/brisk_walk.json", "logType": "endurance", "prescription": { "timeSeconds": 300 } },
+  { "kind": "exercise", "name": "Calf Stretch", "link": "exercises/calf_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 45 } },
+  { "kind": "exercise", "name": "90/90 Hip Stretch", "link": "exercises/90_90_hip_stretch.json", "logType": "mobility", "prescription": { "holdSeconds": 60 } }
+      ]
+    }
+  ]
+}
