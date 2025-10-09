@@ -1,0 +1,143 @@
+{
+  "version": "perf-1",
+  "workoutFile": "workouts/4-1_Arms_Chest_Calves_Hypertrophy.json",
+  "timestamp": "2025-10-09T12:28:21.944Z",
+  "exercises": {
+    "flat-dumbbell-bench-press": {
+      "name": "Flat Dumbbell Bench Press",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 40,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 7
+        },
+        {
+          "set": 2,
+          "weight": 40,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 7
+        },
+        {
+          "set": 3,
+          "weight": 40,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 7
+        }
+      ]
+    },
+    "chest-supported-dumbbell-row": {
+      "name": "Chest-Supported Dumbbell Row",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 40,
+          "multiplier": 2,
+          "reps": 12,
+          "rpe": 7
+        },
+        {
+          "set": 2,
+          "weight": 40,
+          "multiplier": 2,
+          "reps": 12,
+          "rpe": 7
+        },
+        {
+          "set": 3,
+          "weight": 40,
+          "multiplier": 2,
+          "reps": 12,
+          "rpe": 7
+        }
+      ]
+    },
+    "biceps-curl": {
+      "name": "Biceps Curl",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 8,
+          "rpe": 8
+        },
+        {
+          "set": 2,
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 8,
+          "rpe": 8
+        },
+        {
+          "set": 3,
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 6,
+          "rpe": 7
+        },
+        {
+          "set": 4,
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 8,
+          "rpe": 8
+        }
+      ]
+    },
+    "overhead-dumbbell-triceps-extension": {
+      "name": "Overhead Dumbbell Triceps Extension",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 40,
+          "reps": 12,
+          "rpe": 7
+        },
+        {
+          "set": 2,
+          "weight": 40,
+          "reps": 12,
+          "rpe": 8
+        },
+        {
+          "set": 3,
+          "weight": 40,
+          "reps": 4
+        },
+        {
+          "set": 4,
+          "weight": 40,
+          "reps": 12
+        }
+      ]
+    },
+    "standing-calf-raise": {
+      "name": "Standing Calf Raise",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 12,
+          "rpe": 7
+        },
+        {
+          "set": 2,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 12,
+          "rpe": 7
+        }
+      ]
+    }
+  }
+}
