@@ -42,6 +42,8 @@
   var lastReadmeText = '';
   // Unit constants
   var METERS_PER_MILE = 1609.34;
+  // Track link validation results for pasted/generated SessionPlans and workout JSON
+  var linkValidation = { invalid: [], missing: [] };
 
   document.getElementById('year').innerHTML = String(new Date().getFullYear());
   // Simple UI feature flag: hide Kai generation by default
@@ -920,8 +922,10 @@
       return card;
     }
 
-    // Find exercise anchors within the rendered workout content
+    // Find exercise anchors and non-link exercise name spans within the rendered workout content
   var anchors = workoutContent ? Array.prototype.slice.call(workoutContent.getElementsByTagName('a')) : [];
+  var noLinkSpans = workoutContent ? Array.prototype.slice.call(workoutContent.querySelectorAll('span.ex-name')) : [];
+  var exNodes = anchors.concat(noLinkSpans);
 
     function nearestBlockContainer(node) {
       var n = node;
@@ -963,11 +967,16 @@
       var s = startEl.nextSibling;
       while (s) {
         if (s.nodeType === 1 && s.tagName && /^H[1-4]$/.test(s.tagName)) break; // stop at next heading
-        // If this block contains another exercise link, stop to avoid swallowing next exercise
+        // Stop if upcoming node contains an exercise anchor or a non-link exercise name span
         var hasNextExercise = false;
         try {
-          var testHtml = s.outerHTML || (s.textContent || '');
-          hasNextExercise = /(\b|\/)(exercises\/[\w\-]+\.(?:md|json))\b/.test(String(testHtml || ''));
+          if (s.querySelector) {
+            if (s.querySelector('a[href*="/exercises/"]')) hasNextExercise = true;
+            else if (s.querySelector('span.ex-name')) hasNextExercise = true;
+          } else {
+            var testHtml = s.outerHTML || (s.textContent || '');
+            hasNextExercise = /(\b|\/)(exercises\/[\w\-]+\.(?:md|json))\b/.test(String(testHtml || ''));
+          }
         } catch (e) {}
         if (hasNextExercise) break;
         // Serialize this node
@@ -1025,11 +1034,13 @@
     }
   var foundCount = 0;
   var foundKeys = {};
-    for (var ai = 0; ai < anchors.length; ai++) {
-      var a = anchors[ai];
-      var href = a.getAttribute('href') || '';
-  if (!/(?:^|\/)exercises\/[\w\-]+\.(?:md|json)$/.test(href)) continue;
-  var title = a.textContent || a.innerText || '';
+    for (var ai = 0; ai < exNodes.length; ai++) {
+      var a = exNodes[ai];
+      var isAnchorNode = !!(a && a.tagName && a.tagName.toLowerCase() === 'a');
+      var href = isAnchorNode ? (a.getAttribute('href') || '') : '';
+  // Accept internal exercise links in various forms: exercises/..., ./exercises/..., ../exercises/..., or absolute http(s) with /exercises/...
+  if (isAnchorNode && !/(?:^(?:https?:\/\/[^\/]+\/)?|\.?\.\/|\/)exercises\/[\w\-]+\.(?:md|json)$/.test(href)) continue;
+      var title = a.textContent || a.innerText || '';
   // Normalize title by removing parenthetical hints, e.g., "Easy Run (Easy Jog)" -> "Easy Run"
   var normTitle = title.replace(/\s*\([^\)]*\)\s*$/, '').trim();
   if (!normTitle) continue;
@@ -1060,7 +1071,7 @@
       var headerHTML = '';
       if (a) {
         var cleanText = (a.textContent || a.innerText || '').replace(/^\s*\d+[\)\.-]\s*/, '').trim();
-        var hrefFixed = a.getAttribute('href') || '';
+        var hrefFixed = isAnchorNode ? (a.getAttribute('href') || '') : '';
         // Meta (cues/prescription) passed via data-exmeta on anchor from JSON renderer
         var metaRaw = a.getAttribute('data-exmeta') || '';
         var meta = null;
@@ -1094,7 +1105,11 @@
   // Preserve original meta so downstream field selection can read explicit logType without re-parsing the DOM
   // Inline escape for attribute context (avoid relying on later attrEscape definitions)
   var _escAttr = function(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); };
-  headerHTML = '<a href="' + hrefFixed + '" data-exmeta="' + _escAttr(metaRaw) + '">' + cleanText + '</a>' + extraBits;
+        if (hrefFixed) {
+          headerHTML = '<a href="' + hrefFixed + '" data-exmeta="' + _escAttr(metaRaw) + '">' + cleanText + '</a>' + extraBits;
+        } else {
+          headerHTML = '<span class="ex-name no-link" data-exmeta="' + _escAttr(metaRaw) + '">' + cleanText + '</span>' + extraBits;
+        }
       } else if (container) {
         headerHTML = container.innerHTML || '';
       } else if (headEl) {
@@ -1618,7 +1633,13 @@
       if (isJSON) {
         // Render a structured view of the JSON workout that pairs with card injection
         function esc(s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-        function renderItem(it, opts) {
+        function isInternalExerciseLink(url) {
+          if (!url) return false;
+          if (/^https?:/i.test(url)) return false;
+          var m = String(url).match(/^(?:\.?\.?\/)?(exercises\/[\w\-]+\.(?:json|md))$/i);
+          return !!(m && m[1]);
+        }
+          function renderItem(it, opts) {
           if (!it || typeof it !== 'object') return '';
           var options = opts || {};
           var kind = String(it.kind || 'exercise');
@@ -1648,7 +1669,11 @@
             var meta = { cues: (it.cues || []), prescription: (it.prescription || null) };
             if (it.logType) meta.logType = it.logType;
             if (it.loggable === false) meta.loggable = false;
-            var html = '<li><a href="' + esc(link) + '" data-exmeta="' + attrEscape(JSON.stringify(meta)) + '">' + esc(clean) + '</a>';
+            // If a JSON workout provides a link, render it as a link regardless of slug presence.
+            var asLink = !!link && isInternalExerciseLink(link);
+            var html = '<li>' + (asLink
+              ? ('<a href="' + esc(link) + '" data-exmeta="' + attrEscape(JSON.stringify(meta)) + '">' + esc(clean) + '</a>')
+              : ('<span class="ex-name no-link" data-exmeta="' + attrEscape(JSON.stringify(meta)) + '">' + esc(clean) + '</span>'));
             // For list-only render (warm-up/cooldown/mobility), append a compact prescription summary inline
             if (it.prescription && typeof it.prescription === 'object') {
               try {
@@ -1743,12 +1768,14 @@
             if (!pres2.reps && ex2.reps != null) pres2.reps = ex2.reps;
             if (!pres2.load && ex2.load != null) pres2.load = ex2.load;
             if (!pres2.rpe && ex2.rpe != null) pres2.rpe = ex2.rpe;
+            // For SessionPlan inputs: carry through provided link; render logic will restrict to internal-only
+            var linkPlan = String(ex2.link || '');
             itemsFromPlan.push({
               kind: 'exercise',
               name: ex2.name || ex2.slug || 'Exercise',
               cues: ex2.cues || [],
               prescription: pres2,
-              link: (ex2.slug ? ('exercises/' + String(ex2.slug).replace(/[^a-z0-9_\-]+/g,'') + '.json') : '')
+              link: linkPlan
             });
           }
           obj.sections = [{ type: 'Main', title: 'Main Sets', items: itemsFromPlan }];
@@ -1788,10 +1815,14 @@
           while (t && t !== workoutSection && !(t.tagName && t.tagName.toLowerCase() === 'a')) t = t.parentNode;
           if (!t || t === workoutSection) return;
           var href = t.getAttribute('href') || '';
-          var exMatch = href.match(/(?:^|\/)exercises\/([\w\-]+)\.(?:md|json)$/);
+          // Only route internal exercise links
+          if (/^https?:/i.test(href)) return;
+          var exMatch = href.match(/(?:^|\/)?exercises\/[\w\-]+\.(?:md|json)$/i);
           if (exMatch) {
             try { e.preventDefault(); } catch (ex) {}
-            var jsonPath = 'exercises/' + exMatch[1] + '.json';
+            // Normalize to exercises/<slug>.json
+            var slug = (href.match(/exercises\/([\w\-]+)\.(?:md|json)$/i)||[])[1];
+            var jsonPath = 'exercises/' + slug + '.json';
             try { window.location.href = 'exercise.html?file=' + encodeURIComponent(jsonPath); } catch (ex) {}
             return;
           }
@@ -1822,10 +1853,127 @@
     for (var i = 0; i < obj.exercises.length; i++) {
       var ex = obj.exercises[i];
       if (!ex || typeof ex !== 'object') return 'exercise[' + i + '] invalid';
-      if (!ex.slug || !ex.name) return 'exercise[' + i + '] missing slug/name';
+      if (!ex.name) return 'exercise[' + i + '] missing name';
       if (ex.prescribed && typeof ex.prescribed !== 'object') return 'exercise[' + i + '].prescribed invalid';
     }
     return null;
+  }
+
+  // Gentle repair/normalization for SessionPlan v1.0 objects.
+  // - Coerce numeric-like strings to numbers (sets, reps when numeric, rpe)
+  // - Parse weight/load string hints (e.g., "27.5 lb per hand") into weight + multiplier
+  // - Parse time/hold strings like "3:00" or "10 min" into seconds
+  // - Normalize restSec -> restSeconds
+  // - Distance strings -> numeric (support "2 mi" -> miles, "2000 m" -> meters)
+  function normalizeSessionPlanInPlace(plan) {
+    try {
+      if (!plan || !plan.exercises || !plan.exercises.length) return plan;
+      function firstNumberFrom(text) {
+        if (typeof text === 'number') return text;
+        if (typeof text !== 'string') return null;
+        var m = text.match(/(\d+(?:\.\d+)?)/);
+        return m ? Number(m[1]) : null;
+      }
+      function parseWeightSpec(val) {
+        var out = { weight: null, multiplier: null };
+        if (val == null) return out;
+        if (typeof val === 'number') { out.weight = val; return out; }
+        var s = String(val).toLowerCase();
+        var n = firstNumberFrom(s);
+        if (n != null) out.weight = n;
+        if (/per\s*hand|each|per\s*side|x2|×2/.test(s)) out.multiplier = 2;
+        else if (/total/.test(s)) out.multiplier = 1;
+        else if (/bodyweight/.test(s)) out.multiplier = 0;
+        return out;
+      }
+      function parseTimeToSec(text) {
+        if (text == null) return null;
+        if (typeof text === 'number') return text;
+        var s = String(text).trim().toLowerCase();
+        // mm:ss or h:mm:ss
+        var colon = parseHMSToSeconds(s);
+        if (colon != null) return colon;
+        var m;
+        m = s.match(/(\d{1,3})\s*(?:min|minutes?)/);
+        if (m) { var mins = parseInt(m[1], 10); if (!isNaN(mins)) return mins * 60; }
+        m = s.match(/(\d{1,3})\s*(?:sec|seconds?)/);
+        if (m) { var secs = parseInt(m[1], 10); if (!isNaN(secs)) return secs; }
+        var n = firstNumberFrom(s);
+        return n != null ? n : null;
+      }
+      function parseDistance(text) {
+        if (text == null) return { miles: null, meters: null };
+        if (typeof text === 'number') return { miles: text, meters: null };
+        var s = String(text).toLowerCase();
+        var m;
+        m = s.match(/(\d+(?:\.\d+)?)\s*(?:mi|miles?)/);
+        if (m) return { miles: Number(m[1]), meters: null };
+        m = s.match(/(\d+(?:\.\d+)?)\s*(?:m|meters?)/);
+        if (m) return { miles: null, meters: Number(m[1]) };
+        var n = firstNumberFrom(s);
+        return { miles: n, meters: null };
+      }
+      for (var i = 0; i < plan.exercises.length; i++) {
+        var ex = plan.exercises[i] || {};
+        var p = ex.prescribed || {};
+        // sets
+        if (p.sets != null && typeof p.sets === 'string') {
+          var setsNum = firstNumberFrom(p.sets); if (setsNum != null) p.sets = setsNum;
+        }
+        // reps: keep ranges like "8-12" as-is; coerce numeric strings otherwise
+        if (p.reps != null && typeof p.reps === 'string') {
+          if (!/\d\s*[–-]\s*\d/.test(p.reps)) {
+            var rnum = firstNumberFrom(p.reps); if (rnum != null) p.reps = rnum;
+          }
+        }
+        // rpe
+        if (p.rpe != null && typeof p.rpe === 'string') {
+          var rpeNum = firstNumberFrom(p.rpe); if (rpeNum != null) p.rpe = rpeNum;
+        }
+        // weight/load
+        if (p.weight != null && typeof p.weight !== 'number') {
+          var w1 = parseWeightSpec(p.weight);
+          if (w1.weight != null) p.weight = w1.weight;
+          if (w1.multiplier != null) p.multiplier = (p.multiplier == null ? w1.multiplier : p.multiplier);
+        }
+        if (p.load != null && typeof p.load !== 'number') {
+          var w2 = parseWeightSpec(p.load);
+          if (w2.weight != null) { p.weight = w2.weight; delete p.load; }
+          if (w2.multiplier != null) p.multiplier = (p.multiplier == null ? w2.multiplier : p.multiplier);
+        }
+        // time/hold
+        if (p.timeSeconds != null && typeof p.timeSeconds === 'string') {
+          var ts = parseTimeToSec(p.timeSeconds); if (ts != null) p.timeSeconds = ts;
+        }
+        if (p.holdSeconds != null && typeof p.holdSeconds === 'string') {
+          var hs = parseTimeToSec(p.holdSeconds); if (hs != null) p.holdSeconds = hs;
+        }
+  if (p.time != null && p.timeSeconds == null) {
+          var ts2 = parseTimeToSec(p.time); if (ts2 != null) p.timeSeconds = ts2; delete p.time;
+        }
+        if (p.hold != null && p.holdSeconds == null) {
+          var hs2 = parseTimeToSec(p.hold); if (hs2 != null) p.holdSeconds = hs2; delete p.hold;
+        }
+        // rest
+        if (p.restSec != null && p.restSeconds == null) { p.restSeconds = Number(p.restSec) || p.restSec; delete p.restSec; }
+        // distance
+        if (p.distanceMiles != null && typeof p.distanceMiles === 'string') {
+          var d1 = parseDistance(p.distanceMiles); if (d1.miles != null) p.distanceMiles = d1.miles;
+        }
+        if (p.distanceMeters != null && typeof p.distanceMeters === 'string') {
+          var d2 = parseDistance(p.distanceMeters); if (d2.meters != null) p.distanceMeters = d2.meters;
+        }
+        if (p.distance != null) {
+          var d3 = parseDistance(p.distance);
+          if (d3.miles != null && p.distanceMiles == null) p.distanceMiles = d3.miles;
+          if (d3.meters != null && p.distanceMeters == null) p.distanceMeters = d3.meters;
+          delete p.distance;
+        }
+        ex.prescribed = p;
+        plan.exercises[i] = ex;
+      }
+    } catch (e) {}
+    return plan;
   }
 
   function openGeneratedSession(obj) {
@@ -1845,17 +1993,20 @@
       var text = pretty;
       // render structured JSON like in openSession JSON branch
       var obj = JSON.parse(text || '{}');
-      function esc(s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function esc(s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+      // Local helper to determine if a link targets an internal exercise file
+      function isInternalExerciseLink(url) {
+        if (!url) return false;
+        if (/^https?:/i.test(url)) return false;
+        var m = String(url).match(/^(?:\.?\.?\/)?(exercises\/[\w\-]+\.(?:json|md))$/i);
+        return !!(m && m[1]);
+      }
       function renderItem(it, opts) {
         if (!it || typeof it !== 'object') return '';
         var options = opts || {};
         var kind = String(it.kind || 'exercise');
         var name = String(it.name || '');
         var link = String(it.link || '');
-        if (!link) {
-          var s = String(it.slug || '').replace(/[^a-z0-9_\-]+/g,'');
-          if (s) link = 'exercises/' + s + '.json';
-        }
         function inlineMarkdown(text) {
           var s = String(text == null ? '' : text);
           s = s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -1863,13 +2014,18 @@
           return s;
         }
         function attrEscape(s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
-        if (kind === 'exercise') {
+  if (kind === 'exercise') {
           // Accept both 'prescribed' (plan) and 'prescription' (workout) shapes
           var presObj = (it.prescribed != null ? it.prescribed : it.prescription);
           var meta = { cues: (it.cues || []), prescription: (presObj || null) };
           if (it.logType) meta.logType = it.logType;
           if (it.loggable === false) meta.loggable = false;
-          var html = '<li><a href="' + esc(link) + '" data-exmeta="' + attrEscape(JSON.stringify(meta)) + '">' + esc(name) + '</a>';
+          // Decide whether to render as link or non-link
+          // Only link when an explicit internal exercise link is provided
+          var asLink = !!link && isInternalExerciseLink(link);
+          var html = '<li>' + (asLink
+            ? ('<a href="' + esc(link) + '" data-exmeta="' + attrEscape(JSON.stringify(meta)) + '">' + esc(name) + '</a>')
+            : ('<span class="ex-name no-link" data-exmeta="' + attrEscape(JSON.stringify(meta)) + '">' + esc(name) + '</span>'));
           // Append compact prescription summary inline for list-only display
           if (presObj && typeof presObj === 'object') {
             try {
@@ -1938,12 +2094,16 @@
           if (!pres.reps && ex.reps != null) pres.reps = ex.reps;
           if (!pres.load && ex.load != null) pres.load = ex.load;
           if (!pres.rpe && ex.rpe != null) pres.rpe = ex.rpe;
+          // Preserve explicit link from SessionPlan when provided; otherwise, derive from slug if available
+          var linkFromPlan = (typeof ex.link === 'string') ? ex.link : '';
+          var linkValue = linkFromPlan || (ex.slug ? ('exercises/' + String(ex.slug).replace(/[^a-z0-9_\-]+/g,'') + '.json') : '');
           items.push({
             kind: 'exercise',
             name: ex.name || ex.slug || 'Exercise',
             cues: ex.cues || [],
             prescription: pres,
-            link: (ex.slug ? ('exercises/' + String(ex.slug).replace(/[^a-z0-9_\-]+/g,'') + '.json') : '')
+            link: linkValue,
+            slug: ex.slug || ''
           });
         }
         obj.sections = [{ type: 'Main', title: 'Main Sets', items: items }];
@@ -1959,53 +2119,80 @@
       }
       workoutContent.innerHTML = parts.join('\n');
       fixExerciseAnchors(workoutContent);
+      // Intercept clicks on exercise links inside the session view and route to exercise.html
+      if (workoutSection && !workoutSection.__wiredExLinks) {
+        workoutSection.addEventListener('click', function (e) {
+          var t = e.target || e.srcElement;
+          if (!t) return;
+          while (t && t !== workoutSection && !(t.tagName && t.tagName.toLowerCase() === 'a')) t = t.parentNode;
+          if (!t || t === workoutSection) return;
+          var href = t.getAttribute('href') || '';
+          // Only route internal exercise links
+          if (/^https?:/i.test(href)) return;
+          var exMatch = href.match(/(?:^|\/)?exercises\/[\w\-]+\.(?:md|json)$/i);
+          if (exMatch) {
+            try { e.preventDefault(); } catch (ex) {}
+            // Normalize to exercises/<slug>.json
+            var slug = (href.match(/exercises\/([\w\-]+)\.(?:md|json)$/i)||[])[1];
+            var jsonPath = 'exercises/' + slug + '.json';
+            try { window.location.href = 'exercise.html?file=' + encodeURIComponent(jsonPath); } catch (ex) {}
+            return;
+          }
+        }, false);
+        workoutSection.__wiredExLinks = true;
+      }
       setVisibility(formSection, true);
       buildForm('generated://session.json', JSON.stringify(obj), true);
       workoutTitleEl.innerHTML = obj.title || 'Generated Session';
       openOnGitHubEl.href = '#';
       setVisibility(workoutMetaEl, true);
       try { window.scrollTo(0, 0); } catch (e) {}
-      status('');
+      // Preserve prior important warnings (e.g., invalid/missing links) by not clearing status in that case
+      var hasLinkWarnings = false;
+      try {
+        hasLinkWarnings = !!((linkValidation && linkValidation.invalid && linkValidation.invalid.length) || (linkValidation && linkValidation.missing && linkValidation.missing.length));
+      } catch (e) { hasLinkWarnings = false; }
+      if (!hasLinkWarnings) status('');
     } catch (e) {
       status('Failed to render generated session: ' + (e && e.message || e), { important: true });
     }
   }
 
-  // Guardrails: validate SessionPlan slugs and exercise link existence
+  // Guardrails: validate provided SessionPlan links (internal-only) and optionally probe existence (non-blocking)
   function validateSessionPlanLinks(obj, cb) {
     try {
       if (!obj || !obj.exercises || !obj.exercises.length) return cb(null);
       var invalid = [];
       var missing = [];
       var pending = 0;
-      function doneOnce(err) { try { cb(err); } catch (e) {} }
+      function isInternal(url) {
+        if (!url) return false;
+        if (/^https?:/i.test(url)) return false;
+        return /^(?:\.?\.?\/)?exercises\/[\w\-]+\.(?:json|md)$/i.test(url);
+      }
+      function doneOnce() { try { cb(null); } catch (e) {} }
       for (var i = 0; i < obj.exercises.length; i++) {
         var ex = obj.exercises[i] || {};
-        var slug = String(ex.slug || '').trim();
-        if (!slug || !/^[a-z0-9_\-]+$/.test(slug)) { invalid.push(slug || ('#' + i)); continue; }
-        // Probe existence
-        (function (s) {
+        var link = String(ex.link || '').trim();
+        if (!link) continue; // link is optional
+        if (!isInternal(link)) { invalid.push(link); continue; }
+        (function (u) {
           pending++;
-          var path = 'exercises/' + s + '.json';
-          xhrGet(path, function (err, text) {
-            if (err || !text) missing.push(s);
+          xhrGet(u, function (err, text) {
+            if (err || !text) missing.push(u);
             pending--;
             if (pending === 0) {
-              if (invalid.length || missing.length) {
-                var msgs = [];
-                if (invalid.length) msgs.push('Invalid slugs: ' + invalid.join(', '));
-                if (missing.length) msgs.push('Unknown slugs (no file in exercises/): ' + missing.join(', '));
-                return doneOnce(msgs.join(' | '));
-              }
-              return doneOnce(null);
+              linkValidation.invalid = invalid.slice(0);
+              linkValidation.missing = missing.slice(0);
+              return doneOnce();
             }
           });
-        })(slug);
+        })(link);
       }
-      // If loop added zero pending (e.g., all invalid), finish now
       if (pending === 0) {
-        if (invalid.length) return doneOnce('Invalid slugs: ' + invalid.join(', '));
-        return doneOnce(null);
+        linkValidation.invalid = invalid.slice(0);
+        linkValidation.missing = missing.slice(0);
+        return doneOnce();
       }
     } catch (e) { return cb('Validation error: ' + (e && e.message || e)); }
   }
@@ -2099,38 +2286,22 @@
       if (isWorkoutJSONShape(obj)) {
         validateWorkoutLinks(obj, function (linkErrW) {
           if (linkErrW) {
-            status('Some exercises are missing: ' + linkErrW + ' — rendering anyway and providing stubs below.', { important: true });
-            try {
-              var m = String(linkErrW).match(/Unknown slugs \(no file in exercises\/\):\s*(.+)$/);
-              var miss = m && m[1] ? m[1].split(/\s*,\s*/).filter(Boolean) : [];
-              if (miss.length) {
-                var stubs = generateExerciseStubsFromObj(obj, miss);
-                if (stubs) {
-                  copyWrapper.style.display = 'block';
-                  copyTarget.value = stubs;
-                }
-              }
-            } catch (e) {}
+            status('Some exercises are unknown or invalid; details won’t open until they exist. Rendering anyway.', { important: true });
           }
           openGeneratedSession(obj);
         });
       } else if (looksLikeSessionPlan(obj)) {
+        // Gentle repair before validation
+        obj = normalizeSessionPlanInPlace(obj);
         var err = validateSessionPlan(obj);
         if (err) return status('SessionPlan invalid: ' + err, { important: true });
         validateSessionPlanLinks(obj, function (linkErr) {
-          if (linkErr) {
-            status('Some exercises are missing: ' + linkErr + ' — rendering anyway and providing stubs below.', { important: true });
-            try {
-              var m2 = String(linkErr).match(/Unknown slugs \(no file in exercises\/\):\s*(.+)$/);
-              var miss2 = m2 && m2[1] ? m2[1].split(/\s*,\s*/).filter(Boolean) : [];
-              if (miss2.length) {
-                var stubs2 = generateExerciseStubsFromPlan(obj, miss2);
-                if (stubs2) {
-                  copyWrapper.style.display = 'block';
-                  copyTarget.value = stubs2;
-                }
-              }
-            } catch (e) {}
+          // If there are invalid or missing links, show a warning banner; still render
+          if ((linkValidation.invalid && linkValidation.invalid.length) || (linkValidation.missing && linkValidation.missing.length)) {
+            var msgs = [];
+            if (linkValidation.invalid && linkValidation.invalid.length) msgs.push('Invalid links (external or malformed): ' + linkValidation.invalid.join(', '));
+            if (linkValidation.missing && linkValidation.missing.length) msgs.push('Missing files: ' + linkValidation.missing.join(', '));
+            status('Some exercise links are invalid or missing; details won’t open until they exist: ' + msgs.join(' | ') + ' — rendering anyway.', { important: true });
           }
           openGeneratedSession(obj);
         });
@@ -2174,33 +2345,19 @@
         // Accept either shape from Kai
         if (isWorkoutJSONShape(obj)) {
           validateWorkoutLinks(obj, function (linkErrW2) {
-            if (linkErrW2) {
-              status('Some exercises are missing: ' + linkErrW2 + ' — rendering anyway and providing stubs below.', { important: true });
-              try {
-                var m3 = String(linkErrW2).match(/Unknown slugs \(no file in exercises\/\):\s*(.+)$/);
-                var miss3 = m3 && m3[1] ? m3[1].split(/\s*,\s*/).filter(Boolean) : [];
-                if (miss3.length) {
-                  var stubs3 = generateExerciseStubsFromObj(obj, miss3);
-                  if (stubs3) { copyWrapper.style.display = 'block'; copyTarget.value = stubs3; }
-                }
-              } catch (e) {}
-            }
+            if (linkErrW2) { status('Some exercises are unknown or invalid; rendering anyway.', { important: true }); }
             openGeneratedSession(obj);
           });
         } else if (looksLikeSessionPlan(obj)) {
+          obj = normalizeSessionPlanInPlace(obj);
           var v = validateSessionPlan(obj);
           if (v) return status('SessionPlan invalid: ' + v, { important: true });
           validateSessionPlanLinks(obj, function (linkErrB) {
-            if (linkErrB) {
-              status('Some exercises are missing: ' + linkErrB + ' — rendering anyway and providing stubs below.', { important: true });
-              try {
-                var m4 = String(linkErrB).match(/Unknown slugs \(no file in exercises\/\):\s*(.+)$/);
-                var miss4 = m4 && m4[1] ? m4[1].split(/\s*,\s*/).filter(Boolean) : [];
-                if (miss4.length) {
-                  var stubs4 = generateExerciseStubsFromPlan(obj, miss4);
-                  if (stubs4) { copyWrapper.style.display = 'block'; copyTarget.value = stubs4; }
-                }
-              } catch (e) {}
+            if ((linkValidation.invalid && linkValidation.invalid.length) || (linkValidation.missing && linkValidation.missing.length)) {
+              var msgs2 = [];
+              if (linkValidation.invalid && linkValidation.invalid.length) msgs2.push('Invalid links (external or malformed): ' + linkValidation.invalid.join(', '));
+              if (linkValidation.missing && linkValidation.missing.length) msgs2.push('Missing files: ' + linkValidation.missing.join(', '));
+              status('Some exercise links are invalid or missing; details won’t open until they exist: ' + msgs2.join(' | ') + ' — rendering anyway.', { important: true });
             }
             openGeneratedSession(obj);
           });

@@ -156,10 +156,29 @@
 
   function slugify(s){ return String(s||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,''); }
 
+  function showNotFound(path){
+    try{
+      var main = document.getElementById('main');
+      var nf = document.getElementById('not-found');
+      var nfPath = document.getElementById('nf-path');
+      if (nfPath) nfPath.textContent = path || '';
+      if (main) main.style.display = 'none';
+      if (nf) nf.style.display = 'block';
+      status('');
+    } catch(e){}
+  }
+
+  function isInternalExercisePath(p){
+    if (!p) return false;
+    if (/^https?:/i.test(p)) return false;
+    return /^(?:\.?\.?\/)?exercises\/[\w\-]+\.(?:json|md)$/i.test(p);
+  }
+
   function start(){
     var params = qs();
     var path = params.file || '';
     if (!path){ status('Missing ?file=exercises/<name>.json'); return; }
+    if (!isInternalExercisePath(path)) { showNotFound(path); return; }
     // Normalize and compute key
   var base = path.split('/').pop();
   var key = base.replace(/\.json$/i, '');
@@ -178,7 +197,7 @@
       // Fallback to markdown if JSON not found yet
       var mdPath = path.replace(/\.json$/i, '.md');
       xhrGet(mdPath, function(err2, md){
-        if (err2) { status('Failed to load exercise (JSON or MD).'); return; }
+        if (err2) { showNotFound(path); return; }
         // Naive parse: title = first H1, list items under cues; everything else minimal
         var name = (md.match(/^#\s+(.+)$/m)||[])[1] || key.replace(/-/g,' ');
         var cues = [];

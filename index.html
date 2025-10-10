@@ -37,7 +37,7 @@
             <button id="gen-submit" type="button">Generate with Kai</button>
             <button id="gen-clear" type="button" class="secondary">Clear</button>
           </div>
-          <p class="form-hint">Expected keys: version, title, date (optional), notes (optional), exercises[]. Each exercise: slug, name, prescribed{ sets, reps or "x-y", rpe?, weight? }.</p>
+          <p class="form-hint">Expected keys: version, title, exercises[]. Each exercise: name, prescribed{ sets, reps or "x-y", rpe?, weight? }. Slugs are optional; unknown/missing slugs will render as non-links with a warning.</p>
           <textarea id="gen-json" rows="8" placeholder='{"version":"1.0","title":"My Session","exercises":[{"slug":"goblet_squat","name":"Goblet Squat","prescribed":{"sets":3,"reps":"8-12","rpe":7}}]}'></textarea>
           <div class="form-actions">
             <button id="gen-load-json" type="button" class="secondary">Load JSON</button>

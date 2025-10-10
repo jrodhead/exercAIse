@@ -1,0 +1,20 @@
+{
+  "version": "1.0",
+  "title": "Bad Plan",
+  "date": "2025-09-15",
+  "notes": "Contains an unknown exercise slug",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "Main Work",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Mystery Move",
+          "slug": "this_slug_does_not_exist",
+          "prescription": { "sets": 3, "reps": 8, "rpe": 7 }
+        }
+      ]
+    }
+  ]
+}

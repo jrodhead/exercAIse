@@ -1,0 +1,30 @@
+{
+  "version": "1.0",
+  "title": "Links Plan",
+  "date": "2025-10-05",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "Main Work",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Goblet Squat",
+          "link": "exercises/goblet_squat.json",
+          "prescription": { "sets": 1, "reps": 8 }
+        },
+        {
+          "kind": "exercise",
+          "name": "Mystery Move",
+          "prescription": { "sets": 1, "reps": 5 }
+        },
+        {
+          "kind": "exercise",
+          "name": "Bad External",
+          "link": "https://example.com/notallowed.json",
+          "prescription": { "sets": 1, "reps": 3 }
+        }
+      ]
+    }
+  ]
+}

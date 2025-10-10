@@ -1,6 +1,48 @@
 {
-  "generatedAt": "2025-09-30T01:38:13.002Z",
+  "generatedAt": "2025-10-10T02:44:02.583Z",
   "files": [
+    {
+      "name": "2025-10-09T122836_4-1_Arms_Chest_Calves_Hypertrophy_perf1.json",
+      "path": "performed/2025-10-09T122836_4-1_Arms_Chest_Calves_Hypertrophy_perf1.json",
+      "size": 2803,
+      "mtimeMs": 1760063262634.1702
+    },
+    {
+      "name": "2025-10-07T120956_4-1_Lower_Body_Strength_Mobility_perf1.json",
+      "path": "performed/2025-10-07T120956_4-1_Lower_Body_Strength_Mobility_perf1.json",
+      "size": 2034,
+      "mtimeMs": 1760063262633.878
+    },
+    {
+      "name": "2025-10-06T121125_4-1_Upper_Body_Strength_Mobility_perf1.json",
+      "path": "performed/2025-10-06T121125_4-1_Upper_Body_Strength_Mobility_perf1.json",
+      "size": 2273,
+      "mtimeMs": 1760063262633.56
+    },
+    {
+      "name": "2025-10-03T144503_3-4_Upper_Body_Pump_Finisher_perf1.json",
+      "path": "performed/2025-10-03T144503_3-4_Upper_Body_Pump_Finisher_perf1.json",
+      "size": 2505,
+      "mtimeMs": 1759721473129.0283
+    },
+    {
+      "name": "2025-10-02T122919_3-4_Easy_Run_Progression_perf1.json",
+      "path": "performed/2025-10-02T122919_3-4_Easy_Run_Progression_perf1.json",
+      "size": 1269,
+      "mtimeMs": 1759456316983.8625
+    },
+    {
+      "name": "2025-09-30T120613_3-4_Lower_Body_Strength_Mobility_perf1.json",
+      "path": "performed/2025-09-30T120613_3-4_Lower_Body_Strength_Mobility_perf1.json",
+      "size": 2219,
+      "mtimeMs": 1759456316983.4675
+    },
+    {
+      "name": "README.md",
+      "path": "performed/README.md",
+      "size": 858,
+      "mtimeMs": 1759196364941.0059
+    },
     {
       "name": "2025-09-25T120534_3-3_Easy_Run_Progression_perf1.json",
       "path": "performed/2025-09-25T120534_3-3_Easy_Run_Progression_perf1.json",
@@ -144,12 +186,6 @@
       "path": "performed/2025-08-22T22-06-30.685Z_workouts-2-2_Upper_Body_Strength_Mobility.md.json",
       "size": 2245,
       "mtimeMs": 1758060302167.2908
-    },
-    {
-      "name": "README.md",
-      "path": "performed/README.md",
-      "size": 300,
-      "mtimeMs": 1756226214144.3796
     }
   ]
 }

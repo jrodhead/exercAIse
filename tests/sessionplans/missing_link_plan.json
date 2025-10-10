@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "title": "Missing Link Plan",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "Main Work",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Ghost Move",
+          "link": "exercises/this_file_should_not_exist_abc123.json",
+          "prescription": { "sets": 1, "reps": 1 }
+        }
+      ]
+    }
+  ]
+}
