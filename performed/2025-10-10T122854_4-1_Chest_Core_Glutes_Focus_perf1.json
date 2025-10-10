@@ -1,0 +1,100 @@
+{
+  "version": "perf-1",
+  "workoutFile": "workouts/4-1_Chest_Core_Glutes_Focus.json",
+  "timestamp": "2025-10-10T12:28:39.874Z",
+  "exercises": {
+    "dumbbell-flyes": {
+      "name": "Dumbbell Flyes",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 20,
+          "multiplier": 2,
+          "reps": 18
+        },
+        {
+          "set": 2,
+          "weight": 20,
+          "multiplier": 2,
+          "reps": 15
+        }
+      ]
+    },
+    "single-arm-dumbbell-press": {
+      "name": "Single-Arm Dumbbell Press",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 12
+        },
+        {
+          "set": 2,
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 12
+        }
+      ]
+    },
+    "hip-thrust": {
+      "name": "Hip Thrust",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 50,
+          "reps": 20
+        },
+        {
+          "set": 2,
+          "weight": 50,
+          "reps": 20
+        },
+        {
+          "set": 3,
+          "weight": 50,
+          "reps": 30
+        }
+      ]
+    },
+    "lateral-lunges": {
+      "name": "Lateral Lunges",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 10
+        },
+        {
+          "set": 2,
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 10
+        }
+      ]
+    },
+    "push-ups": {
+      "name": "Push-ups",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "reps": 12
+        },
+        {
+          "set": 2,
+          "reps": 12
+        },
+        {
+          "set": 3,
+          "reps": 12
+        }
+      ]
+    }
+  }
+}
