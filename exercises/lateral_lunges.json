@@ -1,0 +1,76 @@
+{
+  "name": "Lateral Lunges",
+  "equipment": [
+    "dumbbells"
+  ],
+  "tags": [
+    "legs",
+    "glutes",
+    "lateral",
+    "mobility"
+  ],
+  "setup": [
+    "Stand with feet together, dumbbells at sides",
+    "Maintain upright torso",
+    "Engage core for stability",
+    "Look straight ahead"
+  ],
+  "steps": [
+    "Take wide step to one side",
+    "Sit back into hip of stepping leg",
+    "Keep other leg straight with heel down",
+    "Lower until comfortable stretch",
+    "Drive back to starting position"
+  ],
+  "cues": [
+    "Step wide, sit back",
+    "Keep straight leg heel down",
+    "Chest up, core engaged",
+    "Feel stretch in inner thigh",
+    "Drive through stepping leg heel"
+  ],
+  "mistakes": [
+    "Not stepping wide enough",
+    "Leaning forward instead of sitting back",
+    "Letting straight leg heel come up",
+    "Rushing the movement"
+  ],
+  "safety": "Start with bodyweight to learn pattern. Go only as deep as comfortable mobility allows.",
+  "scaling": {
+    "regressions": [
+      "Bodyweight lateral lunges",
+      "Assisted with hand support",
+      "Smaller range of motion"
+    ],
+    "progressions": [
+      "Heavier dumbbells",
+      "Lateral lunge to reverse lunge",
+      "Add overhead reach"
+    ]
+  },
+  "variations": [
+    "Cossack squat",
+    "Lateral lunge with reach",
+    "Curtsy lunge"
+  ],
+  "prescriptionHints": {
+    "load": "15-30 lb per hand",
+    "reps": "8-12 per side",
+    "time": "—",
+    "distance": "—",
+    "rpe": "6-7",
+    "notes": "Focus on mobility and control over weight"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "hips",
+      "knees",
+      "ankles"
+    ],
+    "notes": "Work within comfortable range of motion. Stop if any knee or hip discomfort."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

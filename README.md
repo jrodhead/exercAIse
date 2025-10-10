@@ -5,13 +5,14 @@ AI-generated workouts compatible with a really old iPad
 ## This Week
 
 - [Easy Run – 3.25–3.5 Mile Progression – Block 4, Week 1 (Monday)](workouts/4-1_Easy_Run_Progression.json)
+- [Chest, Core & Glutes Focus – Block 4, Week 1 (Saturday)](workouts/4-1_Chest_Core_Glutes_Focus.json)
+
+## Archive
+
 - [Upper Body Strength & Mobility – Block 4, Week 1 (Tuesday)](workouts/4-1_Upper_Body_Strength_Mobility.json)
 - [Yin Yoga Recovery Flow – Block 4, Week 1 (Wednesday)](workouts/4-1_Yin_Yoga_Recovery_Flow.json)
 - [Lower Body Strength & Mobility – Block 4, Week 1 (Thursday)](workouts/4-1_Lower_Body_Strength_Mobility.json)
 - [Arms, Chest & Calves Hypertrophy – Block 4, Week 1 (Friday)](workouts/4-1_Arms_Chest_Calves_Hypertrophy.json)
-
-## Archive
-
 - [Upper Body Pump Finisher – Block 3, Week 4 (Friday)](workouts/3-4_Upper_Body_Pump_Finisher.json)
 - [Lower Body Strength & Mobility – Block 3, Week 4 (Thursday)](workouts/3-4_Lower_Body_Strength_Mobility.json)
 - [Yin Yoga Recovery Flow – Block 3, Week 4 (Wednesday)](workouts/3-4_Yin_Yoga_Recovery_Flow.json)
@@ -99,7 +100,7 @@ Deprecated schemas removed: session_plan, session_v1, session_log (superseded by
 ## Generate
 - Form: open `index.html`, use the "Generate Session" form (goals, pain, equipment, optional instructions) or paste a `SessionPlan` JSON.
 - API: client posts to `POST /api/kai/session-plan` (local server mock via `scripts/serve.py`).
-- Validation: client hard-fails if the plan schema is invalid or if any exercise slug lacks a matching file in `exercises/<slug>.json`.
+- Validation: client validates schema. For pasted SessionPlans, exercises only become links when an explicit internal link is provided to `exercises/*.json` (or `.md`). Missing or invalid links are non-blocking: the exercise still renders as plain text with a warning.
 - Fallback: if the API call fails, a local deterministic plan is generated and validated with the same guardrails.
 
 Tip: Want to use your own LLM outside this app? See `product-design/prompts/sessionplan-external.prompt.md` for a copy-paste prompt and the minimal SessionPlan JSON shape the app accepts when you paste it.

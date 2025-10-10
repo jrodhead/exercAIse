@@ -1,0 +1,76 @@
+{
+  "name": "Figure-4 Stretch",
+  "equipment": [
+    "bodyweight"
+  ],
+  "tags": [
+    "hip",
+    "glutes",
+    "stretch",
+    "mobility"
+  ],
+  "setup": [
+    "Lie on back with both knees bent",
+    "Place right ankle on left thigh (figure-4 shape)",
+    "Keep right knee open to the side",
+    "Both hands ready to reach through"
+  ],
+  "steps": [
+    "Thread hands behind left thigh",
+    "Gently pull left leg toward chest",
+    "Keep right knee pressed away from you",
+    "Hold the stretch and breathe deeply",
+    "Switch sides and repeat"
+  ],
+  "cues": [
+    "Keep knee pressed away",
+    "Pull gently toward chest",
+    "Breathe deeply",
+    "Feel stretch in outer hip",
+    "Relax into the stretch"
+  ],
+  "mistakes": [
+    "Pulling too aggressively",
+    "Allowing knee to collapse inward",
+    "Holding breath during stretch",
+    "Forcing range beyond comfort"
+  ],
+  "safety": "Stretch should feel good, not painful. Back off if you feel pinching in hip or knee.",
+  "scaling": {
+    "regressions": [
+      "Seated figure-4 stretch",
+      "Standing figure-4 against wall",
+      "Smaller range of motion"
+    ],
+    "progressions": [
+      "Deeper pull toward chest",
+      "Add gentle rotation",
+      "Single-leg version"
+    ]
+  },
+  "variations": [
+    "Seated figure-4",
+    "Standing figure-4",
+    "Pigeon pose"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "—",
+    "time": "30-90 seconds per side",
+    "distance": "—",
+    "rpe": "4-6",
+    "notes": "Focus on deep breathing and relaxation"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "hips",
+      "knees",
+      "lower back"
+    ],
+    "notes": "Should feel good stretch in outer hip. Avoid if knee or hip discomfort."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

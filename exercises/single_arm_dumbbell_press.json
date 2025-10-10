@@ -1,0 +1,77 @@
+{
+  "name": "Single-Arm Dumbbell Press",
+  "equipment": [
+    "dumbbell",
+    "bench"
+  ],
+  "tags": [
+    "chest",
+    "shoulders",
+    "core",
+    "unilateral"
+  ],
+  "setup": [
+    "Lie flat on bench with one dumbbell in hand",
+    "Plant feet firmly on floor",
+    "Free hand can rest on torso or at side",
+    "Shoulder blades pulled back and down"
+  ],
+  "steps": [
+    "Start with dumbbell at chest level",
+    "Engage core to prevent rotation",
+    "Press weight straight up over chest",
+    "Control the descent back to chest",
+    "Maintain stable torso throughout"
+  ],
+  "cues": [
+    "Core tight to resist rotation",
+    "Press straight up, not out",
+    "Control the lowering phase",
+    "Keep shoulder blade down",
+    "Don't let torso twist"
+  ],
+  "mistakes": [
+    "Allowing torso to rotate during press",
+    "Pressing weight out instead of up",
+    "Losing shoulder blade position",
+    "Using legs to compensate"
+  ],
+  "safety": "Start lighter than bilateral press to master stability. Stop if lower back arches excessively.",
+  "scaling": {
+    "regressions": [
+      "Use lighter weight",
+      "Feet up on bench for more stability",
+      "Floor press variation"
+    ],
+    "progressions": [
+      "Increase weight gradually",
+      "Add pause at chest",
+      "Combine with single-leg"
+    ]
+  },
+  "variations": [
+    "Single-arm floor press",
+    "Single-arm incline press",
+    "Alternating dumbbell press"
+  ],
+  "prescriptionHints": {
+    "load": "20-35 lb per hand (lighter than bilateral)",
+    "reps": "8-12 per arm",
+    "time": "—",
+    "distance": "—",
+    "rpe": "7-8",
+    "notes": "Focus on core stability and control"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "shoulders",
+      "lower back",
+      "core"
+    ],
+    "notes": "Maintain neutral spine and avoid compensations. Core engagement is key."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

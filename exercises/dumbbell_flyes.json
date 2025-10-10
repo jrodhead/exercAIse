@@ -1,0 +1,76 @@
+{
+  "name": "Dumbbell Flyes",
+  "equipment": [
+    "dumbbells",
+    "bench"
+  ],
+  "tags": [
+    "chest",
+    "isolation",
+    "strength"
+  ],
+  "setup": [
+    "Lie flat on bench with feet planted on floor",
+    "Hold dumbbells with neutral grip above chest",
+    "Arms slightly bent (soft elbows)",
+    "Shoulders pulled back and down"
+  ],
+  "steps": [
+    "Inhale and slowly lower weights in wide arc",
+    "Keep slight bend in elbows throughout",
+    "Lower until you feel stretch in chest",
+    "Exhale and bring weights back up in same arc",
+    "Squeeze chest muscles at top"
+  ],
+  "cues": [
+    "Think 'hugging a tree'",
+    "Control the eccentric",
+    "Feel stretch in chest, not shoulders",
+    "Keep core engaged",
+    "Smooth arc motion"
+  ],
+  "mistakes": [
+    "Going too heavy and losing form",
+    "Lowering too far and stressing shoulders",
+    "Straightening arms completely",
+    "Using momentum instead of muscle control"
+  ],
+  "safety": "Start light to learn the movement. Stop if you feel strain in shoulders or front delts.",
+  "scaling": {
+    "regressions": [
+      "Incline bench flyes (easier angle)",
+      "Lighter weight with perfect form",
+      "Cable flyes for constant tension"
+    ],
+    "progressions": [
+      "Decline bench flyes",
+      "Single-arm flyes",
+      "Pause reps at bottom"
+    ]
+  },
+  "variations": [
+    "Cable flyes",
+    "Incline flyes",
+    "Decline flyes"
+  ],
+  "prescriptionHints": {
+    "load": "15-30 lb per hand (start conservative)",
+    "reps": "12-18 for hypertrophy",
+    "time": "—",
+    "distance": "—",
+    "rpe": "7-8",
+    "notes": "Focus on chest stretch and contraction"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "shoulders",
+      "chest",
+      "elbows"
+    ],
+    "notes": "Keep movement controlled and avoid excessive stretch. Listen to shoulders."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

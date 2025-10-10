@@ -1,0 +1,76 @@
+{
+  "name": "Supine Spinal Twist",
+  "equipment": [
+    "bodyweight"
+  ],
+  "tags": [
+    "spine",
+    "stretch",
+    "mobility",
+    "relaxation"
+  ],
+  "setup": [
+    "Lie on back with arms out in T-shape",
+    "Start with both knees bent, feet flat",
+    "Palms facing down for stability",
+    "Shoulders relaxed on ground"
+  ],
+  "steps": [
+    "Slowly lower both knees to one side",
+    "Keep opposite shoulder on ground",
+    "Turn head gently to opposite side if comfortable",
+    "Hold and breathe deeply",
+    "Return to center and switch sides"
+  ],
+  "cues": [
+    "Keep shoulders down",
+    "Slow, controlled movement",
+    "Breathe deeply",
+    "Feel gentle twist through spine",
+    "Relax into the stretch"
+  ],
+  "mistakes": [
+    "Moving too quickly",
+    "Forcing the range of motion",
+    "Lifting shoulder off ground",
+    "Holding breath during stretch"
+  ],
+  "safety": "Very gentle movement. Stop if any sharp pain in spine or if dizziness occurs.",
+  "scaling": {
+    "regressions": [
+      "Smaller range of motion",
+      "Single knee to side",
+      "Keep head facing up"
+    ],
+    "progressions": [
+      "Extend top leg straight",
+      "Hold longer",
+      "Add gentle arm movement"
+    ]
+  },
+  "variations": [
+    "Seated spinal twist",
+    "Single-knee spinal twist",
+    "Eagle spinal twist"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "—",
+    "time": "30-90 seconds per side",
+    "distance": "—",
+    "rpe": "3-5",
+    "notes": "Very relaxing stretch, focus on breathing"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "spine",
+      "hips",
+      "shoulders"
+    ],
+    "notes": "Gentle movement only. Should feel relaxing, not strained."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

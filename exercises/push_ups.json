@@ -1,0 +1,77 @@
+{
+  "name": "Push-ups",
+  "equipment": [
+    "bodyweight"
+  ],
+  "tags": [
+    "chest",
+    "shoulders",
+    "triceps",
+    "core"
+  ],
+  "setup": [
+    "Start in plank position, hands under shoulders",
+    "Body in straight line from head to heels",
+    "Core engaged, glutes tight",
+    "Hands flat on ground, fingers spread"
+  ],
+  "steps": [
+    "Lower chest toward ground by bending elbows",
+    "Keep elbows at 45° angle from body",
+    "Lower until chest nearly touches ground",
+    "Press through hands to return to start",
+    "Maintain straight body line throughout"
+  ],
+  "cues": [
+    "Straight line head to heels",
+    "Elbows at 45°, not flared wide",
+    "Control the descent",
+    "Full range of motion",
+    "Keep core tight"
+  ],
+  "mistakes": [
+    "Sagging hips or piking up",
+    "Flaring elbows too wide",
+    "Partial range of motion",
+    "Cranking the neck",
+    "Holding breath"
+  ],
+  "safety": "Start with modified version if needed. Stop if wrists, shoulders, or lower back hurt.",
+  "scaling": {
+    "regressions": [
+      "Incline push-ups (hands elevated)",
+      "Knee push-ups",
+      "Wall push-ups"
+    ],
+    "progressions": [
+      "Decline push-ups (feet elevated)",
+      "Single-arm push-ups",
+      "Weighted push-ups"
+    ]
+  },
+  "variations": [
+    "Diamond push-ups",
+    "Wide-grip push-ups",
+    "Staggered push-ups"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "5-20 depending on strength",
+    "time": "—",
+    "distance": "—",
+    "rpe": "6-8",
+    "notes": "Quality over quantity - perfect form first"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "wrists",
+      "shoulders",
+      "lower back"
+    ],
+    "notes": "Modify as needed for wrist comfort. Maintain neutral spine throughout."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

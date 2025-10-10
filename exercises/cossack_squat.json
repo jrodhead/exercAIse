@@ -1,0 +1,76 @@
+{
+  "name": "Cossack Squat",
+  "equipment": [
+    "dumbbells"
+  ],
+  "tags": [
+    "legs",
+    "mobility",
+    "unilateral",
+    "glutes"
+  ],
+  "setup": [
+    "Stand with wide stance, toes pointed forward",
+    "Hold dumbbell at chest or dumbbells at sides",
+    "Engage core for stability",
+    "Weight evenly distributed"
+  ],
+  "steps": [
+    "Shift weight to one leg and sit back into deep side squat",
+    "Keep other leg straight with heel down",
+    "Lower as deep as mobility allows",
+    "Pause briefly at bottom",
+    "Drive through squatting leg to return to center"
+  ],
+  "cues": [
+    "Sit back into the squat",
+    "Keep straight leg heel down",
+    "Chest up, core engaged",
+    "Feel deep stretch",
+    "Control the movement"
+  ],
+  "mistakes": [
+    "Not going deep enough",
+    "Lifting heel of straight leg",
+    "Rushing through range of motion",
+    "Leaning too far forward"
+  ],
+  "safety": "This requires good hip and ankle mobility. Start with bodyweight and work within comfortable range.",
+  "scaling": {
+    "regressions": [
+      "Bodyweight Cossack squat",
+      "Assisted with hand support",
+      "Lateral lunge instead"
+    ],
+    "progressions": [
+      "Heavier weight",
+      "Add pause at bottom",
+      "Single-arm overhead hold"
+    ]
+  },
+  "variations": [
+    "Lateral lunge",
+    "Cossack squat to stand",
+    "Overhead Cossack squat"
+  ],
+  "prescriptionHints": {
+    "load": "10-20 lb dumbbell",
+    "reps": "5-10 per side",
+    "time": "—",
+    "distance": "—",
+    "rpe": "6-7",
+    "notes": "Focus on mobility and depth over weight"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "hips",
+      "knees",
+      "ankles"
+    ],
+    "notes": "Requires good hip and ankle mobility. Work within comfortable range."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

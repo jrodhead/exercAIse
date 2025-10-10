@@ -1,0 +1,200 @@
+{
+  "version": "1",
+  "title": "Chest, Core & Glutes Focus",
+  "date": "2025-01-18",
+  "block": 4,
+  "week": 1,
+  "notes": "Extra session targeting chest, core, and glutes with different exercise variations and new movements. 1-mile jog warmup for aerobic base.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Warm-up",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Easy Jog",
+          "link": "exercises/easy_jog.json",
+          "logType": "endurance",
+          "prescription": {
+            "distanceMiles": 1,
+            "rpe": 5
+          }
+        },
+        {
+          "kind": "exercise",
+          "name": "Arm Circles",
+          "link": "exercises/arm_circles.json",
+          "logType": "mobility",
+          "prescription": {
+            "timeSeconds": 30
+          }
+        },
+        {
+          "kind": "exercise",
+          "name": "Clamshells",
+          "link": "exercises/clamshells.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 12
+          }
+        },
+        {
+          "kind": "exercise",
+          "name": "Cat-Cow Stretch",
+          "link": "exercises/cat_cow_stretch.json",
+          "logType": "mobility",
+          "prescription": {
+            "reps": 8
+          }
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Main Work",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Flyes",
+          "link": "exercises/dumbbell_flyes.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 4,
+            "reps": "15-18",
+            "weight": "20 lb per hand",
+            "restSeconds": 75
+          },
+          "cues": ["Wide arc motion", "Feel stretch in chest", "Control the weight", "Slight bend in elbows"]
+        },
+        {
+          "kind": "exercise",
+          "name": "Single-Arm Dumbbell Press",
+          "link": "exercises/single_arm_dumbbell_press.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": "12 per arm",
+            "weight": "30 lb per hand",
+            "restSeconds": 90
+          },
+          "cues": ["Core tight for stability", "Press straight up", "Control the eccentric", "Full range of motion"]
+        },
+        {
+          "kind": "exercise",
+          "name": "Hip Thrust",
+          "link": "exercises/hip_thrust.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 4,
+            "reps": "15-20",
+            "weight": "45 lb",
+            "restSeconds": 75
+          },
+          "cues": ["Drive through heels", "Squeeze glutes at top", "Neutral spine", "Control the descent"]
+        },
+        {
+          "kind": "exercise",
+          "name": "Lateral Lunges",
+          "link": "exercises/lateral_lunges.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": "10 per side",
+            "weight": "25 lb per hand",
+            "restSeconds": 75
+          },
+          "cues": ["Step wide", "Push hips back", "Keep other leg straight", "Drive back to center"]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Core & Accessories",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Push-ups",
+          "link": "exercises/push_ups.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": "12-20",
+            "restSeconds": 60
+          },
+          "cues": ["Straight line head to heels", "Full range of motion", "Control the tempo", "Chest to floor"]
+        },
+        {
+          "kind": "exercise",
+          "name": "Cossack Squat",
+          "link": "exercises/cossack_squat.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": "8 per side",
+            "weight": "15 lb",
+            "restSeconds": 60
+          },
+          "cues": ["Deep side lunge", "Straight leg heel down", "Sit back on working leg", "Feel the stretch"]
+        },
+        {
+          "kind": "exercise",
+          "name": "Hollow Body Hold",
+          "link": "exercises/hollow_body_hold.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "holdSeconds": 40,
+            "restSeconds": 60
+          },
+          "cues": ["Press low back to floor", "Shoulders off ground", "Legs straight", "Breathe steadily"]
+        },
+        {
+          "kind": "exercise",
+          "name": "Plank to Downward Dog",
+          "link": "exercises/plank_to_downward_dog.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": 10,
+            "restSeconds": 45
+          },
+          "cues": ["Start in plank", "Pike hips up", "Straight line", "Return to plank"]
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Cooldown",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Figure-4 Stretch",
+          "link": "exercises/figure_4_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "holdSeconds": 60
+          }
+        },
+        {
+          "kind": "exercise",
+          "name": "Doorway Chest Stretch",
+          "link": "exercises/doorway_chest_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "holdSeconds": 60
+          }
+        },
+        {
+          "kind": "exercise",
+          "name": "Supine Spinal Twist",
+          "link": "exercises/supine_spinal_twist.json",
+          "logType": "stretch",
+          "prescription": {
+            "holdSeconds": 90
+          }
+        }
+      ]
+    }
+  ]
+}

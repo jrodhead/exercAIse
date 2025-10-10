@@ -1,0 +1,76 @@
+{
+  "name": "Plank to Downward Dog",
+  "equipment": [
+    "bodyweight"
+  ],
+  "tags": [
+    "core",
+    "shoulders",
+    "mobility",
+    "dynamic"
+  ],
+  "setup": [
+    "Start in plank position with hands under shoulders",
+    "Body in straight line from head to heels",
+    "Core engaged, weight evenly distributed",
+    "Fingers spread wide for stability"
+  ],
+  "steps": [
+    "From plank, press hips up and back",
+    "Create inverted V shape (downward dog)",
+    "Keep hands and feet planted",
+    "Hold briefly in downward dog",
+    "Return to plank with control"
+  ],
+  "cues": [
+    "Press hips up and back",
+    "Keep hands planted",
+    "Create straight line from hands to hips",
+    "Control the transition",
+    "Core engaged throughout"
+  ],
+  "mistakes": [
+    "Rushing through the movement",
+    "Not fully extending in downward dog",
+    "Allowing hips to sag in plank",
+    "Moving hands or feet during transition"
+  ],
+  "safety": "Move slowly and control the transition. Stop if wrists or shoulders feel strained.",
+  "scaling": {
+    "regressions": [
+      "Incline plank to downward dog",
+      "Hold each position without transitioning",
+      "Knee plank to downward dog"
+    ],
+    "progressions": [
+      "Add push-up in plank",
+      "Single-leg lift in downward dog",
+      "Increase tempo"
+    ]
+  },
+  "variations": [
+    "Pike push-ups",
+    "Hindu push-ups",
+    "Bear crawl"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "5-15 transitions",
+    "time": "—",
+    "distance": "—",
+    "rpe": "5-7",
+    "notes": "Focus on smooth, controlled movement"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "wrists",
+      "shoulders",
+      "hamstrings"
+    ],
+    "notes": "Move slowly and listen to your body. Modify if wrist discomfort occurs."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

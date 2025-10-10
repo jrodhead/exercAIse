@@ -1,0 +1,75 @@
+{
+  "name": "Doorway Chest Stretch",
+  "equipment": [
+    "doorway"
+  ],
+  "tags": [
+    "chest",
+    "shoulders",
+    "stretch",
+    "mobility"
+  ],
+  "setup": [
+    "Stand in doorway with one foot slightly forward",
+    "Place forearm against door frame at shoulder height",
+    "Elbow bent 90 degrees",
+    "Engage core for stability"
+  ],
+  "steps": [
+    "Gently step forward through doorway",
+    "Feel stretch across chest and front of shoulder",
+    "Maintain upright posture",
+    "Hold the stretch and breathe deeply",
+    "Switch arms and repeat"
+  ],
+  "cues": [
+    "Step gently forward",
+    "Keep forearm against frame",
+    "Chest up, shoulders down",
+    "Feel stretch across chest",
+    "Breathe deeply"
+  ],
+  "mistakes": [
+    "Stepping too far forward too quickly",
+    "Allowing shoulder to roll forward",
+    "Forcing the stretch",
+    "Holding breath"
+  ],
+  "safety": "Gentle stretch only. Stop if you feel strain in shoulder joint or any pinching.",
+  "scaling": {
+    "regressions": [
+      "Smaller step forward",
+      "Lower arm position",
+      "Wall chest stretch instead"
+    ],
+    "progressions": [
+      "Higher arm position",
+      "Deeper step forward",
+      "Add gentle rotation"
+    ]
+  },
+  "variations": [
+    "Wall chest stretch",
+    "Corner chest stretch",
+    "Lying chest stretch"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "—",
+    "time": "30-90 seconds per arm",
+    "distance": "—",
+    "rpe": "4-6",
+    "notes": "Gentle stretch with focus on breathing"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "shoulders",
+      "chest"
+    ],
+    "notes": "Should feel good stretch, not strain. Avoid overstretching."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

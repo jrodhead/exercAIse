@@ -1,0 +1,76 @@
+{
+  "name": "Hip Thrust",
+  "equipment": [
+    "bench",
+    "dumbbells"
+  ],
+  "tags": [
+    "glutes",
+    "strength",
+    "hip extension"
+  ],
+  "setup": [
+    "Sit with upper back against bench edge",
+    "Place dumbbell across hips (use towel for comfort)",
+    "Feet planted shoulder-width apart",
+    "Knees bent at 90 degrees"
+  ],
+  "steps": [
+    "Engage core and drive through heels",
+    "Thrust hips up by squeezing glutes",
+    "Create straight line from knees to shoulders",
+    "Pause briefly at top with glutes squeezed",
+    "Lower hips with control"
+  ],
+  "cues": [
+    "Drive through heels, not toes",
+    "Squeeze glutes at top",
+    "Keep ribs down",
+    "Don't overextend the back",
+    "Think 'hips to ceiling'"
+  ],
+  "mistakes": [
+    "Overextending and arching lower back",
+    "Pushing through toes instead of heels",
+    "Not fully engaging glutes at top",
+    "Going too fast without control"
+  ],
+  "safety": "Avoid overextension of lower back. Focus on glute activation rather than just hip height.",
+  "scaling": {
+    "regressions": [
+      "Bodyweight hip thrust",
+      "Glute bridge on floor",
+      "Single-leg glute bridge"
+    ],
+    "progressions": [
+      "Heavier dumbbell",
+      "Barbell hip thrust",
+      "Single-leg hip thrust"
+    ]
+  },
+  "variations": [
+    "Glute bridge",
+    "Single-leg hip thrust",
+    "Barbell hip thrust"
+  ],
+  "prescriptionHints": {
+    "load": "35-60 lb dumbbell across hips",
+    "reps": "12-20 for hypertrophy",
+    "time": "—",
+    "distance": "—",
+    "rpe": "7-8",
+    "notes": "Focus on glute squeeze and control"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "hips",
+      "lower back",
+      "knees"
+    ],
+    "notes": "Avoid excessive back extension. Focus on hip hinge pattern and glute engagement."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

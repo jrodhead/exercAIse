@@ -99,4 +99,6 @@ When prompted with 'what's the next workout?' or 'generate workout session', pro
 ## Output Format
 - Return ONLY a single JSON object conforming to `schemas/session.schema.json`.
 - Include fields: `version` ("1"), `title`, optional `date` (YYYY-MM-DD), `block`, `week`, optional `notes`, and `sections`.
-  - Ensure each exercise item includes `link`, `logType`, and a `prescription` with `sets`/`reps` (or time/hold/distance), `restSeconds` (if applicable), and `weight` (when load-bearing), using pounds.
+- Ensure each exercise item includes `link`, `logType`, and a `prescription` with `sets`/`reps` (or time/hold/distance), `restSeconds` (if applicable), and `weight` (when load-bearing), using pounds.
+- Validate the final JSON against `schemas/session.schema.json` before returning.
+- STOP and ask for review and to proceed to '/generate-workout-interface'.

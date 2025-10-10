@@ -1,0 +1,74 @@
+{
+  "name": "Clamshells",
+  "equipment": [
+    "bodyweight"
+  ],
+  "tags": [
+    "glutes",
+    "activation",
+    "mobility"
+  ],
+  "setup": [
+    "Lie on your side with knees bent 90°",
+    "Stack hips and shoulders directly on top of each other",
+    "Rest head on bottom arm for support",
+    "Keep feet together"
+  ],
+  "steps": [
+    "Engage core to maintain neutral spine",
+    "Keeping feet together, lift top knee by rotating at hip",
+    "Open the knee as far as comfortable without moving pelvis",
+    "Pause briefly at top",
+    "Lower knee back to starting position with control"
+  ],
+  "cues": [
+    "Keep hips stacked",
+    "Drive from glutes, not hip flexors",
+    "Pelvis stays still",
+    "Feel it in the side of your glute",
+    "Slow and controlled"
+  ],
+  "mistakes": [
+    "Rolling backwards or forwards during movement",
+    "Using momentum instead of muscle control",
+    "Opening knee too far and compensating with back arch",
+    "Forgetting to engage the core"
+  ],
+  "safety": "Stop if you feel pinching in hip or low back. Keep range of motion comfortable and controlled.",
+  "scaling": {
+    "regressions": [
+      "Smaller range of motion",
+      "Place pillow between knees for support",
+      "Perform lying flat on back instead"
+    ],
+    "progressions": [
+      "Add resistance band around knees",
+      "Hold 2-3 second pause at top",
+      "Add ankle weights"
+    ]
+  },
+  "variations": [
+    "Side-lying hip abduction",
+    "Fire hydrants",
+    "Side plank clamshells"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight or light resistance band",
+    "reps": "10-15 per side",
+    "time": "—",
+    "distance": "—",
+    "rpe": "4-6",
+    "notes": "Focus on activation and form over speed"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "hips",
+      "lower back"
+    ],
+    "notes": "Keep movement controlled and within comfortable range. Stop if any pinching sensation."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

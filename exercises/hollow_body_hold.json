@@ -1,0 +1,75 @@
+{
+  "name": "Hollow Body Hold",
+  "equipment": [
+    "bodyweight"
+  ],
+  "tags": [
+    "core",
+    "isometric",
+    "strength"
+  ],
+  "setup": [
+    "Lie on back with arms extended overhead",
+    "Legs straight and together",
+    "Press lower back into floor",
+    "Engage core muscles"
+  ],
+  "steps": [
+    "Lift shoulders and legs off ground simultaneously",
+    "Press lower back firmly into floor",
+    "Create banana shape with body",
+    "Hold position while breathing steadily",
+    "Lower with control when time is up"
+  ],
+  "cues": [
+    "Press back into floor",
+    "Shoulders and legs up",
+    "Breathe steadily",
+    "Think 'banana shape'",
+    "Keep neck neutral"
+  ],
+  "mistakes": [
+    "Allowing lower back to arch off floor",
+    "Holding breath during hold",
+    "Lifting head too much and straining neck",
+    "Starting with legs/arms too high"
+  ],
+  "safety": "Start with bent knees if needed. Stop if lower back comes off the floor or if neck strains.",
+  "scaling": {
+    "regressions": [
+      "Bent knee hollow hold",
+      "Dead bug",
+      "Arms only or legs only"
+    ],
+    "progressions": [
+      "Hollow body rocks",
+      "Hollow hold to V-up",
+      "Weighted hollow hold"
+    ]
+  },
+  "variations": [
+    "Hollow body rocks",
+    "Dead bug",
+    "V-hold"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "—",
+    "time": "20-60 seconds",
+    "distance": "—",
+    "rpe": "7-8",
+    "notes": "Focus on back pressed to floor and steady breathing"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "lower back",
+      "neck",
+      "hip flexors"
+    ],
+    "notes": "Keep lower back pressed to floor. Modify if neck strain occurs."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}
