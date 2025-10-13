@@ -5,8 +5,6 @@ function parseJSONSafe(text, fallback) {
   try { return JSON.parse(text); } catch (e) { return fallback; }
 }
 
-
-
 // Lazy requires to avoid cost if provider not used
 function lazyProviderBits() {
   return {
