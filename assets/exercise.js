@@ -10,6 +10,18 @@
   function xhrGet(path, cb){
     try{ var r=new XMLHttpRequest(); r.open('GET', path, true); r.onreadystatechange=function(){ if(r.readyState===4){ if(r.status>=200&&r.status<300) cb(null,r.responseText); else cb(new Error('HTTP '+r.status+' for '+path)); } }; r.send(); }catch(e){ cb(e);} }
 
+  function parseMarkdownLink(text){
+    // Parse simple markdown links: [text](url)
+    var linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+    return text.replace(linkRegex, function(match, linkText, url) {
+      // Clean up the URL - remove any ../ patterns and normalize
+      var cleanUrl = url.replace(/\.\.\//g, '');
+      // If the URL doesn't start with exercises/, add it
+      var fullUrl = cleanUrl.indexOf('exercises/') === 0 ? cleanUrl : 'exercises/' + cleanUrl;
+      return '<a href="exercise.html?file=' + fullUrl + '">' + linkText + '</a>';
+    });
+  }
+
   function renderExercise(data){
     var nameEl = document.getElementById('ex-name');
     var metaEl = document.getElementById('meta');
@@ -47,7 +59,7 @@
     if (mistakesEl){ mistakesEl.innerHTML=''; if (data.mistakes && data.mistakes.length){ for (var mi=0; mi<data.mistakes.length; mi++){ var mli=document.createElement('li'); mli.textContent=data.mistakes[mi]; mistakesEl.appendChild(mli);} } else { mistakesEl.innerHTML='<li class="muted">—</li>'; } }
     // Variations
     varsEl.innerHTML='';
-    if (data.variations && data.variations.length){ for (var j=0;j<data.variations.length;j++){ var vli=document.createElement('li'); vli.textContent=data.variations[j]; varsEl.appendChild(vli);} } else { varsEl.innerHTML='<li class="muted">—</li>'; }
+    if (data.variations && data.variations.length){ for (var j=0;j<data.variations.length;j++){ var vli=document.createElement('li'); vli.innerHTML=parseMarkdownLink(data.variations[j]); varsEl.appendChild(vli);} } else { varsEl.innerHTML='<li class="muted">—</li>'; }
     // Scaling
     if (regEl || progEl){
       if (regEl){ regEl.innerHTML=''; var regs=(data.scaling&&data.scaling.regressions)||[]; if (regs.length){ for (var r=0;r<regs.length;r++){ var rli=document.createElement('li'); rli.textContent=regs[r]; regEl.appendChild(rli);} } else { regEl.innerHTML='<li class="muted">—</li>'; } }

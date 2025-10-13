@@ -21,7 +21,7 @@
   - Brace your core and avoid shrugging the shoulder.
   - Choose a weight ~60–70% of your 10-rep max.
 
-## [Biceps Curl (Alternating Dumbbells)](../exercises/biceps_curl.json)
+## [Biceps Curl (Alternating Dumbbells)](../exercises/alternating_dumbbell_biceps_curl.json)
 - **Sets & Reps:** 2 sets of 12–15 reps per side
 - **Rest:** Rest 60 seconds between sets
 - **How to Perform:**

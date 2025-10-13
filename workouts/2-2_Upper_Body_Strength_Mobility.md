@@ -24,7 +24,7 @@
 - 3 x 8–10, Rest 75 sec
 - Cues: Rotate palms through press, back on bench
 
-### 4) [Biceps Curl (Alternating Dumbbells)](../exercises/biceps_curl.json)
+### 4) [Biceps Curl (Alternating Dumbbells)](../exercises/alternating_dumbbell_biceps_curl.json)
 - 3 x 10–12, Rest 60 sec
 - Cues: Elbows close, avoid swinging
 
@@ -67,14 +67,14 @@ All exercises are linked to detail pages. Any new exercises have corresponding f
 				{
 					"kind": "exercise",
 					"name": "Neutral-Grip Flat Bench Press (Dumbbells)",
-					"link": "../exercises/neutral_grip_flat_bench_press.md",
+					"link": "../exercises/neutral_grip_flat_bench_press.json",
 					"cues": ["Elbows ~45°", "Pause at chest", "Core braced"],
 					"prescription": { "sets": 4, "reps": "6–8", "restSeconds": 90 }
 				},
 				{
 					"kind": "exercise",
 					"name": "One-Arm Dumbbell Row (Bench Supported)",
-					"link": "../exercises/one_arm_dumbbell_row.md",
+					"link": "../exercises/one_arm_dumbbell_row.json",
 					"cues": ["Row to hip", "Hips square", "Slow lower"],
 					"prescription": { "sets": 4, "reps": "8–10/side", "restSeconds": 75 }
 				},
@@ -88,14 +88,14 @@ All exercises are linked to detail pages. Any new exercises have corresponding f
 				{
 					"kind": "exercise",
 					"name": "Biceps Curl (Alternating Dumbbells)",
-					"link": "../exercises/biceps_curl.md",
+					"link": "../exercises/alternating_dumbbell_biceps_curl.json",
 					"cues": ["Elbows close", "Avoid swinging"],
 					"prescription": { "sets": 3, "reps": "10–12", "restSeconds": 60 }
 				},
 				{
 					"kind": "exercise",
 					"name": "Overhead Dumbbell Triceps Extension (Two Hands)",
-					"link": "../exercises/overhead_dumbbell_triceps_extension.md",
+					"link": "../exercises/overhead_dumbbell_triceps_extension.json",
 					"cues": ["Elbows close", "Full stretch", "Control"],
 					"prescription": { "sets": 3, "reps": "10–12", "restSeconds": 60 }
 				}

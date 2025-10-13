@@ -33,7 +33,7 @@
   - Back against bench, ribs down
   - Smooth tempo, no lockout slam
 
-### 4) [Biceps Curl (Alternating Dumbbells)](../exercises/biceps_curl.json)
+### 4) [Biceps Curl (Alternating Dumbbells)](../exercises/alternating_dumbbell_biceps_curl.json)
 - 3 x 10–12 @ 27.5 lb per hand, Rest 60 sec
 - Cues:
   - Elbows by sides, no sway
@@ -85,11 +85,11 @@ Notes:
       "type": "Strength",
       "title": "Main Sets",
       "items": [
-  {"kind": "exercise", "name": "Neutral-Grip Flat Bench Press (Dumbbells)", "link": "../exercises/neutral_grip_flat_bench_press.md", "prescription": {"sets": 4, "reps": "6–8", "weight": "47.5 lb per hand", "restSeconds": 90}},
+  {"kind": "exercise", "name": "Neutral-Grip Flat Bench Press (Dumbbells)", "link": "../exercises/neutral_grip_flat_bench_press.json", "prescription": {"sets": 4, "reps": "6–8", "weight": "47.5 lb per hand", "restSeconds": 90}},
   {"kind": "exercise", "name": "One-Arm Dumbbell Row (Bench Supported)", "link": "../exercises/one_arm_dumbbell_row.md", "prescription": {"sets": 4, "reps": "8–10/side", "weight": "37.5 lb per hand", "restSeconds": 75}},
   {"kind": "exercise", "name": "Seated Arnold Press", "link": "../exercises/seated_arnold_press.md", "prescription": {"sets": 3, "reps": "8–10", "weight": "27.5 lb per hand", "restSeconds": 75}},
-  {"kind": "exercise", "name": "Biceps Curl (Alternating Dumbbells)", "link": "../exercises/biceps_curl.md", "prescription": {"sets": 3, "reps": "10–12", "weight": "27.5 lb per hand", "restSeconds": 60}},
-  {"kind": "exercise", "name": "Overhead Dumbbell Triceps Extension (Two Hands)", "link": "../exercises/overhead_dumbbell_triceps_extension.md", "prescription": {"sets": 3, "reps": "10–12", "weight": "37.5 lb", "restSeconds": 60}}
+  {"kind": "exercise", "name": "Biceps Curl (Alternating Dumbbells)", "link": "../exercises/alternating_dumbbell_biceps_curl.json", "prescription": {"sets": 3, "reps": "10–12", "weight": "27.5 lb per hand", "restSeconds": 60}},
+  {"kind": "exercise", "name": "Overhead Dumbbell Triceps Extension (Two Hands)", "link": "../exercises/overhead_dumbbell_triceps_extension.json", "prescription": {"sets": 3, "reps": "10–12", "weight": "37.5 lb", "restSeconds": 60}}
       ]
     },
     {
