@@ -1,0 +1,45 @@
+{
+  "version": "1",
+  "title": "Arms & Core Accessory",
+  "block": 4,
+  "week": 2,
+  "notes": "Light accessory work for arms and core. Keep intensity moderate; focus on movement quality and pump.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Warm-Up",
+      "items": [
+        { "kind": "exercise", "name": "Arm Circles", "link": "exercises/arm_circles.json", "logType": "mobility", "prescription": { "timeSeconds": 30 } },
+        { "kind": "exercise", "name": "Cat-Cow Stretch", "link": "exercises/cat_cow_stretch.json", "logType": "mobility", "prescription": { "reps": 8 } }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Arm Circuit (2 rounds)",
+      "notes": "Rest 60s between rounds; move briskly between exercises",
+      "items": [
+        { "kind": "exercise", "name": "Alternating Dumbbell Biceps Curl", "link": "exercises/alternating_dumbbell_biceps_curl.json", "logType": "strength", "prescription": { "reps": 16, "weight": "20 x2" }, "cues": ["Slow alternation", "No body swing", "Full range"] },
+        { "kind": "exercise", "name": "Bench Dip", "link": "exercises/bench_dip.json", "logType": "strength", "prescription": { "reps": 12 }, "cues": ["Elbows back", "Full range", "Control tempo"] },
+        { "kind": "exercise", "name": "Hammer Curl", "link": "exercises/hammer_curl.json", "logType": "strength", "prescription": { "reps": 12, "weight": "20 x2" }, "cues": ["Neutral grip", "Elbows stable", "Squeeze at top"] }
+      ]
+    },
+    {
+      "type": "Strength", 
+      "title": "Core Circuit (2 rounds)",
+      "notes": "Rest 60s between rounds; move briskly between exercises",
+      "items": [
+        { "kind": "exercise", "name": "Deadbug", "link": "exercises/deadbug.json", "logType": "strength", "prescription": { "reps": "8/side" }, "cues": ["Low back down", "Opposite arm/leg", "Slow and controlled"] },
+        { "kind": "exercise", "name": "Pallof Press", "link": "exercises/pallof_press.json", "logType": "strength", "prescription": { "reps": "10/side", "weight": "15 x2" }, "cues": ["Resist rotation", "Core tight", "Arms straight"] },
+        { "kind": "exercise", "name": "Plank Shoulder Tap", "link": "exercises/plank_shoulder_tap.json", "logType": "strength", "prescription": { "reps": 16 }, "cues": ["Minimal hip movement", "Strong plank", "Light taps"] }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Cooldown",
+      "items": [
+        { "kind": "exercise", "name": "Doorway Chest Stretch", "link": "exercises/doorway_chest_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 } },
+        { "kind": "exercise", "name": "Child's Pose", "link": "exercises/childs_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 60 } }
+      ]
+    }
+  ]
+}

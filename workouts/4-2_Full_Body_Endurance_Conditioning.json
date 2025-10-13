@@ -1,0 +1,54 @@
+{
+  "version": "1",
+  "title": "Full-Body Endurance & Conditioning",
+  "block": 4,
+  "week": 2,
+  "notes": "Full-body conditioning focus with circuit training and carries. Move with purpose; limit rest between exercises within circuits.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Warm-Up",
+      "items": [
+        { "kind": "exercise", "name": "Jumping Jacks", "link": "exercises/jumping_jacks.json", "logType": "mobility", "prescription": { "timeSeconds": 45 } },
+        { "kind": "exercise", "name": "Bodyweight Squat", "link": "exercises/bodyweight_squat.json", "logType": "mobility", "prescription": { "sets": 2, "reps": 10 } },
+        { "kind": "exercise", "name": "Arm Circles", "link": "exercises/arm_circles.json", "logType": "mobility", "prescription": { "timeSeconds": 30 } }
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "Circuit A (3 rounds)",
+      "notes": "Rest 90s between rounds; move briskly between stations",
+      "items": [
+        { "kind": "exercise", "name": "Dumbbell Thruster", "link": "exercises/dumbbell_thruster.json", "logType": "strength", "prescription": { "reps": 12, "weight": "25 x2" }, "cues": ["Full squat to press", "Hips drive the press", "Keep core tight"] },
+        { "kind": "exercise", "name": "Renegade Row", "link": "exercises/renegade_row.json", "logType": "strength", "prescription": { "reps": 8, "weight": "25 x2" }, "cues": ["Plank position", "Row to ribs", "No hip sag"] },
+        { "kind": "exercise", "name": "Goblet Reverse Lunge", "link": "exercises/goblet_reverse_lunge.json", "logType": "strength", "prescription": { "reps": "10/leg", "weight": 35 }, "cues": ["Step back", "Knee to floor", "Drive front heel"] }
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "Circuit B (3 rounds)",
+      "notes": "Rest 90s between rounds; move briskly between stations",
+      "items": [
+        { "kind": "exercise", "name": "Push-Ups", "link": "exercises/push_ups.json", "logType": "strength", "prescription": { "reps": 10 }, "cues": ["Full range", "Elbows 45°", "Strong plank"] },
+        { "kind": "exercise", "name": "Hollow Body Hold", "link": "exercises/hollow_body_hold.json", "logType": "strength", "prescription": { "holdSeconds": 30 }, "cues": ["Low back down", "Breathe steady", "Eyes on ceiling"] },
+        { "kind": "exercise", "name": "Lateral Lunges", "link": "exercises/lateral_lunges.json", "logType": "strength", "prescription": { "reps": "8/side" }, "cues": ["Sit into hip", "Opposite leg straight", "Push off working leg"] }
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "Finisher",
+      "items": [
+        { "kind": "exercise", "name": "Farmer Carry", "link": "exercises/farmer_carry.json", "logType": "carry", "prescription": { "timeSeconds": 60, "weight": "40 x2", "restSeconds": 60 }, "cues": ["Tall chest", "Tight core", "Even steps"] },
+        { "kind": "exercise", "name": "Farmer Carry", "link": "exercises/farmer_carry.json", "logType": "carry", "prescription": { "timeSeconds": 45, "weight": "40 x2" }, "cues": ["Tall chest", "Tight core", "Even steps"] }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Cooldown",
+      "items": [
+        { "kind": "exercise", "name": "Forward Fold", "link": "exercises/forward_fold.json", "logType": "stretch", "prescription": { "holdSeconds": 60 } },
+        { "kind": "exercise", "name": "Child's Pose", "link": "exercises/childs_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 60 } }
+      ]
+    }
+  ]
+}
