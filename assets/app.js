@@ -661,6 +661,24 @@
         var header = document.createElement('div');
         header.className = 'exercise-header';
         header.innerHTML = headerHTML;
+        
+        // Extract and display notes from metadata if available
+        try {
+          var metaElement = header.querySelector('[data-exmeta]');
+          if (metaElement) {
+            var metaRaw = metaElement.getAttribute('data-exmeta') || '';
+            var metadata = metaRaw ? JSON.parse(metaRaw) : null;
+            if (metadata && metadata.notes) {
+              var notesDiv = document.createElement('div');
+              notesDiv.className = 'exercise-notes';
+              notesDiv.textContent = metadata.notes;
+              header.appendChild(notesDiv);
+            }
+          }
+        } catch (e) {
+          // Ignore JSON parse errors
+        }
+        
         card.appendChild(header);
       }
 
@@ -1669,6 +1687,7 @@
             var meta = { cues: (it.cues || []), prescription: (it.prescription || null) };
             if (it.logType) meta.logType = it.logType;
             if (it.loggable === false) meta.loggable = false;
+            if (it.notes) meta.notes = it.notes;
             // If a JSON workout provides a link, render it as a link regardless of slug presence.
             var asLink = !!link && isInternalExerciseLink(link);
             var html = '<li>' + (asLink
@@ -2065,6 +2084,7 @@
           var meta = { cues: (it.cues || []), prescription: (presObj || null) };
           if (it.logType) meta.logType = it.logType;
           if (it.loggable === false) meta.loggable = false;
+          if (it.notes) meta.notes = it.notes;
           // Decide whether to render as link or non-link
           // Only link when an explicit internal exercise link is provided
           var asLink = !!link && isInternalExerciseLink(link);

@@ -51,7 +51,8 @@
         "cues": {
           "type": "array",
           "items": { "type": "string" }
-        }
+        },
+        "notes": { "type": "string" }
       },
       "allOf": [
         { "if": { "properties": { "kind": { "const": "exercise" } } },
