@@ -1886,6 +1886,47 @@
         else if (/bodyweight/.test(s)) out.multiplier = 0;
         return out;
       }
+      function normalizeReps(reps) {
+        // Rep Range Normalization (REPRANGE-01)
+        if (reps == null) {
+          return { reps_low: null, reps_high: null, reps_display: null, isRange: false };
+        }
+        var reps_display = String(reps);
+        // Handle numeric input
+        if (typeof reps === 'number' && !isNaN(reps)) {
+          var intReps = Math.max(1, Math.floor(reps));
+          return { reps_low: intReps, reps_high: intReps, reps_display: reps_display, isRange: false };
+        }
+        // Handle string input
+        if (typeof reps === 'string') {
+          var trimmed = reps.trim();
+          // Check for range pattern (supports both - and – characters)
+          var rangeMatch = trimmed.match(/^(\d+)\s*[–-]\s*(\d+)$/);
+          if (rangeMatch) {
+            var low = parseInt(rangeMatch[1], 10);
+            var high = parseInt(rangeMatch[2], 10);
+            if (isNaN(low) || isNaN(high)) {
+              return { reps_low: null, reps_high: null, reps_display: reps_display, isRange: false, error: 'Invalid range numbers' };
+            }
+            // Swap if bounds are reversed (e.g., "12-8")
+            if (low > high) { var temp = low; low = high; high = temp; }
+            // Ensure minimum of 1
+            low = Math.max(1, low);
+            high = Math.max(1, high);
+            return { reps_low: low, reps_high: high, reps_display: reps_display, isRange: low !== high };
+          }
+          // Try to parse as single number
+          var singleMatch = trimmed.match(/^(\d+)$/);
+          if (singleMatch) {
+            var intReps2 = Math.max(1, parseInt(singleMatch[1], 10));
+            return { reps_low: intReps2, reps_high: intReps2, reps_display: reps_display, isRange: false };
+          }
+          // Handle malformed string
+          return { reps_low: null, reps_high: null, reps_display: reps_display, isRange: false, error: 'Malformed reps string' };
+        }
+        // Unsupported type
+        return { reps_low: null, reps_high: null, reps_display: reps_display, isRange: false, error: 'Unsupported reps type' };
+      }
       function parseTimeToSec(text) {
         if (text == null) return null;
         if (typeof text === 'number') return text;
@@ -1920,11 +1961,15 @@
         if (p.sets != null && typeof p.sets === 'string') {
           var setsNum = firstNumberFrom(p.sets); if (setsNum != null) p.sets = setsNum;
         }
-        // reps: keep ranges like "8-12" as-is; coerce numeric strings otherwise
-        if (p.reps != null && typeof p.reps === 'string') {
-          if (!/\d\s*[–-]\s*\d/.test(p.reps)) {
-            var rnum = firstNumberFrom(p.reps); if (rnum != null) p.reps = rnum;
-          }
+        // reps: normalize with REPRANGE-01 logic
+        if (p.reps !== undefined) {
+          var repsNorm = normalizeReps(p.reps);
+          p.reps_low = repsNorm.reps_low;
+          p.reps_high = repsNorm.reps_high;
+          p.reps_display = repsNorm.reps_display;
+          // Keep original reps for backwards compatibility during transition
+          // p.reps = p.reps; // unchanged
+          if (repsNorm.error) p.reps_error = repsNorm.error;
         }
         // rpe
         if (p.rpe != null && typeof p.rpe === 'string') {

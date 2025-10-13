@@ -62,11 +62,10 @@
 		{
 			"label": "Validate + Lint",
 			"type": "shell",
-			"command": "python3 scripts/validate_links.py && python3 scripts/validate_schemas.py && python3 scripts/lint_sessions.py --strict",
+			"command": "python3 scripts/validate_links.py && python3 scripts/validate_schemas.py && python3 scripts/lint_sessions.py --strict && node tests/rep_range_normalization.test.js",
 			"isBackground": false,
 			"group": "build"
-		}
-		,
+		},
 		{
 			"label": "UI Tests: Install",
 			"type": "shell",
@@ -79,6 +78,13 @@
 			"type": "shell",
 			"command": "python3 scripts/serve.py",
 			"isBackground": true,
+			"group": "test"
+		},
+		{
+			"label": "Test: Rep Range Normalization",
+			"type": "shell",
+			"command": "node tests/rep_range_normalization.test.js",
+			"isBackground": false,
 			"group": "test"
 		},
 		{

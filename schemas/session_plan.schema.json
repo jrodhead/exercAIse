@@ -25,6 +25,10 @@
             "properties": {
               "sets": { "type": "integer" },
               "reps": { "type": ["integer", "string"] },
+              "reps_low": { "type": ["integer", "null"], "description": "Normalized lower bound of rep range" },
+              "reps_high": { "type": ["integer", "null"], "description": "Normalized upper bound of rep range" },
+              "reps_display": { "type": ["string", "null"], "description": "Original reps value for display" },
+              "reps_error": { "type": ["string", "null"], "description": "Error message if reps normalization failed" },
               "load": { "type": ["number", "string", "null"] },
               "tempo": { "type": ["string", "null"] },
               "restSec": { "type": ["integer", "null"] },
