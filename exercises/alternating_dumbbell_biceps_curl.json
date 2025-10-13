@@ -18,8 +18,9 @@
     "Use a moderate weight to maintain good form"
   ],
   "variations": [
-    "Hammer Curl (neutral grip)",
-    "Seated Dumbbell Curl",
-    "Barbell Curl"
+    "[Biceps Curl](biceps_curl.json)",
+    "[Hammer Curl](hammer_curl.json)",
+    "[Seated Dumbbell Curl](seated_dumbbell_curl.json)",
+    "[Barbell Curl](barbell_curl.json)"
   ]
 }

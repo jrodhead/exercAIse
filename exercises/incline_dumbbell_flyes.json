@@ -1,0 +1,78 @@
+{
+  "name": "Incline Dumbbell Flyes",
+  "equipment": [
+    "dumbbells",
+    "incline bench"
+  ],
+  "tags": [
+    "chest",
+    "upper chest",
+    "isolation",
+    "strength"
+  ],
+  "setup": [
+    "Set bench to 30-45 degree incline",
+    "Lie back with dumbbells above chest",
+    "Arms slightly bent (soft elbows)",
+    "Plant feet firmly on floor"
+  ],
+  "steps": [
+    "Inhale and slowly lower weights in wide arc",
+    "Keep slight bend in elbows throughout",
+    "Lower until you feel stretch in upper chest",
+    "Exhale and bring weights back up in same arc",
+    "Squeeze upper chest muscles at top"
+  ],
+  "cues": [
+    "Arc motion like hugging large barrel",
+    "Feel stretch in upper chest",
+    "Control the weight down",
+    "Squeeze at the top",
+    "Keep shoulders back on bench"
+  ],
+  "mistakes": [
+    "Bench angle too steep (over 45°)",
+    "Going too heavy and losing arc motion",
+    "Lowering too far past shoulder level",
+    "Using pressing motion instead of fly",
+    "Shoulders coming forward off bench"
+  ],
+  "safety": "Incline angle reduces shoulder stress vs flat flyes. Use lighter weight than flat bench version.",
+  "scaling": {
+    "regressions": [
+      "Lower incline angle (15-30°)",
+      "Lighter dumbbells",
+      "Cable incline flyes"
+    ],
+    "progressions": [
+      "Heavier dumbbells",
+      "Pause at stretch position",
+      "Single-arm incline flyes"
+    ]
+  },
+  "variations": [
+    "[Dumbbell Flyes](dumbbell_flyes.json)",
+    "Decline flyes",
+    "Cable flyes"
+  ],
+  "prescriptionHints": {
+    "load": "10-25 lb per hand (lighter than flat)",
+    "reps": "12-18 for hypertrophy",
+    "time": "—",
+    "distance": "—",
+    "rpe": "7-8",
+    "notes": "Targets upper chest fibers specifically"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "shoulders",
+      "chest",
+      "elbows"
+    ],
+    "notes": "Incline angle is generally shoulder-friendlier than flat flyes."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

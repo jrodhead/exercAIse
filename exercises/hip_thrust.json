@@ -49,9 +49,9 @@
     ]
   },
   "variations": [
-    "Glute bridge",
-    "Single-leg hip thrust",
-    "Barbell hip thrust"
+    "[Glute Bridge](glute_bridge.json)",
+    "[Single-leg Hip Thrust](single_leg_hip_thrust.json)",
+    "[Barbell Hip Thrust](barbell_hip_thrust.json)"
   ],
   "prescriptionHints": {
     "load": "35-60 lb dumbbell across hips",

@@ -1,0 +1,80 @@
+{
+  "name": "Staggered Push-ups",
+  "equipment": [
+    "bodyweight"
+  ],
+  "tags": [
+    "push-up",
+    "unilateral",
+    "chest",
+    "core",
+    "upper body",
+    "strength"
+  ],
+  "setup": [
+    "Start in push-up position with one hand forward, one back",
+    "Forward hand aligned with head, back hand by mid-chest",
+    "Maintain straight line from head to heels",
+    "Engage core and glutes for stability"
+  ],
+  "steps": [
+    "Lower chest toward floor with controlled descent",
+    "Keep even weight distribution between hands",
+    "Descend until chest nearly touches floor",
+    "Pause briefly at bottom position",
+    "Press through both palms to return to start",
+    "Complete set, then switch hand positions"
+  ],
+  "cues": [
+    "One hand high, one low position", 
+    "Equal weight on both hands",
+    "Core extra tight for stability",
+    "Full range through chest",
+    "Switch sides each set"
+  ],
+  "mistakes": [
+    "Shifting too much weight to one side",
+    "Rotating torso during movement",
+    "Incomplete range of motion",
+    "Neglecting to switch hand positions",
+    "Poor core engagement"
+  ],
+  "safety": "Focus on equal weight distribution. If one side feels strained, adjust hand positioning or regress movement.",
+  "scaling": {
+    "regressions": [
+      "Incline staggered push-ups (hands on bench)",
+      "Knee staggered push-ups", 
+      "Wall staggered push-ups"
+    ],
+    "progressions": [
+      "Tempo staggered push-ups (3-1-3)",
+      "Staggered push-up with pause",
+      "Archer push-ups (advanced)"
+    ]
+  },
+  "variations": [
+    "[Push-ups](push_ups.json)",
+    "[Diamond Push-ups](diamond_push_ups.json)", 
+    "[Wide-grip Push-ups](wide_grip_push_ups.json)"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "4-10 per side",
+    "time": "—",
+    "distance": "—",
+    "rpe": "7-8",
+    "notes": "More challenging than standard push-ups due to unilateral demand"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "wrists",
+      "shoulders",
+      "core"
+    ],
+    "notes": "Requires good core stability. Monitor wrist comfort with hand positioning."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

@@ -50,9 +50,9 @@
     ]
   },
   "variations": [
-    "Diamond push-ups",
-    "Wide-grip push-ups",
-    "Staggered push-ups"
+    "[Diamond Push-ups](diamond_push_ups.json)",
+    "[Wide-grip Push-ups](wide_grip_push_ups.json)",
+    "[Staggered Push-ups](staggered_push_ups.json)"
   ],
   "prescriptionHints": {
     "load": "Bodyweight",

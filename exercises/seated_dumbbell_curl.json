@@ -1,0 +1,77 @@
+{
+  "name": "Seated Dumbbell Curl",
+  "equipment": [
+    "dumbbells",
+    "bench"
+  ],
+  "tags": [
+    "biceps",
+    "arms",
+    "strength",
+    "isolation"
+  ],
+  "setup": [
+    "Sit on bench with back support if available",
+    "Hold dumbbells at sides with arms fully extended",
+    "Plant feet firmly on floor",
+    "Engage core and maintain upright posture"
+  ],
+  "steps": [
+    "Curl dumbbells up by flexing biceps",
+    "Keep elbows stationary at sides",
+    "Lift until biceps are fully contracted",
+    "Squeeze briefly at top position",
+    "Lower dumbbells with control to start"
+  ],
+  "cues": [
+    "Elbows stay pinned to sides",
+    "Curl up with biceps only",
+    "Squeeze at the top",
+    "Control the negative",
+    "No swinging or momentum"
+  ],
+  "mistakes": [
+    "Swinging elbows forward during curl",
+    "Using momentum instead of muscle",
+    "Partial range of motion",
+    "Leaning back to assist movement",
+    "Dropping weights too quickly"
+  ],
+  "safety": "Seated position eliminates cheating. Focus on strict form over heavy weight.",
+  "scaling": {
+    "regressions": [
+      "Lighter dumbbells",
+      "Single-arm seated curl",
+      "Partial range seated curl"
+    ],
+    "progressions": [
+      "Heavier dumbbells",
+      "Tempo seated curl (slow negatives)",
+      "21s protocol (7+7+7 reps)"
+    ]
+  },
+  "variations": [
+    "[Biceps Curl](biceps_curl.json)",
+    "[Alternating Dumbbell Biceps Curl](alternating_dumbbell_biceps_curl.json)",
+    "[Barbell Curl](barbell_curl.json)"
+  ],
+  "prescriptionHints": {
+    "load": "15-35 lb dumbbells typically",
+    "reps": "8-15 for hypertrophy",
+    "time": "—",
+    "distance": "—",
+    "rpe": "7-8",
+    "notes": "Seated position helps eliminate cheating"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "elbows",
+      "wrists"
+    ],
+    "notes": "Keep wrists neutral. Avoid excessive weight that forces elbow movement."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

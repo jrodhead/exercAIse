@@ -1,0 +1,78 @@
+{
+  "name": "Diamond Push-ups",
+  "equipment": [
+    "bodyweight"
+  ],
+  "tags": [
+    "push-up",
+    "triceps",
+    "chest",
+    "upper body",
+    "strength"
+  ],
+  "setup": [
+    "Start in push-up position with hands forming a diamond/triangle shape",
+    "Index fingers and thumbs touching to create diamond between hands",
+    "Body in straight line from head to heels",
+    "Engage core and glutes"
+  ],
+  "steps": [
+    "Lower chest toward hands, keeping elbows close to body",
+    "Descend until chest nearly touches hands",
+    "Pause briefly at bottom position", 
+    "Press through palms to return to starting position",
+    "Maintain diamond hand position throughout movement"
+  ],
+  "cues": [
+    "Keep elbows tucked close to ribs",
+    "Diamond shape maintained throughout",
+    "Chest to hands, not hands to chest",
+    "Core tight, body straight",
+    "Control the descent"
+  ],
+  "mistakes": [
+    "Elbows flaring out to sides",
+    "Breaking diamond hand position",
+    "Sagging hips or piking up",
+    "Partial range of motion",
+    "Rushing through reps"
+  ],
+  "safety": "If wrists hurt, use push-up handles or fists. If too difficult, elevate hands on bench or do from knees.",
+  "scaling": {
+    "regressions": [
+      "Incline diamond push-ups (hands on bench)",
+      "Knee diamond push-ups",
+      "Wall diamond push-ups"
+    ],
+    "progressions": [
+      "Tempo diamond push-ups (3-1-3)",
+      "Diamond push-up with pause",
+      "Weighted diamond push-ups"
+    ]
+  },
+  "variations": [
+    "[Push-ups](push_ups.json)",
+    "[Wide-grip Push-ups](wide_grip_push_ups.json)",
+    "[Staggered Push-ups](staggered_push_ups.json)"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "3-12 depending on strength level",
+    "time": "—",
+    "distance": "—", 
+    "rpe": "7-9",
+    "notes": "More challenging than standard push-ups due to triceps emphasis"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "wrists",
+      "elbows", 
+      "shoulders"
+    ],
+    "notes": "Keep wrists neutral; use handles if needed. Elbows stay close to body."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

@@ -19,7 +19,8 @@
     "Move slowly and with control"
   ],
   "variations": [
-    "Seated or standing overhead triceps extension",
+    "[Overhead Triceps Extension](overhead_triceps_extension.json)",
+    "[Overhead Dumbbell Triceps Extension](overhead_dumbbell_triceps_extension.json)",
     "Use a barbell or EZ curl bar",
     "Single-arm triceps extension"
   ]

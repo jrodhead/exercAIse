@@ -1,0 +1,77 @@
+{
+  "name": "Single-leg Calf Raise",
+  "equipment": [
+    "bodyweight",
+    "dumbbell"
+  ],
+  "tags": [
+    "calves",
+    "unilateral",
+    "lower leg",
+    "strength"
+  ],
+  "setup": [
+    "Stand on one leg, opposite foot off ground",
+    "Hold dumbbell in hand or bodyweight only",
+    "Use wall/support for balance if needed",
+    "Optional: elevate forefoot on step/plate"
+  ],
+  "steps": [
+    "Lower heel slowly to comfortable stretch",
+    "Drive through big toe and second toe to rise up",
+    "Pause briefly at peak calf contraction",
+    "Lower with control (2-3s eccentric)",
+    "Complete set, then switch legs"
+  ],
+  "cues": [
+    "Full stretch at bottom",
+    "Drive up tall through toes",
+    "Balance and control",
+    "Peak squeeze at top",
+    "Switch legs each set"
+  ],
+  "mistakes": [
+    "Using non-working leg to assist",
+    "Bouncing at bottom stretch",
+    "Poor balance compromising form",
+    "Rushing through reps",
+    "Unequal work between legs"
+  ],
+  "safety": "Use support for balance. Start bodyweight before adding load. Stop if Achilles irritation.",
+  "scaling": {
+    "regressions": [
+      "Bilateral calf raise",
+      "Assisted single-leg (finger support)",
+      "Partial range single-leg"
+    ],
+    "progressions": [
+      "Add dumbbell load",
+      "Deficit single-leg (heel lower)",
+      "Pause at top and bottom"
+    ]
+  },
+  "variations": [
+    "[Standing Calf Raise (DB)](standing_calf_raise_db.json)",
+    "Seated calf raise",
+    "Isometric calf hold"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight first, add 10-25 lb dumbbell",
+    "reps": "6-15 per leg",
+    "time": "—",
+    "distance": "—",
+    "rpe": "7-8",
+    "notes": "Challenging unilateral version - start conservative"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "ankles",
+      "Achilles"
+    ],
+    "notes": "Maintain controlled range. Use support for balance as needed."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

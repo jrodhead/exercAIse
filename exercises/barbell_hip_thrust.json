@@ -1,0 +1,80 @@
+{
+  "name": "Barbell Hip Thrust",
+  "equipment": [
+    "barbell",
+    "bench",
+    "barbell pad"
+  ],
+  "tags": [
+    "glutes",
+    "hips",
+    "posterior chain",
+    "strength",
+    "loaded"
+  ],
+  "setup": [
+    "Sit with upper back against bench, barbell over hips",
+    "Use pad for comfort across hip crease",
+    "Feet flat on floor, hip-width apart",
+    "Grip barbell with hands outside legs"
+  ],
+  "steps": [
+    "Drive through heels to thrust hips up",
+    "Squeeze glutes hard at top position",
+    "Create straight line from knees to shoulders",
+    "Pause briefly with full glute contraction",
+    "Lower barbell and hips with control"
+  ],
+  "cues": [
+    "Drive the hips to the ceiling",
+    "Squeeze glutes maximally at top",
+    "Keep core braced",
+    "Don't hyperextend the back",
+    "Control the eccentric"
+  ],
+  "mistakes": [
+    "Hyperextending lower back at top",
+    "Not reaching full hip extension",
+    "Poor barbell positioning",
+    "Feet too close or too far",
+    "Bouncing out of bottom position"
+  ],
+  "safety": "Use proper pad placement. Start light to learn movement pattern. Avoid hyperextension.",
+  "scaling": {
+    "regressions": [
+      "[Hip Thrust](hip_thrust.json)",
+      "[Glute Bridge](glute_bridge.json)",
+      "Bodyweight hip thrust"
+    ],
+    "progressions": [
+      "Pause barbell hip thrust",
+      "Single-leg barbell hip thrust",
+      "Deficit barbell hip thrust"
+    ]
+  },
+  "variations": [
+    "[Hip Thrust](hip_thrust.json)",
+    "[Single-leg Hip Thrust](single_leg_hip_thrust.json)",
+    "[Glute Bridge](glute_bridge.json)"
+  ],
+  "prescriptionHints": {
+    "load": "Start 65-95 lb, progress based on strength",
+    "reps": "6-12 for strength, 8-15 for hypertrophy",
+    "time": "—",
+    "distance": "—",
+    "rpe": "7-9",
+    "notes": "Premier loaded glute exercise - prioritize quality over load"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "lower back",
+      "hips",
+      "knees"
+    ],
+    "notes": "Focus on glute engagement rather than back extension. Use pad for hip comfort."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

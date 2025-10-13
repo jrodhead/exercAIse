@@ -49,7 +49,8 @@
     ]
   },
   "variations": [
-    "Goblet squat to box",
+    "[Box Goblet Squat](box_goblet_squat.json)",
+    "[Heels-elevated Goblet Squat](heels_elevated_goblet_squat.json)",
     "Front squat",
     "Split squat"
   ],

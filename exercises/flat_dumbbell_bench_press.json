@@ -1,26 +1,79 @@
 {
   "name": "Flat Dumbbell Bench Press",
   "equipment": [
-    "bench",
-    "dumbbell"
+    "dumbbells",
+    "bench"
   ],
   "tags": [
-    "core",
-    "press"
+    "chest",
+    "shoulders", 
+    "triceps",
+    "upper body",
+    "strength"
+  ],
+  "setup": [
+    "Lie flat on bench with dumbbells in hands",
+    "Plant feet firmly on floor",
+    "Retract shoulder blades and maintain arch",
+    "Start with dumbbells at chest level"
+  ],
+  "steps": [
+    "Press dumbbells straight up from chest",
+    "Extend arms fully without locking elbows",
+    "Squeeze chest at top of movement",
+    "Lower dumbbells with control to chest",
+    "Maintain tension throughout range"
   ],
   "cues": [
-    "Lie flat on a bench with feet planted and dumbbells held over your chest",
-    "Lower the dumbbells slowly to your chest, keeping elbows at about a 45° angle",
-    "Press up powerfully without locking out your elbows",
-    "Brace your core and retract your shoulder blades throughout the movement",
-    "Avoid flaring your elbows excessively",
-    "Use a spotter if lifting heavy",
-    "Adjust weight to maintain good form",
-    "Keep wrists straight and avoid letting them bend backward"
+    "Press straight up from chest",
+    "Keep elbows at 45° to body",
+    "Control the descent",
+    "Squeeze chest at top",
+    "Keep shoulder blades retracted"
   ],
+  "mistakes": [
+    "Flaring elbows too wide (90°)",
+    "Bouncing dumbbells off chest", 
+    "Partial range of motion",
+    "Losing shoulder blade position",
+    "Pressing dumbbells together at top"
+  ],
+  "safety": "Use spotter for heavy loads. Control the weight throughout full range of motion.",
+  "scaling": {
+    "regressions": [
+      "Lighter dumbbells",
+      "Floor press for safety",
+      "Incline angle for easier position"
+    ],
+    "progressions": [
+      "Heavier dumbbells",
+      "Pause bench press",
+      "Single-arm variations"
+    ]
+  },
   "variations": [
-    "Incline Dumbbell Bench Press",
-    "Neutral-Grip Dumbbell Bench Press",
-    "Single-Arm Dumbbell Bench Press"
-  ]
+    "[Incline Dumbbell Bench Press](incline_dumbbell_bench_press.json)",
+    "[Neutral-Grip Flat Bench Press](neutral_grip_flat_bench_press.json)",
+    "[Single-Arm Dumbbell Bench Press](single_arm_dumbbell_bench_press.json)"
+  ],
+  "prescriptionHints": {
+    "load": "70-85% of barbell bench equivalent",
+    "reps": "6-12 for strength, 8-15 for hypertrophy",
+    "time": "—",
+    "distance": "—",
+    "rpe": "7-8",
+    "notes": "Classic chest builder with unilateral demand"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "shoulders",
+      "elbows",
+      "wrists"
+    ],
+    "notes": "Monitor shoulder comfort. Keep wrists neutral and elbows at 45°."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
 }

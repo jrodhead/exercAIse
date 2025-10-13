@@ -1,0 +1,79 @@
+{
+  "name": "Incline Dumbbell Bench Press",
+  "equipment": [
+    "dumbbells",
+    "incline bench"
+  ],
+  "tags": [
+    "chest",
+    "shoulders",
+    "triceps",
+    "upper body",
+    "strength"
+  ],
+  "setup": [
+    "Set bench to 30-45 degree incline",
+    "Sit on bench with dumbbells in hands",
+    "Lie back with dumbbells at chest level",
+    "Plant feet firmly on floor"
+  ],
+  "steps": [
+    "Press dumbbells up and slightly forward",
+    "Extend arms fully without locking elbows",
+    "Squeeze chest at top of movement",
+    "Lower dumbbells with control to chest",
+    "Maintain constant tension throughout"
+  ],
+  "cues": [
+    "Press up and slightly forward",
+    "Control the weight down",
+    "Full range to chest",
+    "Squeeze chest at top",
+    "Keep core braced"
+  ],
+  "mistakes": [
+    "Bench angle too steep (over 45°)",
+    "Pressing straight up instead of forward",
+    "Bouncing weights off chest",
+    "Partial range of motion",
+    "Arching back excessively"
+  ],
+  "safety": "Use spotter for heavy loads. Control the descent to avoid shoulder strain.",
+  "scaling": {
+    "regressions": [
+      "Lower incline angle (15-30°)",
+      "Lighter dumbbells",
+      "Partial range of motion"
+    ],
+    "progressions": [
+      "Heavier dumbbells",
+      "Pause incline press",
+      "Single-arm incline press"
+    ]
+  },
+  "variations": [
+    "[Flat Dumbbell Bench Press](flat_dumbbell_bench_press.json)",
+    "[Neutral-Grip Flat Bench Press](neutral_grip_flat_bench_press.json)",
+    "[Single-Arm Dumbbell Bench Press](single_arm_dumbbell_bench_press.json)"
+  ],
+  "prescriptionHints": {
+    "load": "60-80% of flat bench weight",
+    "reps": "6-12 for strength, 8-15 for hypertrophy",
+    "time": "—",
+    "distance": "—",
+    "rpe": "7-8",
+    "notes": "Targets upper chest more than flat bench"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "shoulders",
+      "elbows",
+      "wrists"
+    ],
+    "notes": "Monitor shoulder comfort with incline angle. Use proper bench setup."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

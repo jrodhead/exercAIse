@@ -1,0 +1,81 @@
+{
+  "name": "Heels-elevated Goblet Squat",
+  "equipment": [
+    "dumbbell",
+    "kettlebell",
+    "plates"
+  ],
+  "tags": [
+    "squat",
+    "legs",
+    "strength",
+    "mobility"
+  ],
+  "setup": [
+    "Place small plates or heel wedges under heels (1-2 inches elevation)",
+    "Feet shoulder-width with slight toe-out (5–15°)",
+    "Hold bell at chest (horns for KB or one end of DB), forearms vertical",
+    "Brace lightly and keep ribs stacked over pelvis"
+  ],
+  "steps": [
+    "Inhale, sit hips back slightly and bend knees to descend",
+    "Track knees over mid-foot; keep torso tall and elbows pointing down",
+    "Descend to full comfortable depth—elevation allows deeper squat",
+    "Pause briefly at bottom position",
+    "Exhale, drive through mid-foot/heels to stand tall",
+    "Finish with glutes squeezed softly, ribs down"
+  ],
+  "cues": [
+    "Elbows down; bell tight to chest",
+    "Knees track over toes",
+    "Chest tall, ribs stacked",
+    "Use the extra range—go deeper",
+    "Drive through elevated heels"
+  ],
+  "mistakes": [
+    "Leaning too far forward with heel elevation",
+    "Overusing the ankle mobility and losing hip hinge",
+    "Heels coming off the plates during movement",
+    "Knees collapsing inward (valgus)",
+    "Elbows flaring away from torso"
+  ],
+  "safety": "Heel elevation helps with ankle mobility limitations and allows deeper squat position. Ensure plates/wedges are stable and non-slip.",
+  "scaling": {
+    "regressions": [
+      "Lower heel elevation (just 0.5-1 inch)",
+      "Heels-elevated box goblet squat",
+      "Counterbalance squat with heel elevation"
+    ],
+    "progressions": [
+      "Tempo heels-elevated goblet (3-2-1) with pause",
+      "Remove heel elevation and work toward full goblet squat",
+      "Cyclist squat (narrow stance, heels elevated)"
+    ]
+  },
+  "variations": [
+    "[Goblet Squat](goblet_squat.json)",
+    "[Box Goblet Squat](box_goblet_squat.json)",
+    "Cyclist goblet squat"
+  ],
+  "prescriptionHints": {
+    "load": "KB 12–24 kg or DB 25–50 lb—similar to regular goblet squat",
+    "reps": "8–12 for strength/hypertrophy; 12–15 for mobility work",
+    "time": "—",
+    "distance": "—",
+    "rpe": "6–8",
+    "notes": "Excellent for building ankle mobility and squat depth. Progress to flat-footed squats over time."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "knees",
+      "hips",
+      "ankles",
+      "lower back"
+    ],
+    "notes": "Ideal for limited ankle dorsiflexion. Heel elevation reduces calf flexibility demands while building squat strength."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

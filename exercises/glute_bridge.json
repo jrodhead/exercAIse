@@ -4,16 +4,74 @@
     "bodyweight"
   ],
   "tags": [
-    "core",
-    "press"
+    "glutes",
+    "hips",
+    "posterior chain",
+    "strength"
+  ],
+  "setup": [
+    "Lie on back with knees bent, feet flat on floor",
+    "Feet hip-width apart, heels 12-18 inches from glutes",
+    "Arms by sides for stability",
+    "Engage core and prepare glutes"
+  ],
+  "steps": [
+    "Squeeze glutes and drive hips up toward ceiling",
+    "Create straight line from knees to shoulders",
+    "Pause at top with glutes fully contracted",
+    "Lower hips with control to starting position",
+    "Maintain tension in glutes throughout"
   ],
   "cues": [
-    "Lie on your back, knees bent, feet flat on the floor",
-    "Press through your heels to lift hips up, squeezing glutes",
-    "Pause at the top, then lower slowly",
-    "Keep core engaged",
-    "Do not overarch your back",
-    "Squeeze glutes at the top"
+    "Drive through heels",
+    "Squeeze glutes at the top",
+    "Straight line knees to shoulders",
+    "Don't hyperextend the back",
+    "Control the descent"
   ],
-  "safety": "Stop if you feel pain in your lower back."
+  "mistakes": [
+    "Hyperextending lower back at top",
+    "Pushing through toes instead of heels",
+    "Not fully engaging glutes",
+    "Rushing through the movement",
+    "Feet too close or too far from glutes"
+  ],
+  "safety": "Avoid hyperextending back. Focus on glute contraction rather than height of lift.",
+  "scaling": {
+    "regressions": [
+      "Partial range glute bridge",
+      "Glute bridge hold (isometric)",
+      "Supported glute bridge"
+    ],
+    "progressions": [
+      "Single-leg glute bridge",
+      "Weighted glute bridge",
+      "Glute bridge march"
+    ]
+  },
+  "variations": [
+    "[Hip Thrust](hip_thrust.json)",
+    "[Single-leg Hip Thrust](single_leg_hip_thrust.json)",
+    "[Barbell Hip Thrust](barbell_hip_thrust.json)"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "10-20 for endurance, 8-15 for strength",
+    "time": "Hold for 2-5 seconds at top if desired",
+    "distance": "—",
+    "rpe": "6-7",
+    "notes": "Foundation movement for hip thrust progression"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "lower back",
+      "hips",
+      "knees"
+    ],
+    "notes": "Focus on glute engagement rather than back extension. Adjust foot position for comfort."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
 }

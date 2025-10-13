@@ -1,0 +1,77 @@
+{
+  "name": "Single-Arm Overhead Triceps Extension",
+  "equipment": [
+    "dumbbell"
+  ],
+  "tags": [
+    "triceps",
+    "arms",
+    "unilateral",
+    "isolation"
+  ],
+  "setup": [
+    "Stand or sit tall with one dumbbell",
+    "Hold dumbbell with working arm overhead",
+    "Non-working arm can assist with stability",
+    "Engage core and maintain upright posture"
+  ],
+  "steps": [
+    "Start with elbow flexed, dumbbell behind head",
+    "Extend elbow without letting it drift wide",
+    "Reach full extension with soft lockout",
+    "Control return to stretch position",
+    "Complete set, then switch arms"
+  ],
+  "cues": [
+    "Keep elbow pointing up",
+    "One arm works, other stabilizes",
+    "Control the stretch",
+    "Ribs down, core braced", 
+    "Switch sides each set"
+  ],
+  "mistakes": [
+    "Allowing elbow to drift outward",
+    "Compensating with torso lean",
+    "Using non-working arm to assist",
+    "Excessive arching of lower back",
+    "Rushing through stretch phase"
+  ],
+  "safety": "Start lighter than bilateral version. Keep elbow position stable throughout range.",
+  "scaling": {
+    "regressions": [
+      "Lighter dumbbell weight",
+      "Seated position for stability",
+      "Bilateral overhead extension"
+    ],
+    "progressions": [
+      "Heavier dumbbell", 
+      "Tempo emphasis (slow eccentric)",
+      "Pause at stretch position"
+    ]
+  },
+  "variations": [
+    "[Overhead Triceps Extension](overhead_triceps_extension.json)",
+    "[Overhead Dumbbell Triceps Extension](overhead_dumbbell_triceps_extension.json)",
+    "[Overhead Triceps Extension Lying](overhead_triceps_extension_lying.json)"
+  ],
+  "prescriptionHints": {
+    "load": "60-80% of bilateral weight",
+    "reps": "8-12 per arm",
+    "time": "—",
+    "distance": "—",
+    "rpe": "7-8",
+    "notes": "Unilateral version challenges stability more"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "elbows",
+      "shoulders",
+      "core"
+    ],
+    "notes": "Keep elbow stable and avoid compensatory movements."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "name": "Rack Carry",
+  "equipment": [
+    "kettlebells"
+  ],
+  "tags": [
+    "carry",
+    "core",
+    "shoulders",
+    "front-loaded"
+  ],
+  "setup": [
+    "Clean kettlebells to rack position at shoulders",
+    "Elbows down, bells resting on forearms/chest",
+    "Stand tall with core engaged",
+    "Clear walking path ahead"
+  ],
+  "steps": [
+    "Begin walking with controlled, short steps", 
+    "Keep kettlebells stable in rack position",
+    "Maintain upright torso throughout",
+    "Breathe steadily despite front loading",
+    "Complete distance/time, then safely lower bells"
+  ],
+  "cues": [
+    "Bells rest on body, not in hands",
+    "Elbows down and in",
+    "Chest tall, ribs down",
+    "Short controlled steps",
+    "Breathe behind the bells"
+  ],
+  "mistakes": [
+    "Supporting bells with grip instead of rack",
+    "Allowing elbows to flare wide",
+    "Leaning back to counterbalance front load",
+    "Taking long or rushed steps",
+    "Holding breath due to front loading"
+  ],
+  "safety": "Master kettlebell rack position before walking. Start light to adapt to front loading.",
+  "scaling": {
+    "regressions": [
+      "Lighter kettlebells",
+      "Static rack hold (isometric)",
+      "Single kettlebell rack carry"
+    ],
+    "progressions": [
+      "Heavier kettlebells", 
+      "Longer distances or time",
+      "Uneven rack carry (different weights)"
+    ]
+  },
+  "variations": [
+    "[Farmer Carry](farmer_carry.json)",
+    "[Suitcase Carry](suitcase_carry.json)",
+    "Front-loaded carry"
+  ],
+  "prescriptionHints": {
+    "load": "12-24 kg kettlebells typically",
+    "reps": "—",
+    "time": "20-45 seconds",
+    "distance": "20-50 meters", 
+    "rpe": "7-8",
+    "notes": "Front-loaded carry challenges posture and breathing"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "shoulders",
+      "core",
+      "wrists"
+    ],
+    "notes": "Proper rack position essential. Bells rest on body, not held by grip."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

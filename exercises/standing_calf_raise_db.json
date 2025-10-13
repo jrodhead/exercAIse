@@ -18,7 +18,11 @@
   "mistakes": ["Bouncing at bottom", "Ankles rolling outward/inward", "Short ROM partials", "Leaning forward excessively"],
   "safety": "Skip load increases if Achilles or plantar fascia irritated; emphasize slow eccentrics and moderate range.",
   "scaling": {"regressions": ["Bodyweight only", "Use wall/fingertip support", "Partial ROM pain-free"], "progressions": ["Add pause at bottom and top", "One-leg alternating", "Tempo 3-1-1"]},
-  "variations": ["Single-leg calf raise", "Seated calf raise (improvised)", "Isometric hold"],
+  "variations": [
+    "[Single-leg Calf Raise](single_leg_calf_raise.json)",
+    "Seated calf raise (improvised)",
+    "Isometric calf hold"
+  ],
   "prescriptionHints": {"load": "Bodyweight to 50+ lb per hand (progressive)", "reps": "8–20", "time": "—", "distance": "—", "rpe": "6–9", "notes": "Chase quality stretch + peak contraction; higher reps fine."},
   "joints": {"sensitiveJoints": ["ankles", "Achilles"], "notes": "Maintain controlled dorsiflexion; avoid forced end range if tender."},
   "media": {"video": "", "images": []}

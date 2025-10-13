@@ -1,0 +1,78 @@
+{
+  "name": "Suitcase Carry",
+  "equipment": [
+    "dumbbell",
+    "kettlebell"
+  ],
+  "tags": [
+    "carry",
+    "unilateral",
+    "core",
+    "anti-lateral flexion"
+  ],
+  "setup": [
+    "Hold single weight in one hand at side",
+    "Stand tall with opposite arm free",
+    "Engage core and pack shoulders",
+    "Clear walking path ahead"
+  ],
+  "steps": [
+    "Begin walking with controlled steps",
+    "Resist leaning toward or away from weight",
+    "Keep torso perfectly upright and square",
+    "Complete distance/time, then switch sides",
+    "Set weight down safely with hip hinge"
+  ],
+  "cues": [
+    "Fight the lean - stay perfectly upright",
+    "Opposite shoulder stays level", 
+    "Core braced against side pull",
+    "Crush the handle, soft elbow",
+    "Switch sides each set"
+  ],
+  "mistakes": [
+    "Leaning away from or toward the weight",
+    "Allowing opposite shoulder to hike up",
+    "Taking rushed or uncontrolled steps",
+    "Not switching sides equally",
+    "Dropping weight instead of hinging to set down"
+  ],
+  "safety": "Start lighter than farmer carry. Focus on perfect posture over heavy load.",
+  "scaling": {
+    "regressions": [
+      "Lighter single weight",
+      "Static suitcase hold (isometric)",
+      "Shorter walking distance"
+    ],
+    "progressions": [
+      "Heavier single weight",
+      "Longer distances or time",
+      "Offset carry (different weights each side)"
+    ]
+  },
+  "variations": [
+    "[Farmer Carry](farmer_carry.json)",
+    "[Rack Carry](rack_carry.json)",
+    "Offset carry"
+  ],
+  "prescriptionHints": {
+    "load": "15-50 lb single weight typically",
+    "reps": "—",
+    "time": "20-45s per side",
+    "distance": "20-50m per side",
+    "rpe": "7-8",
+    "notes": "Unilateral anti-lateral flexion challenge"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "lower back",
+      "shoulders",
+      "core"
+    ],
+    "notes": "Maintain perfect upright posture. Equal work both sides essential."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

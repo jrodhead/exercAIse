@@ -46,8 +46,8 @@
     ]
   },
   "variations": [
-    "Suitcase carry (one side only)",
-    "Rack carry (KBs in rack)",
+    "[Suitcase Carry](suitcase_carry.json)",
+    "[Rack Carry](rack_carry.json)",
     "Trap bar carry"
   ],
   "prescriptionHints": {

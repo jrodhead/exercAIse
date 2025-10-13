@@ -41,8 +41,8 @@
     ]
   },
   "variations": [
-    "Step jack",
-    "Seal jack",
+    "[Step Jack](step_jack.json)",
+    "Seal jack", 
     "Star jump (advanced)"
   ],
   "prescriptionHints": {

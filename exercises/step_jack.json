@@ -1,0 +1,74 @@
+{
+  "name": "Step Jack",
+  "equipment": [
+    "bodyweight"
+  ],
+  "tags": [
+    "conditioning",
+    "cardio",
+    "warm-up",
+    "low-impact"
+  ],
+  "setup": [
+    "Stand tall, feet together, arms at sides",
+    "Engage core and maintain upright posture",
+    "Clear space around you"
+  ],
+  "steps": [
+    "Step one foot out to side while raising arms overhead",
+    "Step foot back to center while lowering arms",
+    "Step other foot out to side while raising arms",
+    "Continue alternating sides in steady rhythm"
+  ],
+  "cues": [
+    "Step out, step in rhythm",
+    "Keep torso tall and centered",
+    "Arms smooth, don't slam", 
+    "Breathe steadily",
+    "Light on feet"
+  ],
+  "mistakes": [
+    "Leaning side to side with steps",
+    "Rushing the rhythm",
+    "Arms moving out of sync",
+    "Taking steps too wide",
+    "Poor posture during movement"
+  ],
+  "safety": "Low-impact alternative to jumping jacks. Good for joint-sensitive individuals.",
+  "scaling": {
+    "regressions": [
+      "Smaller step range",
+      "Arms only (march in place)",
+      "Slower tempo"
+    ],
+    "progressions": [
+      "Faster cadence", 
+      "Add light weights in hands",
+      "Progress to jumping jacks"
+    ]
+  },
+  "variations": [
+    "[Jumping Jacks](jumping_jacks.json)",
+    "Seal jack",
+    "Marching in place"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "—",
+    "time": "30-90 seconds",
+    "distance": "—",
+    "rpe": "4-6",
+    "notes": "Excellent low-impact warm-up or active recovery"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "ankles",
+      "knees"
+    ],
+    "notes": "Joint-friendly alternative when jumping is contraindicated."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "name": "Forward Lunge", 
+  "equipment": [
+    "bodyweight"
+  ],
+  "tags": [
+    "lunge",
+    "legs",
+    "unilateral",
+    "strength"
+  ],
+  "setup": [
+    "Stand tall with feet hip-width apart",
+    "Engage core and maintain upright posture",
+    "Hands on hips or at sides for balance",
+    "Look straight ahead"
+  ],
+  "steps": [
+    "Step forward with one leg into lunge position",
+    "Lower hips until both knees are at 90°",
+    "Keep front knee over ankle, back knee toward floor",
+    "Push through front heel to return to start",
+    "Complete reps, then switch legs"
+  ],
+  "cues": [
+    "Step out and down",
+    "Both knees bend to 90°",
+    "Front knee stays over ankle",
+    "Chest tall, core tight",
+    "Push through front heel to return"
+  ],
+  "mistakes": [
+    "Front knee traveling over toes",
+    "Leaning forward excessively",
+    "Taking too short a step",
+    "Pushing off back toe instead of front heel",
+    "Not lowering to adequate depth"
+  ],
+  "safety": "Control the descent. If knees hurt, reduce depth or try reverse lunge instead.",
+  "scaling": {
+    "regressions": [
+      "Partial range forward lunge",
+      "Assisted forward lunge (hold support)",
+      "Static lunge position hold"
+    ],
+    "progressions": [
+      "Weighted forward lunge (dumbbells)",
+      "Walking lunge",
+      "Jumping lunge"
+    ]
+  },
+  "variations": [
+    "[Reverse Lunge](reverse_lunge.json)",
+    "[Walking Lunge](walking_lunge.json)",
+    "[Goblet Reverse Lunge](goblet_reverse_lunge.json)"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight to start, add dumbbells as appropriate",
+    "reps": "8-12 per leg",
+    "time": "—",
+    "distance": "—", 
+    "rpe": "6-7",
+    "notes": "Master bodyweight before adding load"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "knees",
+      "ankles",
+      "hips"
+    ],
+    "notes": "Keep front knee aligned over ankle. Control descent to protect knees."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

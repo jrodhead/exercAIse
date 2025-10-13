@@ -18,8 +18,9 @@
     "Focus on a full range of motion"
   ],
   "variations": [
-    "Seated Alternating Curl",
-    "Barbell Curl",
-    "Hammer Curl"
+    "[Alternating Dumbbell Biceps Curl](alternating_dumbbell_biceps_curl.json)",
+    "[Hammer Curl](hammer_curl.json)",
+    "[Seated Dumbbell Curl](seated_dumbbell_curl.json)",
+    "[Barbell Curl](barbell_curl.json)"
   ]
 }

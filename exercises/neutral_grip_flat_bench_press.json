@@ -8,7 +8,11 @@
   "mistakes": ["Elbows flaring wide", "Bouncing off chest", "Overarching low back"],
   "safety": "Neutral grip reduces shoulder stress; keep wrists neutral and spot heavy loads.",
   "scaling": {"regressions": ["Lighter load", "Floor press"], "progressions": ["Tempo 3s lower", "Pause 1–2s bottom"]},
-  "variations": ["Single-arm", "Incline", "Swiss/neutral bar press"],
+  "variations": [
+    "[Single-Arm Dumbbell Bench Press](single_arm_dumbbell_bench_press.json)",
+    "[Incline Dumbbell Bench Press](incline_dumbbell_bench_press.json)",
+    "Swiss/neutral bar press"
+  ],
   "prescriptionHints": {"load": "Moderate DBs", "reps": "6–12", "time": "—", "distance": "—", "rpe": "6–9", "notes": "Stop 1–2 reps shy early block."},
   "joints": {"sensitiveJoints": ["shoulders", "wrists"], "notes": "Maintain scapular retraction + slight arch only."},
   "media": {"video": "", "images": []}

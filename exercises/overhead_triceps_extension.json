@@ -8,7 +8,13 @@
   "mistakes": ["Elbows drifting wide", "Lumbar overextension", "Dropping head forward"],
   "safety": "Keep ribs stacked; reduce load if shoulder or elbow discomfort.",
   "scaling": {"regressions": ["Single DB lighter", "Band overhead"], "progressions": ["Slow eccentric 3s", "Pause stretch 1s"]},
-  "variations": ["Single-arm", "Incline bench support", "Rope cable"],
+  "variations": [
+    "[Overhead Dumbbell Triceps Extension](overhead_dumbbell_triceps_extension.json)",
+    "[Overhead Triceps Extension Lying](overhead_triceps_extension_lying.json)",
+    "[Single-arm Overhead Triceps Extension](single_arm_overhead_triceps_extension.json)",
+    "Incline bench support",
+    "Rope cable"
+  ],
   "prescriptionHints": {"load": "Light–moderate", "reps": "8–15", "time": "—", "distance": "—", "rpe": "6–8", "notes": "Protect shoulder by keeping elbows slightly forward."},
   "joints": {"sensitiveJoints": ["elbows", "shoulders", "neck"], "notes": "Avoid excessive cervical extension."},
   "media": {"video": "", "images": []}

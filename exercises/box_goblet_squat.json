@@ -1,0 +1,81 @@
+{
+  "name": "Box Goblet Squat",
+  "equipment": [
+    "dumbbell",
+    "kettlebell",
+    "box"
+  ],
+  "tags": [
+    "squat",
+    "legs",
+    "strength",
+    "regression"
+  ],
+  "setup": [
+    "Position box or bench at desired depth (usually knee-height or slightly lower)",
+    "Feet shoulder-width with slight toe-out (5–15°)",
+    "Hold bell at chest (horns for KB or one end of DB), forearms vertical",
+    "Brace lightly and keep ribs stacked over pelvis"
+  ],
+  "steps": [
+    "Inhale, sit hips back slightly and bend knees to descend",
+    "Track knees over mid-foot; keep torso tall and elbows pointing down",
+    "Lower until hips touch box/bench lightly—don't collapse onto it",
+    "Pause briefly on contact, maintaining tension",
+    "Exhale, drive through mid-foot/heels to stand tall",
+    "Finish with glutes squeezed softly, ribs down"
+  ],
+  "cues": [
+    "Elbows down; bell tight to chest",
+    "Knees track over toes",
+    "Chest tall, ribs stacked",
+    "Touch and go—don't sit down",
+    "Control the descent, drive up strong"
+  ],
+  "mistakes": [
+    "Collapsing or sitting fully onto the box",
+    "Using box for momentum instead of depth reference",
+    "Heels lifting or weight shifting to toes",
+    "Knees collapsing inward (valgus)",
+    "Elbows flaring away from torso"
+  ],
+  "safety": "Box provides depth reference and confidence for those with knee/hip mobility issues. Don't use the box as a crutch—maintain control throughout the movement.",
+  "scaling": {
+    "regressions": [
+      "Higher box for shorter range of motion",
+      "Heels-elevated box goblet squat",
+      "Counterbalance squat to box"
+    ],
+    "progressions": [
+      "Remove box and perform full goblet squat",
+      "Tempo box goblet (3-2-1) with pause",
+      "Single-arm goblet squat to box"
+    ]
+  },
+  "variations": [
+    "[Goblet Squat](goblet_squat.json)",
+    "[Heels-elevated Goblet Squat](heels_elevated_goblet_squat.json)",
+    "Single-arm goblet squat to box"
+  ],
+  "prescriptionHints": {
+    "load": "KB 12–20 kg or DB 25–45 lb—lighter than regular goblet squat",
+    "reps": "8–15 for building confidence and range of motion",
+    "time": "—",
+    "distance": "—",
+    "rpe": "5–7",
+    "notes": "Focus on consistency and control rather than heavy loading. Box height should allow comfortable depth."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "knees",
+      "hips",
+      "ankles",
+      "lower back"
+    ],
+    "notes": "Ideal for those with limited ankle/hip mobility or knee issues. Box provides confidence and depth reference."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

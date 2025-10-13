@@ -1,0 +1,78 @@
+{
+  "name": "Wide-grip Push-ups",
+  "equipment": [
+    "bodyweight"
+  ],
+  "tags": [
+    "push-up",
+    "chest",
+    "shoulders",
+    "upper body",
+    "strength"
+  ],
+  "setup": [
+    "Start in push-up position with hands placed wider than shoulders",
+    "Hands positioned 1.5x shoulder width apart",
+    "Body in straight line from head to heels", 
+    "Engage core and glutes"
+  ],
+  "steps": [
+    "Lower chest toward floor with controlled descent",
+    "Keep elbows at 45-degree angle to torso",
+    "Descend until chest nearly touches floor",
+    "Pause briefly at bottom position",
+    "Press through palms to return to starting position"
+  ],
+  "cues": [
+    "Wide hand placement, stable base",
+    "Chest leads the movement down",
+    "Elbows track at 45 degrees", 
+    "Full range through chest",
+    "Press the floor away"
+  ],
+  "mistakes": [
+    "Hands too wide causing shoulder strain",
+    "Elbows flaring to 90 degrees",
+    "Partial range of motion",
+    "Sagging hips or piking up",
+    "Head dropping or craning neck"
+  ],
+  "safety": "If shoulders feel strained, narrow hand position. Avoid excessive elbow flare beyond 45 degrees.",
+  "scaling": {
+    "regressions": [
+      "Incline wide-grip push-ups (hands on bench)",
+      "Knee wide-grip push-ups",
+      "Wall wide-grip push-ups"
+    ],
+    "progressions": [
+      "Tempo wide-grip push-ups (3-1-3)",
+      "Wide-grip push-up with pause",
+      "Decline wide-grip push-ups"
+    ]
+  },
+  "variations": [
+    "[Push-ups](push_ups.json)",
+    "[Diamond Push-ups](diamond_push_ups.json)",
+    "[Staggered Push-ups](staggered_push_ups.json)"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "5-15 depending on strength level",
+    "time": "—",
+    "distance": "—",
+    "rpe": "6-8", 
+    "notes": "Emphasizes chest more than standard push-ups"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "shoulders",
+      "wrists",
+      "elbows"
+    ],
+    "notes": "Monitor shoulder comfort; adjust hand width as needed. Keep wrists neutral."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

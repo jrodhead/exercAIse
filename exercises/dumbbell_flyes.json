@@ -50,7 +50,7 @@
   },
   "variations": [
     "Cable flyes",
-    "Incline flyes",
+    "[Incline Dumbbell Flyes](incline_dumbbell_flyes.json)",
     "Decline flyes"
   ],
   "prescriptionHints": {

@@ -1,0 +1,76 @@
+{
+  "name": "Barbell Curl",
+  "equipment": [
+    "barbell"
+  ],
+  "tags": [
+    "biceps",
+    "arms", 
+    "strength",
+    "bilateral"
+  ],
+  "setup": [
+    "Stand with feet hip-width apart",
+    "Hold barbell with underhand grip, hands shoulder-width",
+    "Arms fully extended, barbell against thighs",
+    "Engage core and maintain upright posture"
+  ],
+  "steps": [
+    "Curl barbell up by flexing both biceps",
+    "Keep elbows pinned to sides throughout",
+    "Lift until biceps are fully contracted",
+    "Squeeze briefly at top position",
+    "Lower barbell with control to start"
+  ],
+  "cues": [
+    "Elbows stay glued to sides",
+    "Curl with biceps, not momentum", 
+    "Full contraction at top",
+    "Control the negative slowly",
+    "Stand tall, core tight"
+  ],
+  "mistakes": [
+    "Swinging body to help lift weight",
+    "Elbows moving forward during curl",
+    "Partial range of motion", 
+    "Using too much weight",
+    "Dropping the weight quickly"
+  ],
+  "safety": "Start light to master form. Avoid using body momentum to lift heavier weight.",
+  "scaling": {
+    "regressions": [
+      "Lighter barbell or curl bar",
+      "EZ curl bar for wrist comfort",
+      "Wall-supported barbell curl"
+    ],
+    "progressions": [
+      "Heavier barbell",
+      "21s protocol (7+7+7 reps)",
+      "Preacher curl variation"
+    ]
+  },
+  "variations": [
+    "[Biceps Curl](biceps_curl.json)",
+    "[Alternating Dumbbell Biceps Curl](alternating_dumbbell_biceps_curl.json)",
+    "[Seated Dumbbell Curl](seated_dumbbell_curl.json)"
+  ],
+  "prescriptionHints": {
+    "load": "Start with 45-65 lb, progress gradually",
+    "reps": "8-12 for strength, 10-15 for hypertrophy",
+    "time": "—",
+    "distance": "—", 
+    "rpe": "7-8",
+    "notes": "Classic bilateral bicep builder"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "elbows",
+      "wrists"
+    ],
+    "notes": "Keep wrists neutral. Consider EZ curl bar if straight bar causes wrist discomfort."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

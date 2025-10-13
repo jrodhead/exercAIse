@@ -15,7 +15,7 @@
   "mistakes": ["Swinging body", "Shrugging shoulders", "Wrist flexion/extension"],
   "safety": "Choose load that keeps trunk still; stop if anterior elbow pain.",
   "scaling": {"regressions": ["Seated", "One arm at a time"], "progressions": ["Slow eccentric 3–4s", "Pause mid-range"]},
-  "variations": ["Cross-body hammer", "Alternating", "Rope cable hammer"],
+  "variations": ["[Biceps Curl](biceps_curl.json)", "[Alternating Dumbbell Biceps Curl](alternating_dumbbell_biceps_curl.json)", "Cross-body hammer", "Rope cable hammer"],
   "prescriptionHints": {"load": "Light–moderate", "reps": "8–15", "time": "—", "distance": "—", "rpe": "6–8", "notes": "Keep 1–2 reps in reserve early block."},
   "joints": {"sensitiveJoints": ["elbows", "wrists"], "notes": "Maintain neutral wrist to unload forearm tendons."},
   "media": {"video": "", "images": []}

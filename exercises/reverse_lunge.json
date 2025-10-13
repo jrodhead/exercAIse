@@ -1,25 +1,78 @@
 {
   "name": "Reverse Lunge (Alternating)",
   "equipment": [
-    "dumbbell"
+    "bodyweight",
+    "dumbbells"
   ],
   "tags": [
-    "conditioning",
-    "lunge"
+    "lunge",
+    "legs",
+    "unilateral", 
+    "strength"
+  ],
+  "setup": [
+    "Stand tall with feet hip-width apart",
+    "Hold dumbbells at sides or keep hands on hips",
+    "Engage core and maintain upright posture",
+    "Look straight ahead"
+  ],
+  "steps": [
+    "Step back with one leg into lunge position",
+    "Lower hips until both knees are at 90°",
+    "Keep front knee over ankle, back knee toward floor",
+    "Push through front heel to return to start",
+    "Alternate legs each rep"
   ],
   "cues": [
-    "Stand tall with dumbbells at your sides (or bodyweight)",
-    "Step back with one leg, lowering into a lunge",
-    "Keep your front knee over your ankle and torso upright",
-    "Push through your front heel to return to standing",
-    "Alternate legs for each rep",
-    "Keep movements controlled, avoid leaning forward",
-    "Do not let your front knee cave inward",
-    "Move slowly and with control"
+    "Step back and down", 
+    "Both knees bend to 90°",
+    "Front knee stays over ankle",
+    "Chest tall, core tight", 
+    "Push through front heel to return"
   ],
+  "mistakes": [
+    "Front knee traveling over toes",
+    "Leaning forward excessively",
+    "Taking too short a step back",
+    "Not lowering to adequate depth",
+    "Pushing off back toe instead of front heel"
+  ],
+  "safety": "Control the descent. Generally easier on knees than forward lunge. Stop if any knee pain.",
+  "scaling": {
+    "regressions": [
+      "Bodyweight only (no dumbbells)",
+      "Partial range reverse lunge",
+      "Assisted reverse lunge (hold support)"
+    ],
+    "progressions": [
+      "Heavier dumbbells",
+      "Deficit reverse lunge (front foot elevated)",
+      "Reverse lunge to knee drive"
+    ]
+  },
   "variations": [
-    "Forward Lunge",
-    "Walking Lunge",
-    "Goblet Lunge"
-  ]
+    "[Forward Lunge](forward_lunge.json)",
+    "[Walking Lunge](walking_lunge.json)",
+    "[Goblet Reverse Lunge](goblet_reverse_lunge.json)"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight or 15-35 lb dumbbells",
+    "reps": "8-12 per leg (16-24 total alternating)",
+    "time": "—",
+    "distance": "—",
+    "rpe": "6-7", 
+    "notes": "Reverse motion often easier on knees than forward lunge"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "knees",
+      "ankles",
+      "hips"
+    ],
+    "notes": "Keep front knee aligned over ankle. Generally knee-friendlier than forward lunge."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
 }

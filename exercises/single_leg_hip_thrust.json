@@ -1,0 +1,78 @@
+{
+  "name": "Single-leg Hip Thrust",
+  "equipment": [
+    "bench"
+  ],
+  "tags": [
+    "glutes",
+    "unilateral",
+    "hips",
+    "posterior chain",
+    "strength"
+  ],
+  "setup": [
+    "Sit with upper back against bench, feet flat on floor",
+    "Lift one foot off ground, keep knee bent",
+    "Working leg foot positioned for optimal hip extension",
+    "Hands on bench for stability"
+  ],
+  "steps": [
+    "Drive through heel of working leg to thrust hips up",
+    "Squeeze glute of working leg hard at top",
+    "Create straight line from knee to shoulder",
+    "Lower hips with control to starting position",
+    "Complete set, then switch legs"
+  ],
+  "cues": [
+    "One leg drives, other leg relaxed",
+    "Hard glute squeeze at top",
+    "Control with single leg",
+    "Keep hips level (don't tilt)",
+    "Drive through heel"
+  ],
+  "mistakes": [
+    "Allowing hips to tilt or rotate",
+    "Using non-working leg to assist",
+    "Incomplete range of motion",
+    "Hyperextending lower back",
+    "Poor bench positioning"
+  ],
+  "safety": "Start with bodyweight before adding load. Ensure good control before progressing.",
+  "scaling": {
+    "regressions": [
+      "[Single-leg Glute Bridge](single_leg_glute_bridge.json)",
+      "Partial range single-leg hip thrust",
+      "Assisted single-leg hip thrust"
+    ],
+    "progressions": [
+      "Weighted single-leg hip thrust",
+      "Pause single-leg hip thrust",
+      "Deficit single-leg hip thrust"
+    ]
+  },
+  "variations": [
+    "[Hip Thrust](hip_thrust.json)",
+    "[Glute Bridge](glute_bridge.json)",
+    "[Barbell Hip Thrust](barbell_hip_thrust.json)"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight to start, add weight as appropriate",
+    "reps": "6-12 per leg",
+    "time": "—",
+    "distance": "—",
+    "rpe": "7-8",
+    "notes": "Challenging unilateral variation - start conservative"
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "lower back",
+      "hips",
+      "knees"
+    ],
+    "notes": "Requires good hip stability. Keep hips level throughout movement."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

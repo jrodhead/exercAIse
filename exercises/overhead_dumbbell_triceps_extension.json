@@ -20,8 +20,10 @@
     "Avoid flaring your elbows outward"
   ],
   "variations": [
-    "Seated or standing position",
+    "[Overhead Triceps Extension](overhead_triceps_extension.json)",
+    "[Overhead Triceps Extension Lying](overhead_triceps_extension_lying.json)",
     "Single-arm triceps extension",
+    "Seated or standing position",
     "Use a resistance band or cable"
   ]
 }
