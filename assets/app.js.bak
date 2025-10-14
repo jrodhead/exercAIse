@@ -1,0 +1,2348 @@
+/*
+  exercAIse frontend: fetch latest workout, render, and collect performed values.
+  - Legacy-friendly (old iPad Safari): ES5 syntax, no fetch/Promise, use XHR.
+  - Markdown rendering: minimal; display raw MD and basic heading/emphasis.
+*/
+(function () {
+  var statusEl = document.getElementById('status');
+  var workoutMetaEl = document.getElementById('workout-meta');
+  var workoutTitleEl = document.getElementById('workout-title');
+  var openOnGitHubEl = document.getElementById('open-on-github');
+  var reloadBtn = document.getElementById('reload-btn');
+  var backBtn = document.getElementById('back-btn');
+  var workoutSection = document.getElementById('workout-section');
+  var workoutContent = document.getElementById('workout-content');
+  var readmeSection = document.getElementById('readme-section');
+  var readmeContent = document.getElementById('readme-content');
+  var logsSection = document.getElementById('logs-section');
+  var generateSection = document.getElementById('generate-section');
+  var genForm = document.getElementById('generate-form');
+  var genGoals = document.getElementById('gen-goals');
+  var genPain = document.getElementById('gen-pain');
+  var genEquipment = document.getElementById('gen-equipment');
+  var genInstr = document.getElementById('gen-instructions');
+  var genSubmit = document.getElementById('gen-submit');
+  var genClear = document.getElementById('gen-clear');
+  var genJSON = document.getElementById('gen-json');
+  var genLoadJSON = document.getElementById('gen-load-json');
+  var backToIndex = document.getElementById('back-to-index');
+  var logsList = document.getElementById('logs-list');
+  var formSection = document.getElementById('form-section');
+  var exerciseFormsEl = document.getElementById('exercise-forms');
+  var saveBtn = document.getElementById('save-local');
+  var copyBtn = document.getElementById('copy-json');
+  var downloadBtn = document.getElementById('download-json');
+  var issueBtn = document.getElementById('submit-issue');
+  var clearBtn = document.getElementById('clear-form');
+  var openIssueLink = document.getElementById('open-issue');
+  var copyWrapper = document.getElementById('copy-target-wrapper');
+  var copyTarget = document.getElementById('copy-target');
+  var STORAGE_KEY_PREFIX = 'exercAIse-perf-';
+  var latestKey = 'exercAIse-latest-file';
+  var lastReadmeText = '';
+  // Unit constants
+  var METERS_PER_MILE = 1609.34;
+
+  document.getElementById('year').innerHTML = String(new Date().getFullYear());
+  // Simple UI feature flag: hide Kai generation by default
+  var kaiUiEnabled = (function(){
+    try {
+      var params = window.location.search || '';
+      if (/([?&])enableKai=1\b/.test(params)) return true;
+      var ls = localStorage.getItem('features.kaiUi');
+      if (ls === '1' || ls === 'true') return true;
+    } catch (e) {}
+    return false;
+  })();
+  if (!kaiUiEnabled) {
+    // Hide Kai generation fields for a cleaner MVP experience
+    function hideElById(id) {
+      try {
+        var el = document.getElementById(id);
+        if (el) { el.style.display = 'none'; el.setAttribute('aria-hidden','true'); }
+      } catch (e) {}
+    }
+    function hideLabelFor(id) {
+      try {
+        var lbl = document.querySelector('label[for="' + id + '"]');
+        if (lbl) { lbl.style.display = 'none'; lbl.setAttribute('aria-hidden','true'); }
+      } catch (e) {}
+    }
+    hideElById('gen-goals'); hideLabelFor('gen-goals');
+    hideElById('gen-pain'); hideLabelFor('gen-pain');
+    hideElById('gen-equipment'); hideLabelFor('gen-equipment');
+    hideElById('gen-instructions'); hideLabelFor('gen-instructions');
+    if (genSubmit) { genSubmit.style.display = 'none'; }
+    if (genClear) { genClear.style.display = 'none'; }
+  }
+  reloadBtn.onclick = function () { load(); };
+  if (backToIndex) {
+    backToIndex.onclick = function (e) {
+      if (e && e.preventDefault) e.preventDefault();
+      // Replace URL to index and show index view without full reload
+      if (window.history && window.history.replaceState) {
+        try { window.history.replaceState({ view: 'index' }, '', 'index.html'); } catch (err) {}
+      }
+      showIndexView();
+      return false;
+    };
+  }
+
+  function setVisibility(el, visible) {
+    if (!el) return;
+    el.style.display = visible ? '' : 'none';
+    if (visible) { el.removeAttribute('aria-hidden'); }
+    else { el.setAttribute('aria-hidden', 'true'); }
+  }
+
+  function showIndexView() {
+    // Restore scroll
+    var y = 0;
+    try { y = parseInt(sessionStorage.getItem('indexScrollY') || '0', 10) || 0; } catch (e) {}
+    setVisibility(readmeSection, false);
+    setVisibility(logsSection, false);
+    setVisibility(generateSection, true);
+    setVisibility(workoutSection, false);
+    setVisibility(formSection, false);
+    setVisibility(workoutMetaEl, false);
+    status('');
+    try { window.scrollTo(0, y); } catch (e) {}
+  }
+  if (backBtn) backBtn.onclick = function () {
+    // Return to index by navigating to the base page without query params
+    try { window.history.pushState({}, '', 'index.html'); } catch (e) {}
+    // Show index sections, hide session
+    if (readmeSection) readmeSection.style.display = 'none';
+    if (logsSection) logsSection.style.display = 'none';
+    if (generateSection) generateSection.style.display = 'block';
+    workoutMetaEl.style.display = 'none';
+    workoutSection.style.display = 'none';
+    formSection.style.display = 'none';
+    // Return to simple home view
+    handleGenerateButtons();
+  };
+
+  function xhrGet(path, cb) {
+    try {
+      var req = new XMLHttpRequest();
+      req.open('GET', path, true);
+      req.onreadystatechange = function () {
+        if (req.readyState === 4) {
+          if (req.status >= 200 && req.status < 300) cb(null, req.responseText);
+          else cb(new Error('HTTP ' + req.status + ' for ' + path));
+        }
+      };
+      req.send();
+    } catch (e) { cb(e); }
+  }
+
+  function xhrPostJSON(path, payload, cb) {
+    try {
+      var req = new XMLHttpRequest();
+      req.open('POST', path, true);
+      req.setRequestHeader('Content-Type', 'application/json');
+      req.onreadystatechange = function () {
+        if (req.readyState === 4) {
+          if (req.status >= 200 && req.status < 300) cb(null, req.responseText);
+          else cb(new Error('HTTP ' + req.status + ' for ' + path));
+        }
+      };
+      req.send(JSON.stringify(payload || {}));
+    } catch (e) { cb(e); }
+  }
+
+  // Parse README.md to find workout links; assume they are markdown links pointing to workouts/*.md or *.json
+  function parseReadmeForLatest(contents) {
+    var lines = contents.split(/\r?\n/);
+    var workoutLinks = [];
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i];
+      // Match markdown link to workouts/*.(md|json)
+      var match = line.match(/\[(.*?)\]\((workouts\/[\w\-]+\.(?:md|json))\)/);
+      if (match) {
+        workoutLinks.push({ title: match[1], path: match[2] });
+      }
+    }
+    // README is in descending date order per project rules; take the first link.
+    return workoutLinks.length ? workoutLinks[0] : null;
+  }
+
+  function decorateReadmeWithLogLinks(md) {
+  // Render README as-is; workout title links open the session view.
+  // Prefer .json links if a corresponding JSON is referenced alongside.
+  var updated = md.replace(/\((workouts\/[\w\-]+)\.md\)/g, '($1.json)');
+  var html = renderMarkdownBasic(updated);
+  return html;
+  }
+
+  function renderMarkdownBasic(md) {
+  // Very basic and safe-ish markdown to HTML; no external libs (old iPad friendly).
+  // We only handle headings (#, ##, ###), bold/italic, lists, code fences as pre, and links.
+  // Hide embedded machine JSON (session-structure) blocks from display but keep in source for parsing elsewhere.
+  var mdForDisplay = md.replace(/```json[^\n]*session-structure[^\n]*\n([\s\S]*?)\n```/gi, '');
+  var html = mdForDisplay
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+    // code fences ``` -> <pre>
+  html = html.replace(/```([\s\S]*?)```/g, function (_, code) {
+      return '<pre>' + code.replace(/\n/g, '\n') + '</pre>';
+    });
+
+    // headings
+    html = html.replace(/^###\s+(.*)$/gm, '<h3>$1</h3>')
+               .replace(/^##\s+(.*)$/gm, '<h2>$1</h2>')
+               .replace(/^#\s+(.*)$/gm, '<h1>$1</h1>');
+
+    // bold and italic
+    html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+               .replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+    // Helper to compute repo base path (e.g., '/exercAIse/') for GitHub Pages
+    function repoBasePath() {
+      try {
+        var p = window.location && window.location.pathname || '';
+        var idx = p.indexOf('/exercAIse/');
+        if (idx !== -1) return p.slice(0, idx + '/exercAIse/'.length);
+      } catch (e) {}
+      return './';
+    }
+    // links [text](url) — external links open in new tab; rewrite exercise links for Pages base
+    html = html.replace(/\[(.*?)\]\((.*?)\)/g, function(_, text, url) {
+      var isExternal = /^https?:/i.test(url);
+      var finalUrl = url;
+      // Normalize exercise links to absolute within repo base
+      var m = String(url || '').match(/(?:^|\/)\.\.\/(?:exercises\/.*)|(?:^|\/)\.\/(?:exercises\/.*)|(?:^|\/)exercises\/[\w\-]+\.(?:md|json)$/);
+      // Simpler: extract trailing `exercises/...` segment if present
+      var seg = String(url || '').match(/(exercises\/[\w\-]+\.(?:md|json))$/);
+      if (seg && seg[1]) {
+        var base = repoBasePath();
+        // Ensure single slash join
+        finalUrl = base.replace(/\/?$/, '/') + seg[1];
+        // Collapse duplicate slashes
+        finalUrl = finalUrl.replace(/([^:])\/+/g, function (m0, p1) { return p1 + '/'; });
+      }
+      var attrs = isExternal ? ' target="_blank" rel="noopener"' : '';
+      return '<a href="' + finalUrl + '"' + attrs + '>' + text + '</a>';
+    });
+
+    // unordered lists
+    // Convert blocks of lines starting with - or * into <ul><li>
+    html = html.replace(/(?:^|\n)([-*] .*(?:\n[-*] .*)*)/g, function (block) {
+      var items = block.replace(/^[-*] /gm, '').trim().split(/\n/);
+      if (!items[0] || items.length === 0) return block;
+      var lis = '';
+      for (var i = 0; i < items.length; i++) {
+        lis += '<li>' + items[i] + '</li>';
+      }
+      return '\n<ul>' + lis + '</ul>';
+    });
+
+    // paragraphs: wrap isolated lines in <p>
+    var lines = html.split(/\n{2,}/);
+    for (var j = 0; j < lines.length; j++) {
+      var part = lines[j];
+      if (!/^\s*<(h\d|ul|pre)/.test(part)) {
+        lines[j] = '<p>' + part + '</p>';
+      }
+    }
+    return lines.join('\n');
+  }
+
+  // Import session parser utilities from module
+  var slugify = window.ExercAIse.SessionParser.slugify;
+  var parseHMSToSeconds = window.ExercAIse.SessionParser.parseHMSToSeconds;
+  var secondsToHHMMSS = window.ExercAIse.SessionParser.secondsToHHMMSS;
+  var extractExercisesFromMarkdown = window.ExercAIse.SessionParser.extractExercisesFromMarkdown;
+  var parseMarkdownPrescriptions = window.ExercAIse.SessionParser.parseMarkdownPrescriptions;
+  var extractExercisesFromJSON = window.ExercAIse.SessionParser.extractExercisesFromJSON;
+  var parseJSONPrescriptions = window.ExercAIse.SessionParser.parseJSONPrescriptions;
+
+  // Import Kai integration utilities from module (will be initialized after DOM elements are ready)
+  var KaiIntegration = window.ExercAIse.KaiIntegration;
+  var linkValidation = KaiIntegration.linkValidation;
+
+  function loadSaved(filePath) {
+    var key = STORAGE_KEY_PREFIX + filePath;
+    try {
+      var raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function saveLocal(filePath, data) {
+    var key = STORAGE_KEY_PREFIX + filePath;
+    try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) {}
+    try { localStorage.setItem(latestKey, filePath); } catch (e) {}
+  }
+
+  function buildForm(filePath, raw, isJSON) {
+    var exercises = isJSON ? extractExercisesFromJSON(raw) : extractExercisesFromMarkdown(raw);
+    var prescriptions = isJSON ? parseJSONPrescriptions(raw) : parseMarkdownPrescriptions(raw);
+    // We now inject exercise forms inline under each exercise link within workoutContent.
+    if (exerciseFormsEl) exerciseFormsEl.innerHTML = '';
+
+  var saved = loadSaved(filePath) || { file: filePath, updatedAt: new Date().toISOString(), exercises: {} };
+
+    // Document-level helpers for fallback parsing (e.g., distance in title "4 Miles")
+    function getFirstHeadingText(tagName) {
+      if (!workoutContent) return '';
+      var h = workoutContent.querySelector(tagName);
+      return h ? (h.textContent || '').trim() : '';
+    }
+    var docH1Title = getFirstHeadingText('h1');
+    var fullDocText = workoutContent ? ((workoutContent.textContent || workoutContent.innerText) || '') : '';
+    // Heuristic: detect suggested rounds/sets from headings like "3 Rounds" or "4 sets"
+    function detectRoundsHint(scopeText) {
+      var t = String(scopeText || '');
+      var m = t.match(/(\d+)\s*(?:x|×)?\s*rounds?/i);
+      if (m) return parseInt(m[1], 10) || null;
+      m = t.match(/(\d+)\s*sets?/i);
+      if (m) return parseInt(m[1], 10) || null;
+      return null;
+    }
+    var docRoundsHint = detectRoundsHint(fullDocText);
+
+  function createExerciseCard(title, presetRows, savedRows, headerHTML, opts) {
+      var options = opts || {};
+      var isReadOnly = !!options.readOnly;
+      var exKey = slugify(title);
+  var card = document.createElement('div');
+  card.className = 'exercise-card compact' + (isReadOnly ? ' readonly' : '');
+      card.setAttribute('data-exkey', exKey);
+      card.setAttribute('data-name', title);
+
+  // Optional header area to include the original exercise text (name + notes) inside the card
+  if (headerHTML) {
+        var header = document.createElement('div');
+        header.className = 'exercise-header';
+        header.innerHTML = headerHTML;
+        
+        // Extract and display notes from metadata if available
+        try {
+          var metaElement = header.querySelector('[data-exmeta]');
+          if (metaElement) {
+            var metaRaw = metaElement.getAttribute('data-exmeta') || '';
+            var metadata = metaRaw ? JSON.parse(metaRaw) : null;
+            if (metadata && metadata.notes) {
+              var notesDiv = document.createElement('div');
+              notesDiv.className = 'exercise-notes';
+              notesDiv.textContent = metadata.notes;
+              header.appendChild(notesDiv);
+            }
+          }
+        } catch (e) {
+          // Ignore JSON parse errors
+        }
+        
+        card.appendChild(header);
+      }
+
+  // In read-only mode (warm-up/mobility/recovery), don't render logging inputs
+      var setsWrap = null;
+      var addBtn = null;
+      if (!isReadOnly) {
+        setsWrap = document.createElement('div');
+        setsWrap.className = 'exercise-sets';
+        card.appendChild(setsWrap);
+
+        // Move the Add set button after the sets
+        addBtn = document.createElement('button');
+        addBtn.className = 'secondary';
+        addBtn.type = 'button';
+        addBtn.appendChild(document.createTextNode('Add set'));
+        card.appendChild(addBtn);
+      }
+
+      function updateSetLabelsLocal() {
+        if (isReadOnly) return;
+        var rows = setsWrap.getElementsByClassName('set-row');
+        for (var i = 0; i < rows.length; i++) {
+          var lbl = rows[i].getElementsByClassName('set-label')[0];
+          if (lbl) lbl.textContent = 'Set ' + (i + 1);
+        }
+      }
+
+  function pickFieldsFromRows(rows, titleForHeuristic, explicitLogType) {
+        // Determine which inputs to show based on preset/saved row keys
+  var hasHold = false, hasTime = false, hasDist = false, hasWeight = false, hasReps = false;
+        for (var i = 0; i < rows.length; i++) {
+          var rr = rows[i] || {};
+          if (rr.holdSeconds != null) hasHold = true;
+          if (rr.timeSeconds != null) hasTime = true;
+    if (rr.distanceMeters != null || rr.distanceMiles != null) hasDist = true;
+    if (rr.weight != null) hasWeight = true;
+    if (rr.reps != null) hasReps = true;
+        }
+  if (explicitLogType === 'mobility' || explicitLogType === 'stretch') return ['holdSeconds', 'rpe'];
+  if (explicitLogType === 'endurance') return ['distanceMiles', 'timeSeconds', 'rpe'];
+  if (explicitLogType === 'carry') return ['weight', 'multiplier', 'timeSeconds', 'rpe'];
+  if (explicitLogType === 'strength') return ['weight', 'multiplier', 'reps', 'rpe'];
+  // Ensure reps are not hidden when both weight & reps are prescribed, even if time is also present
+  if (hasReps && hasWeight && hasTime) return ['weight', 'multiplier', 'reps', 'timeSeconds', 'rpe'];
+  if (hasReps && hasWeight) return ['weight', 'multiplier', 'reps', 'rpe'];
+  if (hasHold) return ['holdSeconds', 'rpe'];
+  var t = String(titleForHeuristic || '').toLowerCase();
+  var isEndurance = /\b(run|jog|walk|tempo|quality run|easy run|bike|cycle|ride|rower|rowing|erg|swim)\b/.test(t);
+  // Force endurance-style fields when the title looks like endurance
+  if (isEndurance) return ['distanceMiles', 'timeSeconds', 'rpe'];
+  // Timed & weighted (e.g., Farmer Carry): show weight + time + RPE
+  if (hasTime && hasWeight) return ['weight', 'multiplier', 'timeSeconds', 'rpe'];
+  if (hasDist && hasTime) return ['distanceMiles', 'timeSeconds', 'rpe'];
+  if (hasDist) return ['distanceMiles', 'rpe'];
+  if (hasTime) return ['timeSeconds', 'rpe'];
+        return ['weight', 'multiplier', 'reps', 'rpe'];
+      }
+
+  var initialRows = (savedRows && savedRows.length) ? savedRows : (presetRows || []);
+  var explicitType = null;
+  if (opts && opts.explicitLogType) {
+    explicitType = opts.explicitLogType;
+  } else {
+    try {
+      var headerProbe = document.createElement('div');
+      headerProbe.innerHTML = headerHTML || '';
+      var aProbe = headerProbe.querySelector('a[data-exmeta]');
+      if (aProbe) {
+        var raw = aProbe.getAttribute('data-exmeta') || '';
+        var m = raw ? JSON.parse(raw) : null;
+        if (m && m.logType) explicitType = m.logType;
+      }
+    } catch (e) {}
+  }
+  var fieldOrder = isReadOnly ? [] : pickFieldsFromRows(initialRows, title, explicitType);
+
+  function addSetRow(row, idx) {
+  if (isReadOnly || !setsWrap) return; // no set rows in read-only mode and ensure container exists
+  var r = document.createElement('div');
+        r.className = 'set-row';
+        // Non-editable label for set number (inferred by order)
+        var label = document.createElement('span');
+        label.className = 'set-label';
+        label.appendChild(document.createTextNode('Set'));
+        r.appendChild(label);
+
+        var placeholders = {
+          weight: 'Weight',
+          multiplier: 'Multiplier',
+          reps: 'Reps',
+          rpe: 'RPE',
+          timeSeconds: 'Time (hh:mm:ss)',
+          holdSeconds: 'Hold (hh:mm:ss)',
+          distanceMeters: 'Distance (mi)',
+          distanceMiles: 'Distance (mi)'
+        };
+        var types = {
+          weight: { type: 'number', step: 'any' },
+          multiplier: { type: 'number', min: 0, step: '1' },
+          reps: { type: 'number', min: 0 },
+          rpe: { type: 'number', step: 'any' },
+          timeSeconds: { type: 'text' },
+          holdSeconds: { type: 'text' },
+          distanceMeters: { type: 'number', min: 0, step: 'any' },
+          distanceMiles: { type: 'number', min: 0, step: 'any' }
+        };
+        var inputs = [];
+        for (var fi = 0; fi < fieldOrder.length; fi++) {
+          var name = fieldOrder[fi];
+          var spec = types[name] || { type: 'text' };
+          inputs.push({ name: name, placeholder: placeholders[name] || name, type: spec.type, min: spec.min, step: spec.step });
+        }
+        for (var i = 0; i < inputs.length; i++) {
+          var spec = inputs[i];
+          // Special inline label for multiplier: show × before the field
+          if (spec.name === 'multiplier') {
+            var times = document.createElement('span');
+            times.appendChild(document.createTextNode('×'));
+            times.setAttribute('aria-hidden', 'true');
+            times.style.margin = '0 4px 0 8px';
+            r.appendChild(times);
+          }
+          var input = document.createElement('input');
+          input.type = spec.type;
+          input.placeholder = spec.placeholder;
+          if (spec.min != null) input.min = spec.min;
+          if (spec.step) input.step = spec.step;
+          if (spec.name === 'multiplier') {
+            input.setAttribute('title', 'Multiplier (e.g., 2 for pair, 1 for single, 0 for bodyweight)');
+            input.setAttribute('aria-label', 'Multiplier (e.g., 2 for pair, 1 for single, 0 for bodyweight)');
+            input.style.maxWidth = '5em';
+          }
+          if (spec.name === 'rpe') {
+            input.setAttribute('title', 'RPE (Rate of Perceived Exertion), 1–10 scale — 4–5 = easy conversational, 7–8 = tempo/comfortably hard');
+            input.setAttribute('aria-label', 'RPE (Rate of Perceived Exertion), 1–10 scale; 4–5 easy conversational, 7–8 tempo/comfortably hard');
+            try { input.min = 0; input.max = 10; } catch (e) {}
+          }
+          if (spec.name === 'distanceMeters' || spec.name === 'distanceMiles') {
+            input.setAttribute('title', 'Distance (miles)');
+            input.setAttribute('aria-label', 'Distance in miles');
+          }
+          if (row) {
+            var v = null;
+            if (row[spec.name] != null) v = row[spec.name];
+            // If UI uses miles but source row provided meters, convert for display
+            if (v == null && spec.name === 'distanceMiles' && row.distanceMeters != null) v = (row.distanceMeters / METERS_PER_MILE);
+            if (v == null && spec.name === 'distanceMeters' && row.distanceMiles != null) v = (row.distanceMiles * METERS_PER_MILE);
+            // If still missing distance, look up from prescription row (same index or first)
+            if (v == null && spec.name === 'distanceMiles' && presetRows) {
+              var pRow = (typeof idx === 'number' && presetRows[idx]) ? presetRows[idx] : (presetRows[0] || null);
+              if (pRow) {
+                if (pRow.distanceMiles != null) v = Number(pRow.distanceMiles);
+                else if (pRow.distanceMeters != null) v = Number(pRow.distanceMeters) / METERS_PER_MILE;
+              }
+            }
+            // Fallback: parse distance like "4 miles" from the card title
+            if (v == null && spec.name === 'distanceMiles') {
+              var tstr = String(title || '');
+              var mt = tstr.match(/(\d+(?:\.\d+)?)\s*(?:mi|miles?|mile)\b/i);
+              if (mt) v = Number(mt[1]);
+              // Try the document H1 title
+              if (v == null && docH1Title) {
+                var mh1 = docH1Title.match(/(\d+(?:\.\d+)?)\s*(?:mi|miles?|mile)\b/i);
+                if (mh1) v = Number(mh1[1]);
+              }
+              // Try scanning the full document text as a last resort (may pick first match)
+              if (v == null && fullDocText) {
+                var mdoc = fullDocText.match(/(\d+(?:\.\d+)?)\s*(?:mi|miles?|mile)\b/i);
+                if (mdoc) v = Number(mdoc[1]);
+              }
+            }
+            if (v != null) {
+              if (spec.name === 'distanceMeters') {
+                var miles = v / METERS_PER_MILE;
+                var milesRounded = Math.round(miles * 100) / 100;
+                input.value = String(milesRounded);
+              } else if (spec.name === 'distanceMiles') {
+                var milesRounded2 = Math.round(Number(v) * 100) / 100;
+                input.value = String(milesRounded2);
+              } else if (spec.name === 'timeSeconds' || spec.name === 'holdSeconds') {
+                input.value = secondsToHHMMSS(v);
+              } else {
+                input.value = v;
+              }
+            }
+          }
+          input.setAttribute('data-name', spec.name);
+          r.appendChild(input);
+        }
+        var del = document.createElement('button');
+        del.type = 'button';
+        del.className = 'danger';
+        del.appendChild(document.createTextNode('Remove'));
+  del.onclick = function () { setsWrap.removeChild(r); updateSetLabelsLocal(); };
+        r.appendChild(del);
+        setsWrap.appendChild(r);
+  updateSetLabelsLocal();
+      }
+
+      function snapshotLastRow() {
+        var rows = setsWrap.getElementsByClassName('set-row');
+        if (!rows || !rows.length) return null;
+        var last = rows[rows.length - 1];
+        var inputs = last.getElementsByTagName('input');
+        var obj = {};
+        for (var i = 0; i < inputs.length; i++) {
+          var name = inputs[i].getAttribute('data-name');
+          var val = inputs[i].value;
+          if (val === '') continue;
+          if (name === 'timeSeconds' || name === 'holdSeconds') {
+            var sec = parseHMSToSeconds(val);
+            if (sec != null) obj[name] = sec;
+          } else if (name === 'distanceMeters') {
+            // interpret UI miles field
+            obj.distanceMiles = Number(val);
+          } else if (name === 'distanceMiles') {
+            obj.distanceMiles = Number(val);
+          } else {
+            obj[name] = Number(val);
+          }
+        }
+        return obj;
+      }
+
+      if (!isReadOnly && addBtn) {
+        addBtn.onclick = function () {
+          var snap = snapshotLastRow();
+          if (snap) {
+            var rowsNow = setsWrap.getElementsByClassName('set-row');
+            addSetRow(snap, rowsNow ? rowsNow.length : undefined);
+            return;
+          }
+          if (presetRows && presetRows.length) { addSetRow(presetRows[0], 0); return; }
+          addSetRow({}, undefined);
+        };
+      }
+  // Cards are always editable and expanded; no toggle button
+
+  var rows = initialRows;
+  for (var i = 0; i < rows.length; i++) addSetRow(rows[i], i);
+      // Sanitize: remove any extra exercise-link bullets accidentally pulled into header/notes
+      try {
+        var mainKey = slugify(title);
+        var extraAnchors = card.querySelectorAll('a[href*="exercises/"]');
+        for (var ai = 0; ai < extraAnchors.length; ai++) {
+          var ahref = extraAnchors[ai].getAttribute('href') || '';
+          var m = ahref.match(/exercises\/([\w\-]+)\.(?:md|json)$/);
+          if (!m || !m[1]) continue;
+          var slug = m[1];
+          if (slugify(slug) !== mainKey) {
+            // Remove the closest list item or the anchor itself
+            var n = extraAnchors[ai];
+            while (n && n !== card && !(n.tagName && (n.tagName === 'LI' || n.tagName === 'P' || n.className === 'exercise-notes'))) n = n.parentNode;
+            if (n && n !== card && n.parentNode) n.parentNode.removeChild(n);
+          }
+        }
+      } catch (e) {}
+      return card;
+    }
+
+    // Find exercise anchors and non-link exercise name spans within the rendered workout content
+  var anchors = workoutContent ? Array.prototype.slice.call(workoutContent.getElementsByTagName('a')) : [];
+  var noLinkSpans = workoutContent ? Array.prototype.slice.call(workoutContent.querySelectorAll('span.ex-name')) : [];
+  var exNodes = anchors.concat(noLinkSpans);
+
+    function nearestBlockContainer(node) {
+      var n = node;
+      while (n && n !== workoutContent) {
+        if (n.tagName && (n.tagName === 'LI' || n.tagName === 'P' || n.tagName === 'DIV')) return n;
+        n = n.parentNode;
+      }
+      return node.parentNode || workoutContent;
+    }
+
+    function findListParent(node) {
+      var n = node;
+      while (n && n !== workoutContent) {
+        if (n.tagName && (n.tagName === 'UL' || n.tagName === 'OL')) return n;
+        n = n.parentNode;
+      }
+      return null;
+    }
+
+  // Find the actual nearest heading element (H1-H4) above a node
+  function findNearestHeadingEl(node) {
+      var n = node;
+      while (n && n !== workoutContent) {
+        var s = n.previousSibling;
+        while (s) {
+          if (s.nodeType === 1 && s.tagName && /^H[1-4]$/.test(s.tagName)) return s;
+          s = s.previousSibling;
+        }
+        n = n.parentNode;
+      }
+      return null;
+    }
+
+    // Collect following sibling nodes (prescriptions/cues) until next heading or next exercise anchor section
+    function collectFollowingBlocks(startEl) {
+      var htmlParts = [];
+      var toHide = [];
+      if (!startEl) return { html: '', nodes: [] };
+      var s = startEl.nextSibling;
+      while (s) {
+        if (s.nodeType === 1 && s.tagName && /^H[1-4]$/.test(s.tagName)) break; // stop at next heading
+        // Stop if upcoming node contains an exercise anchor or a non-link exercise name span
+        var hasNextExercise = false;
+        try {
+          if (s.querySelector) {
+            if (s.querySelector('a[href*="/exercises/"]')) hasNextExercise = true;
+            else if (s.querySelector('span.ex-name')) hasNextExercise = true;
+          } else {
+            var testHtml = s.outerHTML || (s.textContent || '');
+            hasNextExercise = /(\b|\/)(exercises\/[\w\-]+\.(?:md|json))\b/.test(String(testHtml || ''));
+          }
+        } catch (e) {}
+        if (hasNextExercise) break;
+        // Serialize this node
+        if (s.nodeType === 1) {
+          htmlParts.push(s.outerHTML);
+        } else if (s.nodeType === 3) {
+          var txt = String(s.textContent || '');
+          // preserve line breaks visually
+          var safe = txt.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>');
+          if (safe.trim()) htmlParts.push('<div class="md-text">' + safe + '</div>');
+        }
+        toHide.push(s);
+        s = s.nextSibling;
+      }
+      return { html: htmlParts.join(''), nodes: toHide };
+    }
+
+  function findPreviousHeading(node) {
+      var n = node;
+      while (n && n !== workoutContent) {
+        // Walk previous siblings of n
+        var s = n.previousSibling;
+        while (s) {
+          if (s.nodeType === 1 && s.tagName && /^H[1-4]$/.test(s.tagName)) {
+            return (s.textContent || '').trim();
+          }
+          s = s.previousSibling;
+        }
+        n = n.parentNode;
+      }
+      return '';
+    }
+
+    function isWarmOrCool(sectionTitle, anchorEl) {
+      // Prefer explicit section type if available
+      var secType = '';
+      try {
+        var secEl = anchorEl;
+        while (secEl && secEl !== workoutContent && !(secEl.tagName && secEl.tagName.toLowerCase() === 'section')) secEl = secEl.parentNode;
+        if (secEl && secEl.getAttribute) secType = (secEl.getAttribute('data-sectype') || '');
+      } catch (e) {}
+      var t = String((secType || sectionTitle) || '').toLowerCase();
+      return (
+        t.indexOf('warm') !== -1 ||
+        t.indexOf('warm-up') !== -1 ||
+        t.indexOf('warm up') !== -1 ||
+        t.indexOf('warmup') !== -1 ||
+        t.indexOf('cool') !== -1 ||
+        t.indexOf('cool-down') !== -1 ||
+        t.indexOf('cool down') !== -1 ||
+        t.indexOf('cooldown') !== -1 ||
+        t.indexOf('mobility') !== -1 ||
+        t.indexOf('recovery') !== -1
+      );
+    }
+  var foundCount = 0;
+  var foundKeys = {};
+    for (var ai = 0; ai < exNodes.length; ai++) {
+      var a = exNodes[ai];
+      var isAnchorNode = !!(a && a.tagName && a.tagName.toLowerCase() === 'a');
+      var href = isAnchorNode ? (a.getAttribute('href') || '') : '';
+  // Accept internal exercise links in various forms: exercises/..., ./exercises/..., ../exercises/..., or absolute http(s) with /exercises/...
+  if (isAnchorNode && !/(?:^(?:https?:\/\/[^\/]+\/)?|\.?\.\/|\/)exercises\/[\w\-]+\.(?:md|json)$/.test(href)) continue;
+      var title = a.textContent || a.innerText || '';
+  // Normalize title by removing parenthetical hints, e.g., "Easy Run (Easy Jog)" -> "Easy Run"
+  var normTitle = title.replace(/\s*\([^\)]*\)\s*$/, '').trim();
+  if (!normTitle) continue;
+  var exKey = slugify(normTitle);
+      // Inspect anchor meta for explicit loggable flag
+      var metaRaw0 = a.getAttribute('data-exmeta') || '';
+      var meta0 = null; try { meta0 = metaRaw0 ? JSON.parse(metaRaw0) : null; } catch (e) { meta0 = null; }
+      // Determine section by nearest previous heading; skip warm-up/cool-down
+      var container = nearestBlockContainer(a);
+      var sectionTitle = findPreviousHeading(container);
+      var inWarmCool = isWarmOrCool(sectionTitle, a);
+      var savedEntry = saved.exercises[exKey];
+      var savedRows = [];
+      if (savedEntry) {
+        if (Object.prototype.toString.call(savedEntry) === '[object Array]') savedRows = savedEntry;
+        else if (savedEntry.sets && Object.prototype.toString.call(savedEntry.sets) === '[object Array]') savedRows = savedEntry.sets;
+      }
+      var preset = prescriptions[exKey] || prescriptions[slugify(title)] || [];
+      // Do not seed defaults for JSON-driven sessions; rely on explicit prescriptions
+      if (!isJSON && !inWarmCool && (!preset || !preset.length)) {
+        var secRounds = detectRoundsHint(sectionTitle) || docRoundsHint || 3;
+        var defaults = [];
+        for (var di = 1; di <= Math.max(1, secRounds); di++) defaults.push({ set: di });
+        preset = defaults;
+      }
+      var headEl = findNearestHeadingEl(a) || null;
+      // Prefer a simple header with the clean exercise name as a link
+      var headerHTML = '';
+      if (a) {
+        var cleanText = (a.textContent || a.innerText || '').replace(/^\s*\d+[\)\.-]\s*/, '').trim();
+        var hrefFixed = isAnchorNode ? (a.getAttribute('href') || '') : '';
+        // Meta (cues/prescription) passed via data-exmeta on anchor from JSON renderer
+        var metaRaw = a.getAttribute('data-exmeta') || '';
+        var meta = null;
+        try { meta = metaRaw ? JSON.parse(metaRaw) : null; } catch (e) { meta = null; }
+        var extraBits = '';
+        if (meta && meta.prescription) {
+          var p = meta.prescription;
+          var parts = [];
+          if (p.sets != null && p.reps != null) parts.push(String(p.sets) + ' x ' + String(p.reps));
+          // Weight: append ' lb' only when numeric; if string, use as-is (may include x2/units)
+          if (p.weight != null) {
+            if (typeof p.weight === 'number') parts.push(String(p.weight) + ' lb');
+            else parts.push(String(p.weight));
+          }
+          // Multiplier tag only if not already expressed in a weight string
+          var weightStr = (typeof p.weight === 'string') ? p.weight.toLowerCase() : '';
+          if (p.multiplier === 2 && !(weightStr && /(x2|×2|per\s*hand|each|per\s*side)/.test(weightStr))) parts.push('x2');
+          if (p.multiplier === 0 && !(weightStr && /bodyweight/.test(weightStr))) parts.push('bodyweight');
+          if (p.timeSeconds != null) {
+            // reuse secondsToHHMMSS
+            try { parts.push(secondsToHHMMSS(p.timeSeconds)); } catch (e) {}
+          }
+          if (p.distanceMiles != null) parts.push(String(p.distanceMiles) + ' mi');
+          if (p.rpe != null) parts.push('RPE ' + String(p.rpe));
+          if (p.restSeconds != null) parts.push('Rest ' + String(p.restSeconds) + 's');
+          if (parts.length) extraBits += ' — <span class="ex-presc">' + parts.join(' · ') + '</span>';
+        }
+        if (meta && meta.cues && meta.cues.length) {
+          extraBits += '<ul class="ex-cues">' + meta.cues.map(function(c){ return '<li>' + c + '</li>'; }).join('') + '</ul>';
+        }
+  // Preserve original meta so downstream field selection can read explicit logType without re-parsing the DOM
+  // Inline escape for attribute context (avoid relying on later attrEscape definitions)
+  var _escAttr = function(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); };
+        if (hrefFixed) {
+          headerHTML = '<a href="' + hrefFixed + '" data-exmeta="' + _escAttr(metaRaw) + '">' + cleanText + '</a>' + extraBits;
+        } else {
+          headerHTML = '<span class="ex-name no-link" data-exmeta="' + _escAttr(metaRaw) + '">' + cleanText + '</span>' + extraBits;
+        }
+      } else if (container) {
+        headerHTML = container.innerHTML || '';
+      } else if (headEl) {
+        headerHTML = headEl.outerHTML || '';
+      }
+  // Respect explicit loggable=false or warm-up/cooldown/mobility sections: do not inject logging card
+  var isExplicitNonLoggable = !!(meta0 && meta0.loggable === false);
+  if (inWarmCool || isExplicitNonLoggable) {
+        // Do not inject cards for warm-up/cooldown/mobility; mark as handled so we don't auto-inject later
+        foundKeys[exKey] = true;
+        continue;
+      }
+  var card = createExerciseCard(normTitle, preset, savedRows, headerHTML, { explicitLogType: (meta0 && meta0.logType) ? meta0.logType : null });
+      // Pull prescription/cues following this container into the card
+      var extra = collectFollowingBlocks(container);
+      if (extra && extra.html) {
+        var notes = document.createElement('div');
+        notes.className = 'exercise-notes';
+        notes.innerHTML = extra.html;
+        card.appendChild(notes);
+      }
+      // Place card and remove original blocks.
+      if (container && container.tagName === 'LI') {
+        // Insert the card OUTSIDE the list (after UL/OL) to avoid any bullet rendering
+        var parentList = findListParent(container);
+        var listHolder = parentList && parentList.parentNode ? parentList.parentNode : workoutContent;
+        var insertAfter = parentList && parentList.__lastCard ? parentList.__lastCard : parentList;
+        if (listHolder && listHolder.insertBefore) {
+          if (insertAfter && insertAfter.nextSibling) listHolder.insertBefore(card, insertAfter.nextSibling);
+          else listHolder.appendChild(card);
+        } else {
+          workoutContent.appendChild(card);
+        }
+        if (parentList) parentList.__lastCard = card;
+        // Remove the original LI
+        try { container.parentNode && container.parentNode.removeChild(container); } catch (e) {}
+        // If the list is now empty of LI children, remove it
+        try {
+          if (parentList && !parentList.querySelector('li')) {
+            parentList.parentNode && parentList.parentNode.removeChild(parentList);
+          }
+        } catch (e) {}
+      } else {
+        var parent = container.parentNode || workoutContent;
+        if (parent && parent.insertBefore) {
+          if (container.nextSibling) parent.insertBefore(card, container.nextSibling);
+          else parent.appendChild(card);
+        } else {
+          workoutContent.appendChild(card);
+        }
+        // Remove the original container entirely
+        try { container.parentNode && container.parentNode.removeChild(container); } catch (e) {}
+      }
+      // Remove any collected following blocks now that they're inside the card
+      if (extra && extra.nodes) {
+        for (var hideIdx = 0; hideIdx < extra.nodes.length; hideIdx++) {
+          var nodeToHide = extra.nodes[hideIdx];
+          try {
+            if (nodeToHide && nodeToHide.parentNode) nodeToHide.parentNode.removeChild(nodeToHide);
+          } catch (e) {}
+        }
+      }
+      foundCount++;
+        foundKeys[exKey] = true;
+    }
+
+      // Fallback: inject cards for any prescriptions without a visible exercise link (e.g., run main set)
+      function titleCaseFromKey(k) {
+        var parts = String(k || '').split('-');
+        for (var i = 0; i < parts.length; i++) {
+          if (parts[i].length) parts[i] = parts[i].charAt(0).toUpperCase() + parts[i].slice(1);
+        }
+        return parts.join(' ');
+      }
+
+      function findMainHeadingNode() {
+        var headings = workoutContent ? workoutContent.querySelectorAll('h2, h3, h4') : [];
+        for (var i = 0; i < headings.length; i++) {
+          var t = (headings[i].textContent || '').toLowerCase();
+          if (t.indexOf('main') !== -1 || t.indexOf('conditioning') !== -1) return headings[i];
+        }
+        return null;
+      }
+
+  var mainHead = findMainHeadingNode();
+      // Heuristic: detect if this workout is an endurance-style session (to filter injected cards)
+  var docTextForHeuristic = (workoutContent && (workoutContent.textContent || workoutContent.innerText) || '').toLowerCase();
+  var isEnduranceDoc = /\b(run|jog|walk|tempo|quality run|easy run|bike|cycle|ride|rower|rowing|erg|swim)\b/.test(docTextForHeuristic);
+      // If this is a JSON session (isJSON) and we already rendered items with anchors, do not inject fallback cards
+      if (isJSON) {
+        // Skip fallback injection
+      } else {
+      for (var pKey in prescriptions) {
+        if (!prescriptions.hasOwnProperty(pKey)) continue;
+        if (foundKeys[pKey]) continue;
+        var presetRows = prescriptions[pKey] || [];
+        if (!presetRows || !presetRows.length) continue;
+        // Skip if these look like warm/cool prescriptions (heuristic below)
+        var skip = true;
+        for (var rr = 0; rr < presetRows.length; rr++) {
+          var row = presetRows[rr] || {};
+          var hasDist = (row.distanceMiles != null || row.distanceMeters != null);
+          var hasTime = (row.timeSeconds != null);
+          var hasRpe = (row.rpe != null);
+          var hasWeight = (row.weight != null || row.load != null);
+          var hasReps = (row.reps != null);
+          if (isEnduranceDoc) {
+            // In endurance docs, only inject rows that are endurance-like (distance/time/RPE), and avoid pure weight/reps
+            if ((hasDist || hasTime || hasRpe) && !(hasWeight || hasReps)) { skip = false; break; }
+          } else {
+            // General heuristic: allow if meaningful work (distance/reps/weight) or long timed efforts (>90s)
+            if (hasDist || hasReps || hasWeight) { skip = false; break; }
+            if (hasTime && row.timeSeconds > 90) { skip = false; break; }
+          }
+        }
+        if (skip) continue;
+        var display = titleCaseFromKey(pKey);
+        var savedEnt2 = saved.exercises[pKey];
+        var savedRows2 = [];
+        if (savedEnt2) {
+          if (Object.prototype.toString.call(savedEnt2) === '[object Array]') savedRows2 = savedEnt2;
+          else if (savedEnt2.sets && Object.prototype.toString.call(savedEnt2.sets) === '[object Array]') savedRows2 = savedEnt2.sets;
+        }
+        var cardX = createExerciseCard(display, presetRows, savedRows2);
+        if (mainHead && mainHead.parentNode) {
+          if (mainHead.nextSibling) mainHead.parentNode.insertBefore(cardX, mainHead.nextSibling);
+          else mainHead.parentNode.appendChild(cardX);
+        } else {
+          workoutContent.appendChild(cardX);
+        }
+        foundCount++;
+        foundKeys[pKey] = true;
+      }
+  }
+
+    function inferLogTypeFromCard(card) {
+      try {
+        // Look for header anchor meta
+        var a = card.querySelector('a[data-exmeta]');
+        if (a) {
+          var raw = a.getAttribute('data-exmeta') || '';
+          if (raw) { var m = JSON.parse(raw); if (m && m.logType) return m.logType; }
+        }
+      } catch (e) {}
+      // Heuristic fallback based on which inputs exist
+      var hasHold = card.querySelector('input[data-name="holdSeconds"]');
+      var hasDistance = card.querySelector('input[data-name="distanceMiles"]');
+      var hasTime = card.querySelector('input[data-name="timeSeconds"]');
+      var hasReps = card.querySelector('input[data-name="reps"]');
+      var hasWeight = card.querySelector('input[data-name="weight"]');
+      if (hasHold && !hasReps && !hasWeight) return 'mobility';
+      if (hasHold) return 'stretch';
+      if (hasDistance || (hasTime && !hasWeight && !hasReps)) return 'endurance';
+      if (hasTime && hasWeight && !hasReps) return 'carry';
+      return 'strength';
+    }
+
+    function collectData() {
+      // Normalize workoutFile to 'workouts/...'
+      var wf = String(filePath || '');
+      // Strip leading ../ or ./
+      wf = wf.replace(/^(?:\.\.\/)+/, '').replace(/^\.\//, '');
+      // If path includes 'workouts/' later in the string, extract from there
+      var mWf = wf.match(/workouts\/.*$/);
+      if (mWf) wf = mWf[0];
+      var data = { version: 'perf-1', workoutFile: wf, timestamp: new Date().toISOString(), exercises: {} };
+    var scope = workoutContent || document;
+    var cards = scope.getElementsByClassName('exercise-card');
+      for (var c = 0; c < cards.length; c++) {
+        var card = cards[c];
+        var exKey = card.getAttribute('data-exkey');
+        var exName = card.getAttribute('data-name') || exKey;
+        if (!exKey) continue;
+        var rows = card.getElementsByClassName('set-row');
+        var setsArr = [];
+        for (var r = 0; r < rows.length; r++) {
+          var rowEl = rows[r];
+          var inputs = rowEl.getElementsByTagName('input');
+          var obj = { set: (r + 1) };
+          for (var k = 0; k < inputs.length; k++) {
+            var inEl = inputs[k];
+            var name = inEl.getAttribute('data-name');
+            var val = inEl.value;
+            if (val === '') continue; // untouched field => rely on prescription absence
+            if (name === 'distanceMeters' || name === 'distanceMiles') {
+              var numDist = Number(val);
+              if (!isNaN(numDist)) obj.distanceMiles = numDist; // store only miles
+              continue;
+            }
+            if (name === 'timeSeconds' || name === 'holdSeconds') {
+              var sec = parseHMSToSeconds(val);
+              if (sec != null) obj[name] = sec;
+              continue;
+            }
+            var num = Number(val);
+            if (!isNaN(num)) obj[name] = num;
+          }
+          // Include even if only weight/multiplier zero values
+          var hasAny = (obj.weight != null || obj.multiplier != null || obj.reps != null || obj.rpe != null || obj.timeSeconds != null || obj.holdSeconds != null || obj.distanceMiles != null);
+          if (!hasAny) {
+            // Keep empty set placeholder? We retain set if prescription existed. For now skip empty.
+            continue;
+          }
+          setsArr.push(obj);
+        }
+        if (setsArr.length) {
+          data.exercises[exKey] = { name: exName, logType: inferLogTypeFromCard(card), sets: setsArr };
+        }
+      }
+      return data;
+    }
+
+    function validatePerformance(data) {
+      var errors = [];
+      function isNum(v) { return typeof v === 'number' && !isNaN(v); }
+      if (!data || typeof data !== 'object') { errors.push('root: not object'); return errors; }
+      if (data.version !== 'perf-1') errors.push('version must be perf-1');
+      if (!data.workoutFile || typeof data.workoutFile !== 'string') errors.push('workoutFile missing');
+      if (!data.timestamp || typeof data.timestamp !== 'string') errors.push('timestamp missing');
+      if (!data.exercises || typeof data.exercises !== 'object') errors.push('exercises missing');
+      else {
+        for (var k in data.exercises) if (data.exercises.hasOwnProperty(k)) {
+          var ex = data.exercises[k];
+          if (!ex || typeof ex !== 'object') { errors.push('exercise ' + k + ' not object'); continue; }
+            if (!ex.name) errors.push(k + ': name missing');
+            if (!ex.logType || ['strength','endurance','carry','mobility','stretch'].indexOf(ex.logType) === -1) errors.push(k + ': invalid logType');
+            if (!ex.sets || Object.prototype.toString.call(ex.sets) !== '[object Array]' || !ex.sets.length) errors.push(k + ': sets missing');
+            else {
+              for (var i = 0; i < ex.sets.length; i++) {
+                var s = ex.sets[i];
+                if (typeof s !== 'object') { errors.push(k + ' set ' + (i+1) + ': not object'); continue; }
+                if (!isNum(s.set) || s.set < 1) errors.push(k + ' set ' + (i+1) + ': invalid set index');
+                ['weight','multiplier','reps','rpe','timeSeconds','holdSeconds','distanceMiles'].forEach(function(f){
+                  if (s[f] != null && !isNum(s[f])) errors.push(k + ' set ' + (i+1) + ': ' + f + ' not number');
+                });
+                if (s.rpe != null && (s.rpe < 0 || s.rpe > 10)) errors.push(k + ' set ' + (i+1) + ': rpe out of range');
+              }
+            }
+        }
+      }
+      return errors;
+    }
+
+    saveBtn.onclick = function () {
+      var data = collectData();
+      saveLocal(filePath, data);
+      status('Saved locally at ' + new Date().toLocaleTimeString(), { important: true });
+    };
+
+  copyBtn.onclick = function () {
+      var data = collectData();
+      var errs = validatePerformance(data);
+      if (errs.length) {
+        // Attach errors for debugging (not schema-defined) but do not block copy
+        data.validationErrors = errs.slice(0);
+        console.warn('Performance validation errors:', errs);
+      }
+      var json = JSON.stringify(data, null, 2);
+      var didCopy = false;
+      if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(json).then(function () { didCopy = true; status('Copied performance JSON' + (errs.length ? ' (WITH WARNINGS)' : '') + '.', { important: true }); }).catch(function () {});
+      }
+      if (!didCopy) {
+        copyWrapper.style.display = 'block';
+        copyTarget.value = json;
+        copyTarget.focus();
+        copyTarget.select();
+        status('Copy JSON shown below; select-all and copy manually.' + (errs.length ? ' (Validation warnings in console)' : ''));
+      }
+    };
+
+  if (downloadBtn) downloadBtn.onclick = function () {
+      var data = collectData();
+      var errs = validatePerformance(data);
+      if (errs.length) {
+        data.validationErrors = errs.slice(0);
+        console.warn('Performance validation errors:', errs);
+      }
+      var json = JSON.stringify(data, null, 2);
+      var wf = data.workoutFile || 'session';
+      // Derive a safe base name (strip folders, extension)
+      var base = wf.split('/').pop().replace(/\.[^.]+$/, '') || 'session';
+      var ts = (new Date().toISOString().replace(/[:]/g,'').replace(/\..+/, ''));
+      var fileName = base + '_' + ts + '_perf1.json';
+      try {
+        var blob = new Blob([json], { type: 'application/json' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = fileName;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function(){ try { document.body.removeChild(a); URL.revokeObjectURL(url); } catch(e){} }, 250);
+        status('Downloaded ' + fileName + (errs.length ? ' (WITH WARNINGS)' : ''), { important: true });
+      } catch (e) {
+        // Fallback: reveal JSON for manual save
+        copyWrapper.style.display = 'block';
+        copyTarget.value = json;
+        status('Download unsupported; JSON shown for manual copy.' + (errs.length ? ' (Warnings in console)' : ''), { important: true });
+      }
+    };
+
+    issueBtn.onclick = function () {
+      var data = collectData();
+      var json = JSON.stringify(data, null, 2);
+      var owner = 'jrodhead';
+      var repo = 'exercAIse';
+  var title = 'Workout log ' + (data.workoutFile || data.file || '') + ' @ ' + new Date().toISOString();
+      // Include the marker and fenced code block so the GitHub Action can detect and parse it
+      var header = 'Paste will be committed by Actions.\n\n';
+      var issueBodyTemplate = header + '```json\n' + json + '\n```\n';
+
+      function showTextarea() {
+        copyWrapper.style.display = 'block';
+        copyTarget.value = issueBodyTemplate;
+        try { copyTarget.focus(); copyTarget.select(); } catch (e) {}
+        status('Template shown below — paste into the Issue body.');
+      }
+      function openIssue() {
+        if (openIssueLink) openIssueLink.style.display = 'none';
+        var url = 'https://github.com/' + owner + '/' + repo + '/issues/new?title=' + encodeURIComponent(title);
+        try { window.open(url, '_blank'); } catch (e) { window.location.href = url; }
+      }
+
+      // Always attempt to copy the full issue body template automatically, then open the Issue page with title-only.
+      if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(issueBodyTemplate)
+          .then(function () {
+            status('Copied template to clipboard. Opening Issue page…', { important: true });
+            openIssue();
+          })
+          .catch(function () {
+            showTextarea();
+            openIssue();
+          });
+      } else {
+        showTextarea();
+        openIssue();
+      }
+    };
+
+    clearBtn.onclick = function () {
+      if (!confirm('Clear all entries for this workout?')) return;
+      // Re-render the workout content from the original raw text to restore hidden blocks
+      if (isJSON) {
+        var pretty = '';
+        try { pretty = JSON.stringify(JSON.parse(raw || '{}'), null, 2); } catch (e) { pretty = raw || ''; }
+        workoutContent.innerHTML = '<pre>' + (pretty || '') + '</pre>';
+      } else {
+        workoutContent.innerHTML = renderMarkdownBasic(raw || '');
+        fixExerciseAnchors(workoutContent);
+      }
+      // Rebuild the form and re-inject fresh cards (no saved rows)
+      buildForm(filePath, raw, isJSON);
+      status('Cleared form.', { important: true });
+    };
+  }
+
+  function status(msg, opts) {
+    // Only show status bar for important messages unless explicitly forced
+    opts = opts || {};
+    var isImportant = !!opts.important;
+    if (!msg) {
+      statusEl.innerHTML = '';
+      statusEl.style.display = 'none';
+      return;
+    }
+    if (!isImportant) {
+      // Quiet mode: update text but keep hidden to avoid visual noise
+      statusEl.innerHTML = msg;
+      statusEl.style.display = 'none';
+      return;
+    }
+    statusEl.innerHTML = msg;
+    statusEl.style.display = 'block';
+  }
+
+  function loadReadmeAndMaybeOpenSession() {
+    status('Reading README…'); // hidden (non-important)
+    xhrGet('README.md', function (err, text) {
+      if (err) return status('Error reading README: ' + err.message, { important: true });
+      // Render README mirror with inline Log links
+      lastReadmeText = text || '';
+  readmeContent.innerHTML = decorateReadmeWithLogLinks(lastReadmeText);
+  fixExerciseAnchors(readmeContent);
+  if (readmeSection) readmeSection.style.display = 'block';
+  if (generateSection) generateSection.style.display = 'block';
+
+  // Load logs list from GitHub API (unauthenticated)
+  loadLogsList();
+
+      wireReadmeClicks();
+
+      // If ?file= is present, open that session; else also preview the first/latest.
+      var params = (function () {
+        var q = {};
+        var s = window.location.search.replace(/^\?/, '').split('&');
+        for (var i = 0; i < s.length; i++) {
+          var kv = s[i].split('=');
+          if (kv[0]) q[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1] || '');
+        }
+        return q;
+      })();
+
+      var targetPath = params.file;
+      if (targetPath) {
+        // Initialize state for deep link
+        if (window.history && window.history.replaceState) {
+          try { window.history.replaceState({ view: 'session', file: targetPath }, '', 'index.html?file=' + encodeURIComponent(targetPath)); } catch (ex) {}
+        }
+        openSession(targetPath, lastReadmeText);
+  } else {
+        // Ensure index view is visible
+        showIndexView();
+      }
+  handleGenerateButtons();
+    });
+  }
+
+  function wireReadmeClicks() {
+    // Intercept clicks on workout links for in-page navigation
+    if (readmeSection && !readmeSection.__wired) {
+      readmeSection.addEventListener('click', function (e) {
+        var t = e.target || e.srcElement;
+        if (!t) return;
+        // Find nearest anchor
+        while (t && t !== readmeSection && !(t.tagName && t.tagName.toLowerCase() === 'a')) t = t.parentNode;
+        if (!t || t === readmeSection) return;
+        var href = t.getAttribute('href') || '';
+        if (!href) return;
+        var path = null;
+        // Route exercise links to the new exercise.html viewer (JSON counterpart if available)
+        var exMatch = href.match(/(exercises\/[\w\-]+)\.(?:md|json)$/);
+        if (exMatch) {
+          var base = exMatch[1];
+          var jsonPath = base + '.json';
+          try { e.preventDefault(); } catch (ex) {}
+          try { window.location.href = 'exercise.html?file=' + encodeURIComponent(jsonPath); } catch (ex) {}
+          return;
+        }
+        if (href.indexOf('index.html?file=') === 0) {
+          path = decodeURIComponent(href.split('file=')[1] || '');
+        } else if (href.indexOf('workouts/') === 0) {
+          path = href;
+        }
+        if (path) {
+          if (e && e.preventDefault) e.preventDefault();
+          try { sessionStorage.setItem('indexScrollY', String(window.scrollY || 0)); } catch (ex) {}
+          if (window.history && window.history.pushState) {
+            try { window.history.pushState({ view: 'session', file: path }, '', 'index.html?file=' + encodeURIComponent(path)); } catch (ex) {}
+          }
+          openSession(path, lastReadmeText);
+        }
+      }, false);
+      readmeSection.__wired = true;
+    }
+  }
+
+  function loadLogsList() {
+    if (!logsList) return;
+    // Load local manifest (performed/index.json). If missing, show unavailable message.
+    function renderFromLocal(text) {
+      var data = null;
+      try { data = JSON.parse(text || '{}'); } catch (e) { data = null; }
+      var list = [];
+      if (!data) return false;
+      // Accept either { files: [...] } or a bare array
+      if (Object.prototype.toString.call(data) === '[object Array]') list = data;
+      else if (data.files && Object.prototype.toString.call(data.files) === '[object Array]') list = data.files;
+      if (!list.length) return 'empty';
+      // Normalize to objects with { name, path }
+      var rows = [];
+      for (var i = 0; i < list.length; i++) {
+        var it = list[i];
+        if (typeof it === 'string') rows.push({ name: it, path: 'performed/' + it });
+        else if (it && typeof it === 'object') rows.push({ name: it.name || it.path || ('file-' + i), path: it.path || ('performed/' + (it.name || '')) });
+      }
+      // Sort descending by name (timestamps in name) or by mtime if provided
+      rows.sort(function(a, b){
+        var ma = (typeof a.mtimeMs === 'number') ? a.mtimeMs : 0;
+        var mb = (typeof b.mtimeMs === 'number') ? b.mtimeMs : 0;
+        if (ma && mb && ma !== mb) return mb - ma;
+        return a.name < b.name ? 1 : -1;
+      });
+      var html = '';
+      for (var j = 0; j < Math.min(rows.length, 50); j++) {
+        var r = rows[j];
+        // Link to local file path; will be served as static content
+        var href = r.path || ('performed/' + r.name);
+        html += '<li><a target="_blank" rel="noopener" href="' + href + '">' + r.name + '</a></li>';
+      }
+      logsList.innerHTML = html || '<li>No logs yet.</li>';
+      return true;
+    }
+
+    xhrGet('performed/index.json', function (err, text) {
+      if (err || !text) {
+        logsList.innerHTML = '<li>History unavailable (no local manifest). Run scripts/build_performed_index.js to generate, or add logs.</li>';
+        return;
+      }
+      var res = renderFromLocal(text);
+      if (res === 'empty') {
+        logsList.innerHTML = '<li>No logs yet.</li>';
+      } else if (!res) {
+        logsList.innerHTML = '<li>History unavailable (invalid manifest).</li>';
+      }
+    });
+  }
+
+  function openSession(path, readmeText) {
+    status('Loading ' + path + ' …'); // hidden (non-important)
+    xhrGet(path, function (err, text) {
+  if (err) return status('Error loading workout: ' + err.message, { important: true });
+      // Save current scroll and hide index
+      try { sessionStorage.setItem('indexScrollY', String(window.scrollY || 0)); } catch (e) {}
+      setVisibility(readmeSection, false);
+      setVisibility(logsSection, false);
+  setVisibility(generateSection, false);
+      setVisibility(workoutSection, true);
+      var isJSON = /\.json$/i.test(path);
+      if (isJSON) {
+        // Render a structured view of the JSON workout that pairs with card injection
+        function esc(s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+        function isInternalExerciseLink(url) {
+          if (!url) return false;
+          if (/^https?:/i.test(url)) return false;
+          var m = String(url).match(/^(?:\.?\.?\/)?(exercises\/[\w\-]+\.(?:json|md))$/i);
+          return !!(m && m[1]);
+        }
+          function renderItem(it, opts) {
+          if (!it || typeof it !== 'object') return '';
+          var options = opts || {};
+          var kind = String(it.kind || 'exercise');
+          var name = String(it.name || '');
+          var link = String(it.link || '');
+          // Normalize exercise link to exercises/<slug>.json when missing
+          if (!link && name) {
+            var slug = slugify(name);
+            link = 'exercises/' + slug + '.json';
+          }
+          function inlineMarkdown(text) {
+            var s = String(text == null ? '' : text);
+            // Escape basic HTML
+            s = s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+            // Replace [text](url) with anchors (simple)
+            s = s.replace(/\[(.*?)\]\((.*?)\)/g, function(_, t, u){ return '<a href="' + u + '">' + t + '</a>'; });
+            return s;
+          }
+          function attrEscape(s) {
+            return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+          }
+          if (kind === 'note') {
+            return '<p>' + esc(name) + '</p>';
+          }
+          if (kind === 'exercise') {
+            var clean = String(name).replace(/^\s*\d+[\)\.-]\s*/, '');
+            var meta = { cues: (it.cues || []), prescription: (it.prescription || null) };
+            if (it.logType) meta.logType = it.logType;
+            if (it.loggable === false) meta.loggable = false;
+            if (it.notes) meta.notes = it.notes;
+            // If a JSON workout provides a link, render it as a link regardless of slug presence.
+            var asLink = !!link && isInternalExerciseLink(link);
+            var html = '<li>' + (asLink
+              ? ('<a href="' + esc(link) + '" data-exmeta="' + attrEscape(JSON.stringify(meta)) + '">' + esc(clean) + '</a>')
+              : ('<span class="ex-name no-link" data-exmeta="' + attrEscape(JSON.stringify(meta)) + '">' + esc(clean) + '</span>'));
+            // For list-only render (warm-up/cooldown/mobility), append a compact prescription summary inline
+            if (it.prescription && typeof it.prescription === 'object') {
+              try {
+                var p = it.prescription || {};
+                var parts = [];
+                if (p.sets != null && p.reps != null) {
+                  var setsNum = Number(p.sets);
+                  var setsLabel = (setsNum === 1 ? 'set' : 'sets');
+                  parts.push(String(p.sets) + ' ' + setsLabel + ' × ' + String(p.reps) + ' reps');
+                } else {
+                  if (p.sets != null) {
+                    var setsNum2 = Number(p.sets);
+                    var setsLabel2 = (setsNum2 === 1 ? 'set' : 'sets');
+                    parts.push(String(p.sets) + ' ' + setsLabel2);
+                  }
+                  if (p.reps != null) parts.push(String(p.reps) + ' reps');
+                }
+                if (p.weight != null) parts.push(typeof p.weight === 'number' ? (String(p.weight) + ' lb') : String(p.weight));
+                // Multiplier hint when not already expressed in weight string
+                var weightStr2 = (typeof p.weight === 'string') ? p.weight.toLowerCase() : '';
+                if (p.multiplier === 2 && !(weightStr2 && /(x2|×2|per\s*hand|each|per\s*side)/.test(weightStr2))) parts.push('x2');
+                if (p.multiplier === 0 && !(weightStr2 && /bodyweight/.test(weightStr2))) parts.push('bodyweight');
+                if (p.timeSeconds != null) { parts.push(String(p.timeSeconds) + ' seconds'); }
+                if (p.holdSeconds != null) { parts.push(String(p.holdSeconds) + ' seconds'); }
+                if (p.distanceMiles != null) parts.push(String(p.distanceMiles) + ' miles');
+                if (p.distanceMeters != null) parts.push(String(p.distanceMeters) + ' m');
+                if (p.rpe != null) parts.push('RPE ' + String(p.rpe));
+                if (p.restSeconds != null) parts.push('Rest ' + String(p.restSeconds) + ' seconds');
+                if (parts.length) html += ' — <span class="ex-presc">' + parts.join(' · ') + '</span>';
+              } catch (e) {}
+            }
+            // Inline cues under the item so they migrate into the card header
+            if (!options.suppressCues && it.cues && it.cues.length) {
+              html += '<ul>' + it.cues.map(function(c){ return '<li>' + inlineMarkdown(c) + '</li>'; }).join('') + '</ul>';
+            }
+            html += '</li>';
+            return html;
+          }
+          if (kind === 'superset' || kind === 'circuit') {
+            var cap = kind.charAt(0).toUpperCase() + kind.slice(1);
+            var inner = '';
+            if (it.children && it.children.length) {
+              inner = it.children.map(function(ch){ return renderItem(ch, options); }).join('');
+              if (inner && inner.indexOf('<li') !== -1) inner = '<ul>' + inner + '</ul>';
+            }
+            return '<div><h3>' + esc(cap + (it.name ? (': ' + it.name) : '')) + '</h3>' + inner + '</div>';
+          }
+          return '';
+        }
+        function renderSection(sec) {
+          if (!sec) return '';
+          var title = String(sec.title || '');
+          // Clean markdown link syntax in titles like "1) [Goblet Squat](...)"
+          title = title.replace(/^\s*\d+[\)\.-]\s*/, '');
+          var mt = title.match(/^\s*\[([^\]]+)\]\(([^)]+)\)/);
+          if (mt) title = mt[1];
+          var type = String(sec.type || '');
+          var rounds = (sec.rounds != null) ? (' — ' + sec.rounds + ' rounds') : '';
+          function attrEscapeLocal(s) {
+            return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+          }
+          var typeText = type || 'Section';
+          var display = typeText + (title ? (' — ' + title) : '');
+          var h = '<section data-sectype="' + attrEscapeLocal(typeText) + '"><h2>' + esc(display) + esc(rounds) + '</h2>';
+          // Detect warm-up / cooldown / mobility / recovery sections
+          var tlow = (title + ' ' + type).toLowerCase();
+          var isWarmish = (tlow.indexOf('warm') !== -1 || tlow.indexOf('cool') !== -1 || tlow.indexOf('mobility') !== -1 || tlow.indexOf('recovery') !== -1);
+          // Render notes as basic markdown (so links and bullets render) and, for warm/cool/mobility, prefer notes over items to avoid duplication
+          if (sec.notes) {
+            try { h += renderMarkdownBasic(String(sec.notes)); } catch (e) { h += '<p>' + esc(sec.notes) + '</p>'; }
+          }
+          // Always render items even for warm-up/cooldown/mobility/recovery when notes exist
+          if (sec.items && sec.items.length) {
+            // Suppress rendering inline cues; cards will show cues/prescriptions
+            var itemsHtml = sec.items.map(function(it){ return renderItem(it, { suppressCues: true }); }).join('');
+            // Wrap loose <li> in a <ul>
+            if (itemsHtml.indexOf('<li') !== -1) itemsHtml = '<ul>' + itemsHtml + '</ul>';
+            h += itemsHtml;
+          }
+          h += '</section>';
+          return h;
+        }
+        var obj = null;
+        try { obj = JSON.parse(text || '{}'); } catch (e) { obj = null; }
+        // Normalize SessionPlan shape (version + exercises) into a displayable sections/items structure
+        if (obj && (!obj.sections || !obj.sections.length) && obj.exercises && Object.prototype.toString.call(obj.exercises) === '[object Array]') {
+          var itemsFromPlan = [];
+          for (var ei2 = 0; ei2 < obj.exercises.length; ei2++) {
+            var ex2 = obj.exercises[ei2] || {};
+            var pres2 = (ex2.prescribed != null ? ex2.prescribed : ex2.prescription) || {};
+            if (!pres2.sets && ex2.sets != null) pres2.sets = ex2.sets;
+            if (!pres2.reps && ex2.reps != null) pres2.reps = ex2.reps;
+            if (!pres2.load && ex2.load != null) pres2.load = ex2.load;
+            if (!pres2.rpe && ex2.rpe != null) pres2.rpe = ex2.rpe;
+            // For SessionPlan inputs: carry through provided link; render logic will restrict to internal-only
+            var linkPlan = String(ex2.link || '');
+            itemsFromPlan.push({
+              kind: 'exercise',
+              name: ex2.name || ex2.slug || 'Exercise',
+              cues: ex2.cues || [],
+              prescription: pres2,
+              link: linkPlan
+            });
+          }
+          obj.sections = [{ type: 'Main', title: 'Main Sets', items: itemsFromPlan }];
+        }
+        if (obj && obj.sections) {
+          var parts = [];
+          // Title
+          var titleTop = obj.title ? '<h1>' + esc(obj.title) + '</h1>' : '';
+          if (obj.date) titleTop += '<p class="muted">' + esc(obj.date) + '</p>';
+          if (titleTop) parts.push(titleTop);
+          // Session-level notes before sections
+          if (obj.notes) {
+            try { parts.push(renderMarkdownBasic(String(obj.notes))); }
+            catch (e) { parts.push('<p>' + esc(obj.notes) + '</p>'); }
+          }
+          for (var si = 0; si < obj.sections.length; si++) parts.push(renderSection(obj.sections[si]));
+          workoutContent.innerHTML = parts.join('\n');
+        } else {
+          // Fallback to pretty JSON when structure is unknown
+          var pretty = '';
+          try { pretty = JSON.stringify(JSON.parse(text || '{}'), null, 2); } catch (e) { pretty = text || ''; }
+          workoutContent.innerHTML = '<pre>' + (pretty || '') + '</pre>';
+        }
+        fixExerciseAnchors(workoutContent);
+      } else {
+        // render markdown (basic)
+        workoutContent.innerHTML = renderMarkdownBasic(text || '');
+        fixExerciseAnchors(workoutContent);
+      }
+      setVisibility(formSection, true);
+      buildForm(path, text || '', isJSON);
+      // Intercept clicks on exercise links inside the session view and route to exercise.html
+      if (workoutSection && !workoutSection.__wiredExLinks) {
+        workoutSection.addEventListener('click', function (e) {
+          var t = e.target || e.srcElement;
+          if (!t) return;
+          while (t && t !== workoutSection && !(t.tagName && t.tagName.toLowerCase() === 'a')) t = t.parentNode;
+          if (!t || t === workoutSection) return;
+          var href = t.getAttribute('href') || '';
+          // Only route internal exercise links
+          if (/^https?:/i.test(href)) return;
+          var exMatch = href.match(/(?:^|\/)?exercises\/[\w\-]+\.(?:md|json)$/i);
+          if (exMatch) {
+            try { e.preventDefault(); } catch (ex) {}
+            // Normalize to exercises/<slug>.json
+            var slug = (href.match(/exercises\/([\w\-]+)\.(?:md|json)$/i)||[])[1];
+            var jsonPath = 'exercises/' + slug + '.json';
+            try { window.location.href = 'exercise.html?file=' + encodeURIComponent(jsonPath); } catch (ex) {}
+            return;
+          }
+        }, false);
+        workoutSection.__wiredExLinks = true;
+      }
+      // Meta
+      var title = path;
+      if (readmeText) {
+        // Try find a title from README link text
+        var rx = new RegExp("\\[(.*?)\\]\\(" + path.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + "\\)");
+        var m = readmeText.match(rx);
+        if (m && m[1]) title = m[1];
+      }
+      workoutTitleEl.innerHTML = title;
+      openOnGitHubEl.href = 'https://github.com/jrodhead/exercAIse/blob/main/' + path;
+      setVisibility(workoutMetaEl, true);
+      try { window.scrollTo(0, 0); } catch (e) {}
+      status(''); // no noisy success banner
+    });
+  }
+
+  // Kai integration functions now imported from kai-integration.js module
+  // Includes: validateSessionPlan, normalizeSessionPlanInPlace, validateSessionPlanLinks,
+  // validateWorkoutLinks, isWorkoutJSONShape, looksLikeSessionPlan, openGeneratedSession,
+  // handleGenerateButtons, generateExerciseStub, generateExerciseStubsFromObj, generateExerciseStubsFromPlan
+
+  // Initialize Kai Integration module with required dependencies
+  function initializeKaiIntegration() {
+    if (!window.ExercAIse || !window.ExercAIse.KaiIntegration) {
+      console.warn('KaiIntegration module not loaded');
+      return;
+    }
+    
+    // Pass dependencies to KaiIntegration module
+    window.ExercAIse.KaiIntegration.init({
+      status: status,
+      xhrGet: xhrGet,
+      xhrPostJSON: xhrPostJSON,
+      renderMarkdownBasic: renderMarkdownBasic,
+      fixExerciseAnchors: fixExerciseAnchors,
+      setVisibility: setVisibility,
+      buildForm: buildForm,
+      // DOM elements
+      readmeSection: readmeSection,
+      logsSection: logsSection,
+      generateSection: generateSection,
+      workoutSection: workoutSection,
+      workoutContent: workoutContent,
+      formSection: formSection,
+      workoutTitleEl: workoutTitleEl,
+      openOnGitHubEl: openOnGitHubEl,
+      workoutMetaEl: workoutMetaEl,
+      genForm: genForm,
+      genClear: genClear,
+      genGoals: genGoals,
+      genPain: genPain,
+      genEquipment: genEquipment,
+      genInstr: genInstr,
+      genJSON: genJSON,
+      genLoadJSON: genLoadJSON,
+      genSubmit: genSubmit,
+      linkValidation: linkValidation,
+      kaiUiEnabled: kaiUiEnabled,
+      parseHMSToSeconds: window.ExercAIse.SessionParser.parseHMSToSeconds
+    });
+  }
+
+  // OLD KAI FUNCTIONS REMOVED - NOW IN kai-integration.js MODULE
+  // The following ~600 lines have been extracted to kai-integration.js:
+  // - validateSessionPlan, normalizeSessionPlanInPlace
+  // - validateSessionPlanLinks, validateWorkoutLinks
+  // - isWorkoutJSONShape, looksLikeSessionPlan
+  // - openGeneratedSession, handleGenerateButtons
+  // - generateExerciseStub, generateExerciseStubsFromObj, generateExerciseStubsFromPlan
+
+  // PLACEHOLDER - TO BE REMOVED
+      function firstNumberFrom(text) {
+        if (typeof text === 'number') return text;
+        if (typeof text !== 'string') return null;
+        var m = text.match(/(\d+(?:\.\d+)?)/);
+        return m ? Number(m[1]) : null;
+      }
+      function parseWeightSpec(val) {
+        var out = { weight: null, multiplier: null };
+        if (val == null) return out;
+        if (typeof val === 'number') { out.weight = val; return out; }
+        var s = String(val).toLowerCase();
+        var n = firstNumberFrom(s);
+        if (n != null) out.weight = n;
+        if (/per\s*hand|each|per\s*side|x2|×2/.test(s)) out.multiplier = 2;
+        else if (/total/.test(s)) out.multiplier = 1;
+        else if (/bodyweight/.test(s)) out.multiplier = 0;
+        return out;
+      }
+      function normalizeReps(reps) {
+        // Rep Range Normalization (REPRANGE-01)
+        if (reps == null) {
+          return { reps_low: null, reps_high: null, reps_display: null, isRange: false };
+        }
+        var reps_display = String(reps);
+        // Handle numeric input
+        if (typeof reps === 'number' && !isNaN(reps)) {
+          var intReps = Math.max(1, Math.floor(reps));
+          return { reps_low: intReps, reps_high: intReps, reps_display: reps_display, isRange: false };
+        }
+        // Handle string input
+        if (typeof reps === 'string') {
+          var trimmed = reps.trim();
+          // Check for range pattern (supports both - and – characters)
+          var rangeMatch = trimmed.match(/^(\d+)\s*[–-]\s*(\d+)$/);
+          if (rangeMatch) {
+            var low = parseInt(rangeMatch[1], 10);
+            var high = parseInt(rangeMatch[2], 10);
+            if (isNaN(low) || isNaN(high)) {
+              return { reps_low: null, reps_high: null, reps_display: reps_display, isRange: false, error: 'Invalid range numbers' };
+            }
+            // Swap if bounds are reversed (e.g., "12-8")
+            if (low > high) { var temp = low; low = high; high = temp; }
+            // Ensure minimum of 1
+            low = Math.max(1, low);
+            high = Math.max(1, high);
+            return { reps_low: low, reps_high: high, reps_display: reps_display, isRange: low !== high };
+          }
+          // Try to parse as single number
+          var singleMatch = trimmed.match(/^(\d+)$/);
+          if (singleMatch) {
+            var intReps2 = Math.max(1, parseInt(singleMatch[1], 10));
+            return { reps_low: intReps2, reps_high: intReps2, reps_display: reps_display, isRange: false };
+          }
+          // Handle malformed string
+          return { reps_low: null, reps_high: null, reps_display: reps_display, isRange: false, error: 'Malformed reps string' };
+        }
+        // Unsupported type
+        return { reps_low: null, reps_high: null, reps_display: reps_display, isRange: false, error: 'Unsupported reps type' };
+      }
+      function parseTimeToSec(text) {
+        if (text == null) return null;
+        if (typeof text === 'number') return text;
+        var s = String(text).trim().toLowerCase();
+        // mm:ss or h:mm:ss
+        var colon = parseHMSToSeconds(s);
+        if (colon != null) return colon;
+        var m;
+        m = s.match(/(\d{1,3})\s*(?:min|minutes?)/);
+        if (m) { var mins = parseInt(m[1], 10); if (!isNaN(mins)) return mins * 60; }
+        m = s.match(/(\d{1,3})\s*(?:sec|seconds?)/);
+        if (m) { var secs = parseInt(m[1], 10); if (!isNaN(secs)) return secs; }
+        var n = firstNumberFrom(s);
+        return n != null ? n : null;
+      }
+      function parseDistance(text) {
+        if (text == null) return { miles: null, meters: null };
+        if (typeof text === 'number') return { miles: text, meters: null };
+        var s = String(text).toLowerCase();
+        var m;
+        m = s.match(/(\d+(?:\.\d+)?)\s*(?:mi|miles?)/);
+        if (m) return { miles: Number(m[1]), meters: null };
+        m = s.match(/(\d+(?:\.\d+)?)\s*(?:m|meters?)/);
+        if (m) return { miles: null, meters: Number(m[1]) };
+        var n = firstNumberFrom(s);
+        return { miles: n, meters: null };
+      }
+      for (var i = 0; i < plan.exercises.length; i++) {
+        var ex = plan.exercises[i] || {};
+        var p = ex.prescribed || {};
+        // sets
+        if (p.sets != null && typeof p.sets === 'string') {
+          var setsNum = firstNumberFrom(p.sets); if (setsNum != null) p.sets = setsNum;
+        }
+        // reps: normalize with REPRANGE-01 logic
+        if (p.reps !== undefined) {
+          var repsNorm = normalizeReps(p.reps);
+          p.reps_low = repsNorm.reps_low;
+          p.reps_high = repsNorm.reps_high;
+          p.reps_display = repsNorm.reps_display;
+          // Keep original reps for backwards compatibility during transition
+          // p.reps = p.reps; // unchanged
+          if (repsNorm.error) p.reps_error = repsNorm.error;
+        }
+        // rpe
+        if (p.rpe != null && typeof p.rpe === 'string') {
+          var rpeNum = firstNumberFrom(p.rpe); if (rpeNum != null) p.rpe = rpeNum;
+        }
+        // weight/load
+        if (p.weight != null && typeof p.weight !== 'number') {
+          var w1 = parseWeightSpec(p.weight);
+          if (w1.weight != null) p.weight = w1.weight;
+          if (w1.multiplier != null) p.multiplier = (p.multiplier == null ? w1.multiplier : p.multiplier);
+        }
+        if (p.load != null && typeof p.load !== 'number') {
+          var w2 = parseWeightSpec(p.load);
+          if (w2.weight != null) { p.weight = w2.weight; delete p.load; }
+          if (w2.multiplier != null) p.multiplier = (p.multiplier == null ? w2.multiplier : p.multiplier);
+        }
+        // time/hold
+        if (p.timeSeconds != null && typeof p.timeSeconds === 'string') {
+          var ts = parseTimeToSec(p.timeSeconds); if (ts != null) p.timeSeconds = ts;
+        }
+        if (p.holdSeconds != null && typeof p.holdSeconds === 'string') {
+          var hs = parseTimeToSec(p.holdSeconds); if (hs != null) p.holdSeconds = hs;
+        }
+  if (p.time != null && p.timeSeconds == null) {
+          var ts2 = parseTimeToSec(p.time); if (ts2 != null) p.timeSeconds = ts2; delete p.time;
+        }
+        if (p.hold != null && p.holdSeconds == null) {
+          var hs2 = parseTimeToSec(p.hold); if (hs2 != null) p.holdSeconds = hs2; delete p.hold;
+        }
+        // rest
+        if (p.restSec != null && p.restSeconds == null) { p.restSeconds = Number(p.restSec) || p.restSec; delete p.restSec; }
+        // distance
+        if (p.distanceMiles != null && typeof p.distanceMiles === 'string') {
+          var d1 = parseDistance(p.distanceMiles); if (d1.miles != null) p.distanceMiles = d1.miles;
+        }
+        if (p.distanceMeters != null && typeof p.distanceMeters === 'string') {
+          var d2 = parseDistance(p.distanceMeters); if (d2.meters != null) p.distanceMeters = d2.meters;
+        }
+        if (p.distance != null) {
+          var d3 = parseDistance(p.distance);
+          if (d3.miles != null && p.distanceMiles == null) p.distanceMiles = d3.miles;
+          if (d3.meters != null && p.distanceMeters == null) p.distanceMeters = d3.meters;
+          delete p.distance;
+        }
+        ex.prescribed = p;
+        plan.exercises[i] = ex;
+      }
+    } catch (e) {}
+    return plan;
+  }
+
+  function openGeneratedSession(obj) {
+    // Render using same path rendering by writing to a blob URL
+    var pretty = JSON.stringify(obj || {}, null, 2);
+    var blob = null; try { blob = new Blob([pretty], { type: 'application/json' }); } catch (e) {}
+    if (!blob) { return status('Your browser cannot render the generated session.', { important: true }); }
+    var url = null; try { url = URL.createObjectURL(blob); } catch (e) {}
+    if (!url) { return status('Unable to open generated session.', { important: true }); }
+    // Reuse openSession by pretending this is a JSON path
+    setVisibility(readmeSection, false);
+    setVisibility(logsSection, false);
+    setVisibility(generateSection, false);
+    setVisibility(workoutSection, true);
+    // Directly render JSON branch without XHR by injecting content
+    try {
+      var text = pretty;
+      // render structured JSON like in openSession JSON branch
+      var obj = JSON.parse(text || '{}');
+  function esc(s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+      // Local helper to determine if a link targets an internal exercise file
+      function isInternalExerciseLink(url) {
+        if (!url) return false;
+        if (/^https?:/i.test(url)) return false;
+        var m = String(url).match(/^(?:\.?\.?\/)?(exercises\/[\w\-]+\.(?:json|md))$/i);
+        return !!(m && m[1]);
+      }
+      function renderItem(it, opts) {
+        if (!it || typeof it !== 'object') return '';
+        var options = opts || {};
+        var kind = String(it.kind || 'exercise');
+        var name = String(it.name || '');
+        var link = String(it.link || '');
+        function inlineMarkdown(text) {
+          var s = String(text == null ? '' : text);
+          s = s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+          s = s.replace(/\[(.*?)\]\((.*?)\)/g, function(_, t, u){ return '<a href="' + u + '">' + t + '</a>'; });
+          return s;
+        }
+        function attrEscape(s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+  if (kind === 'exercise') {
+          // Accept both 'prescribed' (plan) and 'prescription' (workout) shapes
+          var presObj = (it.prescribed != null ? it.prescribed : it.prescription);
+          var meta = { cues: (it.cues || []), prescription: (presObj || null) };
+          if (it.logType) meta.logType = it.logType;
+          if (it.loggable === false) meta.loggable = false;
+          if (it.notes) meta.notes = it.notes;
+          // Decide whether to render as link or non-link
+          // Only link when an explicit internal exercise link is provided
+          var asLink = !!link && isInternalExerciseLink(link);
+          var html = '<li>' + (asLink
+            ? ('<a href="' + esc(link) + '" data-exmeta="' + attrEscape(JSON.stringify(meta)) + '">' + esc(name) + '</a>')
+            : ('<span class="ex-name no-link" data-exmeta="' + attrEscape(JSON.stringify(meta)) + '">' + esc(name) + '</span>'));
+          // Append compact prescription summary inline for list-only display
+          if (presObj && typeof presObj === 'object') {
+            try {
+              var p = presObj || {};
+              var parts = [];
+              if (p.sets != null && p.reps != null) {
+                var setsNumG = Number(p.sets);
+                var setsLabelG = (setsNumG === 1 ? 'set' : 'sets');
+                parts.push(String(p.sets) + ' ' + setsLabelG + ' × ' + String(p.reps) + ' reps');
+              } else {
+                if (p.sets != null) {
+                  var setsNumG2 = Number(p.sets);
+                  var setsLabelG2 = (setsNumG2 === 1 ? 'set' : 'sets');
+                  parts.push(String(p.sets) + ' ' + setsLabelG2);
+                }
+                if (p.reps != null) parts.push(String(p.reps) + ' reps');
+              }
+              if (p.weight != null) parts.push(typeof p.weight === 'number' ? (String(p.weight) + ' lb') : String(p.weight));
+              var weightStr3 = (typeof p.weight === 'string') ? p.weight.toLowerCase() : '';
+              if (p.multiplier === 2 && !(weightStr3 && /(x2|×2|per\s*hand|each|per\s*side)/.test(weightStr3))) parts.push('x2');
+              if (p.multiplier === 0 && !(weightStr3 && /bodyweight/.test(weightStr3))) parts.push('bodyweight');
+              if (p.timeSeconds != null) { parts.push(String(p.timeSeconds) + ' seconds'); }
+              if (p.holdSeconds != null) { parts.push(String(p.holdSeconds) + ' seconds'); }
+              if (p.distanceMiles != null) parts.push(String(p.distanceMiles) + ' miles');
+              if (p.distanceMeters != null) parts.push(String(p.distanceMeters) + ' m');
+              if (p.rpe != null) parts.push('RPE ' + String(p.rpe));
+              if (p.restSeconds != null) parts.push('Rest ' + String(p.restSeconds) + ' seconds');
+              if (parts.length) html += ' — <span class="ex-presc">' + parts.join(' · ') + '</span>';
+            } catch (e) {}
+          }
+          if (!options.suppressCues && it.cues && it.cues.length) {
+            html += '<ul>' + it.cues.map(function(c){ return '<li>' + inlineMarkdown(c) + '</li>'; }).join('') + '</ul>';
+          }
+          html += '</li>';
+          return html;
+        }
+        return '';
+      }
+      function renderSection(sec) {
+        if (!sec) return '';
+        var title = String(sec.title || '');
+        var type = String(sec.type || '');
+        var rounds = (sec.rounds != null) ? (' — ' + sec.rounds + ' rounds') : '';
+        function attrEscapeLocal(s) { return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+        var typeText = type || 'Section';
+        var display = typeText + (title ? (' — ' + title) : '');
+        var h = '<section data-sectype="' + attrEscapeLocal(typeText) + '"><h2>' + esc(display) + esc(rounds) + '</h2>';
+        if (sec.notes) { try { h += renderMarkdownBasic(String(sec.notes)); } catch (e) { h += '<p>' + esc(sec.notes) + '</p>'; } }
+        if (sec.items && sec.items.length) {
+          var itemsHtml = sec.items.map(function(it){ return renderItem(it, { suppressCues: true }); }).join('');
+          if (itemsHtml.indexOf('<li') !== -1) itemsHtml = '<ul>' + itemsHtml + '</ul>';
+          h += itemsHtml;
+        }
+        h += '</section>';
+        return h;
+      }
+      // If no sections provided, map exercises into a default section for display
+      if ((!obj.sections || !obj.sections.length) && obj.exercises && obj.exercises.length) {
+        var items = [];
+        for (var ei = 0; ei < obj.exercises.length; ei++) {
+          var ex = obj.exercises[ei] || {};
+          // Accept either 'prescribed' (plan) or 'prescription' (workout-style)
+          var pres = (ex.prescribed != null ? ex.prescribed : ex.prescription) || {};
+          // Accept top-level sets/reps as well
+          if (!pres.sets && ex.sets != null) pres.sets = ex.sets;
+          if (!pres.reps && ex.reps != null) pres.reps = ex.reps;
+          if (!pres.load && ex.load != null) pres.load = ex.load;
+          if (!pres.rpe && ex.rpe != null) pres.rpe = ex.rpe;
+          // Preserve explicit link from SessionPlan when provided; otherwise, derive from slug if available
+          var linkFromPlan = (typeof ex.link === 'string') ? ex.link : '';
+          var linkValue = linkFromPlan || (ex.slug ? ('exercises/' + String(ex.slug).replace(/[^a-z0-9_\-]+/g,'') + '.json') : '');
+          items.push({
+            kind: 'exercise',
+            name: ex.name || ex.slug || 'Exercise',
+            cues: ex.cues || [],
+            prescription: pres,
+            link: linkValue,
+            slug: ex.slug || ''
+          });
+        }
+        obj.sections = [{ type: 'Main', title: 'Main Sets', items: items }];
+      }
+
+      var parts = [];
+      var titleTop = obj.title ? '<h1>' + esc(obj.title) + '</h1>' : '';
+      if (obj.date) titleTop += '<p class="muted">' + esc(obj.date) + '</p>';
+      if (titleTop) parts.push(titleTop);
+      if (obj.notes) { try { parts.push(renderMarkdownBasic(String(obj.notes))); } catch (e) { parts.push('<p>' + esc(obj.notes) + '</p>'); } }
+      if (obj.sections && obj.sections.length) {
+        for (var si = 0; si < obj.sections.length; si++) parts.push(renderSection(obj.sections[si]));
+      }
+      workoutContent.innerHTML = parts.join('\n');
+      fixExerciseAnchors(workoutContent);
+      // Intercept clicks on exercise links inside the session view and route to exercise.html
+      if (workoutSection && !workoutSection.__wiredExLinks) {
+        workoutSection.addEventListener('click', function (e) {
+          var t = e.target || e.srcElement;
+          if (!t) return;
+          while (t && t !== workoutSection && !(t.tagName && t.tagName.toLowerCase() === 'a')) t = t.parentNode;
+          if (!t || t === workoutSection) return;
+          var href = t.getAttribute('href') || '';
+          // Only route internal exercise links
+          if (/^https?:/i.test(href)) return;
+          var exMatch = href.match(/(?:^|\/)?exercises\/[\w\-]+\.(?:md|json)$/i);
+          if (exMatch) {
+            try { e.preventDefault(); } catch (ex) {}
+            // Normalize to exercises/<slug>.json
+            var slug = (href.match(/exercises\/([\w\-]+)\.(?:md|json)$/i)||[])[1];
+            var jsonPath = 'exercises/' + slug + '.json';
+            try { window.location.href = 'exercise.html?file=' + encodeURIComponent(jsonPath); } catch (ex) {}
+            return;
+          }
+        }, false);
+        workoutSection.__wiredExLinks = true;
+      }
+      setVisibility(formSection, true);
+      buildForm('generated://session.json', JSON.stringify(obj), true);
+      workoutTitleEl.innerHTML = obj.title || 'Generated Session';
+      openOnGitHubEl.href = '#';
+      setVisibility(workoutMetaEl, true);
+      try { window.scrollTo(0, 0); } catch (e) {}
+      // Preserve prior important warnings (e.g., invalid/missing links) by not clearing status in that case
+      var hasLinkWarnings = false;
+      try {
+        hasLinkWarnings = !!((linkValidation && linkValidation.invalid && linkValidation.invalid.length) || (linkValidation && linkValidation.missing && linkValidation.missing.length));
+      } catch (e) { hasLinkWarnings = false; }
+      if (!hasLinkWarnings) status('');
+    } catch (e) {
+      status('Failed to render generated session: ' + (e && e.message || e), { important: true });
+    }
+  }
+
+  // Guardrails: validate provided SessionPlan links (internal-only) and optionally probe existence (non-blocking)
+  function validateSessionPlanLinks(obj, cb) {
+    try {
+      if (!obj || !obj.exercises || !obj.exercises.length) return cb(null);
+      var invalid = [];
+      var missing = [];
+      var pending = 0;
+      function isInternal(url) {
+        if (!url) return false;
+        if (/^https?:/i.test(url)) return false;
+        return /^(?:\.?\.?\/)?exercises\/[\w\-]+\.(?:json|md)$/i.test(url);
+      }
+      function doneOnce() { try { cb(null); } catch (e) {} }
+      for (var i = 0; i < obj.exercises.length; i++) {
+        var ex = obj.exercises[i] || {};
+        var link = String(ex.link || '').trim();
+        if (!link) continue; // link is optional
+        if (!isInternal(link)) { invalid.push(link); continue; }
+        (function (u) {
+          pending++;
+          xhrGet(u, function (err, text) {
+            if (err || !text) missing.push(u);
+            pending--;
+            if (pending === 0) {
+              linkValidation.invalid = invalid.slice(0);
+              linkValidation.missing = missing.slice(0);
+              return doneOnce();
+            }
+          });
+        })(link);
+      }
+      if (pending === 0) {
+        linkValidation.invalid = invalid.slice(0);
+        linkValidation.missing = missing.slice(0);
+        return doneOnce();
+      }
+    } catch (e) { return cb('Validation error: ' + (e && e.message || e)); }
+  }
+
+  // Detect if object looks like a repository workout JSON (has sections/items tree)
+  function isWorkoutJSONShape(obj) {
+    if (!obj || typeof obj !== 'object') return false;
+    if (!obj.sections || Object.prototype.toString.call(obj.sections) !== '[object Array]') return false;
+    // Consider it a workout if any section has items
+    for (var i = 0; i < obj.sections.length; i++) {
+      var sec = obj.sections[i];
+      if (sec && sec.items && Object.prototype.toString.call(sec.items) === '[object Array]' && sec.items.length) return true;
+    }
+    // Or if empty sections array is present, still treat as workout
+    return true;
+  }
+
+  function looksLikeSessionPlan(obj) {
+    return !!(obj && obj.version === '1.0' && obj.exercises && Object.prototype.toString.call(obj.exercises) === '[object Array]');
+  }
+
+  // Validate links/slugs inside a workout JSON (sections/items, including supersets/circuits)
+  function validateWorkoutLinks(obj, cb) {
+    try {
+      var invalid = [];
+      var missing = [];
+      var pending = 0;
+      function doneOnce(err) { try { cb(err); } catch (e) {} }
+      function extractSlugFromLink(link) {
+        if (!link) return '';
+        var m = String(link).match(/(?:^|\/)exercises\/([a-z0-9_\-]+)\.(?:json|md)$/i);
+        return m && m[1] ? m[1] : '';
+      }
+      function walkItem(it) {
+        if (!it || typeof it !== 'object') return;
+        var kind = String(it.kind || 'exercise');
+        if (kind === 'exercise') {
+          var link = String(it.link || '');
+          var slug = extractSlugFromLink(link);
+          if (!slug && it.slug) slug = String(it.slug).trim();
+          if (!slug) { invalid.push((it.name || '(unnamed)') + ' (no link/slug)'); return; }
+          if (!/^[a-z0-9_\-]+$/.test(slug)) { invalid.push(slug); return; }
+          pending++;
+          var path = 'exercises/' + slug + '.json';
+          xhrGet(path, function (err, text) {
+            if (err || !text) missing.push(slug);
+            pending--;
+            if (pending === 0) {
+              if (invalid.length || missing.length) {
+                var msgs = [];
+                if (invalid.length) msgs.push('Invalid/missing link entries: ' + invalid.join(', '));
+                if (missing.length) msgs.push('Unknown slugs (no file in exercises/): ' + missing.join(', '));
+                return doneOnce(msgs.join(' | '));
+              }
+              return doneOnce(null);
+            }
+          });
+        } else if ((kind === 'superset' || kind === 'circuit') && it.children && it.children.length) {
+          for (var i = 0; i < it.children.length; i++) walkItem(it.children[i]);
+        }
+      }
+      if (!obj || !obj.sections || !obj.sections.length) return cb(null);
+      for (var s = 0; s < obj.sections.length; s++) {
+        var sec = obj.sections[s];
+        if (!sec || !sec.items || !sec.items.length) continue;
+        for (var j = 0; j < sec.items.length; j++) walkItem(sec.items[j]);
+      }
+      if (pending === 0) {
+        if (invalid.length) return doneOnce('Invalid/missing link entries: ' + invalid.join(', '));
+        return doneOnce(null);
+      }
+    } catch (e) { return cb('Validation error: ' + (e && e.message || e)); }
+  }
+
+  function handleGenerateButtons() {
+    if (!genForm || genForm.__wired) return;
+    genForm.__wired = true;
+    if (genClear) genClear.onclick = function () {
+      if (genGoals) genGoals.value = '';
+      if (genPain) genPain.value = '';
+      if (genEquipment) genEquipment.value = '';
+      if (genInstr) genInstr.value = '';
+      if (genJSON) genJSON.value = '';
+      status('Cleared.', { important: false });
+    };
+    if (genLoadJSON) genLoadJSON.onclick = function () {
+      var text = (genJSON && genJSON.value) || '';
+      if (!text) return status('Paste JSON first.', { important: true });
+      var obj = null; try { obj = JSON.parse(text); } catch (e) { return status('Invalid JSON: ' + (e && e.message || e), { important: true }); }
+      // Accept either a workout JSON (sections/items) or a SessionPlan (version/exercises)
+      if (isWorkoutJSONShape(obj)) {
+        validateWorkoutLinks(obj, function (linkErrW) {
+          if (linkErrW) {
+            status('Some exercises are unknown or invalid; details won’t open until they exist. Rendering anyway.', { important: true });
+          }
+          openGeneratedSession(obj);
+        });
+      } else if (looksLikeSessionPlan(obj)) {
+        // Gentle repair before validation
+        obj = normalizeSessionPlanInPlace(obj);
+        var err = validateSessionPlan(obj);
+        if (err) return status('SessionPlan invalid: ' + err, { important: true });
+        validateSessionPlanLinks(obj, function (linkErr) {
+          // If there are invalid or missing links, show a warning banner; still render
+          if ((linkValidation.invalid && linkValidation.invalid.length) || (linkValidation.missing && linkValidation.missing.length)) {
+            var msgs = [];
+            if (linkValidation.invalid && linkValidation.invalid.length) msgs.push('Invalid links (external or malformed): ' + linkValidation.invalid.join(', '));
+            if (linkValidation.missing && linkValidation.missing.length) msgs.push('Missing files: ' + linkValidation.missing.join(', '));
+            status('Some exercise links are invalid or missing; details won’t open until they exist: ' + msgs.join(' | ') + ' — rendering anyway.', { important: true });
+          }
+          openGeneratedSession(obj);
+        });
+      } else {
+        return status('Unsupported JSON shape: expected workout {sections[]} or plan {version:"1.0", exercises[]}', { important: true });
+      }
+    };
+  if (kaiUiEnabled && genSubmit) genSubmit.onclick = function () {
+      var payload = {
+        goals: (genGoals && genGoals.value) || '',
+        pain: ((genPain && genPain.value) || '').split(/,\s*/).filter(Boolean),
+        equipment: ((genEquipment && genEquipment.value) || '').split(/,\s*/).filter(Boolean),
+        personalInstructions: (genInstr && genInstr.value) || ''
+      };
+      status('Contacting Kai…');
+      xhrPostJSON('/api/kai/session-plan', payload, function (err, text) {
+        if (err) {
+          // Fallback: generate a local deterministic plan using known exercises
+          var today = new Date();
+          var iso = today.toISOString().slice(0,10);
+          var local = {
+            version: '1.0',
+            title: 'Home Strength (Auto) — ' + iso,
+            date: iso,
+            notes: 'Local fallback plan. Adjust loads conservatively.',
+            exercises: [
+              { slug: 'goblet_squat', name: 'Goblet Squat', prescribed: { sets: 3, reps: 8, rpe: 7 }, cues: ['Elbows down; bell tight', 'Knees track over toes'] },
+              { slug: 'flat_dumbbell_bench_press', name: 'Flat DB Bench Press', prescribed: { sets: 3, reps: 10, rpe: 7 }, cues: ['Wrists stacked', 'Soft lockout'] },
+              { slug: 'dumbbell_rdl', name: 'Dumbbell RDL', prescribed: { sets: 3, reps: 8, rpe: 7 }, cues: ['Hips back', 'Shins vertical'] },
+              { slug: 'hammer_curl', name: 'Hammer Curl', prescribed: { sets: 3, reps: 12, rpe: 7 }, cues: ['Neutral grip', 'Control the lower'] }
+            ]
+          };
+          var verr = validateSessionPlan(local);
+          if (verr) return status('Fallback plan invalid: ' + verr, { important: true });
+          return validateSessionPlanLinks(local, function (linkErrA) {
+            if (linkErrA) return status('Fallback link validation failed: ' + linkErrA, { important: true });
+            openGeneratedSession(local);
+          });
+        }
+        var obj = null; try { obj = JSON.parse(text); } catch (e) { return status('Kai returned invalid JSON', { important: true }); }
+        // Accept either shape from Kai
+        if (isWorkoutJSONShape(obj)) {
+          validateWorkoutLinks(obj, function (linkErrW2) {
+            if (linkErrW2) { status('Some exercises are unknown or invalid; rendering anyway.', { important: true }); }
+            openGeneratedSession(obj);
+          });
+        } else if (looksLikeSessionPlan(obj)) {
+          obj = normalizeSessionPlanInPlace(obj);
+          var v = validateSessionPlan(obj);
+          if (v) return status('SessionPlan invalid: ' + v, { important: true });
+          validateSessionPlanLinks(obj, function (linkErrB) {
+            if ((linkValidation.invalid && linkValidation.invalid.length) || (linkValidation.missing && linkValidation.missing.length)) {
+              var msgs2 = [];
+              if (linkValidation.invalid && linkValidation.invalid.length) msgs2.push('Invalid links (external or malformed): ' + linkValidation.invalid.join(', '));
+              if (linkValidation.missing && linkValidation.missing.length) msgs2.push('Missing files: ' + linkValidation.missing.join(', '));
+              status('Some exercise links are invalid or missing; details won’t open until they exist: ' + msgs2.join(' | ') + ' — rendering anyway.', { important: true });
+            }
+            openGeneratedSession(obj);
+          });
+        } else {
+          return status('Kai returned unsupported JSON shape (expected workout or plan).', { important: true });
+        }
+      });
+    };
+  }
+
+  function generateExerciseStub(slug, name) {
+    var display = name || (slug || '').replace(/_/g, ' ').replace(/\b\w/g, function(m){ return m.toUpperCase(); });
+    var stub = {
+      name: display,
+      equipment: [],
+      tags: [],
+      setup: [""],
+      steps: [""],
+      cues: [],
+      mistakes: [],
+      safety: "",
+      scaling: { regressions: [], progressions: [] },
+      variations: [],
+      prescriptionHints: { load: "", reps: "", time: "", distance: "", rpe: "", notes: "" },
+      joints: { sensitiveJoints: [], notes: "" },
+      media: { video: "", images: [] }
+    };
+    return { path: 'exercises/' + slug + '.json', json: JSON.stringify(stub, null, 2) };
+  }
+
+  function generateExerciseStubsFromObj(obj, missingSlugs) {
+    try {
+      var nameBySlug = {};
+      function slugFromLink(link) {
+        var m = String(link || '').match(/(?:^|\/)exercises\/([a-z0-9_\-]+)\.(?:json|md)$/i);
+        return m && m[1] ? m[1] : '';
+      }
+      function walkItem(it) {
+        if (!it || typeof it !== 'object') return;
+        var kind = String(it.kind || 'exercise');
+        if (kind === 'exercise') {
+          var s = it.slug || slugFromLink(it.link);
+          if (s) nameBySlug[s] = it.name || nameBySlug[s] || s;
+        } else if ((kind === 'superset' || kind === 'circuit') && it.children && it.children.length) {
+          for (var i = 0; i < it.children.length; i++) walkItem(it.children[i]);
+        }
+      }
+      if (obj && obj.sections && obj.sections.length) {
+        for (var si = 0; si < obj.sections.length; si++) {
+          var sec = obj.sections[si];
+          if (!sec || !sec.items) continue;
+          for (var j = 0; j < sec.items.length; j++) walkItem(sec.items[j]);
+        }
+      }
+      var parts = [];
+      for (var k = 0; k < missingSlugs.length; k++) {
+        var slug = missingSlugs[k];
+        var name = nameBySlug[slug] || slug;
+        var stub = generateExerciseStub(slug, name);
+        parts.push('// ' + stub.path + '\n' + stub.json);
+      }
+      return parts.join('\n\n');
+    } catch (e) { return ''; }
+  }
+
+  function generateExerciseStubsFromPlan(plan, missingSlugs) {
+    try {
+      var nameBySlug = {};
+      if (plan && plan.exercises && plan.exercises.length) {
+        for (var i = 0; i < plan.exercises.length; i++) {
+          var ex = plan.exercises[i] || {};
+          var s = String(ex.slug || '').trim();
+          if (s) nameBySlug[s] = ex.name || nameBySlug[s] || s;
+        }
+      }
+      var parts = [];
+      for (var k = 0; k < missingSlugs.length; k++) {
+        var slug = missingSlugs[k];
+        var name = nameBySlug[slug] || slug;
+        var stub = generateExerciseStub(slug, name);
+        parts.push('// ' + stub.path + '\n' + stub.json);
+      }
+      return parts.join('\n\n');
+    } catch (e) { return ''; }
+  }
+
+  // Compute repo base for GitHub Pages; if on *.github.io, prefix with '/exercAIse/'
+  function getRepoBase() {
+    var base = './';
+    try {
+      var loc = window.location || {};
+      var host = String(loc.hostname || '');
+      if (/github\.io$/i.test(host)) {
+        base = '/exercAIse/';
+      } else if (String(loc.pathname || '').indexOf('/exercAIse/') !== -1) {
+        base = '/exercAIse/';
+      }
+    } catch (e) {}
+    return base;
+  }
+
+  // After content is in the DOM, normalize any exercise links to the correct base
+  function fixExerciseAnchors(scope) {
+    try {
+      var base = getRepoBase();
+      var anchors = (scope || document).getElementsByTagName('a');
+      for (var i = 0; i < anchors.length; i++) {
+        var a = anchors[i];
+        var href = a.getAttribute('href') || '';
+  // Identify exercise links (md or json) that might be relative or wrongly absolute
+  var m = href.match(/(?:https?:\/\/[^\/]+)?\/?(exercises\/[\w\-]+\.(?:md|json))$/);
+        if (m && m[1]) {
+          var fixed = base.replace(/\/?$/, '/') + m[1];
+          // collapse duplicate slashes except after protocol
+          fixed = fixed.replace(/([^:])\/+/g, function (m0, p1) { return p1 + '/'; });
+          a.setAttribute('href', fixed);
+        }
+      }
+    } catch (e) {}
+  }
+
+  // Navigation handlers
+  (function setupNav(){
+    try {
+      var navHome = document.getElementById('nav-home');
+      var navWorkouts = document.getElementById('nav-workouts');
+      var navHistory = document.getElementById('nav-history');
+      if (navHome) navHome.onclick = function(e){
+        if (e && e.preventDefault) e.preventDefault();
+        try { window.history.pushState({ view: 'home' }, '', 'index.html'); } catch (ex) {}
+        showIndexView();
+      };
+      if (navWorkouts) navWorkouts.onclick = function(e){
+        if (e && e.preventDefault) e.preventDefault();
+        try { window.history.pushState({ view: 'workouts' }, '', 'index.html?view=workouts'); } catch (ex) {}
+        openWorkouts();
+      };
+      if (navHistory) navHistory.onclick = function(e){
+        if (e && e.preventDefault) e.preventDefault();
+        try { window.history.pushState({ view: 'history' }, '', 'index.html?view=history'); } catch (ex) {}
+        openHistory();
+      };
+    } catch (e) {}
+  })();
+
+  function openWorkouts(){
+    setVisibility(generateSection, false);
+    setVisibility(logsSection, false);
+    setVisibility(readmeSection, true);
+    // Lazy-load README when first opened
+    if (!lastReadmeText) {
+      xhrGet('README.md', function (err, text) {
+        if (err) return status('Error reading README: ' + err.message, { important: true });
+        lastReadmeText = text || '';
+        readmeContent.innerHTML = decorateReadmeWithLogLinks(lastReadmeText);
+        fixExerciseAnchors(readmeContent);
+        wireReadmeClicks();
+        handleGenerateButtons();
+      });
+    }
+  }
+
+  function openHistory(){
+    setVisibility(generateSection, false);
+    setVisibility(readmeSection, false);
+    setVisibility(logsSection, true);
+    loadLogsList();
+  }
+
+  function load() {
+    // Respect deep link params on initial load
+    var params = (function () {
+      var q = {};
+      try {
+        var s = (window.location.search || '').replace(/^\?/, '').split('&');
+        for (var i = 0; i < s.length; i++) {
+          var kv = s[i].split('=');
+          if (kv[0]) q[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1] || '');
+        }
+      } catch (e) {}
+      return q;
+    })();
+    if (params.file) {
+      // Open a specific session
+      openSession(params.file, lastReadmeText || '');
+      return;
+    }
+    if (params.view === 'workouts') {
+      openWorkouts();
+      return;
+    }
+    if (params.view === 'history') {
+      openHistory();
+      return;
+    }
+    // Default home view
+    showIndexView();
+    handleGenerateButtons();
+  }
+
+  // Handle back/forward navigation
+  window.addEventListener('popstate', function () {
+    var s = window.location.search || '';
+    var params = (function () {
+      var q = {};
+      try {
+        var arr = s.replace(/^\?/, '').split('&');
+        for (var i = 0; i < arr.length; i++) {
+          var kv = arr[i].split('=');
+          if (kv[0]) q[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1] || '');
+        }
+      } catch (e) {}
+      return q;
+    })();
+    if (params.file) {
+      openSession(params.file, lastReadmeText || '');
+      return;
+    }
+    if (params.view === 'workouts') {
+      openWorkouts();
+      return;
+    }
+    if (params.view === 'history') {
+      openHistory();
+      return;
+    }
+    showIndexView();
+  }, false);
+
+  // kickoff
+  load();
+})();
