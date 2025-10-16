@@ -1,0 +1,124 @@
+{
+  "version": "perf-1",
+  "workoutFile": "workouts/4-2_Full_Body_Endurance_Conditioning.json",
+  "timestamp": "2025-10-16T12:17:16.341Z",
+  "exercises": {
+    "dumbbell-thruster": {
+      "name": "Dumbbell Thruster",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 12
+        },
+        {
+          "set": 2,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 12
+        },
+        {
+          "set": 3,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 12
+        }
+      ]
+    },
+    "renegade-row": {
+      "name": "Renegade Row",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 8
+        },
+        {
+          "set": 2,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 8
+        },
+        {
+          "set": 3,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 8
+        }
+      ]
+    },
+    "goblet-reverse-lunge": {
+      "name": "Goblet Reverse Lunge",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 35,
+          "reps": 10
+        },
+        {
+          "set": 2,
+          "weight": 35,
+          "reps": 10
+        },
+        {
+          "set": 3,
+          "weight": 35,
+          "reps": 10
+        }
+      ]
+    },
+    "push-ups": {
+      "name": "Push-Ups",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "reps": 10
+        },
+        {
+          "set": 2,
+          "reps": 10
+        },
+        {
+          "set": 3,
+          "reps": 10
+        }
+      ]
+    },
+    "lateral-lunges": {
+      "name": "Lateral Lunges",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "reps": 8
+        },
+        {
+          "set": 2,
+          "reps": 8
+        },
+        {
+          "set": 3,
+          "reps": 8
+        }
+      ]
+    },
+    "farmer-carry": {
+      "name": "Farmer Carry",
+      "logType": "carry",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 35,
+          "multiplier": 2,
+          "timeSeconds": 60
+        }
+      ]
+    }
+  }
+}
