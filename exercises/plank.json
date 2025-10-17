@@ -1,0 +1,77 @@
+{
+  "name": "Plank",
+  "equipment": [
+    "none"
+  ],
+  "tags": [
+    "core",
+    "stability",
+    "isometric"
+  ],
+  "setup": [
+    "Start on forearms and toes, elbows under shoulders",
+    "Body forms a straight line from head to heels",
+    "Feet hip-width apart, forearms parallel"
+  ],
+  "steps": [
+    "Engage glutes and brace core to maintain neutral spine",
+    "Pull shoulder blades down and back slightly",
+    "Keep head neutral, gaze at floor between hands",
+    "Breathe steadily through nose; avoid holding breath",
+    "Maintain position for prescribed time"
+  ],
+  "cues": [
+    "Strong line: ears, shoulders, hips, knees, ankles aligned",
+    "Ribs down; avoid sagging or piking hips",
+    "Squeeze glutes gently",
+    "Breathe steadily throughout",
+    "Pull elbows toward toes to engage lats"
+  ],
+  "mistakes": [
+    "Hips sagging or piking too high",
+    "Shoulders shrugging up toward ears",
+    "Holding breath or breathing shallowly",
+    "Head dropping or cranking up",
+    "Letting low back arch excessively"
+  ],
+  "safety": "If low back or shoulders feel strained, drop to knees or reduce hold time. Maintain neutral spine throughout.",
+  "scaling": {
+    "regressions": [
+      "Plank from knees",
+      "Incline plank (hands on bench or box)",
+      "Shorter hold times (10–15s)"
+    ],
+    "progressions": [
+      "Plank with leg lift",
+      "Plank shoulder tap",
+      "RKC plank (maximum tension)",
+      "Longer hold times (60–90s)"
+    ]
+  },
+  "variations": [
+    "[Plank Shoulder Tap](plank_shoulder_tap.json)",
+    "[RKC Plank](rkc_plank.json)",
+    "Side plank",
+    "Bear plank"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "—",
+    "time": "20–60s depending on experience and fatigue",
+    "distance": "—",
+    "rpe": "6–8",
+    "notes": "Start conservative; build time gradually. Quality over duration."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "shoulders",
+      "lower back",
+      "wrists"
+    ],
+    "notes": "Keep shoulders packed and spine neutral. Regress to knees if low back compensates."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

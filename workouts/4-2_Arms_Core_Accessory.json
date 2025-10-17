@@ -1,9 +1,9 @@
 {
   "version": "1",
-  "title": "Arms & Core Accessory",
+  "title": "Chest, Glutes & Core Pump",
   "block": 4,
   "week": 2,
-  "notes": "Light accessory work for arms and core. Keep intensity moderate; focus on movement quality and pump.",
+  "notes": "Accessory pump work for chest, glutes, and core. Keep intensity moderate; focus on movement quality, time under tension, and the pump.",
   "sections": [
     {
       "type": "Warm-up",
@@ -15,22 +15,22 @@
     },
     {
       "type": "Strength",
-      "title": "Arm Circuit (2 rounds)",
-      "notes": "Rest 60s between rounds; move briskly between exercises",
+      "title": "Chest & Glute Circuit (3 rounds)",
+      "notes": "Rest 60s between rounds; focus on tempo and muscle contraction",
       "items": [
-        { "kind": "exercise", "name": "Alternating Dumbbell Biceps Curl", "link": "exercises/alternating_dumbbell_biceps_curl.json", "logType": "strength", "prescription": { "reps": 16, "weight": "20 x2" }, "cues": ["Slow alternation", "No body swing", "Full range"] },
-        { "kind": "exercise", "name": "Bench Dip", "link": "exercises/bench_dip.json", "logType": "strength", "prescription": { "reps": 12 }, "cues": ["Elbows back", "Full range", "Control tempo"] },
-        { "kind": "exercise", "name": "Hammer Curl", "link": "exercises/hammer_curl.json", "logType": "strength", "prescription": { "reps": 12, "weight": "20 x2" }, "cues": ["Neutral grip", "Elbows stable", "Squeeze at top"] }
+        { "kind": "exercise", "name": "Dumbbell Flyes", "link": "exercises/dumbbell_flyes.json", "logType": "strength", "prescription": { "reps": 12, "weight": "20 x2" }, "cues": ["Slow eccentric", "Deep stretch", "Squeeze at top"] },
+        { "kind": "exercise", "name": "Glute Bridge", "link": "exercises/glute_bridge.json", "logType": "strength", "prescription": { "reps": 15, "weight": "60" }, "cues": ["Full hip extension", "Squeeze glutes hard", "2s hold at top"] },
+        { "kind": "exercise", "name": "Push-ups", "link": "exercises/push_ups.json", "logType": "strength", "prescription": { "reps": 12 }, "cues": ["Chest to floor", "Controlled tempo", "Full lockout"] }
       ]
     },
     {
       "type": "Strength", 
-      "title": "Core Circuit (2 rounds)",
-      "notes": "Rest 60s between rounds; move briskly between exercises",
+      "title": "Core Pump Circuit (3 rounds)",
+      "notes": "Rest 45s between rounds; focus on quality contractions",
       "items": [
-        { "kind": "exercise", "name": "Deadbug", "link": "exercises/deadbug.json", "logType": "strength", "prescription": { "reps": "8/side" }, "cues": ["Low back down", "Opposite arm/leg", "Slow and controlled"] },
-        { "kind": "exercise", "name": "Pallof Press", "link": "exercises/pallof_press.json", "logType": "strength", "prescription": { "reps": "10/side", "weight": "15 x2" }, "cues": ["Resist rotation", "Core tight", "Arms straight"] },
-        { "kind": "exercise", "name": "Plank Shoulder Tap", "link": "exercises/plank_shoulder_tap.json", "logType": "strength", "prescription": { "reps": 16 }, "cues": ["Minimal hip movement", "Strong plank", "Light taps"] }
+        { "kind": "exercise", "name": "Deadbug", "link": "exercises/deadbug.json", "logType": "strength", "prescription": { "reps": "10/side" }, "cues": ["Low back down", "Opposite arm/leg", "Slow and controlled"] },
+        { "kind": "exercise", "name": "Pallof Press", "link": "exercises/pallof_press.json", "logType": "strength", "prescription": { "reps": "12/side", "weight": "15 x2" }, "cues": ["Resist rotation", "Core tight", "Arms straight"] },
+        { "kind": "exercise", "name": "Plank", "link": "exercises/plank.json", "logType": "strength", "prescription": { "holdSeconds": 30 }, "cues": ["Strong line", "Ribs down", "Breathe steadily"] }
       ]
     },
     {
