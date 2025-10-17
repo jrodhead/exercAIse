@@ -2,6 +2,12 @@
 
 AI-generated workouts compatible with a really old iPad
 
+## Documentation
+- **[Architecture](ARCHITECTURE.md)**: System design, separation of concerns, and development guidelines
+- **[User Stories](product-design/backlog/)**: Feature planning and requirements
+- **[AI Instructions](.github/instructions/)**: Kai and Mina persona rules
+- **[Contributing](.github/copilot-instructions.md)**: AI coding agent guidelines
+
 ## This Week
 
 - [Yin Yoga Recovery Flow – Block 4, Week 2 (Wednesday)](workouts/4-2_Yin_Yoga_Recovery_Flow.json)

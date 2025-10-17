@@ -1,10 +1,26 @@
 # AI Coding Agent Instructions for exercAIse
 
+## Critical: Read Architecture First
+**Before making any code changes**, read `ARCHITECTURE.md` in the repository root to understand:
+- The separation between AI decision-making and app execution
+- Why workout logic belongs in `.github/instructions/` and `.github/prompts/`, not in app code
+- The data flow from AI generation → display → logging → history → next generation
+- Common pitfalls to avoid (e.g., adding workout logic to server or client code)
+
 ## Project Overview
 - **exercAIse** is a markdown-based fitness and nutrition program generator, focused on structured, coach-style workout and meal plans for a 40-year-old male with recurring joint issues.
 - The project is organized around two main AI personas:
   - **Kai** (Strength, Movement & Recovery Coach): workout generation, periodization, injury adaptation, and markdown formatting. See `.github/instructions/kai.instructions.md`.
   - **Mina** (Nutrition & Whole Foods Coach): meal/recipe suggestions, batch prep, and anti-inflammatory focus. See `.github/instructions/mina.instructions.md`.
+
+## Core Architectural Principle
+**AI Decides, App Executes**
+- ✅ All training logic (progression, exercise selection, ladder snapping, RPE targets) lives in AI instructions and prompts
+- ✅ The app (client and server) only displays, collects, and exports data
+- ❌ Never add workout decision logic to `assets/app.js` or `serverless/api/kai/session-plan.js`
+- ❌ Never calculate progressions, select weights, or modify AI prescriptions in app code
+
+See `ARCHITECTURE.md` for detailed explanation and examples.
 
 ## Directory & File Structure
 - **workouts/**: All workout plans in markdown, named as `<blockNumber>-<weekNumber>_<Title>.md` (e.g., `1-3_Upper_Body_Strength.md`).
@@ -79,3 +95,21 @@ When a new exercise is introduced (not found in `exercises/`):
   - `media` (video, images[])
 - Optionally add a minimal Markdown file `exercises/<slug>.md` with an H1 header for backwards compatibility; the site prefers JSON.
 - Validate with `python3 scripts/validate_schemas.py`.
+
+---
+
+## Architecture & Design Principles
+
+For comprehensive understanding of the system architecture, separation of concerns, and development guidelines, see:
+- **`ARCHITECTURE.md`**: Complete system architecture documentation
+- **`product-design/notes/`**: Design notes and architectural decisions
+- **`.github/instructions/`**: AI persona rules and training logic
+- **`.github/prompts/`**: AI generation prompts and guidelines
+
+### Key Reminders
+1. **AI makes training decisions, app executes them** - Never add workout logic to app code
+2. **Schemas define contracts** - All data must validate against schemas
+3. **Backward compatibility matters** - Use optional fields for new features
+4. **Exercise JSONs are source of truth** - Always link to `exercises/*.json`, not markdown
+5. **History informs AI decisions** - App provides clean data; AI interprets it
+
