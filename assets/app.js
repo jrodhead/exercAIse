@@ -842,6 +842,10 @@
   }
 
   function load() {
+    // Initialize modules before handling any view
+    initializeFormBuilder();
+    initializeKaiIntegration();
+    
     // Respect deep link params on initial load
     var params = (function () {
       var q = {};
@@ -869,8 +873,6 @@
     }
     // Default home view
     showIndexView();
-    initializeKaiIntegration();
-    initializeFormBuilder();
     if (window.ExercAIse && window.ExercAIse.KaiIntegration) {
       window.ExercAIse.KaiIntegration.handleGenerateButtons();
     }
