@@ -1,0 +1,118 @@
+{
+  "version": "perf-1",
+  "workoutFile": "workouts/4-2_Arms_Core_Accessory.json",
+  "timestamp": "2025-10-18T03:59:58.602Z",
+  "exercises": {
+    "dumbbell-flyes": {
+      "name": "Dumbbell Flyes",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 15,
+          "multiplier": 2,
+          "reps": 12
+        },
+        {
+          "set": 2,
+          "weight": 20,
+          "multiplier": 2,
+          "reps": 12
+        },
+        {
+          "set": 3,
+          "weight": 20,
+          "multiplier": 2,
+          "reps": 12
+        }
+      ]
+    },
+    "glute-bridge": {
+      "name": "Glute Bridge",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 60,
+          "reps": 15
+        },
+        {
+          "set": 2,
+          "weight": 60,
+          "reps": 15
+        },
+        {
+          "set": 3,
+          "weight": 60,
+          "reps": 15
+        }
+      ]
+    },
+    "push-ups": {
+      "name": "Push-ups",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "reps": 12
+        },
+        {
+          "set": 2,
+          "reps": 12
+        },
+        {
+          "set": 3,
+          "reps": 12
+        }
+      ]
+    },
+    "deadbug": {
+      "name": "Deadbug",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 20,
+          "multiplier": 2,
+          "reps": 10
+        },
+        {
+          "set": 2,
+          "weight": 20,
+          "multiplier": 2,
+          "reps": 10
+        },
+        {
+          "set": 3,
+          "weight": 20,
+          "multiplier": 2,
+          "reps": 10
+        }
+      ]
+    },
+    "pallof-press": {
+      "name": "Pallof Press",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 20,
+          "multiplier": 2,
+          "reps": 12
+        },
+        {
+          "set": 2,
+          "weight": 20,
+          "multiplier": 2,
+          "reps": 12
+        },
+        {
+          "set": 3,
+          "weight": 20,
+          "multiplier": 2,
+          "reps": 12
+        }
+      ]
+    }
+  }
+}
