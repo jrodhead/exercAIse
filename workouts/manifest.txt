@@ -1,4 +1,3 @@
-workouts/basketball_warmup_cooldown.json
 workouts/4-2_Yin_Yoga_Recovery_Flow.json
 workouts/4-2_Upper_Body_Strength_Mobility.json
 workouts/4-2_Lower_Body_Strength_Mobility.json

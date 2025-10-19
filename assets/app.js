@@ -402,27 +402,28 @@
         if (ma && mb && ma !== mb) return mb - ma;
         return a.name < b.name ? 1 : -1;
       });
-      var html = '';
+      var html = '<ul class="history-list">';
       for (var j = 0; j < Math.min(rows.length, 50); j++) {
         var r = rows[j];
         // Link to local file path; will be served as static content
         var href = r.path || ('performed/' + r.name);
         html += '<li><a target="_blank" rel="noopener" href="' + href + '">' + r.name + '</a></li>';
       }
-      logsList.innerHTML = html || '<li>No logs yet.</li>';
+      html += '</ul>';
+      logsList.innerHTML = html;
       return true;
     }
 
     xhrGet('performed/index.json', function (err, text) {
       if (err || !text) {
-        logsList.innerHTML = '<li>History unavailable (no local manifest). Run scripts/build_performed_index.js to generate, or add logs.</li>';
+        logsList.innerHTML = '<p class="form-hint">History unavailable (no local manifest). Run scripts/build_performed_index.js to generate, or add logs.</p>';
         return;
       }
       var res = renderFromLocal(text);
       if (res === 'empty') {
-        logsList.innerHTML = '<li>No logs yet.</li>';
+        logsList.innerHTML = '<p class="form-hint">No logs yet.</p>';
       } else if (!res) {
-        logsList.innerHTML = '<li>History unavailable (invalid manifest).</li>';
+        logsList.innerHTML = '<p class="form-hint">History unavailable (invalid manifest).</p>';
       }
     });
   }
