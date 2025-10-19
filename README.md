@@ -5,76 +5,20 @@ AI-generated workouts compatible with a really old iPad
 ## Documentation
 - **[Architecture](ARCHITECTURE.md)**: System design, separation of concerns, and development guidelines
 - **[User Stories](product-design/backlog/)**: Feature planning and requirements
-- **[AI Instructions](.github/instructions/)**: Kai and Mina persona rules
+- **[AI Instructions](.github/instructions/)**: Kai persona rules
 - **[Contributing](.github/copilot-instructions.md)**: AI coding agent guidelines
 
-## This Week
-
-- [Chest, Glutes & Core Pump – Block 4, Week 2 (Saturday)](workouts/4-2_Arms_Core_Accessory.json)
-- [Easy Run – 3.25–3.5 Mile Progression – Block 4, Week 1 (Monday)](workouts/4-1_Easy_Run_Progression.json)
-
-## Archive
-
-- [Full-Body Endurance & Conditioning – Block 4, Week 2 (Friday)](workouts/4-2_Full_Body_Endurance_Conditioning.json)
-- [Yin Yoga Recovery Flow – Block 4, Week 2 (Wednesday)](workouts/4-2_Yin_Yoga_Recovery_Flow.json)
-- [Lower Body Strength & Mobility – Block 4, Week 2 (Thursday)](workouts/4-2_Lower_Body_Strength_Mobility.json)
-- [Upper Body Strength & Mobility – Block 4, Week 2 (Tuesday)](workouts/4-2_Upper_Body_Strength_Mobility.json)
-- [Chest, Core & Glutes Focus – Block 4, Week 1 (Saturday)](workouts/4-1_Chest_Core_Glutes_Focus.json)
-- [Upper Body Strength & Mobility – Block 4, Week 1 (Tuesday)](workouts/4-1_Upper_Body_Strength_Mobility.json)
-- [Yin Yoga Recovery Flow – Block 4, Week 1 (Wednesday)](workouts/4-1_Yin_Yoga_Recovery_Flow.json)
-- [Lower Body Strength & Mobility – Block 4, Week 1 (Thursday)](workouts/4-1_Lower_Body_Strength_Mobility.json)
-- [Arms, Chest & Calves Hypertrophy – Block 4, Week 1 (Friday)](workouts/4-1_Arms_Chest_Calves_Hypertrophy.json)
-- [Upper Body Pump Finisher – Block 3, Week 4 (Friday)](workouts/3-4_Upper_Body_Pump_Finisher.json)
-- [Lower Body Strength & Mobility – Block 3, Week 4 (Thursday)](workouts/3-4_Lower_Body_Strength_Mobility.json)
-- [Yin Yoga Recovery Flow – Block 3, Week 4 (Wednesday)](workouts/3-4_Yin_Yoga_Recovery_Flow.json)
-- [Easy Run – 2.75–3.0 Mile Progression – Block 3, Week 4 (Monday)](workouts/3-4_Easy_Run_Progression.json)
-- [Upper Body Strength & Mobility – Block 3, Week 4 (Tuesday)](workouts/3-4_Upper_Body_Strength_Mobility.json)
-- [Arms, Chest & Core Volume/Pump – Block 3, Week 3 (Friday)](workouts/3-3_Arms_Chest_Core_Volume_Pump.json)
-- [Lower Body Strength & Calves – Block 3, Week 3 (Thursday)](workouts/3-3_Lower_Body_Strength_Calves.json)
-- [Yin Yoga Recovery Flow – Block 3, Week 3 (Wednesday)](workouts/3-3_Yin_Yoga_Recovery_Flow.json)
-- [Upper Body Hypertrophy – Block 3, Week 3 (Tuesday)](workouts/3-3_Upper_Body_Hypertrophy.json)
-- [Easy Run – 3.0 Mile Progression Toward 4 – Block 3, Week 3 (Monday)](workouts/3-3_Easy_Run_Progression.json)
-- [Upper Body Hypertrophy – Block 3, Week 2 (Tuesday)](workouts/3-2_Upper_Body_Hypertrophy.json)
-- [Yin Yoga Recovery Flow – Block 3, Week 2 (Wednesday)](workouts/3-2_Yin_Yoga_Recovery_Flow.json)
-- [Lower Body Strength & Calves – Block 3, Week 2 (Thursday)](workouts/3-2_Lower_Body_Strength_Calves.json)
-- [Arms Volume & Pump – Block 3, Week 2 (Friday)](workouts/3-2_Arms_Volume_Pump.json)
-- [Yin Yoga Recovery Flow – Block 3, Week 1 (Sunday)](workouts/3-1_Yin_Yoga_Recovery_Flow.json)
-- [Full-Body Conditioning & Core – Block 3, Week 1 (Friday)](workouts/3-1_Full_Body_Conditioning_Core.json)
-- [Lower Body Strength & Mobility – Block 3, Week 1 (Thursday)](workouts/3-1_Lower_Body_Strength_Mobility.json)
-- [Upper Body Strength & Mobility – Block 3, Week 1 (Tuesday)](workouts/3-1_Upper_Body_Strength_Mobility.json)
-- [Easy Run – 4 Miles – Block 3, Week 1 (Monday)](workouts/3-1_Easy_Run_4_Miles.json)
-- [Full-Body Conditioning & Core – Block 2, Week 4 (Deload)](workouts/2-4_Full_Body_Conditioning_Core.json)
-- [Yin Yoga Recovery Flow – Block 2, Week 4 (Deload)](workouts/2-4_Yin_Yoga_Recovery_Flow.json)
-- [Easy Run – 3 Miles – Block 2, Week 4 (Deload)](workouts/2-4_Easy_Run_4_Miles.json)
-- [Lower Body Strength & Mobility – Block 2, Week 4 (Deload)](workouts/2-4_Lower_Body_Strength_Mobility.json)
-- [Upper Body Strength & Mobility – Block 2, Week 4 (Deload)](workouts/2-4_Upper_Body_Strength_Mobility.json)
-- [Full-Body Conditioning & Core – Block 2, Week 3](workouts/2-3_Full_Body_Conditioning_Core.json)
-- [Yin Yoga Recovery Flow – Block 2, Week 3](workouts/2-3_Yin_Yoga_Recovery_Flow.json)
-- [Lower Body Strength & Mobility – Block 2, Week 3](workouts/2-3_Lower_Body_Strength_Mobility.json)
-- [Easy Run – 4 Miles – Block 2, Week 3](workouts/2-3_Easy_Run_4_Miles.json)
-- [Upper Body Strength & Mobility – Block 2, Week 3](workouts/2-3_Upper_Body_Strength_Mobility.json)
-- [Full-Body Conditioning & Core – Block 2, Week 2](workouts/2-2_Full_Body_Conditioning_Core.json)
-- [Yin Yoga Recovery Flow – Block 2, Week 2](workouts/2-2_Yin_Yoga_Recovery_Flow.json)
-- [Lower Body Strength & Mobility – Block 2, Week 2](workouts/2-2_Lower_Body_Strength_Mobility.json)
-- [Easy Run – 4 Miles – Block 2, Week 2](workouts/2-2_Easy_Run_4_Miles.json)
-- [Upper Body Strength & Mobility – Block 2, Week 2](workouts/2-2_Upper_Body_Strength_Mobility.json)
-- [Full-Body Conditioning & Core – Block 2, Week 1](workouts/2-1_Full_Body_Conditioning_Core.json)
-- [Lower Body Strength & Mobility – Block 2, Week 1](workouts/2-1_Lower_Body_Strength_Mobility.json)
-- [Upper Body Strength & Mobility – Block 2, Week 1](workouts/2-1_Upper_Body_Strength_Mobility.json)
-- [Lower Body & Mobility – Block 1, Week 4 (Deload)](workouts/1-4_Lower_Body_Mobility_Deload.json)
-- [Upper Body Strength – Block 1, Week 4 (Deload)](workouts/1-4_Upper_Body_Strength_Deload.json)
-- [Basketball Warm-Up & Cooldown](workouts/basketball_warmup_cooldown.json)
-- [Full-Body Endurance / Conditioning – Block 1, Week 3 (Adjusted)](workouts/1-3_Full_Body_Endurance_Conditioning_Adjusted.json)
-- [Lower Body Strength – Block 1, Week 3](workouts/1-3_Lower_Body_Strength.json)
-- [Yin Yoga Recovery Flow – Rest Day](workouts/1-3_recovery_Yin_Yoga_Rest_Day.json)
-- [Upper Body Strength – Block 1, Week 3](workouts/1-3_Upper_Body_Strength.json)
-- [Upper Body Strength – Block 1, Week 2 (Modified)](workouts/1-2_Upper_Body_Strength_Modified.json)
-- [Biceps, Triceps & Core Workout - Block 1, Week 2](workouts/1-2_Biceps_Triceps_Core_Workout.json)
-- [Lower Body Strength – Block 1, Week 2](workouts/1-2_Lower_Body.json)
-- [Mock Session](workouts/mock_All_Types_Test.json)
+[Mock Session](workouts/mock_All_Types_Test.json)
 
 ## Instructions
 - [Kai – Strength, Movement & Recovery Coach](.github/instructions/kai.instructions.md)
+
+## Development Setup
+- **Install git hooks**: Run `./scripts/install_hooks.sh` after cloning to auto-update the workout manifest on commits.
+- **Workout manifest**: The `workouts/manifest.txt` file lists all workout sessions and is automatically updated:
+  - **Locally**: Pre-commit hook updates it when you commit workout JSON files
+  - **CI/CD**: GitHub Actions workflow updates it when workouts are pushed to the repo
+  - **Manual**: Run `./scripts/update_workout_manifest.sh` if needed
 
 ## Validation
 - Validate links: run the VS Code task “Validate Markdown Links” or `python3 scripts/validate_links.py`.

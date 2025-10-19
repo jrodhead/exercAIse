@@ -1,0 +1,19 @@
+#!/bin/bash
+# Pre-commit hook to automatically update workout manifest
+# To install: ln -s ../../scripts/hooks/pre-commit .git/hooks/pre-commit
+
+# Check if any workout JSON files are being committed
+if git diff --cached --name-only | grep -q 'workouts/.*\.json$'; then
+  echo "Workout files changed, updating manifest..."
+  
+  # Generate manifest
+  bash scripts/update_workout_manifest.sh
+  
+  # Stage the manifest if it changed
+  if git diff workouts/manifest.txt | grep -q .; then
+    echo "Manifest updated, adding to commit..."
+    git add workouts/manifest.txt
+  else
+    echo "Manifest unchanged"
+  fi
+fi

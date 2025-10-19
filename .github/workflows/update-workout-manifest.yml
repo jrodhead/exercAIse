@@ -1,0 +1,45 @@
+name: Update Workout Manifest
+
+on:
+  push:
+    paths:
+      - 'workouts/*.json'
+      - '!workouts/mock_All_Types_Test.json'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Generate workout manifest
+        run: |
+          ls workouts/*.json | grep -v mock_All_Types_Test.json | sort -r > workouts/manifest.txt
+          echo "Generated manifest with $(wc -l < workouts/manifest.txt | tr -d ' ') workout files"
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if git diff --quiet workouts/manifest.txt; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No changes to manifest"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "Manifest has changes"
+          fi
+
+      - name: Commit and push manifest
+        if: steps.check_changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add workouts/manifest.txt
+          git commit -m "chore: update workout manifest [skip ci]"
+          git push

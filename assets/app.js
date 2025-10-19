@@ -39,7 +39,6 @@
   var copyTarget = document.getElementById('copy-target');
   var STORAGE_KEY_PREFIX = 'exercAIse-perf-';
   var latestKey = 'exercAIse-latest-file';
-  var lastReadmeText = '';
   // Unit constants
   var METERS_PER_MILE = 1609.34;
 
@@ -165,14 +164,6 @@
     }
     // README is in descending date order per project rules; take the first link.
     return workoutLinks.length ? workoutLinks[0] : null;
-  }
-
-  function decorateReadmeWithLogLinks(md) {
-  // Render README as-is; workout title links open the session view.
-  // Prefer .json links if a corresponding JSON is referenced alongside.
-  var updated = md.replace(/\((workouts\/[\w\-]+)\.md\)/g, '($1.json)');
-  var html = renderMarkdownBasic(updated);
-  return html;
   }
 
   function renderMarkdownBasic(md) {
@@ -346,48 +337,6 @@
     statusEl.style.display = 'block';
   }
 
-  function loadReadmeAndMaybeOpenSession() {
-    status('Reading README…'); // hidden (non-important)
-    xhrGet('README.md', function (err, text) {
-      if (err) return status('Error reading README: ' + err.message, { important: true });
-      // Render README mirror with inline Log links
-      lastReadmeText = text || '';
-  readmeContent.innerHTML = decorateReadmeWithLogLinks(lastReadmeText);
-  fixExerciseAnchors(readmeContent);
-  if (readmeSection) readmeSection.style.display = 'block';
-  if (generateSection) generateSection.style.display = 'block';
-
-  // Load logs list from GitHub API (unauthenticated)
-  loadLogsList();
-
-      wireReadmeClicks();
-
-      // If ?file= is present, open that session; else also preview the first/latest.
-      var params = (function () {
-        var q = {};
-        var s = window.location.search.replace(/^\?/, '').split('&');
-        for (var i = 0; i < s.length; i++) {
-          var kv = s[i].split('=');
-          if (kv[0]) q[decodeURIComponent(kv[0])] = decodeURIComponent(kv[1] || '');
-        }
-        return q;
-      })();
-
-      var targetPath = params.file;
-      if (targetPath) {
-        // Initialize state for deep link
-        if (window.history && window.history.replaceState) {
-          try { window.history.replaceState({ view: 'session', file: targetPath }, '', 'index.html?file=' + encodeURIComponent(targetPath)); } catch (ex) {}
-        }
-        openSession(targetPath, lastReadmeText);
-  } else {
-        // Ensure index view is visible
-        showIndexView();
-      }
-  handleGenerateButtons();
-    });
-  }
-
   function wireReadmeClicks() {
     // Intercept clicks on workout links for in-page navigation
     if (readmeSection && !readmeSection.__wired) {
@@ -420,7 +369,7 @@
           if (window.history && window.history.pushState) {
             try { window.history.pushState({ view: 'session', file: path }, '', 'index.html?file=' + encodeURIComponent(path)); } catch (ex) {}
           }
-          openSession(path, lastReadmeText);
+          openSession(path);
         }
       }, false);
       readmeSection.__wired = true;
@@ -478,7 +427,7 @@
     });
   }
 
-  function openSession(path, readmeText) {
+  function openSession(path) {
     status('Loading ' + path + ' …'); // hidden (non-important)
     xhrGet(path, function (err, text) {
   if (err) return status('Error loading workout: ' + err.message, { important: true });
@@ -691,11 +640,12 @@
       }
       // Meta
       var title = path;
-      if (readmeText) {
-        // Try find a title from README link text
-        var rx = new RegExp("\\[(.*?)\\]\\(" + path.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + "\\)");
-        var m = readmeText.match(rx);
-        if (m && m[1]) title = m[1];
+      // Try to extract title from JSON if available
+      if (isJSON && obj && obj.title) {
+        title = obj.title;
+        if (obj.block && obj.week) {
+          title += ' — Block ' + obj.block + ', Week ' + obj.week;
+        }
       }
       workoutTitleEl.innerHTML = title;
       openOnGitHubEl.href = 'https://github.com/jrodhead/exercAIse/blob/main/' + path;
@@ -817,19 +767,76 @@
     } catch (e) {}
   })();
 
+  var cachedWorkoutList = null;
+
+  function buildWorkoutListHTML(workouts) {
+    // Build HTML list of workouts grouped by block/week
+    var html = '<h2>Workouts</h2>';
+    html += '<ul class="workout-list">';
+    
+    for (var i = 0; i < workouts.length; i++) {
+      var w = workouts[i];
+      var displayTitle = w.title || w.filename.replace(/\.json$/, '').replace(/_/g, ' ');
+      var meta = '';
+      if (w.block && w.week) {
+        meta = ' – Block ' + w.block + ', Week ' + w.week;
+      }
+      html += '<li><a href="workouts/' + encodeURIComponent(w.filename) + '">' + 
+              displayTitle + meta + '</a></li>';
+    }
+    
+    html += '</ul>';
+    return html;
+  }
+
+  function loadWorkoutList(callback) {
+    // Fetch manifest of workout files
+    xhrGet('workouts/manifest.txt', function(err, text) {
+      if (err) {
+        if (callback) callback(err);
+        return;
+      }
+      
+      // Parse the manifest - one file path per line
+      var lines = (text || '').split('\n').filter(function(line) {
+        return line.trim() && line.match(/\.json$/i);
+      });
+      
+      var workouts = [];
+      for (var i = 0; i < lines.length; i++) {
+        var filepath = lines[i].trim();
+        var filename = filepath.replace(/^workouts\//, '');
+        workouts.push({
+          filename: filename,
+          title: null,
+          block: null,
+          week: null
+        });
+      }
+      
+      cachedWorkoutList = workouts;
+      if (callback) callback(null, workouts);
+    });
+  }
+
   function openWorkouts(){
     setVisibility(generateSection, false);
     setVisibility(logsSection, false);
     setVisibility(readmeSection, true);
-    // Lazy-load README when first opened
-    if (!lastReadmeText) {
-      xhrGet('README.md', function (err, text) {
-        if (err) return status('Error reading README: ' + err.message, { important: true });
-        lastReadmeText = text || '';
-        readmeContent.innerHTML = decorateReadmeWithLogLinks(lastReadmeText);
-        fixExerciseAnchors(readmeContent);
+    
+    if (cachedWorkoutList) {
+      readmeContent.innerHTML = buildWorkoutListHTML(cachedWorkoutList);
+      wireReadmeClicks();
+    } else {
+      status('Loading workouts…');
+      loadWorkoutList(function(err, workouts) {
+        if (err) {
+          readmeContent.innerHTML = '<p class="error">Error loading workouts. Please try again.</p>';
+          return;
+        }
+        readmeContent.innerHTML = buildWorkoutListHTML(workouts);
         wireReadmeClicks();
-        handleGenerateButtons();
+        status(''); // Clear status
       });
     }
   }
@@ -860,7 +867,7 @@
     })();
     if (params.file) {
       // Open a specific session
-      openSession(params.file, lastReadmeText || '');
+      openSession(params.file);
       return;
     }
     if (params.view === 'workouts') {
@@ -893,7 +900,7 @@
       return q;
     })();
     if (params.file) {
-      openSession(params.file, lastReadmeText || '');
+      openSession(params.file);
       return;
     }
     if (params.view === 'workouts') {
