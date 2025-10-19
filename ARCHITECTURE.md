@@ -1,7 +1,7 @@
 # exercAIse Architecture
 
 ## Overview
-exercAIse is a markdown-based fitness and nutrition program generator with a clear separation between AI-driven decision-making and client-side execution. The system is designed for a 40-year-old male with recurring joint issues, focusing on personalized workout and meal planning.
+exercAIse is a JSON-first fitness program generator with a clear separation between AI-driven decision-making and client-side execution. The system is designed for personalized workout planning.
 
 **Core Philosophy**: AI makes intelligent, context-aware decisions; the app faithfully executes and provides feedback.
 
