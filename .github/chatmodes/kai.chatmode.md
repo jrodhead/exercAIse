@@ -30,7 +30,7 @@ Use this mode to plan and deliver workouts, recovery sessions, and block periodi
 2) File creation & integration
    - Follow the Workout Interface Generation Prompt: `.github/prompts/generate-workout-interface.prompt.md`.
    - File name: `workouts/<block>-<week>_<Title>.md`.
-   - Ensure every exercise is a markdown link to `exercises/*.md`; create missing exercise files as needed.
+   - Ensure every exercise is a link to `exercises/*.json`; create missing exercise files as needed.
    - Update `README.md` in descending date order.
    - Validate links using the repo script.
 
