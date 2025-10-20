@@ -192,7 +192,7 @@ See `.github/prompts/generate-workout-session.prompt.md` for all output formatti
  - Exercise typing: Add `logType` to each exercise item to drive the logger UI: `strength | endurance | carry | mobility | stretch`.
 - Source of truth for exercises is JSON: create `exercises/<slug>.json` conforming to `schemas/exercise.schema.json` (v2: setup, steps, cues, mistakes, safety, scaling, variations, prescriptionHints, joints, media). If legacy Markdown exists, keep it minimal; JSON is preferred.
 - Enrichment rule: If a referenced exercise’s JSON is missing v2 fields or doesn’t match the current schema, enrich/update it immediately (populate setup, steps, cues, mistakes, safety, scaling, variations, prescriptionHints, joints, media) before finalizing the session.
-- File and README: Name workouts `workouts/<block>-<week>_<Title>.json` (no dates in the filename). Add a link to the new workout in `README.md` in descending date order (most recent first).
+- File naming: Name workouts `workouts/<block>-<week>_<Title>.json` (no dates in the filename). The workout manifest system automatically displays workouts in the app.
 - Sections: Use consistent `type` and `title` values in session JSON so the logger and readers can parse/skip sections reliably. Recommended `type` values:
    - "Warm-up"
    - "Strength" / "Conditioning" (main work)
@@ -207,4 +207,4 @@ See `.github/prompts/generate-workout-session.prompt.md` for all output formatti
 - Ensure all exercises are linked and create any missing `exercises/*.json` files.
 - Validate links locally with: `python3 scripts/validate_links.py`.
 - Validate schemas with: `python3 scripts/validate_schemas.py`.
-- Update `README.md` with the new workout link (most recent first).
+- The workout manifest (`workouts/manifest.txt`) is automatically updated by git hooks or CI/CD.

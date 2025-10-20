@@ -25,7 +25,7 @@ When prompted with workout generation requests, provide the workout content AND 
 - For each exercise item, include:
   - `name`
   - `link` (to exercises JSON)
-  - `logType` to drive the logger UI. Allowed: `"strength" | "endurance" | "carry" | "mobility" | "stretch"`.
+  - `logType` to drive the logger UI. **Must be one of**: `"strength" | "endurance" | "carry" | "mobility" | "stretch"`.
     - Warm-up, mobility flows, cool-down stretches → `mobility` or `stretch`
     - Sustained cardio/intervals (run/jog/walk/erg/bike) → `endurance`
     - Loaded carries (farmer/suitcase/rack/march) → `carry`
@@ -89,14 +89,46 @@ When prompted with workout generation requests, provide the workout content AND 
 
 ### JSON details
 - Put sets, reps, rest and weight under `prescription`. Use a string for per-hand notation if needed (e.g., "45 x2 lb"). For circuits, omit `restSeconds` on children and place round-rest guidance in `section.notes`.
- - Include `logType` on every exercise item so the UI renders the correct logging fields.
+- Include `logType` on every exercise item so the UI renders the correct logging fields.
+- **Critical structure requirements**:
+  - Use `items` arrays within sections, NOT `exercises`
+  - Each exercise item must include `kind: "exercise"` 
+  - No `metadata` wrapper - all fields go at top level
+  - Required top-level fields: `version`, `title`, `block`, `week`, `sections`
+  - Optional top-level fields: `date`, `notes`
 
 ## Output Format
 **For single sessions:**
 - Return ONLY a single JSON object conforming to `schemas/session.schema.json`.
 - Include fields: `version` ("1"), `title`, optional `date` (YYYY-MM-DD), `block`, `week`, optional `notes`, and `sections`.
-- Ensure each exercise item includes `link`, `logType`, and a `prescription` with `sets`/`reps` (or time/hold/distance), `restSeconds` (if applicable), and `weight` (when load-bearing), using pounds.
+- Ensure each exercise item includes `kind`, `name`, `link`, `logType`, and a `prescription` with `sets`/`reps` (or time/hold/distance), `restSeconds` (if applicable), and `weight` (when load-bearing), using pounds.
 - Validate the final JSON against `schemas/session.schema.json` before returning.
+
+**Example structure:**
+```json
+{
+  "version": "1",
+  "title": "Upper Body Strength",
+  "date": "2024-10-22", 
+  "block": 4,
+  "week": 3,
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Activation",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Arm Circles", 
+          "link": "exercises/arm_circles.json",
+          "logType": "mobility",
+          "prescription": { "sets": 1, "reps": "10 each direction" }
+        }
+      ]
+    }
+  ]
+}
+```
 
 **For weekly plans:**
 - Generate 5 separate JSON objects (Monday through Friday) each conforming to `schemas/session.schema.json`.
@@ -110,32 +142,28 @@ After generating the workout content JSON(s), immediately proceed with file crea
 1. **Create the workout file** in `workouts/` directory using format `<blockNumber>-<weekNumber>_<title>.json` (e.g., `4-2_Lower_Body_Strength_Mobility.json`).
 2. **Insert the JSON content** into the new file, ensuring each exercise has `link` and `logType` fields.
 3. **Create missing exercise files**: For any exercise without an existing JSON file in `exercises/`, create `exercises/<slug>.json` conforming to `schemas/exercise.schema.json` (v2 fields: setup, steps, cues, mistakes, safety, scaling, variations, prescriptionHints, joints, media).
-4. **Update README.md**: Add a link to the new workout file under the Workouts section in descending date order (most recent at top).
-5. **Validate everything**: Run validation scripts to ensure schema compliance and link integrity.
+4. **Validate everything**: Run validation scripts to ensure schema compliance and link integrity. The workout manifest is automatically updated by git hooks or CI/CD.
 
 **For weekly plans:**
 1. **Create 5 workout files** in `workouts/` directory using format `<blockNumber>-<weekNumber>_<DayTitle>.json` (e.g., `4-2_Monday_Basketball_Conditioning.json`, `4-2_Tuesday_Upper_Body_Strength.json`, etc.).
 2. **Insert each JSON content** into its respective file, ensuring all exercises have `link` and `logType` fields.
 3. **Create all missing exercise files**: Collect all unique exercises from all 5 sessions and create any missing `exercises/<slug>.json` files conforming to the schema.
-4. **Update README.md**: Add links to all 5 workout files under the Workouts section in descending date order (most recent week at top, with Monday through Friday in order within that week).
-5. **Validate everything**: Run validation scripts to ensure all schemas comply and link integrity is maintained across all files.
+4. **Validate everything**: Run validation scripts to ensure all schemas comply and link integrity is maintained across all files. The workout manifest is automatically updated by git hooks or CI/CD.
 
 ## Complete Workflow Summary
 **For single sessions:**
 1. Generate JSON workout content following all guidelines above
 2. Create workout file with proper naming convention
 3. Create any missing exercise JSON files
-4. Update README.md with new workout link
-5. Validate schemas and links
-6. Confirm completion to user
+4. Validate schemas and links (manifest auto-updates via git hooks/CI)
+5. Confirm completion to user
 
 **For weekly plans:**
 1. Generate 5 JSON workout sessions following all guidelines above
 2. Create all 5 workout files with proper naming conventions
 3. Create any missing exercise JSON files for all sessions
-4. Update README.md with all 5 workout links in proper order
-5. Validate all schemas and links
-6. Provide summary of the week's training focus and confirm completion
+4. Validate all schemas and links (manifest auto-updates via git hooks/CI)
+5. Provide summary of the week's training focus and confirm completion
 
 ## Weekly Planning Considerations
 When generating full weeks:

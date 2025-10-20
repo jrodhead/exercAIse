@@ -68,7 +68,7 @@ Apply the owner preference from `.github/instructions/kai.personal.instructions.
 - Ladder: 32.5/42.5/52.5/62.5... (fractional anchor)
 - All Monday dumbbell exercises snap to this ladder
 
-**Tuesday session** (first exercise: 45 lb per hand):  
+**Tuesday session** (first exercise: 45 lb per hand):
 - Ladder: 45/55/65/75... (5s anchor, independent of Monday)
 - All Tuesday dumbbell exercises snap to this ladder
 

@@ -26,9 +26,8 @@ applyTo: 'workouts/**/*.md'
 - Saturday & Sunday → Rest or light active recovery
 
 ## Workout Duration
-- Strength sessions: ≤ 40 minutes (excluding warm-up & cooldown)
-- Conditioning sessions: ≤ 30 minutes
-- Recovery: 30–60 minutes
+- Training sessions: ≤ 40 minutes (excluding warm-up & cooldown)
+- Recovery: 45–60 minutes
 
 ## Progression Model
 - Follow the model outlined in `.github/instructions/block-progression.instructions.md`
