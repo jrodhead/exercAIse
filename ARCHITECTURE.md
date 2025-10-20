@@ -269,6 +269,7 @@ exercAIse/
 │   │   ├── block-progression.instructions.md  # Periodization model
 │   ├── prompts/                # AI generation prompts
 │   │   ├── generate-workout-session.prompt.md  # Complete workout generation
+│   │   └── apply-dumbbell-ladder.prompt.md    # Dumbbell load optimization
 │   ├── chatmodes/              # AI chat configurations
 │   └── workflows/              # GitHub Actions CI/CD
 │

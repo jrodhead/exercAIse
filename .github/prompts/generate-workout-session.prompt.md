@@ -61,31 +61,10 @@ When prompted with workout generation requests, provide the workout content AND 
 - If history exists and prior sets were completed with RPE ≤ 8: progress conservatively per block goal (see below). If RPE was ≥ 9, reps missed, or pain noted: hold or reduce 5–10%.
 - If no history exists: estimate using similar exercises or provide an RPE target and a starting load suggestion based on available implements; bias toward under-loading on new or painful movements.
 
-### Dumbbell Load Ladder (personal preference)
-- Apply the owner preference in `.github/instructions/kai.personal.instructions.md` to minimize dumbbell plate changes:
-  - Determine first working dumbbell per-hand load (anchor; do not snap the first).
-  - If it ends in .5 (e.g., 7.5 or 2.5) → keep that fractional anchor with 10 lb steps: 7.5/17.5/27.5/... or 2.5/12.5/22.5/...
-  - If it ends in 5 (no decimal) → use 5/15/25/35/...
-  - Otherwise round the first per-hand load up to nearest 10 → 10/20/30/40/...
-  - Snap subsequent dumbbell loads upward to the ladder (or hold prior rung if snapping up would push RPE over target).
-  - Always show per-hand notation (e.g., "35 lb per hand").
-  - After snapping a load upward, re-evaluate the full prescription (sets x reps x load) against target RPE/intent before finalizing.
-
-#### Ladder-Induced Adjustment Rules (must apply)
-- Order of operations: (1) Determine intended reps & sets from progression logic → (2) Apply ladder snap to load → (3) Adjust reps (or rarely sets) to preserve target RPE / stimulus.
-- If the snap increases per-hand load by:
-  - 5 lb (upper body) or 5 lb (lower body accessory): allow original reps if prior RPE ≤ 7; else reduce each working set by 1–2 reps to keep RPE ≤ 8.
-  - 10 lb per hand (rare initial jump): drop 2 reps from the prescribed range (e.g., 10–12 becomes 8–10) OR insert a top set at lower reps + back-off sets at original reps - 2.
-- Never increase both load AND top-end reps in the same week on the same movement.
-- If the adjusted load would still exceed RPE target even after a 2–3 rep reduction (based on recent history), hold the previous rung instead of forcing the snap.
-- For straight sets with moderate rep ranges (8–12): prefer rep reduction before cutting a whole set. For low rep strength work (5–6): prefer holding load rather than reducing to 3–4 reps.
-- Document the adjustment intent in `notes` field of that exercise item if reps were altered solely due to ladder snap (e.g., "Reps trimmed 2 due to ladder jump to 50s to keep RPE ≤8").
-- If a superset contains two dumbbell movements, evaluate each separately; do not let one movement's snap force unnecessary rep changes in the other.
-
-#### Examples
-- Planned: 3x10 @ 32.5 lb per hand (prior week RPE 7). Ladder snap → 35s. Keep 3x10 if RPE estimate ≤8; otherwise 3x9.
-- Planned: 4x12 @ 40s (RPE 8 last week). Progress intent = +load. Ladder snap → 45s. Adjust to 4x10 (or 1x10 + 3x9) to maintain RPE ≤8.
-- Planned: 3x8 @ 55s incline press (RPE 8.5 last week). Snap would push to 60s. Since prior RPE >8, hold at 55s and keep reps 3x8 (note: "Held load; ladder step deferred").
+### Dumbbell Load Prescriptions
+- Always specify per-hand load (e.g., "40 lb per hand") or "40 x2 lb" notation for clarity
+- Base loads on progression logic and performance history without automatic ladder snapping
+- **Note**: Dumbbell loads can be optimized later using the separate "Apply Dumbbell Ladder" prompt for minimal plate changes
 
 ### Block-aware progression heuristics (guidance)
 - Strength (main lifts):
@@ -163,5 +142,5 @@ When generating full weeks:
 - **Ensure progression consistency** across similar movement patterns throughout the week
 - **Balance training stress** - avoid overlapping high-intensity sessions
 - **Respect recovery needs** - recovery sessions should complement training days
-- **Coordinate equipment usage** - distribute dumbbell-heavy sessions to minimize setup changes
+- **Coordinate equipment usage** - distribute dumbbell-heavy sessions appropriately; ladder optimization can be applied separately if desired
 - **Consider cumulative fatigue** - conditioning sessions should account for prior training load
