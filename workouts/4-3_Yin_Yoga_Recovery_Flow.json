@@ -1,0 +1,165 @@
+{
+  "version": "1",
+  "title": "Yin Yoga Recovery Flow",
+  "block": 4,
+  "week": 3,
+  "date": "2024-10-23",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Gentle Activation",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Deep Breathing",
+          "link": "exercises/deep_breathing.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 1,
+            "timeSeconds": 180
+          },
+          "notes": "Settle into practice, focus on slow exhales"
+        },
+        {
+          "kind": "exercise",
+          "name": "Cat-Cow Stretch",
+          "link": "exercises/cat_cow_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 1,
+            "reps": 8
+          },
+          "notes": "Slow, mindful spinal movement"
+        }
+      ]
+    },
+    {
+      "type": "Recovery",
+      "title": "Lower Body Release (Basketball Recovery)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Child's Pose with Deep Breathing",
+          "link": "exercises/childs_pose_with_deep_breathing.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 1,
+            "timeSeconds": 300
+          },
+          "notes": "Focus on hip flexors and lower back after basketball"
+        },
+        {
+          "kind": "exercise",
+          "name": "Figure-4 Stretch",
+          "link": "exercises/figure_4_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 1,
+            "timeSeconds": 180
+          },
+          "notes": "Each side, target glutes and hip external rotators"
+        },
+        {
+          "kind": "exercise",
+          "name": "90/90 Hip Stretch",
+          "link": "exercises/90_90_hip_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 1,
+            "timeSeconds": 240
+          },
+          "notes": "Each side, deep hip capsule release"
+        },
+        {
+          "kind": "exercise",
+          "name": "Dragon Pose (Low Lunge Yin Style)",
+          "link": "exercises/dragon_pose_low_lunge_yin_style.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 1,
+            "timeSeconds": 180
+          },
+          "notes": "Each side, hip flexor and quad release"
+        },
+        {
+          "kind": "exercise",
+          "name": "Calf Stretch",
+          "link": "exercises/calf_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 1,
+            "timeSeconds": 120
+          },
+          "notes": "Each leg, address jumping/running demands"
+        }
+      ]
+    },
+    {
+      "type": "Recovery",
+      "title": "Spinal & Upper Body Release",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Lying Spinal Twist",
+          "link": "exercises/lying_spinal_twist.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 1,
+            "timeSeconds": 180
+          },
+          "notes": "Each side, release thoracic tension"
+        },
+        {
+          "kind": "exercise",
+          "name": "Butterfly Pose Seated Forward Fold",
+          "link": "exercises/butterfly_pose_seated_forward_fold.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 1,
+            "timeSeconds": 300
+          },
+          "notes": "Inner thigh and hip release"
+        },
+        {
+          "kind": "exercise",
+          "name": "Forward Fold",
+          "link": "exercises/forward_fold.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 1,
+            "timeSeconds": 180
+          },
+          "notes": "Hamstring and lower back release"
+        }
+      ]
+    },
+    {
+      "type": "Recovery",
+      "title": "Deep Relaxation",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Happy Baby",
+          "link": "exercises/happy_baby.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 1,
+            "timeSeconds": 180
+          },
+          "notes": "Gentle hip decompression"
+        },
+        {
+          "kind": "exercise",
+          "name": "Savasana with Deep Breathing",
+          "link": "exercises/savasana_deep_breathing.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 1,
+            "timeSeconds": 300
+          },
+          "notes": "Complete relaxation and nervous system reset"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "name": "Basketball Movement Prep",
+  "equipment": ["basketball", "court/gym space"],
+  "tags": ["basketball", "sport-specific", "warm-up", "movement"],
+  "setup": [
+    "Have basketball and access to hoop or wall for shooting practice",
+    "Clear space for dribbling and basic movement patterns",
+    "Start at 50% intensity and gradually build"
+  ],
+  "steps": [
+    "Begin with stationary dribbling - right hand, left hand, alternating",
+    "Progress to walking dribbles - forward, backward, side-to-side",
+    "Add basic shooting form practice (form shots close to basket)",
+    "Include light defensive slides and direction changes",
+    "Finish with a few easy layups or close shots"
+  ],
+  "cues": [
+    "Start slow and focus on touch and feel",
+    "Keep head up during dribbling",
+    "Use proper shooting form even at close range",
+    "Land softly on direction changes",
+    "Build intensity gradually over 10-15 minutes"
+  ],
+  "mistakes": [
+    "Starting too intense after time off",
+    "Focusing on power over technique",
+    "Rushing through movements",
+    "Neglecting fundamentals in favor of flashy moves"
+  ],
+  "safety": "Since this is your first basketball session in 2 months, prioritize movement quality over intensity. Listen to your body and don't force any movements that feel off.",
+  "scaling": {
+    "regressions": [
+      "Stationary ball handling only",
+      "Wall shooting practice instead of basket",
+      "Walking pace movements only"
+    ],
+    "progressions": [
+      "Add light defensive movements",
+      "Include basic basketball drills",
+      "Progress to game-speed movements"
+    ]
+  },
+  "variations": [
+    "Court-specific warm-up",
+    "Shooting practice only",
+    "Ball handling focus"
+  ],
+  "prescriptionHints": {
+    "load": "N/A",
+    "reps": "10-15 minutes total",
+    "time": "10-15 minutes",
+    "distance": "N/A",
+    "rpe": "4-6",
+    "notes": "Focus on feel and fundamentals. Build intensity gradually."
+  },
+  "joints": {
+    "sensitiveJoints": ["ankles", "knees", "wrists"],
+    "notes": "Pay attention to ankle stability and knee tracking. Wrist comfort with ball handling."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "name": "Single-Leg Deadlift",
+  "equipment": ["dumbbell"],
+  "tags": ["unilateral", "balance", "glutes", "hamstrings", "stability"],
+  "setup": [
+    "Hold dumbbell in opposite hand to standing leg",
+    "Stand on one leg with slight knee bend",
+    "Keep chest tall and shoulders back",
+    "Brace core lightly for stability"
+  ],
+  "steps": [
+    "Initiate movement by pushing hips back",
+    "Hinge at hip while extending free leg behind",
+    "Lower dumbbell toward floor while maintaining straight back",
+    "Feel stretch in hamstring of standing leg",
+    "Drive through heel to return to standing position",
+    "Keep free leg in line with torso throughout"
+  ],
+  "cues": [
+    "Lead with hips, not knees",
+    "Keep back straight and chest proud",
+    "Free leg extends behind, not to side",
+    "Control the descent, drive up through heel",
+    "Maintain balance through core engagement"
+  ],
+  "mistakes": [
+    "Allowing knee of standing leg to cave inward",
+    "Rounding back instead of hinging at hips",
+    "Using free leg as kickstand for balance",
+    "Rushing through movement without control",
+    "Dropping dumbbell straight down vs. reaching back"
+  ],
+  "safety": "Start with bodyweight only until balance is established. Use wall or rack for light support if needed. Focus on movement quality over load.",
+  "scaling": {
+    "regressions": [
+      "Bodyweight only",
+      "Hand on wall for light support",
+      "Romanian deadlift with toe tap back",
+      "Reduce range of motion"
+    ],
+    "progressions": [
+      "Increase weight progressively",
+      "Add tempo (slow eccentric)",
+      "Eyes closed for increased challenge",
+      "Dual dumbbell version"
+    ]
+  },
+  "variations": [
+    "Contralateral (opposite hand) loading",
+    "Ipsilateral (same side) loading",
+    "Romanian deadlift with rear leg elevated"
+  ],
+  "prescriptionHints": {
+    "load": "15-35 lb dumbbell to start",
+    "reps": "6-12 per leg",
+    "time": "2-3s eccentric control",
+    "distance": "N/A",
+    "rpe": "6-8",
+    "notes": "Focus on balance and control. Build load gradually."
+  },
+  "joints": {
+    "sensitiveJoints": ["ankles", "knees", "hips", "lower back"],
+    "notes": "Challenges ankle stability and hip mobility. Maintain neutral spine throughout."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

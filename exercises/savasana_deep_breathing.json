@@ -1,0 +1,65 @@
+{
+  "name": "Savasana with Deep Breathing",
+  "equipment": ["yoga mat"],
+  "tags": ["relaxation", "breathing", "recovery", "yin"],
+  "setup": [
+    "Lie flat on back on comfortable surface",
+    "Arms at sides, palms facing up",
+    "Legs slightly apart, feet naturally falling open",
+    "Close eyes and settle into stillness"
+  ],
+  "steps": [
+    "Scan body from head to toe, consciously releasing tension",
+    "Begin slow, deep breathing through nose",
+    "Allow natural breath rhythm to emerge",
+    "If mind wanders, gently return attention to breath",
+    "Remain still and relaxed for full duration"
+  ],
+  "cues": [
+    "Release all muscular effort",
+    "Breathe naturally and slowly",
+    "Let thoughts come and go without attachment",
+    "Feel body sinking into the floor",
+    "Complete nervous system rest"
+  ],
+  "mistakes": [
+    "Forcing breath rather than allowing natural rhythm",
+    "Fidgeting or adjusting position unnecessarily",
+    "Trying too hard to stop thinking",
+    "Rushing the practice"
+  ],
+  "safety": "This is a completely passive pose. Adjust pillows under knees or head if needed for comfort.",
+  "scaling": {
+    "regressions": [
+      "Shorter duration (2-3 minutes)",
+      "Use bolster under knees for back comfort",
+      "Guided meditation or body scan"
+    ],
+    "progressions": [
+      "Longer duration (10+ minutes)",
+      "Complete silence without guidance",
+      "Integration of visualization techniques"
+    ]
+  },
+  "variations": [
+    "Supported savasana with props",
+    "Side-lying relaxation",
+    "Seated meditation"
+  ],
+  "prescriptionHints": {
+    "load": "N/A",
+    "reps": "N/A",
+    "time": "5-10 minutes",
+    "distance": "N/A",
+    "rpe": "1-2",
+    "notes": "Complete rest and relaxation. End of practice integration."
+  },
+  "joints": {
+    "sensitiveJoints": [],
+    "notes": "Completely passive pose. Adjust props for comfort as needed."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

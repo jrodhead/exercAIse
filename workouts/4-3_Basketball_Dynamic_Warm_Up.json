@@ -1,0 +1,151 @@
+{
+  "version": "1",
+  "title": "Basketball Dynamic Warm-Up",
+  "block": 4,
+  "week": 3,
+  "date": "2024-10-21",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "General Activation",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Arm Circles",
+          "link": "exercises/arm_circles.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 1,
+            "reps": "10 each direction"
+          },
+          "notes": "Forward and backward circles, gradually increasing size"
+        },
+        {
+          "kind": "exercise",
+          "name": "Leg Swings",
+          "link": "exercises/leg_swings.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 1,
+            "reps": "10 each leg/direction"
+          },
+          "notes": "Front-to-back and side-to-side. Hold wall for balance"
+        },
+        {
+          "kind": "exercise",
+          "name": "Jumping Jacks",
+          "link": "exercises/jumping_jacks.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 1,
+            "reps": 20
+          },
+          "notes": "Light pace to activate whole body"
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Basketball-Specific Movement Prep",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Bodyweight Squat",
+          "link": "exercises/bodyweight_squat.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 10
+          },
+          "notes": "Full depth, pause 1s at bottom"
+        },
+        {
+          "kind": "exercise",
+          "name": "Forward Lunge",
+          "link": "exercises/forward_lunge.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 8
+          },
+          "notes": "Alternating legs, focus on hip mobility"
+        },
+        {
+          "kind": "exercise",
+          "name": "Lateral Lunges",
+          "link": "exercises/lateral_lunges.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 6
+          },
+          "notes": "Each side, prepare for basketball cutting"
+        },
+        {
+          "kind": "exercise",
+          "name": "Cossack Squat",
+          "link": "exercises/cossack_squat.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 5
+          },
+          "notes": "Each side, deep hip and ankle mobility"
+        }
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "Dynamic Movement & Activation",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Glute Bridge",
+          "link": "exercises/glute_bridge.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 12
+          },
+          "notes": "2s pause at top, activate glutes for jumping"
+        },
+        {
+          "kind": "exercise",
+          "name": "Clamshells",
+          "link": "exercises/clamshells.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 10
+          },
+          "notes": "Each side, activate hip stability"
+        },
+        {
+          "kind": "exercise",
+          "name": "Deadbug",
+          "link": "exercises/deadbug.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 8
+          },
+          "notes": "Each side, core stability prep"
+        }
+      ]
+    },
+    {
+      "type": "Recovery",
+      "title": "Final Basketball Prep",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Basketball Movement Prep",
+          "link": "exercises/basketball_movement_prep.json",
+          "logType": "mobility",
+          "prescription": {},
+          "notes": "Light shooting, dribbling, and movement patterns at 50-70% intensity for 10-15 minutes. Focus on feel and rhythm since first game in 2 months."
+        }
+      ]
+    }
+  ]
+}

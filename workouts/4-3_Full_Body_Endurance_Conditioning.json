@@ -1,0 +1,216 @@
+{
+  "version": "1",
+  "title": "Full Body Endurance Conditioning",
+  "block": 4,
+  "week": 3,
+  "date": "2024-10-25",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Dynamic Preparation",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Jumping Jacks",
+          "link": "exercises/jumping_jacks.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 20
+          },
+          "notes": "Light pace, full body activation"
+        },
+        {
+          "kind": "exercise",
+          "name": "Arm Circles",
+          "link": "exercises/arm_circles.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 1,
+            "reps": "10 each direction"
+          },
+          "notes": "Forward and backward circles"
+        },
+        {
+          "kind": "exercise",
+          "name": "Bodyweight Squat",
+          "link": "exercises/bodyweight_squat.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 10
+          },
+          "notes": "Full depth preparation"
+        },
+        {
+          "kind": "exercise",
+          "name": "Push-ups",
+          "link": "exercises/push_ups.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 8
+          },
+          "notes": "Easy pace, movement prep"
+        }
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "Main Circuit",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Thruster",
+          "link": "exercises/dumbbell_thruster.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 4,
+            "reps": 12,
+            "weight": "27.5 x2 lb",
+            "rpe": 8,
+            "restSeconds": 45
+          },
+          "notes": "Progressive from 25 x2 lb. Full body power movement"
+        },
+        {
+          "kind": "exercise",
+          "name": "Renegade Row",
+          "link": "exercises/renegade_row.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 4,
+            "reps": 10,
+            "weight": "27.5 x2 lb",
+            "rpe": 8,
+            "restSeconds": 45
+          },
+          "notes": "Progressive from 25 x2 lb. Total each arm (5 per side)"
+        },
+        {
+          "kind": "exercise",
+          "name": "Goblet Reverse Lunge",
+          "link": "exercises/goblet_reverse_lunge.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 4,
+            "reps": 12,
+            "weight": "37.5 lb",
+            "rpe": 7.5,
+            "restSeconds": 45
+          },
+          "notes": "Progressive from 35 lb. Total reps (6 per leg)"
+        },
+        {
+          "kind": "exercise",
+          "name": "Push-ups",
+          "link": "exercises/push_ups.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 4,
+            "reps": 12,
+            "rpe": 7.5,
+            "restSeconds": 45
+          },
+          "notes": "Progressive from 10 reps. Modify as needed"
+        }
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "Metabolic Finisher",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Lateral Lunges",
+          "link": "exercises/lateral_lunges.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": 12,
+            "rpe": 7,
+            "restSeconds": 30
+          },
+          "notes": "Each side, basketball movement pattern"
+        },
+        {
+          "kind": "exercise",
+          "name": "Mountain Climbers",
+          "link": "exercises/mountain_climbers.json",
+          "logType": "endurance",
+          "prescription": {
+            "sets": 3,
+            "timeSeconds": 30,
+            "rpe": 8,
+            "restSeconds": 30
+          },
+          "notes": "Fast-paced, maintain plank position"
+        },
+        {
+          "kind": "exercise",
+          "name": "Farmer Carry",
+          "link": "exercises/farmer_carry.json",
+          "logType": "carry",
+          "prescription": {
+            "sets": 2,
+            "weight": "37.5 x2 lb",
+            "timeSeconds": 90,
+            "rpe": 7,
+            "restSeconds": 90
+          },
+          "notes": "Progressive from 35 x2 lb. Focus on posture"
+        }
+      ]
+    },
+    {
+      "type": "Recovery",
+      "title": "Cooldown & Mobility",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Forward Fold",
+          "link": "exercises/forward_fold.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 2,
+            "timeSeconds": 45
+          },
+          "notes": "Hamstring and back release"
+        },
+        {
+          "kind": "exercise",
+          "name": "Figure-4 Stretch",
+          "link": "exercises/figure_4_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 2,
+            "timeSeconds": 45
+          },
+          "notes": "Each side, glute release"
+        },
+        {
+          "kind": "exercise",
+          "name": "Doorway Chest Stretch",
+          "link": "exercises/doorway_chest_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 2,
+            "timeSeconds": 30
+          },
+          "notes": "Each arm, chest and shoulder release"
+        },
+        {
+          "kind": "exercise",
+          "name": "Deep Breathing",
+          "link": "exercises/deep_breathing.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 1,
+            "timeSeconds": 120
+          },
+          "notes": "Cool down and recovery"
+        }
+      ]
+    }
+  ]
+}

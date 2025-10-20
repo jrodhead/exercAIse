@@ -1,0 +1,68 @@
+{
+  "name": "Mountain Climbers",
+  "equipment": [],
+  "tags": ["cardio", "core", "conditioning", "bodyweight"],
+  "setup": [
+    "Start in high plank position",
+    "Hands directly under shoulders",
+    "Body in straight line from head to heels",
+    "Core engaged and tight"
+  ],
+  "steps": [
+    "Drive right knee toward chest rapidly",
+    "Quickly switch legs, driving left knee to chest",
+    "Continue alternating legs in running motion",
+    "Maintain plank position throughout",
+    "Keep hips level and core tight"
+  ],
+  "cues": [
+    "Fast feet, stable upper body",
+    "Drive knees to chest, not wide",
+    "Keep hips down and level",
+    "Breathe rhythmically",
+    "Land softly on balls of feet"
+  ],
+  "mistakes": [
+    "Allowing hips to pike up high",
+    "Bouncing or swaying side to side",
+    "Driving knees out wide instead of forward",
+    "Holding breath during movement",
+    "Collapsing into shoulders"
+  ],
+  "safety": "Maintain strong plank position throughout. Stop if form deteriorates. Modify to step-ups if needed.",
+  "scaling": {
+    "regressions": [
+      "Step one foot forward at a time instead of jumping",
+      "Hands elevated on bench or step",
+      "Slower pace with emphasis on form",
+      "Plank hold if too challenging"
+    ],
+    "progressions": [
+      "Increase speed while maintaining form",
+      "Add cross-body knee drives",
+      "Wear weighted vest",
+      "Combine with push-up between reps"
+    ]
+  },
+  "variations": [
+    "Cross-body mountain climbers",
+    "Slow mountain climbers (form focus)",
+    "Mountain climber to push-up"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "20-40 total (each leg counts)",
+    "time": "20-60 seconds",
+    "distance": "N/A",
+    "rpe": "7-9",
+    "notes": "High-intensity cardio movement. Focus on maintaining plank throughout."
+  },
+  "joints": {
+    "sensitiveJoints": ["wrists", "shoulders", "knees"],
+    "notes": "Maintain neutral wrist position. Protect knees with controlled landings."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

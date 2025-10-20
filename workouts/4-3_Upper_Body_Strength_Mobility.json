@@ -1,0 +1,208 @@
+{
+  "version": "1",
+  "title": "Upper Body Strength Mobility",
+  "date": "2024-10-22",
+  "block": 4,
+  "week": 3,
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Upper Body Activation",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Arm Circles",
+          "link": "exercises/arm_circles.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 1,
+            "reps": "10 each direction"
+          },
+          "notes": "Forward and backward circles"
+        },
+        {
+          "kind": "exercise",
+          "name": "Band Pull-Aparts",
+          "link": "exercises/band_pull_aparts.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 15
+          },
+          "notes": "Alternative: use light dumbbells for rear fly motion"
+        },
+        {
+          "kind": "exercise",
+          "name": "Cat-Cow Stretch",
+          "link": "exercises/cat_cow_stretch.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 8
+          },
+          "notes": "Slow, controlled spinal movement"
+        },
+        {
+          "kind": "exercise",
+          "name": "Deadbug",
+          "link": "exercises/deadbug.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 6
+          },
+          "notes": "Each side, core activation"
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Primary Upper Body",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Neutral-Grip Flat Bench Press",
+          "link": "exercises/neutral_grip_flat_bench_press.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 4,
+            "reps": 6,
+            "weight": "52.5 x2 lb",
+            "rpe": 7.5,
+            "restSeconds": 150
+          },
+          "notes": "Progressive from 50 x2 lb. Focus on control and full ROM"
+        },
+        {
+          "kind": "exercise",
+          "name": "One-Arm Dumbbell Row",
+          "link": "exercises/one_arm_dumbbell_row.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 4,
+            "reps": 8,
+            "weight": "52.5 lb",
+            "rpe": 7.5,
+            "restSeconds": 120
+          },
+          "notes": "Progressive from 50 lb. Each arm, focus on lat engagement"
+        },
+        {
+          "kind": "exercise",
+          "name": "Incline Dumbbell Bench Press",
+          "link": "exercises/incline_dumbbell_bench_press.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": 8,
+            "weight": "40 x2 lb",
+            "rpe": 7,
+            "restSeconds": 120
+          },
+          "notes": "30-45° incline, controlled tempo"
+        },
+        {
+          "kind": "exercise",
+          "name": "Chest-Supported Dumbbell Row",
+          "link": "exercises/chest_supported_dumbbell_row.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": 10,
+            "weight": "42.5 x2 lb",
+            "rpe": 7,
+            "restSeconds": 90
+          },
+          "notes": "Progressive from 40 x2 lb. Incline bench support"
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Arms & Core",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Hammer Curl",
+          "link": "exercises/hammer_curl.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": 10,
+            "weight": "32.5 x2 lb",
+            "rpe": 8,
+            "restSeconds": 75
+          },
+          "notes": "Progressive from 30 x2 lb. Control the eccentric"
+        },
+        {
+          "kind": "exercise",
+          "name": "Overhead Dumbbell Triceps Extension",
+          "link": "exercises/overhead_dumbbell_triceps_extension.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": 12,
+            "weight": "32.5 lb",
+            "rpe": 7.5,
+            "restSeconds": 75
+          },
+          "notes": "Progressive from 30 lb. Single dumbbell, both hands"
+        },
+        {
+          "kind": "exercise",
+          "name": "Pallof Press",
+          "link": "exercises/pallof_press.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": 12,
+            "weight": "22.5 x2 lb",
+            "rpe": 7,
+            "restSeconds": 60
+          },
+          "notes": "Progressive from 20 x2 lb. Anti-rotation core strength"
+        }
+      ]
+    },
+    {
+      "type": "Recovery",
+      "title": "Mobility & Cooldown",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Doorway Chest Stretch",
+          "link": "exercises/doorway_chest_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 2,
+            "timeSeconds": 30
+          },
+          "notes": "Each arm, gentle stretch after pressing"
+        },
+        {
+          "kind": "exercise",
+          "name": "Cat-Cow to Cobra Stretch",
+          "link": "exercises/cat_cow_to_cobra_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 1,
+            "reps": 5
+          },
+          "notes": "Slow transition, thoracic mobility"
+        },
+        {
+          "kind": "exercise",
+          "name": "Deep Breathing",
+          "link": "exercises/deep_breathing.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 1,
+            "timeSeconds": 120
+          },
+          "notes": "Parasympathetic recovery after basketball and training"
+        }
+      ]
+    }
+  ]
+}
