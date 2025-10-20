@@ -267,11 +267,8 @@ exercAIse/
 │   │   ├── kai.instructions.md           # Kai persona & output format
 │   │   ├── kai.personal.instructions.md  # User-specific context
 │   │   ├── block-progression.instructions.md  # Periodization model
-│   │   ├── mina.instructions.md          # Nutrition persona
-│   │   └── sample-workout.instructions.md
 │   ├── prompts/                # AI generation prompts
-│   │   ├── generate-workout-session.prompt.md
-│   │   └── generate-workout-interface.prompt.md
+│   │   ├── generate-workout-session.prompt.md  # Complete workout generation
 │   ├── chatmodes/              # AI chat configurations
 │   └── workflows/              # GitHub Actions CI/CD
 │

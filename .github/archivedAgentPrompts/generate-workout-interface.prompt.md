@@ -1,9 +1,13 @@
 ---
 mode: agent
 ---
-# Workout Interface Generation Prompt
+# Workout Interface Generation Prompt [DEPRECATED]
 
-When prompted with 'generate workout interface' and a workout plan, follow this file generation workflow:
+**This prompt has been merged into `generate-workout-session.prompt.md` for a streamlined workflow.**
+
+If prompted with 'generate workout interface', redirect to the complete workout generation process in `generate-workout-session.prompt.md`.
+
+## Legacy workflow (for reference only):
 
 1. **Create a new workout file** in the `workouts` directory. Name the file using the format `<blockNumber>-<weekNumber>_<title>.json` (e.g., `1-2_Lower_Body.json`).
 2. **Insert the provided JSON session content** into the new file, validating against `schemas/session.schema.json`. Ensure each exercise has `link` and `logType`.
@@ -17,7 +21,4 @@ When prompted with 'generate workout interface' and a workout plan, follow this 
    - Run `python3 scripts/validate_schemas.py` to validate the session JSON and exercises.
    - Run `python3 scripts/validate_links.py` to confirm exercise links (from instructions/docs) remain valid if edited.
 
-For all workout content, structure, and safety requirements, refer to:
-- [Workout Session Generation Prompt](generate-workout-session.prompt.md)
-
-This file only describes the file generation and integration workflow. For workout content generation, always defer to the Kai instructions.
+**Use `generate-workout-session.prompt.md` instead - it now includes both content generation AND file creation in a single workflow.**
