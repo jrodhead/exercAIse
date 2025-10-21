@@ -183,3 +183,513 @@ textarea { width: 100%; }
   /* Dark mode navigation */
   .site-header nav a:hover, .site-header nav a:active { background-color: #1a1d22; }
 }
+
+/* RPE Guide Specific Styles */
+.rpe-table-container {
+  overflow-x: auto;
+  margin: 20px 0;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.rpe-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  font-size: 14px;
+}
+
+.rpe-table th {
+  background: #f8fafc;
+  padding: 12px 8px;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  border-bottom: 2px solid #e5e7eb;
+  white-space: nowrap;
+}
+
+.rpe-table td {
+  padding: 12px 8px;
+  border-bottom: 1px solid #f3f4f6;
+  vertical-align: top;
+}
+
+.rpe-table tbody tr:hover {
+  background: #f9fafb;
+}
+
+.rpe-table .rpe-number {
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  min-width: 50px;
+  color: white;
+  padding: 6px 8px;
+  border-radius: 4px;
+}
+
+/* RPE Color Coding for Table */
+.rpe-table .rpe-light .rpe-number {
+  background: #0ea5e9;
+}
+
+.rpe-table .rpe-moderate .rpe-number {
+  background: #eab308;
+}
+
+.rpe-table .rpe-hard .rpe-number {
+  background: #ef4444;
+}
+
+.rpe-table .rpe-max .rpe-number {
+  background: #ec4899;
+}
+
+/* Mobile Cards (hidden on desktop) */
+.rpe-mobile-cards {
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.rpe-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: white;
+  overflow: hidden;
+}
+
+.rpe-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.rpe-card .rpe-number {
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  min-width: 40px;
+  text-align: center;
+}
+
+.rpe-card .rpe-effort {
+  font-weight: 600;
+  font-size: 16px;
+  color: #374151;
+}
+
+.rpe-card-content {
+  padding: 12px 16px;
+}
+
+.rpe-card-content p {
+  margin: 6px 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Color coding for mobile cards */
+.rpe-card.rpe-light .rpe-number {
+  background: #0ea5e9;
+}
+
+.rpe-card.rpe-moderate .rpe-number {
+  background: #eab308;
+}
+
+.rpe-card.rpe-hard .rpe-number {
+  background: #ef4444;
+}
+
+.rpe-card.rpe-max .rpe-number {
+  background: #ec4899;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .rpe-table-container {
+    display: none;
+  }
+  
+  .rpe-mobile-cards {
+    display: flex;
+  }
+}
+
+/* Legacy rpe-scale styles (remove these) */
+.rpe-scale {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.rpe-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.rpe-item .rpe-number {
+  font-size: 24px;
+  font-weight: bold;
+  min-width: 50px;
+  text-align: center;
+  padding: 8px;
+  border-radius: 6px;
+  color: white;
+}
+
+.rpe-description h4 {
+  margin: 0 0 4px 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.rpe-description p {
+  margin: 0;
+  color: #666;
+  line-height: 1.4;
+}
+
+/* RPE Color Coding */
+.rpe-light {
+  background: #f0f9ff;
+  border-color: #e0f2fe;
+}
+
+.rpe-light .rpe-number {
+  background: #0ea5e9;
+}
+
+.rpe-moderate {
+  background: #fefce8;
+  border-color: #fef3c7;
+}
+
+.rpe-moderate .rpe-number {
+  background: #eab308;
+}
+
+.rpe-hard {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.rpe-hard .rpe-number {
+  background: #ef4444;
+}
+
+.rpe-max {
+  background: #fdf2f8;
+  border-color: #fbcfe8;
+}
+
+.rpe-max .rpe-number {
+  background: #ec4899;
+}
+
+.example-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 16px 0;
+}
+
+.example-set {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 12px 0;
+}
+
+.example-set h4 {
+  margin: 0 0 8px 0;
+  color: #1f2937;
+  font-size: 16px;
+}
+
+.example-set p {
+  margin: 6px 0;
+  line-height: 1.5;
+}
+
+.example-notes {
+  background: #ecfdf5;
+  border: 1px solid #d1fae5;
+  border-radius: 6px;
+  padding: 16px;
+  margin-top: 16px;
+}
+
+.example-notes h4 {
+  margin: 0 0 8px 0;
+  color: #065f46;
+}
+
+.example-notes ul {
+  margin: 8px 0 0 0;
+  padding-left: 20px;
+}
+
+.example-notes li {
+  margin: 4px 0;
+  color: #047857;
+}
+
+.mistake-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.mistake-item {
+  background: #fef7f7;
+  border: 1px solid #fee2e2;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.mistake-item h4 {
+  margin: 0 0 8px 0;
+  color: #dc2626;
+  font-size: 16px;
+}
+
+.mistake-item p {
+  margin: 6px 0;
+  line-height: 1.4;
+}
+
+.mistake-item p:first-of-type {
+  color: #7f1d1d;
+}
+
+.mistake-item p:last-of-type {
+  color: #059669;
+  font-weight: 500;
+}
+
+.quick-ref {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.ref-column {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.ref-column h4 {
+  margin: 0 0 12px 0;
+  color: #1f2937;
+  font-size: 16px;
+}
+
+.ref-column ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.ref-column li {
+  margin: 6px 0;
+  line-height: 1.4;
+}
+
+.info-box {
+  background: #eff6ff;
+  border: 1px solid #dbeafe;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 16px 0;
+}
+
+.info-box h3 {
+  margin: 0 0 12px 0;
+  color: #1e40af;
+  font-size: 18px;
+}
+
+.info-box p {
+  margin: 8px 0;
+  color: #1e3a8a;
+  line-height: 1.5;
+}
+
+.info-box ul {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.info-box li {
+  margin: 6px 0;
+  color: #1e3a8a;
+}
+
+/* Header navigation active state */
+.site-header nav a.active {
+  background: #e0f2fe;
+  color: #0369a1;
+  font-weight: 600;
+}
+
+/* Dark mode navigation active state */
+@media (prefers-color-scheme: dark) {
+  .site-header nav a.active {
+    background: #1a1d22;
+    color: #8ab4f8;
+    font-weight: 600;
+  }
+}
+
+/* Dark mode RPE styles */
+@media (prefers-color-scheme: dark) {
+  .rpe-table-container {
+    border-color: #3a3f47;
+  }
+  
+  .rpe-table {
+    background: #232830;
+  }
+  
+  .rpe-table th {
+    background: #1a1d22;
+    color: #e6e8ec;
+    border-bottom-color: #3a3f47;
+  }
+  
+  .rpe-table td {
+    border-bottom-color: #2a2d33;
+    color: #d5d9df;
+  }
+  
+  .rpe-table tbody tr:hover {
+    background: #2a2f38;
+  }
+  
+  .rpe-card {
+    background: #232830;
+    border-color: #3a3f47;
+  }
+  
+  .rpe-card-header {
+    border-bottom-color: #2a2d33;
+  }
+  
+  .rpe-card .rpe-effort {
+    color: #e6e8ec;
+  }
+  
+  .rpe-card-content p {
+    color: #d5d9df;
+  }
+  
+  .rpe-light {
+    background: #0c1420;
+    border-color: #1e3a5f;
+  }
+  
+  .rpe-moderate {
+    background: #1a1611;
+    border-color: #4a3b1a;
+  }
+  
+  .rpe-hard {
+    background: #1f1315;
+    border-color: #5c1f20;
+  }
+  
+  .rpe-max {
+    background: #1c1018;
+    border-color: #54184b;
+  }
+  
+  .rpe-description p {
+    color: #b5bcc7;
+  }
+  
+  .example-box {
+    background: #1a1d22;
+    border-color: #3a3f47;
+  }
+  
+  .example-set {
+    background: #232830;
+    border-color: #3a3f47;
+  }
+  
+  .example-set h4 {
+    color: #e6e8ec;
+  }
+  
+  .example-notes {
+    background: #0d1f1a;
+    border-color: #1e4a33;
+  }
+  
+  .example-notes h4 {
+    color: #34d399;
+  }
+  
+  .example-notes li {
+    color: #6ee7b7;
+  }
+  
+  .mistake-item {
+    background: #1f1315;
+    border-color: #5c1f20;
+  }
+  
+  .mistake-item h4 {
+    color: #f87171;
+  }
+  
+  .mistake-item p:first-of-type {
+    color: #fca5a5;
+  }
+  
+  .mistake-item p:last-of-type {
+    color: #6ee7b7;
+  }
+  
+  .ref-column {
+    background: #232830;
+    border-color: #3a3f47;
+  }
+  
+  .ref-column h4 {
+    color: #e6e8ec;
+  }
+  
+  .info-box {
+    background: #1e3a8a;
+    border-color: #3b82f6;
+  }
+  
+  .info-box h3 {
+    color: #dbeafe;
+  }
+  
+  .info-box p,
+  .info-box li {
+    color: #bfdbfe;
+  }
+}
