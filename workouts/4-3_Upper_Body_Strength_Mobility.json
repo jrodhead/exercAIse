@@ -67,11 +67,11 @@
           "prescription": {
             "sets": 4,
             "reps": 6,
-            "weight": "52.5 x2 lb",
+            "weight": "50 x2 lb",
             "rpe": 7.5,
             "restSeconds": 150
           },
-          "notes": "Progressive from 50 x2 lb. Focus on control and full ROM"
+          "notes": "Same weight as last session but targeting RPE 7.5 vs 7-9. Next jump will be 55 x2 lb"
         },
         {
           "kind": "exercise",
@@ -81,11 +81,11 @@
           "prescription": {
             "sets": 4,
             "reps": 8,
-            "weight": "52.5 lb",
+            "weight": "55 lb",
             "rpe": 7.5,
             "restSeconds": 120
           },
-          "notes": "Progressive from 50 lb. Each arm, focus on lat engagement"
+          "notes": "Progressive from 50 lb (+5 lb jump). Each arm, focus on lat engagement"
         },
         {
           "kind": "exercise",
@@ -109,11 +109,11 @@
           "prescription": {
             "sets": 3,
             "reps": 10,
-            "weight": "42.5 x2 lb",
+            "weight": "45 x2 lb",
             "rpe": 7,
             "restSeconds": 90
           },
-          "notes": "Progressive from 40 x2 lb. Incline bench support"
+          "notes": "Progressive from 40 x2 lb (+5 lb jump). Incline bench support"
         }
       ]
     },
@@ -128,12 +128,12 @@
           "logType": "strength",
           "prescription": {
             "sets": 3,
-            "reps": 10,
-            "weight": "32.5 x2 lb",
-            "rpe": 8,
+            "reps": 12,
+            "weight": "30 x2 lb",
+            "rpe": 7.5,
             "restSeconds": 75
           },
-          "notes": "Progressive from 30 x2 lb. Control the eccentric"
+          "notes": "Same weight, increased reps from 10→12. Next jump will be 35 x2 lb for 8-10 reps"
         },
         {
           "kind": "exercise",
@@ -143,11 +143,11 @@
           "prescription": {
             "sets": 3,
             "reps": 12,
-            "weight": "32.5 lb",
+            "weight": "35 lb",
             "rpe": 7.5,
             "restSeconds": 75
           },
-          "notes": "Progressive from 30 lb. Single dumbbell, both hands"
+          "notes": "Progressive from 30 lb (+5 lb jump). Single dumbbell, both hands"
         },
         {
           "kind": "exercise",
@@ -157,11 +157,11 @@
           "prescription": {
             "sets": 3,
             "reps": 12,
-            "weight": "22.5 x2 lb",
+            "weight": "25 x2 lb",
             "rpe": 7,
             "restSeconds": 60
           },
-          "notes": "Progressive from 20 x2 lb. Anti-rotation core strength"
+          "notes": "Progressive from 20 x2 lb (+5 lb jump). Anti-rotation core strength"
         }
       ]
     },
