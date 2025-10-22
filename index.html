@@ -25,22 +25,34 @@
       <section id="generate-section" class="readme">
         <h2>Session Plan (JSON)</h2>
         <p class="form-hint">Paste a SessionPlan JSON to preview and log.</p>
-        <form id="generate-form">
-          <label for="gen-goals">Goals</label>
-          <textarea id="gen-goals" rows="3" placeholder="e.g., 30–40 min full-body strength, knee-friendly"></textarea>
-          <label for="gen-pain">Pain/Injury</label>
-          <input id="gen-pain" type="text" placeholder="e.g., knees, lower back" />
-          <label for="gen-equipment">Equipment</label>
-          <input id="gen-equipment" type="text" placeholder="e.g., dumbbells, bands, bench" />
-          <label for="gen-instructions">Personal instructions (optional, not stored)</label>
-          <textarea id="gen-instructions" rows="3" placeholder="Any preferences, constraints, or schedule details"></textarea>
-          <div class="form-actions">
+        <form id="generate-form" class="responsive-form">
+          <div class="form-grid">
+            <div>
+              <label for="gen-goals">Goals</label>
+              <textarea id="gen-goals" rows="3" placeholder="e.g., 30–40 min full-body strength, knee-friendly"></textarea>
+            </div>
+            <div>
+              <label for="gen-pain">Pain/Injury</label>
+              <input id="gen-pain" type="text" placeholder="e.g., knees, lower back" />
+            </div>
+            <div>
+              <label for="gen-equipment">Equipment</label>
+              <input id="gen-equipment" type="text" placeholder="e.g., dumbbells, bands, bench" />
+            </div>
+            <div class="form-full-width">
+              <label for="gen-instructions">Personal instructions (optional, not stored)</label>
+              <textarea id="gen-instructions" rows="3" placeholder="Any preferences, constraints, or schedule details"></textarea>
+            </div>
+          </div>
+          <div class="form-actions flex flex-wrap gap-3">
             <button id="gen-submit" type="button">Generate with Kai</button>
             <button id="gen-clear" type="button" class="secondary">Clear</button>
           </div>
           <p class="form-hint">Expected keys: version, title, exercises[]. Each exercise: name, prescribed{ sets, reps or "x-y", rpe?, weight? }. Slugs are optional; unknown/missing slugs will render as non-links with a warning.</p>
-          <textarea id="gen-json" rows="8" placeholder='{"version":"1.0","title":"My Session","exercises":[{"slug":"goblet_squat","name":"Goblet Squat","prescribed":{"sets":3,"reps":"8-12","rpe":7}}]}'></textarea>
-          <div class="form-actions">
+          <div class="form-full-width">
+            <textarea id="gen-json" rows="8" placeholder='{"version":"1.0","title":"My Session","exercises":[{"slug":"goblet_squat","name":"Goblet Squat","prescribed":{"sets":3,"reps":"8-12","rpe":7}}]}'></textarea>
+          </div>
+          <div class="form-actions flex flex-wrap gap-3">
             <button id="gen-load-json" type="button" class="secondary">Load JSON</button>
           </div>
         </form>

@@ -3,60 +3,56 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Exercise</title>
+  <title>Exercise - exercAIse</title>
   <link rel="stylesheet" href="assets/styles.css">
-  <style>
-    .exercise-header { display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
-    .badge { display:inline-block; padding:2px 8px; border-radius:999px; background:#eef; color:#224; font-size:12px; margin:2px; }
-    .pill { display:inline-block; padding:2px 8px; border-radius:6px; background:#f2f2f2; color:#333; font-size:12px; margin:2px; }
-    .section { margin: 16px 0; }
-    .muted { color:#666; font-size: 0.9em; }
-    .mono { font-family: ui-monospace, Menlo, monospace; }
-    .grid-2 { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:12px; }
-    .card { border:1px solid #ddd; border-radius:8px; padding:12px; background:#fff; color: #000 }
-    .history-item { border-left:3px solid #ccc; padding-left:8px; margin:8px 0; }
-  </style>
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#111111">
 </head>
 <body>
-  <header class="exercise-header" role="banner">
-    <nav aria-label="Breadcrumbs">
-      <a href="index.html" class="muted">← Back to index</a>
+  <header class="site-header">
+    <h1>exercAIse</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#nav-workouts">Workouts</a>
+      <a href="index.html#nav-history">History</a>
+      <a href="rpe-guide.html">RPE Guide</a>
+      <a href="https://github.com/jrodhead/exercAIse#readme" target="_blank" rel="noopener">README</a>
     </nav>
-    <div id="status" role="status" aria-live="polite" class="muted"></div>
   </header>
 
-  <main id="main" role="main" aria-labelledby="ex-name">
+  <main class="container" id="main" role="main" aria-labelledby="ex-name">
+    <div id="status" role="status" aria-live="polite" class="status" style="display:none;"></div>
     <h1 id="ex-name">Exercise</h1>
     <div id="meta" class="section"></div>
-    <section class="section card" aria-labelledby="setup-h">
+    <section class="section exercise-card" aria-labelledby="setup-h">
       <h2 id="setup-h">Setup</h2>
       <ul id="setup"></ul>
     </section>
-    <section class="section card" aria-labelledby="steps-h">
+    <section class="section exercise-card" aria-labelledby="steps-h">
       <h2 id="steps-h">Steps</h2>
       <ol id="steps"></ol>
     </section>
-    <div class="grid-2">
-      <section class="card" aria-labelledby="cues-h">
+    <div class="exercise-grid">
+      <section class="exercise-card" aria-labelledby="cues-h">
         <h2 id="cues-h">Cues</h2>
         <ul id="cues"></ul>
       </section>
-      <section class="card" aria-labelledby="safety-h">
+      <section class="exercise-card" aria-labelledby="safety-h">
         <h2 id="safety-h">Safety / Injury Notes</h2>
         <div id="safety" class="muted"></div>
       </section>
     </div>
-    <section class="section card" aria-labelledby="mistakes-h">
+    <section class="section exercise-card" aria-labelledby="mistakes-h">
       <h2 id="mistakes-h">Common Mistakes</h2>
       <ul id="mistakes"></ul>
     </section>
-    <section class="section card" aria-labelledby="vars-h">
+    <section class="section exercise-card" aria-labelledby="vars-h">
       <h2 id="vars-h">Variations</h2>
       <ul id="variations"></ul>
     </section>
-    <section class="section card" aria-labelledby="scaling-h">
+    <section class="section exercise-card" aria-labelledby="scaling-h">
       <h2 id="scaling-h">Scaling</h2>
-      <div class="grid-2">
+      <div class="exercise-grid">
         <div>
           <h3>Regressions</h3>
           <ul id="regressions"></ul>
@@ -67,31 +63,39 @@
         </div>
       </div>
     </section>
-    <section class="section card" aria-labelledby="ph-h">
+    <section class="section exercise-card" aria-labelledby="ph-h">
       <h2 id="ph-h">Prescription Hints</h2>
       <ul id="phints"></ul>
     </section>
-    <section class="section card" aria-labelledby="joints-h">
+    <section class="section exercise-card" aria-labelledby="joints-h">
       <h2 id="joints-h">Joint Considerations</h2>
       <div id="joints"></div>
     </section>
-    <section class="section card" aria-labelledby="media-h">
+    <section class="section exercise-card" aria-labelledby="media-h">
       <h2 id="media-h">Media</h2>
       <div id="media"></div>
     </section>
-    <section class="section card" aria-labelledby="history-h">
+    <section class="section exercise-card" aria-labelledby="history-h">
       <h2 id="history-h">History</h2>
       <div id="history" class="muted">Loading history…</div>
     </section>
   </main>
 
-  <section id="not-found" class="section card" style="display:none" aria-labelledby="nf-h">
+  <section id="not-found" class="section exercise-card" style="display:none" aria-labelledby="nf-h">
     <h1 id="nf-h">Exercise not found</h1>
     <p>We couldn't find the exercise details for: <code id="nf-path"></code></p>
     <p class="muted">Make sure the link points to an existing file under <code>exercises/</code> in this app.</p>
     <p><a href="index.html">← Back to index</a></p>
   </section>
 
+  <footer class="site-footer">
+    <small>© <span id="year"></span> exercAIse. Works offline for logged data via localStorage.</small>
+  </footer>
+
   <script src="assets/exercise.js"></script>
+  <script>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

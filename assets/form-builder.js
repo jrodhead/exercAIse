@@ -352,8 +352,16 @@ window.ExercAIse.FormBuilder = (function () {
         
         var del = document.createElement('button');
         del.type = 'button';
-        del.className = 'danger';
-        del.appendChild(document.createTextNode('Remove'));
+        del.className = 'remove-set-btn';
+        del.setAttribute('aria-label', 'Remove set');
+        del.title = 'Remove set';
+        
+        // Add fallback text for browsers that don't support CSS mask
+        var iconText = document.createElement('span');
+        iconText.className = 'icon-text';
+        iconText.textContent = '🗑';
+        del.appendChild(iconText);
+        
         del.onclick = function () { setsWrap.removeChild(r); updateSetLabelsLocal(); };
         r.appendChild(del);
         
