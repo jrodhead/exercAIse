@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode Preview - exercAIse</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <style>
+        .demo-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        
+        .force-dark {
+            color-scheme: dark;
+        }
+        
+        .force-light {
+            color-scheme: light;
+        }
+    </style>
+</head>
+<body>
+    <button class="demo-toggle" onclick="toggleDarkMode()">Toggle Dark Mode</button>
+    
+    <header class="site-header">
+        <h1>exercAIse</h1>
+        <nav>
+            <a href="#" class="active">Home</a>
+            <a href="#">Workouts</a>
+            <a href="#">History</a>
+            <a href="#">RPE Guide</a>
+            <a href="#">README</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="content-section">
+            <h2 class="section-header">Dark Mode Styling Preview</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">127</div>
+                    <div class="stat-label">Total Workouts</div>
+                    <div class="stat-change positive">+12 this month</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">85%</div>
+                    <div class="stat-label">Completion Rate</div>
+                    <div class="stat-change positive">+5% from last month</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">23</div>
+                    <div class="stat-label">Current Streak</div>
+                    <div class="stat-change positive">Personal best!</div>
+                </div>
+            </div>
+
+            <div class="exercise-card">
+                <div class="exercise-header">
+                    <a href="exercises/goblet_squat.json">Goblet Squat</a> — <span class="ex-presc">4 x 8 · 67.5 lb · RPE 7.5 · Rest 150s</span>
+                    <ul class="ex-cues">
+                        <li>Elbows down; bell tight to chest</li>
+                        <li>Knees track over toes</li>
+                        <li>Chest tall, ribs stacked</li>
+                    </ul>
+                </div>
+                
+                <div class="exercise-sets">
+                    <div class="set-row">
+                        <span class="set-label">Set 1</span>
+                        <input type="number" placeholder="Weight" value="67.5">
+                        <span>×</span>
+                        <input type="number" placeholder="Multiplier" value="1" style="max-width: 5em;">
+                        <input type="number" placeholder="Reps" value="8">
+                        <input type="number" placeholder="RPE" value="7.5">
+                        <button type="button" class="remove-set-btn" aria-label="Remove set">
+                            <span class="icon-text">🗑</span>
+                        </button>
+                    </div>
+                    <div class="set-row">
+                        <span class="set-label">Set 2</span>
+                        <input type="number" placeholder="Weight" value="67.5">
+                        <span>×</span>
+                        <input type="number" placeholder="Multiplier" value="1" style="max-width: 5em;">
+                        <input type="number" placeholder="Reps" value="8">
+                        <input type="number" placeholder="RPE" value="7.5">
+                        <button type="button" class="remove-set-btn" aria-label="Remove set">
+                            <span class="icon-text">🗑</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <button class="secondary">Add set</button>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress-bar" style="width: 75%"></div>
+            </div>
+            <div class="progress-text">3 of 4 exercises completed</div>
+
+            <div class="form-actions" style="margin-top: 20px;">
+                <button>Save Workout</button>
+                <button>Copy JSON</button>
+                <button class="secondary">Clear All</button>
+            </div>
+            
+            <div class="example-box" style="margin-top: 30px;">
+                <h3>RPE Example: Goblet Squats @ RPE 7</h3>
+                
+                <div class="example-set">
+                    <h4>Set 1: 35 lb × 8 reps</h4>
+                    <p><strong>How it felt:</strong> Last 2 reps were challenging but controlled. Could definitely do 3 more with good form.</p>
+                    <p><strong>RPE Rating:</strong> 7 ✓ <em>(Perfect - matches target)</em></p>
+                </div>
+                
+                <div class="example-set">
+                    <h4>Set 2: 35 lb × 8 reps</h4>
+                    <p><strong>How it felt:</strong> A bit more fatigued. Last rep was quite hard, maybe 1-2 more reps left.</p>
+                    <p><strong>RPE Rating:</strong> 8 <em>(Slightly high - stay at this weight for set 3)</em></p>
+                </div>
+                
+                <div class="example-notes">
+                    <h4>Key Takeaways:</h4>
+                    <ul>
+                        <li>Weight was appropriate - hit target RPE on first set</li>
+                        <li>Natural fatigue progression (7→8) is normal and healthy</li>
+                        <li>Ready to progress to 40 lb next session since we ended at RPE 8</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDarkMode() {
+            const body = document.body;
+            if (body.classList.contains('force-dark')) {
+                body.classList.remove('force-dark');
+                body.classList.add('force-light');
+            } else if (body.classList.contains('force-light')) {
+                body.classList.remove('force-light');
+                body.classList.add('force-dark');
+            } else {
+                // Auto mode, toggle to opposite of system preference
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                body.classList.add(prefersDark ? 'force-light' : 'force-dark');
+            }
+        }
+    </script>
+</body>
+</html>
