@@ -1,279 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>exercAIse - iOS 7 Compatible</title>
-    <style>
-        /* Simple CSS compatible with iOS 7 */
-        body {
-            font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f5f5f5;
-            color: #333;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .header h1 {
-            margin: 0;
-            font-size: 24px;
-            font-weight: 300;
-        }
-        
-        .nav {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px;
-            margin-top: 15px;
-            border-radius: 8px;
-        }
-        
-        .nav a {
-            display: inline-block;
-            color: white;
-            text-decoration: none;
-            padding: 12px 20px;
-            margin: 5px;
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 6px;
-            font-size: 16px;
-            min-width: 44px; /* iOS touch target */
-            text-align: center;
-        }
-        
-        .nav a:hover,
-        .nav a:active {
-            background: rgba(255, 255, 255, 0.25);
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .card {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .status {
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 6px;
-            font-size: 16px;
-        }
-        
-        .status.success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-        
-        .status.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-        
-        .status.info {
-            background: #d1ecf1;
-            color: #0c5460;
-            border: 1px solid #bee5eb;
-        }
-        
-        .button {
-            display: inline-block;
-            background: #007aff;
-            color: white;
-            text-decoration: none;
-            padding: 12px 20px;
-            border-radius: 6px;
-            border: none;
-            font-size: 16px;
-            margin: 5px;
-            min-width: 44px;
-            text-align: center;
-        }
-        
-        .button:hover,
-        .button:active {
-            background: #0056b3;
-        }
-        
-        .workout-list {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .workout-list li {
-            margin: 10px 0;
-        }
-        
-        .workout-list a {
-            display: block;
-            padding: 15px;
-            background: white;
-            border-radius: 6px;
-            text-decoration: none;
-            color: #333;
-            border: 1px solid #ddd;
-        }
-        
-        .workout-list a:hover,
-        .workout-list a:active {
-            background: #f8f9fa;
-        }
-    </style>
+    <title>exercAIse Workouts</title>
 </head>
 <body>
-    <div class="header">
-        <h1>exercAIse</h1>
-        <div class="nav">
-            <a href="index.html">Home</a>
-            <a href="#workouts" onclick="showWorkouts(); return false;">Workouts</a>
-            <a href="#history" onclick="showHistory(); return false;">History</a>
-            <a href="rpe-guide.html">RPE Guide</a>
-        </div>
-    </div>
-
-    <div class="container">
-        <div id="home-section">
-            <div class="card">
-                <h2>Welcome to exercAIse</h2>
-                <p>This is a compatibility version for older iOS devices (iOS 7-8).</p>
-                <p>For the best experience, please use:</p>
-                <ul>
-                    <li><strong>iOS 9+</strong>: <a href="index.html" class="button">Open Full App</a></li>
-                    <li><strong>Desktop</strong>: <a href="index.html" class="button">Open Full App</a></li>
-                </ul>
-                
-                <div class="status info">
-                    <strong>iOS 7 Detected:</strong> Using compatibility mode with simplified navigation.
-                </div>
-            </div>
-        </div>
-
-        <div id="workouts-section" style="display: none;">
-            <div class="card">
-                <h2>Workouts</h2>
-                <p>Loading workouts...</p>
-                <ul id="workout-list" class="workout-list">
-                    <li><a href="workouts/1-1_Upper_Body_Strength_Hypertrophy.json">Block 1, Week 1: Upper Body Strength & Hypertrophy</a></li>
-                    <li><a href="workouts/1-2_Lower_Body_Strength_Mobility.json">Block 1, Week 2: Lower Body Strength & Mobility</a></li>
-                    <li><a href="workouts/1-3_recovery_Yin_Yoga_Rest_Day.json">Block 1, Week 3: Recovery Yin Yoga Rest Day</a></li>
-                </ul>
-            </div>
-        </div>
-
-        <div id="history-section" style="display: none;">
-            <div class="card">
-                <h2>Workout History</h2>
-                <p>Performance history is not available in compatibility mode.</p>
-                <p>Please use the full app on a modern device to access workout logging and history.</p>
-            </div>
-        </div>
-
-        <div id="status" class="status info" style="display: none;"></div>
-    </div>
+    <ul id="workout-list"></ul>
 
     <script>
-        // Simple iOS 7 compatible JavaScript
-        function showSection(sectionId) {
-            var sections = ['home-section', 'workouts-section', 'history-section'];
-            for (var i = 0; i < sections.length; i++) {
-                var section = document.getElementById(sections[i]);
-                if (section) {
-                    section.style.display = sections[i] === sectionId ? 'block' : 'none';
-                }
-            }
-        }
-        
-        function showStatus(message, type) {
-            var status = document.getElementById('status');
-            if (status) {
-                status.textContent = message;
-                status.className = 'status ' + (type || 'info');
-                status.style.display = 'block';
-                
-                // Auto hide after 3 seconds
-                setTimeout(function() {
-                    status.style.display = 'none';
-                }, 3000);
-            }
-        }
-        
-        function showWorkouts() {
-            showSection('workouts-section');
-            showStatus('Workouts loaded in compatibility mode', 'success');
-        }
-        
-        function showHistory() {
-            showSection('history-section');
-            showStatus('History not available in compatibility mode', 'error');
-        }
-        
-        function showHome() {
-            showSection('home-section');
-        }
-        
-        // Simple touch event handling for iOS 7
-        function addTouch(element, callback) {
-            if (element && callback) {
-                // Try modern event listeners first
-                try {
-                    element.addEventListener('click', callback, false);
-                } catch (e) {
-                    // Fallback to onclick
-                    element.onclick = callback;
-                }
-                
-                // Add touch support if available
-                try {
-                    if ('ontouchstart' in window) {
-                        element.addEventListener('touchend', function(e) {
-                            e.preventDefault();
-                            callback(e);
-                        }, false);
+        function loadFile(url, callback) {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        callback(null, xhr.responseText);
+                    } else {
+                        callback('Error loading workouts', null);
                     }
-                } catch (e) {
-                    // Touch events not available, click will work
-                    console.log('Touch events not supported, using click only');
                 }
-            }
-        }
-        
-        // Initialize when page loads
-        window.onload = function() {
-            showStatus('iOS 7 compatibility mode active', 'info');
-            
-            // Detect iOS version
-            var iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-            if (iOS) {
-                var version = navigator.userAgent.match(/OS (\d+)/);
-                if (version && parseInt(version[1]) <= 8) {
-                    showStatus('iOS ' + version[1] + ' detected - using compatibility mode', 'info');
-                }
-            }
-        };
-        
-        // Handle back button (if supported)
-        try {
-            window.onpopstate = function() {
-                showHome();
             };
-        } catch (e) {
-            // Not supported in older browsers
+            xhr.open('GET', url, true);
+            xhr.send();
         }
+        
+        function parseWorkoutTitle(filename) {
+            var name = filename.replace('workouts/', '').replace('.json', '');
+            var parts = name.split('_');
+            var blockWeek = parts[0];
+            var title = parts.slice(1).join(' ').replace(/_/g, ' ');
+            var blockWeekParts = blockWeek.split('-');
+            var block = blockWeekParts[0];
+            var week = blockWeekParts[1];
+            
+            return {
+                block: block,
+                week: week,
+                title: title,
+                filename: filename
+            };
+        }
+        
+        window.onload = function() {
+            loadFile('workouts/manifest.txt', function(err, data) {
+                if (err) {
+                    document.getElementById('workout-list').innerHTML = '<li>Error loading workouts</li>';
+                    return;
+                }
+                
+                var lines = data.split('\n').filter(function(line) { 
+                    return line.trim() && line.indexOf('.json') > -1; 
+                });
+                
+                var workouts = [];
+                for (var i = 0; i < lines.length; i++) {
+                    var workout = parseWorkoutTitle(lines[i].trim());
+                    workouts.push(workout);
+                }
+                
+                workouts.sort(function(a, b) {
+                    if (a.block !== b.block) return parseInt(b.block) - parseInt(a.block);
+                    return parseInt(b.week) - parseInt(a.week);
+                });
+                
+                var html = '';
+                for (var i = 0; i < workouts.length; i++) {
+                    var w = workouts[i];
+                    html += '<li><a href="' + w.filename + '">';
+                    html += 'Block ' + w.block + ', Week ' + w.week + ': ' + w.title;
+                    html += '</a></li>';
+                }
+                
+                document.getElementById('workout-list').innerHTML = html;
+            });
+        };
     </script>
 </body>
 </html>
