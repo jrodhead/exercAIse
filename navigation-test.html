@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Test - exercAIse</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <style>
+        .debug-info {
+            background: #f0f9ff;
+            border: 1px solid #0ea5e9;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .test-results {
+            margin: 20px 0;
+        }
+        
+        .test-button {
+            margin: 8px 8px 8px 0;
+            padding: 12px 16px;
+            background: #059669;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        
+        @media (prefers-color-scheme: dark) {
+            .debug-info {
+                background: #0f172a;
+                border-color: #334155;
+                color: #f1f5f9;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <h1>exercAIse - Navigation Test</h1>
+        <nav>
+            <a href="index.html" id="nav-home">Home</a>
+            <a href="index.html?view=workouts" id="nav-workouts">Workouts</a>
+            <a href="index.html?view=history" id="nav-history">History</a>
+            <a href="rpe-guide.html">RPE Guide</a>
+            <a href="https://github.com/jrodhead/exercAIse#readme" target="_blank" rel="noopener">README</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="content-section">
+            <h2>Navigation Debug Test</h2>
+            
+            <div class="debug-info">
+                <h3>Current Status</h3>
+                <p><strong>User Agent:</strong> <span id="user-agent"></span></p>
+                <p><strong>Screen Size:</strong> <span id="screen-size"></span></p>
+                <p><strong>Touch Support:</strong> <span id="touch-support"></span></p>
+                <p><strong>Current URL:</strong> <span id="current-url"></span></p>
+            </div>
+
+            <div class="test-results">
+                <h3>Navigation Tests</h3>
+                <button class="test-button" onclick="testNavigation('home')">Test Home</button>
+                <button class="test-button" onclick="testNavigation('workouts')">Test Workouts</button>
+                <button class="test-button" onclick="testNavigation('history')">Test History</button>
+                <button class="test-button" onclick="testDirectNavigation()">Test Direct Navigation</button>
+                
+                <div id="test-output" style="margin-top: 20px; padding: 16px; background: #f3f4f6; border-radius: 8px; min-height: 100px;">
+                    Click buttons above to test navigation...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Display debug info
+        document.getElementById('user-agent').textContent = navigator.userAgent;
+        document.getElementById('screen-size').textContent = window.screen.width + 'x' + window.screen.height;
+        document.getElementById('touch-support').textContent = 'ontouchstart' in window ? 'Yes' : 'No';
+        document.getElementById('current-url').textContent = window.location.href;
+        
+        function log(message) {
+            const output = document.getElementById('test-output');
+            output.innerHTML = new Date().toLocaleTimeString() + ': ' + message + '<br>' + output.innerHTML;
+        }
+        
+        function testNavigation(view) {
+            log('Testing navigation to: ' + view);
+            const link = document.getElementById('nav-' + view);
+            if (link) {
+                log('Found link element: ' + link.tagName + ' with href: ' + link.href);
+                
+                // Test click simulation
+                try {
+                    const event = new MouseEvent('click', {
+                        view: window,
+                        bubbles: true,
+                        cancelable: true
+                    });
+                    link.dispatchEvent(event);
+                    log('✓ Click event dispatched successfully');
+                } catch (e) {
+                    log('✗ Click event failed: ' + e.message);
+                }
+                
+                // Test touch simulation for mobile
+                if ('ontouchstart' in window) {
+                    try {
+                        const touchEvent = new TouchEvent('touchend', {
+                            bubbles: true,
+                            cancelable: true
+                        });
+                        link.dispatchEvent(touchEvent);
+                        log('✓ Touch event dispatched successfully');
+                    } catch (e) {
+                        log('✗ Touch event failed: ' + e.message);
+                    }
+                }
+            } else {
+                log('✗ Link element not found!');
+            }
+        }
+        
+        function testDirectNavigation() {
+            log('Testing direct navigation...');
+            try {
+                window.location.href = 'index.html?view=workouts';
+                log('✓ Direct navigation initiated');
+            } catch (e) {
+                log('✗ Direct navigation failed: ' + e.message);
+            }
+        }
+        
+        // Add click listeners to navigation links for testing
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.site-header nav a');
+            navLinks.forEach(function(link, index) {
+                link.addEventListener('click', function(e) {
+                    log('Navigation link clicked: ' + link.textContent + ' (href: ' + link.href + ')');
+                });
+                
+                if ('ontouchstart' in window) {
+                    link.addEventListener('touchend', function(e) {
+                        log('Navigation link touched: ' + link.textContent + ' (href: ' + link.href + ')');
+                    });
+                }
+            });
+            
+            log('Navigation test page loaded successfully');
+        });
+    </script>
+</body>
+</html>

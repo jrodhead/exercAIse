@@ -750,22 +750,33 @@
       var navHome = document.getElementById('nav-home');
       var navWorkouts = document.getElementById('nav-workouts');
       var navHistory = document.getElementById('nav-history');
-      if (navHome) navHome.onclick = function(e){
+      
+      function handleNavClick(e, viewName, callback) {
         if (e && e.preventDefault) e.preventDefault();
-        try { window.history.pushState({ view: 'home' }, '', 'index.html'); } catch (ex) {}
-        showIndexView();
-      };
-      if (navWorkouts) navWorkouts.onclick = function(e){
-        if (e && e.preventDefault) e.preventDefault();
-        try { window.history.pushState({ view: 'workouts' }, '', 'index.html?view=workouts'); } catch (ex) {}
-        openWorkouts();
-      };
-      if (navHistory) navHistory.onclick = function(e){
-        if (e && e.preventDefault) e.preventDefault();
-        try { window.history.pushState({ view: 'history' }, '', 'index.html?view=history'); } catch (ex) {}
-        openHistory();
-      };
-    } catch (e) {}
+        if (e && e.stopPropagation) e.stopPropagation();
+        try { 
+          window.history.pushState({ view: viewName }, '', 'index.html' + (viewName !== 'home' ? '?view=' + viewName : '')); 
+        } catch (ex) {}
+        if (callback) callback();
+        return false;
+      }
+      
+      if (navHome) {
+        navHome.onclick = function(e){ return handleNavClick(e, 'home', showIndexView); };
+        // Add touch event for better mobile support
+        navHome.addEventListener('touchend', function(e){ return handleNavClick(e, 'home', showIndexView); }, {passive: false});
+      }
+      if (navWorkouts) {
+        navWorkouts.onclick = function(e){ return handleNavClick(e, 'workouts', openWorkouts); };
+        navWorkouts.addEventListener('touchend', function(e){ return handleNavClick(e, 'workouts', openWorkouts); }, {passive: false});
+      }
+      if (navHistory) {
+        navHistory.onclick = function(e){ return handleNavClick(e, 'history', openHistory); };
+        navHistory.addEventListener('touchend', function(e){ return handleNavClick(e, 'history', openHistory); }, {passive: false});
+      }
+    } catch (e) {
+      console.warn('Navigation setup failed:', e);
+    }
   })();
 
   var cachedWorkoutList = null;
