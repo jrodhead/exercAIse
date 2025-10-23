@@ -763,16 +763,29 @@
       
       if (navHome) {
         navHome.onclick = function(e){ return handleNavClick(e, 'home', showIndexView); };
-        // Add touch event for better mobile support
-        navHome.addEventListener('touchend', function(e){ return handleNavClick(e, 'home', showIndexView); }, {passive: false});
+        // Add touch event for better mobile support - iOS 7 compatible
+        try {
+          navHome.addEventListener('touchend', function(e){ return handleNavClick(e, 'home', showIndexView); }, false);
+        } catch (touchError) {
+          // Fallback for very old browsers
+          navHome.ontouchend = function(e){ return handleNavClick(e, 'home', showIndexView); };
+        }
       }
       if (navWorkouts) {
         navWorkouts.onclick = function(e){ return handleNavClick(e, 'workouts', openWorkouts); };
-        navWorkouts.addEventListener('touchend', function(e){ return handleNavClick(e, 'workouts', openWorkouts); }, {passive: false});
+        try {
+          navWorkouts.addEventListener('touchend', function(e){ return handleNavClick(e, 'workouts', openWorkouts); }, false);
+        } catch (touchError) {
+          navWorkouts.ontouchend = function(e){ return handleNavClick(e, 'workouts', openWorkouts); };
+        }
       }
       if (navHistory) {
         navHistory.onclick = function(e){ return handleNavClick(e, 'history', openHistory); };
-        navHistory.addEventListener('touchend', function(e){ return handleNavClick(e, 'history', openHistory); }, {passive: false});
+        try {
+          navHistory.addEventListener('touchend', function(e){ return handleNavClick(e, 'history', openHistory); }, false);
+        } catch (touchError) {
+          navHistory.ontouchend = function(e){ return handleNavClick(e, 'history', openHistory); };
+        }
       }
     } catch (e) {
       console.warn('Navigation setup failed:', e);
