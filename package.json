@@ -8,7 +8,7 @@
     "typescript": "^5.9.3"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && node scripts/strip-exports.js",
     "build:watch": "tsc --watch",
     "type-check": "tsc --noEmit",
     "test:ui": "playwright test",

@@ -42,24 +42,7 @@ interface WeightSpec {
   multiplier: number | null;
 }
 
-interface SessionParserAPI {
-  slugify: (s: string) => string;
-  parseHMSToSeconds: (text: string | number | null | undefined) => number | null;
-  secondsToHHMMSS: (totalSeconds: number | null | undefined) => string;
-  extractExercisesFromMarkdown: (md: string) => ExerciseReference[];
-  parseMarkdownPrescriptions: (md: string) => PrescriptionsByExercise;
-  extractExercisesFromJSON: (jsonText: string) => ExerciseReference[];
-  parseJSONPrescriptions: (jsonText: string) => PrescriptionsByExercise;
-}
-
-// Extend window interface for global ExercAIse namespace
-declare global {
-  interface Window {
-    ExercAIse: {
-      SessionParser: SessionParserAPI;
-    };
-  }
-}
+// SessionParserAPI and Window interface defined in global.types.ts
 
 // ============================================================================
 // Implementation
@@ -455,4 +438,3 @@ declare global {
 })();
 
 // Export for ES module compatibility (makes this file a module for TypeScript)
-export {};

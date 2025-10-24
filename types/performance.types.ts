@@ -6,6 +6,7 @@
 export type SetSide = 'L' | 'R' | 'B';
 
 export interface SetEntry {
+  set?: number; // Set number (1-based index)
   weight?: number | string;
   reps?: number;
   rpe?: number;

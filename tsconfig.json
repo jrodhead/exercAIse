@@ -5,9 +5,8 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],   /* Include DOM types for browser */
     
     /* Modules */
-    "module": "ES2020",                          /* Use ES modules */
-    "moduleResolution": "node",                  /* Node-style module resolution */
-    "resolveJsonModule": true,                   /* Allow importing JSON files */
+    /* No module configuration - files compile as global scripts */
+    "verbatimModuleSyntax": false,               /* Don't preserve import/export syntax */
     
     /* Emit */
     "outDir": "./dist",                          /* Output compiled JS to dist/ */
@@ -21,7 +20,6 @@
     "esModuleInterop": true,                     /* Better CommonJS/ES module interop */
     "allowSyntheticDefaultImports": true,        /* Allow default imports from modules with no default export */
     "forceConsistentCasingInFileNames": true,    /* Ensure consistent file name casing */
-    "isolatedModules": true,                     /* Ensure each file can be safely transpiled alone */
     
     /* Type Checking */
     "strict": true,                              /* Enable all strict type-checking options */
