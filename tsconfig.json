@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    /* Language and Environment */
+    "target": "ES2020",                          /* Modern target, broadly supported */
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],   /* Include DOM types for browser */
+    
+    /* Modules */
+    "module": "ES2020",                          /* Use ES modules */
+    "moduleResolution": "node",                  /* Node-style module resolution */
+    "resolveJsonModule": true,                   /* Allow importing JSON files */
+    
+    /* Emit */
+    "outDir": "./dist",                          /* Output compiled JS to dist/ */
+    "rootDir": "./",                             /* Source root is project root */
+    "removeComments": true,                      /* Strip comments in output */
+    "sourceMap": true,                           /* Generate .map files for debugging */
+    "declaration": true,                         /* Generate .d.ts files */
+    "declarationMap": true,                      /* Map .d.ts back to .ts */
+    
+    /* Interop Constraints */
+    "esModuleInterop": true,                     /* Better CommonJS/ES module interop */
+    "allowSyntheticDefaultImports": true,        /* Allow default imports from modules with no default export */
+    "forceConsistentCasingInFileNames": true,    /* Ensure consistent file name casing */
+    "isolatedModules": true,                     /* Ensure each file can be safely transpiled alone */
+    
+    /* Type Checking */
+    "strict": true,                              /* Enable all strict type-checking options */
+    "noUnusedLocals": true,                      /* Report unused local variables */
+    "noUnusedParameters": true,                  /* Report unused parameters */
+    "noImplicitReturns": true,                   /* Report missing return statements */
+    "noFallthroughCasesInSwitch": true,          /* Report fallthrough cases in switch */
+    "noUncheckedIndexedAccess": true,            /* Add undefined to indexed access */
+    
+    /* Completeness */
+    "skipLibCheck": true                         /* Skip type checking of .d.ts files */
+  },
+  "include": [
+    "assets/**/*.ts",
+    "types/**/*.ts",
+    "scripts/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.js"
+  ]
+}

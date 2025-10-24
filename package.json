@@ -3,9 +3,14 @@
   "private": true,
   "devDependencies": {
     "@playwright/test": "^1.48.2",
-    "playwright": "^1.48.2"
+    "@types/node": "^24.9.1",
+    "playwright": "^1.48.2",
+    "typescript": "^5.9.3"
   },
   "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "type-check": "tsc --noEmit",
     "test:ui": "playwright test",
     "test:ui:headed": "playwright test --headed",
     "pw:install": "playwright install",
