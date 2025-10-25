@@ -1,0 +1,18 @@
+{
+  "version": "perf-1",
+  "workoutFile": "workouts/4-1_Easy_Run_Progression.json",
+  "timestamp": "2025-10-25T16:24:47.313Z",
+  "exercises": {
+    "easy-jog-segment-1": {
+      "name": "Easy Jog Segment 1",
+      "logType": "endurance",
+      "sets": [
+        {
+          "set": 1,
+          "distanceMiles": 3.5,
+          "rpe": 5
+        }
+      ]
+    }
+  }
+}
