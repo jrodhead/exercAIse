@@ -36,9 +36,27 @@ See `ARCHITECTURE.md` for detailed explanation and examples.
   - `session.schema.json` (SessionPlan format)
   - `exercise.schema.json` (Exercise definition format)
   - `performed.schema.json` (Performance log format)
+- **types/**: TypeScript type definitions
+  - `db.types.ts` (IndexedDB schema: performanceLogs, workoutHistory, userSettings, exerciseHistory)
+  - `performance.types.ts` (Performance log types)
+  - `global.types.ts` (Window API extensions for modules)
+- **lib/**: Core libraries (TypeScript)
+  - `db.ts` (Type-safe IndexedDB wrapper with CRUD operations)
+  - `migration.ts` (Auto-migration from localStorage to IndexedDB)
+  - `storage.ts` (Unified storage adapter with IndexedDB primary, localStorage fallback)
+- **assets/**: Client-side TypeScript modules
+  - `app.ts` (Main app: display, logging, export)
+  - `session-parser.ts` (JSON/Markdown parsing utilities)
+  - `form-builder.ts` (Dynamic form generation)
+  - `kai-integration.ts` (AI validation and integration)
+  - `storage-adapter.ts` (Storage module wrapper)
+  - `exercise.ts` (Exercise detail page)
+- **dist/**: Compiled JavaScript output (generated from TypeScript)
 - **.github/instructions/**: Persona-specific rules for Kai and Mina. Always consult these before generating workouts or meals
 - **.github/prompts/**: AI generation prompts and templates
 - **README.md**: Project documentation
+- **ARCHITECTURE.md**: System design and development guidelines
+- **MODERNIZATION.md**: ES6+, TypeScript, testing, and IndexedDB migration roadmap
 
 ## Key Conventions & Patterns
 - **JSON-First Architecture**: All workouts are structured JSON (SessionPlan format) validated against `schemas/session.schema.json`
@@ -66,9 +84,19 @@ See `ARCHITECTURE.md` for detailed explanation and examples.
 - **Adding/Editing Exercises**:
   1. Create/edit `exercises/<slug>.json` following `schemas/exercise.schema.json`
   2. Validate with `python3 scripts/validate_schemas.py`
-- **Adding/Editing Meals**: Follow Mina's guidelines (meals remain markdown-based)
-- **Testing**: Run `npx playwright test` for UI tests, `python3 scripts/validate_schemas.py` for data validation
-- **CI/CD**: GitHub Actions auto-update manifests and validate all changes on push
+- **TypeScript Development**:
+  1. Edit `.ts` files in `assets/`, `lib/`, or `types/`
+  2. Compile with `npm run build` (outputs to `dist/`)
+  3. Test with `npm test` (Vitest unit tests) or `npx playwright test` (E2E tests)
+- **Data Storage**:
+  - App uses IndexedDB (primary) with localStorage fallback via `lib/storage.ts`
+  - Performance logs auto-migrate from localStorage on first app load
+  - Export format remains perf-1 JSON to `performed/`
+- **Testing**: 
+  - Unit tests: `npm test` (78 Vitest tests)
+  - E2E tests: `npx playwright test` (26 Playwright tests)
+  - Validation: `python3 scripts/validate_schemas.py` and `python3 scripts/validate_links.py`
+- **CI/CD**: GitHub Actions auto-update manifests, run TypeScript compilation, and validate all changes on push
 
 ## Integration & Extensibility
 - **Schema Validation**: All JSON data must validate against schemas in `schemas/`

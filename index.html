@@ -117,8 +117,9 @@
       <small>© <span id="year"></span> exercAIse. Works offline for logged data via localStorage.</small>
     </footer>
 
-    <!-- Load session parser module first -->
+    <!-- Load modules in dependency order -->
     <script src="dist/assets/session-parser.js"></script>
+    <script src="dist/assets/storage-adapter.js"></script>
     <script src="dist/assets/kai-integration.js"></script>
     <script src="dist/assets/form-builder.js"></script>
     <script src="dist/assets/app.js"></script>

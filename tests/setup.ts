@@ -7,9 +7,10 @@ import { beforeAll, afterEach, vi } from 'vitest';
 
 // Mock global objects that might be used in tests
 beforeAll(() => {
-  // Mock localStorage
+  // Mock localStorage with full Storage API implementation
   const localStorageMock = (() => {
     let store: Record<string, string> = {};
+    
     return {
       getItem: (key: string) => store[key] || null,
       setItem: (key: string, value: string) => {
@@ -20,6 +21,13 @@ beforeAll(() => {
       },
       clear: () => {
         store = {};
+      },
+      get length() {
+        return Object.keys(store).length;
+      },
+      key: (index: number): string | null => {
+        const keys = Object.keys(store);
+        return keys[index] || null;
       }
     };
   })();

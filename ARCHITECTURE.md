@@ -201,26 +201,36 @@ exercAIse is a JSON-first fitness program generator with a clear separation betw
 ## Technology Stack
 
 ### Client-Side
-- **Pure JavaScript (ES5)**: Legacy iPad Safari compatibility
+- **TypeScript (ES2020)**: Full type safety, compiled to modern JavaScript
 - **No framework**: Vanilla JS for maximum compatibility
-- **XHR instead of fetch**: Broader browser support
-- **Markdown rendering**: Minimal, custom implementation
+- **Modular Architecture**: Session parser, form builder, Kai integration, storage adapter
+- **IndexedDB**: Primary data storage with localStorage fallback
+
+### Data Storage
+- **IndexedDB (Primary)**: Browser native structured database
+  - `performanceLogs`: User workout performance data
+  - `workoutHistory`: Session completion tracking
+  - `userSettings`: User preferences and configuration
+  - `exerciseHistory`: Exercise-specific tracking and PRs
+  - Automatic migration from localStorage on first app load
+  - Type-safe operations via `lib/storage.ts` adapter
+- **localStorage (Fallback)**: Used when IndexedDB unavailable
+- **Dual-Write Strategy**: Backwards compatible, writes to both stores
+- **Static Files**: Workouts (JSON), meals (Markdown), exercises (JSON) in Git
+- **GitHub**: Version control and deployment
 
 ### Serverless Functions (Optional)
 - **Node.js**: `serverless/api/kai/session-plan.js`
 - **LLM Integration**: OpenAI, Claude, or local Ollama
 - **Prompt Assembly**: Combines instructions + context
 
-### Data Storage
-- **Static Files**: Markdown and JSON in Git
-- **Local Storage**: Browser localStorage for performance logs
-- **GitHub**: Version control and deployment
-
 ### Validation & Testing
 - **JSON Schema**: Validate workouts, exercises, performance
-- **Python Scripts**: Link validation, schema validation, linting
-- **Playwright**: UI/integration tests
-- **Node.js Tests**: Rep range normalization, utilities
+- **TypeScript**: Compile-time type checking
+- **Vitest**: 78 unit tests (session parser, Kai integration, IndexedDB)
+- **Playwright**: 26 E2E tests (UI, workflows, error handling)
+- **Python Scripts**: Link validation, schema validation, session linting
+- **CI/CD**: GitHub Actions runs all tests on push/PR
 
 ---
 
@@ -255,6 +265,92 @@ Workouts are JSON files following schemas. The app reads and writes JSON; it doe
 - `exercises/*.json` define exercise details (v2 schema)
 - Include setup, steps, cues, safety, scaling, joints
 - Linked from workouts for full context
+
+### 7. Type Safety and Modern Architecture
+- TypeScript provides compile-time guarantees
+- Modular architecture with clear separation (parser, forms, storage, AI integration)
+- IndexedDB for scalable client-side data storage
+- Comprehensive testing (78 unit tests + 26 E2E tests)
+
+---
+
+## Data Storage Architecture
+
+### Storage Strategy
+exercAIse uses a dual-storage approach for performance data:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                     Storage Adapter                              │
+│                   (lib/storage.ts)                               │
+│  - Unified interface for data operations                         │
+│  - Automatic backend selection                                   │
+│  - Migration management                                          │
+└───────────────┬─────────────────────────────────────────────────┘
+                │
+        ┌───────┴────────┐
+        │                │
+        ↓                ↓
+┌──────────────┐  ┌──────────────┐
+│  IndexedDB   │  │ localStorage │
+│  (Primary)   │  │  (Fallback)  │
+└──────────────┘  └──────────────┘
+```
+
+### IndexedDB Schema
+**Database**: `exercAIse-db`
+**Version**: 1
+
+**Object Stores**:
+1. **performanceLogs** - User workout performance data
+   - Primary key: `id` (auto-increment)
+   - Indexes: `file`, `date`, `[block+week]` (compound)
+   
+2. **workoutHistory** - Session completion tracking
+   - Primary key: `id` (auto-increment)
+   - Indexes: `file`, `completedAt`, `block`, `week`
+   
+3. **userSettings** - User preferences and configuration
+   - Primary key: `key`
+   - Values: Any JSON-serializable data
+   
+4. **exerciseHistory** - Exercise-specific tracking and PRs
+   - Primary key: `id` (auto-increment)
+   - Indexes: `exerciseSlug`, `date`
+
+### Migration Strategy
+- **Automatic**: On first app load, localStorage data auto-migrates to IndexedDB
+- **Status Tracking**: `localStorage.getItem('exercAIse-migration-status')` stores completion state
+- **Rollback**: `rollbackMigration()` available if needed (reverts to localStorage)
+- **Backward Compatible**: Old localStorage keys remain readable for emergency fallback
+
+### Storage Operations
+All storage operations go through the `StorageAdapter` singleton:
+
+```typescript
+// Initialize (auto-migrates if needed)
+await storage.init();
+
+// Save performance log (dual-write)
+await storage.savePerformanceLog(performanceData);
+
+// Query performance logs
+const logs = await storage.getPerformanceLogs('4-2_Lower_Body.json');
+const recent = await storage.getRecentPerformanceLogs(10);
+
+// Settings
+await storage.setSetting('dark_mode', true);
+const darkMode = await storage.getSetting('dark_mode');
+
+// Export all data
+const allData = await storage.exportAll();
+```
+
+### App Integration
+- **Primary Path**: App writes to both IndexedDB and localStorage (backwards compatible)
+- **Read Path**: Prefers localStorage for immediate reads (synchronous)
+- **Background Sync**: IndexedDB writes happen asynchronously
+- **No Breaking Changes**: Existing functionality preserved during migration
 
 ---
 
@@ -292,10 +388,28 @@ exercAIse/
 │   ├── performance.schema.json # Performance export (perf-1)
 │   └── ...
 │
-├── assets/                     # Client-side app
-│   ├── app.js                  # Main app logic (display, logging, export)
-│   ├── exercise.js             # Exercise detail page logic
+├── types/                      # TypeScript type definitions
+│   ├── db.types.ts             # IndexedDB schema and types
+│   ├── performance.types.ts    # Performance log types
+│   ├── global.types.ts         # Window API extensions
+│   └── index.ts                # Type exports
+│
+├── lib/                        # Core libraries
+│   ├── db.ts                   # IndexedDB wrapper
+│   ├── migration.ts            # localStorage → IndexedDB migration
+│   └── storage.ts              # Unified storage adapter
+│
+├── assets/                     # Client-side app (TypeScript)
+│   ├── app.ts                  # Main app logic (display, logging, export)
+│   ├── exercise.ts             # Exercise detail page logic
+│   ├── form-builder.ts         # Dynamic form generation
+│   ├── session-parser.ts       # JSON/Markdown parsing
+│   ├── kai-integration.ts      # AI validation and integration
+│   ├── storage-adapter.ts      # Storage module wrapper
 │   └── styles.css
+│
+├── dist/                       # Compiled JavaScript (generated)
+│   └── assets/*.js             # TypeScript compilation output
 │
 ├── serverless/                 # Optional AI generation
 │   ├── api/kai/session-plan.js # Generation endpoint (NO workout logic)
@@ -308,7 +422,16 @@ exercAIse/
 │   └── prescribe_loads.py      # History analysis for AI context
 │
 ├── tests/                      # Testing
-│   └── *.test.js
+│   ├── unit/                   # Vitest unit tests
+│   │   ├── db.test.ts          # IndexedDB tests (18 tests)
+│   │   ├── migration.test.ts   # Migration tests (8 tests)
+│   │   ├── storage.test.ts     # Storage adapter tests (13 tests)
+│   │   ├── session-parser.test.ts # Parser tests (36 tests)
+│   │   └── kai-integration.test.ts # Integration tests (27 tests)
+│   ├── integration/            # Integration tests
+│   │   └── workout-parsing.test.ts # Workflow tests (15 tests)
+│   └── ui/                     # Playwright E2E tests
+│       └── *.spec.ts           # UI tests (26 tests)
 │
 ├── product-design/             # Design docs and planning
 │   ├── backlog/
@@ -318,7 +441,9 @@ exercAIse/
 ├── index.html                  # Main app entry point
 ├── exercise.html               # Exercise detail viewer
 ├── README.md                   # User-facing documentation
-└── ARCHITECTURE.md             # This document
+├── ARCHITECTURE.md             # This document
+├── MODERNIZATION.md            # Modernization roadmap and progress
+└── tsconfig.json               # TypeScript configuration
 ```
 
 ---

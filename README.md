@@ -1,12 +1,19 @@
 # exercAIse
 
-AI-generated workouts compatible with a really old iPad
+AI-generated personalized workout sessions with structured JSON logging and performance tracking.
+
+## Browser Support
+- **Modern browsers**: Chrome/Edge 90+, Firefox 88+, Safari 14+
+- **Progressive Web App**: Install on mobile/desktop for offline access
+- **TypeScript**: Full type safety with compiled ES2020 output
+- **IndexedDB**: Performance logs stored in IndexedDB with localStorage fallback
 
 ## Documentation
 - **[Architecture](ARCHITECTURE.md)**: System design, separation of concerns, and development guidelines
 - **[User Stories](product-design/backlog/)**: Feature planning and requirements
 - **[AI Instructions](.github/instructions/)**: Kai persona rules
 - **[Contributing](.github/copilot-instructions.md)**: AI coding agent guidelines
+- **[Modernization](MODERNIZATION.md)**: ES6+, TypeScript, testing, and IndexedDB migration roadmap
 
 [Mock Session](workouts/mock_All_Types_Test.json)
 
@@ -29,9 +36,18 @@ AI-generated workouts compatible with a really old iPad
 - `schemas/session.schema.json`: Canonical committed workout session files in `workouts/`.
 - `schemas/exercise.schema.json`: Source of truth for exercise detail files in `exercises/`.
 - `schemas/performance.schema.json`: Export format (`perf-1`) produced by the logger UI.
+- `schemas/db.types.ts`: IndexedDB schema for performance logs, workout history, user settings, and exercise tracking.
 - Legacy (historical only): `performed.schema.json` (older performed logs); no longer exported by the app.
 
 Deprecated schemas removed: session_plan, session_v1, session_log (superseded by unified session + perf-1 export).
+
+## Data Storage
+- **IndexedDB (Primary)**: Performance logs, workout history, user settings stored in browser IndexedDB
+  - 4 object stores: `performanceLogs`, `workoutHistory`, `userSettings`, `exerciseHistory`
+  - Automatic migration from localStorage on first app load
+  - Type-safe operations via `lib/storage.ts` adapter
+- **localStorage (Fallback)**: Used when IndexedDB unavailable; dual-write ensures backwards compatibility
+- **Export Format**: Performance logs exported as `perf-1` JSON (see `schemas/performance.schema.json`)
 
 ## Conventions
 - Dumbbell weights: log as number or string. Examples: `25` (per hand implied), `"25 x2"` (explicit per hand), `"50 total"`.

@@ -3,6 +3,7 @@
  */
 
 import type { PerformanceLog } from './performance.types';
+import type { StorageAdapter } from '../lib/storage';
 
 // FormBuilder dependencies interface
 export interface FormBuilderDependencies {
@@ -62,6 +63,7 @@ export interface KaiIntegrationAPI {
 declare global {
   interface Window {
     ExercAIse: {
+      Storage?: StorageAdapter;
       SessionParser?: SessionParserAPI;
       FormBuilder?: {
         init: (dependencies: Partial<FormBuilderDependencies>) => void;

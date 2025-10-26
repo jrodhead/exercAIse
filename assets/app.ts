@@ -262,6 +262,7 @@
   const KaiIntegration = window.ExercAIse.KaiIntegration!;
   const linkValidation = KaiIntegration.linkValidation;
 
+  // Storage functions (sync with async IndexedDB backup)
   const loadSaved = (filePath: string): any | null => {
     const key = STORAGE_KEY_PREFIX + filePath;
     try {
@@ -274,8 +275,22 @@
 
   const saveLocal = (filePath: string, data: any): void => {
     const key = STORAGE_KEY_PREFIX + filePath;
-    try { localStorage.setItem(key, JSON.stringify(data)); } catch (e) {}
-    try { localStorage.setItem(latestKey, filePath); } catch (e) {}
+    
+    // Save to localStorage immediately (backwards compatible)
+    try {
+      localStorage.setItem(key, JSON.stringify(data));
+      localStorage.setItem(latestKey, filePath);
+    } catch (e) {
+      console.error('Error saving to localStorage:', e);
+    }
+    
+    // Also save to IndexedDB asynchronously (future-proof)
+    const storage = window.ExercAIse.Storage;
+    if (storage) {
+      storage.savePerformanceLog(data).catch((err) => {
+        console.warn('IndexedDB save failed (non-critical):', err);
+      });
+    }
   };
 
   // Form building functions now imported from form-builder.js module
