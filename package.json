@@ -4,15 +4,24 @@
   "devDependencies": {
     "@playwright/test": "^1.48.2",
     "@types/node": "^24.9.1",
+    "@vitest/coverage-v8": "^3.2.4",
+    "@vitest/ui": "^3.2.4",
+    "happy-dom": "^20.0.8",
     "playwright": "^1.48.2",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
   },
   "scripts": {
     "build": "tsc && node scripts/strip-exports.js",
     "build:watch": "tsc --watch",
     "type-check": "tsc --noEmit",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:vitest-ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
     "test:ui": "playwright test",
     "test:ui:headed": "playwright test --headed",
+    "test:all": "vitest run && playwright test",
     "pw:install": "playwright install",
     "serve": "node scripts/serve.js",
     "test:menu": "playwright test tests/ui/index-menu.spec.ts"

@@ -3,6 +3,8 @@
  * Based on schemas/performed.schema.json
  */
 
+import type { LogType } from './workout.types';
+
 export type SetSide = 'L' | 'R' | 'B';
 
 export interface SetEntry {
@@ -24,6 +26,7 @@ export interface SetEntry {
 
 export interface PerformedExercise {
   name?: string;
+  logType?: LogType; // Required for perf-1 format
   notes?: string;
   sets: SetEntry[];
 }

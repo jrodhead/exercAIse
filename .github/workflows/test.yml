@@ -1,0 +1,78 @@
+name: CI Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x]
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+    
+    - name: Install Node dependencies
+      run: npm ci
+    
+    - name: Install Python dependencies
+      run: pip install -r requirements.txt
+    
+    - name: Build TypeScript
+      run: npm run build
+    
+    - name: Run unit tests
+      run: npm test -- --run
+    
+    - name: Validate schemas
+      run: python3 scripts/validate_schemas.py
+    
+    - name: Validate links
+      run: python3 scripts/validate_links.py
+    
+    - name: Lint sessions
+      run: python3 scripts/lint_sessions.py --strict
+    
+    - name: Test rep range normalization
+      run: node tests/rep_range_normalization.test.js
+    
+    - name: Install Playwright browsers
+      run: npx playwright install --with-deps chromium
+    
+    - name: Run Playwright tests
+      run: npx playwright test
+    
+    - name: Upload test results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results-${{ matrix.node-version }}
+        path: |
+          test-results/
+          playwright-report/
+        retention-days: 7
+    
+    - name: Upload coverage
+      if: matrix.node-version == '20.x'
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage
+        path: coverage/
+        retention-days: 7
