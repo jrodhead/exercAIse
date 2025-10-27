@@ -1,0 +1,73 @@
+{
+  "name": "Overhead Triceps Stretch",
+  "equipment": [],
+  "tags": [
+    "stretch",
+    "mobility",
+    "triceps",
+    "arms"
+  ],
+  "setup": [
+    "Stand or sit with spine tall and neutral",
+    "Raise one arm overhead",
+    "Bend elbow, bringing hand down behind head toward shoulder blade"
+  ],
+  "steps": [
+    "Reach opposite hand over to grasp bent elbow",
+    "Gently pull elbow toward midline and slightly back",
+    "Keep ribs down and avoid arching lower back",
+    "Feel stretch along back of upper arm (triceps)",
+    "Hold position while breathing deeply"
+  ],
+  "cues": [
+    "Elbow points to sky",
+    "Ribs stay down",
+    "Don't arch lower back",
+    "Gentle pull, no forcing",
+    "Breathe deeply into stretch"
+  ],
+  "mistakes": [
+    "Arching lower back excessively",
+    "Pulling elbow too aggressively",
+    "Shrugging shoulders up toward ears",
+    "Rotating torso away from stretch",
+    "Holding breath"
+  ],
+  "safety": "Should feel gentle stretch in triceps, not shoulder joint pain. If shoulder discomfort, reduce range or skip. Avoid aggressive pulling if recent shoulder or elbow injury.",
+  "scaling": {
+    "regressions": [
+      "Doorway triceps stretch (arm extended on doorframe)",
+      "Reduce range of motion - don't pull hand as far down back",
+      "Use towel or strap to gently assist stretch"
+    ],
+    "progressions": [
+      "Triceps stretch with slight side bend",
+      "PNF triceps stretch (contract-relax)"
+    ]
+  },
+  "variations": [
+    "Doorway triceps stretch",
+    "Towel-assisted triceps stretch",
+    "Lying triceps stretch"
+  ],
+  "prescriptionHints": {
+    "load": "—",
+    "reps": "—",
+    "time": "20-45s each arm",
+    "distance": "—",
+    "rpe": "4-5",
+    "notes": "After pressing or triceps training. Gentle sustained stretch to release muscle tension."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "shoulders",
+      "elbows",
+      "lower back"
+    ],
+    "notes": "Keep ribs down to avoid compensatory lower back arch. If shoulder or elbow pain, reduce range or skip."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

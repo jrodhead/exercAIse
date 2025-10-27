@@ -1,0 +1,212 @@
+{
+  "version": "1",
+  "title": "Basketball Dynamic Warm-Up & Cool-Down",
+  "block": 4,
+  "week": 4,
+  "date": "2024-10-28",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "General Activation",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Arm Circles",
+          "link": "exercises/arm_circles.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 1,
+            "reps": "10 each direction"
+          },
+          "notes": "Forward and backward circles, gradually increasing size"
+        },
+        {
+          "kind": "exercise",
+          "name": "Leg Swings",
+          "link": "exercises/leg_swings.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 1,
+            "reps": "10 each leg/direction"
+          },
+          "notes": "Front-to-back and side-to-side. Hold wall for balance"
+        },
+        {
+          "kind": "exercise",
+          "name": "Jumping Jacks",
+          "link": "exercises/jumping_jacks.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 1,
+            "reps": 20
+          },
+          "notes": "Light pace to activate whole body"
+        }
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "Basketball-Specific Movement Prep",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Bodyweight Squat",
+          "link": "exercises/bodyweight_squat.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 10
+          },
+          "notes": "Full depth, pause 1s at bottom"
+        },
+        {
+          "kind": "exercise",
+          "name": "Forward Lunge",
+          "link": "exercises/forward_lunge.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 8
+          },
+          "notes": "Alternating legs, focus on hip mobility"
+        },
+        {
+          "kind": "exercise",
+          "name": "Lateral Lunges",
+          "link": "exercises/lateral_lunges.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 6
+          },
+          "notes": "Each side, prepare for basketball cutting"
+        },
+        {
+          "kind": "exercise",
+          "name": "Cossack Squat",
+          "link": "exercises/cossack_squat.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 5
+          },
+          "notes": "Each side, deep hip and ankle mobility"
+        },
+        {
+          "kind": "exercise",
+          "name": "Glute Bridge",
+          "link": "exercises/glute_bridge.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 12
+          },
+          "notes": "2s pause at top, activate glutes for jumping"
+        },
+        {
+          "kind": "exercise",
+          "name": "Clamshells",
+          "link": "exercises/clamshells.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 10
+          },
+          "notes": "Each side, activate hip stability"
+        },
+        {
+          "kind": "exercise",
+          "name": "Deadbug",
+          "link": "exercises/deadbug.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 8
+          },
+          "notes": "Each side, core stability prep"
+        },
+        {
+          "kind": "exercise",
+          "name": "Basketball Movement Prep",
+          "link": "exercises/basketball_movement_prep.json",
+          "logType": "mobility",
+          "prescription": {
+            "timeSeconds": 600
+          },
+          "notes": "Light shooting, dribbling, and movement patterns at 50-70% intensity for 10 minutes. Focus on feel and rhythm."
+        }
+      ]
+    },
+    {
+      "type": "Recovery",
+      "title": "Post-Basketball Cool-Down",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Brisk Walk",
+          "link": "exercises/brisk_walk.json",
+          "logType": "endurance",
+          "prescription": {
+            "timeSeconds": 300
+          },
+          "notes": "5 minutes of easy walking to bring heart rate down"
+        },
+        {
+          "kind": "exercise",
+          "name": "Figure-4 Stretch",
+          "link": "exercises/figure_4_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 2,
+            "timeSeconds": 45
+          },
+          "notes": "Each side, release glutes and hips after basketball"
+        },
+        {
+          "kind": "exercise",
+          "name": "Calf Stretch",
+          "link": "exercises/calf_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 2,
+            "timeSeconds": 45
+          },
+          "notes": "Each leg, address calf loading from jumping"
+        },
+        {
+          "kind": "exercise",
+          "name": "Quad Stretch",
+          "link": "exercises/quad_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 2,
+            "timeSeconds": 45
+          },
+          "notes": "Each leg, standing or lying quad stretch"
+        },
+        {
+          "kind": "exercise",
+          "name": "Doorway Chest Stretch",
+          "link": "exercises/doorway_chest_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 1,
+            "timeSeconds": 45
+          },
+          "notes": "Each arm, address basketball shooting mechanics"
+        },
+        {
+          "kind": "exercise",
+          "name": "Deep Breathing",
+          "link": "exercises/deep_breathing.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 1,
+            "timeSeconds": 120
+          },
+          "notes": "Parasympathetic recovery after basketball"
+        }
+      ]
+    }
+  ]
+}

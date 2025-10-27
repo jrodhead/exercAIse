@@ -1,0 +1,75 @@
+{
+  "name": "Savasana (Corpse Pose)",
+  "equipment": [
+    "yoga mat"
+  ],
+  "tags": [
+    "stretch",
+    "recovery",
+    "relaxation",
+    "yoga"
+  ],
+  "setup": [
+    "Lie flat on back on comfortable surface",
+    "Legs extended, feet falling naturally outward",
+    "Arms at sides, palms facing up",
+    "Head centered, chin slightly tucked"
+  ],
+  "steps": [
+    "Settle into position with minimal adjustments",
+    "Allow body to become heavy and sink into floor",
+    "Soften all muscles, release all tension",
+    "Breathe naturally without controlling breath",
+    "Rest for 3-10 minutes in complete stillness"
+  ],
+  "cues": [
+    "Let go of all effort",
+    "Allow natural breathing",
+    "Body heavy, mind quiet",
+    "Release muscle tension progressively",
+    "Stay present but relaxed"
+  ],
+  "mistakes": [
+    "Fidgeting or making frequent adjustments",
+    "Controlling or forcing breath",
+    "Tensing muscles unconsciously",
+    "Rushing the practice",
+    "Letting mind race without gently redirecting"
+  ],
+  "safety": "Most accessible relaxation pose. If lower back discomfort, place pillow under knees. If neck uncomfortable, use small pillow or folded towel.",
+  "scaling": {
+    "regressions": [
+      "Supported savasana with bolster under knees",
+      "Legs bent, feet flat on floor (constructive rest pose)",
+      "Side-lying relaxation if back discomfort"
+    ],
+    "progressions": [
+      "Yoga nidra (guided meditation in savasana)",
+      "Extended savasana (10-20 minutes)"
+    ]
+  },
+  "variations": [
+    "Constructive rest pose (knees bent)",
+    "Side-lying savasana",
+    "Supported savasana with props"
+  ],
+  "prescriptionHints": {
+    "load": "—",
+    "reps": "—",
+    "time": "3-10 minutes",
+    "distance": "—",
+    "rpe": "1-2",
+    "notes": "Final relaxation after yoga, mobility, or any training session. Allow complete physical and mental rest."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "lower back",
+      "neck"
+    ],
+    "notes": "Use props (pillow under knees, under head) as needed for comfort. Should feel completely relaxed with zero pain."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "name": "Quad Stretch",
+  "equipment": [],
+  "tags": [
+    "stretch",
+    "mobility",
+    "quads",
+    "legs"
+  ],
+  "setup": [
+    "Stand near a wall or sturdy surface for balance (or lie on your side)",
+    "Engage core lightly to maintain neutral spine"
+  ],
+  "steps": [
+    "Bend one knee and bring heel toward glutes",
+    "Grasp ankle or foot with same-side hand",
+    "Keep knees together and hips square forward",
+    "Gently pull heel closer to glutes to increase stretch",
+    "Hold position while breathing deeply"
+  ],
+  "cues": [
+    "Keep knees together",
+    "Don't arch lower back",
+    "Hips square, pelvis neutral",
+    "Breathe into the stretch",
+    "Gentle pull, no forcing"
+  ],
+  "mistakes": [
+    "Allowing lower back to arch excessively",
+    "Letting knee flare out to the side",
+    "Yanking the foot aggressively",
+    "Holding breath during stretch"
+  ],
+  "safety": "If standing version aggravates balance or knee, use lying side quad stretch instead. Avoid forcing stretch if knee pain occurs.",
+  "scaling": {
+    "regressions": [
+      "Lying side quad stretch (better for balance)",
+      "Supported quad stretch holding wall/chair",
+      "Reduce range - don't pull heel all the way to glutes"
+    ],
+    "progressions": [
+      "Standing quad stretch with hip extension (slightly push hips forward)",
+      "Couch stretch (elevated back foot on couch/bench)"
+    ]
+  },
+  "variations": [
+    "Lying side quad stretch",
+    "Couch stretch",
+    "Kneeling quad stretch"
+  ],
+  "prescriptionHints": {
+    "load": "—",
+    "reps": "—",
+    "time": "30-60s each leg",
+    "distance": "—",
+    "rpe": "4-6",
+    "notes": "Post-run, post-basketball, or after lower body training. Focus on gentle sustained stretch, not aggressive pulling."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "knees",
+      "hip flexors",
+      "lower back"
+    ],
+    "notes": "Keep hips square and avoid excessive lumbar extension. If knee discomfort, try lying variation or reduce range."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

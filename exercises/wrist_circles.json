@@ -1,0 +1,71 @@
+{
+  "name": "Wrist Circles",
+  "equipment": [],
+  "tags": [
+    "mobility",
+    "stretch",
+    "wrists",
+    "warm-up"
+  ],
+  "setup": [
+    "Stand or sit comfortably",
+    "Extend one arm forward at shoulder height",
+    "Make a loose fist or keep fingers relaxed"
+  ],
+  "steps": [
+    "Slowly rotate wrist in circular motion",
+    "Complete 10 circles in one direction",
+    "Reverse direction for 10 circles",
+    "Repeat with opposite wrist",
+    "Keep movement smooth and controlled"
+  ],
+  "cues": [
+    "Smooth, controlled circles",
+    "Full range in all directions",
+    "Relax hand and fingers",
+    "No forcing or clicking",
+    "Breathe naturally"
+  ],
+  "mistakes": [
+    "Moving too fast or jerky",
+    "Forcing through pain or clicking",
+    "Tensing hand and fingers",
+    "Incomplete range of motion",
+    "Holding breath"
+  ],
+  "safety": "Gentle mobility exercise safe for most. If wrist pain, clicking, or recent injury, reduce range or skip. Never force through sharp pain.",
+  "scaling": {
+    "regressions": [
+      "Smaller, gentler circles",
+      "Wrist flexion/extension only (no circles)",
+      "Supported wrist mobilization (hand on table)"
+    ],
+    "progressions": [
+      "Wrist circles with light resistance (holding small weight)",
+      "Full wrist mobility flow (circles + flexion/extension + radial/ulnar deviation)"
+    ]
+  },
+  "variations": [
+    "Wrist flexion/extension",
+    "Wrist radial/ulnar deviation",
+    "Prayer pose wrist stretch"
+  ],
+  "prescriptionHints": {
+    "load": "—",
+    "reps": "10 circles each direction, each wrist",
+    "time": "—",
+    "distance": "—",
+    "rpe": "2-4",
+    "notes": "Post-pressing, post-curling, or as warm-up for wrist-intensive activities. Keep it gentle and pain-free."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "wrists"
+    ],
+    "notes": "Important for recurring wrist issues. Keep movement gentle and controlled. If pain or clicking, reduce range or skip."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

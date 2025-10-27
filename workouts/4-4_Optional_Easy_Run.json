@@ -1,0 +1,125 @@
+{
+  "version": "1",
+  "title": "Optional Easy Run",
+  "date": "2024-11-02",
+  "block": 4,
+  "week": 4,
+  "notes": "Optional active recovery session. Skip if fatigued or prioritize rest.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Pre-Run Activation",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Leg Swings",
+          "link": "exercises/leg_swings.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 1,
+            "reps": "10 each leg/direction"
+          },
+          "notes": "Front-to-back and side-to-side"
+        },
+        {
+          "kind": "exercise",
+          "name": "Bodyweight Squat",
+          "link": "exercises/bodyweight_squat.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 1,
+            "reps": 10
+          },
+          "notes": "Light activation before run"
+        },
+        {
+          "kind": "exercise",
+          "name": "Brisk Walk",
+          "link": "exercises/brisk_walk.json",
+          "logType": "endurance",
+          "prescription": {
+            "timeSeconds": 300
+          },
+          "notes": "5 minutes of brisk walking to warm up"
+        }
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "Easy Run",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Easy Jog",
+          "link": "exercises/easy_jog.json",
+          "logType": "endurance",
+          "prescription": {
+            "distanceMiles": 2.5,
+            "rpe": 5
+          },
+          "notes": "Conversational pace. 2-3 miles at RPE 5. Keep it truly easy - this is active recovery, not training stress"
+        }
+      ]
+    },
+    {
+      "type": "Recovery",
+      "title": "Post-Run Cooldown",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Brisk Walk",
+          "link": "exercises/brisk_walk.json",
+          "logType": "endurance",
+          "prescription": {
+            "timeSeconds": 300
+          },
+          "notes": "5 minutes of easy walking cooldown"
+        },
+        {
+          "kind": "exercise",
+          "name": "Figure-4 Stretch",
+          "link": "exercises/figure_4_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 2,
+            "timeSeconds": 45
+          },
+          "notes": "Each side, glute and hip release"
+        },
+        {
+          "kind": "exercise",
+          "name": "Calf Stretch",
+          "link": "exercises/calf_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 2,
+            "timeSeconds": 45
+          },
+          "notes": "Each leg, address running impact"
+        },
+        {
+          "kind": "exercise",
+          "name": "Quad Stretch",
+          "link": "exercises/quad_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 2,
+            "timeSeconds": 45
+          },
+          "notes": "Each leg, standing or lying quad stretch"
+        },
+        {
+          "kind": "exercise",
+          "name": "Deep Breathing",
+          "link": "exercises/deep_breathing.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 1,
+            "timeSeconds": 120
+          },
+          "notes": "Final recovery breathing"
+        }
+      ]
+    }
+  ]
+}

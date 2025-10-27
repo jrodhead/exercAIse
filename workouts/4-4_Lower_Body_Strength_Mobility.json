@@ -1,0 +1,220 @@
+{
+  "version": "1",
+  "title": "Lower Body Strength Mobility – Deload",
+  "date": "2024-10-31",
+  "block": 4,
+  "week": 4,
+  "notes": "Deload week: reduced volume (fewer sets) and intensity (~80% of Week 3 loads). Focus on movement quality, RPE ≤7. Preparing for Block 5.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Lower Body Activation",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Leg Swings",
+          "link": "exercises/leg_swings.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 1,
+            "reps": "10 each leg/direction"
+          },
+          "notes": "Front-to-back and side-to-side"
+        },
+        {
+          "kind": "exercise",
+          "name": "Bodyweight Squat",
+          "link": "exercises/bodyweight_squat.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 1,
+            "reps": 10
+          },
+          "notes": "Full depth, pause 2s at bottom"
+        },
+        {
+          "kind": "exercise",
+          "name": "Glute Bridge",
+          "link": "exercises/glute_bridge.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 1,
+            "reps": 12
+          },
+          "notes": "2s pause at top, activate glutes"
+        },
+        {
+          "kind": "exercise",
+          "name": "Clamshells",
+          "link": "exercises/clamshells.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 1,
+            "reps": 10
+          },
+          "notes": "Each side, hip stability activation"
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Primary Lower Body",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Goblet Squat",
+          "link": "exercises/goblet_squat.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": 8,
+            "weight": "55 lb",
+            "rpe": 6.5,
+            "restSeconds": 120
+          },
+          "notes": "Deload: 3 sets (vs 4), ~80% load (55 vs 67.5 lb). Focus on depth and control"
+        },
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Romanian Deadlift",
+          "link": "exercises/dumbbell_romanian_deadlift.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": 8,
+            "weight": "55 x2 lb",
+            "rpe": 6.5,
+            "restSeconds": 120
+          },
+          "notes": "Deload: 3 sets, ~80% load (55 vs 67.5 lb per hand). Emphasize hip hinge pattern"
+        },
+        {
+          "kind": "exercise",
+          "name": "Bulgarian Split Squat",
+          "link": "exercises/bulgarian_split_squat.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": 8,
+            "weight": "37.5 x2 lb",
+            "rpe": 6,
+            "restSeconds": 90
+          },
+          "notes": "Deload: 2 sets, ~80% load (37.5 vs 47.5 lb per hand). Each leg, maintain form quality"
+        },
+        {
+          "kind": "exercise",
+          "name": "Standing Calf Raise",
+          "link": "exercises/standing_calf_raise.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": 15,
+            "weight": "30 x2 lb",
+            "rpe": 6,
+            "restSeconds": 75
+          },
+          "notes": "Deload: 2 sets, reduced load. Controlled tempo"
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Unilateral & Core",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Lateral Lunges",
+          "link": "exercises/lateral_lunges.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": 8,
+            "weight": "20 lb",
+            "rpe": 5,
+            "restSeconds": 60
+          },
+          "notes": "Deload: 2 sets, lighter load. Each side, basketball-specific movement pattern"
+        },
+        {
+          "kind": "exercise",
+          "name": "Single-Leg Deadlift",
+          "link": "exercises/single_leg_deadlift.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": 8,
+            "weight": "25 lb",
+            "rpe": 5,
+            "restSeconds": 60
+          },
+          "notes": "Deload: 2 sets, lighter load. Each leg, balance and stability focus"
+        },
+        {
+          "kind": "exercise",
+          "name": "Loaded March",
+          "link": "exercises/loaded_march.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": 10,
+            "weight": "20 x2 lb",
+            "rpe": 5,
+            "restSeconds": 45
+          },
+          "notes": "Deload: 2 sets, lighter load. Each leg, core stability"
+        }
+      ]
+    },
+    {
+      "type": "Recovery",
+      "title": "Mobility & Cooldown",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Figure-4 Stretch",
+          "link": "exercises/figure_4_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 2,
+            "timeSeconds": 60
+          },
+          "notes": "Each side, extra time for deload week"
+        },
+        {
+          "kind": "exercise",
+          "name": "Calf Stretch",
+          "link": "exercises/calf_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 2,
+            "timeSeconds": 60
+          },
+          "notes": "Each leg, extra stretch time"
+        },
+        {
+          "kind": "exercise",
+          "name": "Low Lunge Stretch",
+          "link": "exercises/low_lunge_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 2,
+            "timeSeconds": 60
+          },
+          "notes": "Each side, deep hip flexor release"
+        },
+        {
+          "kind": "exercise",
+          "name": "Deep Breathing",
+          "link": "exercises/deep_breathing.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 1,
+            "timeSeconds": 180
+          },
+          "notes": "Extended breathing for recovery emphasis"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "version": "1",
+  "title": "Upper Body Strength Mobility – Deload",
+  "date": "2024-10-29",
+  "block": 4,
+  "week": 4,
+  "notes": "Deload week: reduced volume (fewer sets) and intensity (~80% of Week 3 loads). Focus on movement quality, RPE ≤7. Preparing for Block 5.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Upper Body Activation",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Arm Circles",
+          "link": "exercises/arm_circles.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 1,
+            "reps": "10 each direction"
+          },
+          "notes": "Forward and backward circles"
+        },
+        {
+          "kind": "exercise",
+          "name": "Band Pull-Aparts",
+          "link": "exercises/band_pull_aparts.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 1,
+            "reps": 15
+          },
+          "notes": "Alternative: use light dumbbells for rear fly motion"
+        },
+        {
+          "kind": "exercise",
+          "name": "Cat-Cow Stretch",
+          "link": "exercises/cat_cow_stretch.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 1,
+            "reps": 8
+          },
+          "notes": "Slow, controlled spinal movement"
+        },
+        {
+          "kind": "exercise",
+          "name": "Deadbug",
+          "link": "exercises/deadbug.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 1,
+            "reps": 6
+          },
+          "notes": "Each side, core activation"
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Primary Upper Body",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Neutral-Grip Flat Bench Press",
+          "link": "exercises/neutral_grip_flat_bench_press.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": 6,
+            "weight": "40 x2 lb",
+            "rpe": 6.5,
+            "restSeconds": 120
+          },
+          "notes": "Deload: 3 sets (vs 4), 80% of Week 3 load (40 vs 50 lb). Focus on crisp technique"
+        },
+        {
+          "kind": "exercise",
+          "name": "One-Arm Dumbbell Row",
+          "link": "exercises/one_arm_dumbbell_row.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": 8,
+            "weight": "45 lb",
+            "rpe": 6.5,
+            "restSeconds": 90
+          },
+          "notes": "Deload: 3 sets, ~80% load (45 vs 55 lb). Each arm, controlled tempo"
+        },
+        {
+          "kind": "exercise",
+          "name": "Incline Dumbbell Bench Press",
+          "link": "exercises/incline_dumbbell_bench_press.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": 8,
+            "weight": "32.5 x2 lb",
+            "rpe": 6,
+            "restSeconds": 90
+          },
+          "notes": "Deload: 2 sets, ~80% load. 30-45° incline, maintain form quality"
+        },
+        {
+          "kind": "exercise",
+          "name": "Chest-Supported Dumbbell Row",
+          "link": "exercises/chest_supported_dumbbell_row.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": 10,
+            "weight": "35 x2 lb",
+            "rpe": 6,
+            "restSeconds": 75
+          },
+          "notes": "Deload: 2 sets, reduced load. Incline bench support"
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Arms & Core",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Hammer Curl",
+          "link": "exercises/hammer_curl.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": 10,
+            "weight": "25 x2 lb",
+            "rpe": 6,
+            "restSeconds": 60
+          },
+          "notes": "Deload: 2 sets, lighter load. Neutral grip, controlled tempo"
+        },
+        {
+          "kind": "exercise",
+          "name": "Overhead Dumbbell Triceps Extension",
+          "link": "exercises/overhead_dumbbell_triceps_extension.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": 12,
+            "weight": "27.5 lb",
+            "rpe": 6,
+            "restSeconds": 60
+          },
+          "notes": "Deload: 2 sets, reduced load. Single dumbbell, both hands"
+        },
+        {
+          "kind": "exercise",
+          "name": "Pallof Press",
+          "link": "exercises/pallof_press.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": 12,
+            "weight": "17.5 x2 lb",
+            "rpe": 5,
+            "restSeconds": 45
+          },
+          "notes": "Deload: 2 sets, lighter load. Anti-rotation core stability"
+        }
+      ]
+    },
+    {
+      "type": "Recovery",
+      "title": "Mobility & Cooldown",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Doorway Chest Stretch",
+          "link": "exercises/doorway_chest_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 2,
+            "timeSeconds": 45
+          },
+          "notes": "Each arm, extra time for deload week"
+        },
+        {
+          "kind": "exercise",
+          "name": "Cat-Cow to Cobra Stretch",
+          "link": "exercises/cat_cow_to_cobra_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 2,
+            "reps": 5
+          },
+          "notes": "Slow transition, thoracic mobility"
+        },
+        {
+          "kind": "exercise",
+          "name": "Deep Breathing",
+          "link": "exercises/deep_breathing.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 1,
+            "timeSeconds": 180
+          },
+          "notes": "Extended breathing for recovery emphasis"
+        }
+      ]
+    }
+  ]
+}

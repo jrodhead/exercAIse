@@ -1,0 +1,221 @@
+{
+  "version": "1",
+  "title": "Chest & Arms Light Pump – Deload",
+  "date": "2024-11-01",
+  "block": 4,
+  "week": 4,
+  "notes": "Deload week: light pump session with reduced volume and intensity. RPE ≤6-7, focus on blood flow and recovery.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Upper Body Activation",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Arm Circles",
+          "link": "exercises/arm_circles.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 1,
+            "reps": "10 each direction"
+          },
+          "notes": "Forward and backward circles"
+        },
+        {
+          "kind": "exercise",
+          "name": "Band Pull-Aparts",
+          "link": "exercises/band_pull_aparts.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 15
+          },
+          "notes": "Alternative: use light dumbbells for rear fly motion"
+        },
+        {
+          "kind": "exercise",
+          "name": "Push-ups",
+          "link": "exercises/push_ups.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 10
+          },
+          "notes": "Controlled tempo, activate chest and triceps"
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Chest Light Pump",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Flat Dumbbell Bench Press",
+          "link": "exercises/flat_dumbbell_bench_press.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": 12,
+            "weight": "35 x2 lb",
+            "rpe": 6.5,
+            "restSeconds": 90
+          },
+          "notes": "Deload: light weight, higher reps. Focus on muscle connection and form"
+        },
+        {
+          "kind": "exercise",
+          "name": "Incline Dumbbell Bench Press",
+          "link": "exercises/incline_dumbbell_bench_press.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": 12,
+            "weight": "30 x2 lb",
+            "rpe": 6,
+            "restSeconds": 75
+          },
+          "notes": "Deload: 2 sets, light load. 30-45° incline"
+        },
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Flyes",
+          "link": "exercises/dumbbell_flyes.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": 15,
+            "weight": "15 x2 lb",
+            "rpe": 6,
+            "restSeconds": 60
+          },
+          "notes": "Deload: light stretch emphasis. Feel the pec contraction"
+        },
+        {
+          "kind": "exercise",
+          "name": "Push-ups",
+          "link": "exercises/push_ups.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": 15,
+            "rpe": 6,
+            "restSeconds": 60
+          },
+          "notes": "Deload: moderate reps, keep it easy. Full range of motion"
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Arms Light Pump",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Alternating Dumbbell Biceps Curl",
+          "link": "exercises/alternating_dumbbell_biceps_curl.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": 15,
+            "weight": "22.5 lb",
+            "rpe": 6,
+            "restSeconds": 60
+          },
+          "notes": "Deload: each arm. Light weight, focus on form and pump"
+        },
+        {
+          "kind": "exercise",
+          "name": "Hammer Curl",
+          "link": "exercises/hammer_curl.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": 15,
+            "weight": "22.5 x2 lb",
+            "rpe": 6,
+            "restSeconds": 60
+          },
+          "notes": "Deload: light pump. Neutral grip throughout"
+        },
+        {
+          "kind": "exercise",
+          "name": "Overhead Dumbbell Triceps Extension",
+          "link": "exercises/overhead_dumbbell_triceps_extension.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": 15,
+            "weight": "27.5 lb",
+            "rpe": 6,
+            "restSeconds": 60
+          },
+          "notes": "Deload: light load. Single dumbbell, both hands"
+        },
+        {
+          "kind": "exercise",
+          "name": "Diamond Push-ups",
+          "link": "exercises/diamond_push_ups.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": 12,
+            "rpe": 6,
+            "restSeconds": 45
+          },
+          "notes": "Deload: moderate reps, keep it easy"
+        }
+      ]
+    },
+    {
+      "type": "Recovery",
+      "title": "Mobility & Cooldown",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Doorway Chest Stretch",
+          "link": "exercises/doorway_chest_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 2,
+            "timeSeconds": 45
+          },
+          "notes": "Each arm, deep stretch after chest volume"
+        },
+        {
+          "kind": "exercise",
+          "name": "Overhead Triceps Stretch",
+          "link": "exercises/overhead_triceps_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 2,
+            "timeSeconds": 30
+          },
+          "notes": "Each arm, gentle release after triceps work"
+        },
+        {
+          "kind": "exercise",
+          "name": "Wrist Circles",
+          "link": "exercises/wrist_circles.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 1,
+            "reps": "10 each direction"
+          },
+          "notes": "Each wrist. Gentle mobility after pressing and curling"
+        },
+        {
+          "kind": "exercise",
+          "name": "Deep Breathing",
+          "link": "exercises/deep_breathing.json",
+          "logType": "stretch",
+          "prescription": {
+            "sets": 1,
+            "timeSeconds": 120
+          },
+          "notes": "Parasympathetic recovery"
+        }
+      ]
+    }
+  ]
+}
