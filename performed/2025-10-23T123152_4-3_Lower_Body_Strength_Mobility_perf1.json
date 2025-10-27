@@ -1,0 +1,125 @@
+{
+  "version": "perf-1",
+  "workoutFile": "workouts/4-3_Lower_Body_Strength_Mobility.json",
+  "timestamp": "2025-10-23T12:31:31.786Z",
+  "exercises": {
+    "goblet-squat": {
+      "name": "Goblet Squat",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 67.5,
+          "reps": 8,
+          "rpe": 7
+        },
+        {
+          "set": 2,
+          "weight": 67.5,
+          "reps": 8,
+          "rpe": 8
+        },
+        {
+          "set": 3,
+          "weight": 67.5,
+          "reps": 8,
+          "rpe": 8
+        },
+        {
+          "set": 4,
+          "weight": 67.5,
+          "reps": 8,
+          "rpe": 8
+        }
+      ]
+    },
+    "dumbbell-romanian-deadlift": {
+      "name": "Dumbbell Romanian Deadlift",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 67.5,
+          "multiplier": 2,
+          "reps": 8,
+          "rpe": 7
+        },
+        {
+          "set": 2,
+          "weight": 67.5,
+          "multiplier": 2,
+          "reps": 8,
+          "rpe": 8
+        },
+        {
+          "set": 3,
+          "weight": 67.5,
+          "multiplier": 2,
+          "reps": 8,
+          "rpe": 8
+        },
+        {
+          "set": 4,
+          "weight": 67.5,
+          "multiplier": 2,
+          "reps": 8,
+          "rpe": 8
+        }
+      ]
+    },
+    "bulgarian-split-squat": {
+      "name": "Bulgarian Split Squat",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 47.5,
+          "multiplier": 2,
+          "reps": 8,
+          "rpe": 7
+        },
+        {
+          "set": 2,
+          "weight": 47.5,
+          "multiplier": 2,
+          "reps": 8,
+          "rpe": 8
+        },
+        {
+          "set": 3,
+          "weight": 47.5,
+          "multiplier": 2,
+          "reps": 8,
+          "rpe": 9
+        }
+      ]
+    },
+    "standing-calf-raise": {
+      "name": "Standing Calf Raise",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 37.5,
+          "multiplier": 2,
+          "reps": 15,
+          "rpe": 7
+        },
+        {
+          "set": 2,
+          "weight": 37.5,
+          "multiplier": 2,
+          "reps": 15,
+          "rpe": 7
+        },
+        {
+          "set": 3,
+          "weight": 37.5,
+          "multiplier": 2,
+          "reps": 15,
+          "rpe": 7
+        }
+      ]
+    }
+  }
+}

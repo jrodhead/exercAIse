@@ -1,0 +1,124 @@
+{
+  "version": "perf-1",
+  "workoutFile": "workouts/4-1_Chest_Core_Glutes_Focus.json",
+  "timestamp": "2025-10-24T12:32:21.055Z",
+  "exercises": {
+    "dumbbell-flyes": {
+      "name": "Dumbbell Flyes",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 20,
+          "multiplier": 2,
+          "reps": 15,
+          "rpe": 6
+        },
+        {
+          "set": 2,
+          "weight": 20,
+          "multiplier": 2,
+          "reps": 15,
+          "rpe": 7
+        },
+        {
+          "set": 3,
+          "weight": 20,
+          "multiplier": 2,
+          "reps": 15,
+          "rpe": 7
+        }
+      ]
+    },
+    "single-arm-dumbbell-press": {
+      "name": "Single-Arm Dumbbell Press",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 12,
+          "rpe": 7
+        },
+        {
+          "set": 2,
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 12,
+          "rpe": 7
+        },
+        {
+          "set": 3,
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 12,
+          "rpe": 7
+        }
+      ]
+    },
+    "hip-thrust": {
+      "name": "Hip Thrust",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 50,
+          "reps": 20,
+          "rpe": 5
+        },
+        {
+          "set": 2,
+          "weight": 50,
+          "reps": 20,
+          "rpe": 5
+        },
+        {
+          "set": 3,
+          "weight": 50,
+          "reps": 15,
+          "rpe": 5
+        }
+      ]
+    },
+    "push-ups": {
+      "name": "Push-ups",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "reps": 20,
+          "rpe": 6
+        },
+        {
+          "set": 2,
+          "reps": 12,
+          "rpe": 7
+        },
+        {
+          "set": 3,
+          "reps": 12,
+          "rpe": 7
+        }
+      ]
+    },
+    "hollow-body-hold": {
+      "name": "Hollow Body Hold",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "reps": 45
+        },
+        {
+          "set": 2,
+          "reps": 45
+        },
+        {
+          "set": 3,
+          "reps": 45
+        }
+      ]
+    }
+  }
+}
