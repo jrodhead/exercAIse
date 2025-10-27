@@ -96,11 +96,11 @@
           "prescription": {
             "sets": 2,
             "reps": 8,
-            "weight": "32.5 x2 lb",
+            "weight": "30 x2 lb",
             "rpe": 6,
             "restSeconds": 90
           },
-          "notes": "Deload: 2 sets, ~80% load. 30-45° incline, maintain form quality"
+          "notes": "Deload: 2 sets, ~80% load. 30° or 45° incline (bench settings), maintain form quality"
         },
         {
           "kind": "exercise",
