@@ -1,3 +1,9 @@
+workouts/4-4_Yin_Yoga_Recovery_Flow.json
+workouts/4-4_Upper_Body_Strength_Mobility.json
+workouts/4-4_Optional_Easy_Run.json
+workouts/4-4_Lower_Body_Strength_Mobility.json
+workouts/4-4_Chest_Arms_Hypertrophy.json
+workouts/4-4_Basketball_Dynamic_Warm_Up_Cool_Down.json
 workouts/4-3_Yin_Yoga_Recovery_Flow.json
 workouts/4-3_Upper_Body_Strength_Mobility.json
 workouts/4-3_Lower_Body_Strength_Mobility.json
