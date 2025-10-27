@@ -323,7 +323,7 @@ a:focus-visible { outline: 2px solid var(--color-link-hover); outline-offset: 2p
   font-weight: var(--font-weight-medium); 
   transition: all var(--transition-base); 
   box-sizing: border-box;
-  var(--color-white)-space: nowrap;
+  white-space: nowrap;
   color: rgba(255, 255, 255, 0.9);
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -354,7 +354,7 @@ a:focus-visible { outline: 2px solid var(--color-link-hover); outline-offset: 2p
 .workout-meta .meta-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
 
 .workout-content { background: var(--color-white); border: 1px solid var(--color-border); padding: var(--space-3); border-radius: var(--radius-md); }
-.workout-content pre { var(--color-white)-space: pre-wrap; }
+.workout-content pre { white-space: pre-wrap; }
 
 .form { margin-top: var(--space-4); background: var(--color-white); border: 1px solid var(--color-border); padding: var(--space-3); border-radius: var(--radius-md); }
 .form h2 { margin-top: 0; }
@@ -641,6 +641,12 @@ textarea { width: 100%; }
   .status { background: #3a2f00; color: #f3e5ab; border-color: #5a4a00; }
   .exercise-card { background: #181b20; border-color: #2a2d33; }
   .exercise-card .exercise-header .ex-presc { color: #fafafa; }
+  /* Fix header visibility in dark mode */
+  .exercise-card .exercise-header h1,
+  .exercise-card .exercise-header h2,
+  .exercise-card .exercise-header h3,
+  .exercise-card .exercise-header h4,
+  h1, h2, h3, h4, h5, h6 { color: #e6e8ec; }
   /* Improve readability of gray helper/cue text in dark mode */
   .form-hint { color: #c2c8d1; }
   .form label { color: #d5d9df; }
@@ -702,7 +708,7 @@ textarea { width: 100%; }
   font-weight: var(--font-weight-semibold);
   color: var(--color-gray-700);
   border-bottom: 2px solid var(--color-gray-200);
-  var(--color-white)-space: nowrap;
+  white-space: nowrap;
 }
 
 .rpe-table td {
@@ -1224,14 +1230,39 @@ textarea { width: 100%; }
   }
   
   /* Enhanced dark mode text readability */
-  p {
-    color: #e2e8f0 !important;
-  }
-  
   /* Better body text contrast */
   body {
-    background: #0f172a !important;
-    color: var(--color-gray-100) !important;
+    background: #0f172a;
+    color: #f1f5f9;
+  }
+  
+  /* Enhanced headings - ensure high contrast */
+  h1, h2, h3, h4, h5, h6 {
+    color: #f1f5f9;
+  }
+  
+  /* Specific content area headings */
+  .section h2,
+  .section h3,
+  .section h4,
+  .workout-header h1,
+  .workout-header p {
+    color: #f1f5f9;
+  }
+  
+  /* Paragraph text */
+  p {
+    color: #e2e8f0;
+  }
+  
+  /* Improve list and strong text visibility */
+  ul li, ol li {
+    color: #e2e8f0;
+  }
+  
+  strong {
+    color: #f1f5f9;
+    font-weight: var(--font-weight-semibold);
   }
   
   /* Specific RPE content styling */
@@ -1257,57 +1288,47 @@ textarea { width: 100%; }
   .scenario-description,
   .how-it-felt,
   .rpe-rating-text {
-    color: #e2e8f0 !important;
-  }
-  
-  /* Enhanced headings */
-  h1, h2, h3, h4, h5, h6 {
-    color: var(--color-gray-50) !important;
-  }
-  
-  /* Improved list readability */
-  ul li, ol li {
     color: #e2e8f0;
   }
   
   /* Enhanced example box content in dark mode */
   .example-box h3 {
-    color: var(--color-gray-50) !important;
+    color: var(--color-gray-50);
     font-weight: var(--font-weight-bold);
   }
   
   .example-set h4 {
-    color: var(--color-gray-100) !important;
+    color: var(--color-gray-100);
     font-weight: var(--font-weight-semibold);
   }
   
   .example-set p {
-    color: #e2e8f0 !important;
+    color: #e2e8f0;
     line-height: var(--line-height-relaxed);
   }
   
   .example-set strong {
-    color: var(--color-gray-50) !important;
+    color: var(--color-gray-50);
     font-weight: var(--font-weight-semibold);
   }
   
   .example-set em {
-    color: #94a3b8 !important;
+    color: #94a3b8;
     font-style: italic;
   }
   
   .example-notes h4 {
-    color: #34d399 !important;
+    color: #34d399;
     font-weight: var(--font-weight-semibold);
   }
   
   .example-notes li {
-    color: #e2e8f0 !important;
+    color: #e2e8f0;
   }
   
   /* Better contrast for RPE rating descriptions */
   .rpe-description {
-    color: #e2e8f0 !important;
+    color: #e2e8f0;
   }
 }
 
@@ -2238,7 +2259,7 @@ a:hover {
   transform: translateX(-50%);
   font-size: var(--font-size-xs);
   color: var(--color-gray-500);
-  var(--color-white)-space: nowrap;
+  white-space: nowrap;
 }
 
 /* Workout Streak Visualization */

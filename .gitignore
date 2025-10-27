@@ -4,6 +4,5 @@ test-results/
 node_modules/
 test-results/
 product-design
-dist/
 *.js.map
 *.d.ts.map
