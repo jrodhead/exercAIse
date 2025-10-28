@@ -10,16 +10,7 @@
     <meta name="theme-color" content="#111111" />
   </head>
   <body>
-    <header class="site-header">
-      <h1>exercAIse</h1>
-      <nav>
-        <a href="index.html" id="nav-home">Home</a>
-        <a href="index.html?view=workouts" id="nav-workouts">Workouts</a>
-        <a href="index.html?view=history" id="nav-history">History</a>
-        <a href="rpe-guide.html">RPE Guide</a>
-        <a href="https://github.com/jrodhead/exercAIse#readme" target="_blank" rel="noopener">README</a>
-      </nav>
-    </header>
+    <div id="header-placeholder"></div>
 
     <main class="container">
       <section id="generate-section" class="readme">
@@ -117,6 +108,8 @@
       <small>© <span id="year"></span> exercAIse. Works offline for logged data via localStorage.</small>
     </footer>
 
+    <!-- Load header component -->
+    <script src="assets/header-loader.js"></script>
     <!-- Load modules in dependency order -->
     <script src="dist/assets/session-parser.js"></script>
     <script src="dist/assets/storage-adapter.js"></script>

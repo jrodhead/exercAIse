@@ -2,6 +2,14 @@
 
 AI-generated personalized workout sessions with structured JSON logging and performance tracking.
 
+## Features
+- **This Week View**: Quick access to the current week's sessions (Sunday-Saturday) at `week.html`
+- **Session Browser**: Browse all workouts by block/week at `index.html?view=workouts`
+- **Performance Logging**: Track sets, reps, weights, and RPE for every session
+- **Exercise Library**: Detailed exercise descriptions with setup, steps, cues, and safety notes
+- **Offline Support**: PWA with service worker for offline viewing and logging
+- **Type Safety**: Full TypeScript implementation with compiled ES2020 output
+
 ## Browser Support
 - **Modern browsers**: Chrome/Edge 90+, Firefox 88+, Safari 14+
 - **Progressive Web App**: Install on mobile/desktop for offline access

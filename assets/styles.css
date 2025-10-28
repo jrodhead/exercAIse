@@ -2869,3 +2869,123 @@ a:hover {
     color-scheme: dark;
   }
 }
+
+/* ========================================
+   WEEK VIEW STYLES
+   ======================================== */
+
+.week-sessions {
+  margin-top: var(--space-6);
+}
+
+.day-group {
+  margin-bottom: var(--space-8);
+  padding: var(--space-5);
+  background: var(--color-bg-secondary);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--color-border-light);
+}
+
+.day-group.today {
+  background: linear-gradient(135deg, var(--color-bg-gradient-start), var(--color-bg-gradient-end));
+  border-color: var(--color-primary-light);
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.1);
+}
+
+.day-group h3 {
+  margin: 0 0 var(--space-4) 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.day-group .badge {
+  background: var(--color-primary);
+  color: var(--color-white);
+  border-radius: 14px;
+  padding: 2px 10px;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.day-group .workout-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.day-group .workout-list li {
+  margin-bottom: var(--space-3);
+  padding: var(--space-4);
+  background: var(--color-bg-primary);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border);
+  transition: all 0.2s ease;
+}
+
+.day-group .workout-list li:hover {
+  background: var(--color-bg-hover);
+  border-color: var(--color-primary-light);
+  transform: translateX(4px);
+}
+
+.day-group .workout-list li:last-child {
+  margin-bottom: 0;
+}
+
+.day-group .workout-list a {
+  text-decoration: none;
+  color: var(--color-link);
+  font-weight: var(--font-weight-medium);
+  display: block;
+}
+
+.day-group .workout-list a:hover {
+  color: var(--color-link-hover);
+}
+
+.day-group .workout-list .muted {
+  color: var(--color-text-light);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-sm);
+}
+
+#current-week-info {
+  margin-bottom: var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-light);
+}
+
+/* Dark mode adjustments for week view */
+@media (prefers-color-scheme: dark) {
+  .day-group {
+    background: var(--color-bg-secondary);
+    border-color: var(--color-border-light);
+  }
+  
+  .day-group.today {
+    background: linear-gradient(135deg, #1e293b, #1f2937);
+    border-color: #3b82f6;
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.2);
+  }
+  
+  .day-group .workout-list li {
+    background: var(--color-bg-primary);
+    border-color: var(--color-border);
+  }
+  
+  .day-group .workout-list li:hover {
+    background: var(--color-bg-hover);
+    border-color: #3b82f6;
+  }
+  
+  .day-group .badge {
+    background: #3b82f6;
+    color: #ffffff;
+  }
+}

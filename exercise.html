@@ -9,16 +9,7 @@
   <meta name="theme-color" content="#111111">
 </head>
 <body>
-  <header class="site-header">
-    <h1>exercAIse</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="index.html#nav-workouts">Workouts</a>
-      <a href="index.html#nav-history">History</a>
-      <a href="rpe-guide.html">RPE Guide</a>
-      <a href="https://github.com/jrodhead/exercAIse#readme" target="_blank" rel="noopener">README</a>
-    </nav>
-  </header>
+  <div id="header-placeholder"></div>
 
   <main class="container" id="main" role="main" aria-labelledby="ex-name">
     <div id="status" role="status" aria-live="polite" class="status" style="display:none;"></div>
@@ -92,6 +83,7 @@
     <small>© <span id="year"></span> exercAIse. Works offline for logged data via localStorage.</small>
   </footer>
 
+  <script src="assets/header-loader.js"></script>
   <script src="dist/assets/exercise.js"></script>
   <script>
     // Set current year in footer
