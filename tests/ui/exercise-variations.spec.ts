@@ -141,8 +141,12 @@ test.describe('Exercise Variations', () => {
     await expect(alternatingCurlLink).toBeVisible();
     await expect(alternatingCurlLink).toHaveAttribute('href', /alternating_dumbbell_biceps_curl\.json/);
 
-    // Click and verify it goes to the specific variation, not generic biceps curl
+    // Wait for click handler to be attached (happens in async xhrGet callback)
+    await page.waitForTimeout(100);
+    
+    // Click and wait for navigation to exercise.html
     await alternatingCurlLink.click();
+    await page.waitForURL(/exercise\.html/, { timeout: 5000 });
     
     await expect(page.locator('#main')).toBeVisible();
     await expect(page.locator('#ex-name')).toContainText('Alternating or Supinated Dumbbell Biceps Curl');

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>History — exercAIse</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#111111" />
+  </head>
+  <body>
+    <div id="header-placeholder"></div>
+
+    <main class="container">
+      <section id="status" class="status"></section>
+
+      <section id="history-section" class="readme">
+        <h2>History</h2>
+        <p class="form-hint">Latest performed logs (from the GitHub repo).</p>
+        <div id="history-content">
+          <p>Loading history...</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <small>© <span id="year"></span> exercAIse. Works offline for logged data via localStorage.</small>
+    </footer>
+
+    <script src="assets/header-loader.js"></script>
+    <script src="dist/assets/history.js"></script>
+    <script>
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.innerHTML = String(new Date().getFullYear());
+      
+      // Register service worker (graceful failure on old browsers)
+      (function(){
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('./sw.js').catch(function(){});
+        }
+      })();
+    </script>
+  </body>
+</html>

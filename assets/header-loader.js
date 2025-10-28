@@ -29,6 +29,7 @@
   // Set active navigation link based on current page
   function setActiveNav() {
     const path = window.location.pathname;
+    const search = window.location.search;
     const page = path.split('/').pop() || 'index.html';
     
     // Remove any existing active class
@@ -39,13 +40,29 @@
     if (page === 'week.html') {
       const weekLink = document.getElementById('nav-week');
       if (weekLink) weekLink.classList.add('active');
+    } else if (page === 'workouts.html') {
+      const workoutsLink = document.getElementById('nav-workouts');
+      if (workoutsLink) workoutsLink.classList.add('active');
+    } else if (page === 'history.html') {
+      const historyLink = document.getElementById('nav-history');
+      if (historyLink) historyLink.classList.add('active');
     } else if (page === 'rpe-guide.html') {
       const rpeLink = document.querySelector('a[href="rpe-guide.html"]');
       if (rpeLink) rpeLink.classList.add('active');
     } else if (page === 'exercise.html') {
       // Exercise pages don't have a specific nav item
+    } else if (page === 'index.html' || page === '') {
+      // Check if viewing a workout session
+      if (search && search.indexOf('file=workouts/') !== -1) {
+        const workoutsLink = document.getElementById('nav-workouts');
+        if (workoutsLink) workoutsLink.classList.add('active');
+      } else {
+        // Default to home for index.html without workout file
+        const homeLink = document.getElementById('nav-home');
+        if (homeLink) homeLink.classList.add('active');
+      }
     } else {
-      // Default to home for index.html and other pages
+      // Default to home for other pages
       const homeLink = document.getElementById('nav-home');
       if (homeLink) homeLink.classList.add('active');
     }
@@ -60,8 +77,8 @@
       <nav>
         <a href="index.html" id="nav-home">Home</a>
         <a href="week.html" id="nav-week">This Week</a>
-        <a href="index.html?view=workouts" id="nav-workouts">Workouts</a>
-        <a href="index.html?view=history" id="nav-history">History</a>
+        <a href="workouts.html" id="nav-workouts">Workouts</a>
+        <a href="history.html" id="nav-history">History</a>
         <a href="rpe-guide.html">RPE Guide</a>
         <a href="https://github.com/jrodhead/exercAIse#readme" target="_blank" rel="noopener">README</a>
       </nav>

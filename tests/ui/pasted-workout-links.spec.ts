@@ -75,10 +75,13 @@ test('Exercise not found screen is shown for missing internal file', async ({ pa
 
   const ghostLink = page.locator('#workout-content a', { hasText: 'Ghost Move' }).first();
   await expect(ghostLink).toBeVisible();
-  await Promise.all([
-    page.waitForURL(/exercise\.html/),
-    ghostLink.click()
-  ]);
+  
+  // Wait for click handler to be attached (happens in async xhrGet callback)
+  await page.waitForTimeout(100);
+  
+  // Click and wait for navigation to exercise.html
+  await ghostLink.click();
+  await page.waitForURL(/exercise\.html/, { timeout: 5000 });
 
   // The exercise viewer should show the not-found page
   await expect(page.locator('#not-found')).toBeVisible({ timeout: 5000 });

@@ -47,8 +47,8 @@ test.describe('Header Navigation Component', () => {
     const expectedLinks = [
       { id: 'nav-home', text: 'Home', href: 'index.html' },
       { id: 'nav-week', text: 'This Week', href: 'week.html' },
-      { id: 'nav-workouts', text: 'Workouts', href: 'index.html?view=workouts' },
-      { id: 'nav-history', text: 'History', href: 'index.html?view=history' },
+      { id: 'nav-workouts', text: 'Workouts', href: 'workouts.html' },
+      { id: 'nav-history', text: 'History', href: 'history.html' },
       { text: 'RPE Guide', href: 'rpe-guide.html' },
       { text: 'README' }
     ];
