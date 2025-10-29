@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>exercAIse CSS Style Guide</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <style>
+    /* Style guide specific styles */
+    .sg-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    
+    .sg-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 60px 20px;
+      margin: -40px -20px 40px -20px;
+      text-align: center;
+    }
+    
+    .sg-header h1 {
+      color: white;
+      margin: 0 0 10px 0;
+      font-size: 48px;
+    }
+    
+    .sg-header p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 18px;
+      margin: 0;
+    }
+    
+    .sg-section {
+      margin: 60px 0;
+      scroll-margin-top: 80px;
+    }
+    
+    .sg-section-title {
+      font-size: 32px;
+      font-weight: 700;
+      margin: 0 0 24px 0;
+      padding-bottom: 12px;
+      border-bottom: 3px solid #2563eb;
+      color: #1f2937;
+    }
+    
+    .sg-subsection {
+      margin: 40px 0;
+    }
+    
+    .sg-subsection-title {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 0 0 16px 0;
+      color: #374151;
+    }
+    
+    .sg-example {
+      border: 2px solid #e5e7eb;
+      border-radius: 8px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    
+    .sg-example-label {
+      background: #f8fafc;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    
+    .sg-example-display {
+      padding: 32px;
+      background: white;
+    }
+    
+    .sg-example-code {
+      background: #1f2937;
+      color: #e5e7eb;
+      padding: 16px;
+      margin: 0;
+      overflow-x: auto;
+      font-family: 'Monaco', 'Menlo', monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      border-top: 1px solid #374151;
+    }
+    
+    .sg-color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+    
+    .sg-color-swatch {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .sg-color-display {
+      height: 80px;
+    }
+    
+    .sg-color-info {
+      padding: 12px;
+      background: white;
+    }
+    
+    .sg-color-name {
+      font-weight: 600;
+      font-size: 14px;
+      margin: 0 0 4px 0;
+      color: #1f2937;
+    }
+    
+    .sg-color-value {
+      font-family: 'Monaco', 'Menlo', monospace;
+      font-size: 12px;
+      color: #6b7280;
+      margin: 0;
+    }
+    
+    .sg-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .sg-table th {
+      background: #f8fafc;
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 14px;
+      color: #374151;
+      border-bottom: 2px solid #e5e7eb;
+    }
+    
+    .sg-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #f3f4f6;
+      font-size: 14px;
+    }
+    
+    .sg-table code {
+      background: #f1f5f9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'Monaco', 'Menlo', monospace;
+      font-size: 12px;
+      color: #dc2626;
+    }
+    
+    .sg-nav {
+      position: sticky;
+      top: 0;
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+      z-index: 100;
+      padding: 16px 20px;
+    }
+    
+    .sg-nav-links {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .sg-nav-link {
+      padding: 6px 12px;
+      background: #f1f5f9;
+      border-radius: 6px;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+    
+    .sg-nav-link:hover {
+      background: #2563eb;
+      color: white;
+    }
+    
+    .sg-dos-donts {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 24px 0;
+    }
+    
+    .sg-do, .sg-dont {
+      border-radius: 8px;
+      padding: 20px;
+      border: 2px solid;
+    }
+    
+    .sg-do {
+      background: #f0fdf4;
+      border-color: #10b981;
+    }
+    
+    .sg-dont {
+      background: #fef2f2;
+      border-color: #ef4444;
+    }
+    
+    .sg-do h4, .sg-dont h4 {
+      margin: 0 0 12px 0;
+      font-size: 16px;
+    }
+    
+    .sg-do h4 { color: #059669; }
+    .sg-dont h4 { color: #dc2626; }
+    
+    .sg-do code, .sg-dont code {
+      background: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+    
+    @media (max-width: 768px) {
+      .sg-dos-donts {
+        grid-template-columns: 1fr;
+      }
+      
+      .sg-nav-links {
+        gap: 4px;
+      }
+      
+      .sg-nav-link {
+        font-size: 12px;
+        padding: 4px 8px;
+      }
+    }
+    
+    @media (prefers-color-scheme: dark) {
+      .sg-header {
+        background: linear-gradient(135deg, #4c1d95 0%, #581c87 100%);
+      }
+      
+      .sg-section-title {
+        color: #f8fafc;
+        border-bottom-color: #60a5fa;
+      }
+      
+      .sg-subsection-title {
+        color: #e2e8f0;
+      }
+      
+      .sg-example {
+        border-color: #374151;
+      }
+      
+      .sg-example-label {
+        background: #1f2937;
+        color: #9ca3af;
+        border-bottom-color: #374151;
+      }
+      
+      .sg-example-display {
+        background: #0f172a;
+      }
+      
+      .sg-color-swatch {
+        border-color: #374151;
+      }
+      
+      .sg-color-info {
+        background: #1f2937;
+      }
+      
+      .sg-color-name {
+        color: #f8fafc;
+      }
+      
+      .sg-color-value {
+        color: #9ca3af;
+      }
+      
+      .sg-table {
+        background: #1f2937;
+        border-color: #374151;
+      }
+      
+      .sg-table th {
+        background: #0f172a;
+        color: #e2e8f0;
+        border-bottom-color: #374151;
+      }
+      
+      .sg-table td {
+        border-bottom-color: #374151;
+        color: #e5e7eb;
+      }
+      
+      .sg-table code {
+        background: #374151;
+        color: #fca5a5;
+      }
+      
+      .sg-nav {
+        background: #0f172a;
+        border-bottom-color: #374151;
+      }
+      
+      .sg-nav-link {
+        background: #1f2937;
+        color: #e2e8f0;
+      }
+      
+      .sg-nav-link:hover {
+        background: #2563eb;
+        color: white;
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  <nav class="sg-nav">
+    <div class="sg-nav-links">
+      <a href="#overview" class="sg-nav-link">Overview</a>
+      <a href="#colors" class="sg-nav-link">Colors</a>
+      <a href="#typography" class="sg-nav-link">Typography</a>
+      <a href="#spacing" class="sg-nav-link">Spacing</a>
+      <a href="#buttons" class="sg-nav-link">Buttons</a>
+      <a href="#cards" class="sg-nav-link">Cards</a>
+      <a href="#forms" class="sg-nav-link">Forms</a>
+      <a href="#lists" class="sg-nav-link">Lists</a>
+      <a href="#badges" class="sg-nav-link">Badges</a>
+      <a href="#rpe" class="sg-nav-link">RPE</a>
+      <a href="#progress" class="sg-nav-link">Progress</a>
+      <a href="#tables" class="sg-nav-link">Tables</a>
+      <a href="#naming" class="sg-nav-link">Naming Conventions</a>
+      <a href="#responsive" class="sg-nav-link">Responsive</a>
+      <a href="#accessibility" class="sg-nav-link">Accessibility</a>
+      <a href="#dark-mode" class="sg-nav-link">Dark Mode</a>
+    </div>
+  </nav>
+
+  <div class="sg-container">
+    
+    <header class="sg-header">
+      <h1>exercAIse CSS Style Guide</h1>
+      <p>Living documentation of design tokens, components, and patterns</p>
+    </header>
+
+    <!-- OVERVIEW -->
+    <section id="overview" class="sg-section">
+      <h2 class="sg-section-title">Overview</h2>
+      <p>This style guide documents the design system for exercAIse. All styles use CSS custom properties (design tokens) for consistency and easy theming including automatic dark mode support.</p>
+      
+      <h3 class="sg-subsection-title">Design Principles</h3>
+      <ul>
+        <li><strong>Token-based:</strong> All colors, spacing, and typography use CSS variables</li>
+        <li><strong>Mobile-first:</strong> Responsive design starting from mobile viewport</li>
+        <li><strong>Dark mode native:</strong> Automatic dark mode support via prefers-color-scheme</li>
+        <li><strong>Accessible:</strong> WCAG AA compliant contrast ratios and focus states</li>
+        <li><strong>Consistent:</strong> BEM naming conventions for predictable class names</li>
+      </ul>
+    </section>
+
+    <!-- COLORS -->
+    <section id="colors" class="sg-section">
+      <h2 class="sg-section-title">Colors</h2>
+      
+      <div class="sg-subsection">
+        <h3 class="sg-subsection-title">Gray Scale</h3>
+        <div class="sg-color-grid">
+          <div class="sg-color-swatch">
+            <div class="sg-color-display" style="background: var(--color-gray-50);"></div>
+            <div class="sg-color-info">
+              <p class="sg-color-name">Gray 50</p>
+              <p class="sg-color-value">--color-gray-50</p>
+            </div>
+          </div>
+          <div class="sg-color-swatch">
+            <div class="sg-color-display" style="background: var(--color-gray-100);"></div>
+            <div class="sg-color-info">
+              <p class="sg-color-name">Gray 100</p>
+              <p class="sg-color-value">--color-gray-100</p>
+            </div>
+          </div>
+          <div class="sg-color-swatch">
+            <div class="sg-color-display" style="background: var(--color-gray-200);"></div>
+            <div class="sg-color-info">
+              <p class="sg-color-name">Gray 200</p>
+              <p class="sg-color-value">--color-gray-200</p>
+            </div>
+          </div>
+          <div class="sg-color-swatch">
+            <div class="sg-color-display" style="background: var(--color-gray-300);"></div>
+            <div class="sg-color-info">
+              <p class="sg-color-name">Gray 300</p>
+              <p class="sg-color-value">--color-gray-300</p>
+            </div>
+          </div>
+          <div class="sg-color-swatch">
+            <div class="sg-color-display" style="background: var(--color-gray-400);"></div>
+            <div class="sg-color-info">
+              <p class="sg-color-name">Gray 400</p>
+              <p class="sg-color-value">--color-gray-400</p>
+            </div>
+          </div>
+          <div class="sg-color-swatch">
+            <div class="sg-color-display" style="background: var(--color-gray-500);"></div>
+            <div class="sg-color-info">
+              <p class="sg-color-name">Gray 500</p>
+              <p class="sg-color-value">--color-gray-500</p>
+            </div>
+          </div>
+          <div class="sg-color-swatch">
+            <div class="sg-color-display" style="background: var(--color-gray-600);"></div>
+            <div class="sg-color-info">
+              <p class="sg-color-name">Gray 600</p>
+              <p class="sg-color-value">--color-gray-600</p>
+            </div>
+          </div>
+          <div class="sg-color-swatch">
+            <div class="sg-color-display" style="background: var(--color-gray-700);"></div>
+            <div class="sg-color-info">
+              <p class="sg-color-name">Gray 700</p>
+              <p class="sg-color-value">--color-gray-700</p>
+            </div>
+          </div>
+          <div class="sg-color-swatch">
+            <div class="sg-color-display" style="background: var(--color-gray-800);"></div>
+            <div class="sg-color-info">
+              <p class="sg-color-name">Gray 800</p>
+              <p class="sg-color-value">--color-gray-800</p>
+            </div>
+          </div>
+          <div class="sg-color-swatch">
+            <div class="sg-color-display" style="background: var(--color-gray-900);"></div>
+            <div class="sg-color-info">
+              <p class="sg-color-name">Gray 900</p>
+              <p class="sg-color-value">--color-gray-900</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection-title">Brand Colors</h3>
+        <div class="sg-color-grid">
+          <div class="sg-color-swatch">
+            <div class="sg-color-display" style="background: var(--color-primary);"></div>
+            <div class="sg-color-info">
+              <p class="sg-color-name">Primary</p>
+              <p class="sg-color-value">--color-primary</p>
+            </div>
+          </div>
+          <div class="sg-color-swatch">
+            <div class="sg-color-display" style="background: var(--color-primary-dark);"></div>
+            <div class="sg-color-info">
+              <p class="sg-color-name">Primary Dark</p>
+              <p class="sg-color-value">--color-primary-dark</p>
+            </div>
+          </div>
+          <div class="sg-color-swatch">
+            <div class="sg-color-display" style="background: var(--color-primary-light);"></div>
+            <div class="sg-color-info">
+              <p class="sg-color-name">Primary Light</p>
+              <p class="sg-color-value">--color-primary-light</p>
+            </div>
+          </div>
+          <div class="sg-color-swatch">
+            <div class="sg-color-display" style="background: var(--color-brand-purple);"></div>
+            <div class="sg-color-info">
+              <p class="sg-color-name">Brand Purple</p>
+              <p class="sg-color-value">--color-brand-purple</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sg-subsection">
+        <h3 class="sg-subsection-title">Semantic Colors</h3>
+        <div class="sg-color-grid">
+          <div class="sg-color-swatch">
+            <div class="sg-color-display" style="background: var(--color-success);"></div>
+            <div class="sg-color-info">
+              <p class="sg-color-name">Success</p>
+              <p class="sg-color-value">--color-success</p>
+            </div>
+          </div>
+          <div class="sg-color-swatch">
+            <div class="sg-color-display" style="background: var(--color-warning);"></div>
+            <div class="sg-color-info">
+              <p class="sg-color-name">Warning</p>
+              <p class="sg-color-value">--color-warning</p>
+            </div>
+          </div>
+          <div class="sg-color-swatch">
+            <div class="sg-color-display" style="background: var(--color-error);"></div>
+            <div class="sg-color-info">
+              <p class="sg-color-name">Error</p>
+              <p class="sg-color-value">--color-error</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TYPOGRAPHY -->
+    <section id="typography" class="sg-section">
+      <h2 class="sg-section-title">Typography</h2>
+      
+      <div class="sg-example">
+        <div class="sg-example-label">Headings</div>
+        <div class="sg-example-display">
+          <h1>Heading 1 - Page Title</h1>
+          <h2>Heading 2 - Section Title</h2>
+          <h3>Heading 3 - Subsection</h3>
+          <h4>Heading 4 - Minor Heading</h4>
+          <p>Paragraph text with normal line height and spacing. This is the default body text style used throughout the application.</p>
+        </div>
+        <pre class="sg-example-code">&lt;h1&gt;Heading 1 - Page Title&lt;/h1&gt;
+&lt;h2&gt;Heading 2 - Section Title&lt;/h2&gt;
+&lt;h3&gt;Heading 3 - Subsection&lt;/h3&gt;
+&lt;h4&gt;Heading 4 - Minor Heading&lt;/h4&gt;
+&lt;p&gt;Paragraph text...&lt;/p&gt;</pre>
+      </div>
+
+      <h3 class="sg-subsection-title">Font Size Scale</h3>
+      <table class="sg-table">
+        <thead>
+          <tr>
+            <th>Token</th>
+            <th>Size</th>
+            <th>Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>--font-size-xs</code></td>
+            <td>12px</td>
+            <td>Helper text, captions</td>
+          </tr>
+          <tr>
+            <td><code>--font-size-sm</code></td>
+            <td>14px</td>
+            <td>Small body text, labels</td>
+          </tr>
+          <tr>
+            <td><code>--font-size-base</code></td>
+            <td>16px</td>
+            <td>Body text (default)</td>
+          </tr>
+          <tr>
+            <td><code>--font-size-lg</code></td>
+            <td>18px</td>
+            <td>Large body text, h3</td>
+          </tr>
+          <tr>
+            <td><code>--font-size-xl</code></td>
+            <td>20px</td>
+            <td>Subheadings</td>
+          </tr>
+          <tr>
+            <td><code>--font-size-2xl</code></td>
+            <td>22px</td>
+            <td>h2 headings</td>
+          </tr>
+          <tr>
+            <td><code>--font-size-3xl</code></td>
+            <td>28px</td>
+            <td>h1 headings</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="sg-subsection-title">Links</h3>
+      <div class="sg-example">
+        <div class="sg-example-label">Link Styles</div>
+        <div class="sg-example-display">
+          <p>This is a <a href="#">standard link</a> with underline.</p>
+          <p>This is a <a href="#" style="text-decoration: none;">link without underline</a> (avoid if possible for accessibility).</p>
+          <p>This is a <a href="#">visited link</a> that changes color after clicking.</p>
+        </div>
+        <pre class="sg-example-code">&lt;a href="#"&gt;Standard link&lt;/a&gt;</pre>
+      </div>
+    </section>
+
+    <!-- SPACING -->
+    <section id="spacing" class="sg-section">
+      <h2 class="sg-section-title">Spacing Scale</h2>
+      <p>Consistent spacing scale using 4px base unit (multiples of 4).</p>
+      
+      <table class="sg-table">
+        <thead>
+          <tr>
+            <th>Token</th>
+            <th>Value</th>
+            <th>Visual</th>
+            <th>Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>--space-1</code></td>
+            <td>4px</td>
+            <td><div style="width: 4px; height: 20px; background: #2563eb;"></div></td>
+            <td>Tight spacing, icons</td>
+          </tr>
+          <tr>
+            <td><code>--space-2</code></td>
+            <td>8px</td>
+            <td><div style="width: 8px; height: 20px; background: #2563eb;"></div></td>
+            <td>Small gaps, padding</td>
+          </tr>
+          <tr>
+            <td><code>--space-3</code></td>
+            <td>12px</td>
+            <td><div style="width: 12px; height: 20px; background: #2563eb;"></div></td>
+            <td>Medium gaps</td>
+          </tr>
+          <tr>
+            <td><code>--space-4</code></td>
+            <td>16px</td>
+            <td><div style="width: 16px; height: 20px; background: #2563eb;"></div></td>
+            <td>Default spacing</td>
+          </tr>
+          <tr>
+            <td><code>--space-5</code></td>
+            <td>20px</td>
+            <td><div style="width: 20px; height: 20px; background: #2563eb;"></div></td>
+            <td>Card padding</td>
+          </tr>
+          <tr>
+            <td><code>--space-6</code></td>
+            <td>24px</td>
+            <td><div style="width: 24px; height: 20px; background: #2563eb;"></div></td>
+            <td>Large gaps</td>
+          </tr>
+          <tr>
+            <td><code>--space-8</code></td>
+            <td>32px</td>
+            <td><div style="width: 32px; height: 20px; background: #2563eb;"></div></td>
+            <td>Section spacing</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- BUTTONS -->
+    <section id="buttons" class="sg-section">
+      <h2 class="sg-section-title">Buttons</h2>
+      
+      <div class="sg-example">
+        <div class="sg-example-label">Button Variants</div>
+        <div class="sg-example-display">
+          <button>Default Button</button>
+          <button class="primary">Primary Button</button>
+          <button class="secondary">Secondary Button</button>
+          <button class="danger">Danger Button</button>
+          <button disabled>Disabled Button</button>
+        </div>
+        <pre class="sg-example-code">&lt;button&gt;Default Button&lt;/button&gt;
+&lt;button class="primary"&gt;Primary Button&lt;/button&gt;
+&lt;button class="secondary"&gt;Secondary Button&lt;/button&gt;
+&lt;button class="danger"&gt;Danger Button&lt;/button&gt;
+&lt;button disabled&gt;Disabled Button&lt;/button&gt;</pre>
+      </div>
+
+      <h3 class="sg-subsection-title">Button Guidelines</h3>
+      <ul>
+        <li><strong>Default:</strong> Standard actions (Save, Submit, Continue)</li>
+        <li><strong>Primary:</strong> Most important action on a page (rare, use sparingly)</li>
+        <li><strong>Secondary:</strong> Less important actions (Cancel, Back)</li>
+        <li><strong>Danger:</strong> Destructive actions (Delete, Remove)</li>
+        <li>Minimum touch target: 44px × 44px for accessibility</li>
+        <li>Use clear, action-oriented labels ("Save Workout" not "OK")</li>
+      </ul>
+    </section>
+
+    <!-- CARDS -->
+    <section id="cards" class="sg-section">
+      <h2 class="sg-section-title">Cards</h2>
+      
+      <div class="sg-example">
+        <div class="sg-example-label">Exercise Card</div>
+        <div class="sg-example-display">
+          <div class="exercise-card">
+            <div class="exercise-header">
+              <h3>Goblet Squat</h3>
+              <div class="ex-presc">3 sets × 8-10 reps @ RPE 7 | 35 lb DB</div>
+              <ul class="ex-cues">
+                <li>Elbows down; bell tight to chest</li>
+                <li>Knees track over toes</li>
+                <li>Own the bottom, then drive up</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <pre class="sg-example-code">&lt;div class="exercise-card"&gt;
+  &lt;div class="exercise-header"&gt;
+    &lt;h3&gt;Goblet Squat&lt;/h3&gt;
+    &lt;div class="ex-presc"&gt;3 sets × 8-10 reps @ RPE 7 | 35 lb DB&lt;/div&gt;
+    &lt;ul class="ex-cues"&gt;
+      &lt;li&gt;Elbows down; bell tight to chest&lt;/li&gt;
+      &lt;li&gt;Knees track over toes&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+
+      <div class="sg-example">
+        <div class="sg-example-label">Generic Card</div>
+        <div class="sg-example-display">
+          <div class="card">
+            <h3>Card Title</h3>
+            <p>This is a standard card component for general content. It includes padding, rounded corners, and subtle shadow.</p>
+          </div>
+        </div>
+        <pre class="sg-example-code">&lt;div class="card"&gt;
+  &lt;h3&gt;Card Title&lt;/h3&gt;
+  &lt;p&gt;Card content...&lt;/p&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </section>
+
+    <!-- FORMS -->
+    <section id="forms" class="sg-section">
+      <h2 class="sg-section-title">Forms</h2>
+      
+      <div class="sg-example">
+        <div class="sg-example-label">Form Elements</div>
+        <div class="sg-example-display">
+          <div class="form">
+            <label for="demo-input">Text Input</label>
+            <input type="text" id="demo-input" placeholder="Enter text...">
+            
+            <label for="demo-textarea">Textarea</label>
+            <textarea id="demo-textarea" rows="3" placeholder="Enter notes..."></textarea>
+            
+            <p class="form-hint">This is helper text to guide the user.</p>
+            
+            <div class="form-actions">
+              <button class="secondary">Cancel</button>
+              <button>Submit</button>
+            </div>
+          </div>
+        </div>
+        <pre class="sg-example-code">&lt;div class="form"&gt;
+  &lt;label for="input-id"&gt;Label&lt;/label&gt;
+  &lt;input type="text" id="input-id" placeholder="..."&gt;
+  
+  &lt;p class="form-hint"&gt;Helper text&lt;/p&gt;
+  
+  &lt;div class="form-actions"&gt;
+    &lt;button class="secondary"&gt;Cancel&lt;/button&gt;
+    &lt;button&gt;Submit&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+
+      <h3 class="sg-subsection-title">Form Guidelines</h3>
+      <ul>
+        <li>Always include labels for accessibility</li>
+        <li>Use <code>form-hint</code> for helper text below inputs</li>
+        <li>Group action buttons in <code>form-actions</code> container</li>
+        <li>Place destructive actions (Cancel) on left, primary on right</li>
+        <li>Minimum input height: 44px for touch targets</li>
+      </ul>
+    </section>
+
+    <!-- LISTS -->
+    <section id="lists" class="sg-section">
+      <h2 class="sg-section-title">Lists</h2>
+      
+      <div class="sg-example">
+        <div class="sg-example-label">Workout List</div>
+        <div class="sg-example-display">
+          <ul class="workout-list">
+            <li>
+              <a href="#">
+                <span class="workout-title">Lower Body Strength & Mobility</span>
+                <span class="workout-meta">Block 4, Week 2 • Tuesday</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="workout-title">Upper Body Push & Core</span>
+                <span class="workout-meta">Block 4, Week 2 • Thursday</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <pre class="sg-example-code">&lt;ul class="workout-list"&gt;
+  &lt;li&gt;
+    &lt;a href="#"&gt;
+      &lt;span class="workout-title"&gt;Title&lt;/span&gt;
+      &lt;span class="workout-meta"&gt;Metadata&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</pre>
+      </div>
+    </section>
+
+    <!-- BADGES -->
+    <section id="badges" class="sg-section">
+      <h2 class="sg-section-title">Badges & Pills</h2>
+      
+      <div class="sg-example">
+        <div class="sg-example-label">Badge Examples</div>
+        <div class="sg-example-display">
+          <span class="exercise-badge">Strength</span>
+          <span class="exercise-badge">Mobility</span>
+          <span class="exercise-pill">Dumbbell</span>
+          <span class="exercise-pill">Kettlebell</span>
+        </div>
+        <pre class="sg-example-code">&lt;span class="exercise-badge"&gt;Strength&lt;/span&gt;
+&lt;span class="exercise-pill"&gt;Dumbbell&lt;/span&gt;</pre>
+      </div>
+    </section>
+
+    <!-- NAMING CONVENTIONS -->
+    <section id="naming" class="sg-section">
+      <h2 class="sg-section-title">Naming Conventions</h2>
+      
+      <h3 class="sg-subsection-title">BEM Methodology</h3>
+      <p>We use BEM (Block Element Modifier) for component class names:</p>
+      
+      <table class="sg-table">
+        <thead>
+          <tr>
+            <th>Type</th>
+            <th>Pattern</th>
+            <th>Example</th>
+            <th>Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Block</strong></td>
+            <td><code>.block-name</code></td>
+            <td><code>.exercise-card</code></td>
+            <td>Standalone component</td>
+          </tr>
+          <tr>
+            <td><strong>Element</strong></td>
+            <td><code>.block__element</code></td>
+            <td><code>.exercise-card__header</code></td>
+            <td>Part of a block</td>
+          </tr>
+          <tr>
+            <td><strong>Modifier</strong></td>
+            <td><code>.block--modifier</code></td>
+            <td><code>.exercise-card--compact</code></td>
+            <td>Variation of a block</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="sg-subsection-title">Class Prefixes</h3>
+      <table class="sg-table">
+        <thead>
+          <tr>
+            <th>Prefix</th>
+            <th>Usage</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>l-</code></td>
+            <td>Layout containers</td>
+            <td><code>.l-container</code>, <code>.l-grid</code></td>
+          </tr>
+          <tr>
+            <td><code>u-</code></td>
+            <td>Utility classes</td>
+            <td><code>.u-text-center</code>, <code>.u-mb-4</code></td>
+          </tr>
+          <tr>
+            <td><code>is-</code>, <code>has-</code></td>
+            <td>State classes</td>
+            <td><code>.is-active</code>, <code>.has-error</code></td>
+          </tr>
+          <tr>
+            <td><code>js-</code></td>
+            <td>JavaScript hooks (no styles)</td>
+            <td><code>.js-toggle-menu</code></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="sg-subsection-title">Do's and Don'ts</h3>
+      <div class="sg-dos-donts">
+        <div class="sg-do">
+          <h4>✓ Do</h4>
+          <p><code>.exercise-card__header</code></p>
+          <p><code>.button--primary</code></p>
+          <p><code>.u-text-center</code></p>
+          <p>Use descriptive, semantic names that describe purpose, not appearance.</p>
+        </div>
+        <div class="sg-dont">
+          <h4>✗ Don't</h4>
+          <p><code>.bigRedButton</code></p>
+          <p><code>.div1</code></p>
+          <p><code>.blue-text</code></p>
+          <p>Avoid appearance-based names, vague names, or camelCase (use kebab-case).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESPONSIVE -->
+    <section id="responsive" class="sg-section">
+      <h2 class="sg-section-title">Responsive Design</h2>
+      
+      <h3 class="sg-subsection-title">Breakpoints</h3>
+      <table class="sg-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Width</th>
+            <th>Devices</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Mobile</td>
+            <td>0 - 640px</td>
+            <td>Phones (portrait)</td>
+          </tr>
+          <tr>
+            <td>Tablet</td>
+            <td>641px - 768px</td>
+            <td>Phones (landscape), small tablets</td>
+          </tr>
+          <tr>
+            <td>Desktop</td>
+            <td>1024px+</td>
+            <td>Laptops, desktops</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="sg-subsection-title">Mobile-First Approach</h3>
+      <p>Start with mobile styles, then add complexity for larger screens:</p>
+      <div class="sg-example">
+        <div class="sg-example-label">Responsive Pattern</div>
+        <pre class="sg-example-code">/* Mobile-first: start with smallest screen */
+.component {
+  padding: 12px;
+  font-size: 14px;
+}
+
+/* Tablet and up */
+@media (min-width: 641px) {
+  .component {
+    padding: 16px;
+    font-size: 16px;
+  }
+}
+
+/* Desktop and up */
+@media (min-width: 1024px) {
+  .component {
+    padding: 20px;
+    font-size: 18px;
+  }
+}</pre>
+      </div>
+
+      <h3 class="sg-subsection-title">Touch Targets</h3>
+      <ul>
+        <li>Minimum 44px × 44px for all interactive elements (buttons, links)</li>
+        <li>Adequate spacing between touch targets (at least 8px)</li>
+        <li>Larger tap areas on mobile (use padding, not just visual size)</li>
+      </ul>
+    </section>
+
+    <!-- RPE COMPONENTS -->
+    <section id="rpe" class="sg-section">
+      <h2 class="sg-section-title">RPE Components</h2>
+      
+      <div class="sg-example">
+        <div class="sg-example-label">RPE Scale Items</div>
+        <div class="sg-example-display">
+          <div class="rpe-scale">
+            <div class="rpe-item rpe-light">
+              <div class="rpe-number">6</div>
+              <div class="rpe-description">
+                <h4>Light Effort</h4>
+                <p>Could do many more reps. Warming up, technical work.</p>
+              </div>
+            </div>
+            <div class="rpe-item rpe-moderate">
+              <div class="rpe-number">7</div>
+              <div class="rpe-description">
+                <h4>Moderate Effort</h4>
+                <p>Could do 3 more reps. Building strength.</p>
+              </div>
+            </div>
+            <div class="rpe-item rpe-hard">
+              <div class="rpe-number">8</div>
+              <div class="rpe-description">
+                <h4>Hard Effort</h4>
+                <p>Could do 2 more reps. Challenging sets.</p>
+              </div>
+            </div>
+            <div class="rpe-item rpe-max">
+              <div class="rpe-number">9</div>
+              <div class="rpe-description">
+                <h4>Very Hard</h4>
+                <p>Could do 1 more rep. Near maximum effort.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <pre class="sg-example-code">&lt;div class="rpe-item rpe-moderate"&gt;
+  &lt;div class="rpe-number"&gt;7&lt;/div&gt;
+  &lt;div class="rpe-description"&gt;
+    &lt;h4&gt;Moderate Effort&lt;/h4&gt;
+    &lt;p&gt;Could do 3 more reps.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </section>
+
+    <!-- PROGRESS INDICATORS -->
+    <section id="progress" class="sg-section">
+      <h2 class="sg-section-title">Progress Indicators</h2>
+      
+      <div class="sg-example">
+        <div class="sg-example-label">Progress Bar</div>
+        <div class="sg-example-display">
+          <div class="progress-container">
+            <div class="progress-bar" style="width: 75%;"></div>
+          </div>
+          <p style="margin-top: 12px; font-size: 14px; color: var(--color-text-light);">75% Complete</p>
+        </div>
+        <pre class="sg-example-code">&lt;div class="progress-container"&gt;
+  &lt;div class="progress-bar" style="width: 75%;"&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+      </div>
+
+      <div class="sg-example">
+        <div class="sg-example-label">Status Messages</div>
+        <div class="sg-example-display">
+          <div class="status">
+            ⚠️ This is a warning or informational message.
+          </div>
+        </div>
+        <pre class="sg-example-code">&lt;div class="status"&gt;
+  ⚠️ This is a warning message.
+&lt;/div&gt;</pre>
+      </div>
+    </section>
+
+    <!-- TABLES -->
+    <section id="tables" class="sg-section">
+      <h2 class="sg-section-title">Tables</h2>
+      
+      <div class="sg-example">
+        <div class="sg-example-label">RPE Table</div>
+        <div class="sg-example-display">
+          <div class="rpe-table-container">
+            <table class="rpe-table">
+              <thead>
+                <tr>
+                  <th>RPE</th>
+                  <th>Effort Level</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="rpe-number rpe-light" style="display: inline-block; min-width: 40px; text-align: center; padding: 4px 8px;">6</span></td>
+                  <td>Light</td>
+                  <td>Could do many more reps</td>
+                </tr>
+                <tr>
+                  <td><span class="rpe-number rpe-moderate" style="display: inline-block; min-width: 40px; text-align: center; padding: 4px 8px;">7</span></td>
+                  <td>Moderate</td>
+                  <td>Could do 3 more reps</td>
+                </tr>
+                <tr>
+                  <td><span class="rpe-number rpe-hard" style="display: inline-block; min-width: 40px; text-align: center; padding: 4px 8px;">8</span></td>
+                  <td>Hard</td>
+                  <td>Could do 2 more reps</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <pre class="sg-example-code">&lt;div class="rpe-table-container"&gt;
+  &lt;table class="rpe-table"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;RPE&lt;/th&gt;
+        &lt;th&gt;Effort Level&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;...&lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</pre>
+      </div>
+    </section>
+
+    <!-- ACCESSIBILITY -->
+    <section id="accessibility" class="sg-section">
+      <h2 class="sg-section-title">Accessibility Checklist</h2>
+      
+      <h3 class="sg-subsection-title">Core Requirements</h3>
+      <div class="card" style="background: var(--color-bg-light);">
+        <h4>Color & Contrast</h4>
+        <ul>
+          <li>✓ Text contrast meets WCAG AA minimum (4.5:1 for normal text, 3:1 for large text)</li>
+          <li>✓ Color is not the only means of conveying information</li>
+          <li>✓ Focus indicators have 3:1 contrast against background</li>
+          <li>✓ Dark mode maintains proper contrast ratios</li>
+        </ul>
+
+        <h4 style="margin-top: 20px;">Keyboard Navigation</h4>
+        <ul>
+          <li>✓ All interactive elements accessible via keyboard (Tab, Enter, Space)</li>
+          <li>✓ Logical tab order follows visual layout</li>
+          <li>✓ Focus states clearly visible</li>
+          <li>✓ No keyboard traps (user can escape from all components)</li>
+          <li>✓ Skip links available for screen readers</li>
+        </ul>
+
+        <h4 style="margin-top: 20px;">Touch & Click Targets</h4>
+        <ul>
+          <li>✓ Minimum 44px × 44px touch targets on mobile</li>
+          <li>✓ Adequate spacing between interactive elements (8px minimum)</li>
+          <li>✓ Buttons and links have visible hover/active states</li>
+        </ul>
+
+        <h4 style="margin-top: 20px;">Semantic HTML</h4>
+        <ul>
+          <li>✓ Use semantic elements (button, nav, main, header, footer)</li>
+          <li>✓ Forms have associated labels (for/id relationship)</li>
+          <li>✓ Heading hierarchy is logical (h1 → h2 → h3)</li>
+          <li>✓ Lists use ul/ol/li appropriately</li>
+          <li>✓ Images have alt text</li>
+        </ul>
+
+        <h4 style="margin-top: 20px;">ARIA & Screen Readers</h4>
+        <ul>
+          <li>✓ Use ARIA labels only when semantic HTML isn't sufficient</li>
+          <li>✓ Form validation errors announced to screen readers</li>
+          <li>✓ Loading states and dynamic content changes announced</li>
+          <li>✓ Modal dialogs trap focus and have proper aria-modal</li>
+        </ul>
+      </div>
+
+      <h3 class="sg-subsection-title" style="margin-top: 40px;">Testing Tools</h3>
+      <table class="sg-table">
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>Purpose</th>
+            <th>How to Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Lighthouse</strong></td>
+            <td>Accessibility audit</td>
+            <td>Chrome DevTools → Lighthouse → Accessibility</td>
+          </tr>
+          <tr>
+            <td><strong>axe DevTools</strong></td>
+            <td>Automated testing</td>
+            <td>Browser extension for comprehensive checks</td>
+          </tr>
+          <tr>
+            <td><strong>WAVE</strong></td>
+            <td>Visual feedback</td>
+            <td>Browser extension showing issues inline</td>
+          </tr>
+          <tr>
+            <td><strong>VoiceOver</strong> (Mac)</td>
+            <td>Screen reader testing</td>
+            <td>Cmd+F5 to toggle</td>
+          </tr>
+          <tr>
+            <td><strong>NVDA</strong> (Windows)</td>
+            <td>Screen reader testing</td>
+            <td>Free download from nvaccess.org</td>
+          </tr>
+          <tr>
+            <td><strong>Keyboard Only</strong></td>
+            <td>Navigation testing</td>
+            <td>Unplug mouse, use Tab/Shift+Tab/Enter</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 class="sg-subsection-title" style="margin-top: 40px;">Common Patterns</h3>
+      
+      <div class="sg-dos-donts">
+        <div class="sg-do">
+          <h4>✓ Accessible Button</h4>
+          <pre style="background: white; padding: 12px; border-radius: 4px; font-size: 12px; margin: 8px 0;"><code>&lt;button type="button"&gt;
+  Save Workout
+&lt;/button&gt;</code></pre>
+          <p style="margin: 0; font-size: 13px;">Uses semantic button element with descriptive text.</p>
+        </div>
+        <div class="sg-dont">
+          <h4>✗ Inaccessible "Button"</h4>
+          <pre style="background: white; padding: 12px; border-radius: 4px; font-size: 12px; margin: 8px 0;"><code>&lt;div onclick="save()"&gt;
+  Save
+&lt;/div&gt;</code></pre>
+          <p style="margin: 0; font-size: 13px;">Not keyboard accessible, no semantic meaning.</p>
+        </div>
+      </div>
+
+      <div class="sg-dos-donts">
+        <div class="sg-do">
+          <h4>✓ Accessible Form Input</h4>
+          <pre style="background: white; padding: 12px; border-radius: 4px; font-size: 12px; margin: 8px 0;"><code>&lt;label for="weight"&gt;
+  Weight (lbs)
+&lt;/label&gt;
+&lt;input 
+  type="number" 
+  id="weight"
+  aria-describedby="weight-hint"
+&gt;
+&lt;p id="weight-hint" class="form-hint"&gt;
+  Enter weight used
+&lt;/p&gt;</code></pre>
+          <p style="margin: 0; font-size: 13px;">Label associated, hint connected via aria-describedby.</p>
+        </div>
+        <div class="sg-dont">
+          <h4>✗ Inaccessible Input</h4>
+          <pre style="background: white; padding: 12px; border-radius: 4px; font-size: 12px; margin: 8px 0;"><code>&lt;input 
+  type="number" 
+  placeholder="Weight"
+&gt;</code></pre>
+          <p style="margin: 0; font-size: 13px;">No label, placeholder isn't a substitute for label.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DARK MODE -->
+    <section id="dark-mode" class="sg-section">
+      <h2 class="sg-section-title">Dark Mode</h2>
+      
+      <p>Dark mode is automatically applied based on system preference using <code>prefers-color-scheme: dark</code>.</p>
+      
+      <h3 class="sg-subsection-title">Testing Dark Mode</h3>
+      <ul>
+        <li><strong>macOS:</strong> System Preferences → General → Appearance → Dark</li>
+        <li><strong>Windows:</strong> Settings → Personalization → Colors → Dark</li>
+        <li><strong>Browser DevTools:</strong> Chrome/Firefox DevTools → Rendering → Emulate CSS media feature</li>
+      </ul>
+
+      <h3 class="sg-subsection-title">Dark Mode Guidelines</h3>
+      <ul>
+        <li>All colors are automatically inverted via CSS custom properties</li>
+        <li>Text contrast meets WCAG AA standards in both modes</li>
+        <li>Don't hardcode colors - always use CSS variables</li>
+        <li>Test all components in both light and dark mode</li>
+        <li>Headings use <code>#f8fafc</code> (near-white) in dark mode for maximum readability</li>
+      </ul>
+
+      <div class="sg-example">
+        <div class="sg-example-label">Dark Mode Example</div>
+        <div class="sg-example-display">
+          <div class="card">
+            <h3>Sample Card in Current Mode</h3>
+            <p>This card automatically adapts to your system's color scheme. Try toggling your OS dark mode to see it change!</p>
+            <button>Test Button</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer style="margin-top: 80px; padding: 40px 0; border-top: 2px solid var(--color-border); text-align: center; color: var(--color-text-light);">
+      <p><strong>exercAIse CSS Style Guide</strong></p>
+      <p>Last updated: October 29, 2025</p>
+      <p><a href="index.html">← Back to App</a></p>
+    </footer>
+
+  </div>
+
+  <script>
+    // Smooth scroll for navigation links
+    document.querySelectorAll('.sg-nav-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Highlight active section in navigation
+    const observerOptions = {
+      root: null,
+      rootMargin: '-80px 0px -80% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          document.querySelectorAll('.sg-nav-link').forEach(link => {
+            link.classList.remove('is-active');
+            if (link.getAttribute('href') === `#${id}`) {
+              link.classList.add('is-active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.sg-section').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+
+</body>
+</html>

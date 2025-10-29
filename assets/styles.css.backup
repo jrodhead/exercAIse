@@ -1,62 +1,4 @@
 /* ========================================
-   exercAIse CSS
-   Professional Design System
-   ========================================
-   
-   TABLE OF CONTENTS:
-   
-   1. DESIGN TOKENS (CSS Variables)............Line 5
-      - Colors (gray, primary, semantic)
-      - Spacing scale (4px base unit)
-      - Typography (sizes, weights, line-heights)
-      - Border radius, transitions, shadows
-   
-   2. BASE STYLES & TYPOGRAPHY.................Line 150
-      - Reset & utilities
-      - Headings, paragraphs, links
-      - Code blocks
-   
-   3. LAYOUT COMPONENTS........................Line 230
-      - Containers, grids, flex utilities
-      - Header & footer
-      - Navigation
-   
-   4. FORM ELEMENTS............................Line 365
-      - Inputs, textareas, labels
-      - Form actions & buttons
-      - Set rows & exercise logging
-   
-   5. COMPONENTS...............................Line 515
-      - Buttons (primary, secondary, danger)
-      - Cards (exercise, workout, stat cards)
-      - Status messages & toasts
-      - Progress bars & charts
-      - RPE scales & tables
-   
-   6. PAGE-SPECIFIC STYLES.....................Line 625
-      - RPE guide page
-      - Exercise detail pages
-      - Week view
-      - History lists
-   
-   7. UTILITY CLASSES..........................Line 1125
-      - Spacing (margins, padding)
-      - Text utilities (sizes, weights, alignment)
-      - Shadows, borders, visibility
-      - Loading states & animations
-   
-   8. RESPONSIVE BREAKPOINTS...................Line 1215
-      - Mobile-first breakpoints
-      - Safe area insets
-      - Touch target enhancements
-      - Print styles
-   
-   9. DARK MODE................................Line 2245
-      - All dark mode overrides consolidated
-   
-   ======================================== */
-
-/* ========================================
    CSS CUSTOM PROPERTIES (Design Tokens)
    ======================================== */
 
@@ -205,9 +147,9 @@
   --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* ======================================================================
-   2. BASE STYLES & TYPOGRAPHY
-   ====================================================================== */
+/* ========================================
+   STYLES
+   ======================================== */
 
 /* Muted button when disabled via feature flag */
 .disabled {
@@ -323,10 +265,6 @@ a:focus-visible { outline: 2px solid var(--color-link-hover); outline-offset: 2p
 
 .container { max-width: 860px; margin: 0 auto; padding: var(--space-3) 14px; }
 
-/* ======================================================================
-   3. LAYOUT COMPONENTS (Header, Footer, Navigation)
-   ====================================================================== */
-
 .site-header, .site-footer { background: var(--color-white); border-bottom: 1px solid var(--color-border); }
 
 /* Enhanced Header with Gradient & Brand Presence */
@@ -417,10 +355,6 @@ a:focus-visible { outline: 2px solid var(--color-link-hover); outline-offset: 2p
 
 .workout-content { background: var(--color-white); border: 1px solid var(--color-border); padding: var(--space-3); border-radius: var(--radius-md); }
 .workout-content pre { white-space: pre-wrap; }
-
-/* ======================================================================
-   4. FORM ELEMENTS & INPUT STYLING
-   ====================================================================== */
 
 .form { margin-top: var(--space-4); background: var(--color-white); border: 1px solid var(--color-border); padding: var(--space-3); border-radius: var(--radius-md); }
 .form h2 { margin-top: 0; }
@@ -578,11 +512,6 @@ a:focus-visible { outline: 2px solid var(--color-link-hover); outline-offset: 2p
 .set-row button { padding: 10px var(--space-3); }
 
 .form-actions { display: flex; gap: var(--space-2); margin-top: var(--space-2); flex-wrap: wrap; }
-
-/* ======================================================================
-   5. COMPONENTS (Buttons, Cards, Status, Progress, RPE)
-   ====================================================================== */
-
 /* Professional Button System */
 button { 
   cursor: pointer; 
@@ -673,10 +602,6 @@ button.primary:hover {
 
 .copy-wrapper { margin-top: 10px; }
 textarea { width: 100%; }
-
-/* ======================================================================
-   5B. PAGE-SPECIFIC STYLES (RPE Guide, Exercise Pages, Week View)
-   ====================================================================== */
 
 /* Mobile tweaks */
 @media (max-width: 600px) {
@@ -1127,10 +1052,6 @@ textarea { width: 100%; }
   font-size: 13px;
 }
 
-/* ======================================================================
-   6. PROFESSIONAL INTERACTIONS & TRANSITIONS
-   ====================================================================== */
-
 /* Mobile responsive for exercise pages */
 @media (max-width: 640px) {
   .exercise-grid {
@@ -1196,11 +1117,6 @@ a {
 a:hover {
   transform: translateY(-1px);
 }
-
-/* ======================================================================
-   7. UTILITY CLASSES (Layout, Spacing, Text, Visibility)
-   ====================================================================== */
-
 .responsive-container {
   max-width: 860px;
   margin: 0 auto;
@@ -1293,10 +1209,6 @@ a:hover {
 .sm-hidden { display: block; }
 .md-hidden { display: block; }
 .lg-hidden { display: block; }
-
-/* ======================================================================
-   8. RESPONSIVE BREAKPOINTS (Mobile-First, Safe Areas, Touch Targets)
-   ====================================================================== */
 
 /* Mobile First Responsive Breakpoints */
 
