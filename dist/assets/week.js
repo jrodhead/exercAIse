@@ -2,7 +2,7 @@
 (() => {
     const statusEl = document.getElementById('status');
     const weekContent = document.getElementById('week-content');
-    const weekInfoEl = document.getElementById('current-week-info');
+    const weekInfoEl = document.querySelector('.current-week-info');
     const status = (msg, opts = {}) => {
         const isImportant = !!opts.important;
         if (!msg) {

@@ -29,9 +29,9 @@ test.describe('This Week Page', () => {
     await page.goto('/week.html');
     
     // Wait for week info to load
-    await page.waitForSelector('#current-week-info', { timeout: 5000 });
+    await page.waitForSelector('.current-week-info', { timeout: 5000 });
     
-    const weekInfo = page.locator('#current-week-info');
+    const weekInfo = page.locator('.current-week-info');
     await expect(weekInfo).toBeVisible();
     
     // Should contain "Week of" text
@@ -277,7 +277,7 @@ test.describe('This Week Page', () => {
     const heading = page.locator('h2:has-text("This Week\'s Sessions")');
     await expect(heading).toBeVisible();
     
-    const weekInfo = page.locator('#current-week-info');
+    const weekInfo = page.locator('.current-week-info');
     await expect(weekInfo).toBeVisible();
     
     // Navigation should be accessible

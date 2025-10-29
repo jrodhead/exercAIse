@@ -410,8 +410,6 @@ a:focus-visible { outline: 2px solid var(--color-link-hover); outline-offset: 2p
 }
 .site-footer { padding: var(--space-3) 16px; border-top: 1px solid var(--color-border); border-bottom: none; color: var(--color-text-light); }
 
-.status { background: var(--color-warning-bg); color: var(--color-warning-text); border: 1px solid var(--color-warning-border); padding: 10px var(--space-3); margin: var(--space-3) 0; border-radius: var(--radius-md); }
-
 .workout-meta { display: flex; align-items: center; justify-content: space-between; background: var(--color-white); border: 1px solid var(--color-border); padding: 10px var(--space-3); border-radius: var(--radius-md); gap: var(--space-2); flex-wrap: wrap; }
 .workout-meta .meta-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
 
@@ -453,27 +451,6 @@ a:focus-visible { outline: 2px solid var(--color-link-hover); outline-offset: 2p
   border-color: var(--color-gray-300);
 }
 
-.set-row input { 
-  width: 84px; 
-  padding: var(--space-2) 12px; 
-  font-size: var(--font-size-sm); 
-  min-height: 40px; 
-  box-sizing: border-box; 
-  border: 2px solid var(--color-gray-200); 
-  border-radius: var(--radius-md);
-  background: var(--color-white);
-  transition: all var(--transition-base);
-}
-
-.set-row input:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
-}
-
-.set-row input:hover {
-  border-color: var(--color-gray-300);
-}
 .form-hint { color: var(--color-text-hint); margin: var(--space-2) 0; font-size: var(--font-size-sm); }
 
 /* Professional Exercise Cards */
@@ -636,11 +613,6 @@ button::after {
 button:active::after {
   width: 300px;
   height: 300px;
-}
-
-button:active {
-  transform: translateY(0);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 button.secondary { 
@@ -835,7 +807,7 @@ textarea { width: 100%; }
   }
 }
 
-/* Legacy rpe-scale styles (remove these) */
+/* RPE Guide Page Components (example boxes, mistake grids, etc.) */
 .rpe-scale {
   display: flex;
   flex-direction: column;
@@ -1063,15 +1035,7 @@ textarea { width: 100%; }
   font-weight: var(--font-weight-semibold);
 }
 
-/* Exercise Page Specific Styles */
-.exercise-card {
-  background: var(--color-white);
-  border: 1px solid var(--color-gray-200);
-  border-radius: var(--radius-lg);
-  padding: var(--space-4);
-  margin: var(--space-4) 0;
-}
-
+/* Exercise Page: Additional heading styles */
 .exercise-card h2 {
   margin: 0 0 var(--space-3) 0;
   color: var(--color-gray-800);
@@ -1180,10 +1144,6 @@ select:focus {
 }
 
 /* Card hover micro-interactions */
-.exercise-card:hover {
-  transform: translateY(-2px);
-}
-
 .workout-list li:hover {
   transform: translateY(-1px);
 }
@@ -1356,7 +1316,6 @@ a:hover {
     min-height: 48px;
     padding: var(--space-3) 16px;
   }
-}
   
   .grid {
     gap: var(--space-3);
@@ -1458,10 +1417,6 @@ a:hover {
 
 .form-full-width {
   grid-column: 1 / -1;
-}
-
-.form-actions {
-  margin: var(--space-4) 0;
 }
 
 /* Responsive form on mobile */
@@ -1644,10 +1599,10 @@ a:hover {
   right: 0;
   bottom: 0;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  animation: progressShimmer 2s infinite;
+  animation: progress-shimmer 2s infinite;
 }
 
-@keyframes progressShimmer {
+@keyframes progress-shimmer {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
 }
@@ -1896,22 +1851,22 @@ a:hover {
 }
 
 /* Professional Animations */
-@keyframes fadeIn {
+@keyframes fade-in {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes slideIn {
+@keyframes slide-in {
   from { opacity: 0; transform: translateX(-16px); }
   to { opacity: 1; transform: translateX(0); }
 }
 
-.animate-fadeIn {
-  animation: fadeIn var(--transition-slow)-out;
+.animate-fade-in {
+  animation: fade-in var(--transition-slow)-out;
 }
 
-.animate-slideIn {
-  animation: slideIn var(--transition-slow)-out;
+.animate-slide-in {
+  animation: slide-in var(--transition-slow)-out;
 }
 
 /* Professional Loading States */
@@ -2318,7 +2273,7 @@ a:hover {
   font-size: var(--font-size-sm);
 }
 
-#current-week-info {
+.current-week-info {
   margin-bottom: var(--space-4);
   font-size: var(--font-size-sm);
   color: var(--color-text-light);

@@ -5,7 +5,7 @@
 (() => {
   const statusEl = document.getElementById('status')!;
   const weekContent = document.getElementById('week-content')!;
-  const weekInfoEl = document.getElementById('current-week-info')!;
+  const weekInfoEl = document.querySelector('.current-week-info')!;
 
   interface WorkoutFile {
     filename: string;

@@ -1,0 +1,47 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "selector-class-pattern": [
+      "^([a-z][a-z0-9]*)((--?|__)[a-z0-9]+)*$|^(u|l|is|has|js)-[a-z0-9-]+$",
+      {
+        "message": "Use BEM naming: .block__element--modifier or prefixes: u-, l-, is-, has-, js-"
+      }
+    ],
+    "max-nesting-depth": 3,
+    "declaration-no-important": true,
+    "selector-max-id": 0,
+    "color-hex-length": "long",
+    "custom-property-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global"]
+      }
+    ],
+    "property-no-vendor-prefix": null,
+    "value-no-vendor-prefix": null,
+    "at-rule-no-vendor-prefix": null,
+    "selector-no-vendor-prefix": null,
+    "comment-empty-line-before": null,
+    "rule-empty-line-before": null,
+    "custom-property-empty-line-before": null,
+    "declaration-block-single-line-max-declarations": null,
+    "color-function-notation": null,
+    "alpha-value-notation": null,
+    "color-function-alias-notation": null,
+    "shorthand-property-no-redundant-values": null,
+    "font-family-name-quotes": null,
+    "media-feature-range-notation": null,
+    "declaration-block-no-shorthand-property-overrides": null,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "no-descending-specificity": null,
+    "no-duplicate-selectors": true,
+    "font-family-no-missing-generic-family-keyword": null
+  },
+  "ignoreFiles": [
+    "dist/**",
+    "node_modules/**",
+    "coverage/**",
+    "*.min.css"
+  ]
+}

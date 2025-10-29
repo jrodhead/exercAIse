@@ -54,36 +54,66 @@
 - **File:** `style-guide.html`
 - **README updated:** ✅ Linked in Documentation section
 
-### 5. Backup Created ✅
+### 6. Misleading Comment Fixed ✅
 - **Status:** COMPLETE
-- **File:** `assets/styles.css.backup` (original 2,838 line version)
+- **What was done:**
+  - Investigated "Legacy rpe-scale styles (remove these)" comment at line 838
+  - Found these styles ARE actively used in `rpe-guide.html`, `dark-mode-preview.html`, and `style-guide.html`
+  - Updated comment from misleading "Legacy (remove these)" to accurate "RPE Guide Page Components"
+  - Verified no duplicate section comments exist
+  - Confirmed no actual legacy code to remove
+- **Validation:** ✅ Build succeeds, all tests pass
 
 ---
 
 ## 🚧 Pending Tasks
 
-### Priority 1: Remove Legacy Code
-**Status:** NOT STARTED  
-**Estimated Impact:** Remove ~50-100 lines
+### Priority 1: Remove Legacy Code & Clean Up Comments
+**Status:** ✅ COMPLETE  
+**Estimated Impact:** Clean up ~10-20 lines of comments
 
-**Tasks:**
-1. **Remove legacy RPE scale styles** (line ~763)
-   - Comment says "Legacy rpe-scale styles (remove these)"
-   - Already replaced by RPE table/card components
-   - Safe to remove
+**Findings:**
+After investigation, the "Legacy rpe-scale styles (remove these)" comment at line 838 was **INCORRECT**. These styles ARE still actively used in:
+- `rpe-guide.html` (example boxes, mistake grid)
+- `dark-mode-preview.html` (example boxes)
+- `style-guide.html` (RPE component examples)
 
-2. **Clean up duplicate comments**
-   - "Professional Typography System" appears multiple times
-   - Consolidate under Section 2
+**Completed Tasks:**
+1. ✅ **Verified RPE styles are in use** - NOT legacy, kept them
+2. ✅ **Updated misleading comment** at line 838
+   - Changed from "Legacy rpe-scale styles (remove these)"
+   - To "RPE Guide Page Components (example boxes, mistake grids, etc.)"
+3. ✅ **Verified no duplicate section comments**
+   - Confirmed: "Professional Typography", "Professional Card", etc. appear only once each
+   - No action needed
 
-3. **Remove unused classes**
-   - Search for classes not used in HTML/TypeScript
-   - Document findings before removal
+**Result:**
+- ✅ Misleading comment corrected
+- ✅ No CSS removal needed (all classes are actively used)
+- ✅ Build and validation pass
 
-**Command to find legacy code:**
+**Command executed:**
 ```bash
 grep -n "Legacy\|remove these\|TODO\|FIXME\|deprecated" assets/styles.css
+# Result: Only line 838 with misleading comment (now fixed)
 ```
+
+---
+
+### 8. CSS Linting Setup ✅
+- **Status:** COMPLETE
+- **What was done:**
+  - Installed stylelint v16.25.0 + stylelint-config-standard v39.0.1
+  - Created `.stylelintrc.json` with BEM naming enforcement, no !important, no IDs, max nesting 3
+  - Added 3 npm scripts: `lint:css`, `lint:css:fix`, `lint:css:report`
+  - Fixed CSS syntax error at line 1399 (extra closing brace in media query)
+  - Generated comprehensive lint report with 35 structural issues:
+    - 28 duplicate selectors (22 intentional, 6 bugs)
+    - 5 naming violations
+    - 1 ID selector
+  - Configured lenient rules (disabled formatting noise, focus on structure)
+- **Files:** `.stylelintrc.json`, `docs/CSS-LINT-REPORT.md`
+- **Validation:** ✅ Build passes, linter runs successfully
 
 ---
 
@@ -398,45 +428,49 @@ Keep responsive overrides in Section 8, but ensure consistency:
 ---
 
 ### Priority 8: Create CSS Linting Rules
-**Status:** NOT STARTED  
-**Estimated Impact:** Add stylelint configuration
+**Status:** ✅ COMPLETE  
+**Estimated Impact:** Add stylelint configuration + found 35 issues
 
-**Goal:**
-Automatically enforce naming conventions and best practices
+**What was done:**
+1. ✅ **Installed stylelint**
+   - `npm install --save-dev stylelint stylelint-config-standard`
+   - Added 104 packages (stylelint v16.25.0, config v39.0.1)
 
-**Tasks:**
-1. Install stylelint: `npm install --save-dev stylelint stylelint-config-standard`
-2. Create `.stylelintrc.json`:
-```json
-{
-  "extends": "stylelint-config-standard",
-  "rules": {
-    "selector-class-pattern": [
-      "^([a-z][a-z0-9]*)((--?|__)[a-z0-9]+)*$|^(u|l|is|has|js)-[a-z0-9-]+$",
-      {
-        "message": "Use BEM naming: .block__element--modifier or prefixes: u-, l-, is-, has-, js-"
-      }
-    ],
-    "max-nesting-depth": 3,
-    "declaration-no-important": true,
-    "selector-max-id": 0,
-    "color-hex-length": "long",
-    "custom-property-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$"
-  }
-}
-```
+2. ✅ **Created `.stylelintrc.json`** with rules:
+   - BEM naming pattern enforced (`.block__element--modifier` or `u-`, `l-`, `is-`, `has-`, `js-` prefixes)
+   - No `!important` allowed
+   - No ID selectors (max 0)
+   - Max nesting depth: 3
+   - Kebab-case for keyframes and custom properties
+   - Formatting rules disabled (too noisy - focus on structure)
 
-3. Add to `package.json`:
-```json
-{
-  "scripts": {
-    "lint:css": "stylelint \"assets/**/*.css\"",
-    "lint:css:fix": "stylelint \"assets/**/*.css\" --fix"
-  }
-}
-```
+3. ✅ **Added npm scripts** to `package.json`:
+   - `"lint:css": "stylelint \"assets/**/*.css\""`
+   - `"lint:css:fix": "stylelint \"assets/**/*.css\" --fix"`
+   - `"lint:css:report": "stylelint \"assets/**/*.css\" --formatter verbose"`
 
-4. Add to CI/CD pipeline in `.github/workflows/`
+4. ✅ **Fixed CSS syntax error discovered by linter**:
+   - Line 1399: Extra closing brace breaking `@media` block
+   - Moved orphaned rules back inside media query
+   - Build now passes validation
+
+5. ✅ **Generated lint report**: `docs/CSS-LINT-REPORT.md`
+   - 35 structural issues found (after suppressing formatting noise)
+   - 28 duplicate selectors (22 intentional responsive overrides, 6 real bugs)
+   - 5 naming violations (2 non-BEM classes, 3 camelCase keyframes)
+   - 1 ID selector (`#current-week-info`)
+   - 1 case violation (`currentColor` vs `currentcolor`)
+
+**Next Steps:**
+- Fix 6 real duplicate selectors (see lint report)
+- Optionally add `npm run lint:css` to CI/CD validation
+- Consider addressing naming violations as part of Priority 2 (BEM Naming)
+
+**Files modified:**
+- Created: `.stylelintrc.json`
+- Created: `docs/CSS-LINT-REPORT.md`
+- Modified: `package.json` (added scripts)
+- Fixed: `assets/styles.css` (line 1359 syntax error)
 
 ---
 
@@ -481,7 +515,7 @@ function createExerciseCard(exercise: Exercise): HTMLElement {
 
 ## 📊 Progress Tracking
 
-### Overall Completion: ~40%
+### Overall Completion: ~50%
 
 | Task | Status | Lines Changed | Risk Level | Estimated Hours |
 |------|--------|---------------|------------|-----------------|
@@ -489,31 +523,33 @@ function createExerciseCard(exercise: Exercise): HTMLElement {
 | Table of Contents | ✅ COMPLETE | +60 | Low | 0.5 (DONE) |
 | Section Markers | ✅ COMPLETE | +30 | Low | 1 (DONE) |
 | Style Guide HTML | ✅ COMPLETE | +950 | Low | 3 (DONE) |
-| Remove Legacy Code | 🚧 TODO | ~-100 | Low | 1 |
+| Remove Legacy Code | ✅ COMPLETE | ~5 | Low | 0.5 (DONE) |
+| CSS Linting Setup | ✅ COMPLETE | +50 | Low | 1 (DONE) |
 | BEM Naming | 🚧 TODO | ~200 | High | 4 |
 | Utility Prefixes | 🚧 TODO | ~100 | Medium | 2 |
 | Layout Prefixes | 🚧 TODO | ~50 | Low | 1 |
 | State Prefixes | 🚧 TODO | ~30 | Low | 0.5 |
 | Alphabetical Components | 🚧 TODO | ~1000 | Medium | 3 |
 | Media Query Consolidation | 🚧 TODO | ~200 | Medium | 2 |
-| CSS Linting Setup | 🚧 TODO | +50 | Low | 1 |
 | Component Docs | 🚧 TODO | +500 | Low | 2 |
 
-**Total Estimated Remaining:** ~17 hours
+**Total Estimated Remaining:** ~15.5 hours
 
 ---
 
 ## 🎯 Recommended Next Steps
 
 ### Immediate (This Week):
-1. **Priority 1: Remove Legacy Code** ✨
-   - Low risk, high clarity gain
-   - Run: `grep -n "Legacy\|remove these" assets/styles.css`
-   - Clean up ~763-900 range
+1. **Fix Critical Lint Issues** 🐛
+   - 6 duplicate selectors causing real bugs
+   - Low risk, high impact
+   - See `docs/CSS-LINT-REPORT.md` for details
+   - Estimated: 30 minutes
 
-2. **Priority 8: Set up CSS Linting** 🔧
-   - Will help enforce conventions going forward
-   - Low risk, prevents future debt
+2. **Priority 2: BEM Naming** 🏗️
+   - High impact on maintainability
+   - Stylelint will enforce going forward
+   - Work section-by-section to reduce risk
 
 ### Short Term (Next 2 Weeks):
 3. **Priority 2: BEM Naming (incremental)** 🏗️

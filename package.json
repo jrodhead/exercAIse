@@ -10,6 +10,8 @@
     "happy-dom": "^20.0.8",
     "node-localstorage": "^3.0.5",
     "playwright": "^1.48.2",
+    "stylelint": "^16.25.0",
+    "stylelint-config-standard": "^39.0.1",
     "typescript": "^5.9.3",
     "vitest": "^3.2.4"
   },
@@ -26,6 +28,9 @@
     "test:all": "vitest run && playwright test",
     "pw:install": "playwright install",
     "serve": "node scripts/serve.js",
-    "test:menu": "playwright test tests/ui/index-menu.spec.ts"
+    "test:menu": "playwright test tests/ui/index-menu.spec.ts",
+    "lint:css": "stylelint \"assets/**/*.css\"",
+    "lint:css:fix": "stylelint \"assets/**/*.css\" --fix",
+    "lint:css:report": "stylelint \"assets/**/*.css\" --formatter verbose"
   }
 }
