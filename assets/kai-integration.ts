@@ -411,8 +411,10 @@
           // Decide whether to render as link or non-link
           // Only link when an explicit internal exercise link is provided
           const asLink = !!link && isInternalExerciseLink(link);
+          // Transform exercise link to proper exercise.html?file= format
+          const exerciseHref = link ? ('exercise.html?file=' + link) : '';
           let html = '<li>' + (asLink
-            ? ('<a href="' + esc(link) + '" data-exmeta="' + attrEscape(JSON.stringify(meta)) + '">' + esc(name) + '</a>')
+            ? ('<a href="' + esc(exerciseHref) + '" data-exmeta="' + attrEscape(JSON.stringify(meta)) + '">' + esc(name) + '</a>')
             : ('<span class="ex-name no-link" data-exmeta="' + attrEscape(JSON.stringify(meta)) + '">' + esc(name) + '</span>'));
           
           // Append compact prescription summary inline for list-only display

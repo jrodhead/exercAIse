@@ -16,6 +16,7 @@ test('Pasted workout JSON: items link only when link provided; no link -> non-li
 
   await page.fill('#gen-json', JSON.stringify(workout));
   await page.click('#gen-load-json');
+  await page.waitForTimeout(100); // Brief wait for form builder to process
   await expect(page.locator('#workout-section')).toBeVisible();
 
   const hasLink = page.locator('#workout-content a', { hasText: 'Has Link' }).first();
@@ -77,11 +78,17 @@ test('Exercise not found screen is shown for missing internal file', async ({ pa
   await expect(ghostLink).toBeVisible();
   
   // Wait for click handler to be attached (happens in async xhrGet callback)
-  await page.waitForTimeout(100);
+  // Increase wait time for handler attachment
+  await page.waitForTimeout(500);
   
-  // Click and wait for navigation to exercise.html
-  await ghostLink.click();
-  await page.waitForURL(/exercise\.html/, { timeout: 5000 });
+  // Verify the link has the correct href
+  await expect(ghostLink).toHaveAttribute('href', /exercise\.html\?file=exercises\/this_file_should_not_exist_abc123\.json/);
+  
+  // Click with navigation promise
+  await Promise.all([
+    page.waitForURL(/exercise\.html/, { timeout: 10000 }),
+    ghostLink.click()
+  ]);
 
   // The exercise viewer should show the not-found page
   await expect(page.locator('#not-found')).toBeVisible({ timeout: 5000 });

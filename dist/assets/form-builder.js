@@ -414,7 +414,7 @@ window.ExercAIse.FormBuilder = (() => {
                 let hasNextExercise = false;
                 try {
                     if (s.querySelector) {
-                        if (s.querySelector('a[href*="/exercises/"]'))
+                        if (s.querySelector('a[href*="exercises/"]'))
                             hasNextExercise = true;
                         else if (s.querySelector('span.ex-name'))
                             hasNextExercise = true;
@@ -485,7 +485,7 @@ window.ExercAIse.FormBuilder = (() => {
             const a = exNodes[ai];
             const isAnchorNode = !!(a && a.tagName && a.tagName.toLowerCase() === 'a');
             const href = isAnchorNode ? (a.getAttribute('href') || '') : '';
-            if (isAnchorNode && !/(?:^(?:https?:\/\/[^\/]+\/)?|\.?\.\/|\/)exercises\/[\w\-]+\.(?:md|json)$/.test(href))
+            if (isAnchorNode && !/(?:^(?:https?:\/\/[^\/]+\/)?|\.?\.\/|\/)?(?:exercise\.html\?file=)?exercises\/[\w\-]+\.(?:md|json)$/.test(href))
                 continue;
             let title = a.textContent || a.innerText || '';
             const normTitle = title.replace(/\s*\([^\)]*\)\s*$/, '').trim();

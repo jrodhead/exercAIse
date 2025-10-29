@@ -47,7 +47,8 @@ test.describe('Index and menu navigation', () => {
     await page.goto('/');
     await page.fill('#gen-json', '{"version":"1.0","title":"Test Session","exercises":[{"slug":"goblet_squat","name":"Goblet Squat","prescribed":{"sets":2,"reps":8}}]}');
     await page.click('#gen-load-json');
-    await expect(page.locator('#workout-section')).toBeVisible();
-    await expect(page.locator('.exercise-card').first()).toBeVisible();
+    // Wait for form-builder to process and render the workout
+    await expect(page.locator('#workout-section')).toBeVisible({ timeout: 5000 });
+    await expect(page.locator('.exercise-card').first()).toBeVisible({ timeout: 5000 });
   });
 });

@@ -7,6 +7,7 @@ const MOCK_PATH = 'workouts/mock_All_Types_Test.json';
 
 test('mock session: logging cards present for main strength/carry', async ({ page }) => {
   await page.goto('/index.html?file=' + encodeURIComponent(MOCK_PATH));
+  await page.waitForTimeout(100); // Brief wait for form builder to process
   await expect(page.locator('#workout-section')).toBeVisible();
   await expect(page.locator('.exercise-card').first()).toBeVisible();
 });

@@ -506,8 +506,10 @@
             if (it.notes) meta.notes = it.notes;
             // If a JSON workout provides a link, render it as a link regardless of slug presence.
             const asLink = !!link && isInternalExerciseLink(link);
+            // Transform exercise link to proper exercise.html?file= format
+            const exerciseHref = link ? `exercise.html?file=${link}` : '';
             let html = `<li>${asLink
-              ? `<a href="${esc(link)}" data-exmeta="${attrEscape(JSON.stringify(meta))}">${esc(clean)}</a>`
+              ? `<a href="${esc(exerciseHref)}" data-exmeta="${attrEscape(JSON.stringify(meta))}">${esc(clean)}</a>`
               : `<span class="ex-name no-link" data-exmeta="${attrEscape(JSON.stringify(meta))}">${esc(clean)}</span>`}`;
             // For list-only render (warm-up/cooldown/mobility), append a compact prescription summary inline
             if (it.prescription && typeof it.prescription === 'object') {
@@ -642,28 +644,6 @@
       }
       setVisibility(formSection, true);
       buildForm(path, text || '', isJSON);
-      // Intercept clicks on exercise links inside the session view and route to exercise.html
-      if (workoutSection && !(workoutSection as any).__wiredExLinks) {
-        workoutSection.addEventListener('click', (e: MouseEvent) => {
-          let t = e.target as HTMLElement | null;
-          if (!t) return;
-          while (t && t !== workoutSection && !(t.tagName && t.tagName.toLowerCase() === 'a')) t = t.parentNode as HTMLElement | null;
-          if (!t || t === workoutSection) return;
-          const href = (t as HTMLAnchorElement).getAttribute('href') || '';
-          // Only route internal exercise links
-          if (/^https?:/i.test(href)) return;
-          const exMatch = href.match(/(?:^|\/)?exercises\/[\w\-]+\.(?:md|json)$/i);
-          if (exMatch) {
-            try { e.preventDefault(); } catch (ex) {}
-            // Normalize to exercises/<slug>.json
-            const slug = (href.match(/exercises\/([\w\-]+)\.(?:md|json)$/i)||[])[1];
-            const jsonPath = `exercises/${slug}.json`;
-            try { window.location.href = `exercise.html?file=${encodeURIComponent(jsonPath)}`; } catch (ex) {}
-            return;
-          }
-        }, false);
-        (workoutSection as any).__wiredExLinks = true;
-      }
       // Meta
       let title = path;
       let obj: any = null; // Declare obj in outer scope for access below
@@ -740,35 +720,20 @@
   // - openGeneratedSession, handleGenerateButtons
   // - generateExerciseStub, generateExerciseStubsFromObj, generateExerciseStubsFromPlan
 
-  const getRepoBase = (): string => {
-    let base = './';
-    try {
-      const loc = window.location || {};
-      const host = String(loc.hostname || '');
-      if (/github\.io$/i.test(host)) {
-        base = '/exercAIse/';
-      } else if (String(loc.pathname || '').indexOf('/exercAIse/') !== -1) {
-        base = '/exercAIse/';
-      }
-    } catch (e) {}
-    return base;
-  };
-
-  // After content is in the DOM, normalize any exercise links to the correct base
+  // After content is in the DOM, normalize any exercise links to exercise.html?file= format
   const fixExerciseAnchors = (scope: HTMLElement | Document): void => {
     try {
-      const base = getRepoBase();
       const anchors = (scope || document).getElementsByTagName('a');
       for (let i = 0; i < anchors.length; i++) {
         const a = anchors[i]!;
         const href = a.getAttribute('href') || '';
-        // Identify exercise links (md or json) that might be relative or wrongly absolute
-        const m = href.match(/(?:https?:\/\/[^\/]+)?\/?(exercises\/[\w\-]+\.(?:md|json))$/);
+        // Skip links that are already in exercise.html?file= format
+        if (/^exercise\.html\?file=/i.test(href)) continue;
+        // Identify exercise links (md or json) that need to be routed through exercise.html
+        const m = href.match(/(?:^\.?\.?\/)?(?:https?:\/\/[^\/]+\/)?(?:.*\/)?(exercises\/[\w\-]+\.(?:md|json))$/);
         if (m?.[1]) {
-          let fixed = base.replace(/\/?$/, '/') + m[1];
-          // collapse duplicate slashes except after protocol
-          fixed = fixed.replace(/([^:])\/+/g, (_m0: string, p1: string) => p1 + '/');
-          a.setAttribute('href', fixed);
+          // Convert to exercise.html?file= format for proper rendering
+          a.setAttribute('href', `exercise.html?file=${m[1]}`);
         }
       }
     } catch (e) {}

@@ -535,11 +535,11 @@ interface CollectedBlocks {
       while (s) {
         if (s.nodeType === 1 && (s as Element).tagName && /^H[1-4]$/.test((s as Element).tagName)) break; // stop at next heading
         
-        // Stop if upcoming node contains an exercise anchor or a non-link exercise name span
+        //Stop if upcoming node contains an exercise anchor or a non-link exercise name span
         let hasNextExercise = false;
         try {
           if ((s as Element).querySelector) {
-            if ((s as Element).querySelector('a[href*="/exercises/"]')) hasNextExercise = true;
+            if ((s as Element).querySelector('a[href*="exercises/"]')) hasNextExercise = true;
             else if ((s as Element).querySelector('span.ex-name')) hasNextExercise = true;
           } else {
             const testHtml = (s as Element).outerHTML || (s.textContent || '');
@@ -618,8 +618,8 @@ interface CollectedBlocks {
       const isAnchorNode = !!(a && a.tagName && a.tagName.toLowerCase() === 'a');
       const href = isAnchorNode ? (a.getAttribute('href') || '') : '';
       
-      // Accept internal exercise links in various forms: exercises/..., ./exercises/..., ../exercises/..., or absolute http(s) with /exercises/...
-      if (isAnchorNode && !/(?:^(?:https?:\/\/[^\/]+\/)?|\.?\.\/|\/)exercises\/[\w\-]+\.(?:md|json)$/.test(href)) continue;
+      // Accept internal exercise links in various forms: exercises/..., ./exercises/..., ../exercises/..., exercise.html?file=exercises/..., or absolute http(s) with /exercises/...
+      if (isAnchorNode && !/(?:^(?:https?:\/\/[^\/]+\/)?|\.?\.\/|\/)?(?:exercise\.html\?file=)?exercises\/[\w\-]+\.(?:md|json)$/.test(href)) continue;
       
       let title = a.textContent || (a as any).innerText || '';
       

@@ -422,18 +422,6 @@ a:focus-visible { outline: 2px solid var(--color-link-hover); outline-offset: 2p
 }
 
 /* Enhanced Dark Mode for Exercise Cards */
-@media (prefers-color-scheme: dark) {
-  .exercise-card {
-    background: var(--color-gray-800);
-    border-color: var(--color-gray-700);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  }
-  
-  .exercise-card:hover {
-    border-color: var(--color-gray-600);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-  }
-}
 
 .exercise-card:hover {
   border-color: var(--color-gray-300);
@@ -631,59 +619,6 @@ textarea { width: 100%; }
   .set-row input { width: 100%; flex: 1 1 120px; max-width: none; }
   .form-actions { position: sticky; bottom: 0; background: rgba(250, 250, 250, 0.95); padding: var(--space-2) 6px; border-top: 1px solid var(--color-border); z-index: 5; }
   .form-actions button, .form-actions a { flex: 1 1 auto; text-align: center; }
-}
-
-@media (prefers-color-scheme: dark) {
-  body { background: #0d0e11; color: #e6e8ec; }
-  .site-header, .site-footer, .workout-content, .form, .workout-meta { background: #14161a; border-color: #2a2d33; }
-  /* Increase footer text contrast */
-  .site-footer { color: #aeb5bf; }
-  .status { background: #3a2f00; color: #f3e5ab; border-color: #5a4a00; }
-  .exercise-card { background: #181b20; border-color: #2a2d33; }
-  .exercise-card .exercise-header .ex-presc { color: #fafafa; }
-  /* Fix header visibility in dark mode */
-  .exercise-card .exercise-header h1,
-  .exercise-card .exercise-header h2,
-  .exercise-card .exercise-header h3,
-  .exercise-card .exercise-header h4,
-  h1, h2, h3, h4, h5, h6 { color: #e6e8ec; }
-  /* Improve readability of gray helper/cue text in dark mode */
-  .form-hint { color: #c2c8d1; }
-  .form label { color: #d5d9df; }
-  .form input[type="text"],
-  .form textarea { background: #1a1d22; border-color: #3a3f47; color: #e6e8ec; }
-  .form input:focus,
-  .form textarea:focus { outline-color: #8ab4f8; border-color: #8ab4f8; }
-  .exercise-card .exercise-header .ex-cues { color: #d4d9e1; }
-  .exercise-card .exercise-notes { color: #d7dbe3; }
-  .set-row .set-label { color: #b5bcc7; }
-  .set-row input { background: #1a1d22; border-color: #3a3f47; color: #e6e8ec; }
-  .exercise-detail section { background: #181b20; border-color: #2a2d33; }
-  .exercise-detail .meta-badges .badge { background: #232830; color: #d5d9df; }
-  .exercise-detail section h2 { color: #c1c7d0; }
-  .exercise-detail .prescription-hints code { background: #232830; }
-
-  /* Dark mode link colors tuned for contrast on #0d0e11/#181b20 */
-  a { color: #8ab4f8; text-decoration: underline; text-decoration-thickness: 1.5px; text-underline-offset: 2px; }
-  a:hover { color: #a8c7fa; }
-  a:active { color: #79a7f5; }
-  a:visited { color: #c58af9; }
-  a:focus-visible { outline: 2px solid #a8c7fa; outline-offset: 2px; border-radius: var(--radius-sm); }
-  
-  /* Dark mode workout list */
-  .workout-list li { border-bottom-color: #2a2d33; }
-  .workout-list a:hover, .workout-list a:active { background-color: #1a1d22; }
-  
-  /* Dark mode history list */
-  .history-list li { border-bottom-color: #2a2d33; }
-  .history-list a:hover, .history-list a:active { background-color: #1a1d22; }
-  
-  /* Dark mode meta actions */
-  .workout-meta .meta-actions a { background: #232830; border-color: #3a3f47; color: #8ab4f8; }
-  .workout-meta .meta-actions a:hover, .workout-meta .meta-actions a:active { background: #2a2f38; }
-  
-  /* Dark mode navigation */
-  .site-header nav a:hover, .site-header nav a:active { background-color: #1a1d22; }
 }
 
 /* RPE Guide Specific Styles */
@@ -1053,285 +988,6 @@ textarea { width: 100%; }
   font-weight: var(--font-weight-semibold);
 }
 
-/* Enhanced Dark Mode Support */
-@media (prefers-color-scheme: dark) {
-  /* Header improvements for dark mode */
-  .site-header {
-    background: linear-gradient(135deg, #4c1d95 0%, #581c87 100%);
-    border-bottom-color: rgba(255, 255, 255, 0.1);
-  }
-  
-  .site-header nav a {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.25);
-    color: rgba(255, 255, 255, 0.95);
-  }
-  
-  .site-header nav a:hover,
-  .site-header nav a:active {
-    background: rgba(255, 255, 255, 0.25);
-    border-color: rgba(255, 255, 255, 0.35);
-    color: var(--color-white);
-  }
-  
-  .site-header nav a.active {
-    background: rgba(255, 255, 255, 0.3);
-    color: var(--color-white);
-    font-weight: var(--font-weight-semibold);
-  }
-}
-
-/* Enhanced Dark Mode RPE styles */
-@media (prefers-color-scheme: dark) {
-  .rpe-table-container {
-    border-color: #334155;
-    background: #1e293b;
-  }
-  
-  .rpe-table {
-    background: #1e293b;
-  }
-  
-  .rpe-table th {
-    background: #0f172a;
-    color: var(--color-gray-100);
-    border-bottom-color: #334155;
-    font-weight: var(--font-weight-semibold);
-  }
-  
-  .rpe-table td {
-    border-bottom-color: #334155;
-    color: var(--color-gray-100);
-  }
-  
-  .rpe-table tbody tr:hover {
-    background: #334155;
-  }
-  
-  .rpe-card {
-    background: #1e293b;
-    border-color: #334155;
-  }
-  
-  .rpe-card-header {
-    border-bottom-color: #334155;
-  }
-  
-  .rpe-card .rpe-effort {
-    color: var(--color-gray-100);
-    font-weight: var(--font-weight-semibold);
-  }
-  
-  .rpe-card-content p {
-    color: #e2e8f0;
-  }
-  
-  .rpe-light {
-    background: #0c1420;
-    border-color: #1e3a5f;
-  }
-  
-  .rpe-moderate {
-    background: #1a1611;
-    border-color: #4a3b1a;
-  }
-  
-  .rpe-hard {
-    background: #1f1315;
-    border-color: #5c1f20;
-  }
-  
-  .rpe-max {
-    background: #1c1018;
-    border-color: #54184b;
-  }
-  
-  .rpe-description p {
-    color: #e2e8f0;
-  }
-  
-  .example-box {
-    background: #0f172a;
-    border-color: #334155;
-  }
-  
-  .example-set {
-    background: #1e293b;
-    border-color: #334155;
-  }
-  
-  .example-set h4 {
-    color: var(--color-gray-100);
-    font-weight: var(--font-weight-semibold);
-  }
-  
-  .example-set p {
-    color: #e2e8f0;
-  }
-  
-  .example-notes {
-    background: #0d1f1a;
-    border-color: #1e4a33;
-  }
-  
-  .example-notes h4 {
-    color: #34d399;
-  }
-  
-  .example-notes li {
-    color: #6ee7b7;
-  }
-  
-  .mistake-item {
-    background: #0f172a;
-    border-color: var(--color-error);
-  }
-  
-  .mistake-item h4 {
-    color: #fca5a5;
-    font-weight: var(--font-weight-semibold);
-  }
-  
-  .mistake-item p:first-of-type {
-    color: var(--color-error-lighter);
-  }
-  
-  .mistake-item p:last-of-type {
-    color: #86efac;
-  }
-  
-  .ref-column {
-    background: #1e293b;
-    border-color: #334155;
-  }
-  
-  .ref-column h4 {
-    color: var(--color-gray-100);
-    font-weight: var(--font-weight-semibold);
-  }
-  
-  .ref-column li {
-    color: #e2e8f0;
-  }
-  
-  .info-box {
-    background: #0f172a;
-    border-color: var(--color-primary-darker);
-  }
-  
-  .info-box h3 {
-    color: var(--color-primary-light);
-    font-weight: var(--font-weight-semibold);
-  }
-  
-  .info-box p,
-  .info-box li {
-    color: #dbeafe;
-  }
-  
-  /* Enhanced dark mode text readability */
-  /* Better body text contrast */
-  body {
-    background: #0f172a;
-    color: #f1f5f9;
-  }
-  
-  /* Enhanced headings - ensure high contrast */
-  h1, h2, h3, h4, h5, h6 {
-    color: #f1f5f9;
-  }
-  
-  /* Specific content area headings */
-  .section h2,
-  .section h3,
-  .section h4,
-  .workout-header h1,
-  .workout-header p {
-    color: #f1f5f9;
-  }
-  
-  /* Paragraph text */
-  p {
-    color: #e2e8f0;
-  }
-  
-  /* Improve list and strong text visibility */
-  ul li, ol li {
-    color: #e2e8f0;
-  }
-  
-  strong {
-    color: #f1f5f9;
-    font-weight: var(--font-weight-semibold);
-  }
-  
-  /* Specific RPE content styling */
-  .rpe-scale .rpe-item {
-    background: #1e293b;
-    border-color: #334155;
-  }
-  
-  .rpe-scale .rpe-item:hover {
-    background: #334155;
-  }
-  
-  .rpe-scale .rpe-description h4 {
-    color: var(--color-gray-100);
-    font-weight: var(--font-weight-semibold);
-  }
-  
-  .rpe-scale .rpe-description p {
-    color: #e2e8f0;
-  }
-  
-  /* Better contrast for scenario descriptions */
-  .scenario-description,
-  .how-it-felt,
-  .rpe-rating-text {
-    color: #e2e8f0;
-  }
-  
-  /* Enhanced example box content in dark mode */
-  .example-box h3 {
-    color: var(--color-gray-50);
-    font-weight: var(--font-weight-bold);
-  }
-  
-  .example-set h4 {
-    color: var(--color-gray-100);
-    font-weight: var(--font-weight-semibold);
-  }
-  
-  .example-set p {
-    color: #e2e8f0;
-    line-height: var(--line-height-relaxed);
-  }
-  
-  .example-set strong {
-    color: var(--color-gray-50);
-    font-weight: var(--font-weight-semibold);
-  }
-  
-  .example-set em {
-    color: #94a3b8;
-    font-style: italic;
-  }
-  
-  .example-notes h4 {
-    color: #34d399;
-    font-weight: var(--font-weight-semibold);
-  }
-  
-  .example-notes li {
-    color: #e2e8f0;
-  }
-  
-  /* Better contrast for RPE rating descriptions */
-  .rpe-description {
-    color: #e2e8f0;
-  }
-}
-
 /* Exercise Page Specific Styles */
 .exercise-card {
   background: var(--color-white);
@@ -1413,126 +1069,6 @@ textarea { width: 100%; }
   
   .exercise-card h3 {
     font-size: 15px;
-  }
-}
-
-/* Enhanced Dark Mode for Exercise Cards and Forms */
-@media (prefers-color-scheme: dark) {
-  /* Main body and containers */
-  body {
-    background: #0f172a;
-    color: var(--color-gray-100);
-  }
-  
-  .container,
-  .workout-content {
-    background: #0f172a;
-    color: var(--color-gray-100);
-  }
-  
-  /* Exercise cards */
-  .exercise-card {
-    background: #1e293b;
-    border-color: #334155;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  }
-  
-  .exercise-card:hover {
-    border-color: #475569;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-  }
-  
-  .exercise-card h2 {
-    color: var(--color-gray-100);
-  }
-  
-  .exercise-card h3 {
-    color: #e2e8f0;
-  }
-  
-  .exercise-header {
-    border-bottom-color: #334155;
-  }
-  
-  .exercise-header .ex-presc {
-    color: #34d399;
-  }
-  
-  .exercise-header .ex-cues {
-    color: #94a3b8;
-  }
-  
-  .exercise-header .ex-cues li::before {
-    color: #34d399;
-  }
-  
-  /* Form inputs */
-  input[type="text"],
-  input[type="number"],
-  textarea,
-  select {
-    background: #334155;
-    border-color: #475569;
-    color: var(--color-gray-100);
-  }
-  
-  input[type="text"]:focus,
-  input[type="number"]:focus,
-  textarea:focus,
-  select:focus {
-    border-color: #60a5fa;
-    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
-    background: #475569;
-  }
-  
-  input::placeholder {
-    color: #94a3b8;
-  }
-  
-  /* Set labels and text */
-  .set-label {
-    color: #cbd5e1;
-  }
-  
-  /* Buttons in dark mode */
-  button.secondary {
-    background: var(--color-gray-700);
-    color: #f9fafb;
-    border: 1px solid var(--color-gray-600);
-  }
-  
-  button.secondary:hover {
-    background: var(--color-gray-600);
-    border-color: var(--color-gray-500);
-  }
-  
-  /* Exercise badges */
-  .exercise-badge {
-    background: var(--color-primary-darker);
-    color: #dbeafe;
-  }
-  
-  .exercise-pill {
-    background: var(--color-gray-700);
-    color: var(--color-gray-200);
-  }
-  
-  .exercise-history-item {
-    border-left-color: #475569;
-  }
-  
-  /* Headings and text */
-  h1, h2, h3, h4, h5, h6 {
-    color: var(--color-gray-100);
-  }
-  
-  /* Links */
-  a {
-    color: #60a5fa;
-  }
-  
-  a:hover {
-    color: var(--color-primary-light);
   }
 }
 
@@ -1913,52 +1449,6 @@ a:hover {
   text-decoration: none;
 }
 
-/* Enhanced Dark Mode for Lists and Components */
-@media (prefers-color-scheme: dark) {
-  .workout-list li,
-  .history-list li {
-    border-color: #334155;
-    background: #1e293b;
-  }
-  
-  .workout-list li:hover {
-    border-color: #475569;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  }
-  
-  .workout-list .workout-title {
-    color: var(--color-gray-100);
-  }
-  
-  .workout-list .workout-meta {
-    color: #94a3b8;
-  }
-  
-  /* Enhanced button styling for dark mode */
-  button {
-    background: linear-gradient(135deg, var(--color-primary-darker) 0%, #1e3a8a 100%);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  }
-  
-  button:hover {
-    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary-darker) 100%);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-  }
-  
-  button:active {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Remove button styling for dark mode */
-  .remove-set-btn {
-    background: var(--color-error);
-    color: var(--color-white);
-  }
-  
-  .remove-set-btn:hover {
-    background: var(--color-error-dark);
-  }
-}
 
 /* Trash Can Icon for Remove Buttons */
 .remove-set-btn {
@@ -2037,26 +1527,6 @@ a:hover {
   }
 }
 
-/* Dark mode for remove button */
-@media (prefers-color-scheme: dark) {
-  .remove-set-btn {
-    background: var(--color-error);
-    color: var(--color-white);
-  }
-  
-  .remove-set-btn:hover {
-    background: var(--color-error-dark);
-  }
-  
-  .remove-set-btn:active {
-    background: var(--color-error-darker);
-  }
-  
-  .remove-set-btn:focus,
-  .remove-set-btn:focus-visible {
-    outline-color: #fca5a5;
-  }
-}
 
 /* Professional Data Visualization Components */
 
@@ -2500,92 +1970,6 @@ a:hover {
   border: 1px solid #bfdbfe;
 }
 
-/* Dark mode for professional components */
-@media (prefers-color-scheme: dark) {
-  .content-section {
-    background: #232830;
-    border-color: #3a3f47;
-  }
-  
-  .section-header {
-    color: #e6e8ec;
-    border-bottom-color: #3a3f47;
-  }
-  
-  .loading-skeleton {
-    background: linear-gradient(90deg, var(--color-gray-700) 25%, var(--color-gray-600) 50%, var(--color-gray-700) 75%);
-    background-size: 200% 100%;
-  }
-  
-  /* Data visualization dark mode */
-  .progress-container {
-    background: var(--color-gray-700);
-  }
-  
-  .stat-card {
-    background: #1e293b;
-    border-color: #334155;
-  }
-  
-  .stat-card:hover {
-    border-color: #475569;
-  }
-  
-  .stat-value {
-    color: var(--color-gray-100);
-  }
-  
-  .stat-label {
-    color: #94a3b8;
-  }
-  
-  .volume-chart {
-    background: #1e293b;
-    border-color: #334155;
-  }
-  
-  .chart-title {
-    color: var(--color-gray-100);
-  }
-  
-  .chart-period {
-    color: #94a3b8;
-  }
-  
-  .content-section {
-    background: #1e293b;
-    border-color: #334155;
-  }
-  
-  .section-header {
-    color: var(--color-gray-100);
-    border-bottom-color: #334155;
-  }
-  
-  .status-success {
-    background: #1a3b2e;
-    color: #6ee7b7;
-    border-color: var(--color-success-dark);
-  }
-  
-  .status-warning {
-    background: #3d2914;
-    color: #fbbf24;
-    border-color: #d97706;
-  }
-  
-  .status-error {
-    background: #3e1517;
-    color: #f87171;
-    border-color: var(--color-error);
-  }
-  
-  .status-info {
-    background: #1e3a5f;
-    color: #7dd3fc;
-    border-color: #0369a1;
-  }
-}
 
 /* Professional Toast Notifications System */
 .toast-container {
@@ -2755,120 +2139,11 @@ a:hover {
   }
 }
 
-/* Dark mode toasts */
-@media (prefers-color-scheme: dark) {
-  .toast {
-    background: var(--color-gray-800);
-    border-color: var(--color-gray-700);
-    color: var(--color-gray-200);
-  }
-  
-  .toast-title {
-    color: #f9fafb;
-  }
-  
-  .toast-description {
-    color: var(--color-gray-300);
-  }
-  
-  .toast-close {
-    color: var(--color-gray-400);
-  }
-  
-  .toast-close:hover {
-    color: var(--color-gray-300);
-    background: var(--color-gray-700);
-  }
-}
 
 /* ========================================
    DARK MODE SUPPORT
    ======================================== */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Override color palette for dark mode */
-    --color-gray-50: #111827;
-    --color-gray-100: #1f2937;
-    --color-gray-200: #374151;
-    --color-gray-300: #4b5563;
-    --color-gray-400: #6b7280;
-    --color-gray-500: #9ca3af;
-    --color-gray-600: #d1d5db;
-    --color-gray-700: #e5e7eb;
-    --color-gray-800: #f3f4f6;
-    --color-gray-900: #f9fafb;
-    
-    /* Adjust primary colors for better contrast */
-    --color-primary: #60a5fa;
-    --color-primary-dark: #3b82f6;
-    --color-primary-darker: #2563eb;
-    --color-primary-light: #93c5fd;
-    
-    /* Adjust success colors */
-    --color-success: #34d399;
-    --color-success-dark: #10b981;
-    --color-success-darker: #059669;
-    --color-success-light: #064e3b;
-    --color-success-lighter: #065f46;
-    --color-success-border: #10b981;
-    
-    /* Adjust warning colors */
-    --color-warning: #fbbf24;
-    --color-warning-dark: #f59e0b;
-    --color-warning-light: #78350f;
-    --color-warning-lighter: #92400e;
-    --color-warning-border: #f59e0b;
-    --color-warning-bg: #78350f;
-    --color-warning-text: #fef3c7;
-    
-    /* Adjust error colors */
-    --color-error: #f87171;
-    --color-error-dark: #ef4444;
-    --color-error-darker: #dc2626;
-    --color-error-light: #7f1d1d;
-    --color-error-lighter: #991b1b;
-    --color-error-border: #ef4444;
-    
-    /* Backgrounds */
-    --color-white: #1f2937;
-    --color-black: #ffffff;
-    --color-bg-primary: #1f2937;
-    --color-bg-secondary: #111827;
-    --color-bg-hover: #374151;
-    --color-bg-muted: #4b5563;
-    --color-bg-light: #374151;
-    --color-bg-gradient-start: #111827;
-    --color-bg-gradient-end: #1f2937;
-    
-    /* Text colors */
-    --color-text-primary: #f9fafb;
-    --color-text-secondary: #e5e7eb;
-    --color-text-light: #d1d5db;
-    --color-text-dark: #f3f4f6;
-    --color-text-medium: #e5e7eb;
-    --color-text-detail: #d1d5db;
-    --color-text-hint: #9ca3af;
-    
-    /* Links */
-    --color-link: #60a5fa;
-    --color-link-hover: #93c5fd;
-    --color-link-active: #3b82f6;
-    --color-link-visited: #a78bfa;
-    --color-link-action: #60a5fa;
-    
-    /* Borders */
-    --color-border: #374151;
-    --color-border-light: #4b5563;
-    --color-border-medium: #6b7280;
-    --color-border-dark: #9ca3af;
-  }
-  
-  /* Additional dark mode adjustments */
-  body {
-    color-scheme: dark;
-  }
-}
 
 /* ========================================
    WEEK VIEW STYLES
@@ -2961,8 +2236,580 @@ a:hover {
   color: var(--color-text-light);
 }
 
-/* Dark mode adjustments for week view */
+/* ============================================
+   CONSOLIDATED DARK MODE STYLES
+   All dark mode overrides in one place
+   ============================================ */
 @media (prefers-color-scheme: dark) {
+  
+  /* ========== CSS Variables Override ========== */
+  :root {
+    --color-gray-50: #111827;
+    --color-gray-100: #f8fafc;  /* Bright white for headings */
+    --color-gray-200: #e2e8f0;  /* Bright gray for body text */
+    --color-gray-300: #cbd5e1;
+    --color-gray-400: #94a3b8;
+    --color-gray-500: #64748b;
+    --color-gray-600: #475569;
+    --color-gray-700: #334155;
+    --color-gray-800: #1e293b;
+    --color-gray-900: #0f172a;
+    
+    --color-primary: #60a5fa;
+    --color-primary-dark: #3b82f6;
+    --color-primary-darker: #2563eb;
+    --color-primary-light: #93c5fd;
+    
+    --color-success: #34d399;
+    --color-success-dark: #10b981;
+    --color-success-darker: #059669;
+    --color-success-light: #064e3b;
+    --color-success-lighter: #065f46;
+    --color-success-border: #10b981;
+    
+    --color-warning: #fbbf24;
+    --color-warning-dark: #f59e0b;
+    --color-warning-darker: #d97706;
+    --color-warning-light: #fef3c7;
+    --color-warning-lighter: #fde68a;
+    --color-warning-border: #f59e0b;
+    
+    --color-error: #ef4444;
+    --color-error-dark: #dc2626;
+    --color-error-darker: #b91c1c;
+    --color-error-light: #fecaca;
+    --color-error-lighter: #fca5a5;
+    --color-error-border: #dc2626;
+  }
+  
+  /* ========== Base Elements ========== */
+  body {
+    background: #0f172a;
+    color: #f8fafc;
+  }
+  
+  .container,
+  .workout-content {
+    background: #0f172a;
+    color: var(--color-gray-100);
+  }
+  
+  /* ========== Typography ========== */
+  h1, h2, h3, h4, h5, h6 {
+    color: #f8fafc;
+  }
+  
+  .section h2,
+  .section h3,
+  .section h4,
+  .workout-header h1,
+  .workout-header p {
+    color: #f8fafc;
+  }
+  
+  p {
+    color: #e2e8f0;
+  }
+  
+  ul li, ol li {
+    color: #e2e8f0;
+  }
+  
+  strong {
+    color: #ffffff;
+    font-weight: var(--font-weight-semibold);
+  }
+  
+  /* ========== Links ========== */
+  a {
+    color: #8ab4f8;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 2px;
+  }
+  
+  a:hover {
+    color: #a8c7fa;
+  }
+  
+  a:active {
+    color: #79a7f5;
+  }
+  
+  a:visited {
+    color: #c58af9;
+  }
+  
+  a:focus-visible {
+    outline: 2px solid #a8c7fa;
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+  
+  /* ========== Header & Navigation ========== */
+  .site-header {
+    background: linear-gradient(135deg, #4c1d95 0%, #581c87 100%);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .site-header nav a {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.95);
+  }
+  
+  .site-header nav a:hover,
+  .site-header nav a:active {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.35);
+    color: var(--color-white);
+  }
+  
+  .site-header nav a.active {
+    background: rgba(255, 255, 255, 0.3);
+    color: var(--color-white);
+    font-weight: var(--font-weight-semibold);
+  }
+  
+  /* ========== Footer ========== */
+  .site-footer {
+    color: #aeb5bf;
+    background: #14161a;
+    border-color: #2a2d33;
+  }
+  
+  /* ========== Cards & Content Areas ========== */
+  .workout-content,
+  .form,
+  .workout-meta {
+    background: #14161a;
+    border-color: #2a2d33;
+  }
+  
+  .exercise-card {
+    background: #1e293b;
+    border-color: #334155;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .exercise-card:hover {
+    border-color: #475569;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+  }
+  
+  .exercise-card h2 {
+    color: var(--color-gray-100);
+  }
+  
+  .exercise-card h3 {
+    color: #e2e8f0;
+  }
+  
+  .exercise-card .exercise-header {
+    border-bottom-color: #334155;
+  }
+  
+  .exercise-card .exercise-header h1,
+  .exercise-card .exercise-header h2,
+  .exercise-card .exercise-header h3,
+  .exercise-card .exercise-header h4 {
+    color: #f8fafc;
+  }
+  
+  .exercise-card .exercise-header .ex-presc {
+    color: #fafafa;
+  }
+  
+  .exercise-card .exercise-header .ex-cues {
+    color: #d4d9e1;
+  }
+  
+  .exercise-card .exercise-header .ex-cues li::before {
+    color: #34d399;
+  }
+  
+  .exercise-card .exercise-notes {
+    color: #d7dbe3;
+  }
+  
+  .exercise-detail section {
+    background: #181b20;
+    border-color: #2a2d33;
+  }
+  
+  .exercise-detail .meta-badges .badge {
+    background: #232830;
+    color: #d5d9df;
+  }
+  
+  .exercise-detail section h2 {
+    color: #f8fafc;
+  }
+  
+  .exercise-detail .prescription-hints code {
+    background: #232830;
+  }
+  
+  /* ========== Forms & Inputs ========== */
+  .form-hint {
+    color: #c2c8d1;
+  }
+  
+  .form label {
+    color: #d5d9df;
+  }
+  
+  .form input[type="text"],
+  .form textarea {
+    background: #1a1d22;
+    border-color: #3a3f47;
+    color: #e6e8ec;
+  }
+  
+  .form input:focus,
+  .form textarea:focus {
+    outline-color: #8ab4f8;
+    border-color: #8ab4f8;
+  }
+  
+  input[type="text"],
+  input[type="number"],
+  textarea,
+  select {
+    background: #334155;
+    border-color: #475569;
+    color: var(--color-gray-100);
+  }
+  
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  textarea:focus,
+  select:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.1);
+    background: #475569;
+  }
+  
+  input::placeholder {
+    color: #94a3b8;
+  }
+  
+  .set-row .set-label {
+    color: #b5bcc7;
+  }
+  
+  .set-row input {
+    background: #1a1d22;
+    border-color: #3a3f47;
+    color: #e6e8ec;
+  }
+  
+  .set-label {
+    color: #cbd5e1;
+  }
+  
+  /* ========== Buttons ========== */
+  button {
+    background: linear-gradient(135deg, var(--color-primary-darker) 0%, #1e3a8a 100%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  button:hover {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary-darker) 100%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  }
+  
+  button:active {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  
+  button.secondary {
+    background: var(--color-gray-700);
+    color: #f9fafb;
+    border: 1px solid var(--color-gray-600);
+  }
+  
+  button.secondary:hover {
+    background: var(--color-gray-600);
+    border-color: var(--color-gray-500);
+  }
+  
+  .remove-set-btn {
+    background: var(--color-error);
+    color: var(--color-white);
+  }
+  
+  .remove-set-btn:hover {
+    background: var(--color-error-dark);
+  }
+  
+  .remove-set-btn:active {
+    background: var(--color-error-darker);
+  }
+  
+  .remove-set-btn:focus,
+  .remove-set-btn:focus-visible {
+    outline-color: #fca5a5;
+  }
+  
+  /* ========== Status & Alerts ========== */
+  .status {
+    background: #3a2f00;
+    color: #f3e5ab;
+    border-color: #5a4a00;
+  }
+  
+  /* ========== Lists ========== */
+  .workout-list li {
+    border-bottom-color: #2a2d33;
+    background: #1e293b;
+  }
+  
+  .workout-list li:hover {
+    border-color: #475569;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .workout-list a:hover,
+  .workout-list a:active {
+    background-color: #1a1d22;
+  }
+  
+  .workout-list .workout-title {
+    color: var(--color-gray-100);
+  }
+  
+  .workout-list .workout-meta {
+    color: #94a3b8;
+  }
+  
+  .history-list li {
+    border-bottom-color: #2a2d33;
+    background: #1e293b;
+  }
+  
+  .history-list a:hover,
+  .history-list a:active {
+    background-color: #1a1d22;
+  }
+  
+  /* ========== Meta Actions ========== */
+  .workout-meta .meta-actions a {
+    background: #232830;
+    border-color: #3a3f47;
+    color: #8ab4f8;
+  }
+  
+  .workout-meta .meta-actions a:hover,
+  .workout-meta .meta-actions a:active {
+    background: #2a2f38;
+  }
+  
+  /* ========== Exercise Badges ========== */
+  .exercise-badge {
+    background: var(--color-primary-darker);
+    color: #dbeafe;
+  }
+  
+  .exercise-pill {
+    background: var(--color-gray-700);
+    color: var(--color-gray-200);
+  }
+  
+  .exercise-history-item {
+    border-left-color: #475569;
+  }
+  
+  /* ========== RPE Components ========== */
+  .rpe-table-container {
+    border-color: #334155;
+    background: #1e293b;
+  }
+  
+  .rpe-table {
+    background: #1e293b;
+  }
+  
+  .rpe-table th {
+    background: #0f172a;
+    color: var(--color-gray-100);
+    border-bottom-color: #334155;
+    font-weight: var(--font-weight-semibold);
+  }
+  
+  .rpe-table td {
+    border-bottom-color: #334155;
+    color: var(--color-gray-100);
+  }
+  
+  .rpe-table tbody tr:hover {
+    background: #334155;
+  }
+  
+  .rpe-card {
+    background: #1e293b;
+    border-color: #334155;
+  }
+  
+  .rpe-card-header {
+    border-bottom-color: #334155;
+  }
+  
+  .rpe-card .rpe-effort {
+    color: var(--color-gray-100);
+    font-weight: var(--font-weight-semibold);
+  }
+  
+  .rpe-card-content p {
+    color: #e2e8f0;
+  }
+  
+  .rpe-light {
+    background: #0c1420;
+    border-color: #1e3a5f;
+  }
+  
+  .rpe-moderate {
+    background: #1a1611;
+    border-color: #4a3b1a;
+  }
+  
+  .rpe-hard {
+    background: #1f1315;
+    border-color: #5c1f20;
+  }
+  
+  .rpe-max {
+    background: #1c1018;
+    border-color: #54184b;
+  }
+  
+  .rpe-description p {
+    color: #e2e8f0;
+  }
+  
+  .rpe-scale .rpe-item {
+    background: #1e293b;
+    border-color: #334155;
+  }
+  
+  .rpe-scale .rpe-item:hover {
+    background: #334155;
+  }
+  
+  .rpe-scale .rpe-description h4 {
+    color: var(--color-gray-100);
+    font-weight: var(--font-weight-semibold);
+  }
+  
+  .rpe-scale .rpe-description p {
+    color: #e2e8f0;
+  }
+  
+  .scenario-description,
+  .how-it-felt,
+  .rpe-rating-text {
+    color: #e2e8f0;
+  }
+  
+  /* ========== Example Boxes ========== */
+  .example-box {
+    background: #0f172a;
+    border-color: #334155;
+  }
+  
+  .example-box h3 {
+    color: var(--color-gray-50);
+    font-weight: var(--font-weight-bold);
+  }
+  
+  .example-set {
+    background: #1e293b;
+    border-color: #334155;
+  }
+  
+  .example-set h4 {
+    color: var(--color-gray-100);
+    font-weight: var(--font-weight-semibold);
+  }
+  
+  .example-set p {
+    color: #e2e8f0;
+    line-height: var(--line-height-relaxed);
+  }
+  
+  .example-set strong {
+    color: var(--color-gray-50);
+    font-weight: var(--font-weight-semibold);
+  }
+  
+  .example-set em {
+    color: #94a3b8;
+    font-style: italic;
+  }
+  
+  .example-notes {
+    background: #0d1f1a;
+    border-color: #1e4a33;
+  }
+  
+  .example-notes h4 {
+    color: #34d399;
+    font-weight: var(--font-weight-semibold);
+  }
+  
+  .example-notes li {
+    color: #e2e8f0;
+  }
+  
+  .mistake-item {
+    background: #0f172a;
+    border-color: var(--color-error);
+  }
+  
+  .mistake-item h4 {
+    color: #fca5a5;
+    font-weight: var(--font-weight-semibold);
+  }
+  
+  .mistake-item p:first-of-type {
+    color: var(--color-error-lighter);
+  }
+  
+  .mistake-item p:last-of-type {
+    color: #86efac;
+  }
+  
+  .ref-column {
+    background: #1e293b;
+    border-color: #334155;
+  }
+  
+  .ref-column h4 {
+    color: var(--color-gray-100);
+    font-weight: var(--font-weight-semibold);
+  }
+  
+  .ref-column li {
+    color: #e2e8f0;
+  }
+  
+  .info-box {
+    background: #0f172a;
+    border-color: var(--color-primary-darker);
+  }
+  
+  .info-box h3 {
+    color: var(--color-primary-light);
+    font-weight: var(--font-weight-semibold);
+  }
+  
+  .info-box p,
+  .info-box li {
+    color: #dbeafe;
+  }
+  
+  /* ========== Week View ========== */
   .day-group {
     background: var(--color-bg-secondary);
     border-color: var(--color-border-light);

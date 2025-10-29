@@ -416,8 +416,9 @@ window.ExercAIse.KaiIntegration = (() => {
                     if (it.notes)
                         meta.notes = it.notes;
                     const asLink = !!link && isInternalExerciseLink(link);
+                    const exerciseHref = link ? ('exercise.html?file=' + link) : '';
                     let html = '<li>' + (asLink
-                        ? ('<a href="' + esc(link) + '" data-exmeta="' + attrEscape(JSON.stringify(meta)) + '">' + esc(name) + '</a>')
+                        ? ('<a href="' + esc(exerciseHref) + '" data-exmeta="' + attrEscape(JSON.stringify(meta)) + '">' + esc(name) + '</a>')
                         : ('<span class="ex-name no-link" data-exmeta="' + attrEscape(JSON.stringify(meta)) + '">' + esc(name) + '</span>'));
                     if (presObj && typeof presObj === 'object') {
                         try {

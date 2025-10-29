@@ -498,8 +498,9 @@
                         if (it.notes)
                             meta.notes = it.notes;
                         const asLink = !!link && isInternalExerciseLink(link);
+                        const exerciseHref = link ? `exercise.html?file=${link}` : '';
                         let html = `<li>${asLink
-                            ? `<a href="${esc(link)}" data-exmeta="${attrEscape(JSON.stringify(meta))}">${esc(clean)}</a>`
+                            ? `<a href="${esc(exerciseHref)}" data-exmeta="${attrEscape(JSON.stringify(meta))}">${esc(clean)}</a>`
                             : `<span class="ex-name no-link" data-exmeta="${attrEscape(JSON.stringify(meta))}">${esc(clean)}</span>`}`;
                         if (it.prescription && typeof it.prescription === 'object') {
                             try {
@@ -664,35 +665,6 @@
             }
             setVisibility(formSection, true);
             buildForm(path, text || '', isJSON);
-            if (workoutSection && !workoutSection.__wiredExLinks) {
-                workoutSection.addEventListener('click', (e) => {
-                    let t = e.target;
-                    if (!t)
-                        return;
-                    while (t && t !== workoutSection && !(t.tagName && t.tagName.toLowerCase() === 'a'))
-                        t = t.parentNode;
-                    if (!t || t === workoutSection)
-                        return;
-                    const href = t.getAttribute('href') || '';
-                    if (/^https?:/i.test(href))
-                        return;
-                    const exMatch = href.match(/(?:^|\/)?exercises\/[\w\-]+\.(?:md|json)$/i);
-                    if (exMatch) {
-                        try {
-                            e.preventDefault();
-                        }
-                        catch (ex) { }
-                        const slug = (href.match(/exercises\/([\w\-]+)\.(?:md|json)$/i) || [])[1];
-                        const jsonPath = `exercises/${slug}.json`;
-                        try {
-                            window.location.href = `exercise.html?file=${encodeURIComponent(jsonPath)}`;
-                        }
-                        catch (ex) { }
-                        return;
-                    }
-                }, false);
-                workoutSection.__wiredExLinks = true;
-            }
             let title = path;
             let obj = null;
             if (isJSON) {
@@ -756,33 +728,17 @@
             parseHMSToSeconds
         });
     };
-    const getRepoBase = () => {
-        let base = './';
-        try {
-            const loc = window.location || {};
-            const host = String(loc.hostname || '');
-            if (/github\.io$/i.test(host)) {
-                base = '/exercAIse/';
-            }
-            else if (String(loc.pathname || '').indexOf('/exercAIse/') !== -1) {
-                base = '/exercAIse/';
-            }
-        }
-        catch (e) { }
-        return base;
-    };
     const fixExerciseAnchors = (scope) => {
         try {
-            const base = getRepoBase();
             const anchors = (scope || document).getElementsByTagName('a');
             for (let i = 0; i < anchors.length; i++) {
                 const a = anchors[i];
                 const href = a.getAttribute('href') || '';
-                const m = href.match(/(?:https?:\/\/[^\/]+)?\/?(exercises\/[\w\-]+\.(?:md|json))$/);
+                if (/^exercise\.html\?file=/i.test(href))
+                    continue;
+                const m = href.match(/(?:^\.?\.?\/)?(?:https?:\/\/[^\/]+\/)?(?:.*\/)?(exercises\/[\w\-]+\.(?:md|json))$/);
                 if (m?.[1]) {
-                    let fixed = base.replace(/\/?$/, '/') + m[1];
-                    fixed = fixed.replace(/([^:])\/+/g, (_m0, p1) => p1 + '/');
-                    a.setAttribute('href', fixed);
+                    a.setAttribute('href', `exercise.html?file=${m[1]}`);
                 }
             }
         }

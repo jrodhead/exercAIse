@@ -83,6 +83,12 @@ test.describe('Exercise Variations', () => {
   test('Variation links render as proper HTML links, not plain text', async ({ page }) => {
     await page.goto('/exercise.html?file=exercises/goblet_squat.json');
     
+    // Wait for exercise content to load
+    await expect(page.locator('#ex-name')).toContainText('Goblet Squat');
+    
+    // Wait for variations section to have links
+    await page.waitForSelector('#variations a', { timeout: 5000 });
+    
     // Verify variation links are rendered as proper HTML anchor elements
     const variationLinks = page.locator('#variations a');
     const linkCount = await variationLinks.count();
@@ -114,19 +120,27 @@ test.describe('Exercise Variations', () => {
     // Test a workout that should link to specific exercise variations
     // using a mock workout that includes alternating dumbbell biceps curl
     const workoutWithVariations = {
-      version: '1.0',
+      version: '1',
       title: 'Variation Link Test',
       date: '2025-10-13',
-      exercises: [
-        { 
-          name: 'Biceps Curl (Alternating Dumbbells)', 
-          link: 'exercises/alternating_dumbbell_biceps_curl.json',
-          prescribed: { sets: 3, reps: '10-12', weight: '25 lb per hand' }
-        },
+      sections: [
         {
-          name: 'Overhead Dumbbell Triceps Extension (Two Hands)',
-          link: 'exercises/overhead_dumbbell_triceps_extension.json', 
-          prescribed: { sets: 2, reps: '12-15', weight: '30 lb' }
+          type: 'Main',
+          title: 'Main Work',
+          items: [
+            { 
+              kind: 'exercise',
+              name: 'Biceps Curl (Alternating Dumbbells)', 
+              link: 'exercises/alternating_dumbbell_biceps_curl.json',
+              prescription: { sets: 3, reps: '10-12', weight: '25 lb per hand' }
+            },
+            {
+              kind: 'exercise',
+              name: 'Overhead Dumbbell Triceps Extension (Two Hands)',
+              link: 'exercises/overhead_dumbbell_triceps_extension.json', 
+              prescription: { sets: 2, reps: '12-15', weight: '30 lb' }
+            }
+          ]
         }
       ]
     };
