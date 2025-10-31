@@ -1,0 +1,162 @@
+{
+  "version": "perf-1",
+  "workoutFile": "workouts/4-4_Chest_Arms_Hypertrophy.json",
+  "timestamp": "2025-10-31T12:32:03.361Z",
+  "exercises": {
+    "flat-dumbbell-bench-press": {
+      "name": "Flat Dumbbell Bench Press",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 35,
+          "multiplier": 2,
+          "reps": 12,
+          "rpe": 6
+        },
+        {
+          "set": 2,
+          "weight": 35,
+          "multiplier": 2,
+          "reps": 12,
+          "rpe": 6
+        },
+        {
+          "set": 3,
+          "weight": 35,
+          "multiplier": 2,
+          "reps": 12,
+          "rpe": 6
+        }
+      ]
+    },
+    "incline-dumbbell-bench-press": {
+      "name": "Incline Dumbbell Bench Press",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 12,
+          "rpe": 6
+        },
+        {
+          "set": 2,
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 9,
+          "rpe": 6
+        }
+      ]
+    },
+    "dumbbell-flyes": {
+      "name": "Dumbbell Flyes",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 15,
+          "multiplier": 2,
+          "reps": 15,
+          "rpe": 5
+        },
+        {
+          "set": 2,
+          "weight": 15,
+          "multiplier": 2,
+          "reps": 15,
+          "rpe": 6
+        }
+      ]
+    },
+    "push-ups": {
+      "name": "Push-ups",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "reps": 15,
+          "rpe": 6
+        },
+        {
+          "set": 2,
+          "reps": 15,
+          "rpe": 7
+        }
+      ]
+    },
+    "alternating-dumbbell-biceps-curl": {
+      "name": "Alternating Dumbbell Biceps Curl",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 17.5,
+          "reps": 15,
+          "rpe": 5
+        },
+        {
+          "set": 2,
+          "weight": 17.5,
+          "reps": 15,
+          "rpe": 5
+        }
+      ]
+    },
+    "hammer-curl": {
+      "name": "Hammer Curl",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 5
+        },
+        {
+          "set": 2,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 13,
+          "rpe": 6
+        }
+      ]
+    },
+    "overhead-dumbbell-triceps-extension": {
+      "name": "Overhead Dumbbell Triceps Extension",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 25,
+          "reps": 15,
+          "rpe": 6
+        },
+        {
+          "set": 2,
+          "weight": 25,
+          "reps": 15,
+          "rpe": 7
+        }
+      ]
+    },
+    "diamond-push-ups": {
+      "name": "Diamond Push-ups",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "reps": 10,
+          "rpe": 6
+        },
+        {
+          "set": 2,
+          "reps": 8,
+          "rpe": 6
+        }
+      ]
+    }
+  }
+}
