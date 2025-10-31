@@ -1,0 +1,156 @@
+{
+  "version": "perf-1",
+  "workoutFile": "workouts/4-4_Upper_Body_Strength_Mobility.json",
+  "timestamp": "2025-10-28T12:41:16.275Z",
+  "exercises": {
+    "neutral-grip-flat-bench-press": {
+      "name": "Neutral-Grip Flat Bench Press",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 40,
+          "multiplier": 2,
+          "reps": 6,
+          "rpe": 6
+        },
+        {
+          "set": 2,
+          "weight": 40,
+          "multiplier": 2,
+          "reps": 6,
+          "rpe": 6
+        },
+        {
+          "set": 3,
+          "weight": 40,
+          "multiplier": 2,
+          "reps": 6,
+          "rpe": 6
+        }
+      ]
+    },
+    "one-arm-dumbbell-row": {
+      "name": "One-Arm Dumbbell Row",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 45,
+          "reps": 8,
+          "rpe": 6
+        },
+        {
+          "set": 2,
+          "weight": 45,
+          "reps": 8,
+          "rpe": 6
+        },
+        {
+          "set": 3,
+          "weight": 45,
+          "reps": 8,
+          "rpe": 6
+        }
+      ]
+    },
+    "incline-dumbbell-bench-press": {
+      "name": "Incline Dumbbell Bench Press",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 8,
+          "rpe": 6
+        },
+        {
+          "set": 2,
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 8,
+          "rpe": 6
+        }
+      ]
+    },
+    "chest-supported-dumbbell-row": {
+      "name": "Chest-Supported Dumbbell Row",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 35,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 6
+        },
+        {
+          "set": 2,
+          "weight": 35,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 6
+        }
+      ]
+    },
+    "hammer-curl": {
+      "name": "Hammer Curl",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 6
+        },
+        {
+          "set": 2,
+          "weight": 25,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 7
+        }
+      ]
+    },
+    "overhead-dumbbell-triceps-extension": {
+      "name": "Overhead Dumbbell Triceps Extension",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 27.5,
+          "reps": 12,
+          "rpe": 6
+        },
+        {
+          "set": 2,
+          "weight": 27.5,
+          "reps": 12,
+          "rpe": 6
+        }
+      ]
+    },
+    "pallof-press": {
+      "name": "Pallof Press",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 17.5,
+          "multiplier": 2,
+          "reps": 8,
+          "rpe": 8
+        },
+        {
+          "set": 2,
+          "weight": 17.5,
+          "multiplier": 2,
+          "reps": 6,
+          "rpe": 8
+        }
+      ]
+    }
+  }
+}
