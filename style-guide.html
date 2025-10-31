@@ -340,6 +340,7 @@
       <a href="#colors" class="sg-nav-link">Colors</a>
       <a href="#typography" class="sg-nav-link">Typography</a>
       <a href="#spacing" class="sg-nav-link">Spacing</a>
+      <a href="#layout" class="sg-nav-link">Layout</a>
       <a href="#buttons" class="sg-nav-link">Buttons</a>
       <a href="#cards" class="sg-nav-link">Cards</a>
       <a href="#forms" class="sg-nav-link">Forms</a>
@@ -658,6 +659,173 @@
           </tr>
         </tbody>
       </table>
+
+      <h3 class="sg-subsection-title">Spacing Utility Classes</h3>
+      <p>Utility classes for applying spacing directly in HTML. <strong>Note:</strong> These don't use the <code>u-</code> prefix for brevity.</p>
+      
+      <table class="sg-table">
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>CSS Property</th>
+            <th>Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.mb-2</code>, <code>.mb-3</code>, <code>.mb-4</code>, <code>.mb-6</code></td>
+            <td>margin-bottom</td>
+            <td>Bottom margin using spacing scale</td>
+          </tr>
+          <tr>
+            <td><code>.mt-2</code>, <code>.mt-3</code>, <code>.mt-4</code>, <code>.mt-6</code></td>
+            <td>margin-top</td>
+            <td>Top margin using spacing scale</td>
+          </tr>
+          <tr>
+            <td><code>.m-2</code>, <code>.m-3</code>, <code>.m-4</code>, <code>.m-6</code></td>
+            <td>margin</td>
+            <td>All-side margin using spacing scale</td>
+          </tr>
+          <tr>
+            <td><code>.p-2</code>, <code>.p-3</code>, <code>.p-4</code>, <code>.p-6</code></td>
+            <td>padding</td>
+            <td>All-side padding using spacing scale</td>
+          </tr>
+          <tr>
+            <td><code>.gap-2</code>, <code>.gap-3</code>, <code>.gap-4</code>, <code>.gap-6</code></td>
+            <td>gap</td>
+            <td>Gap for flexbox/grid layouts</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- LAYOUT UTILITIES -->
+    <section id="layout" class="sg-section">
+      <h2 class="sg-section-title">Layout Utilities</h2>
+      
+      <h3 class="sg-subsection-title">Flexbox Utilities</h3>
+      <table class="sg-table">
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>CSS Property</th>
+            <th>Example</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.flex</code></td>
+            <td>display: flex</td>
+            <td>Create a flex container</td>
+          </tr>
+          <tr>
+            <td><code>.flex-col</code></td>
+            <td>flex-direction: column</td>
+            <td>Vertical flex layout</td>
+          </tr>
+          <tr>
+            <td><code>.flex-wrap</code></td>
+            <td>flex-wrap: wrap</td>
+            <td>Allow flex items to wrap</td>
+          </tr>
+          <tr>
+            <td><code>.items-center</code></td>
+            <td>align-items: center</td>
+            <td>Center items vertically</td>
+          </tr>
+          <tr>
+            <td><code>.justify-between</code></td>
+            <td>justify-content: space-between</td>
+            <td>Space items evenly</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="sg-example">
+        <div class="sg-example-label">Flexbox Example</div>
+        <div class="sg-example-display">
+          <div class="flex gap-3 items-center" style="border: 1px solid var(--color-border); padding: 12px; border-radius: 8px;">
+            <button>Button 1</button>
+            <button class="button--secondary">Button 2</button>
+            <button class="button--danger">Button 3</button>
+          </div>
+        </div>
+        <pre class="sg-example-code">&lt;div class="flex gap-3 items-center"&gt;
+  &lt;button&gt;Button 1&lt;/button&gt;
+  &lt;button class="button--secondary"&gt;Button 2&lt;/button&gt;
+  &lt;button class="button--danger"&gt;Button 3&lt;/button&gt;
+&lt;/div&gt;</pre>
+      </div>
+
+      <h3 class="sg-subsection-title">Typography Utilities</h3>
+      <table class="sg-table">
+        <thead>
+          <tr>
+            <th>Class</th>
+            <th>CSS Property</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>.text-sm</code></td>
+            <td>font-size</td>
+            <td>14px (--font-size-sm)</td>
+          </tr>
+          <tr>
+            <td><code>.text-base</code></td>
+            <td>font-size</td>
+            <td>16px (--font-size-base)</td>
+          </tr>
+          <tr>
+            <td><code>.text-lg</code></td>
+            <td>font-size</td>
+            <td>18px (--font-size-lg)</td>
+          </tr>
+          <tr>
+            <td><code>.text-xl</code></td>
+            <td>font-size</td>
+            <td>20px (--font-size-xl)</td>
+          </tr>
+          <tr>
+            <td><code>.text-2xl</code></td>
+            <td>font-size</td>
+            <td>24px</td>
+          </tr>
+          <tr>
+            <td><code>.font-medium</code></td>
+            <td>font-weight</td>
+            <td>500 (--font-weight-medium)</td>
+          </tr>
+          <tr>
+            <td><code>.font-semibold</code></td>
+            <td>font-weight</td>
+            <td>600 (--font-weight-semibold)</td>
+          </tr>
+          <tr>
+            <td><code>.font-bold</code></td>
+            <td>font-weight</td>
+            <td>700 (--font-weight-bold)</td>
+          </tr>
+          <tr>
+            <td><code>.text-center</code></td>
+            <td>text-align</td>
+            <td>center</td>
+          </tr>
+          <tr>
+            <td><code>.text-left</code></td>
+            <td>text-align</td>
+            <td>left</td>
+          </tr>
+          <tr>
+            <td><code>.text-right</code></td>
+            <td>text-align</td>
+            <td>right</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
 
     <!-- BUTTONS -->
@@ -668,15 +836,15 @@
         <div class="sg-example-label">Button Variants</div>
         <div class="sg-example-display">
           <button>Default Button</button>
-          <button class="primary">Primary Button</button>
-          <button class="secondary">Secondary Button</button>
-          <button class="danger">Danger Button</button>
+          <button class="button--primary">Primary Button</button>
+          <button class="button--secondary">Secondary Button</button>
+          <button class="button--danger">Danger Button</button>
           <button disabled>Disabled Button</button>
         </div>
         <pre class="sg-example-code">&lt;button&gt;Default Button&lt;/button&gt;
-&lt;button class="primary"&gt;Primary Button&lt;/button&gt;
-&lt;button class="secondary"&gt;Secondary Button&lt;/button&gt;
-&lt;button class="danger"&gt;Danger Button&lt;/button&gt;
+&lt;button class="button--primary"&gt;Primary Button&lt;/button&gt;
+&lt;button class="button--secondary"&gt;Secondary Button&lt;/button&gt;
+&lt;button class="button--danger"&gt;Danger Button&lt;/button&gt;
 &lt;button disabled&gt;Disabled Button&lt;/button&gt;</pre>
       </div>
 
@@ -699,7 +867,7 @@
         <div class="sg-example-label">Exercise Card</div>
         <div class="sg-example-display">
           <div class="exercise-card">
-            <div class="exercise-header">
+            <div class="exercise-card__header">
               <h3>Goblet Squat</h3>
               <div class="ex-presc">3 sets × 8-10 reps @ RPE 7 | 35 lb DB</div>
               <ul class="ex-cues">
@@ -711,7 +879,7 @@
           </div>
         </div>
         <pre class="sg-example-code">&lt;div class="exercise-card"&gt;
-  &lt;div class="exercise-header"&gt;
+  &lt;div class="exercise-card__header"&gt;
     &lt;h3&gt;Goblet Squat&lt;/h3&gt;
     &lt;div class="ex-presc"&gt;3 sets × 8-10 reps @ RPE 7 | 35 lb DB&lt;/div&gt;
     &lt;ul class="ex-cues"&gt;
@@ -751,10 +919,10 @@
             <label for="demo-textarea">Textarea</label>
             <textarea id="demo-textarea" rows="3" placeholder="Enter notes..."></textarea>
             
-            <p class="form-hint">This is helper text to guide the user.</p>
+            <p class="form__hint">This is helper text to guide the user.</p>
             
-            <div class="form-actions">
-              <button class="secondary">Cancel</button>
+            <div class="form__actions">
+              <button class="button--secondary">Cancel</button>
               <button>Submit</button>
             </div>
           </div>
@@ -763,10 +931,10 @@
   &lt;label for="input-id"&gt;Label&lt;/label&gt;
   &lt;input type="text" id="input-id" placeholder="..."&gt;
   
-  &lt;p class="form-hint"&gt;Helper text&lt;/p&gt;
+  &lt;p class="form__hint"&gt;Helper text&lt;/p&gt;
   
-  &lt;div class="form-actions"&gt;
-    &lt;button class="secondary"&gt;Cancel&lt;/button&gt;
+  &lt;div class="form__actions"&gt;
+    &lt;button class="button--secondary"&gt;Cancel&lt;/button&gt;
     &lt;button&gt;Submit&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre>
@@ -775,8 +943,8 @@
       <h3 class="sg-subsection-title">Form Guidelines</h3>
       <ul>
         <li>Always include labels for accessibility</li>
-        <li>Use <code>form-hint</code> for helper text below inputs</li>
-        <li>Group action buttons in <code>form-actions</code> container</li>
+        <li>Use <code>form__hint</code> for helper text below inputs</li>
+        <li>Group action buttons in <code>form-actions</code> / <code>form__actions</code> container</li>
         <li>Place destructive actions (Cancel) on left, primary on right</li>
         <li>Minimum input height: 44px for touch targets</li>
       </ul>
@@ -886,9 +1054,9 @@
             <td><code>.l-container</code>, <code>.l-grid</code></td>
           </tr>
           <tr>
-            <td><code>u-</code></td>
-            <td>Utility classes</td>
-            <td><code>.u-text-center</code>, <code>.u-mb-4</code></td>
+            <td><em>(none)</em></td>
+            <td>Utility classes (spacing, flex, typography)</td>
+            <td><code>.flex</code>, <code>.mb-4</code>, <code>.text-center</code></td>
           </tr>
           <tr>
             <td><code>is-</code>, <code>has-</code></td>
@@ -903,13 +1071,15 @@
         </tbody>
       </table>
 
+      <p class="form__hint"><strong>Note:</strong> Utility classes don't use the <code>u-</code> prefix for brevity and readability. This is a pragmatic exception to the prefix convention.</p>
+
       <h3 class="sg-subsection-title">Do's and Don'ts</h3>
       <div class="sg-dos-donts">
         <div class="sg-do">
           <h4>✓ Do</h4>
           <p><code>.exercise-card__header</code></p>
           <p><code>.button--primary</code></p>
-          <p><code>.u-text-center</code></p>
+          <p><code>.flex</code>, <code>.mb-4</code></p>
           <p>Use descriptive, semantic names that describe purpose, not appearance.</p>
         </div>
         <div class="sg-dont">
@@ -1044,13 +1214,13 @@
       <div class="sg-example">
         <div class="sg-example-label">Progress Bar</div>
         <div class="sg-example-display">
-          <div class="progress-container">
-            <div class="progress-bar" style="width: 75%;"></div>
+          <div class="progress-container progress">
+            <div class="progress-bar progress__bar" style="width: 75%;"></div>
           </div>
           <p style="margin-top: 12px; font-size: 14px; color: var(--color-text-light);">75% Complete</p>
         </div>
-        <pre class="sg-example-code">&lt;div class="progress-container"&gt;
-  &lt;div class="progress-bar" style="width: 75%;"&gt;&lt;/div&gt;
+        <pre class="sg-example-code">&lt;div class="progress-container progress"&gt;
+  &lt;div class="progress-bar progress__bar" style="width: 75%;"&gt;&lt;/div&gt;
 &lt;/div&gt;</pre>
       </div>
 
@@ -1238,7 +1408,7 @@
   id="weight"
   aria-describedby="weight-hint"
 &gt;
-&lt;p id="weight-hint" class="form-hint"&gt;
+&lt;p id="weight-hint" class="form__hint"&gt;
   Enter weight used
 &lt;/p&gt;</code></pre>
           <p style="margin: 0; font-size: 13px;">Label associated, hint connected via aria-describedby.</p>

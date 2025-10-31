@@ -143,14 +143,14 @@ interface CollectedBlocks {
       const exKey = deps.slugify!(title);
       
       const card = document.createElement('div');
-      card.className = 'exercise-card compact' + (isReadOnly ? ' readonly' : '');
+      card.className = 'exercise-card exercise-card--compact' + (isReadOnly ? ' exercise-card--readonly' : '');
       card.setAttribute('data-exkey', exKey);
       card.setAttribute('data-name', title);
 
       // Optional header area to include the original exercise text (name + notes) inside the card
       if (headerHTML) {
         const header = document.createElement('div');
-        header.className = 'exercise-header';
+        header.className = 'exercise-card__header';
         header.innerHTML = headerHTML;
         
         // Extract and display notes from metadata if available
@@ -161,7 +161,7 @@ interface CollectedBlocks {
             const metadata: ExerciseMetadata | null = metaRaw ? JSON.parse(metaRaw) : null;
             if (metadata && metadata.notes) {
               const notesDiv = document.createElement('div');
-              notesDiv.className = 'exercise-notes';
+              notesDiv.className = 'exercise-card__notes';
               notesDiv.textContent = metadata.notes;
               header.appendChild(notesDiv);
             }
@@ -184,7 +184,7 @@ interface CollectedBlocks {
 
         // Move the Add set button after the sets
         addBtn = document.createElement('button');
-        addBtn.className = 'secondary';
+        addBtn.className = 'button--secondary';
         addBtn.type = 'button';
         addBtn.appendChild(document.createTextNode('Add set'));
         card.appendChild(addBtn);
@@ -401,7 +401,7 @@ interface CollectedBlocks {
         
         const del = document.createElement('button');
         del.type = 'button';
-        del.className = 'remove-set-btn';
+        del.className = 'button--remove';
         del.setAttribute('aria-label', 'Remove set');
         del.title = 'Remove set';
         
@@ -477,7 +477,7 @@ interface CollectedBlocks {
           if (deps.slugify!(slug) !== mainKey) {
             // Remove the closest list item or the anchor itself
             let n: Node | null = extraAnchors[ai]!;
-            while (n && n !== card && !((n as Element).tagName && ((n as Element).tagName === 'LI' || (n as Element).tagName === 'P' || (n as Element).className === 'exercise-notes'))) n = n.parentNode;
+            while (n && n !== card && !((n as Element).tagName && ((n as Element).tagName === 'LI' || (n as Element).tagName === 'P' || (n as Element).className === 'exercise-card__notes'))) n = n.parentNode;
             if (n && n !== card && n.parentNode) n.parentNode.removeChild(n);
           }
         }
@@ -732,7 +732,7 @@ interface CollectedBlocks {
       const extra = collectFollowingBlocks(container);
       if (extra && extra.html) {
         const notes = document.createElement('div');
-        notes.className = 'exercise-notes';
+        notes.className = 'exercise-card__notes';
         notes.innerHTML = extra.html;
         card.appendChild(notes);
       }

@@ -37,7 +37,7 @@
             }
             let list = [];
             if (!data) {
-                historyContent.innerHTML = '<p class="form-hint">History unavailable (invalid manifest).</p>';
+                historyContent.innerHTML = '<p class="form__hint">History unavailable (invalid manifest).</p>';
                 return;
             }
             if (Object.prototype.toString.call(data) === '[object Array]') {
@@ -47,7 +47,7 @@
                 list = data.files;
             }
             if (!list.length) {
-                historyContent.innerHTML = '<p class="form-hint">No logs yet.</p>';
+                historyContent.innerHTML = '<p class="form__hint">No logs yet.</p>';
                 return;
             }
             const rows = [];
@@ -74,14 +74,14 @@
             for (let j = 0; j < Math.min(rows.length, 50); j++) {
                 const r = rows[j];
                 const href = r.path || `performed/${r.name}`;
-                html += `<li><a target="_blank" rel="noopener" href="${href}">${r.name}</a></li>`;
+                html += `<li class="history-list__item"><a class="history-list__link" target="_blank" rel="noopener" href="${href}">${r.name}</a></li>`;
             }
             html += '</ul>';
             historyContent.innerHTML = html;
             status('');
         }
         catch (err) {
-            historyContent.innerHTML = '<p class="form-hint">History unavailable (no local manifest). Run scripts/build_performed_index.js to generate, or add logs.</p>';
+            historyContent.innerHTML = '<p class="form__hint">History unavailable (no local manifest). Run scripts/build_performed_index.js to generate, or add logs.</p>';
             status('');
         }
     };

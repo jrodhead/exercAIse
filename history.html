@@ -12,17 +12,21 @@
   <body>
     <div id="header-placeholder"></div>
 
-    <main class="container">
+    <section class="sg-container">
       <section id="status" class="status"></section>
 
-      <section id="history-section" class="readme">
-        <h2>History</h2>
-        <p class="form-hint">Latest performed logs (from the GitHub repo).</p>
+      <div class="sg-header">
+        <h1>History</h1>
+        <p>Latest performed logs from your workout sessions.</p>
+      </div>
+
+      <section class="sg-section">
+        <h2 class="sg-section-title">Performance Logs</h2>
         <div id="history-content">
           <p>Loading history...</p>
         </div>
       </section>
-    </main>
+    </section>
 
     <footer class="site-footer">
       <small>© <span id="year"></span> exercAIse. Works offline for logged data via localStorage.</small>

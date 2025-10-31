@@ -65,7 +65,7 @@
             </div>
 
             <div class="exercise-card">
-                <div class="exercise-header">
+                <div class="exercise-card__header">
                     <a href="exercises/goblet_squat.json">Goblet Squat</a> — <span class="ex-presc">4 x 8 · 67.5 lb · RPE 7.5 · Rest 150s</span>
                     <ul class="ex-cues">
                         <li>Elbows down; bell tight to chest</li>
@@ -82,7 +82,7 @@
                         <input type="number" placeholder="Multiplier" value="1" style="max-width: 5em;">
                         <input type="number" placeholder="Reps" value="8">
                         <input type="number" placeholder="RPE" value="7.5">
-                        <button type="button" class="remove-set-btn" aria-label="Remove set">
+                        <button type="button" class="button--remove" aria-label="Remove set">
                             <span class="icon-text">🗑</span>
                         </button>
                     </div>
@@ -93,24 +93,24 @@
                         <input type="number" placeholder="Multiplier" value="1" style="max-width: 5em;">
                         <input type="number" placeholder="Reps" value="8">
                         <input type="number" placeholder="RPE" value="7.5">
-                        <button type="button" class="remove-set-btn" aria-label="Remove set">
+                        <button type="button" class="button--remove" aria-label="Remove set">
                             <span class="icon-text">🗑</span>
                         </button>
                     </div>
                 </div>
                 
-                <button class="secondary">Add set</button>
+                <button class="button--secondary">Add set</button>
             </div>
 
-            <div class="progress-container">
-                <div class="progress-bar" style="width: 75%"></div>
+            <div class="progress-container progress">
+                <div class="progress-bar progress__bar" style="width: 75%"></div>
             </div>
-            <div class="progress-text">3 of 4 exercises completed</div>
+            <div class="progress-text progress__text">3 of 4 exercises completed</div>
 
-            <div class="form-actions" style="margin-top: 20px;">
+            <div class="form__actions" style="margin-top: 20px;">
                 <button>Save Workout</button>
                 <button>Copy JSON</button>
-                <button class="secondary">Clear All</button>
+                <button class="button--secondary">Clear All</button>
             </div>
             
             <div class="example-box" style="margin-top: 30px;">

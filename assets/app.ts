@@ -441,14 +441,14 @@
 
     xhrGet('performed/index.json', (err, text) => {
       if (err || !text) {
-        logsList.innerHTML = '<p class="form-hint">History unavailable (no local manifest). Run scripts/build_performed_index.js to generate, or add logs.</p>';
+        logsList.innerHTML = '<p class="form__hint">History unavailable (no local manifest). Run scripts/build_performed_index.js to generate, or add logs.</p>';
         return;
       }
       const res = renderFromLocal(text);
       if (res === 'empty') {
-        logsList.innerHTML = '<p class="form-hint">No logs yet.</p>';
+        logsList.innerHTML = '<p class="form__hint">No logs yet.</p>';
       } else if (!res) {
-        logsList.innerHTML = '<p class="form-hint">History unavailable (invalid manifest).</p>';
+        logsList.innerHTML = '<p class="form__hint">History unavailable (invalid manifest).</p>';
       }
     });
   };
@@ -801,7 +801,7 @@
       if (w.block && w.week) {
         meta = ` – Block ${w.block}, Week ${w.week}`;
       }
-      html += `<li><a href="workouts/${encodeURIComponent(w.filename)}">${displayTitle}${meta}</a></li>`;
+      html += `<li class="workout-list__item"><a class="workout-list__link" href="workouts/${encodeURIComponent(w.filename)}">${displayTitle}${meta}</a></li>`;
     }
     
     html += '</ul>';

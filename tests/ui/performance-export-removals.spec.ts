@@ -19,7 +19,7 @@ test('removed rows do not appear in perf-1 export', async ({ page }) => {
   // Remove the last set twice to leave a single set
   for (let i = 0; i < 2; i++) {
     const lastRow = card.locator('.set-row').last();
-    const removeBtn = lastRow.locator('button.remove-set-btn');
+    const removeBtn = lastRow.locator('button.button--remove');
     await expect(removeBtn).toBeVisible();
     await removeBtn.click();
     await expect(card.locator('.set-row')).toHaveCount(3 - (i + 1));

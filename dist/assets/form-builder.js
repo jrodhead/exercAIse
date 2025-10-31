@@ -48,12 +48,12 @@ window.ExercAIse.FormBuilder = (() => {
             const isReadOnly = !!options.readOnly;
             const exKey = deps.slugify(title);
             const card = document.createElement('div');
-            card.className = 'exercise-card compact' + (isReadOnly ? ' readonly' : '');
+            card.className = 'exercise-card exercise-card--compact' + (isReadOnly ? ' exercise-card--readonly' : '');
             card.setAttribute('data-exkey', exKey);
             card.setAttribute('data-name', title);
             if (headerHTML) {
                 const header = document.createElement('div');
-                header.className = 'exercise-header';
+                header.className = 'exercise-card__header';
                 header.innerHTML = headerHTML;
                 try {
                     const metaElement = header.querySelector('[data-exmeta]');
@@ -62,7 +62,7 @@ window.ExercAIse.FormBuilder = (() => {
                         const metadata = metaRaw ? JSON.parse(metaRaw) : null;
                         if (metadata && metadata.notes) {
                             const notesDiv = document.createElement('div');
-                            notesDiv.className = 'exercise-notes';
+                            notesDiv.className = 'exercise-card__notes';
                             notesDiv.textContent = metadata.notes;
                             header.appendChild(notesDiv);
                         }
@@ -79,7 +79,7 @@ window.ExercAIse.FormBuilder = (() => {
                 setsWrap.className = 'exercise-sets';
                 card.appendChild(setsWrap);
                 addBtn = document.createElement('button');
-                addBtn.className = 'secondary';
+                addBtn.className = 'button--secondary';
                 addBtn.type = 'button';
                 addBtn.appendChild(document.createTextNode('Add set'));
                 card.appendChild(addBtn);
@@ -284,7 +284,7 @@ window.ExercAIse.FormBuilder = (() => {
                 }
                 const del = document.createElement('button');
                 del.type = 'button';
-                del.className = 'remove-set-btn';
+                del.className = 'button--remove';
                 del.setAttribute('aria-label', 'Remove set');
                 del.title = 'Remove set';
                 const iconText = document.createElement('span');
@@ -357,7 +357,7 @@ window.ExercAIse.FormBuilder = (() => {
                     const slug = m[1];
                     if (deps.slugify(slug) !== mainKey) {
                         let n = extraAnchors[ai];
-                        while (n && n !== card && !(n.tagName && (n.tagName === 'LI' || n.tagName === 'P' || n.className === 'exercise-notes')))
+                        while (n && n !== card && !(n.tagName && (n.tagName === 'LI' || n.tagName === 'P' || n.className === 'exercise-card__notes')))
                             n = n.parentNode;
                         if (n && n !== card && n.parentNode)
                             n.parentNode.removeChild(n);
@@ -591,7 +591,7 @@ window.ExercAIse.FormBuilder = (() => {
             const extra = collectFollowingBlocks(container);
             if (extra && extra.html) {
                 const notes = document.createElement('div');
-                notes.className = 'exercise-notes';
+                notes.className = 'exercise-card__notes';
                 notes.innerHTML = extra.html;
                 card.appendChild(notes);
             }

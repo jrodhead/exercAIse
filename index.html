@@ -13,11 +13,15 @@
     <div id="header-placeholder"></div>
 
     <main class="container">
-      <section id="generate-section" class="readme">
-        <h2>Session Plan (JSON)</h2>
-        <p class="form-hint">Paste a SessionPlan JSON to preview and log.</p>
+      <section id="status" class="status"></section>
+      
+      <div id="generate-section" class="card">
+        <div class="card-header">
+          <h2>Session Plan (JSON)</h2>
+          <p class="form__hint">Paste a SessionPlan JSON to preview and log.</p>
+        </div>
         <form id="generate-form" class="responsive-form">
-          <div class="form-grid">
+          <div class="form__grid">
             <div>
               <label for="gen-goals">Goals</label>
               <textarea id="gen-goals" rows="3" placeholder="e.g., 30–40 min full-body strength, knee-friendly"></textarea>
@@ -30,37 +34,41 @@
               <label for="gen-equipment">Equipment</label>
               <input id="gen-equipment" type="text" placeholder="e.g., dumbbells, bands, bench" />
             </div>
-            <div class="form-full-width">
+            <div class="form__full-width">
               <label for="gen-instructions">Personal instructions (optional, not stored)</label>
               <textarea id="gen-instructions" rows="3" placeholder="Any preferences, constraints, or schedule details"></textarea>
             </div>
           </div>
-          <div class="form-actions flex flex-wrap gap-3">
+          <div class="form__actions">
             <button id="gen-submit" type="button">Generate with Kai</button>
-            <button id="gen-clear" type="button" class="secondary">Clear</button>
+            <button id="gen-clear" type="button" class="button--secondary">Clear</button>
           </div>
-          <p class="form-hint">Expected keys: version, title, exercises[]. Each exercise: name, prescribed{ sets, reps or "x-y", rpe?, weight? }. Slugs are optional; unknown/missing slugs will render as non-links with a warning.</p>
-          <div class="form-full-width">
+          <div class="form__full-width">
+            <label for="gen-json">Session JSON</label>
             <textarea id="gen-json" rows="8" placeholder='{"version":"1.0","title":"My Session","exercises":[{"slug":"goblet_squat","name":"Goblet Squat","prescribed":{"sets":3,"reps":"8-12","rpe":7}}]}'></textarea>
+            <p class="form__hint">Expected keys: version, title, exercises[]. Each exercise: name, prescribed{ sets, reps or "x-y", rpe?, weight? }. Slugs are optional; unknown/missing slugs will render as non-links with a warning.</p>
           </div>
-          <div class="form-actions flex flex-wrap gap-3">
-            <button id="gen-load-json" type="button" class="secondary">Load JSON</button>
+          <div class="form__actions">
+            <button id="gen-load-json" type="button" class="button--primary">Load JSON</button>
           </div>
         </form>
-      </section>
-  <section id="status" class="status"></section>
+      </div>
 
-  <section id="readme-section" class="readme">
-        <h2>Workout Index</h2>
-  <p class="form-hint">Tap a workout title to open the session and logger.</p>
+      <div id="readme-section" class="card" style="display:none;">
+        <div class="card-header">
+          <h2>Workout Index</h2>
+          <p class="form__hint">Tap a workout title to open the session and logger.</p>
+        </div>
         <article id="readme-content" class="workout-content" aria-live="polite"></article>
-      </section>
+      </div>
 
-      <section id="logs-section" class="readme" style="display:none;">
-        <h2>History</h2>
-        <p class="form-hint">Latest performed logs (from the GitHub repo).</p>
+      <div id="logs-section" class="card" style="display:none;">
+        <div class="card-header">
+          <h2>History</h2>
+          <p class="form__hint">Latest performed logs (from the GitHub repo).</p>
+        </div>
         <div id="logs-list"></div>
-      </section>
+      </div>
 
       <hr />
 
@@ -70,7 +78,7 @@
           <span id="workout-title"></span>
         </div>
         <div class="meta-actions">
-          <a id="back-to-index" href="index.html" class="secondary">Back to Index</a>
+          <a id="back-to-index" href="index.html" class="button--secondary">Back to Index</a>
           <button id="reload-btn" type="button">Reload</button>
           <a id="open-on-github" href="#" target="_blank" rel="noopener">Open file</a>
         </div>
@@ -82,18 +90,18 @@
 
       <section class="form" id="form-section" style="display:none;">
         <h2>Log Performed Values</h2>
-        <p class="form-hint">Add sets for each exercise you performed. Your entries stay on this device (localStorage). You can also copy JSON for backup.</p>
+        <p class="form__hint">Add sets for each exercise you performed. Your entries stay on this device (localStorage). You can also copy JSON for backup.</p>
 
         <form id="performance-form">
           <div id="exercise-forms"></div>
 
-          <div class="form-actions">
+          <div class="form__actions">
             <button id="save-local" type="button">Save locally</button>
             <button id="copy-json" type="button">Copy JSON</button>
             <button id="download-json" type="button">Download JSON</button>
-            <button id="submit-issue" type="button" class="secondary">Submit via GitHub Issue</button>
-            <a id="open-issue" class="secondary" href="https://github.com/jrodhead/exercAIse/issues/new" target="_blank" rel="noopener" style="display:none;">Open Issue</a>
-            <button id="clear-form" type="button" class="danger">Clear</button>
+            <button id="submit-issue" type="button" class="button--secondary">Submit via GitHub Issue</button>
+            <a id="open-issue" class="button--secondary" href="https://github.com/jrodhead/exercAIse/issues/new" target="_blank" rel="noopener" style="display:none;">Open Issue</a>
+            <button id="clear-form" type="button" class="button--danger">Clear</button>
           </div>
         </form>
 

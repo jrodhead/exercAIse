@@ -36,10 +36,10 @@ test.describe('Index and menu navigation', () => {
     await page.goto('/history.html');
     await expect(page.locator('#history-content')).toBeVisible();
     // Wait for history to load - either the list or a message
-    await page.waitForSelector('#history-content ul.history-list, #history-content .form-hint', { timeout: 10000 });
+    await page.waitForSelector('#history-content ul.history-list, #history-content .form__hint', { timeout: 10000 });
     // Check if we have a list or a message
     const hasList = await page.locator('#history-content ul.history-list').isVisible().catch(() => false);
-    const hasMessage = await page.locator('#history-content .form-hint').isVisible().catch(() => false);
+    const hasMessage = await page.locator('#history-content .form__hint').isVisible().catch(() => false);
     expect(hasList || hasMessage).toBeTruthy();
   });
 
@@ -48,6 +48,8 @@ test.describe('Index and menu navigation', () => {
     await page.fill('#gen-json', '{"version":"1.0","title":"Test Session","exercises":[{"slug":"goblet_squat","name":"Goblet Squat","prescribed":{"sets":2,"reps":8}}]}');
     await page.click('#gen-load-json');
     // Wait for form-builder to process and render the workout
+    // First wait for the workout content to be populated (more reliable than visibility)
+    await expect(page.locator('#workout-content')).not.toBeEmpty({ timeout: 5000 });
     await expect(page.locator('#workout-section')).toBeVisible({ timeout: 5000 });
     await expect(page.locator('.exercise-card').first()).toBeVisible({ timeout: 5000 });
   });

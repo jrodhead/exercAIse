@@ -2,7 +2,6 @@
 (() => {
     const statusEl = document.getElementById('status');
     const weekContent = document.getElementById('week-content');
-    const weekInfoEl = document.querySelector('.current-week-info');
     const status = (msg, opts = {}) => {
         const isImportant = !!opts.important;
         if (!msg) {
@@ -64,16 +63,16 @@
         }
     };
     const getDayName = (date) => {
-        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const days = ['Su', 'M', 'Tu', 'W', 'Th', 'F', 'Sa'];
         return days[date.getDay()];
     };
     const formatDateReadable = (date) => {
         const months = ['January', 'February', 'March', 'April', 'May', 'June',
             'July', 'August', 'September', 'October', 'November', 'December'];
-        const dayName = getDayName(date);
         const month = months[date.getMonth()];
         const day = date.getDate();
-        return `${dayName}, ${month} ${day}`;
+        const year = date.getFullYear();
+        return `${month} ${day}, ${year}`;
     };
     const loadWorkouts = async () => {
         const manifestText = await fetchText('workouts/manifest.txt');
@@ -124,36 +123,56 @@
         const { start, end } = getCurrentWeekBounds();
         const startFormatted = formatDateReadable(start);
         const endFormatted = formatDateReadable(end);
-        weekInfoEl.innerHTML = `<p>Week of ${startFormatted} through ${endFormatted}</p>`;
-        if (workouts.length === 0) {
-            weekContent.innerHTML = '<p class="form-hint">No sessions scheduled for this week.</p>';
-            return;
-        }
-        let html = '<div class="week-sessions">';
-        const grouped = new Map();
+        const weekInfoEl = document.querySelector('.current-week-info');
+        weekInfoEl.textContent = `${startFormatted} - ${endFormatted}`;
+        const workoutsByDate = new Map();
         for (const workout of workouts) {
-            if (!grouped.has(workout.date)) {
-                grouped.set(workout.date, []);
+            if (workout.date) {
+                workoutsByDate.set(workout.date, workout);
             }
-            grouped.get(workout.date).push(workout);
         }
-        for (const [dateStr, dayWorkouts] of grouped) {
-            const date = parseDate(dateStr);
-            if (!date)
-                continue;
-            const isToday = formatDate(new Date()) === dateStr;
-            const dayClass = isToday ? 'day-group today' : 'day-group';
-            html += `<div class="${dayClass}">`;
-            html += `<h3>${formatDateReadable(date)}${isToday ? ' <span class="badge">Today</span>' : ''}</h3>`;
-            html += '<ul class="workout-list">';
-            for (const workout of dayWorkouts) {
-                let meta = '';
-                if (workout.block && workout.week) {
-                    meta = ` <span class="muted">– Block ${workout.block}, Week ${workout.week}</span>`;
+        let html = '<div class="workout-grid">';
+        const today = formatDate(new Date());
+        for (let i = 0; i < 7; i++) {
+            const currentDate = new Date(start);
+            currentDate.setDate(start.getDate() + i);
+            const dateStr = formatDate(currentDate);
+            const dayName = getDayName(currentDate);
+            const isToday = today === dateStr;
+            const workout = workoutsByDate.get(dateStr);
+            if (workout) {
+                const cardClass = isToday ? 'workout-grid-card workout-grid-card--today' : 'workout-grid-card';
+                html += `<div class="${cardClass}">`;
+                if (isToday) {
+                    html += `<span class="today-badge">Today</span>`;
                 }
-                html += `<li><a href="index.html?file=workouts/${encodeURIComponent(workout.filename)}">${workout.title}${meta}</a></li>`;
+                html += `<div class="workout-grid-card__header">`;
+                html += `<div class="workout-grid-card__day">${dayName}</div>`;
+                html += `<div class="workout-grid-card__date">${currentDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</div>`;
+                html += `</div>`;
+                html += `<div class="workout-grid-card__body">`;
+                html += `<a href="index.html?file=workouts/${encodeURIComponent(workout.filename)}" class="workout-grid-card__title">${workout.title}</a>`;
+                if (workout.block && workout.week) {
+                    html += `<div class="workout-grid-card__meta">Block ${workout.block}, Week ${workout.week}</div>`;
+                }
+                html += `</div>`;
+                html += `</div>`;
             }
-            html += '</ul></div>';
+            else {
+                const cardClass = isToday ? 'workout-grid-card workout-grid-card--placeholder workout-grid-card--today' : 'workout-grid-card workout-grid-card--placeholder';
+                html += `<div class="${cardClass}">`;
+                if (isToday) {
+                    html += `<span class="today-badge">Today</span>`;
+                }
+                html += `<div class="workout-grid-card__header">`;
+                html += `<div class="workout-grid-card__day">${dayName}</div>`;
+                html += `<div class="workout-grid-card__date">${currentDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</div>`;
+                html += `</div>`;
+                html += `<div class="workout-grid-card__body">`;
+                html += `Rest Day`;
+                html += `</div>`;
+                html += `</div>`;
+            }
         }
         html += '</div>';
         weekContent.innerHTML = html;

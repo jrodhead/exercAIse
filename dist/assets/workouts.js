@@ -33,7 +33,7 @@
             if (w.block && w.week) {
                 meta = ` <span class="muted">– Block ${w.block}, Week ${w.week}</span>`;
             }
-            html += `<li><a href="index.html?file=workouts/${encodeURIComponent(w.filename)}">${displayTitle}${meta}</a></li>`;
+            html += `<li class="workout-list__item"><a class="workout-list__link" href="index.html?file=workouts/${encodeURIComponent(w.filename)}">${displayTitle}${meta}</a></li>`;
         }
         html += '</ul>';
         return html;
