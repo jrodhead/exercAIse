@@ -140,11 +140,18 @@ test.describe('Navigation Between Pages', () => {
   });
 
   test('should maintain header consistency across all pages', async ({ page }) => {
-    const pages = ['/', 'week.html', 'workouts.html', 'history.html', 'rpe-guide.html'];
+  const pages = ['index.html', 'week.html', 'workouts.html', 'history.html', 'rpe-guide.html'];
     const headers: string[] = [];
     
     for (const pagePath of pages) {
       await page.goto(`http://localhost:8000/${pagePath}`);
+      try {
+        await page.waitForSelector('header nav', { timeout: 10000 });
+      } catch (e) {
+        // Log which page failed
+        console.error(`header nav not found on page: ${pagePath}`);
+        throw new Error(`header nav not found on page: ${pagePath}`);
+      }
       const header = page.locator('header nav');
       const html = await header.innerHTML();
       // Normalize by removing all class attributes (since active state varies)

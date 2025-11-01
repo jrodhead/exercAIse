@@ -9,30 +9,27 @@ test.describe('This Week Page', () => {
   
   test('page loads and displays basic structure', async ({ page }) => {
     await page.goto('/week.html');
-    // Wait for page to load
-    await page.waitForSelector('h2.sg-section-title.current-week-info', { timeout: 5000 });
-    // Verify page title
-    await expect(page).toHaveTitle(/This Week/);
-    // Verify main heading (date range)
+    // Wait for heading to have non-empty text
     const heading = page.locator('h2.sg-section-title.current-week-info');
     await expect(heading).toBeVisible();
-    // Should match date range format: "October 26, 2025 - November 1, 2025"
-    const headingText = await heading.textContent();
-    expect(headingText).toMatch(/\w+ \d{1,2}, \d{4} - \w+ \d{1,2}, \d{4}/);
+    await expect(async () => {
+      const text = await heading.textContent();
+      expect(text && text.trim().length).toBeGreaterThan(0);
+      expect(text).toMatch(/\w+ \d{1,2}, \d{4} - \w+ \d{1,2}, \d{4}/);
+    }).toPass();
+    // Verify page title
+    await expect(page).toHaveTitle(/This Week/);
   });
 
   test('displays current week date range', async ({ page }) => {
     await page.goto('/week.html');
-    
-    // Wait for week info to load
-    await page.waitForSelector('.current-week-info', { timeout: 5000 });
-    
     const weekInfo = page.locator('.current-week-info');
     await expect(weekInfo).toBeVisible();
-    
-  // Should match date range format: "October 26, 2025 - November 1, 2025"
-  const weekText = await weekInfo.textContent();
-  expect(weekText).toMatch(/\w+ \d{1,2}, \d{4} - \w+ \d{1,2}, \d{4}/);
+    await expect(async () => {
+      const text = await weekInfo.textContent();
+      expect(text && text.trim().length).toBeGreaterThan(0);
+      expect(text).toMatch(/\w+ \d{1,2}, \d{4} - \w+ \d{1,2}, \d{4}/);
+    }).toPass();
   });
 
   test('displays sessions for current week or appropriate message', async ({ page }) => {
