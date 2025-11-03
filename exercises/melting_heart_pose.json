@@ -1,0 +1,18 @@
+{
+  "name": "Melting Heart Pose",
+  "equipment": ["yoga mat", "blanket (optional)"],
+  "tags": ["shoulders", "chest", "spine", "yin yoga", "stretch"],
+  "setup": ["Start in tabletop position (hands and knees)", "Walk hands forward while keeping hips over knees", "Lower chest toward mat, forehead or chin to ground", "Arms extended forward, palms down or together in prayer"],
+  "steps": ["Sink chest deeper toward mat", "Keep hips stacked over knees (don't shift back)", "Feel stretch through shoulders, chest, and upper back", "Breathe deeply into the stretch", "Hold for prescribed time"],
+  "cues": ["Hips over knees", "Chest melts down", "Shoulders stretch", "Breathe deeply", "Relax into pose"],
+  "mistakes": ["Shifting hips back (becomes child's pose, less shoulder stretch)", "Forcing chest down too aggressively", "Holding breath or tensing", "Elbows bending (should stay extended)"],
+  "safety": "Deep shoulder stretch. If shoulders feel pinched or painful, reduce depth or place blanket under chest. Excellent for post-pressing recovery.",
+  "scaling": {
+    "regressions": ["Child's pose (hips shift back, gentler)", "Puppy pose (partial depth)", "Supported melting heart (bolster under chest)"],
+    "progressions": ["Deeper melting heart (chin to mat)", "Melting heart with side bend (walk hands to one side)"]
+  },
+  "variations": ["Puppy pose", "Child's pose", "Thread the needle"],
+  "prescriptionHints": {"load": "Bodyweight", "reps": "—", "time": "—", "distance": "—", "rpe": "—", "notes": "Hold 3-5 min for yin practice. Deep shoulder and chest opening, especially after bench press."},
+  "joints": {"sensitiveJoints": ["shoulders", "lower back"], "notes": "Keep hips over knees to maximize shoulder stretch. Avoid if experiencing acute shoulder pain."},
+  "media": {"video": "", "images": []}
+}

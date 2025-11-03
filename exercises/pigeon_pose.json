@@ -1,0 +1,65 @@
+{
+  "name": "Pigeon Pose",
+  "equipment": [],
+  "tags": ["hips", "glutes", "mobility", "stretch", "yoga"],
+  "setup": [
+    "Start in tabletop or downward dog position",
+    "Bring one knee forward toward same-side hand",
+    "Slide foot across toward opposite hip (shin roughly parallel to front of mat)",
+    "Extend back leg straight behind, toes pointed or top of foot down"
+  ],
+  "steps": [
+    "Square hips toward front of mat",
+    "Walk hands forward and lower torso over front leg",
+    "Rest on forearms or fold fully over front shin",
+    "Breathe deeply and relax into the stretch",
+    "Hold for prescribed time, then switch sides"
+  ],
+  "cues": [
+    "Square hips forward",
+    "Relax into the stretch",
+    "Breathe deeply",
+    "Keep front shin roughly parallel to mat edge",
+    "Back leg straight and engaged"
+  ],
+  "mistakes": [
+    "Hips twisted or rotated instead of squared",
+    "Front knee torqued or uncomfortable",
+    "Forcing depth too aggressively",
+    "Holding breath or tensing up"
+  ],
+  "safety": "If knee feels tweaky, reduce angle of front shin or place a block/blanket under hip. Avoid this pose if experiencing acute knee or hip pain.",
+  "scaling": {
+    "regressions": [
+      "Supine figure-4 stretch (lying on back)",
+      "Seated pigeon (sitting in chair, ankle on opposite knee)",
+      "Thread-the-needle stretch"
+    ],
+    "progressions": [
+      "Full pigeon with quad stretch (reaching back for back foot)",
+      "King pigeon (advanced backbend variation)",
+      "Sleeping pigeon (chest fully on floor)"
+    ]
+  },
+  "variations": [
+    "[90-90 Hip Stretch](90_90_hip_stretch.json)",
+    "Supine figure-4 stretch",
+    "Thread-the-needle"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "—",
+    "time": "—",
+    "distance": "—",
+    "rpe": "—",
+    "notes": "Hold 60-120s per side. Excellent for hip mobility and glute stretch. Use props as needed."
+  },
+  "joints": {
+    "sensitiveJoints": ["hips", "knees"],
+    "notes": "Keep front knee safe by adjusting shin angle. Don't force depth; allow hips to open gradually over time."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

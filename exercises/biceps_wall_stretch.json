@@ -1,0 +1,65 @@
+{
+  "name": "Biceps Wall Stretch",
+  "equipment": [],
+  "tags": ["biceps", "arms", "shoulders", "mobility", "stretch"],
+  "setup": [
+    "Stand next to a wall or door frame",
+    "Extend one arm back and place palm flat on wall, fingers pointing behind you",
+    "Arm should be at or slightly below shoulder height",
+    "Stand tall with shoulders back"
+  ],
+  "steps": [
+    "Rotate torso slightly away from the wall",
+    "Gently lean forward or turn body to increase stretch",
+    "Feel stretch through biceps, forearm, and front of shoulder",
+    "Breathe deeply and hold for prescribed time",
+    "Release and switch sides"
+  ],
+  "cues": [
+    "Palm flat on wall",
+    "Fingers pointing back",
+    "Rotate torso away gently",
+    "Breathe deeply",
+    "Don't force depth"
+  ],
+  "mistakes": [
+    "Forcing stretch too aggressively (risk of biceps tendon strain)",
+    "Shrugging shoulder or rounding forward",
+    "Hyperextending elbow",
+    "Holding breath or tensing up"
+  ],
+  "safety": "If biceps or shoulder feel sharp pain, reduce intensity or skip this stretch. Gentle and gradual progression is key.",
+  "scaling": {
+    "regressions": [
+      "Doorway biceps stretch (hand on door frame, less rotation)",
+      "Seated biceps stretch (hand behind body on floor)",
+      "Foam rolling biceps (gentler option)"
+    ],
+    "progressions": [
+      "Deeper rotation away from wall",
+      "Lower hand placement (increases biceps stretch)",
+      "Active biceps stretch with band (eccentric resistance)"
+    ]
+  },
+  "variations": [
+    "[Doorway Chest Stretch](doorway_chest_stretch.json)",
+    "[Overhead Triceps Stretch](overhead_triceps_stretch.json)",
+    "Wrist flexor stretch"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "—",
+    "time": "—",
+    "distance": "—",
+    "rpe": "—",
+    "notes": "Hold 45-90s per arm. Great post-workout stretch after biceps training."
+  },
+  "joints": {
+    "sensitiveJoints": ["biceps tendon", "shoulders", "elbows"],
+    "notes": "Be gentle with this stretch—biceps tendon can be sensitive. Avoid hyperextension of elbow."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

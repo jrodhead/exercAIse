@@ -1,0 +1,18 @@
+{
+  "name": "Legs Up the Wall",
+  "equipment": ["wall", "yoga mat (optional)", "blanket or bolster (optional)"],
+  "tags": ["recovery", "inversion", "legs", "circulation", "yin yoga"],
+  "setup": ["Sit sideways next to wall", "Lie back and swing legs up wall", "Hips close to wall (or slightly away if hamstrings are tight)", "Arms at sides or on belly, palms up"],
+  "steps": ["Rest legs against wall, fully relaxed", "Let hips and lower back settle into floor", "Close eyes and breathe deeply", "Allow gravity to gently drain legs", "Rest for prescribed time"],
+  "cues": ["Legs fully relaxed against wall", "Hips close to wall", "Lower back grounded", "Breathe deeply", "Let go completely"],
+  "mistakes": ["Forcing hips too close to wall (hamstring strain)", "Tensing legs or feet", "Holding position with effort instead of relaxing", "Holding breath"],
+  "safety": "Gentle inversion. Avoid if experiencing vertigo or acute lower back pain. Great for leg recovery after running or basketball.",
+  "scaling": {
+    "regressions": ["Legs elevated on chair or couch (less inversion)", "Supine with knees bent, feet on wall"],
+    "progressions": ["Supported legs up wall (bolster under hips)", "Legs up wall with hip opening (soles of feet together)"]
+  },
+  "variations": ["Supported shoulder stand (advanced)", "Supine relaxation", "Savasana"],
+  "prescriptionHints": {"load": "Bodyweight", "reps": "—", "time": "—", "distance": "—", "rpe": "—", "notes": "Hold 5-15 min. Excellent recovery pose for legs, circulation, and nervous system reset."},
+  "joints": {"sensitiveJoints": ["hamstrings", "lower back"], "notes": "If hamstrings are tight, move hips slightly away from wall. Completely passive—no muscular effort."},
+  "media": {"video": "", "images": []}
+}

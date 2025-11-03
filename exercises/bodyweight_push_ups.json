@@ -1,0 +1,65 @@
+{
+  "name": "Bodyweight Push-ups",
+  "equipment": [],
+  "tags": ["chest", "triceps", "shoulders", "push", "bodyweight"],
+  "setup": [
+    "Hands slightly wider than shoulder-width, fingers pointing forward",
+    "Body in straight line from head to heels",
+    "Core braced, shoulders packed down and back"
+  ],
+  "steps": [
+    "Lower chest toward floor, elbows tracking at 45° to body",
+    "Descend until chest is 1-2 inches from floor",
+    "Pause briefly at bottom",
+    "Push through palms to return to start",
+    "Finish with shoulders packed, core tight"
+  ],
+  "cues": [
+    "Plank position throughout",
+    "Elbows at 45°, not flared",
+    "Chest to floor, not hips",
+    "Exhale on the push",
+    "Full lockout at top"
+  ],
+  "mistakes": [
+    "Sagging hips or piking at waist",
+    "Elbows flaring out to 90°",
+    "Partial range of motion (not reaching full depth)",
+    "Head dropping or jutting forward"
+  ],
+  "safety": "If shoulders or wrists hurt, elevate hands on a bench or wall. Avoid if experiencing elbow pain—regress to incline variation.",
+  "scaling": {
+    "regressions": [
+      "Incline push-ups (hands on bench or wall)",
+      "Knee push-ups",
+      "Eccentric-only push-ups (lower slow, reset at top)"
+    ],
+    "progressions": [
+      "Tempo push-ups (3-1-1 or 2-0-2)",
+      "Decline push-ups (feet elevated)",
+      "Weighted push-ups (plate on back)",
+      "Diamond push-ups"
+    ]
+  },
+  "variations": [
+    "[Diamond Push-ups](diamond_push_ups.json)",
+    "[Bench Dip](bench_dip.json)",
+    "Wide-grip push-ups"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "8-20 depending on strength level",
+    "time": "—",
+    "distance": "—",
+    "rpe": "6-8 for strength; 8-9 for muscular endurance",
+    "notes": "Great warm-up exercise at lower reps; hypertrophy finisher at higher reps to failure."
+  },
+  "joints": {
+    "sensitiveJoints": ["shoulders", "elbows", "wrists"],
+    "notes": "Keep shoulders packed and elbows at 45° to reduce shoulder stress. Use neutral grip handles or elevate hands if wrists are sensitive."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

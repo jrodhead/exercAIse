@@ -1,0 +1,18 @@
+{
+  "name": "Butt Kicks",
+  "equipment": [],
+  "tags": ["cardio", "warm-up", "dynamic", "legs", "hamstrings"],
+  "setup": ["Stand tall with feet hip-width apart", "Arms at sides, core engaged", "Weight on balls of feet"],
+  "steps": ["Kick one heel back toward glutes", "Quickly switch legs in running motion", "Pump arms in opposition", "Land softly on balls of feet", "Continue alternating at brisk pace"],
+  "cues": ["Heels to glutes", "Quick turnover", "Stay on balls of feet", "Arms pumping", "Upright posture"],
+  "mistakes": ["Leaning forward excessively", "Landing heavily on heels", "Not kicking heels high enough", "Bouncing too much (should be smooth)"],
+  "safety": "Start at moderate pace. If hamstrings or knees feel tight, reduce range or slow pace.",
+  "scaling": {
+    "regressions": ["Walking butt kicks (slower pace)", "Alternating hamstring curls (standing, no hop)"],
+    "progressions": ["Faster butt kicks", "Traveling butt kicks", "Butt kicks with resistance band"]
+  },
+  "variations": ["High knees", "A-skips", "B-skips"],
+  "prescriptionHints": {"load": "Bodyweight", "reps": "20-40 total or 20-30s", "time": "—", "distance": "—", "rpe": "—", "notes": "Dynamic hamstring and quad warm-up."},
+  "joints": {"sensitiveJoints": ["knees", "hamstrings", "ankles"], "notes": "Land softly. Keep torso upright to avoid lower back stress."},
+  "media": {"video": "", "images": []}
+}

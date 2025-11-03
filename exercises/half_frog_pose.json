@@ -1,0 +1,18 @@
+{
+  "name": "Half Frog Pose",
+  "equipment": ["yoga mat", "blanket or bolster (optional)"],
+  "tags": ["hips", "quads", "hip flexors", "yin yoga", "stretch"],
+  "setup": ["Lie on stomach (prone position)", "Prop upper body on forearms (sphinx pose position)", "Bend one knee and bring heel toward same-side glute", "Reach back with same-side hand to hold inside of foot"],
+  "steps": ["Gently press foot toward glute with hand", "Rotate bent knee slightly outward if comfortable", "Keep hips grounded and level", "Breathe deeply into the stretch", "Hold for prescribed time, then switch sides"],
+  "cues": ["Hips stay grounded", "Gentle pressure on foot", "Breathe deeply", "Relax into stretch", "Keep opposite leg extended"],
+  "mistakes": ["Forcing knee too far (risk of knee strain)", "Letting hips lift or rotate", "Holding breath or tensing up", "Cranking foot aggressively"],
+  "safety": "Yin yoga requires patience. If knee feels sharp pain, reduce depth or skip. Use props under hips if needed.",
+  "scaling": {
+    "regressions": ["Lying quad stretch (hand holds ankle, no rotation)", "Side-lying quad stretch", "Standing quad stretch"],
+    "progressions": ["Full frog pose (both legs)", "King pigeon pose (deeper hip and quad stretch)"]
+  },
+  "variations": ["Lying quad stretch", "Standing quad stretch", "Full frog pose"],
+  "prescriptionHints": {"load": "Bodyweight", "reps": "—", "time": "—", "distance": "—", "rpe": "—", "notes": "Hold 2-5 min each side for yin practice. Deep quad and hip flexor release."},
+  "joints": {"sensitiveJoints": ["knees", "hips", "lower back"], "notes": "Be gentle with knee. Keep hips level to avoid compensatory patterns."},
+  "media": {"video": "", "images": []}
+}

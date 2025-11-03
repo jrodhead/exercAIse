@@ -1,0 +1,65 @@
+{
+  "name": "Lat Stretch",
+  "equipment": [],
+  "tags": ["lats", "back", "shoulders", "mobility", "stretch"],
+  "setup": [
+    "Stand or kneel beside a pole, door frame, or stable anchor",
+    "Reach one arm overhead and grasp anchor point",
+    "Step or lean away from anchor to create tension",
+    "Other hand on hip or hanging relaxed"
+  ],
+  "steps": [
+    "Reach overhead arm further, elongating lat",
+    "Gently lean hips away from anchor point",
+    "Feel stretch along side of torso from armpit to hip",
+    "Breathe deeply and relax into the stretch",
+    "Hold for prescribed time, then switch sides"
+  ],
+  "cues": [
+    "Reach arm long",
+    "Lean hips away",
+    "Feel stretch in lat (side of back)",
+    "Breathe deeply",
+    "Don't twist or rotate excessively"
+  ],
+  "mistakes": [
+    "Over-rotating torso instead of lateral flexion",
+    "Holding breath or tensing up",
+    "Not creating enough tension (standing too close to anchor)",
+    "Forcing depth too aggressively"
+  ],
+  "safety": "If shoulder feels uncomfortable, reduce reach or lean. Avoid this stretch if experiencing acute shoulder or rib pain.",
+  "scaling": {
+    "regressions": [
+      "Child's pose (global lat stretch)",
+      "Wall lat stretch (hands on wall, hips push back)",
+      "Foam rolling lats"
+    ],
+    "progressions": [
+      "Hanging lat stretch (dead hang from pull-up bar)",
+      "Side-lying lat stretch with foam roller",
+      "Active lat stretch with band (pull-down motion)"
+    ]
+  },
+  "variations": [
+    "[Child's Pose](childs_pose.json)",
+    "Overhead triceps stretch",
+    "Thread-the-needle"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "—",
+    "time": "—",
+    "distance": "—",
+    "rpe": "—",
+    "notes": "Hold 45-90s per side. Great post-workout stretch for lats and shoulders."
+  },
+  "joints": {
+    "sensitiveJoints": ["shoulders", "ribs"],
+    "notes": "Keep shoulder packed and avoid excessive rotation. Focus on lateral flexion, not twisting."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

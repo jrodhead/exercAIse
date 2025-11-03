@@ -1,0 +1,18 @@
+{
+  "name": "High Knees",
+  "equipment": [],
+  "tags": ["cardio", "warm-up", "dynamic", "legs"],
+  "setup": ["Stand tall with feet hip-width apart", "Arms at sides, core engaged", "Weight on balls of feet"],
+  "steps": ["Drive one knee up toward chest", "Quickly switch legs in running motion", "Pump arms in opposition to legs", "Land softly on balls of feet", "Continue alternating at a brisk pace"],
+  "cues": ["Knees to chest height", "Quick foot turnover", "Stay on balls of feet", "Arms pumping", "Tall posture"],
+  "mistakes": ["Landing heavily on heels", "Slouching or leaning back", "Not lifting knees high enough", "Arms not engaged"],
+  "safety": "Start at moderate pace. If knees feel cranky, reduce height or switch to marching in place.",
+  "scaling": {
+    "regressions": ["Marching in place (slower, lower knees)", "Walking with high knees (no hop)"],
+    "progressions": ["High knees with faster pace", "High knees in place with resistance band", "Traveling high knees"]
+  },
+  "variations": ["Butt kicks", "A-skips", "Marching"],
+  "prescriptionHints": {"load": "Bodyweight", "reps": "20-40 total or 20-30s", "time": "—", "distance": "—", "rpe": "—", "notes": "Great dynamic warm-up for running or basketball."},
+  "joints": {"sensitiveJoints": ["knees", "ankles"], "notes": "Land softly to reduce impact. Keep knees tracking straight."},
+  "media": {"video": "", "images": []}
+}

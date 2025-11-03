@@ -1,0 +1,65 @@
+{
+  "name": "Scapular Wall Slides",
+  "equipment": [],
+  "tags": ["shoulders", "scapula", "mobility", "activation"],
+  "setup": [
+    "Stand with back against wall, feet 6-12 inches away",
+    "Flatten lower back against wall (posterior pelvic tilt)",
+    "Arms at sides, elbows bent 90°, palms forward",
+    "Back of hands, elbows, and shoulders touching wall"
+  ],
+  "steps": [
+    "Slide arms up the wall, maintaining contact with hands and elbows",
+    "Raise arms overhead as high as possible without losing wall contact",
+    "Pause at top, then slide back down to start",
+    "Keep shoulder blades down and back throughout",
+    "Repeat for prescribed reps"
+  ],
+  "cues": [
+    "Maintain wall contact throughout",
+    "Shoulder blades down and back",
+    "Don't arch lower back off wall",
+    "Slow and controlled",
+    "Full range without compensation"
+  ],
+  "mistakes": [
+    "Arching lower back off wall to gain range",
+    "Losing elbow or hand contact with wall",
+    "Shrugging shoulders up toward ears",
+    "Rushing the movement or bouncing"
+  ],
+  "safety": "If shoulders feel pinched or painful, reduce range or widen elbow angle. Great for shoulder health and scapular control.",
+  "scaling": {
+    "regressions": [
+      "Partial range wall slides (hands to shoulder height only)",
+      "Floor scapular slides (lying on back)",
+      "Resistance band pull-aparts"
+    ],
+    "progressions": [
+      "Tempo wall slides (3s up, 3s down)",
+      "Wall slides with resistance band",
+      "Overhead squat holds (advanced shoulder mobility)"
+    ]
+  },
+  "variations": [
+    "[Band Pull-Aparts](band_pull_aparts.json)",
+    "Floor scapular slides",
+    "Prone Y-T-W"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "8-12",
+    "time": "—",
+    "distance": "—",
+    "rpe": "—",
+    "notes": "Excellent warm-up for overhead pressing or pulling. Focus on quality over quantity."
+  },
+  "joints": {
+    "sensitiveJoints": ["shoulders", "scapula"],
+    "notes": "Keep shoulder blades depressed and retracted. Avoid compensating with lower back arch."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

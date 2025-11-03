@@ -1,0 +1,139 @@
+{
+  "version": "1",
+  "title": "Basketball Movement Prep",
+  "date": "2025-11-03",
+  "block": 5,
+  "week": 1,
+  "notes": "Block 5 Week 1: Monday basketball warm-up and cool-down. Dynamic prep for on-court movement, followed by recovery stretches focusing on legs and hips.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Dynamic Basketball Warm-up",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Brisk Walk",
+          "link": "exercises/brisk_walk.json",
+          "logType": "endurance",
+          "prescription": { "timeSeconds": 300 },
+          "notes": "5 min light walk or jog"
+        },
+        {
+          "kind": "exercise",
+          "name": "Arm Circles",
+          "link": "exercises/arm_circles.json",
+          "logType": "mobility",
+          "prescription": { "sets": 1, "reps": "10 each direction" }
+        },
+        {
+          "kind": "exercise",
+          "name": "Leg Swings",
+          "link": "exercises/leg_swings.json",
+          "logType": "mobility",
+          "prescription": { "sets": 1, "reps": "10 each direction per leg" }
+        },
+        {
+          "kind": "exercise",
+          "name": "World's Greatest Stretch",
+          "link": "exercises/worlds_greatest_stretch.json",
+          "logType": "mobility",
+          "prescription": { "sets": 1, "reps": "5 each side" }
+        },
+        {
+          "kind": "exercise",
+          "name": "High Knees",
+          "link": "exercises/high_knees.json",
+          "logType": "mobility",
+          "prescription": { "sets": 2, "reps": 20 }
+        },
+        {
+          "kind": "exercise",
+          "name": "Butt Kicks",
+          "link": "exercises/butt_kicks.json",
+          "logType": "mobility",
+          "prescription": { "sets": 2, "reps": 20 }
+        },
+        {
+          "kind": "exercise",
+          "name": "Lateral Shuffle",
+          "link": "exercises/lateral_shuffle.json",
+          "logType": "mobility",
+          "prescription": { "sets": 2, "distanceMeters": 20 },
+          "notes": "20m each direction"
+        },
+        {
+          "kind": "exercise",
+          "name": "Carioca Drill",
+          "link": "exercises/carioca_drill.json",
+          "logType": "mobility",
+          "prescription": { "sets": 2, "distanceMeters": 20 },
+          "notes": "20m each direction"
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "Basketball Play",
+      "items": [
+        {
+          "kind": "note",
+          "name": "Basketball Session",
+          "notes": "Play basketball for 60-90 minutes. Focus on movement quality, footwork, and staying light on feet. Hydrate well."
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Post-Basketball Cool-down",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Brisk Walk",
+          "link": "exercises/brisk_walk.json",
+          "logType": "endurance",
+          "prescription": { "timeSeconds": 300 },
+          "notes": "5 min easy walk to bring heart rate down"
+        },
+        {
+          "kind": "exercise",
+          "name": "Standing Quad Stretch",
+          "link": "exercises/standing_quad_stretch.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 45 },
+          "notes": "45s each leg"
+        },
+        {
+          "kind": "exercise",
+          "name": "Standing Hamstring Stretch",
+          "link": "exercises/standing_hamstring_stretch.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 45 },
+          "notes": "45s each leg"
+        },
+        {
+          "kind": "exercise",
+          "name": "Calf Stretch",
+          "link": "exercises/calf_stretch.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 45 },
+          "notes": "45s each leg"
+        },
+        {
+          "kind": "exercise",
+          "name": "Figure 4 Stretch",
+          "link": "exercises/figure_4_stretch.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 60 },
+          "notes": "60s each side"
+        },
+        {
+          "kind": "exercise",
+          "name": "Child's Pose",
+          "link": "exercises/childs_pose.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 90 }
+        }
+      ]
+    }
+  ]
+}

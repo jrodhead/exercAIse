@@ -1,0 +1,18 @@
+{
+  "name": "Sphinx Pose",
+  "equipment": ["yoga mat"],
+  "tags": ["chest", "spine", "lower back", "yin yoga", "stretch"],
+  "setup": ["Lie on stomach (prone position)", "Place forearms on mat, elbows under shoulders", "Palms flat or fists if wrists are sensitive", "Legs extended behind, feet hip-width apart"],
+  "steps": ["Press forearms down to lift chest", "Draw shoulder blades down and back", "Lengthen through crown of head", "Relax hips and legs into mat", "Breathe deeply, hold for prescribed time"],
+  "cues": ["Forearms grounded", "Chest lifts gently", "Shoulders down and back", "Hips heavy", "Breathe into belly"],
+  "mistakes": ["Shrugging shoulders toward ears", "Overarching lower back (too much extension)", "Tensing glutes or legs", "Holding breath"],
+  "safety": "Gentle backbend. If lower back feels pinched, reduce lift or widen elbows. Great for chest opening post-bench press.",
+  "scaling": {
+    "regressions": ["Crocodile pose (forehead on stacked hands, minimal extension)", "Child's pose (opposite direction)"],
+    "progressions": ["Cobra pose (arms straighten, deeper backbend)", "Upward-facing dog (advanced)", "Seal pose (deeper yin variation)"]
+  },
+  "variations": ["Cobra pose", "Seal pose (yin)", "Upward-facing dog"],
+  "prescriptionHints": {"load": "Bodyweight", "reps": "—", "time": "—", "distance": "—", "rpe": "—", "notes": "Hold 3-5 min for yin practice. Gentle spinal extension and chest opening."},
+  "joints": {"sensitiveJoints": ["lower back", "shoulders"], "notes": "Keep shoulders down. Avoid excessive lumbar compression—lengthen spine, don't crunch."},
+  "media": {"video": "", "images": []}
+}

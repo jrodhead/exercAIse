@@ -1,0 +1,69 @@
+{
+  "name": "Bird Dog",
+  "equipment": [],
+  "tags": ["core", "stability", "lower back", "balance", "anti-rotation"],
+  "setup": [
+    "Start in tabletop position (hands and knees)",
+    "Hands directly under shoulders, knees under hips",
+    "Spine neutral, core braced, head in line with spine",
+    "Distribute weight evenly across all four points"
+  ],
+  "steps": [
+    "Simultaneously extend opposite arm and leg (e.g., right arm, left leg)",
+    "Reach arm forward and leg back, forming straight line from hand to foot",
+    "Hold position briefly (1-3s) while maintaining neutral spine",
+    "Return arm and leg to start position with control",
+    "Repeat on opposite side",
+    "Continue alternating for prescribed reps"
+  ],
+  "cues": [
+    "Opposite arm and leg",
+    "Slow and controlled",
+    "Press low back down (avoid arching)",
+    "Form straight line from hand to foot",
+    "Breathe steadily"
+  ],
+  "mistakes": [
+    "Arching or sagging through lower back",
+    "Rotating hips or shoulders (losing neutral spine)",
+    "Rushing the movement or losing balance",
+    "Hyperextending neck (looking up instead of down)",
+    "Not fully extending arm or leg"
+  ],
+  "safety": "If lower back feels strained, reduce range or regress to single-arm or single-leg variations. Great for core stability and low back health.",
+  "scaling": {
+    "regressions": [
+      "Single-arm reach only (leg stays down)",
+      "Single-leg reach only (arm stays down)",
+      "Bird dog hold (static hold, no alternating)",
+      "Quadruped position only (no arm/leg extension)"
+    ],
+    "progressions": [
+      "Bird dog with longer hold (3-5s)",
+      "Weighted bird dog (ankle weight or light dumbbell)",
+      "Bird dog row (add dumbbell row with extended arm)",
+      "Bird dog to elbow-to-knee crunch"
+    ]
+  },
+  "variations": [
+    "[Deadbug](deadbug.json)",
+    "Plank variations",
+    "Side plank with leg lift"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight (can add ankle weights or light DB)",
+    "reps": "8-12 per side",
+    "time": "—",
+    "distance": "—",
+    "rpe": "5-7",
+    "notes": "Foundational core stability exercise. Focus on quality and control over reps."
+  },
+  "joints": {
+    "sensitiveJoints": ["lower back", "shoulders", "knees"],
+    "notes": "Maintain neutral spine throughout. Avoid arching or rotating. Use mat or pad under knees if uncomfortable."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

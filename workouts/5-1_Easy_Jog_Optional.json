@@ -1,0 +1,106 @@
+{
+  "version": "1",
+  "title": "Easy Jog (Optional)",
+  "date": "2025-11-08",
+  "block": 5,
+  "week": 1,
+  "notes": "Block 5 Week 1: Saturday optional easy jog. Low-intensity aerobic work for active recovery and cardiovascular health. Skip if feeling fatigued or sore from the week.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Warm-up Walk",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Brisk Walk",
+          "link": "exercises/brisk_walk.json",
+          "logType": "endurance",
+          "prescription": { "timeSeconds": 300 },
+          "notes": "5 min easy walk to warm up"
+        },
+        {
+          "kind": "exercise",
+          "name": "Leg Swings",
+          "link": "exercises/leg_swings.json",
+          "logType": "mobility",
+          "prescription": { "sets": 1, "reps": "10 each direction per leg" }
+        },
+        {
+          "kind": "exercise",
+          "name": "Walking Lunges",
+          "link": "exercises/walking_lunges.json",
+          "logType": "mobility",
+          "prescription": { "sets": 1, "reps": "10 total" }
+        }
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "Easy Jog",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Easy Jog",
+          "link": "exercises/easy_jog.json",
+          "logType": "endurance",
+          "loggable": true,
+          "prescription": { "timeSeconds": 1200, "rpe": 5 },
+          "notes": "20-30 min at conversational pace (RPE 4-5). You should be able to talk easily. If feeling fatigued, shorten to 15 min or walk instead.",
+          "cues": [
+            "Conversational pace",
+            "Nasal breathing if possible",
+            "Light on feet",
+            "Relaxed shoulders",
+            "Enjoy the movement"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Cool-down & Stretch",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Brisk Walk",
+          "link": "exercises/brisk_walk.json",
+          "logType": "endurance",
+          "prescription": { "timeSeconds": 300 },
+          "notes": "5 min easy walk to cool down"
+        },
+        {
+          "kind": "exercise",
+          "name": "Standing Quad Stretch",
+          "link": "exercises/standing_quad_stretch.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 45 },
+          "notes": "45s each leg"
+        },
+        {
+          "kind": "exercise",
+          "name": "Standing Hamstring Stretch",
+          "link": "exercises/standing_hamstring_stretch.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 45 },
+          "notes": "45s each leg"
+        },
+        {
+          "kind": "exercise",
+          "name": "Calf Stretch",
+          "link": "exercises/calf_stretch.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 45 },
+          "notes": "45s each leg"
+        },
+        {
+          "kind": "exercise",
+          "name": "Figure 4 Stretch",
+          "link": "exercises/figure_4_stretch.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 60 },
+          "notes": "60s each side"
+        }
+      ]
+    }
+  ]
+}

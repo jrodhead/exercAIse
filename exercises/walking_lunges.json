@@ -1,0 +1,18 @@
+{
+  "name": "Walking Lunges",
+  "equipment": [],
+  "tags": ["legs", "glutes", "dynamic", "warm-up", "unilateral"],
+  "setup": ["Stand tall with feet hip-width apart", "Hands on hips or at sides", "Core engaged, chest up"],
+  "steps": ["Step forward with one leg into lunge position", "Lower hips until front thigh is parallel to ground", "Back knee hovers just above floor", "Push through front heel to stand and step forward with back leg", "Continue alternating legs, walking forward"],
+  "cues": ["Step long enough for 90° angles", "Front knee tracks over toes", "Back knee lightly touches or hovers", "Chest up, core tight", "Controlled descent"],
+  "mistakes": ["Front knee extending past toes excessively", "Back knee crashing down", "Leaning forward or backward", "Steps too short (insufficient depth)", "Bouncing through movement"],
+  "safety": "If knees feel cranky, reduce depth or step length. Great dynamic warm-up for legs.",
+  "scaling": {
+    "regressions": ["Stationary lunges (no walking)", "Reverse lunges (easier on knees)", "Assisted lunges (hold rail or TRX)"],
+    "progressions": ["Weighted walking lunges (dumbbells or barbell)", "Walking lunge with twist", "Deficit walking lunges (front foot elevated)"]
+  },
+  "variations": ["Reverse lunges", "Lateral lunges", "Bulgarian split squat"],
+  "prescriptionHints": {"load": "Bodyweight (can add DBs)", "reps": "10-20 total (5-10 per leg)", "time": "—", "distance": "—", "rpe": "—", "notes": "Excellent dynamic warm-up for legs, hips, and glutes."},
+  "joints": {"sensitiveJoints": ["knees", "hips", "ankles"], "notes": "Keep front knee tracking over toes. Avoid excessive forward lean."},
+  "media": {"video": "", "images": []}
+}

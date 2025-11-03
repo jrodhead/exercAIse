@@ -1,0 +1,18 @@
+{
+  "name": "Carioca Drill",
+  "equipment": [],
+  "tags": ["agility", "warm-up", "lateral", "coordination", "basketball"],
+  "setup": ["Stand tall with feet hip-width apart", "Arms relaxed at sides or out for balance", "Face forward (perpendicular to direction of travel)"],
+  "steps": ["Step laterally with lead foot", "Cross trailing foot behind lead foot", "Step laterally again with lead foot", "Cross trailing foot in front of lead foot", "Continue alternating cross-behind, cross-in-front pattern"],
+  "cues": ["Face forward throughout", "Rotate hips, not shoulders", "Stay on balls of feet", "Quick feet", "Smooth rhythm"],
+  "mistakes": ["Turning shoulders instead of facing forward", "Crossing feet too wide (loss of balance)", "Bouncing or hopping (should be smooth)", "Looking down at feet"],
+  "safety": "Start slow to master coordination. Clear space to avoid tripping.",
+  "scaling": {
+    "regressions": ["Slow carioca (walk-through pace)", "Grapevine (simpler cross-step pattern)"],
+    "progressions": ["Faster carioca", "Carioca with direction changes", "Carioca with resistance band"]
+  },
+  "variations": ["Grapevine", "Lateral shuffle", "Crossover run"],
+  "prescriptionHints": {"load": "Bodyweight", "reps": "—", "time": "—", "distance": "10-20m each direction", "rpe": "—", "notes": "Great for hip mobility, coordination, and agility warm-up."},
+  "joints": {"sensitiveJoints": ["hips", "knees", "ankles"], "notes": "Keep hips mobile and rotate smoothly. Avoid excessive twisting."},
+  "media": {"video": "", "images": []}
+}

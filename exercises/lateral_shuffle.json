@@ -1,0 +1,18 @@
+{
+  "name": "Lateral Shuffle",
+  "equipment": [],
+  "tags": ["cardio", "agility", "lateral", "warm-up", "basketball"],
+  "setup": ["Stand in athletic stance (knees slightly bent, chest up)", "Feet slightly wider than hip-width", "Weight on balls of feet", "Arms ready in front"],
+  "steps": ["Push off outside foot and step laterally", "Trail leg follows quickly (shuffle, don't cross feet)", "Maintain low athletic stance throughout", "Stay on balls of feet", "Shuffle prescribed distance, then reverse direction"],
+  "cues": ["Stay low in athletic stance", "Don't cross feet", "Quick feet", "Push off outside foot", "Chest up, eyes forward"],
+  "mistakes": ["Crossing feet (increases trip risk)", "Standing too upright (reduces power)", "Bouncing excessively (wasted energy)", "Looking down at feet"],
+  "safety": "Ensure clear space. Start slow to master footwork before increasing speed.",
+  "scaling": {
+    "regressions": ["Slow lateral steps (no shuffle)", "Lateral step-touch (feet together between steps)"],
+    "progressions": ["Faster shuffle", "Shuffle with resistance band around ankles", "Defensive slide with direction changes"]
+  },
+  "variations": ["Carioca drill", "Grapevine", "Defensive slides"],
+  "prescriptionHints": {"load": "Bodyweight", "reps": "—", "time": "—", "distance": "10-20m each direction", "rpe": "—", "notes": "Essential for basketball and lateral movement prep."},
+  "joints": {"sensitiveJoints": ["knees", "ankles", "hips"], "notes": "Keep knees tracking over toes. Land softly on balls of feet."},
+  "media": {"video": "", "images": []}
+}

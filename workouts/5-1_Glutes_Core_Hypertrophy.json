@@ -1,0 +1,129 @@
+{
+  "version": "1",
+  "title": "Glutes, Calves & Core Hypertrophy",
+  "date": "2025-11-06",
+  "block": 5,
+  "week": 1,
+  "notes": "Block 5 Week 1: Glute, calf, and core-focused session with 10-15 rep range (12-15 for calves), RPE 7-8. Supersets and core circuit for volume and metabolic stress.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Lower Body Prep",
+      "items": [
+        { "kind": "exercise", "name": "Cat-Cow to Cobra Stretch", "link": "exercises/cat_cow_to_cobra_stretch.json", "logType": "mobility", "prescription": { "sets": 1, "reps": 8 } },
+        { "kind": "exercise", "name": "Glute Bridge", "link": "exercises/glute_bridge.json", "logType": "mobility", "prescription": { "sets": 2, "reps": 12 } },
+        { "kind": "exercise", "name": "90-90 Hip Stretch", "link": "exercises/90_90_hip_stretch.json", "logType": "mobility", "prescription": { "holdSeconds": 60 } },
+        { "kind": "exercise", "name": "Clamshells", "link": "exercises/clamshells.json", "logType": "mobility", "prescription": { "sets": 1, "reps": "15 each side" } }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Primary Glute Work - Superset A",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset A",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Dumbbell Hip Thrust",
+              "link": "exercises/dumbbell_hip_thrust.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "12-15", "weight": 55, "restSeconds": 90, "rpe": 7.5 },
+              "cues": ["Squeeze glutes hard at top", "Pause 1s", "Shoulders on bench"]
+            },
+            {
+              "kind": "exercise",
+              "name": "Goblet Squat",
+              "link": "exercises/goblet_squat.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "10-12", "weight": 60, "restSeconds": 90, "rpe": 7.5 },
+              "cues": ["Elbows down", "Knees track over toes", "Own the bottom"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Secondary Glute & Hamstring - Superset B",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset B",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Bulgarian Split Squat",
+              "link": "exercises/bulgarian_split_squat.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "10-12 each leg", "weight": "40 x2", "restSeconds": 90, "rpe": 7.5 },
+              "cues": ["Front knee tracks", "Slight forward lean", "Control the bottom"]
+            },
+            {
+              "kind": "exercise",
+              "name": "Dumbbell RDL",
+              "link": "exercises/dumbbell_rdl.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "10-12", "weight": "60 x2", "restSeconds": 90, "rpe": 7.5 },
+              "cues": ["Hinge at hips", "Back flat", "Feel hamstrings"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Calves & Core - Superset C",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset C",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Standing Calf Raise",
+              "link": "exercises/standing_calf_raise.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "12-15", "weight": "30 x2", "tempo": "3-1-1", "restSeconds": 60, "rpe": 7.5 },
+              "cues": ["Pause at top", "Slow 3s lower", "Full range", "Deep stretch at bottom"],
+              "notes": "3s eccentric, 1s pause at top"
+            },
+            {
+              "kind": "exercise",
+              "name": "Pallof Press Hold",
+              "link": "exercises/pallof_press.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "6-8 each side", "holdSeconds": 25, "restSeconds": 60, "rpe": 7 },
+              "cues": ["Resist rotation", "Breathe steady", "Ribs down"],
+              "notes": "20-30s hold per rep"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Core Finisher",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Hollow Body Hold",
+          "link": "exercises/hollow_body_hold.json",
+          "logType": "strength",
+          "prescription": { "sets": 2, "holdSeconds": 37, "restSeconds": 45, "rpe": 7 },
+          "notes": "30-45s",
+          "cues": ["Press low back down", "Reach long", "Breathe steady"]
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Lower Body Stretch",
+      "items": [
+        { "kind": "exercise", "name": "Pigeon Pose", "link": "exercises/pigeon_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 90 }, "notes": "90s per side" },
+        { "kind": "exercise", "name": "Calf Stretch", "link": "exercises/calf_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 45 }, "notes": "45s each leg" }
+      ]
+    }
+  ]
+}

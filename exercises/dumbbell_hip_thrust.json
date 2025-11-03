@@ -1,0 +1,66 @@
+{
+  "name": "Dumbbell Hip Thrust",
+  "equipment": ["dumbbell", "bench"],
+  "tags": ["glutes", "hips", "strength", "hypertrophy"],
+  "setup": [
+    "Sit on floor with upper back against a bench",
+    "Bench should hit just below shoulder blades",
+    "Place dumbbell across hips, hold with both hands",
+    "Feet flat, hip-width apart, knees bent ~90°"
+  ],
+  "steps": [
+    "Drive through heels and squeeze glutes to lift hips",
+    "Raise hips until torso is parallel to floor",
+    "Pause 1-2s at top with maximal glute contraction",
+    "Lower hips under control to just above floor",
+    "Reset and repeat for reps"
+  ],
+  "cues": [
+    "Squeeze glutes hard at top",
+    "Pause at full extension",
+    "Shoulders on bench, not sliding",
+    "Drive through heels",
+    "Keep ribs down, avoid arching low back"
+  ],
+  "mistakes": [
+    "Hyperextending lower back instead of using glutes",
+    "Rising onto toes instead of staying on heels",
+    "Cutting range short (not reaching full hip extension)",
+    "Letting dumbbell roll or slide during movement"
+  ],
+  "safety": "If lower back feels it, focus on glute squeeze and avoid excessive arch. Use a pad or towel under the dumbbell if hips are uncomfortable.",
+  "scaling": {
+    "regressions": [
+      "Bodyweight hip thrust (no load)",
+      "Glute bridge (shoulders on floor)",
+      "Single-leg glute bridge"
+    ],
+    "progressions": [
+      "Barbell hip thrust",
+      "Banded hip thrust (add resistance band)",
+      "Tempo hip thrust (3-1-3-1)",
+      "Single-leg dumbbell hip thrust"
+    ]
+  },
+  "variations": [
+    "[Barbell Hip Thrust](barbell_hip_thrust.json)",
+    "[Glute Bridge](glute_bridge.json)",
+    "[Single-Leg Glute Bridge](single_leg_glute_bridge.json)"
+  ],
+  "prescriptionHints": {
+    "load": "DB 30-80 lb depending on strength",
+    "reps": "10-15 for hypertrophy; 6-10 for strength",
+    "time": "—",
+    "distance": "—",
+    "rpe": "7-8",
+    "notes": "Primary glute builder. Prioritize full extension and squeeze over load."
+  },
+  "joints": {
+    "sensitiveJoints": ["hips", "lower back", "knees"],
+    "notes": "Avoid hyperextension in lower back. Keep tension in glutes, not lumbar spine. Use padding if hips are uncomfortable."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

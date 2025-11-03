@@ -1,0 +1,66 @@
+{
+  "name": "Dead Hang",
+  "equipment": ["pull-up bar"],
+  "tags": ["shoulders", "grip", "lats", "mobility", "decompression"],
+  "setup": [
+    "Stand under pull-up bar",
+    "Grip bar with hands shoulder-width apart, palms facing away (pronated grip)",
+    "Jump or step up to hang with arms fully extended",
+    "Feet off ground, body hanging relaxed"
+  ],
+  "steps": [
+    "Hang with arms fully extended, shoulders relaxed",
+    "Engage lats slightly to pack shoulders (optional: active hang)",
+    "Breathe deeply and maintain grip",
+    "Hold for prescribed time",
+    "Step or drop down gently when complete"
+  ],
+  "cues": [
+    "Arms fully extended",
+    "Shoulders packed or relaxed (depending on goal)",
+    "Breathe deeply",
+    "Grip the bar firmly",
+    "Relax lower body"
+  ],
+  "mistakes": [
+    "Shrugging shoulders up toward ears (passive hang only)",
+    "Swinging or kipping",
+    "Gripping too tight and tensing unnecessarily",
+    "Dropping from hang without control"
+  ],
+  "safety": "If shoulders feel pinched or uncomfortable, reduce hang time or use assisted variation. Great for shoulder decompression and grip strength.",
+  "scaling": {
+    "regressions": [
+      "Assisted dead hang (feet on box or band assistance)",
+      "Bent-arm hang (elbows bent, easier on shoulders)",
+      "Towel hang (hang from towel over bar for grip work)"
+    ],
+    "progressions": [
+      "One-arm dead hang",
+      "Weighted dead hang (weight belt or dumbbell between feet)",
+      "Active hang (shoulder depression and retraction)",
+      "Scapular pull-ups (from dead hang to active hang)"
+    ]
+  },
+  "variations": [
+    "Active hang (scapular engagement)",
+    "Neutral-grip dead hang (palms facing each other)",
+    "Mixed-grip dead hang"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight (can add weight for progression)",
+    "reps": "—",
+    "time": "—",
+    "distance": "—",
+    "rpe": "—",
+    "notes": "Hold 20-60s depending on grip strength. Excellent warm-up for pulling exercises or cooldown for shoulder health."
+  },
+  "joints": {
+    "sensitiveJoints": ["shoulders", "elbows", "wrists"],
+    "notes": "Keep shoulders packed to protect shoulder joint. Avoid if experiencing acute shoulder pain or impingement."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

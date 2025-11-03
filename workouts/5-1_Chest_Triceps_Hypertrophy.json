@@ -1,0 +1,128 @@
+{
+  "version": "1",
+  "title": "Chest & Triceps Hypertrophy",
+  "date": "2025-11-04",
+  "block": 5,
+  "week": 1,
+  "notes": "Block 5 Week 1: Hypertrophy mesocycle begins. Focus on chest and triceps with 10-15 rep range, RPE 7-8. Supersets for time efficiency and metabolic stress. Deload planned for Week 4.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Upper Body Prep",
+      "items": [
+        { "kind": "exercise", "name": "Arm Circles", "link": "exercises/arm_circles.json", "logType": "mobility", "prescription": { "sets": 1, "reps": "10 each direction" } },
+        { "kind": "exercise", "name": "Band Pull-Aparts", "link": "exercises/band_pull_aparts.json", "logType": "mobility", "prescription": { "sets": 2, "reps": 15 } },
+        { "kind": "exercise", "name": "Cat-Cow Stretch", "link": "exercises/cat_cow_stretch.json", "logType": "mobility", "prescription": { "sets": 1, "reps": 8 } },
+        { "kind": "exercise", "name": "Bodyweight Push-ups", "link": "exercises/bodyweight_push_ups.json", "logType": "mobility", "prescription": { "sets": 1, "reps": 10 } }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Primary Chest & Triceps - Superset A",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset A",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Flat Dumbbell Bench Press",
+              "link": "exercises/dumbbell_bench_press.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "10-12", "weight": "40 x2", "restSeconds": 90, "rpe": 7.5 },
+              "cues": ["Feet planted", "Shoulder blades retracted", "Control the negative"]
+            },
+            {
+              "kind": "exercise",
+              "name": "Close-Grip Dumbbell Press",
+              "link": "exercises/close_grip_dumbbell_press.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "10-12", "weight": "30 x2", "restSeconds": 90, "rpe": 7.5 },
+              "cues": ["DBs touching", "Elbows close", "Squeeze triceps at top"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Secondary Chest & Triceps - Superset B",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset B",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Incline Dumbbell Bench Press",
+              "link": "exercises/incline_dumbbell_bench_press.json",
+              "logType": "strength",
+              "prescription": { "sets": 2, "reps": "10-12", "weight": "35 x2", "restSeconds": 90, "rpe": 7.5 },
+              "cues": ["Upper chest focus", "Bench at 30-45°", "Full stretch"]
+            },
+            {
+              "kind": "exercise",
+              "name": "Overhead Dumbbell Triceps Extension",
+              "link": "exercises/overhead_triceps_extension.json",
+              "logType": "strength",
+              "prescription": { "sets": 2, "reps": "10-12", "weight": 30, "restSeconds": 90, "rpe": 7.5 },
+              "cues": ["Elbows close to ears", "Deep stretch", "Control the eccentric"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Chest & Triceps Finisher - Superset C",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset C",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Dumbbell Flyes",
+              "link": "exercises/dumbbell_flyes.json",
+              "logType": "strength",
+              "prescription": { "sets": 2, "reps": "12-15", "weight": "20 x2", "restSeconds": 60, "rpe": 7 },
+              "cues": ["Wide arc", "Chest stretch", "Slight elbow bend"]
+            },
+            {
+              "kind": "exercise",
+              "name": "Diamond Push-ups",
+              "link": "exercises/diamond_push_ups.json",
+              "logType": "strength",
+              "prescription": { "sets": 2, "reps": "10-15", "restSeconds": 60, "rpe": 7.5 },
+              "cues": ["Hands diamond shape", "Core tight", "To failure or near"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Core Stability",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Pallof Press Hold",
+          "link": "exercises/pallof_press.json",
+          "logType": "strength",
+          "prescription": { "sets": 2, "reps": "6-8 each side", "holdSeconds": 25, "restSeconds": 45, "rpe": 7 },
+          "notes": "20-30s hold per rep",
+          "cues": ["Resist rotation", "Breathe steady", "Ribs down"]
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Cooldown & Stretch",
+      "items": [
+        { "kind": "exercise", "name": "Doorway Chest Stretch", "link": "exercises/doorway_chest_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "60s per side" },
+        { "kind": "exercise", "name": "Overhead Triceps Stretch", "link": "exercises/overhead_triceps_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "60s per arm" },
+        { "kind": "exercise", "name": "Child's Pose", "link": "exercises/childs_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 90 } }
+      ]
+    }
+  ]
+}

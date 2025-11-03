@@ -1,0 +1,64 @@
+{
+  "name": "Lateral Lunge",
+  "equipment": ["dumbbell (optional)"],
+  "tags": ["legs", "glutes", "hips", "mobility", "unilateral"],
+  "setup": [
+    "Stand with feet together, hands at chest or holding light dumbbell",
+    "Chest up, shoulders back, core braced",
+    "Weight centered over mid-foot"
+  ],
+  "steps": [
+    "Step wide to one side (2-3 feet)",
+    "Shift hips back and bend stepping leg while keeping other leg straight",
+    "Lower into lateral lunge, keeping chest up and weight on heel",
+    "Push through heel of bent leg to return to start",
+    "Repeat on same side or alternate legs"
+  ],
+  "cues": [
+    "Push hips back like an RDL",
+    "Keep chest up",
+    "Weight on heel of bent leg",
+    "Straight leg stays straight",
+    "Full hip shift to working side"
+  ],
+  "mistakes": [
+    "Knee collapsing inward on bent leg",
+    "Rounding spine or dropping chest forward",
+    "Weight shifting to toes instead of heel",
+    "Not shifting hips laterally (staying too upright)"
+  ],
+  "safety": "If hips or knees feel cranky, reduce depth or step width. Keep torso upright and avoid excessive forward lean.",
+  "scaling": {
+    "regressions": [
+      "Bodyweight lateral lunge (no load)",
+      "Assisted lateral lunge (hold TRX or rail)",
+      "Cossack squat (with heel lift)"
+    ],
+    "progressions": [
+      "Dumbbell or kettlebell lateral lunge (goblet hold)",
+      "Barbell lateral lunge (back rack)",
+      "Lateral lunge with reach (touching floor)"
+    ]
+  },
+  "variations": [
+    "[Cossack Squat](cossack_squat.json)",
+    "Curtsy lunge",
+    "Skater squat"
+  ],
+  "prescriptionHints": {
+    "load": "BW or DB 15-30 lb",
+    "reps": "8-12 per leg",
+    "time": "—",
+    "distance": "—",
+    "rpe": "6-7",
+    "notes": "Great for hip mobility and glute activation. Start with bodyweight to master the pattern."
+  },
+  "joints": {
+    "sensitiveJoints": ["hips", "knees", "ankles"],
+    "notes": "Ensure knee tracks over toes on bent leg. Keep spine neutral and avoid excessive forward lean."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

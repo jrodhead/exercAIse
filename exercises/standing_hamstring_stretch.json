@@ -1,0 +1,18 @@
+{
+  "name": "Standing Hamstring Stretch",
+  "equipment": [],
+  "tags": ["hamstrings", "legs", "stretch", "mobility"],
+  "setup": ["Stand tall with feet together", "Extend one leg forward, heel on ground, toes up", "Keep back leg slightly bent", "Hands on hips or reaching toward extended foot"],
+  "steps": ["Hinge at hips and lean forward toward extended leg", "Keep back straight (avoid rounding spine)", "Feel stretch in hamstring of extended leg", "Breathe deeply and hold", "Return to start and switch legs"],
+  "cues": ["Hinge at hips", "Back straight, chest up", "Heel down, toes up", "Feel hamstring stretch", "Breathe deeply"],
+  "mistakes": ["Rounding spine instead of hinging at hips", "Locking back knee (should stay soft)", "Forcing depth (should feel gentle stretch)", "Holding breath"],
+  "safety": "Gentle stretch only. If hamstrings are tight, reduce depth or use seated variation.",
+  "scaling": {
+    "regressions": ["Seated hamstring stretch (more stable)", "Supine hamstring stretch with strap", "Wall hamstring stretch (foot elevated on low surface)"],
+    "progressions": ["Standing forward fold (both legs)", "Single-leg RDL (dynamic hamstring stretch)", "Standing hamstring stretch with toe reach"]
+  },
+  "variations": ["Seated hamstring stretch", "Supine hamstring stretch", "Downward dog"],
+  "prescriptionHints": {"load": "Bodyweight", "reps": "—", "time": "—", "distance": "—", "rpe": "—", "notes": "Hold 30-60s each leg. Great post-run or post-workout stretch."},
+  "joints": {"sensitiveJoints": ["hamstrings", "lower back", "knees"], "notes": "Avoid rounding spine. Keep back knee soft to reduce strain."},
+  "media": {"video": "", "images": []}
+}

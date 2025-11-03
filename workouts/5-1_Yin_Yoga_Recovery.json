@@ -1,0 +1,130 @@
+{
+  "version": "1",
+  "title": "Yin Yoga Recovery - Basketball & Strength Focus",
+  "date": "2025-11-05",
+  "block": 5,
+  "week": 1,
+  "notes": "Block 5 Week 1: Wednesday recovery session. Yin yoga focusing on hips, legs, chest, and shoulders—areas stressed by Monday basketball and Tuesday strength work. Hold poses 2-5 minutes for deep connective tissue release.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Centering & Breath",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Child's Pose with Deep Breathing",
+          "link": "exercises/childs_pose_with_deep_breathing.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 180 },
+          "notes": "3 min - Focus on deep belly breathing, let go of tension"
+        },
+        {
+          "kind": "exercise",
+          "name": "Cat-Cow Stretch",
+          "link": "exercises/cat_cow_stretch.json",
+          "logType": "mobility",
+          "prescription": { "sets": 1, "reps": 10 },
+          "notes": "Gentle spinal mobility"
+        }
+      ]
+    },
+    {
+      "type": "Recovery",
+      "title": "Lower Body Yin - Hips & Legs",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Dragon Pose (Low Lunge, Yin Style)",
+          "link": "exercises/dragon_pose_low_lunge_yin_style.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 180 },
+          "notes": "3 min each side - Deep hip flexor and quad stretch (basketball recovery)"
+        },
+        {
+          "kind": "exercise",
+          "name": "Pigeon Pose",
+          "link": "exercises/pigeon_pose.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 240 },
+          "notes": "4 min each side - Deep glute and hip external rotator stretch"
+        },
+        {
+          "kind": "exercise",
+          "name": "Butterfly Pose (Seated Forward Fold)",
+          "link": "exercises/butterfly_pose_seated_forward_fold.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 240 },
+          "notes": "4 min - Inner thigh and hip adductor release"
+        },
+        {
+          "kind": "exercise",
+          "name": "Half Frog Pose",
+          "link": "exercises/half_frog_pose.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 180 },
+          "notes": "3 min each side - Quad and hip flexor release"
+        },
+        {
+          "kind": "exercise",
+          "name": "Supine Spinal Twist",
+          "link": "exercises/supine_spinal_twist.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 180 },
+          "notes": "3 min each side - Glute, IT band, and spinal release"
+        }
+      ]
+    },
+    {
+      "type": "Recovery",
+      "title": "Upper Body Yin - Chest & Shoulders",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Sphinx Pose",
+          "link": "exercises/sphinx_pose.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 240 },
+          "notes": "4 min - Gentle chest opening and spinal extension (post-bench press)"
+        },
+        {
+          "kind": "exercise",
+          "name": "Melting Heart Pose (Anahatasana)",
+          "link": "exercises/melting_heart_pose.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 240 },
+          "notes": "4 min - Deep shoulder and chest stretch"
+        },
+        {
+          "kind": "exercise",
+          "name": "Thread the Needle",
+          "link": "exercises/thread_the_needle.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 180 },
+          "notes": "3 min each side - Shoulder and upper back release"
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Closing & Integration",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Legs Up the Wall",
+          "link": "exercises/legs_up_the_wall.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 300 },
+          "notes": "5 min - Gentle inversion, leg recovery, nervous system reset"
+        },
+        {
+          "kind": "exercise",
+          "name": "Savasana (Corpse Pose)",
+          "link": "exercises/savasana.json",
+          "logType": "stretch",
+          "prescription": { "holdSeconds": 600 },
+          "notes": "10 min - Complete relaxation and integration"
+        }
+      ]
+    }
+  ]
+}

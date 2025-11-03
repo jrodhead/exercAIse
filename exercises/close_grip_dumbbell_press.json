@@ -1,0 +1,64 @@
+{
+  "name": "Close-Grip Dumbbell Press",
+  "equipment": ["dumbbell", "bench"],
+  "tags": ["chest", "triceps", "push", "strength", "hypertrophy"],
+  "setup": [
+    "Lie on flat bench with feet planted on floor",
+    "Hold dumbbells together touching over chest, palms facing each other (neutral grip)",
+    "Shoulder blades retracted and down, ribs stacked"
+  ],
+  "steps": [
+    "Lower dumbbells together toward chest, keeping them touching",
+    "Elbows stay close to torso (not flared out)",
+    "Descend until DBs touch chest or reach comfortable depth",
+    "Press dumbbells back up, keeping them together",
+    "Finish with arms extended, triceps engaged"
+  ],
+  "cues": [
+    "DBs touching throughout",
+    "Elbows close to ribs",
+    "Squeeze triceps at top",
+    "Control the descent",
+    "Drive through chest and triceps"
+  ],
+  "mistakes": [
+    "Letting dumbbells separate during the press",
+    "Elbows flaring out wide",
+    "Bouncing dumbbells off chest",
+    "Arching excessively through lower back"
+  ],
+  "safety": "If elbows or shoulders feel cranky, widen grip slightly or reduce load. Keep shoulder blades retracted to protect shoulder joints.",
+  "scaling": {
+    "regressions": [
+      "Lighter dumbbells",
+      "Floor press variation (reduces range of motion)",
+      "Tempo close-grip press (3-1-1) with lighter weight"
+    ],
+    "progressions": [
+      "Pause close-grip press (2s pause at chest)",
+      "Close-grip barbell bench press",
+      "Weighted dips (advanced)"
+    ]
+  },
+  "variations": [
+    "Close-grip barbell bench press",
+    "[Diamond Push-ups](diamond_push_ups.json)",
+    "Neutral-grip floor press"
+  ],
+  "prescriptionHints": {
+    "load": "DB 20-40 lb/hand depending on experience",
+    "reps": "8-12 for hypertrophy; 6-8 for strength",
+    "time": "—",
+    "distance": "—",
+    "rpe": "7-8",
+    "notes": "Excellent triceps builder. Start conservative; dumbbells touching increases instability and demand."
+  },
+  "joints": {
+    "sensitiveJoints": ["elbows", "shoulders"],
+    "notes": "Keep elbows close to body to reduce shoulder stress. Avoid excessive arching or flaring."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

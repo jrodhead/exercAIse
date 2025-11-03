@@ -12,20 +12,20 @@ Block-based progression is a structured training method where workouts are organ
 
 ## 🏆 Current Training Focus (Block 5+): Hypertrophy & Aesthetics
 
-**Primary Goal**: Muscle growth with emphasis on chest, arms (biceps/triceps), glutes, and core
+**Primary Goal**: Muscle growth with emphasis on chest, arms (biceps/triceps), glutes, calves, and core
 
 **Training Philosophy**:
 - Hypertrophy-focused mesocycle (8-12 weeks recommended, organized in 4-week blocks)
-- Rep ranges: 8-15 reps for muscle growth
+- Rep ranges: 8-15 reps for muscle growth (12-20 for calves)
 - Intensity: RPE 7-8 (leave 2-3 reps in reserve for volume tolerance)
 - Volume: 2-3 sets per exercise, multiple exercises per muscle group
 - Exercise variety: Rotate movements regularly to prevent adaptation
-- Tempo: Control eccentric (lowering) phase for time under tension
+- Tempo: Control eccentric (lowering) phase for time under tension (especially calves: 3s eccentric)
 - Supersets/circuits: Encouraged for metabolic stress and efficiency
 
 **Session Distribution** (3x/week: Tu/Th/F):
 - **Day 1**: Chest & Triceps focus + supporting muscles
-- **Day 2**: Glutes & Core focus + supporting muscles  
+- **Day 2**: Glutes, Calves & Core focus + supporting muscles  
 - **Day 3**: Back & Biceps focus + shoulders/arms
 
 **Supporting Work**: Include compound movements for full-body development:
@@ -85,17 +85,19 @@ Block-based progression is a structured training method where workouts are organ
   - Concentration Curl 2 × 12-15, RPE 7 (peak contraction)
   - Diamond Push-ups 2 × AMRAP-2
 
-### Glutes & Core Development Across Blocks
+### Glutes, Calves & Core Development Across Blocks
 
 - **Block 5 (Weeks 1–4):**  
   - Hip Thrust 3 × 12-15, RPE 7-8
   - Bulgarian Split Squat 3 × 10-12/side, RPE 7-8
+  - Standing Calf Raise 3 × 12-15, RPE 7-8 (3s eccentric)
   - Dead Bug 3 × 10-12, RPE 7
   - Pallof Press 2 × 12-15/side, RPE 7
 
 - **Block 6 (Weeks 5–8):**  
   - Single-Leg Hip Thrust 3 × 10-12/side, RPE 8 (unilateral progression)
   - Goblet Lateral Lunge 3 × 10-12/side, RPE 7-8 (glute medius)
+  - Single-Leg Calf Raise 3 × 12-15/side, RPE 8 (unilateral calf)
   - Hollow Rocks 3 × 20-30, RPE 7
   - Loaded Carry (Farmer/Suitcase) 2 × 45-60s  
 
@@ -147,7 +149,8 @@ Block-based progression is a structured training method where workouts are organ
 - **Mind-Muscle Connection**: Prioritize feeling the target muscle work over moving heavy weight.
 - **Recovery**: Deload every 4th week without exception. Muscle grows during rest, not just training.
 - **Consistency**: 3x/week strength training (Tu/Th/F) + Monday basketball + Wednesday yoga.
-- **Balance**: Prioritize chest, arms, glutes, core while maintaining full-body development.
+- **Balance**: Prioritize chest, arms, glutes, calves, core while maintaining full-body development.
+- **Calf Emphasis**: Train calves 2-3x/week with high reps (12-20), slow eccentric (3s), and focus on stretch/contraction.
 - **Joint Health**: Continue monitoring wrist, ankle, neck; adjust exercises as needed for pain-free training.
 
 ---

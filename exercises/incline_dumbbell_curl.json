@@ -1,0 +1,66 @@
+{
+  "name": "Incline Dumbbell Curl",
+  "equipment": ["dumbbell", "bench"],
+  "tags": ["biceps", "arms", "hypertrophy", "isolation"],
+  "setup": [
+    "Set bench to 45° incline",
+    "Sit back on bench with dumbbells in each hand",
+    "Let arms hang straight down, palms facing forward",
+    "Shoulders back, chest up, core braced"
+  ],
+  "steps": [
+    "Curl dumbbells up, keeping elbows pinned in position",
+    "Supinate wrists (turn pinkies out) as you lift",
+    "Squeeze biceps at top of movement",
+    "Lower dumbbells under control to full stretch",
+    "Repeat for prescribed reps"
+  ],
+  "cues": [
+    "Bench at 45°",
+    "Full stretch at bottom",
+    "Supinate at top (pinkies out)",
+    "Elbows stay back (don't drift forward)",
+    "Squeeze biceps at peak"
+  ],
+  "mistakes": [
+    "Swinging dumbbells or using momentum",
+    "Elbows drifting forward during curl",
+    "Not achieving full stretch at bottom",
+    "Cutting range short at top",
+    "Shoulders rolling forward or rounding"
+  ],
+  "safety": "If elbows or shoulders feel strained, reduce weight or adjust bench angle to 30°. Great for biceps stretch and peak contraction.",
+  "scaling": {
+    "regressions": [
+      "Lighter dumbbells",
+      "Bench at 60° (less stretch, easier on shoulders)",
+      "Alternating incline curls (one arm at a time)"
+    ],
+    "progressions": [
+      "Tempo incline curls (3-1-3)",
+      "Incline hammer curls",
+      "Incline Zottman curls (supinate up, pronate down)"
+    ]
+  },
+  "variations": [
+    "[Hammer Curl](hammer_curl.json)",
+    "[Alternating Dumbbell Biceps Curl](alternating_dumbbell_biceps_curl.json)",
+    "Preacher curl"
+  ],
+  "prescriptionHints": {
+    "load": "DB 15-30 lb/hand depending on strength",
+    "reps": "10-15 for hypertrophy",
+    "time": "—",
+    "distance": "—",
+    "rpe": "7-8",
+    "notes": "Excellent biceps builder with emphasis on stretch and peak contraction. Start light to master the pattern."
+  },
+  "joints": {
+    "sensitiveJoints": ["elbows", "shoulders"],
+    "notes": "Keep elbows stationary and avoid letting them drift forward. Full stretch at bottom, but don't hyperextend elbows."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

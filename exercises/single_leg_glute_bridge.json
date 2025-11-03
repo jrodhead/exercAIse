@@ -1,0 +1,66 @@
+{
+  "name": "Single-Leg Glute Bridge",
+  "equipment": [],
+  "tags": ["glutes", "hips", "unilateral", "bodyweight", "stability"],
+  "setup": [
+    "Lie on back with knees bent, feet flat on floor",
+    "Extend one leg straight out in line with other thigh",
+    "Arms at sides or across chest",
+    "Engage core and brace lightly"
+  ],
+  "steps": [
+    "Drive through heel of planted foot to lift hips",
+    "Squeeze glute of working leg to extend hips fully",
+    "Keep hips level (don't let them rotate or drop to one side)",
+    "Pause 1s at top with full glute contraction",
+    "Lower under control to just above floor",
+    "Complete all reps on one side, then switch"
+  ],
+  "cues": [
+    "Drive through heel",
+    "Squeeze glute at top",
+    "Hips stay level",
+    "Full extension",
+    "Control the descent"
+  ],
+  "mistakes": [
+    "Hips rotating or tilting to one side",
+    "Pushing through toes instead of heel",
+    "Hyperextending lower back instead of using glutes",
+    "Cutting range short (not reaching full hip extension)"
+  ],
+  "safety": "If lower back feels it, focus on glute engagement and avoid excessive arch. Keep hips level to prevent asymmetrical loading.",
+  "scaling": {
+    "regressions": [
+      "Glute bridge (both feet down)",
+      "Elevated glute bridge (shoulders on bench)",
+      "Eccentric-only single-leg bridge (lower slow, reset with both feet)"
+    ],
+    "progressions": [
+      "Weighted single-leg bridge (dumbbell or barbell on hips)",
+      "Single-leg hip thrust (shoulders elevated on bench)",
+      "Tempo single-leg bridge (3-1-3)"
+    ]
+  },
+  "variations": [
+    "[Glute Bridge](glute_bridge.json)",
+    "[Dumbbell Hip Thrust](dumbbell_hip_thrust.json)",
+    "Marching glute bridge"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight (can add weight on hips)",
+    "reps": "8-15 per leg",
+    "time": "—",
+    "distance": "—",
+    "rpe": "6-8",
+    "notes": "Great for glute activation and unilateral strength. Focus on quality and control over reps."
+  },
+  "joints": {
+    "sensitiveJoints": ["hips", "lower back", "knees"],
+    "notes": "Keep hips level to avoid compensatory patterns. Avoid hyperextension by focusing on glute contraction."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}
