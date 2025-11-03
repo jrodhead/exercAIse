@@ -46,6 +46,9 @@
     } else if (page === 'history.html') {
       const historyLink = document.getElementById('nav-history');
       if (historyLink) historyLink.classList.add('active');
+    } else if (page === 'progress-report.html') {
+      const progressLink = document.getElementById('nav-progress');
+      if (progressLink) progressLink.classList.add('active');
     } else if (page === 'rpe-guide.html') {
       const rpeLink = document.querySelector('a[href="rpe-guide.html"]');
       if (rpeLink) rpeLink.classList.add('active');

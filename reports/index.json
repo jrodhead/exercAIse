@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "description": "AI-generated training progress reports",
+  "reports": [
+    {
+      "filename": "2025-11-03_blocks-4-4.html",
+      "startDate": "2025-10-06",
+      "endDate": "2025-11-03",
+      "blockRange": "4-4",
+      "title": "Training Progress Report - Block 4",
+      "generatedDate": "2025-11-03",
+      "overallGrade": "A",
+      "sessionCount": 19,
+      "highlights": [
+        "Lower body strength +12.5-25% across all major lifts",
+        "Perfect deload execution in Week 4",
+        "Zero injuries throughout entire block",
+        "100% session adherence (19/19 completed)"
+      ]
+    }
+  ]
+}

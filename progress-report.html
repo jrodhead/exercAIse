@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Progress Report - exercAIse</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <style>
+        /* Progress Report Page Styles - Following exercAIse Style Guide */
+        /* TODO: Move to assets/styles.css once finalized */
+        /* Progress Report Page Styles - Following exercAIse Style Guide */
+        /* TODO: Move to assets/styles.css once finalized */
+        
+        .progress-report {
+            max-width: var(--content-max-width, 1200px);
+            margin: 0 auto;
+            padding: var(--space-5);
+        }
+
+        .progress-report__header {
+            background: linear-gradient(135deg, var(--color-brand-purple) 0%, #764ba2 100%);
+            color: white;
+            padding: var(--space-8);
+            border-radius: var(--radius-lg, 8px);
+            margin-bottom: var(--space-8);
+        }
+
+        .progress-report__header h1 {
+            margin: 0 0 var(--space-3) 0;
+            font-size: var(--font-size-3xl);
+            color: white;
+        }
+
+        .progress-report__meta {
+            display: flex;
+            gap: var(--space-5);
+            flex-wrap: wrap;
+            margin-top: var(--space-4);
+            opacity: 0.9;
+        }
+
+        .progress-report__meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .progress-report__meta-label {
+            font-size: var(--font-size-sm);
+            opacity: 0.8;
+        }
+
+        .progress-report__meta-value {
+            font-size: var(--font-size-lg);
+            font-weight: var(--font-weight-bold);
+        }
+
+        .progress-report__section {
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg, 8px);
+            padding: var(--space-6);
+            margin-bottom: var(--space-6);
+        }
+
+        .progress-report__section h2 {
+            margin-top: 0;
+            color: var(--color-text);
+            border-bottom: 2px solid var(--color-primary);
+            padding-bottom: var(--space-3);
+            margin-bottom: var(--space-5);
+        }
+
+        .progress-report__section h3 {
+            color: var(--color-text);
+            margin-top: var(--space-6);
+            margin-bottom: var(--space-4);
+        }
+
+        .progress-report__kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-5);
+            margin: var(--space-5) 0;
+        }
+
+        .progress-report__kpi-card {
+            background: linear-gradient(135deg, var(--color-brand-purple) 0%, #764ba2 100%);
+            color: white;
+            padding: var(--space-5);
+            border-radius: var(--radius-lg, 8px);
+            text-align: center;
+        }
+
+        .progress-report__kpi-card--success {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+
+        .progress-report__kpi-card--warning {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .progress-report__kpi-label {
+            font-size: var(--font-size-sm);
+            opacity: 0.9;
+            margin-bottom: var(--space-2);
+        }
+
+        .progress-report__kpi-value {
+            font-size: var(--font-size-3xl);
+            font-weight: var(--font-weight-bold);
+            margin-bottom: var(--space-1);
+        }
+
+        .progress-report__kpi-change {
+            font-size: var(--font-size-sm);
+            opacity: 0.9;
+        }
+
+        .progress-report__table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: var(--space-5) 0;
+            font-size: var(--font-size-sm);
+        }
+
+        .progress-report__table th,
+        .progress-report__table td {
+            padding: var(--space-3);
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .progress-report__table th {
+            background: var(--color-bg-light);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text);
+        }
+
+        .progress-report__table tr:hover {
+            background: var(--color-bg-light);
+        }
+
+        .progress-report__progress--positive {
+            color: var(--color-success);
+            font-weight: var(--font-weight-semibold);
+        }
+
+        .progress-report__progress--negative {
+            color: var(--color-error);
+            font-weight: var(--font-weight-semibold);
+        }
+
+        .progress-report__progress--neutral {
+            color: var(--color-text-light);
+        }
+
+        .progress-report__highlights {
+            list-style: none;
+            padding: 0;
+        }
+
+        .progress-report__highlights li {
+            padding: var(--space-3);
+            margin-bottom: var(--space-3);
+            border-left: 4px solid var(--color-primary);
+            background: var(--color-bg-light);
+            border-radius: var(--radius-sm, 4px);
+        }
+
+        .progress-report__highlights--success li {
+            border-left-color: var(--color-success);
+        }
+
+        .progress-report__highlights--warning li {
+            border-left-color: var(--color-warning);
+        }
+
+        .progress-report__grade-badge {
+            display: inline-block;
+            padding: var(--space-3) var(--space-5);
+            border-radius: 50px;
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            background: linear-gradient(135deg, var(--color-brand-purple) 0%, #764ba2 100%);
+            color: white;
+            margin: var(--space-3) 0;
+        }
+
+        .progress-report__grade-badge--a-plus {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+
+        .progress-report__controls {
+            background: var(--color-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg, 8px);
+            padding: var(--space-5);
+            margin-bottom: var(--space-6);
+        }
+
+        .progress-report__controls h3 {
+            margin-top: 0;
+        }
+
+        .progress-report__controls label {
+            display: block;
+            margin-bottom: var(--space-2);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text);
+        }
+
+        .progress-report__controls select,
+        .progress-report__controls input {
+            width: 100%;
+            padding: var(--space-3);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm, 4px);
+            font-size: var(--font-size-base);
+            margin-bottom: var(--space-4);
+            background: var(--color-bg);
+            color: var(--color-text);
+        }
+
+        .progress-report__controls button {
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            padding: var(--space-3) var(--space-6);
+            border-radius: var(--radius-sm, 4px);
+            font-size: var(--font-size-base);
+            cursor: pointer;
+            width: 100%;
+            font-weight: var(--font-weight-medium);
+        }
+
+        .progress-report__controls button:hover {
+            opacity: 0.9;
+        }
+
+        .progress-report__loading {
+            text-align: center;
+            padding: var(--space-8);
+            color: var(--color-text-light);
+        }
+
+        .progress-report__loading::after {
+            content: "...";
+            animation: dots 1.5s steps(3, end) infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: "."; }
+            40% { content: ".."; }
+            60%, 100% { content: "..."; }
+        }
+
+        @media (max-width: 768px) {
+            .progress-report__kpi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .progress-report__table {
+                font-size: var(--font-size-xs);
+            }
+
+            .progress-report__table th,
+            .progress-report__table td {
+                padding: var(--space-2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <div class="progress-report">
+        <div class="progress-report__header">
+            <h1>📊 Training Progress Report</h1>
+            <p>Comprehensive analysis of your training performance and progression</p>
+            <div class="progress-report__meta">
+                <div class="progress-report__meta-item">
+                    <span class="progress-report__meta-label">Report Period</span>
+                    <span class="progress-report__meta-value" id="report-period">Loading...</span>
+                </div>
+                <div class="progress-report__meta-item">
+                    <span class="progress-report__meta-label">Total Sessions</span>
+                    <span class="progress-report__meta-value" id="total-sessions">-</span>
+                </div>
+                <div class="progress-report__meta-item">
+                    <span class="progress-report__meta-label">Blocks Completed</span>
+                    <span class="progress-report__meta-value" id="blocks-completed">-</span>
+                </div>
+                <div class="progress-report__meta-item">
+                    <span class="progress-report__meta-label">Generated</span>
+                    <span class="progress-report__meta-value" id="report-date">-</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="progress-report__controls">
+            <h3>Report Settings</h3>
+            <label for="time-range">Time Range</label>
+            <select id="time-range">
+                <option value="all">All Time</option>
+                <option value="last-4-weeks">Last 4 Weeks</option>
+                <option value="last-8-weeks">Last 8 Weeks</option>
+                <option value="block-4">Block 4</option>
+                <option value="block-3">Block 3</option>
+                <option value="block-2">Block 2</option>
+                <option value="custom">Custom Date Range</option>
+            </select>
+
+            <div id="custom-dates" style="display: none;">
+                <label for="start-date">Start Date</label>
+                <input type="date" id="start-date">
+                <label for="end-date">End Date</label>
+                <input type="date" id="end-date">
+            </div>
+
+            <button id="generate-report">Generate Report</button>
+        </div>
+
+        <div id="report-content">
+            <div class="progress-report__loading">Loading your training data</div>
+        </div>
+    </div>
+
+    <script src="assets/header-loader.js"></script>
+    <script type="module">
+        // Initialize
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Load most recent saved report if available
+            await loadMostRecentReport();
+
+            // Handle time range changes
+            document.getElementById('time-range').addEventListener('change', (e) => {
+                const customDates = document.getElementById('custom-dates');
+                if (e.target.value === 'custom') {
+                    customDates.style.display = 'block';
+                } else {
+                    customDates.style.display = 'none';
+                }
+            });
+
+            // Handle generate button
+            document.getElementById('generate-report').addEventListener('click', async () => {
+                const timeRange = document.getElementById('time-range').value;
+                await promptForAIGeneration(timeRange);
+            });
+        });
+
+        async function loadMostRecentReport() {
+            const reportContent = document.getElementById('report-content');
+            
+            try {
+                // Try to load the most recent saved report
+                const response = await fetch('reports/index.json');
+                if (!response.ok) throw new Error('No saved reports found');
+                
+                const index = await response.json();
+                if (index.reports && index.reports.length > 0) {
+                    const latest = index.reports[0]; // Assumes sorted by date descending
+                    const reportPath = `reports/${latest.filename}`;
+                    await displaySavedReport(reportPath);
+                } else {
+                    showWelcomeMessage();
+                }
+            } catch (error) {
+                showWelcomeMessage();
+            }
+        }
+
+        async function displaySavedReport(reportPath) {
+            const reportContent = document.getElementById('report-content');
+            
+            try {
+                const response = await fetch(reportPath);
+                const reportHTML = await response.text();
+                
+                // Update metadata if available
+                const metadata = extractMetadataFromPath(reportPath);
+                if (metadata) {
+                    document.getElementById('report-period').textContent = metadata.period;
+                    document.getElementById('total-sessions').textContent = metadata.sessions || '-';
+                    document.getElementById('blocks-completed').textContent = metadata.blocks || '-';
+                    document.getElementById('report-date').textContent = metadata.date;
+                }
+                
+                // Display the AI-generated report
+                reportContent.innerHTML = reportHTML;
+            } catch (error) {
+                console.error('Error loading report:', error);
+                reportContent.innerHTML = `
+                    <div class="progress-report__section">
+                        <p>Error loading report: ${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        function extractMetadataFromPath(path) {
+            // Extract metadata from filename like: reports/2025-11-02_blocks-2-4.html
+            const match = path.match(/(\d{4}-\d{2}-\d{2})_blocks-(\d+)-(\d+)/);
+            if (match) {
+                return {
+                    date: new Date(match[1]).toLocaleDateString(),
+                    blocks: `${match[2]}-${match[3]}`,
+                    period: `Block ${match[2]} → Block ${match[3]}`,
+                    sessions: '-'
+                };
+            }
+            return null;
+        }
+
+        function showWelcomeMessage() {
+            const reportContent = document.getElementById('report-content');
+            reportContent.innerHTML = `
+                <div class="progress-report__section">
+                    <h2>Welcome to Progress Reports</h2>
+                    <p>Progress reports are AI-generated analyses of your training performance.</p>
+                    
+                    <h3>How it works:</h3>
+                    <ol>
+                        <li>Select a time range from the dropdown above</li>
+                        <li>Click "Generate Report"</li>
+                        <li>Use Kai (AI coach) in chat to analyze your performance logs</li>
+                        <li>Kai will generate a comprehensive report and save it to <code>reports/</code></li>
+                        <li>Reports are saved for offline viewing</li>
+                    </ol>
+                    
+                    <h3>What Kai analyzes:</h3>
+                    <ul>
+                        <li><strong>Strength progression</strong> by movement pattern (squat, press, pull, etc.)</li>
+                        <li><strong>Endurance improvements</strong> (distance, pace, time)</li>
+                        <li><strong>Volume trends</strong> and progressive overload</li>
+                        <li><strong>RPE patterns</strong> and recovery indicators</li>
+                        <li><strong>Injury/pain notes</strong> and adaptations made</li>
+                        <li><strong>Key achievements</strong> and areas for improvement</li>
+                    </ul>
+                    
+                    <p><strong>Ready to get started?</strong> Select a time range above and click "Generate Report".</p>
+                </div>
+            `;
+        }
+
+        async function promptForAIGeneration(timeRange) {
+            const reportContent = document.getElementById('report-content');
+            
+            // Get date range
+            const { startDate, endDate } = getDateRange(timeRange);
+            
+            // Show instructions
+            reportContent.innerHTML = `
+                <div class="progress-report__section">
+                    <h2>🤖 Generate AI Progress Report</h2>
+                    <p>To generate a progress report for <strong>${formatDateRange(startDate, endDate)}</strong>:</p>
+                    
+                    <h3>Option 1: Use Chat (Recommended)</h3>
+                    <ol>
+                        <li>Open GitHub Copilot Chat (or your AI assistant)</li>
+                        <li>Use the following prompt:</li>
+                    </ol>
+                    <div style="position: relative;">
+                        <pre id="prompt-text" style="background: var(--color-bg-light); padding: var(--space-4); border-radius: var(--radius-sm, 4px); overflow-x: auto;"><code>Generate a training progress report for the period ${startDate} to ${endDate}.
+
+Follow the prompt in .github/prompts/generate-training-progress-report.prompt.md
+
+Read all performance logs in performed/ within this date range and analyze:
+- Strength progression by movement pattern
+- Endurance improvements
+- Volume trends
+- RPE patterns and recovery
+- Key achievements and areas for improvement
+
+Save the report as: reports/${formatReportFilename(startDate, endDate)}</code></pre>
+                        <button id="copy-prompt-btn" style="position: absolute; top: var(--space-2); right: var(--space-2); background: var(--color-primary); color: white; border: none; padding: var(--space-2); border-radius: var(--radius-sm, 4px); cursor: pointer; font-size: 1.2em; line-height: 1; width: 32px; height: 32px;" title="Copy prompt to clipboard">
+                            📋
+                        </button>
+                    </div>
+                    
+                    <h3>Option 2: Use Serverless Function (Coming Soon)</h3>
+                    <p>A dedicated API endpoint will be available to generate reports automatically.</p>
+                    
+                    <h3>After Generation</h3>
+                    <p>Once Kai saves the report to <code>reports/</code>, refresh this page to view it.</p>
+                </div>
+            `;
+            
+            // Attach event listener to the copy button after it's created
+            setTimeout(() => {
+                const copyBtn = document.getElementById('copy-prompt-btn');
+                if (copyBtn) {
+                    copyBtn.addEventListener('click', copyPromptToClipboard);
+                }
+            }, 0);
+        }
+
+        function getDateRange(timeRange) {
+            const now = new Date();
+            let startDate, endDate;
+            
+            switch (timeRange) {
+                case 'last-4-weeks':
+                    startDate = new Date(now.getTime() - 28 * 24 * 60 * 60 * 1000);
+                    endDate = now;
+                    break;
+                case 'last-8-weeks':
+                    startDate = new Date(now.getTime() - 56 * 24 * 60 * 60 * 1000);
+                    endDate = now;
+                    break;
+                case 'block-4':
+                    startDate = new Date('2025-10-06');
+                    endDate = new Date('2025-10-31');
+                    break;
+                case 'block-3':
+                    startDate = new Date('2025-09-08');
+                    endDate = new Date('2025-10-05');
+                    break;
+                case 'block-2':
+                    startDate = new Date('2025-08-22');
+                    endDate = new Date('2025-09-07');
+                    break;
+                case 'custom':
+                    const startInput = document.getElementById('start-date').value;
+                    const endInput = document.getElementById('end-date').value;
+                    startDate = startInput ? new Date(startInput) : new Date(0);
+                    endDate = endInput ? new Date(endInput) : now;
+                    break;
+                case 'all':
+                default:
+                    startDate = new Date('2025-08-22'); // First logged session
+                    endDate = now;
+                    break;
+            }
+            
+            return {
+                startDate: startDate.toISOString().split('T')[0],
+                endDate: endDate.toISOString().split('T')[0]
+            };
+        }
+
+        function formatDateRange(start, end) {
+            return `${new Date(start).toLocaleDateString()} → ${new Date(end).toLocaleDateString()}`;
+        }
+
+        function formatReportFilename(start, end) {
+            const startBlock = getBlockFromDate(start);
+            const endBlock = getBlockFromDate(end);
+            return `${new Date().toISOString().split('T')[0]}_blocks-${startBlock}-${endBlock}.html`;
+        }
+
+        function getBlockFromDate(dateStr) {
+            const date = new Date(dateStr);
+            if (date >= new Date('2025-10-06')) return 4;
+            if (date >= new Date('2025-09-08')) return 3;
+            if (date >= new Date('2025-08-22')) return 2;
+            return 1;
+        }
+
+        async function copyPromptToClipboard() {
+            const promptElement = document.getElementById('prompt-text');
+            const promptText = promptElement.textContent;
+            
+            try {
+                await navigator.clipboard.writeText(promptText);
+                
+                // Show confirmation
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = '✅';
+                button.style.background = 'var(--color-success)';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = 'var(--color-primary)';
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy:', err);
+                alert('Failed to copy to clipboard. Please copy manually.');
+            }
+        }
+    </script>
+</body>
+</html>

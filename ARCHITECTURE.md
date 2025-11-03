@@ -24,10 +24,11 @@ exercAIse is a JSON-first fitness program generator with a clear separation betw
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                        User Interface                            │
-│                   (index.html, assets/app.js)                    │
+│         (index.html, week.html, progress-report.html)            │
 │  - Display workouts & meals                                      │
 │  - Collect performance data                                      │
 │  - Export performance logs                                       │
+│  - Display AI-generated progress reports                         │
 └──────────────────────┬──────────────────────────────────────────┘
                        │
                        │ Load workouts/meals
@@ -97,6 +98,7 @@ exercAIse is a JSON-first fitness program generator with a clear separation betw
 - Collect user performance data (sets, reps, weight, RPE)
 - Export performance logs (perf-1 format to `performed/`)
 - Provide historical performance to AI for next prescription
+- Display AI-generated progress reports (render, don't analyze)
 - Validate data against schemas
 - Handle backward compatibility (e.g., missing fields)
 - Link validation and exercise stub generation
@@ -107,6 +109,7 @@ exercAIse is a JSON-first fitness program generator with a clear separation betw
 - ❌ Apply ladder snapping or rep adjustments
 - ❌ Select exercises or weights
 - ❌ Make training decisions
+- ❌ Analyze performance data or identify trends (AI does this)
 
 ### 🚫 Anti-Pattern: Server-Side Workout Logic
 
@@ -272,6 +275,21 @@ Workouts are JSON files following schemas. The app reads and writes JSON; it doe
 - IndexedDB for scalable client-side data storage
 - Comprehensive testing (78 unit tests + 26 E2E tests)
 
+### 8. Progress Analysis vs. Training Decisions
+- **Progress Reports**: AI analyzes historical data and generates comprehensive analysis (what happened, what it means)
+- **AI Prescriptions**: AI makes training decisions based on analysis (what should happen next)
+- Progress reports are AI-generated content, not client-side calculations
+- App displays AI-generated reports, doesn't compute statistics or draw conclusions
+- AI reviews progress context when generating next workouts
+
+**Example: Progress Report Generation**
+- ❌ **Wrong**: Client-side JavaScript calculates load progressions, identifies plateaus, suggests interventions
+- ✅ **Right**: AI reads `performed/*.json`, generates report as Markdown or HTML, app displays it
+
+**Example: Workout Prescription**
+- ❌ **Wrong**: App decides "user's squat RPE was 9, reduce weight by 10%"
+- ✅ **Right**: AI sees history, decides "maintain 185 lb but reduce to 3×5 from 4×6"
+
 ---
 
 ## Data Storage Architecture
@@ -379,6 +397,11 @@ exercAIse/
 ├── performed/                  # Performance logs (perf-1)
 │   └── *.json                  # Exported from app after workouts
 │
+├── reports/                    # AI-generated progress reports
+│   ├── index.json              # Report manifest
+│   ├── *.html                  # Saved progress reports (AI-generated)
+│   └── README.md               # Report generation instructions
+│
 ├── meals/                      # Nutrition content
 │   └── *.md                    # Meal plans and recipes
 │
@@ -439,6 +462,8 @@ exercAIse/
 │   └── architecture.md         # (this document)
 │
 ├── index.html                  # Main app entry point
+├── week.html                   # Current week view
+├── progress-report.html        # Training progress analysis
 ├── exercise.html               # Exercise detail viewer
 ├── README.md                   # User-facing documentation
 ├── ARCHITECTURE.md             # This document

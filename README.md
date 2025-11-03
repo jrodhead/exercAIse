@@ -6,6 +6,7 @@ AI-generated personalized workout sessions with structured JSON logging and perf
 - **This Week View**: Quick access to the current week's sessions (Sunday-Saturday) at `week.html`
 - **Session Browser**: Browse all workouts by block/week at `index.html?view=workouts`
 - **Performance Logging**: Track sets, reps, weights, and RPE for every session
+- **Progress Reports**: Comprehensive training analysis with progression tracking at `progress-report.html`
 - **Exercise Library**: Detailed exercise descriptions with setup, steps, cues, and safety notes
 - **Offline Support**: PWA with service worker for offline viewing and logging
 - **Type Safety**: Full TypeScript implementation with compiled ES2020 output
@@ -31,6 +32,11 @@ AI-generated personalized workout sessions with structured JSON logging and perf
 
 ## Development Setup
 - **Install git hooks**: Run `./scripts/install_hooks.sh` after cloning to auto-update the workout manifest on commits.
+- **Progress Reports**: AI-generated comprehensive training analysis at `progress-report.html`
+  - Kai (AI coach) reads performance logs and generates detailed progress reports
+  - Analyzes strength progression, endurance improvements, volume trends, RPE patterns
+  - Reports saved to `reports/` directory for offline viewing
+  - Follow prompt: `.github/prompts/generate-training-progress-report.prompt.md`
 - **Workout manifest**: The `workouts/manifest.txt` file lists all workout sessions and is automatically updated:
   - **Locally**: Pre-commit hook updates it when you commit workout JSON files
   - **CI/CD**: GitHub Actions workflow updates it when workouts are pushed to the repo
