@@ -3,6 +3,23 @@
   "description": "AI-generated training progress reports",
   "reports": [
     {
+      "filename": "2025-11-03_blocks-2-4.html",
+      "startDate": "2025-08-22",
+      "endDate": "2025-11-03",
+      "blockRange": "2-4",
+      "title": "Training Progress Report - Blocks 2, 3 & 4",
+      "generatedDate": "2025-11-03",
+      "overallGrade": "A",
+      "sessionCount": 44,
+      "highlights": [
+        "Hammer Curls +140% volume, Biceps Curls +120% - exceptional arm development",
+        "Upper body pulling +50% volume - One-Arm Row and Chest-Supported Row",
+        "Bulgarian Split Squats +52% volume, +90% raw load",
+        "44 sessions over 10.5 weeks - injury-free training",
+        "Perfect periodization with all deloads executed properly"
+      ]
+    },
+    {
       "filename": "2025-11-03_blocks-4-4.html",
       "startDate": "2025-10-06",
       "endDate": "2025-11-03",
