@@ -23,13 +23,14 @@
         {
           "kind": "superset",
           "name": "Superset A",
+          "notes": "Perform both exercises back-to-back, then rest 90s before next round",
           "children": [
             {
               "kind": "exercise",
               "name": "Dumbbell Hip Thrust",
               "link": "exercises/dumbbell_hip_thrust.json",
               "logType": "strength",
-              "prescription": { "sets": 3, "reps": "12-15", "weight": 55, "restSeconds": 90, "rpe": 7.5 },
+              "prescription": { "sets": 3, "reps": "12-15", "weight": 55, "rpe": 7.5 },
               "cues": ["Squeeze glutes hard at top", "Pause 1s", "Shoulders on bench"]
             },
             {
@@ -51,13 +52,14 @@
         {
           "kind": "superset",
           "name": "Superset B",
+          "notes": "Perform both exercises back-to-back, then rest 90s before next round",
           "children": [
             {
               "kind": "exercise",
               "name": "Bulgarian Split Squat",
               "link": "exercises/bulgarian_split_squat.json",
               "logType": "strength",
-              "prescription": { "sets": 3, "reps": "10-12 each leg", "weight": "40 x2", "restSeconds": 90, "rpe": 7.5 },
+              "prescription": { "sets": 3, "reps": "10-12 each leg", "weight": "40 x2", "rpe": 7.5 },
               "cues": ["Front knee tracks", "Slight forward lean", "Control the bottom"]
             },
             {
@@ -79,13 +81,14 @@
         {
           "kind": "superset",
           "name": "Superset C",
+          "notes": "Perform both exercises back-to-back, then rest 60s before next round",
           "children": [
             {
               "kind": "exercise",
               "name": "Standing Calf Raise",
               "link": "exercises/standing_calf_raise.json",
               "logType": "strength",
-              "prescription": { "sets": 3, "reps": "12-15", "weight": "30 x2", "tempo": "3-1-1", "restSeconds": 60, "rpe": 7.5 },
+              "prescription": { "sets": 3, "reps": "12-15", "weight": "30 x2", "tempo": "3-1-1", "rpe": 7.5 },
               "cues": ["Pause at top", "Slow 3s lower", "Full range", "Deep stretch at bottom"],
               "notes": "3s eccentric, 1s pause at top"
             },

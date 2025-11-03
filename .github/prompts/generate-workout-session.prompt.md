@@ -35,7 +35,8 @@ When prompted with workout generation requests, provide the workout content AND 
 - Clarify whether exercises are performed as straight sets, supersets, or circuits.
 - Provide rest time guidance between sets or rounds.
   - Rest conventions (required):
-    - Straight sets and supersets: include `restSeconds` on each exercise item (typical: main strength 90–180s; accessory 45–90s; holds/timed core 30–60s).
+    - Straight sets: include `restSeconds` on each exercise item (typical: main strength 90–180s; accessory 45–90s; holds/timed core 30–60s).
+    - Supersets: include `restSeconds` ONLY on the LAST exercise in the superset (rest occurs after completing all exercises in the round). Add a `notes` field to the superset item explaining execution (e.g., "Perform both exercises back-to-back, then rest 90s before next round").
     - Circuits (3+ moves): do NOT include `restSeconds` on the child exercises. Instead, state round-rest clearly in the section or circuit notes (e.g., "Rest 60–90s between rounds; move briskly between stations").
     - Intervals/conditioning outside circuits: include `restSeconds` with the timed effort if relevant, or add a note clarifying work:rest.
 - Begin each workout with a warm-up (mobility/activation).

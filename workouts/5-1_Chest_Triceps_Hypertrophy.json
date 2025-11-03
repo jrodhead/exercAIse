@@ -23,13 +23,14 @@
         {
           "kind": "superset",
           "name": "Superset A",
+          "notes": "Perform both exercises back-to-back, then rest 90s before next round",
           "children": [
             {
               "kind": "exercise",
               "name": "Flat Dumbbell Bench Press",
               "link": "exercises/dumbbell_bench_press.json",
               "logType": "strength",
-              "prescription": { "sets": 3, "reps": "10-12", "weight": "40 x2", "restSeconds": 90, "rpe": 7.5 },
+              "prescription": { "sets": 3, "reps": "10-12", "weight": "40 x2", "rpe": 7.5 },
               "cues": ["Feet planted", "Shoulder blades retracted", "Control the negative"]
             },
             {
@@ -51,13 +52,14 @@
         {
           "kind": "superset",
           "name": "Superset B",
+          "notes": "Perform both exercises back-to-back, then rest 90s before next round",
           "children": [
             {
               "kind": "exercise",
               "name": "Incline Dumbbell Bench Press",
               "link": "exercises/incline_dumbbell_bench_press.json",
               "logType": "strength",
-              "prescription": { "sets": 2, "reps": "10-12", "weight": "35 x2", "restSeconds": 90, "rpe": 7.5 },
+              "prescription": { "sets": 2, "reps": "10-12", "weight": "35 x2", "rpe": 7.5 },
               "cues": ["Upper chest focus", "Bench at 30-45°", "Full stretch"]
             },
             {
@@ -79,13 +81,14 @@
         {
           "kind": "superset",
           "name": "Superset C",
+          "notes": "Perform both exercises back-to-back, then rest 60s before next round",
           "children": [
             {
               "kind": "exercise",
               "name": "Dumbbell Flyes",
               "link": "exercises/dumbbell_flyes.json",
               "logType": "strength",
-              "prescription": { "sets": 2, "reps": "12-15", "weight": "20 x2", "restSeconds": 60, "rpe": 7 },
+              "prescription": { "sets": 2, "reps": "12-15", "weight": "20 x2", "rpe": 7 },
               "cues": ["Wide arc", "Chest stretch", "Slight elbow bend"]
             },
             {

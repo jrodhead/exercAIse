@@ -23,13 +23,14 @@
         {
           "kind": "superset",
           "name": "Superset A",
+          "notes": "Perform both exercises back-to-back, then rest 90s before next round",
           "children": [
             {
               "kind": "exercise",
               "name": "One-Arm Dumbbell Row",
               "link": "exercises/one_arm_dumbbell_row.json",
               "logType": "strength",
-              "prescription": { "sets": 3, "reps": "10-12 each arm", "weight": 50, "restSeconds": 90, "rpe": 7.5 },
+              "prescription": { "sets": 3, "reps": "10-12 each arm", "weight": 50, "rpe": 7.5 },
               "cues": ["Pull elbow back", "Squeeze lat", "Control the negative"]
             },
             {
@@ -51,13 +52,14 @@
         {
           "kind": "superset",
           "name": "Superset B",
+          "notes": "Perform both exercises back-to-back, then rest 90s before next round",
           "children": [
             {
               "kind": "exercise",
               "name": "Chest-Supported Dumbbell Row",
               "link": "exercises/chest_supported_dumbbell_row.json",
               "logType": "strength",
-              "prescription": { "sets": 3, "reps": "10-12", "weight": "40 x2", "restSeconds": 90, "rpe": 7.5 },
+              "prescription": { "sets": 3, "reps": "10-12", "weight": "40 x2", "rpe": 7.5 },
               "cues": ["Bench at 30-45°", "Pull to hips", "Squeeze shoulder blades"]
             },
             {
@@ -79,13 +81,14 @@
         {
           "kind": "superset",
           "name": "Superset C",
+          "notes": "Perform both exercises back-to-back, then rest 90s before next round",
           "children": [
             {
               "kind": "exercise",
               "name": "Alternating Dumbbell Biceps Curl",
               "link": "exercises/alternating_dumbbell_biceps_curl.json",
               "logType": "strength",
-              "prescription": { "sets": 2, "reps": "12-15 each arm", "weight": 25, "restSeconds": 60, "rpe": 7.5 },
+              "prescription": { "sets": 2, "reps": "12-15 each arm", "weight": 25, "rpe": 7.5 },
               "cues": ["Full supination", "Control the negative", "Peak contraction"]
             },
             {
