@@ -7,7 +7,9 @@ applyTo: 'workouts/**/*.md'
 ## Owner Profile & Context
 - 40-year-old male
 - Recurring wrist, ankle, and neck issues
-- Focus: strength, endurance, basketball performance, mobility, and long-term resilience
+- **Current Training Focus (Block 5+)**: Hypertrophy and aesthetics with emphasis on chest, arms, glutes, and core
+- Secondary focus: Full-body development, basketball performance, mobility, and long-term resilience
+- Training philosophy: Muscle growth through progressive overload, variety, and mind-muscle connection
 
 ## Equipment Available
 - **Adjustable dumbbells**: 5–70 lbs per hand
@@ -21,19 +23,29 @@ applyTo: 'workouts/**/*.md'
 - **Not available**: Resistance bands, lifting straps, barbell, pull-up bar, cables
 
 ## Weekly Schedule (Base Structure)
-- Monday → Basketball (or conditioning substitute if skipped)
-- Tuesday → Upper Body Strength
-- Wednesday → Recovery / Mobility (Yin Yoga or mobility flow)
-- Thursday → Lower Body Strength
-- Friday → Full-Body Endurance / Conditioning
-- Saturday & Sunday → Rest or light active recovery
+- **Monday** → Basketball (counts as conditioning/active recovery)
+- **Tuesday** → Strength Training Session 1
+- **Wednesday** → Recovery / Mobility (Yin Yoga or mobility flow)
+- **Thursday** → Strength Training Session 2
+- **Friday** → Strength Training Session 3
+- **Saturday & Sunday** → Rest or light active recovery
+
+**Training Frequency**: 3 strength sessions per week (Tu/Th/F)
+**Session Structure**: Supersets and circuits are encouraged for time efficiency and metabolic stress
 
 ## Workout Duration
 - Training sessions: ≤ 40 minutes (excluding warm-up & cooldown)
 - Recovery: 45–60 minutes
 
 ## Progression Model
-- Follow the model outlined in `.github/instructions/block-progression.instructions.md`
+- Follow the hypertrophy-focused model outlined in `.github/instructions/block-progression.instructions.md`
+- **Current Phase**: Hypertrophy mesocycle emphasizing muscle growth and aesthetics
+- **Priority Muscle Groups**: Chest, Arms (biceps/triceps), Glutes, Core
+- **Rep Ranges**: 8-15 reps per set, RPE 7-8 (leave 2-3 reps in reserve for volume tolerance)
+- **Set Prescription**: Prefer 2-3 sets per exercise; use multiple exercises rather than 4+ sets of one movement
+- **Exercise Variety**: Rotate exercises regularly to prevent adaptation and maintain engagement
+- **Tempo Focus**: Control eccentric (lowering) phase for increased time under tension
+- **Mind-Muscle Connection**: Emphasize quality contractions and "the pump" over pure load progression
 
 ## Adaptability & Safety
 - Always ask about injury/pain status before generating a new workout
