@@ -1,0 +1,152 @@
+{
+  "version": "perf-1",
+  "workoutFile": "workouts/5-1_Glutes_Core_Hypertrophy.json",
+  "timestamp": "2025-11-06T13:34:14.368Z",
+  "exercises": {
+    "dumbbell-hip-thrust": {
+      "name": "Dumbbell Hip Thrust",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 60,
+          "reps": 12,
+          "rpe": 7
+        },
+        {
+          "set": 2,
+          "weight": 60,
+          "reps": 12,
+          "rpe": 7
+        },
+        {
+          "set": 3,
+          "weight": 60,
+          "reps": 12,
+          "rpe": 7
+        }
+      ]
+    },
+    "goblet-squat": {
+      "name": "Goblet Squat",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 60,
+          "reps": 10,
+          "rpe": 7.5
+        },
+        {
+          "set": 2,
+          "weight": 60,
+          "reps": 10,
+          "rpe": 7.5
+        },
+        {
+          "set": 3,
+          "weight": 60,
+          "reps": 8,
+          "rpe": 7
+        }
+      ]
+    },
+    "bulgarian-split-squat": {
+      "name": "Bulgarian Split Squat",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 40,
+          "multiplier": 2,
+          "reps": 12,
+          "rpe": 7
+        },
+        {
+          "set": 2,
+          "weight": 40,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 8
+        },
+        {
+          "set": 3,
+          "weight": 40,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 8
+        }
+      ]
+    },
+    "dumbbell-rdl": {
+      "name": "Dumbbell RDL",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 60,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 8
+        },
+        {
+          "set": 2,
+          "weight": 60,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 8
+        },
+        {
+          "set": 3,
+          "weight": 60,
+          "multiplier": 2,
+          "reps": 8,
+          "rpe": 8
+        }
+      ]
+    },
+    "standing-calf-raise": {
+      "name": "Standing Calf Raise",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 12,
+          "rpe": 7
+        },
+        {
+          "set": 2,
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 12,
+          "rpe": 7
+        },
+        {
+          "set": 3,
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 12,
+          "rpe": 7
+        }
+      ]
+    },
+    "pallof-press-hold": {
+      "name": "Pallof Press Hold",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "reps": 6,
+          "rpe": 7
+        },
+        {
+          "set": 2,
+          "reps": 6,
+          "rpe": 7
+        }
+      ]
+    }
+  }
+}
