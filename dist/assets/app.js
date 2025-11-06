@@ -546,6 +546,9 @@
                             }
                             catch (e) { }
                         }
+                        if (it.notes) {
+                            html += `<br><span class="ex-notes">${esc(it.notes)}</span>`;
+                        }
                         if (!options.suppressCues && it.cues && it.cues.length) {
                             html += `<ul>${it.cues.map((c) => `<li>${inlineMarkdown(c)}</li>`).join('')}</ul>`;
                         }

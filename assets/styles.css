@@ -625,6 +625,15 @@ a:focus-visible { outline: 2px solid var(--color-link-hover); outline-offset: 2p
   font-size: var(--font-size-sm);
 }
 
+.ex-notes {
+  display: block;
+  margin-top: var(--space-1);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  font-style: italic;
+  line-height: 1.4;
+}
+
 .exercise-card__header .ex-cues { 
   margin: var(--space-3) 0 0 0; 
   color: var(--color-gray-500);

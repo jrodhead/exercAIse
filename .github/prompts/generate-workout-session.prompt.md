@@ -32,6 +32,14 @@ When prompted with workout generation requests, provide the workout content AND 
     - Resistance training and core strength (press/row/squat/hinge/deadbug/Pallof) → `strength`
   - `prescription` with sets/reps/weight/rpe/time/distance as appropriate
   - optional `cues` array (3–5 brief execution cues)
+  - optional `notes` field for execution clarifications (see "Per-side prescriptions" below)
+- **Per-side prescriptions (unilateral exercises)**:
+  - For exercises performed on each side (stretches, single-leg/arm exercises, etc.), clearly specify in the `notes` field whether to:
+    - **Complete all reps one side first**: "Complete all reps on one arm, then switch sides" (e.g., One-Arm Dumbbell Row)
+    - **Alternate each rep**: "Alternate arms (12-15 reps per arm = 24-30 total reps)" (e.g., Alternating Dumbbell Curl)
+    - **Hold duration per side**: "Hold 60s on one side, then 60s on the other side" (e.g., stretches)
+  - For bilateral movements with direction changes: "10 forward/back on left leg, 10 forward/back on right leg, then 10 side-to-side on each leg" (e.g., Leg Swings)
+  - The `notes` field displays inline with the exercise name and prescription in warm-up/cooldown sections for easy reference
 - Clarify whether exercises are performed as straight sets, supersets, or circuits.
 - Provide rest time guidance between sets or rounds.
   - Rest conventions (required):

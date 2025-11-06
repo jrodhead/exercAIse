@@ -23,7 +23,8 @@
           "name": "Leg Swings",
           "link": "exercises/leg_swings.json",
           "logType": "mobility",
-          "prescription": { "sets": 1, "reps": "10 each direction per leg" }
+          "prescription": { "sets": 1, "reps": "10 each direction per leg" },
+          "notes": "10 forward/back on left leg, 10 forward/back on right leg, then 10 side-to-side on each leg"
         },
         {
           "kind": "exercise",
@@ -74,7 +75,7 @@
           "link": "exercises/standing_quad_stretch.json",
           "logType": "stretch",
           "prescription": { "holdSeconds": 45 },
-          "notes": "45s each leg"
+          "notes": "Hold 45s on one leg, then 45s on the other leg"
         },
         {
           "kind": "exercise",
@@ -82,7 +83,7 @@
           "link": "exercises/standing_hamstring_stretch.json",
           "logType": "stretch",
           "prescription": { "holdSeconds": 45 },
-          "notes": "45s each leg"
+          "notes": "Hold 45s on one leg, then 45s on the other leg"
         },
         {
           "kind": "exercise",
@@ -90,7 +91,7 @@
           "link": "exercises/calf_stretch.json",
           "logType": "stretch",
           "prescription": { "holdSeconds": 45 },
-          "notes": "45s each leg"
+          "notes": "Hold 45s on one leg, then 45s on the other leg"
         },
         {
           "kind": "exercise",
@@ -98,7 +99,7 @@
           "link": "exercises/figure_4_stretch.json",
           "logType": "stretch",
           "prescription": { "holdSeconds": 60 },
-          "notes": "60s each side"
+          "notes": "Hold 60s on one side, then 60s on the other side"
         }
       ]
     }

@@ -190,6 +190,12 @@ See `.github/prompts/generate-workout-session.prompt.md` for all output formatti
 ## 🔗 Repository Conventions (Explicit)
 - Exercise linking: In session JSON, every exercise item must include a `link` pointing to the JSON detail under `exercises/`, e.g., `"exercises/goblet_squat.json"`. JSON is the source of truth and is rendered by the viewer.
  - Exercise typing: Add `logType` to each exercise item to drive the logger UI: `strength | endurance | carry | mobility | stretch`.
+- **Per-side prescriptions**: For unilateral exercises (single-leg/arm exercises, stretches), always include a `notes` field clarifying execution order:
+  - "Complete all reps on one arm, then switch sides" (for unilateral strength exercises)
+  - "Alternate arms (12-15 reps per arm = 24-30 total reps)" (for alternating exercises)
+  - "Hold 60s on one side, then 60s on the other side" (for stretches)
+  - "10 forward/back on left leg, 10 forward/back on right leg, then 10 side-to-side on each leg" (for multi-directional movements)
+  - These notes display inline with the exercise name and prescription in the UI, especially important for warm-up/cooldown sections
 - Source of truth for exercises is JSON: create `exercises/<slug>.json` conforming to `schemas/exercise.schema.json` (v2: setup, steps, cues, mistakes, safety, scaling, variations, prescriptionHints, joints, media). If legacy Markdown exists, keep it minimal; JSON is preferred.
 - Enrichment rule: If a referenced exercise’s JSON is missing v2 fields or doesn’t match the current schema, enrich/update it immediately (populate setup, steps, cues, mistakes, safety, scaling, variations, prescriptionHints, joints, media) before finalizing the session.
 - File naming: Name workouts `workouts/<block>-<week>_<Title>.json` (no dates in the filename). The workout manifest system automatically displays workouts in the app.

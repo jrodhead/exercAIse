@@ -542,6 +542,10 @@
                 if (parts.length) html += ` — <span class="ex-presc">${parts.join(' · ')}</span>`;
               } catch (e) {}
             }
+            // Display notes inline if present
+            if (it.notes) {
+              html += `<br><span class="ex-notes">${esc(it.notes)}</span>`;
+            }
             // Inline cues under the item so they migrate into the card header
             if (!options.suppressCues && it.cues && it.cues.length) {
               html += `<ul>${it.cues.map((c: string) => `<li>${inlineMarkdown(c)}</li>`).join('')}</ul>`;

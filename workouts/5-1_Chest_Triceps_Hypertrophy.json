@@ -113,7 +113,7 @@
           "link": "exercises/pallof_press.json",
           "logType": "strength",
           "prescription": { "sets": 2, "reps": "6-8 each side", "holdSeconds": 25, "restSeconds": 45, "rpe": 7 },
-          "notes": "20-30s hold per rep",
+          "notes": "Complete all reps on one side, then switch sides. Hold 20-30s per rep.",
           "cues": ["Resist rotation", "Breathe steady", "Ribs down"]
         }
       ]
@@ -122,8 +122,8 @@
       "type": "Cooldown/Recovery",
       "title": "Cooldown & Stretch",
       "items": [
-        { "kind": "exercise", "name": "Doorway Chest Stretch", "link": "exercises/doorway_chest_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "60s per side" },
-        { "kind": "exercise", "name": "Overhead Triceps Stretch", "link": "exercises/overhead_triceps_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "60s per arm" },
+        { "kind": "exercise", "name": "Doorway Chest Stretch", "link": "exercises/doorway_chest_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "Hold 60s on one side, then 60s on the other side" },
+        { "kind": "exercise", "name": "Overhead Triceps Stretch", "link": "exercises/overhead_triceps_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "Hold 60s on one arm, then 60s on the other arm" },
         { "kind": "exercise", "name": "Child's Pose", "link": "exercises/childs_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 90 } }
       ]
     }

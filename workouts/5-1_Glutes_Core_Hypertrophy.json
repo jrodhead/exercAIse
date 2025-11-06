@@ -60,6 +60,7 @@
               "link": "exercises/bulgarian_split_squat.json",
               "logType": "strength",
               "prescription": { "sets": 3, "reps": "10-12 each leg", "weight": "40 x2", "rpe": 7.5 },
+              "notes": "Complete all reps on one leg, then switch sides",
               "cues": ["Front knee tracks", "Slight forward lean", "Control the bottom"]
             },
             {
@@ -99,7 +100,7 @@
               "logType": "strength",
               "prescription": { "sets": 3, "reps": "6-8 each side", "holdSeconds": 25, "restSeconds": 60, "rpe": 7 },
               "cues": ["Resist rotation", "Breathe steady", "Ribs down"],
-              "notes": "20-30s hold per rep"
+              "notes": "Complete all reps on one side, then switch sides. Hold 20-30s per rep."
             }
           ]
         }
@@ -124,8 +125,8 @@
       "type": "Cooldown/Recovery",
       "title": "Lower Body Stretch",
       "items": [
-        { "kind": "exercise", "name": "Pigeon Pose", "link": "exercises/pigeon_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 90 }, "notes": "90s per side" },
-        { "kind": "exercise", "name": "Calf Stretch", "link": "exercises/calf_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 45 }, "notes": "45s each leg" }
+        { "kind": "exercise", "name": "Pigeon Pose", "link": "exercises/pigeon_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 90 }, "notes": "Hold 90s on one side, then 90s on the other side" },
+        { "kind": "exercise", "name": "Calf Stretch", "link": "exercises/calf_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 45 }, "notes": "Hold 45s on one leg, then 45s on the other leg" }
       ]
     }
   ]

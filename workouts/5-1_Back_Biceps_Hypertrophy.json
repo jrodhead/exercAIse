@@ -31,6 +31,7 @@
               "link": "exercises/one_arm_dumbbell_row.json",
               "logType": "strength",
               "prescription": { "sets": 3, "reps": "10-12 each arm", "weight": 50, "rpe": 7.5 },
+              "notes": "Complete all reps on one arm, then switch sides",
               "cues": ["Pull elbow back", "Squeeze lat", "Control the negative"]
             },
             {
@@ -89,6 +90,7 @@
               "link": "exercises/alternating_dumbbell_biceps_curl.json",
               "logType": "strength",
               "prescription": { "sets": 2, "reps": "12-15 each arm", "weight": 25, "rpe": 7.5 },
+              "notes": "Alternate arms (12-15 reps per arm = 24-30 total reps)",
               "cues": ["Full supination", "Control the negative", "Peak contraction"]
             },
             {
@@ -114,6 +116,7 @@
           "link": "exercises/deadbug.json",
           "logType": "strength",
           "prescription": { "sets": 2, "reps": "10-12 each side", "restSeconds": 45, "rpe": 6 },
+          "notes": "Alternate sides (10-12 reps per side = 20-24 total reps)",
           "cues": ["Press low back down", "Slow and controlled", "Opposite arm/leg"]
         }
       ]
@@ -122,8 +125,8 @@
       "type": "Cooldown/Recovery",
       "title": "Cooldown & Stretch",
       "items": [
-        { "kind": "exercise", "name": "Lat Stretch", "link": "exercises/lat_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "60s per side" },
-        { "kind": "exercise", "name": "Biceps Wall Stretch", "link": "exercises/biceps_wall_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "60s per arm" },
+        { "kind": "exercise", "name": "Lat Stretch", "link": "exercises/lat_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "Hold 60s on one side, then 60s on the other side" },
+        { "kind": "exercise", "name": "Biceps Wall Stretch", "link": "exercises/biceps_wall_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "Hold 60s on one arm, then 60s on the other arm" },
         { "kind": "exercise", "name": "Child's Pose", "link": "exercises/childs_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 90 } }
       ]
     }

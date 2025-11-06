@@ -38,7 +38,7 @@
           "link": "exercises/dragon_pose_low_lunge_yin_style.json",
           "logType": "stretch",
           "prescription": { "holdSeconds": 180 },
-          "notes": "3 min each side - Deep hip flexor and quad stretch (basketball recovery)"
+          "notes": "Hold 3 min on one side, then 3 min on the other side"
         },
         {
           "kind": "exercise",
@@ -46,7 +46,7 @@
           "link": "exercises/pigeon_pose.json",
           "logType": "stretch",
           "prescription": { "holdSeconds": 240 },
-          "notes": "4 min each side - Deep glute and hip external rotator stretch"
+          "notes": "Hold 4 min on one side, then 4 min on the other side"
         },
         {
           "kind": "exercise",
@@ -62,7 +62,7 @@
           "link": "exercises/half_frog_pose.json",
           "logType": "stretch",
           "prescription": { "holdSeconds": 180 },
-          "notes": "3 min each side - Quad and hip flexor release"
+          "notes": "Hold 3 min on one side, then 3 min on the other side"
         },
         {
           "kind": "exercise",
@@ -70,7 +70,7 @@
           "link": "exercises/supine_spinal_twist.json",
           "logType": "stretch",
           "prescription": { "holdSeconds": 180 },
-          "notes": "3 min each side - Glute, IT band, and spinal release"
+          "notes": "Hold 3 min on one side, then 3 min on the other side"
         }
       ]
     },
@@ -100,7 +100,7 @@
           "link": "exercises/thread_the_needle.json",
           "logType": "stretch",
           "prescription": { "holdSeconds": 180 },
-          "notes": "3 min each side - Shoulder and upper back release"
+          "notes": "Hold 3 min on one side, then 3 min on the other side"
         }
       ]
     },
