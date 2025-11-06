@@ -21,11 +21,15 @@ test('mock session renders all sections and types', async ({ page }) => {
 
   // Superset heading visible; children become logging cards in main sections
   await expect(page.getByRole('heading', { level: 3, name: /Bench \+ Row/i })).toBeVisible();
+  // Verify superset notes are displayed
+  await expect(page.locator('.exercise-card__notes:has-text("Perform both exercises back-to-back")')).toBeVisible();
   await expect(page.locator('.exercise-card[data-name="Flat DB Bench Press"]').first()).toBeVisible();
   await expect(page.locator('.exercise-card[data-name="Chest Supported Dumbbell Row"]').first()).toBeVisible();
 
   // Circuit heading and children
   await expect(page.getByRole('heading', { level: 3, name: /RDL \+ Thruster \+ Deadbug/i })).toBeVisible();
+  // Verify circuit notes are displayed
+  await expect(page.locator('.exercise-card__notes:has-text("Move quickly between exercises")')).toBeVisible();
   await expect(page.locator('.exercise-card[data-name="Dumbbell RDL"]').first()).toBeVisible();
   await expect(page.locator('.exercise-card[data-name="Dumbbell Thruster"]').first()).toBeVisible();
   await expect(page.locator('.exercise-card[data-name="Deadbug"]').first()).toBeVisible();

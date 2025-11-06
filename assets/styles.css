@@ -2907,6 +2907,11 @@ a:hover {
     background: #232830;
   }
   
+  /* Exercise card notes - better contrast in dark mode */
+  .exercise-card__notes {
+    color: #cbd5e1;
+  }
+  
   /* ========== Page Header Dark Mode ========== */
   .page-header {
     border-bottom-color: #334155;

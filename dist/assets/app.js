@@ -560,7 +560,11 @@
                             if (inner && inner.indexOf('<li') !== -1)
                                 inner = `<ul>${inner}</ul>`;
                         }
-                        return `<div><h3>${esc(cap + (it.name ? `: ${it.name}` : ''))}</h3>${inner}</div>`;
+                        let notesHtml = '';
+                        if (it.notes) {
+                            notesHtml = `<div class="exercise-card__notes">${esc(it.notes)}</div>`;
+                        }
+                        return `<div><h3>${esc(cap + (it.name ? `: ${it.name}` : ''))}</h3>${notesHtml}${inner}</div>`;
                     }
                     return '';
                 };
