@@ -1,0 +1,168 @@
+{
+  "version": "perf-1",
+  "workoutFile": "workouts/5-1_Back_Biceps_Hypertrophy.json",
+  "timestamp": "2025-11-07T13:27:25.339Z",
+  "exercises": {
+    "one-arm-dumbbell-row": {
+      "name": "One-Arm Dumbbell Row",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 50,
+          "reps": 10,
+          "rpe": 7
+        },
+        {
+          "set": 2,
+          "weight": 50,
+          "reps": 10,
+          "rpe": 8
+        },
+        {
+          "set": 3,
+          "weight": 50,
+          "reps": 10,
+          "rpe": 8
+        }
+      ]
+    },
+    "hammer-curl": {
+      "name": "Hammer Curl",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 8
+        },
+        {
+          "set": 2,
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 5,
+          "rpe": 7
+        },
+        {
+          "set": 3,
+          "weight": 30,
+          "multiplier": 2,
+          "reps": 5,
+          "rpe": 8
+        }
+      ]
+    },
+    "chest-supported-dumbbell-row": {
+      "name": "Chest-Supported Dumbbell Row",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 40,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 7
+        },
+        {
+          "set": 2,
+          "weight": 40,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 7
+        },
+        {
+          "set": 3,
+          "weight": 40,
+          "multiplier": 2,
+          "reps": 10,
+          "rpe": 7
+        }
+      ]
+    },
+    "incline-dumbbell-curl": {
+      "name": "Incline Dumbbell Curl",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 20,
+          "multiplier": 2,
+          "reps": 5,
+          "rpe": 7
+        },
+        {
+          "set": 2,
+          "weight": 10,
+          "multiplier": 2,
+          "reps": 15,
+          "rpe": 7
+        },
+        {
+          "set": 3,
+          "weight": 10,
+          "multiplier": 2,
+          "reps": 15,
+          "rpe": 7
+        }
+      ]
+    },
+    "alternating-dumbbell-biceps-curl": {
+      "name": "Alternating Dumbbell Biceps Curl",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 10,
+          "reps": 20,
+          "rpe": 7
+        },
+        {
+          "set": 2,
+          "weight": 20,
+          "reps": 15,
+          "rpe": 7
+        }
+      ]
+    },
+    "farmer-carry": {
+      "name": "Farmer Carry",
+      "logType": "carry",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 50,
+          "multiplier": 2,
+          "timeSeconds": 52,
+          "rpe": 7
+        },
+        {
+          "set": 2,
+          "weight": 50,
+          "multiplier": 2,
+          "timeSeconds": 52,
+          "rpe": 7
+        }
+      ]
+    },
+    "deadbug": {
+      "name": "Deadbug",
+      "logType": "strength",
+      "sets": [
+        {
+          "set": 1,
+          "weight": 10,
+          "reps": 10,
+          "rpe": 6
+        },
+        {
+          "set": 2,
+          "weight": 10,
+          "reps": 8,
+          "rpe": 7
+        }
+      ]
+    }
+  }
+}
