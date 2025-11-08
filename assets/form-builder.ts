@@ -1371,9 +1371,33 @@ interface CollectedBlocks {
 
     // Wire up action buttons
     deps.saveBtn!.onclick = () => {
-      const data = collectData();
+      // Try perf-2 format if session JSON is available (same logic as copy/download/issue buttons)
+      const sessionJSON = deps.getCurrentSessionJSON ? deps.getCurrentSessionJSON() : null;
+      let data: any;
+      let format: string = 'perf-1';
+      
+      if (sessionJSON) {
+        // Use perf-2 nested structure format
+        try {
+          data = collectNestedData(sessionJSON);
+          if (data) {
+            format = 'perf-2';
+            console.log('✅ Using perf-2 nested structure format for local save');
+          } else {
+            console.warn('⚠️ perf-2 collection returned null, falling back to perf-1');
+            data = collectData();
+          }
+        } catch (e) {
+          console.error('❌ Error collecting perf-2 data, falling back to perf-1:', e);
+          data = collectData();
+        }
+      } else {
+        // No session JSON available, use perf-1 format
+        data = collectData();
+      }
+      
       deps.saveLocal!(filePath, data);
-      deps.status!('Saved locally at ' + new Date().toLocaleTimeString(), { important: true });
+      deps.status!(`Saved locally (${format}) at ` + new Date().toLocaleTimeString(), { important: true });
     };
 
     deps.copyBtn!.onclick = () => {
@@ -1498,7 +1522,41 @@ interface CollectedBlocks {
     };
 
     deps.issueBtn!.onclick = () => {
-      const data = collectData();
+      // Try perf-2 format if session JSON is available (same logic as copy/download buttons)
+      const sessionJSON = deps.getCurrentSessionJSON ? deps.getCurrentSessionJSON() : null;
+      let data: any;
+      let errs: string[] = [];
+      let format: string = 'perf-1';
+      
+      if (sessionJSON) {
+        // Use perf-2 nested structure format
+        try {
+          data = collectNestedData(sessionJSON);
+          if (data) {
+            errs = validatePerformanceV2(data);
+            format = 'perf-2';
+            console.log('✅ Using perf-2 nested structure format for GitHub issue');
+          } else {
+            console.warn('⚠️ perf-2 collection returned null, falling back to perf-1');
+            data = collectData();
+            errs = validatePerformance(data);
+          }
+        } catch (e) {
+          console.error('❌ Error collecting perf-2 data, falling back to perf-1:', e);
+          data = collectData();
+          errs = validatePerformance(data);
+        }
+      } else {
+        // No session JSON available, use perf-1 format
+        data = collectData();
+        errs = validatePerformance(data);
+      }
+      
+      if (errs.length) {
+        (data as any).validationErrors = errs.slice(0);
+        console.warn(`Performance validation errors (${format}):`, errs);
+      }
+      
       const json = JSON.stringify(data, null, 2);
       const owner = 'jrodhead';
       const repo = 'exercAIse';

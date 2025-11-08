@@ -1178,9 +1178,31 @@ window.ExercAIse.FormBuilder = (() => {
             return errors;
         };
         deps.saveBtn.onclick = () => {
-            const data = collectData();
+            const sessionJSON = deps.getCurrentSessionJSON ? deps.getCurrentSessionJSON() : null;
+            let data;
+            let format = 'perf-1';
+            if (sessionJSON) {
+                try {
+                    data = collectNestedData(sessionJSON);
+                    if (data) {
+                        format = 'perf-2';
+                        console.log('✅ Using perf-2 nested structure format for local save');
+                    }
+                    else {
+                        console.warn('⚠️ perf-2 collection returned null, falling back to perf-1');
+                        data = collectData();
+                    }
+                }
+                catch (e) {
+                    console.error('❌ Error collecting perf-2 data, falling back to perf-1:', e);
+                    data = collectData();
+                }
+            }
+            else {
+                data = collectData();
+            }
             deps.saveLocal(filePath, data);
-            deps.status('Saved locally at ' + new Date().toLocaleTimeString(), { important: true });
+            deps.status(`Saved locally (${format}) at ` + new Date().toLocaleTimeString(), { important: true });
         };
         deps.copyBtn.onclick = () => {
             const sessionJSON = deps.getCurrentSessionJSON ? deps.getCurrentSessionJSON() : null;
@@ -1296,7 +1318,38 @@ window.ExercAIse.FormBuilder = (() => {
                 }
             };
         deps.issueBtn.onclick = () => {
-            const data = collectData();
+            const sessionJSON = deps.getCurrentSessionJSON ? deps.getCurrentSessionJSON() : null;
+            let data;
+            let errs = [];
+            let format = 'perf-1';
+            if (sessionJSON) {
+                try {
+                    data = collectNestedData(sessionJSON);
+                    if (data) {
+                        errs = validatePerformanceV2(data);
+                        format = 'perf-2';
+                        console.log('✅ Using perf-2 nested structure format for GitHub issue');
+                    }
+                    else {
+                        console.warn('⚠️ perf-2 collection returned null, falling back to perf-1');
+                        data = collectData();
+                        errs = validatePerformance(data);
+                    }
+                }
+                catch (e) {
+                    console.error('❌ Error collecting perf-2 data, falling back to perf-1:', e);
+                    data = collectData();
+                    errs = validatePerformance(data);
+                }
+            }
+            else {
+                data = collectData();
+                errs = validatePerformance(data);
+            }
+            if (errs.length) {
+                data.validationErrors = errs.slice(0);
+                console.warn(`Performance validation errors (${format}):`, errs);
+            }
             const json = JSON.stringify(data, null, 2);
             const owner = 'jrodhead';
             const repo = 'exercAIse';
