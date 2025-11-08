@@ -420,4 +420,97 @@ test.describe('Perf-2 Data Quality', () => {
       }
     }
   });
+
+  test('should use perf-2 format for GitHub issue button', async ({ page, context }) => {
+    // Grant clipboard permissions
+    await context.grantPermissions(['clipboard-read', 'clipboard-write']);
+
+    await page.goto('/index.html?file=' + encodeURIComponent(MOCK_PATH));
+    await expect(page.locator('#workout-section')).toBeVisible();
+
+    // Fill in some data in the first superset (use prescription values)
+    const benchCard = page.locator('.exercise-card[data-name="Flat DB Bench Press"]').first();
+    await expect(benchCard).toBeVisible();
+    
+    const firstRow = benchCard.locator('.set-row').first();
+    const repsInput = firstRow.locator('input[data-name="reps"]');
+
+    // Just fill in reps to have some data
+    if (await repsInput.count()) {
+      await repsInput.click({ clickCount: 3 });
+      await repsInput.type('10');
+    }
+
+    // Mock window.open to prevent actual navigation
+    await page.evaluate(() => {
+      (window as any).originalOpen = window.open;
+      window.open = () => null;
+    });
+
+    // Click the GitHub issue button
+    const issueBtn = page.locator('#submit-issue');
+    await expect(issueBtn).toBeVisible();
+    await issueBtn.click();
+
+    // Wait a moment for clipboard operation
+    await page.waitForTimeout(500);
+
+    // Verify data was copied to clipboard
+    const clipboardText = await page.evaluate(() => navigator.clipboard.readText());
+    
+    // Should contain the header
+    expect(clipboardText).toContain('Paste will be committed by Actions.');
+    expect(clipboardText).toContain('```json');
+    
+    // Extract JSON from markdown code block
+    const jsonMatch = clipboardText.match(/```json\n([\s\S]+?)\n```/);
+    expect(jsonMatch).toBeTruthy();
+    
+    const data = JSON.parse(jsonMatch![1]);
+    
+    // Verify it's perf-2 format (the key requirement)
+    expect(data.version).toBe('perf-2');
+    expect(Array.isArray(data.sections)).toBe(true);
+    expect(data.workoutFile).toBe(MOCK_PATH);
+    expect(data.timestamp).toBeDefined();
+    
+    // Verify nested structure with rounds
+    let foundSuperset = false;
+    for (const section of data.sections) {
+      if (section.type === 'Strength') {
+        for (const item of section.items) {
+          if (item.kind === 'superset' && item.rounds) {
+            // Found a superset with rounds - perf-2 structure confirmed
+            expect(Array.isArray(item.rounds)).toBe(true);
+            expect(item.rounds.length).toBeGreaterThan(0);
+            
+            // Verify round structure
+            for (const round of item.rounds) {
+              expect(round.round).toBeDefined();
+              expect(Array.isArray(round.exercises)).toBe(true);
+              
+              // Verify exercise data in round
+              for (const exercise of round.exercises) {
+                expect(exercise.key).toBeDefined();
+                expect(exercise.name).toBeDefined();
+              }
+            }
+            foundSuperset = true;
+          }
+        }
+      }
+    }
+    
+    expect(foundSuperset).toBe(true);
+    
+    // Verify exerciseIndex exists (perf-2 feature)
+    expect(data.exerciseIndex).toBeDefined();
+    expect(typeof data.exerciseIndex).toBe('object');
+    expect(Object.keys(data.exerciseIndex).length).toBeGreaterThan(0);
+
+    // Restore window.open
+    await page.evaluate(() => {
+      window.open = (window as any).originalOpen;
+    });
+  });
 });
