@@ -1,0 +1,544 @@
+/**
+ * Progress Report Renderer Module
+ * Renders progress report JSON to DOM following BEM naming and architectural patterns
+ * 
+ * Public API:
+ * - ExercAIse.ProgressReportRenderer.init()
+ * - ExercAIse.ProgressReportRenderer.renderReport(report, container, options)
+ * - ExercAIse.ProgressReportRenderer.renderSection(section, container)
+ */
+
+import type {
+  ProgressReport,
+  Section,
+  StrengthAnalysisSection,
+  TableSection,
+  TextSection,
+  HighlightBoxSection,
+  KpiGridSection,
+  RenderOptions,
+  ValidationResult
+} from '../types/progress-report.types';
+
+// ============================================================================
+// Type Definitions (Module-Specific)
+// ============================================================================
+
+interface InternalRenderOptions {
+  showMetadata: boolean;
+  showSummary: boolean;
+  darkMode: boolean;
+}
+
+// ============================================================================
+// Implementation
+// ============================================================================
+
+(window as any).ExercAIse = (window as any).ExercAIse || {};
+
+(window as any).ExercAIse.ProgressReportRenderer = (() => {
+  'use strict';
+
+  // Module state
+  let initialized = false;
+
+  // ============================================================================
+  // Utility Functions
+  // ============================================================================
+
+  const createElement = (tag: string, className?: string, attributes?: Record<string, string>): HTMLElement => {
+    const el = document.createElement(tag);
+    if (className) el.className = className;
+    if (attributes) {
+      for (const key in attributes) {
+        if (attributes.hasOwnProperty(key)) {
+          el.setAttribute(key, attributes[key]!);
+        }
+      }
+    }
+    return el;
+  };
+
+  // ============================================================================
+  // Validation
+  // ============================================================================
+
+  const validateReport = (report: any): ValidationResult => {
+    const errors: Array<{ field: string; message: string }> = [];
+
+    if (!report) {
+      errors.push({ field: 'root', message: 'Report object is null or undefined' });
+      return { valid: false, errors };
+    }
+
+    if (!report.version || typeof report.version !== 'string') {
+      errors.push({ field: 'version', message: 'Version is missing or not a string' });
+    }
+
+    if (!report.metadata || typeof report.metadata !== 'object') {
+      errors.push({ field: 'metadata', message: 'Metadata is missing or not an object' });
+    } else {
+      if (!report.metadata.title) {
+        errors.push({ field: 'metadata.title', message: 'Title is required' });
+      }
+      if (!report.metadata.period) {
+        errors.push({ field: 'metadata.period', message: 'Period is required' });
+      }
+      if (!report.metadata.generatedDate) {
+        errors.push({ field: 'metadata.generatedDate', message: 'Generated date is required' });
+      }
+    }
+
+    if (!report.sections || !Array.isArray(report.sections)) {
+      errors.push({ field: 'sections', message: 'Sections is missing or not an array' });
+    } else if (report.sections.length === 0) {
+      errors.push({ field: 'sections', message: 'Sections array is empty' });
+    }
+
+    return { valid: errors.length === 0, errors };
+  };
+
+  // ============================================================================
+  // Section Renderers
+  // ============================================================================
+
+  const renderStrengthAnalysisSection = (section: StrengthAnalysisSection, container: HTMLElement): void => {
+    const wrapper = createElement('section', 'report-section report-section--strength-analysis');
+
+    // Section title
+    const title = createElement('h3', 'report-section__title');
+    title.textContent = section.title;
+    wrapper.appendChild(title);
+
+    // Movement pattern badge
+    if (section.movementPattern) {
+      const badge = createElement('div', 'report-section__badge');
+      badge.textContent = section.movementPattern;
+      wrapper.appendChild(badge);
+    }
+
+    // Analysis content
+    const content = createElement('div', 'report-section__content');
+    
+    // Split analysis into paragraphs (preserve newlines)
+    const paragraphs = section.analysis.split('\n\n');
+    for (const para of paragraphs) {
+      if (para.trim()) {
+        const p = createElement('p');
+        p.textContent = para.trim();
+        content.appendChild(p);
+      }
+    }
+    wrapper.appendChild(content);
+
+    // Exercises list (if present)
+    if (section.exercises && section.exercises.length > 0) {
+      const exerciseList = createElement('div', 'report-section__exercise-list');
+      const listTitle = createElement('h4', 'report-section__subtitle');
+      listTitle.textContent = 'Exercises:';
+      exerciseList.appendChild(listTitle);
+
+      const ul = createElement('ul');
+      for (const exercise of section.exercises) {
+        const li = createElement('li');
+        li.textContent = exercise;
+        ul.appendChild(li);
+      }
+      exerciseList.appendChild(ul);
+      wrapper.appendChild(exerciseList);
+    }
+
+    // Progression notes (if present)
+    if (section.progressionNotes) {
+      const notes = createElement('div', 'report-section__notes');
+      const notesTitle = createElement('h4', 'report-section__subtitle');
+      notesTitle.textContent = 'Progression Notes:';
+      notes.appendChild(notesTitle);
+
+      const p = createElement('p');
+      p.textContent = section.progressionNotes;
+      notes.appendChild(p);
+      wrapper.appendChild(notes);
+    }
+
+    container.appendChild(wrapper);
+  };
+
+  const renderTableSection = (section: TableSection, container: HTMLElement): void => {
+    const wrapper = createElement('section', 'report-section report-section--table');
+
+    // Section title
+    const title = createElement('h3', 'report-section__title');
+    title.textContent = section.title;
+    wrapper.appendChild(title);
+
+    // Table
+    const table = createElement('table', 'report-table');
+    const tableType = section.table.type === 'exercise' ? 'report-table--exercise' : 'report-table--generic';
+    table.className += ` ${tableType}`;
+
+    // Table header
+    const thead = createElement('thead', 'report-table__header');
+    const headerRow = createElement('tr', 'report-table__row report-table__row--header');
+    for (const header of section.table.headers) {
+      const th = createElement('th', 'report-table__cell report-table__cell--header');
+      th.textContent = header;
+      headerRow.appendChild(th);
+    }
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+
+    // Table body
+    const tbody = createElement('tbody', 'report-table__body');
+    for (const row of section.table.rows) {
+      const tr = createElement('tr', 'report-table__row');
+      for (const header of section.table.headers) {
+        const td = createElement('td', 'report-table__cell');
+        const value = row[header];
+        if (value === null || value === undefined) {
+          td.textContent = '—';
+        } else if (typeof value === 'boolean') {
+          td.textContent = value ? 'Yes' : 'No';
+        } else {
+          td.textContent = String(value);
+        }
+        tr.appendChild(td);
+      }
+      tbody.appendChild(tr);
+    }
+    table.appendChild(tbody);
+    wrapper.appendChild(table);
+
+    // Table notes (if present)
+    if (section.table.notes) {
+      const notes = createElement('div', 'report-section__table-notes');
+      notes.textContent = section.table.notes;
+      wrapper.appendChild(notes);
+    }
+
+    container.appendChild(wrapper);
+  };
+
+  const renderTextSection = (section: TextSection, container: HTMLElement): void => {
+    const wrapper = createElement('section', 'report-section report-section--text');
+
+    // Section title (optional for text sections)
+    if (section.title) {
+      const title = createElement('h3', 'report-section__title');
+      title.textContent = section.title;
+      wrapper.appendChild(title);
+    }
+
+    // Content (may include HTML from markdown rendering)
+    const content = createElement('div', 'report-section__content');
+    
+    // Check if content looks like HTML (contains tags)
+    if (/<\/?[a-z][\s\S]*>/i.test(section.content)) {
+      // Content is HTML (e.g., from markdown rendering)
+      content.innerHTML = section.content;
+    } else {
+      // Plain text - split into paragraphs
+      const paragraphs = section.content.split('\n\n');
+      for (const para of paragraphs) {
+        if (para.trim()) {
+          const p = createElement('p');
+          p.textContent = para.trim();
+          content.appendChild(p);
+        }
+      }
+    }
+
+    wrapper.appendChild(content);
+    container.appendChild(wrapper);
+  };
+
+  const renderHighlightBoxSection = (section: HighlightBoxSection, container: HTMLElement): void => {
+    const variant = section.variant || 'info';
+    const box = createElement('div', `report-highlight-box report-highlight-box--${variant}`);
+
+    // Title (optional)
+    if (section.title) {
+      const title = createElement('h4', 'report-highlight-box__title');
+      title.textContent = section.title;
+      box.appendChild(title);
+    }
+
+    // Content
+    const content = createElement('div', 'report-highlight-box__content');
+    
+    // Check if content looks like HTML
+    if (/<\/?[a-z][\s\S]*>/i.test(section.content)) {
+      content.innerHTML = section.content;
+    } else {
+      // Plain text - split into paragraphs
+      const paragraphs = section.content.split('\n\n');
+      for (const para of paragraphs) {
+        if (para.trim()) {
+          const p = createElement('p');
+          p.textContent = para.trim();
+          content.appendChild(p);
+        }
+      }
+    }
+
+    box.appendChild(content);
+    container.appendChild(box);
+  };
+
+  const renderKpiGridSection = (section: KpiGridSection, container: HTMLElement): void => {
+    const wrapper = createElement('section', 'report-section report-section--kpi-grid');
+
+    // Section title (optional)
+    if (section.title) {
+      const title = createElement('h3', 'report-section__title');
+      title.textContent = section.title;
+      wrapper.appendChild(title);
+    }
+
+    // KPI grid
+    const grid = createElement('div', 'report-kpi-grid');
+
+    for (const kpi of section.kpis) {
+      const item = createElement('div', 'report-kpi-grid__item');
+
+      const label = createElement('div', 'report-kpi-grid__label');
+      label.textContent = kpi.label;
+      item.appendChild(label);
+
+      const value = createElement('div', 'report-kpi-grid__value');
+      if (kpi.unit) {
+        value.textContent = `${kpi.value} ${kpi.unit}`;
+      } else {
+        value.textContent = String(kpi.value);
+      }
+      item.appendChild(value);
+
+      grid.appendChild(item);
+    }
+
+    wrapper.appendChild(grid);
+    container.appendChild(wrapper);
+  };
+
+  // ============================================================================
+  // Section Dispatcher
+  // ============================================================================
+
+  const renderSection = (section: Section, container: HTMLElement): void => {
+    try {
+      switch (section.type) {
+        case 'strength-analysis':
+          renderStrengthAnalysisSection(section as StrengthAnalysisSection, container);
+          break;
+        case 'table':
+          renderTableSection(section as TableSection, container);
+          break;
+        case 'text':
+          renderTextSection(section as TextSection, container);
+          break;
+        case 'highlight-box':
+          renderHighlightBoxSection(section as HighlightBoxSection, container);
+          break;
+        case 'kpi-grid':
+          renderKpiGridSection(section as KpiGridSection, container);
+          break;
+        default:
+          console.warn('Unknown section type:', (section as any).type);
+          const error = createElement('div', 'report-section--error');
+          error.textContent = `Unknown section type: ${(section as any).type}`;
+          container.appendChild(error);
+      }
+    } catch (e) {
+      console.error('Error rendering section:', e, section);
+      const error = createElement('div', 'report-section--error');
+      error.textContent = 'Error rendering section';
+      container.appendChild(error);
+    }
+  };
+
+  // ============================================================================
+  // Main Rendering Functions
+  // ============================================================================
+
+  const renderMetadata = (metadata: any, container: HTMLElement): void => {
+    const header = createElement('header', 'report-header');
+
+    const title = createElement('h1', 'report-header__title');
+    title.textContent = metadata.title;
+    header.appendChild(title);
+
+    const period = createElement('div', 'report-header__period');
+    period.textContent = metadata.period;
+    header.appendChild(period);
+
+    if (metadata.generatedDate) {
+      const genDate = createElement('div', 'report-header__generated-date');
+      genDate.textContent = `Generated: ${metadata.generatedDate}`;
+      header.appendChild(genDate);
+    }
+
+    if (metadata.author) {
+      const author = createElement('div', 'report-header__author');
+      author.textContent = `Author: ${metadata.author}`;
+      header.appendChild(author);
+    }
+
+    container.appendChild(header);
+  };
+
+  const renderSummary = (summary: any, container: HTMLElement): void => {
+    const section = createElement('section', 'report-summary');
+
+    // Grade
+    if (summary.grade) {
+      const grade = createElement('div', 'report-summary__grade');
+      const gradeLabel = createElement('span', 'report-summary__grade-label');
+      gradeLabel.textContent = 'Grade:';
+      const gradeValue = createElement('span', 'report-summary__grade-value');
+      gradeValue.textContent = summary.grade;
+      grade.appendChild(gradeLabel);
+      grade.appendChild(gradeValue);
+      section.appendChild(grade);
+    }
+
+    // KPIs (if in summary)
+    if (summary.kpis && summary.kpis.length > 0) {
+      const kpiGrid = createElement('div', 'report-kpi-grid report-kpi-grid--summary');
+      for (const kpi of summary.kpis) {
+        const item = createElement('div', 'report-kpi-grid__item');
+
+        const label = createElement('div', 'report-kpi-grid__label');
+        label.textContent = kpi.label;
+        item.appendChild(label);
+
+        const value = createElement('div', 'report-kpi-grid__value');
+        if (kpi.unit) {
+          value.textContent = `${kpi.value} ${kpi.unit}`;
+        } else {
+          value.textContent = String(kpi.value);
+        }
+        item.appendChild(value);
+
+        kpiGrid.appendChild(item);
+      }
+      section.appendChild(kpiGrid);
+    }
+
+    // Highlights
+    if (summary.highlights && summary.highlights.length > 0) {
+      const highlights = createElement('div', 'report-summary__highlights');
+      const highlightsTitle = createElement('h3', 'report-summary__highlights-title');
+      highlightsTitle.textContent = 'Highlights';
+      highlights.appendChild(highlightsTitle);
+
+      const ul = createElement('ul', 'report-summary__highlights-list');
+      for (const highlight of summary.highlights) {
+        const li = createElement('li');
+        li.textContent = highlight;
+        ul.appendChild(li);
+      }
+      highlights.appendChild(ul);
+      section.appendChild(highlights);
+    }
+
+    // Injury status
+    if (summary.injuryStatus) {
+      const injury = createElement('div', 'report-summary__injury-status');
+      const injuryTitle = createElement('h4', 'report-summary__injury-title');
+      injuryTitle.textContent = 'Injury Status';
+      injury.appendChild(injuryTitle);
+
+      const injuryContent = createElement('p', 'report-summary__injury-content');
+      injuryContent.textContent = summary.injuryStatus;
+      injury.appendChild(injuryContent);
+      section.appendChild(injury);
+    }
+
+    container.appendChild(section);
+  };
+
+  const renderReport = (report: ProgressReport, container: HTMLElement, opts?: Partial<RenderOptions>): void => {
+    if (!report || !container) {
+      console.error('Invalid report or container');
+      return;
+    }
+
+    // Merge options with defaults
+    const options: InternalRenderOptions = {
+      showMetadata: opts?.showMetadata !== false,
+      showSummary: opts?.showSummary !== false,
+      darkMode: opts?.darkMode || false
+    };
+
+    // Validate report
+    const validation = validateReport(report);
+    if (!validation.valid) {
+      console.error('Report validation failed:', validation.errors);
+      const errorContainer = createElement('div', 'report-validation-errors');
+      const errorTitle = createElement('h2');
+      errorTitle.textContent = 'Report Validation Errors';
+      errorContainer.appendChild(errorTitle);
+
+      const errorList = createElement('ul');
+      for (const error of validation.errors) {
+        const li = createElement('li');
+        li.textContent = `${error.field}: ${error.message}`;
+        errorList.appendChild(li);
+      }
+      errorContainer.appendChild(errorList);
+      container.appendChild(errorContainer);
+      return;
+    }
+
+    // Clear container
+    container.innerHTML = '';
+
+    // Apply dark mode class if requested
+    if (options.darkMode) {
+      container.classList.add('report-container--dark');
+    }
+
+    // Render metadata
+    if (options.showMetadata && report.metadata) {
+      renderMetadata(report.metadata, container);
+    }
+
+    // Render summary
+    if (options.showSummary && report.summary) {
+      renderSummary(report.summary, container);
+    }
+
+    // Render sections
+    if (report.sections && Array.isArray(report.sections)) {
+      for (const section of report.sections) {
+        renderSection(section, container);
+      }
+    }
+  };
+
+  // ============================================================================
+  // Initialization
+  // ============================================================================
+
+  const init = (): void => {
+    if (initialized) {
+      console.warn('ProgressReportRenderer already initialized');
+      return;
+    }
+    initialized = true;
+    console.log('ProgressReportRenderer initialized');
+  };
+
+  // ============================================================================
+  // Public API
+  // ============================================================================
+
+  return {
+    init,
+    renderReport,
+    renderSection
+  };
+})();
+
+// Export for ES module compatibility
+export {};

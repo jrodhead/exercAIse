@@ -30,13 +30,41 @@ AI-generated personalized workout sessions with structured JSON logging and perf
 ## Instructions
 - [Kai – Strength, Movement & Recovery Coach](.github/instructions/kai.instructions.md)
 
+## Progress Reports
+AI-generated comprehensive training analysis at `progress-report.html`
+
+### Architecture
+- **JSON-First**: Reports are structured data (JSON) following `schemas/progress-report.schema.json`
+- **AI Decides, App Executes**: Kai (AI coach) analyzes performance logs and generates JSON; app renders UI
+- **Design System Compliance**: Reports use BEM classes and CSS variables from `styles.css` with full dark mode support
+- **Sections**: Support for strength-analysis, tables (exercise/generic), text, highlight-boxes, and KPI grids
+
+### Report Generation
+1. Select time range in `progress-report.html` (last 4 weeks, block-specific, custom dates)
+2. Click "Generate Report" to get AI prompt
+3. Use Kai in chat with prompt from `.github/prompts/generate-training-progress-report.prompt.md`
+4. Kai reads `performed/*.json` logs and generates analysis
+5. Report saved as `reports/YYYY-MM-DD_blocks-X-Y.json`
+6. App loads and renders JSON using `assets/progress-report-renderer.ts`
+
+### What Kai Analyzes
+- Strength progression by movement pattern (squat, press, pull, etc.)
+- Endurance improvements (distance, pace, time)
+- Volume trends and progressive overload
+- RPE patterns and recovery indicators
+- Injury/pain notes and adaptations made
+- Key achievements and areas for improvement
+
+### Files
+- `reports/*.json` - Saved progress reports (structured data)
+- `reports/index.json` - Report manifest with metadata
+- `schemas/progress-report.schema.json` - Report structure definition
+- `types/progress-report.types.ts` - TypeScript types for reports
+- `assets/progress-report-renderer.ts` - Rendering engine
+- `.github/prompts/generate-training-progress-report.prompt.md` - AI generation prompt
+
 ## Development Setup
 - **Install git hooks**: Run `./scripts/install_hooks.sh` after cloning to auto-update the workout manifest on commits.
-- **Progress Reports**: AI-generated comprehensive training analysis at `progress-report.html`
-  - Kai (AI coach) reads performance logs and generates detailed progress reports
-  - Analyzes strength progression, endurance improvements, volume trends, RPE patterns
-  - Reports saved to `reports/` directory for offline viewing
-  - Follow prompt: `.github/prompts/generate-training-progress-report.prompt.md`
 - **Workout manifest**: The `workouts/manifest.txt` file lists all workout sessions and is automatically updated:
   - **Locally**: Pre-commit hook updates it when you commit workout JSON files
   - **CI/CD**: GitHub Actions workflow updates it when workouts are pushed to the repo

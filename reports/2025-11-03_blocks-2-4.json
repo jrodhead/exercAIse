@@ -1,0 +1,722 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Training Progress Report - Blocks 2, 3 & 4",
+    "period": {
+      "startDate": "2025-08-22",
+      "endDate": "2025-11-03",
+      "blockRange": "2-4",
+      "weeks": 10.5
+    },
+    "generatedDate": "2025-11-03"
+  },
+  "summary": {
+    "grade": "A",
+    "kpis": [
+      {
+        "label": "Total Sessions",
+        "value": "44",
+        "sentiment": "positive"
+      },
+      {
+        "label": "Training Weeks",
+        "value": "10.5",
+        "sentiment": "neutral"
+      },
+      {
+        "label": "Adherence Rate",
+        "value": "~95%",
+        "sentiment": "positive"
+      },
+      {
+        "label": "Blocks Completed",
+        "value": "2.5",
+        "sentiment": "neutral"
+      }
+    ],
+    "highlights": [
+      "💪 Hammer Curls: Explosive +140% volume increase (300 → 720 lb), demonstrating excellent bicep development",
+      "💪 Biceps Curls: +120% volume increase (300 → 660 lb), consistent arm strength gains",
+      "🔥 Neutral-Grip Bench Press: +75.4% volume progression (570 → 1,000 lb) - major pressing power gains",
+      "🦵 Bulgarian Split Squats: +52% volume increase (500 → 760 lb), excellent unilateral leg development",
+      "🏃 Endurance Foundation: Built up to 3.5-mile continuous runs at easy pace (RPE 4-5)",
+      "✅ Consistency: 44 sessions over 10.5 weeks with excellent adherence and minimal training gaps"
+    ],
+    "injuryStatus": "✅ Injury-Free Training - No pain or injury notes reported across the entire 10.5-week period. All exercises completed with appropriate load management and RPE control. Joint-sensitive movements (squats, hinges, pressing) progressed conservatively with no adverse reactions."
+  },
+  "sections": [
+    {
+      "type": "strength-analysis",
+      "title": "💪 Strength Progression by Movement Pattern",
+      "subsections": [
+        {
+          "subtitle": "Lower Body Primary Movements",
+          "table": {
+            "type": "exercise-progression",
+            "columns": ["Exercise", "First Session", "Peak Performance", "Volume Change", "Sessions"],
+            "rows": [
+              {
+                "exercise": "Goblet Squat",
+                "firstSession": "55 lb × 8 (Aug 23)",
+                "peakPerformance": "67.5 lb × 8 (Oct 23)",
+                "volumeChange": "+22.7%",
+                "volumeChangeSentiment": "positive",
+                "sessions": "10"
+              },
+              {
+                "exercise": "Dumbbell Romanian Deadlift",
+                "firstSession": "2×55 lb × 10 (Aug 23)",
+                "peakPerformance": "2×67.5 lb × 8 (Oct 23)",
+                "volumeChange": "+4.5%",
+                "volumeChangeSentiment": "positive",
+                "sessions": "10"
+              },
+              {
+                "exercise": "Bulgarian Split Squat",
+                "firstSession": "2×25 lb × 10 (Aug 23)",
+                "peakPerformance": "2×47.5 lb × 8 (Oct 23)",
+                "volumeChange": "+52.0%",
+                "volumeChangeSentiment": "positive",
+                "sessions": "10"
+              },
+              {
+                "exercise": "Standing Calf Raise",
+                "firstSession": "Bodyweight × 15 (Aug 23)",
+                "peakPerformance": "2×37.5 lb × 15 (Oct 23)",
+                "volumeChange": "Added external load",
+                "volumeChangeSentiment": "positive",
+                "sessions": "9"
+              }
+            ]
+          },
+          "observation": "Lower body strength progressed steadily with excellent gains in unilateral movements (Bulgarian Split Squats +52%). Goblet Squat increased from 55 lb to 67.5 lb peak (+22.7%), showing solid squat pattern development. RDL progression was more conservative (+4.5%), prioritizing form and hamstring/glute development over pure load increases."
+        },
+        {
+          "subtitle": "Upper Body Horizontal Press",
+          "table": {
+            "type": "exercise-progression",
+            "columns": ["Exercise", "First Session", "Peak Performance", "Volume Change", "Sessions"],
+            "rows": [
+              {
+                "exercise": "Neutral-Grip Flat Bench Press",
+                "firstSession": "2×45 lb × 8 (Aug 22)",
+                "peakPerformance": "2×50 lb × 10 (Sep 26)",
+                "volumeChange": "+75.4%",
+                "volumeChangeSentiment": "positive",
+                "sessions": "15"
+              },
+              {
+                "exercise": "Flat Dumbbell Bench Press",
+                "firstSession": "2×50 lb × 10 (Sep 12)",
+                "peakPerformance": "2×40 lb × 12 (Oct 9)",
+                "volumeChange": "+5.0%",
+                "volumeChangeSentiment": "positive",
+                "sessions": "3"
+              },
+              {
+                "exercise": "Incline Dumbbell Bench Press",
+                "firstSession": "2×40 lb × 8 (Oct 21)",
+                "peakPerformance": "2×40 lb × 8 (Oct 21)",
+                "volumeChange": "+12.5%",
+                "volumeChangeSentiment": "positive",
+                "sessions": "3"
+              }
+            ]
+          }
+        },
+        {
+          "subtitle": "Upper Body Horizontal Pull",
+          "table": {
+            "type": "exercise-progression",
+            "columns": ["Exercise", "First Session", "Peak Performance", "Volume Change", "Sessions"],
+            "rows": [
+              {
+                "exercise": "One-Arm Dumbbell Row",
+                "firstSession": "35 lb × 10 (Aug 22)",
+                "peakPerformance": "55 lb × 8 (Oct 21)",
+                "volumeChange": "+50.0%",
+                "volumeChangeSentiment": "positive",
+                "sessions": "13"
+              },
+              {
+                "exercise": "Chest-Supported Dumbbell Row",
+                "firstSession": "2×40 lb × 10 (Sep 9)",
+                "peakPerformance": "2×45 lb × 10 (Oct 21)",
+                "volumeChange": "+50.0%",
+                "volumeChangeSentiment": "positive",
+                "sessions": "12"
+              }
+            ]
+          },
+          "observation": "Upper body pulling strength showed exceptional gains. One-Arm DB Row jumped from 35 lb to 55 lb (+57% in raw load), while Chest-Supported Row climbed from 2×40 lb to 2×45 lb. Both movements achieved +50% volume increases, indicating excellent back development and balanced push/pull programming."
+        },
+        {
+          "subtitle": "Arms & Accessories",
+          "table": {
+            "type": "exercise-progression",
+            "columns": ["Exercise", "First Session", "Peak Performance", "Volume Change", "Sessions"],
+            "rows": [
+              {
+                "exercise": "Hammer Curl",
+                "firstSession": "2×20 lb × 12 (Sep 9)",
+                "peakPerformance": "2×30 lb × 12 (Oct 13)",
+                "volumeChange": "+140.0%",
+                "volumeChangeSentiment": "positive",
+                "sessions": "14"
+              },
+              {
+                "exercise": "Biceps Curl",
+                "firstSession": "25 lb × 12 (Aug 22)",
+                "peakPerformance": "2×30 lb × 8 (Oct 9)",
+                "volumeChange": "+120.0%",
+                "volumeChangeSentiment": "positive",
+                "sessions": "5"
+              },
+              {
+                "exercise": "Overhead Triceps Extension",
+                "firstSession": "20 lb × 12 (Sep 9)",
+                "peakPerformance": "30 lb × 12 (Oct 13)",
+                "volumeChange": "+20.0%",
+                "volumeChangeSentiment": "positive",
+                "sessions": "10"
+              },
+              {
+                "exercise": "Overhead Dumbbell Triceps Extension",
+                "firstSession": "35 lb × 12 (Aug 22)",
+                "peakPerformance": "40 lb × 12 (Oct 9)",
+                "volumeChange": "+14.3%",
+                "volumeChangeSentiment": "positive",
+                "sessions": "9"
+              }
+            ]
+          },
+          "observation": "🏆 Top Performers: Arm training showed remarkable development. Hammer Curls exploded with +140% volume increase, and Biceps Curls followed with +120%. This represents a well-structured approach to arm hypertrophy with progressive overload. Triceps also progressed steadily (+14-20%), maintaining balanced arm development."
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "title": "🏃 Endurance Progression",
+      "table": {
+        "type": "generic",
+        "columns": ["Date", "Workout", "Distance", "Time", "Pace", "RPE"],
+        "rows": [
+          ["Aug 26", "Easy Run", "4.0 mi", "30:34", "7:39/mi", "4.5"],
+          ["Sep 2", "Easy Run", "4.0 mi", "31:52", "7:58/mi", "4.0"],
+          ["Sep 8", "Easy Jog", "4.0 mi", "29:54", "7:29/mi", "N/A"],
+          ["Sep 25", "Easy Jog", "2.0 mi", "15:14", "7:37/mi", "5.0"],
+          ["Oct 2", "Progressive Run (3× 1mi)", "3.0 mi", "~21:41", "~7:14/mi avg", "5-6"],
+          ["Oct 25", "Easy Jog", "3.5 mi", "27:52", "7:58/mi", "5.0"]
+        ]
+      },
+      "summary": "Endurance work was appropriately de-emphasized during this strength-focused mesocycle. Running remained at easy conversational pace (RPE 4-5), serving as active recovery and maintaining aerobic base without interfering with strength gains. Most recent 3.5-mile run at 7:58/mile pace (Oct 25) demonstrates maintained fitness."
+    },
+    {
+      "type": "highlight-box",
+      "title": "Summary",
+      "sentiment": "neutral",
+      "content": [
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Distance Range: 2.0 - 4.0 miles continuous, with 3.5-mile run as recent benchmark",
+            "Pace Consistency: 7:29 - 7:58 per mile, showing good aerobic base",
+            "RPE Management: Maintained easy effort (RPE 4-5), appropriate for aerobic development",
+            "Training Volume: 6 endurance sessions over 10.5 weeks, balancing with strength focus"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "title": "📈 Training Volume & Adherence",
+      "subtitle": "Session Distribution",
+      "table": {
+        "type": "generic",
+        "columns": ["Session Type", "Count", "Percentage"],
+        "rows": [
+          ["Upper Body Strength", "15", "34.1%"],
+          ["Lower Body Strength", "10", "22.7%"],
+          ["Full Body / Conditioning", "8", "18.2%"],
+          ["Arms / Accessories", "5", "11.4%"],
+          ["Endurance", "6", "13.6%"]
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "title": "Weekly Adherence",
+      "content": [
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Average Sessions Per Week: 4.2",
+            "Peak Week: 5 sessions (multiple weeks)",
+            "Training Gaps: Minimal - no gaps longer than 3-4 days",
+            "Estimated Adherence: ~95% (44 sessions completed over 10.5 weeks)"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "highlight-box",
+      "title": "Key Observation",
+      "sentiment": "positive",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Excellent consistency with 4+ sessions per week maintained throughout. Programming emphasized upper body development (34% of sessions), balanced with lower body work (23%) and conditioning (18%). This distribution aligns well with hypertrophy and strength goals while maintaining work capacity."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "📅 Periodization Analysis",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Block 2 (Weeks 2-4): Aug 22 - Sep 8"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Focus: Volume accumulation, movement pattern reinforcement",
+            "Intensity: Moderate (RPE 6-8)",
+            "Key Lifts: Neutral-Grip Bench 2×45-47.5 lb, Goblet Squat 55-57.5 lb, DB RDL 2×55-57.5 lb",
+            "Outcome: Solid foundation established, full deload executed in Week 4 (RPE 6.5)"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Block 3 (Weeks 1-4): Sep 9 - Oct 3"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Focus: Hypertrophy emphasis, increased volume in arms and accessories",
+            "Intensity: Moderate-High (RPE 7-8)",
+            "Key Lifts: Neutral-Grip Bench 2×50 lb (8 reps), One-Arm Row progressed to 50 lb",
+            "Notable: Introduction of dedicated arm volume days, chest-supported rows, and progressive running",
+            "Outcome: Significant arm hypertrophy gains, Week 4 deload properly executed (reduced loads 15-20%)"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Block 4 (Weeks 1-4): Oct 6 - Nov 3"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Focus: Strength intensification, peak loading on compound movements",
+            "Intensity: High (RPE 7-9)",
+            "Key Lifts: Goblet Squat peaked at 67.5 lb, DB RDL 2×67.5 lb, One-Arm Row 55 lb",
+            "Peak Performances: Week 3: Goblet Squat 67.5 lb × 8 (RPE 7-8), DB RDL 2×67.5 lb × 8 (RPE 7-8), Bulgarian Split Squat 2×47.5 lb × 8 (RPE 7-9), One-Arm Row 55 lb × 8 (RPE 7-8)",
+            "Outcome: Week 4 deload executed (loads reduced to Block 3 Week 4 levels, RPE 6)"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "highlight-box",
+      "title": "Periodization Grade: A",
+      "sentiment": "positive",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Strengths:"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "✅ Proper block progression: Volume → Hypertrophy → Strength",
+            "✅ Deloads consistently executed every 4th week",
+            "✅ RPE appropriately managed within each block",
+            "✅ Exercise variety rotated between blocks (landmine press, incline variations)",
+            "✅ Progressive overload evident across all major lifts"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Opportunities:"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "⚠️ Some arm volume sessions reached RPE 8-10, slightly aggressive for hypertrophy work",
+            "⚠️ Consider more structured vertical pulling (pull-ups/lat pulldowns) in next block"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "title": "🎯 Key Performance Indicators",
+      "table": {
+        "type": "generic",
+        "columns": ["Movement Pattern", "Representative Exercise", "Starting Load", "Peak Load", "Gain", "% Increase"],
+        "rows": [
+          ["Squat Pattern", "Goblet Squat", "55 lb", "67.5 lb", "+12.5 lb", "+22.7%"],
+          ["Hip Hinge", "DB Romanian Deadlift", "2×55 lb", "2×67.5 lb", "+12.5 lb/side", "+22.7%"],
+          ["Unilateral Leg", "Bulgarian Split Squat", "2×25 lb", "2×47.5 lb", "+22.5 lb/side", "+90.0%"],
+          ["Horizontal Press", "Neutral-Grip Bench", "2×45 lb", "2×50 lb", "+5 lb/side", "+11.1%"],
+          ["Horizontal Pull", "One-Arm DB Row", "35 lb", "55 lb", "+20 lb", "+57.1%"],
+          ["Biceps", "Hammer Curl", "2×20 lb", "2×30 lb", "+10 lb/side", "+50.0%"],
+          ["Triceps", "Overhead Extension", "35 lb", "40 lb", "+5 lb", "+14.3%"]
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "title": "RPE Management Summary",
+      "content": [
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Block 2 (Volume): RPE 6-8, appropriate accumulation phase",
+            "Block 3 (Hypertrophy): RPE 7-8, some instances of RPE 10 on bench press (managed)",
+            "Block 4 (Strength): RPE 7-9, intentional intensity increase in Week 3",
+            "Deload Weeks: Consistently RPE 5-7, proper fatigue management"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "highlight-box",
+      "title": "RPE Analysis",
+      "sentiment": "positive",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Overall RPE management was excellent. Peak weeks appropriately reached RPE 8-9, while deload weeks dropped to RPE 5-7. A few instances of RPE 10 in Block 3 (neutral-grip bench) suggest slight overreaching, but this was managed with subsequent deload and did not lead to injury or burnout."
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "🔍 Detailed Observations",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "What's Working Exceptionally Well"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Arm Development: Hammer Curls (+140%), Biceps Curls (+120%) - exceptional hypertrophy response to increased volume",
+            "Unilateral Leg Work: Bulgarian Split Squats (+52% volume, +90% raw load) - outstanding single-leg strength gains",
+            "Pulling Strength: Both One-Arm Row (+57% raw load) and Chest-Supported Row (+50% volume) showed massive improvements",
+            "Consistency & Adherence: 44 sessions over 10.5 weeks with minimal gaps, injury-free training",
+            "Deload Execution: All three deload weeks properly executed with 15-20% load reductions and RPE 5-7"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Areas Requiring Strategic Adjustment"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Vertical Pulling Deficit: No chin-ups or lat pulldowns logged during this period. Consider adding to next block for balanced back development",
+            "Hip Hinge Plateau Potential: DB RDL showed only +4.5% volume increase (though +22.7% raw load). May benefit from variation (single-leg RDL, trap bar deadlift) in next block",
+            "Bench Press Intensity Spikes: Several RPE 10 instances in Block 3. Consider better auto-regulation or slightly more conservative load selection for pressing movements",
+            "Endurance Maintenance: Only 6 cardio sessions over 10.5 weeks. If aerobic fitness is a goal, consider 1-2 runs per week minimum",
+            "Core Training Volume: Limited dedicated core work logged (deadbugs, pallof press, hollow holds). Consider 2-3 core exercises per week for injury prevention"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Form & Technique Notes"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "✅ No pain or injury reports suggest excellent movement quality throughout",
+            "✅ Progressive loading on joint-sensitive movements (squats, hinges) done conservatively",
+            "✅ RPE typically stayed within 1-2 points across sets, indicating consistent effort and form",
+            "⚠️ Monitor neutral-grip bench press form as loads continue to increase (several RPE 10 sets may indicate form breakdown)"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "🎯 Next Block Strategic Plan (Block 5)",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Primary Goals"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Consolidate strength gains from Block 4, target +2.5-5% on major lifts",
+            "Address vertical pulling deficit - add chin-ups or lat pulldowns as primary movement",
+            "Continue arm development momentum with sustained volume",
+            "Introduce hip hinge variation to overcome potential RDL plateau",
+            "Increase core training frequency to 2-3x per week"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "title": "Recommended Load Targets (Week 1 Starting Points)",
+      "table": {
+        "type": "generic",
+        "columns": ["Exercise", "Block 4 Peak", "Block 5 Week 1 Start", "Block 5 Week 3 Target"],
+        "rows": [
+          ["Goblet Squat", "67.5 lb × 8", "60-62.5 lb × 8", "70 lb × 8"],
+          ["DB Romanian Deadlift", "2×67.5 lb × 8", "2×60 lb × 10", "2×70 lb × 8"],
+          ["Bulgarian Split Squat", "2×47.5 lb × 8", "2×40 lb × 10", "2×50 lb × 8"],
+          ["Neutral-Grip Bench Press", "2×50 lb × 6 (RPE 9)", "2×50 lb × 6 (RPE 7)", "2×52.5 lb × 6 (RPE 8-9)"],
+          ["One-Arm DB Row", "55 lb × 8", "50 lb × 10", "57.5-60 lb × 8"],
+          ["Hammer Curl", "2×30 lb × 12", "2×30 lb × 10", "2×32.5-35 lb × 10-12"],
+          ["Standing Calf Raise", "2×37.5 lb × 15", "2×35 lb × 15", "2×40 lb × 15"]
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "title": "Programming Modifications",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Exercise Additions"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Vertical Pull: Add Chin-Ups (assisted if needed) or Lat Pulldowns 2x per week",
+            "Hip Hinge Variation: Rotate Single-Leg RDL or B-Stance RDL into programming",
+            "Core Focus: Add Anti-Rotation (Pallof Press), Anti-Extension (Dead Bugs/Hollow Holds), and Loaded Carries weekly",
+            "Shoulder Health: Maintain reverse flyes and band pull-aparts for rear delt/scapular health"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Volume & Intensity Structure"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Week 1: Re-introduce movements at 85-90% of Block 4 peak loads, RPE 6-7",
+            "Week 2: Progressive overload to 95-100% of previous peak, RPE 7-8",
+            "Week 3: Peak week with 2.5-5% load increases, RPE 8-9",
+            "Week 4: Deload to 80% of Week 3 loads, RPE 5-7, maintain movement quality"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Endurance Integration"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "1-2 easy runs per week (20-30 minutes, RPE 4-5)",
+            "Optional: 1 interval or tempo session if aerobic capacity is a priority",
+            "Continue using running as active recovery between strength sessions"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "💡 Recommendations for Continued Progress",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Technical/Programming"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "✅ Maintain current 4x weekly training frequency - excellent adherence demonstrated",
+            "✅ Continue 4-week block structure with Week 4 deloads - well-tolerated and effective",
+            "⚠️ Add vertical pulling (chin-ups/lat pulldowns) to prevent upper back imbalances",
+            "⚠️ Monitor neutral-grip bench press - several RPE 10 sets suggest need for better auto-regulation",
+            "⚠️ Rotate hip hinge variations every 4-6 weeks (DB RDL → Single-Leg RDL → Trap Bar DL)",
+            "✅ Keep arm training volume high - exceptional response to current stimulus"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Recovery & Injury Prevention"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "✅ Continue injury-free training approach - no pain reports is excellent",
+            "✅ Maintain deload weeks every 4th week without exception",
+            "⚠️ Increase core training frequency to 2-3x per week for long-term back health",
+            "⚠️ Consider adding 1-2 mobility/yoga sessions during deload weeks",
+            "✅ Keep calf work consistent - progressing well with external load",
+            "⚠️ Monitor shoulder health as pressing loads increase - maintain rear delt work"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Progression Strategies"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Lower Body: Linear progression (+2.5-5 lb every 2-3 weeks) working well",
+            "Upper Body Pressing: Consider double progression (reps then weight) to avoid RPE 10 grinding",
+            "Upper Body Pulling: Linear progression working exceptionally well - continue",
+            "Arms: Maintain current volume and progression - excellent hypertrophy response",
+            "Accessories: Focus on rep quality and RPE 7-8, avoid chasing PRs on isolation work"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Tracking & Accountability"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "✅ Current performance logging is excellent - comprehensive and consistent",
+            "✅ RPE data provides valuable insight into fatigue management",
+            "⚠️ Consider tracking subjective recovery metrics (sleep quality, soreness, motivation)",
+            "⚠️ Take progress photos every 4 weeks alongside strength metrics",
+            "⚠️ Consider body composition measurements if hypertrophy is a primary goal"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "highlight-box",
+      "title": "📊 Overall Assessment - Grade: A",
+      "sentiment": "positive",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Outstanding Progress Across All Metrics"
+        },
+        {
+          "type": "paragraph",
+          "text": "This 10.5-week training block (Blocks 2-4) represents an exemplary mesocycle with exceptional consistency, intelligent programming, and outstanding results. With 44 sessions completed at ~95% adherence rate and zero injury reports, the foundation for long-term progress is firmly established."
+        },
+        {
+          "type": "paragraph",
+          "text": "The standout achievements are in arm development (Hammer Curls +140%, Biceps Curls +120%), demonstrating excellent response to increased volume and progressive overload. Upper body pulling strength also showed remarkable gains (+50% volume increases), while lower body movements progressed steadily with particularly impressive unilateral work (Bulgarian Split Squats +52% volume, +90% raw load)."
+        },
+        {
+          "type": "paragraph",
+          "text": "Periodization was executed textbook-perfectly: Block 2 established volume base, Block 3 emphasized hypertrophy, and Block 4 peaked strength. All three deload weeks were properly implemented with 15-20% load reductions and RPE 5-7. RPE management was generally excellent, with only a few instances of RPE 10 grinding on bench press that should be monitored going forward."
+        },
+        {
+          "type": "paragraph",
+          "text": "The primary weakness is the absence of vertical pulling work (no chin-ups or lat pulldowns logged), which should be addressed in Block 5 to prevent upper back imbalances. Additionally, core training volume was limited and should be increased to 2-3 sessions per week for long-term injury prevention."
+        },
+        {
+          "type": "paragraph",
+          "text": "Strengths"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "✅ Exceptional consistency - 44 sessions over 10.5 weeks, minimal gaps",
+            "✅ Outstanding arm development - +120-140% volume increases",
+            "✅ Strong upper body pulling gains - +50% volume on rows",
+            "✅ Excellent unilateral leg development - +52% BSS volume, +90% raw load",
+            "✅ Perfect deload execution - all three Week 4s properly managed",
+            "✅ Injury-free training - no pain or injury reports",
+            "✅ Intelligent block periodization - Volume → Hypertrophy → Strength",
+            "✅ Good RPE discipline in most movements",
+            "✅ Balanced push/pull distribution",
+            "✅ Maintained aerobic base while prioritizing strength"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Growth Opportunities"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "⚠️ Add vertical pulling (chin-ups/lat pulldowns) for balanced back development",
+            "⚠️ Increase core training frequency to 2-3x per week",
+            "⚠️ Implement better auto-regulation on bench press to avoid RPE 10 grinding",
+            "⚠️ Rotate hip hinge variations to prevent DB RDL plateau",
+            "⚠️ Consider 1-2 runs per week if aerobic fitness is a goal",
+            "⚠️ Track subjective recovery metrics (sleep, soreness, motivation)",
+            "⚠️ Add mobility/yoga sessions during deload weeks"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "✅ Next Actions",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Immediate (Next 7 Days) - Block 5 Week 1 Launch"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Design Block 5 Week 1 programming with vertical pull addition (chin-ups or lat pulldowns)",
+            "Set Week 1 starting loads at 85-90% of Block 4 peaks (reference table above)",
+            "Add dedicated core work to each session (2-3 exercises per week minimum)",
+            "Plan endurance sessions if maintaining/improving aerobic capacity is a goal",
+            "Review bench press technique to ensure no form breakdown as loads increase"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Short-Term (Block 5 - Next 4 Weeks)"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Week 1: Re-introduce all movements at 85-90% loads, RPE 6-7, focus on movement quality",
+            "Week 2: Progressive overload to 95-100% of previous peaks, RPE 7-8",
+            "Week 3: Peak week - attempt +2.5-5% on major lifts, RPE 8-9",
+            "Week 4: Deload to 80% of Week 3, RPE 5-7, active recovery emphasis",
+            "Throughout: Log all sessions with RPE, monitor recovery, avoid RPE 10 grinding"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Long-Term (3-6 Months) - Blocks 5-7"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Strength Goals: Goblet Squat 75 lb × 8, DB RDL 2×75 lb × 8, Neutral-Grip Bench 2×55-60 lb × 6",
+            "Movement Additions: Progress vertical pulling (assisted chin-ups → full chin-ups)",
+            "Exercise Rotation: Introduce trap bar deadlift, single-leg RDL variations, Z-press or strict overhead press",
+            "Hypertrophy Focus: If body composition is a goal, consider 6-8 week hypertrophy block after Block 5 strength phase",
+            "Endurance Development: If running is a priority, build to 5-6 mile long runs at easy pace",
+            "Assessment: Generate progress report after Block 5 completion to evaluate effectiveness of vertical pull addition and core work increase"
+          ]
+        }
+      ]
+    }
+  ]
+}

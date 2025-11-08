@@ -28,18 +28,19 @@ exercAIse is a JSON-first fitness program generator with a clear separation betw
 │  - Display workouts & meals                                      │
 │  - Collect performance data                                      │
 │  - Export performance logs                                       │
-│  - Display AI-generated progress reports                         │
+│  - Display AI-generated progress reports (JSON-based)            │
 └──────────────────────┬──────────────────────────────────────────┘
                        │
-                       │ Load workouts/meals
+                       │ Load workouts/meals/reports
                        │ Submit performance
                        ↓
 ┌─────────────────────────────────────────────────────────────────┐
 │                    Static Content Layer                          │
-│              (workouts/*.json, meals/*.md)                       │
+│      (workouts/*.json, meals/*.md, reports/*.json)               │
 │  - Pre-generated workout sessions                                │
 │  - Meal plans and recipes                                        │
 │  - Exercise definitions (exercises/*.json)                       │
+│  - Progress reports (structured JSON, AI-generated)              │
 └──────────────────────┬──────────────────────────────────────────┘
                        │
                        │ Generate new sessions
@@ -98,7 +99,8 @@ exercAIse is a JSON-first fitness program generator with a clear separation betw
 - Collect user performance data (sets, reps, weight, RPE)
 - Export performance logs (perf-1 format to `performed/`)
 - Provide historical performance to AI for next prescription
-- Display AI-generated progress reports (render, don't analyze)
+- Display AI-generated progress reports (render JSON, don't analyze)
+- Render progress reports from structured JSON using design system
 - Validate data against schemas
 - Handle backward compatibility (e.g., missing fields)
 - Link validation and exercise stub generation
@@ -276,19 +278,229 @@ Workouts are JSON files following schemas. The app reads and writes JSON; it doe
 - Comprehensive testing (78 unit tests + 26 E2E tests)
 
 ### 8. Progress Analysis vs. Training Decisions
-- **Progress Reports**: AI analyzes historical data and generates comprehensive analysis (what happened, what it means)
+- **Progress Reports**: AI analyzes historical data and generates comprehensive structured analysis (JSON)
+- **Report Rendering**: App renders JSON reports using design system (BEM classes, CSS variables, dark mode)
 - **AI Prescriptions**: AI makes training decisions based on analysis (what should happen next)
-- Progress reports are AI-generated content, not client-side calculations
+- Progress reports are AI-generated data structures, not client-side calculations
 - App displays AI-generated reports, doesn't compute statistics or draw conclusions
 - AI reviews progress context when generating next workouts
+- Reports follow same pattern as workouts: JSON schema → TypeScript types → Renderer
 
-**Example: Progress Report Generation**
+**Example: Progress Report Architecture**
 - ❌ **Wrong**: Client-side JavaScript calculates load progressions, identifies plateaus, suggests interventions
-- ✅ **Right**: AI reads `performed/*.json`, generates report as Markdown or HTML, app displays it
+- ✅ **Right**: AI reads `performed/*.json`, generates `reports/*.json` with structured data (KPIs, tables, analysis), app renders using `progress-report-renderer.ts`
 
 **Example: Workout Prescription**
 - ❌ **Wrong**: App decides "user's squat RPE was 9, reduce weight by 10%"
 - ✅ **Right**: AI sees history, decides "maintain 185 lb but reduce to 3×5 from 4×6"
+
+---
+
+## Progress Reports Architecture
+
+### Overview
+Progress reports follow the same "AI decides, App executes" pattern as workouts:
+- **AI** analyzes performance logs and generates structured JSON reports
+- **App** renders JSON using design system (no inline styles, no HTML generation)
+
+### Architecture Pattern
+
+```
+Performance Logs (performed/*.json)
+    ↓
+User selects time range
+    ↓
+Kai (AI) analyzes data
+    ↓
+Generates report.json (structured data)
+    ↓
+Saved to reports/YYYY-MM-DD_blocks-X-Y.json
+    ↓
+App loads JSON
+    ↓
+progress-report-renderer.ts renders UI
+    ↓
+User sees styled report using styles.css
+```
+
+### Report Structure
+Reports are JSON files following `schemas/progress-report.schema.json`:
+
+**Top-level structure**:
+- `version`: Schema version (e.g., "1.0")
+- `metadata`: Report identification (reportId, generatedDate, period)
+- `summary`: Overview KPIs displayed as cards
+- `sections[]`: Array of typed sections (strength-analysis, table, text, highlight-box, kpi-grid)
+
+**Section Types**:
+1. **strength-analysis**: Movement pattern analysis with subsections (table + observation)
+2. **table**: Exercise tables or generic data tables (headers + rows)
+3. **text**: Prose content with paragraphs and lists
+4. **highlight-box**: Callout boxes with sentiment (success, warning, info, neutral)
+5. **kpi-grid**: Grid of key performance indicators with sentiment styling
+
+### Rendering Pipeline
+
+**Component**: `assets/progress-report-renderer.ts`
+
+**Responsibilities**:
+- ✅ Validate report JSON structure
+- ✅ Render sections to DOM using BEM classes
+- ✅ Apply sentiment styling (success/warning/info/neutral)
+- ✅ Handle missing or malformed data gracefully
+- ❌ Never calculate statistics or analyze data
+- ❌ Never inject inline styles
+
+**BEM Naming Convention**:
+```css
+.report-container              /* Root container */
+.report-header                 /* Report metadata */
+.report-summary                /* KPI cards section */
+.report-section                /* Section wrapper */
+.report-section--text          /* Text section variant */
+.report-section--table         /* Table section variant */
+.report-section__content       /* Section content area */
+.report-table                  /* Table component */
+.report-table__header          /* Table header row */
+.report-table__row             /* Table body row */
+.report-table__cell            /* Table cell */
+.report-highlight-box          /* Callout box */
+.report-highlight-box--success /* Success variant */
+```
+
+**Dark Mode**:
+- All colors use CSS variables: `var(--color-primary)`, `var(--color-bg-dark)`, etc.
+- Automatic adaptation via `@media (prefers-color-scheme: dark)`
+- No hardcoded colors or inline styles
+
+### Type Safety
+
+**Types**: `types/progress-report.types.ts`
+
+**Key Interfaces**:
+- `ProgressReport`: Top-level report structure
+- `Metadata`, `Summary`, `Period`: Metadata types
+- `Section`: Discriminated union of all section types
+- `StrengthAnalysisSection`, `TableSection`, `TextSection`, etc.
+
+**Type Guards**:
+```typescript
+isStrengthAnalysisSection(section: Section): section is StrengthAnalysisSection
+isTableSection(section: Section): section is TableSection
+// ... etc.
+```
+
+**Validation**:
+```typescript
+validateProgressReport(report: any): ValidationResult
+```
+
+### AI Generation
+
+**Prompt**: `.github/prompts/generate-training-progress-report.prompt.md`
+
+**AI Responsibilities**:
+- ✅ Read performance logs from `performed/`
+- ✅ Analyze strength progression, volume trends, RPE patterns
+- ✅ Identify achievements, concerns, and recommendations
+- ✅ Generate structured JSON matching schema
+- ✅ Save report to `reports/` with proper filename
+- ✅ Update `reports/index.json` manifest
+- ❌ Never generate HTML or inline styles
+
+**Example AI Workflow**:
+1. User selects "Last 4 Weeks" in progress-report.html
+2. User copies prompt from UI
+3. Kai reads all `performed/*.json` in date range
+4. Kai analyzes data (progression, trends, concerns)
+5. Kai generates JSON report with sections
+6. Kai validates JSON against schema
+7. Kai saves to `reports/2025-11-07_blocks-4-4.json`
+8. User refreshes page to see rendered report
+
+### File Organization
+
+```
+reports/
+├── index.json                      # Manifest (v2.0)
+├── 2025-11-03_blocks-2-4.json     # 10.5-week report
+├── 2025-11-03_blocks-4-4.json     # Block 4 report
+├── archive/                        # Legacy HTML reports
+│   ├── 2025-11-03_blocks-2-4.html
+│   └── 2025-11-03_blocks-4-4.html
+└── README.md                       # Generation instructions
+```
+
+**Manifest Format** (`reports/index.json`):
+```json
+{
+  "version": "2.0",
+  "reports": [
+    {
+      "filename": "2025-11-03_blocks-4-4.json",
+      "title": "Block 4 Progress Report",
+      "date": "2025-11-03",
+      "blocks": [4],
+      "format": "json"
+    }
+  ]
+}
+```
+
+### Testing
+
+**Unit Tests**: `tests/unit/progress-report-renderer.test.ts`
+- 60 Vitest tests for validation, rendering, error handling
+- Mock DOM limitations: 19/60 passing (renderer works in browser)
+
+**UI Tests**: `tests/ui/progress-reports.spec.ts`
+- 33 Playwright E2E tests ✅ **100% passing**
+- Tests: loading, rendering all section types, dark mode, responsive design, accessibility
+
+**Validation**: `python3 scripts/validate_schemas.py`
+- All report JSON files validate against schema
+
+### Design System Integration
+
+Reports use the same design tokens as the rest of the app:
+
+**Colors**: `--color-primary`, `--color-success`, `--color-warning`, `--color-error`
+**Spacing**: `--space-2`, `--space-4`, `--space-6`, `--space-8`
+**Typography**: `--font-size-base`, `--font-size-lg`, `--line-height-body`
+**Borders**: `--border-width`, `--radius-sm`, `--radius-md`
+
+**Responsive Breakpoints**:
+- Mobile: `max-width: 768px`
+- Tablet: `768px - 1024px`
+- Desktop: `min-width: 1024px`
+
+### Backward Compatibility
+
+**Migration from HTML**:
+- All HTML reports moved to `reports/archive/`
+- Manifest updated to v2.0 (JSON format)
+- No HTML rendering code in app (JSON-only)
+- Legacy support removed (clean architecture)
+
+**Schema Evolution**:
+- Optional fields for new section types
+- Version field allows future schema changes
+- Type guards handle unknown section types gracefully
+
+### Future Enhancements
+
+**Planned**:
+- [ ] Export report as PDF
+- [ ] Compare multiple reports side-by-side
+- [ ] Report templates for different training phases
+- [ ] Chart/graph components (beyond tables)
+- [ ] Serverless function for automatic generation
+
+**Architectural Notes**:
+- All future features must respect "AI decides, App executes"
+- New section types must have schema definitions
+- All styling must use design system tokens
+- No inline styles or hardcoded colors
 
 ---
 
@@ -398,8 +610,9 @@ exercAIse/
 │   └── *.json                  # Exported from app after workouts
 │
 ├── reports/                    # AI-generated progress reports
-│   ├── index.json              # Report manifest
-│   ├── *.html                  # Saved progress reports (AI-generated)
+│   ├── index.json              # Report manifest (v2.0 - JSON format)
+│   ├── *.json                  # Progress reports (structured data)
+│   ├── archive/                # Legacy HTML reports (deprecated)
 │   └── README.md               # Report generation instructions
 │
 ├── meals/                      # Nutrition content
@@ -409,11 +622,13 @@ exercAIse/
 │   ├── session.schema.json     # Workout session structure
 │   ├── exercise.schema.json    # Exercise definition (v2)
 │   ├── performance.schema.json # Performance export (perf-1)
+│   ├── progress-report.schema.json  # Progress report structure
 │   └── ...
 │
 ├── types/                      # TypeScript type definitions
 │   ├── db.types.ts             # IndexedDB schema and types
 │   ├── performance.types.ts    # Performance log types
+│   ├── progress-report.types.ts # Progress report types
 │   ├── global.types.ts         # Window API extensions
 │   └── index.ts                # Type exports
 │
@@ -429,6 +644,7 @@ exercAIse/
 │   ├── session-parser.ts       # JSON/Markdown parsing
 │   ├── kai-integration.ts      # AI validation and integration
 │   ├── storage-adapter.ts      # Storage module wrapper
+│   ├── progress-report-renderer.ts  # Progress report rendering
 │   └── styles.css
 │
 ├── dist/                       # Compiled JavaScript (generated)
@@ -450,11 +666,13 @@ exercAIse/
 │   │   ├── migration.test.ts   # Migration tests (8 tests)
 │   │   ├── storage.test.ts     # Storage adapter tests (13 tests)
 │   │   ├── session-parser.test.ts # Parser tests (36 tests)
-│   │   └── kai-integration.test.ts # Integration tests (27 tests)
+│   │   ├── kai-integration.test.ts # Integration tests (27 tests)
+│   │   └── progress-report-renderer.test.ts # Renderer tests (60 tests)
 │   ├── integration/            # Integration tests
 │   │   └── workout-parsing.test.ts # Workflow tests (15 tests)
 │   └── ui/                     # Playwright E2E tests
-│       └── *.spec.ts           # UI tests (26 tests)
+│       ├── *.spec.ts           # UI tests (26 tests)
+│       └── progress-reports.spec.ts # Report UI tests (33 tests)
 │
 ├── product-design/             # Design docs and planning
 │   ├── backlog/
@@ -463,7 +681,7 @@ exercAIse/
 │
 ├── index.html                  # Main app entry point
 ├── week.html                   # Current week view
-├── progress-report.html        # Training progress analysis
+├── progress-report.html        # Training progress analysis (JSON-based)
 ├── exercise.html               # Exercise detail viewer
 ├── README.md                   # User-facing documentation
 ├── ARCHITECTURE.md             # This document

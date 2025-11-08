@@ -1,9 +1,9 @@
 {
-  "version": "1.0",
-  "description": "AI-generated training progress reports",
+  "version": "2.0",
+  "description": "AI-generated training progress reports (JSON format)",
   "reports": [
     {
-      "filename": "2025-11-03_blocks-2-4.html",
+      "filename": "2025-11-03_blocks-2-4.json",
       "startDate": "2025-08-22",
       "endDate": "2025-11-03",
       "blockRange": "2-4",
@@ -20,7 +20,7 @@
       ]
     },
     {
-      "filename": "2025-11-03_blocks-4-4.html",
+      "filename": "2025-11-03_blocks-4-4.json",
       "startDate": "2025-10-06",
       "endDate": "2025-11-03",
       "blockRange": "4-4",
@@ -35,5 +35,11 @@
         "100% session adherence (19/19 completed)"
       ]
     }
-  ]
+  ],
+  "archived": {
+    "html": [
+      "archive/2025-11-03_blocks-2-4.html",
+      "archive/2025-11-03_blocks-4-4.html"
+    ]
+  }
 }

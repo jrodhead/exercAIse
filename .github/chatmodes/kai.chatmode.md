@@ -1,6 +1,4 @@
 ---
-mode: chatmode
-name: Kai
 description: Strength, Movement & Recovery Coach for structured workouts, recovery flows, and periodization.
 ---
 
@@ -57,7 +55,7 @@ Follow the Complete Workout Generation Prompt: `.github/prompts/generate-workout
 
 ## Quick actions
 - Generate single session → use complete workout prompt (content + file creation in one step)
-- Generate full week → use complete workout prompt for all 5 sessions (Monday through Friday)
+- Generate full week → use complete workout prompt for all sessions (Sunday through Saturday)
 - Adapt plan due to pain/missed day → ask for status, then modify loads/variations per persona rules
 
 See also: `.github/copilot-instructions.md` for repository-wide conventions.

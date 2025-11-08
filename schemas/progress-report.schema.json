@@ -1,0 +1,396 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://exercaise.app/schemas/progress-report.schema.json",
+  "title": "Progress Report",
+  "description": "Training progress report structure for exercAIse",
+  "type": "object",
+  "required": ["version", "metadata", "summary", "sections"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Schema version (e.g., '1.0')",
+      "pattern": "^\\d+\\.\\d+$"
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["title", "period", "generatedDate"],
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "Report title (e.g., 'Training Progress Report - Blocks 2-4')",
+          "minLength": 1
+        },
+        "period": {
+          "type": "object",
+          "required": ["startDate", "endDate", "blockRange"],
+          "additionalProperties": false,
+          "properties": {
+            "startDate": {
+              "type": "string",
+              "format": "date",
+              "description": "Start date in YYYY-MM-DD format"
+            },
+            "endDate": {
+              "type": "string",
+              "format": "date",
+              "description": "End date in YYYY-MM-DD format"
+            },
+            "blockRange": {
+              "type": "string",
+              "description": "Block range (e.g., '2-4', '4-4')",
+              "pattern": "^\\d+-\\d+$"
+            },
+            "weeks": {
+              "type": "number",
+              "description": "Number of training weeks (can be decimal like 10.5)",
+              "minimum": 0
+            }
+          }
+        },
+        "generatedDate": {
+          "type": "string",
+          "format": "date",
+          "description": "Date report was generated"
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["grade", "kpis", "highlights"],
+      "additionalProperties": false,
+      "properties": {
+        "grade": {
+          "type": "string",
+          "description": "Overall training block grade (A, B, C, D, F)",
+          "pattern": "^[A-F][+-]?$"
+        },
+        "kpis": {
+          "type": "array",
+          "description": "Key performance indicators (stat cards)",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["label", "value"],
+            "additionalProperties": false,
+            "properties": {
+              "label": {
+                "type": "string",
+                "description": "KPI label (e.g., 'Total Sessions', 'Adherence Rate')"
+              },
+              "value": {
+                "type": "string",
+                "description": "KPI value (can include units: '44', '~95%', '10.5')"
+              },
+              "sentiment": {
+                "type": "string",
+                "enum": ["positive", "neutral", "negative"],
+                "description": "Visual indicator for the KPI card"
+              }
+            }
+          }
+        },
+        "highlights": {
+          "type": "array",
+          "description": "Key achievements and wins",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "injuryStatus": {
+          "type": "string",
+          "description": "Injury and pain status summary"
+        }
+      }
+    },
+    "sections": {
+      "type": "array",
+      "description": "Main report sections (analysis, tables, text)",
+      "minItems": 1,
+      "items": {
+        "oneOf": [
+          {"$ref": "#/definitions/strengthAnalysisSection"},
+          {"$ref": "#/definitions/tableSection"},
+          {"$ref": "#/definitions/textSection"},
+          {"$ref": "#/definitions/highlightBoxSection"},
+          {"$ref": "#/definitions/kpiGridSection"}
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "strengthAnalysisSection": {
+      "type": "object",
+      "required": ["type", "title", "subsections"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "strength-analysis"
+        },
+        "title": {
+          "type": "string",
+          "description": "Section title (e.g., 'Strength Progression by Movement Pattern')"
+        },
+        "subsections": {
+          "type": "array",
+          "description": "Movement pattern subsections",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["subtitle", "table"],
+            "additionalProperties": false,
+            "properties": {
+              "subtitle": {
+                "type": "string",
+                "description": "Subsection title (e.g., 'Lower Body Primary Movements')"
+              },
+              "table": {
+                "$ref": "#/definitions/exerciseTable"
+              },
+              "observation": {
+                "type": "string",
+                "description": "Key observation or analysis for this movement pattern"
+              }
+            }
+          }
+        }
+      }
+    },
+    "tableSection": {
+      "type": "object",
+      "required": ["type", "title", "table"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "table"
+        },
+        "title": {
+          "type": "string",
+          "description": "Section title"
+        },
+        "subtitle": {
+          "type": "string",
+          "description": "Optional subtitle"
+        },
+        "table": {
+          "oneOf": [
+            {"$ref": "#/definitions/exerciseTable"},
+            {"$ref": "#/definitions/genericTable"}
+          ]
+        },
+        "summary": {
+          "type": "string",
+          "description": "Optional summary or analysis text"
+        }
+      }
+    },
+    "textSection": {
+      "type": "object",
+      "required": ["type", "title", "content"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "text"
+        },
+        "title": {
+          "type": "string",
+          "description": "Section title"
+        },
+        "content": {
+          "type": "array",
+          "description": "Paragraphs or list items",
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "required": ["type", "text"],
+                "properties": {
+                  "type": {"const": "paragraph"},
+                  "text": {"type": "string"}
+                }
+              },
+              {
+                "type": "object",
+                "required": ["type", "items"],
+                "properties": {
+                  "type": {"const": "list"},
+                  "ordered": {"type": "boolean"},
+                  "items": {
+                    "type": "array",
+                    "items": {"type": "string"}
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "highlightBoxSection": {
+      "type": "object",
+      "required": ["type", "title", "content"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "highlight-box"
+        },
+        "title": {
+          "type": "string",
+          "description": "Highlight box title"
+        },
+        "content": {
+          "type": "array",
+          "description": "Content items (paragraphs or lists)",
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "required": ["type", "text"],
+                "properties": {
+                  "type": {"const": "paragraph"},
+                  "text": {"type": "string"}
+                }
+              },
+              {
+                "type": "object",
+                "required": ["type", "items"],
+                "properties": {
+                  "type": {"const": "list"},
+                  "ordered": {"type": "boolean"},
+                  "items": {
+                    "type": "array",
+                    "items": {"type": "string"}
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "sentiment": {
+          "type": "string",
+          "enum": ["positive", "neutral", "warning"],
+          "description": "Visual styling for the box"
+        }
+      }
+    },
+    "kpiGridSection": {
+      "type": "object",
+      "required": ["type", "title", "kpis"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "kpi-grid"
+        },
+        "title": {
+          "type": "string",
+          "description": "Section title"
+        },
+        "kpis": {
+          "type": "array",
+          "description": "KPI cards in grid",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["label", "value"],
+            "properties": {
+              "label": {"type": "string"},
+              "value": {"type": "string"},
+              "sentiment": {
+                "type": "string",
+                "enum": ["positive", "neutral", "negative"]
+              }
+            }
+          }
+        }
+      }
+    },
+    "exerciseTable": {
+      "type": "object",
+      "required": ["type", "columns", "rows"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "exercise-progression"
+        },
+        "columns": {
+          "type": "array",
+          "description": "Table headers",
+          "items": {"type": "string"}
+        },
+        "rows": {
+          "type": "array",
+          "description": "Exercise progression data rows",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["exercise", "firstSession", "peakPerformance", "volumeChange", "sessions"],
+            "additionalProperties": false,
+            "properties": {
+              "exercise": {
+                "type": "string",
+                "description": "Exercise name"
+              },
+              "firstSession": {
+                "type": "string",
+                "description": "First recorded performance (e.g., '55 lb × 8 (Aug 23)')"
+              },
+              "peakPerformance": {
+                "type": "string",
+                "description": "Best performance (e.g., '67.5 lb × 8 (Oct 23)')"
+              },
+              "volumeChange": {
+                "type": "string",
+                "description": "Volume change with sentiment (e.g., '+22.7%')"
+              },
+              "volumeChangeSentiment": {
+                "type": "string",
+                "enum": ["positive", "neutral", "negative"],
+                "description": "Visual indicator for volume change"
+              },
+              "sessions": {
+                "type": ["string", "number"],
+                "description": "Number of sessions (e.g., 10 or '10')"
+              }
+            }
+          }
+        }
+      }
+    },
+    "genericTable": {
+      "type": "object",
+      "required": ["type", "columns", "rows"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "generic"
+        },
+        "columns": {
+          "type": "array",
+          "description": "Table headers",
+          "items": {"type": "string"}
+        },
+        "rows": {
+          "type": "array",
+          "description": "Generic table data (array of arrays)",
+          "minItems": 1,
+          "items": {
+            "type": "array",
+            "description": "Row data matching column count",
+            "items": {"type": "string"}
+          }
+        }
+      }
+    }
+  }
+}

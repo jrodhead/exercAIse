@@ -1,7 +1,12 @@
 # Training Progress Report Generation Prompt
 
 ## Purpose
-Generate a comprehensive, data-driven training progress report analyzing objective performance metrics across a specified time period.
+Generate a comprehensive, data-driven training progress report as structured JSON data analyzing objective performance metrics across a specified time period.
+
+## CRITICAL: Output Format
+**You MUST generate a JSON file, not HTML.** The JSON structure is defined by `schemas/progress-report.schema.json`. The app will render the JSON data using the design system.
+
+**Architecture Principle**: AI decides (analysis, insights, recommendations) → App executes (rendering, styling, display)
 
 ## Instructions for AI (Kai)
 
@@ -27,18 +32,67 @@ Read all performance logs in `performed/` directory within the specified time ra
 - RPE trends across the period
 - Total volume progression
 
-### 3. Report Structure
+### 3. JSON Schema Reference
 
-#### **Executive Summary**
-- Training period (dates, total weeks, blocks covered)
-- Total sessions logged
-- Adherence rate (sessions planned vs completed, if known)
-- Key achievements (top 3-5 highlights)
-- Injury/pain status
+**Before generating the report, read the schema**: `schemas/progress-report.schema.json`
 
-#### **Strength Progression by Movement Pattern**
+The report JSON has this top-level structure:
+```json
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Training Progress Report - Blocks X-Y",
+    "period": {
+      "startDate": "YYYY-MM-DD",
+      "endDate": "YYYY-MM-DD",
+      "blockRange": "X-Y",
+      "weeks": 10.5
+    },
+    "generatedDate": "YYYY-MM-DD"
+  },
+  "summary": {
+    "grade": "A",
+    "kpis": [ /* stat cards */ ],
+    "highlights": [ /* key achievements */ ],
+    "injuryStatus": "..."
+  },
+  "sections": [ /* analysis sections */ ]
+}
+```
 
-For each major lift category, create a detailed progression table:
+**Section Types Available:**
+- `strength-analysis`: Exercise progression tables grouped by movement pattern
+- `table`: Generic data tables (endurance, volume, KPIs)
+- `text`: Multi-paragraph text sections with lists
+- `highlight-box`: Callout boxes with sentiment (positive/warning/neutral)
+- `kpi-grid`: Grid of KPI stat cards
+
+**See Example Report**: `reports/2025-11-03_blocks-2-4.json` for complete structure
+
+### 4. Report Content & Analysis
+
+### 4. Report Content & Analysis
+
+#### **Metadata Section**
+Required fields:
+- `title`: "Training Progress Report - Blocks X-Y"
+- `period.startDate`, `period.endDate`: YYYY-MM-DD format
+- `period.blockRange`: "X-Y" (e.g., "2-4", "4-4")
+- `period.weeks`: Total training weeks (can be decimal like 10.5)
+- `generatedDate`: Today's date in YYYY-MM-DD format
+
+#### **Summary Section**
+- `grade`: Overall assessment (A, A-, B+, B, B-, C+, C, C-, D, F)
+- `kpis`: 4-6 key performance indicators with `label`, `value`, `sentiment`
+  - Examples: "Total Sessions", "Training Weeks", "Adherence Rate", "Blocks Completed"
+- `highlights`: 5-8 bullet points of key achievements (include emoji for visual interest)
+  - Format: "💪 Exercise: +X% gain, specific metric details"
+- `injuryStatus`: Injury-free status or pain notes summary
+
+#### **Sections: Strength Progression by Movement Pattern** (type: "strength-analysis")
+#### **Sections: Strength Progression by Movement Pattern** (type: "strength-analysis")
+
+Group exercises by movement pattern and create subsections:
 
 **Lower Body Primary:**
 - Squat variations (Goblet, Box, Back, Front)
@@ -58,159 +112,361 @@ For each major lift category, create a detailed progression table:
 - Shoulders (Lateral Raises, Face Pulls, Reverse Flyes)
 - Core (Planks, Dead Bugs, Pallof Press, Carries)
 
-**Table Format (per exercise):**
-| Date | Block-Week | Load | Reps × Sets | RPE | Best Set Volume | % Change |
-|------|-----------|------|-------------|-----|-----------------|----------|
-| [First] | X-Y | ZZ lb | R × S | N | ZZ × R = VVV lb | Baseline |
-| ... | ... | ... | ... | ... | ... | +X% |
-| [Peak] | X-Y | ZZ lb | R × S | N | ZZ × R = VVV lb | +X% |
-| [Last] | X-Y | ZZ lb | R × S | N | ZZ × R = VVV lb | +X% |
+**JSON Structure:**
+```json
+{
+  "type": "strength-analysis",
+  "title": "💪 Strength Progression by Movement Pattern",
+  "subsections": [
+    {
+      "subtitle": "Lower Body Primary Movements",
+      "table": {
+        "type": "exercise-progression",
+        "columns": ["Exercise", "First Session", "Peak Performance", "Volume Change", "Sessions"],
+        "rows": [
+          {
+            "exercise": "Goblet Squat",
+            "firstSession": "55 lb × 8 (Aug 23)",
+            "peakPerformance": "67.5 lb × 8 (Oct 23)",
+            "volumeChange": "+22.7%",
+            "volumeChangeSentiment": "positive",
+            "sessions": "10"
+          }
+        ]
+      },
+      "observation": "Analysis paragraph summarizing movement pattern progression..."
+    }
+  ]
+}
+```
 
-**Summary line:**
-- **Overall Progress:** [Start Load] → [Peak Load] (+X%) | **Volume:** [Start] → [Peak] (+X%)
+**Volume Change Calculation:**
+- `volumeChange`: Percentage or descriptive ("+22.7%", "Added external load", "Maintained")
+- `volumeChangeSentiment`: "positive" (green), "neutral" (gray), "negative" (red)
 
-#### **Endurance Progression**
+#### **Sections: Endurance Progression** (type: "table")
 
-For running, walking, cycling, or other cardio work:
+For running, walking, cycling:
+```json
+{
+  "type": "table",
+  "title": "🏃 Endurance Progression",
+  "table": {
+    "type": "generic",
+    "columns": ["Date", "Workout", "Distance", "Time", "Pace", "RPE"],
+    "rows": [
+      ["Aug 26", "Easy Run", "4.0 mi", "30:34", "7:39/mi", "4.5"],
+      ["Sep 2", "Easy Run", "4.0 mi", "31:52", "7:58/mi", "4.0"]
+    ]
+  },
+  "summary": "Analysis paragraph about endurance trends..."
+}
+```
 
-| Date | Block-Week | Format | Distance | Time | Pace | RPE | Notes |
-|------|-----------|--------|----------|------|------|-----|-------|
-| ... | ... | Continuous/Intervals | X.X mi | MM:SS | M:SS/mi | N | ... |
+#### **Sections: Training Volume & Adherence** (type: "table" + "text")
 
-**Metrics:**
-- Total distance increase (%)
-- Pace improvement (if applicable)
-- RPE trends
-- Longest continuous session
+Session distribution table:
+```json
+{
+  "type": "table",
+  "title": "📈 Training Volume & Adherence",
+  "subtitle": "Session Distribution",
+  "table": {
+    "type": "generic",
+    "columns": ["Session Type", "Count", "Percentage"],
+    "rows": [
+      ["Upper Body Strength", "15", "34.1%"],
+      ["Lower Body Strength", "10", "22.7%"]
+    ]
+  }
+}
+```
 
-#### **Training Volume & Adherence**
+Weekly adherence text section:
+```json
+{
+  "type": "text",
+  "title": "Weekly Adherence",
+  "content": [
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "Average Sessions Per Week: 4.2",
+        "Peak Week: 5 sessions (multiple weeks)",
+        "Training Gaps: Minimal - no gaps longer than 3-4 days"
+      ]
+    }
+  ]
+}
+```
 
-**Session Distribution:**
-- Count sessions by type (Upper Body, Lower Body, Full Body, Endurance, Recovery)
-- Calculate sessions per week average
-- Note any training gaps or missed weeks
+#### **Sections: Periodization Analysis** (type: "text")
 
-**Block Periodization Adherence:**
-- List blocks completed during reporting period
-- Verify deload weeks executed (check for 15-20% load reduction)
-- Identify any overreaching or undertraining periods
+Block-by-block analysis:
+```json
+{
+  "type": "text",
+  "title": "📅 Periodization Analysis",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Block 2 (Weeks 2-4): Aug 22 - Sep 8"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "Focus: Volume accumulation, movement pattern reinforcement",
+        "Intensity: Moderate (RPE 6-8)",
+        "Key Lifts: Neutral-Grip Bench 2×45-47.5 lb, Goblet Squat 55-57.5 lb",
+        "Outcome: Solid foundation established, full deload executed in Week 4"
+      ]
+    }
+  ]
+}
+```
 
-#### **Key Performance Indicators**
+#### **Sections: Key Performance Indicators** (type: "table")
 
-**Strength Gains Table:**
-| Movement Pattern | Starting Load | Peak Load | Absolute Gain | % Increase |
-|-----------------|--------------|-----------|---------------|------------|
-| Squat | ... | ... | ... | ... |
-| Hip Hinge | ... | ... | ... | ... |
-| Horizontal Press | ... | ... | ... | ... |
-| Horizontal Pull | ... | ... | ... | ... |
-| ... | ... | ... | ... | ... |
+Gains summary table:
+```json
+{
+  "type": "table",
+  "title": "🎯 Key Performance Indicators",
+  "table": {
+    "type": "generic",
+    "columns": ["Movement Pattern", "Representative Exercise", "Starting Load", "Peak Load", "Gain", "% Increase"],
+    "rows": [
+      ["Squat Pattern", "Goblet Squat", "55 lb", "67.5 lb", "+12.5 lb", "+22.7%"],
+      ["Hip Hinge", "DB Romanian Deadlift", "2×55 lb", "2×67.5 lb", "+12.5 lb/side", "+22.7%"]
+    ]
+  }
+}
+```
 
-**RPE Management:**
-- Block-by-block RPE trends
-- Identify peak weeks (RPE 8-9) vs deload weeks (RPE 5-7)
-- Flag any RPE ≥ 10 instances (failure/overreaching)
+#### **Sections: Detailed Observations** (type: "text" + "highlight-box")
 
-**Injury Prevention:**
-- Count injury-free days
-- Note any pain reports
-- Track joint-sensitive exercises and adaptations
+What's working well:
+```json
+{
+  "type": "text",
+  "title": "🔍 Detailed Observations",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "What's Working Exceptionally Well"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Arm Development: Hammer Curls (+140%), Biceps Curls (+120%) - exceptional hypertrophy response",
+        "Unilateral Leg Work: Bulgarian Split Squats (+52% volume, +90% raw load)",
+        "Pulling Strength: One-Arm Row (+57% raw load) and Chest-Supported Row (+50% volume)"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Areas Requiring Strategic Adjustment"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Vertical Pulling Deficit: No chin-ups or lat pulldowns logged. Add to next block",
+        "Hip Hinge Plateau Potential: Consider variation (single-leg RDL, trap bar deadlift)",
+        "Bench Press Intensity Spikes: Several RPE 10 instances - need better auto-regulation"
+      ]
+    }
+  ]
+}
+```
 
-#### **Detailed Observations**
+Highlight boxes for key insights:
+```json
+{
+  "type": "highlight-box",
+  "title": "Key Observation",
+  "sentiment": "positive",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Excellent consistency with 4+ sessions per week maintained throughout. Programming emphasized upper body development (34% of sessions), balanced with lower body work (23%) and conditioning (18%)."
+    }
+  ]
+}
+```
 
-**What's Working Exceptionally Well:**
-1. [Exercise/pattern with highest % gains]
-2. [Consistent RPE management, adherence, etc.]
-3. [3-5 specific wins with data support]
+**Sentiment Values:**
+- `"positive"`: Green styling for achievements, wins, good news
+- `"neutral"`: Gray styling for neutral observations
+- `"warning"`: Yellow/orange styling for areas needing attention
 
-**Areas Requiring Strategic Adjustment:**
-1. [Plateaus: exercises with <2.5% gain over 4+ weeks]
-2. [Fatigue indicators: RPE creep, rep drop-offs]
-3. [Form concerns: load increases with RPE spikes]
-4. [3-5 specific areas with recommendations]
+#### **Sections: Next Block Strategic Plan** (type: "text" + "table")
 
-#### **Periodization Analysis**
+Goals and recommendations:
+```json
+{
+  "type": "text",
+  "title": "🎯 Next Block Strategic Plan (Block X)",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Primary Goals"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Consolidate strength gains from Block 4, target +2.5-5% on major lifts",
+        "Address vertical pulling deficit - add chin-ups or lat pulldowns",
+        "Continue arm development momentum with sustained volume"
+      ]
+    }
+  ]
+}
+```
 
-For each block in the reporting period:
-- **Block X (Weeks Y-Z): [Phase Name]**
-  - Focus: [e.g., Volume Accumulation, Strength Intensification]
-  - Intensity: [RPE range, % of 1RM if known]
-  - Volume: [Sets × reps trends]
-  - Outcome: [Key gains, lessons learned]
+Load targets table:
+```json
+{
+  "type": "table",
+  "title": "Recommended Load Targets (Week 1 Starting Points)",
+  "table": {
+    "type": "generic",
+    "columns": ["Exercise", "Block X Peak", "Block Y Week 1 Start", "Block Y Week 3 Target"],
+    "rows": [
+      ["Goblet Squat", "67.5 lb × 8", "60-62.5 lb × 8", "70 lb × 8"],
+      ["DB Romanian Deadlift", "2×67.5 lb × 8", "2×60 lb × 10", "2×70 lb × 8"]
+    ]
+  }
+}
+```
 
-**Overall Periodization Grade:** [A+ to D]
-- Proper block progression
-- Deload consistency
-- Exercise variety and rotation
-- Overall effectiveness
+#### **Sections: Recommendations** (type: "text")
 
-#### **Next Block Strategic Plan**
+Technical, recovery, progression, and tracking recommendations:
+```json
+{
+  "type": "text",
+  "title": "💡 Recommendations for Continued Progress",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Technical/Programming"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "✅ Maintain current 4x weekly training frequency - excellent adherence",
+        "✅ Continue 4-week block structure with Week 4 deloads",
+        "⚠️ Add vertical pulling (chin-ups/lat pulldowns) to prevent imbalances"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Recovery & Injury Prevention"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "✅ Continue injury-free training approach",
+        "⚠️ Increase core training frequency to 2-3x per week"
+      ]
+    }
+  ]
+}
+```
 
-**Primary Goals:**
-1. [Based on identified plateaus or weaknesses]
-2. [Based on user goals]
-3. [Based on injury prevention needs]
+#### **Sections: Overall Assessment** (type: "highlight-box")
 
-**Recommended Load Targets:**
+Final grade and summary:
+```json
+{
+  "type": "highlight-box",
+  "title": "📊 Overall Assessment - Grade: A",
+  "sentiment": "positive",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Outstanding Progress Across All Metrics"
+    },
+    {
+      "type": "paragraph",
+      "text": "This 10.5-week training block represents an exemplary mesocycle with exceptional consistency... [detailed analysis]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Strengths"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "✅ Exceptional consistency - 44 sessions over 10.5 weeks",
+        "✅ Outstanding arm development - +120-140% volume increases"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Growth Opportunities"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "⚠️ Add vertical pulling for balanced back development",
+        "⚠️ Increase core training frequency to 2-3x per week"
+      ]
+    }
+  ]
+}
+```
 
-| Exercise | Recent Peak | Next Block Start | Progression Target (Week 3) |
-|----------|------------|-----------------|---------------------------|
-| ... | ... | ... | ... |
+#### **Sections: Next Actions** (type: "text")
 
-**Programming Modifications:**
-1. [Address plateaus with variety, weak point work]
-2. [Reduce/increase volume based on recovery]
-3. [Exercise substitutions if needed]
-4. [Endurance/conditioning adjustments]
-
-**Deload Strategy:**
-- Week 4: Reduce loads by 15-20%
-- Maintain movement quality
-- Use as assessment week
-
-#### **Recommendations for Continued Progress**
-
-**Technical/Programming:**
-- [3-5 actionable recommendations]
-
-**Recovery & Injury Prevention:**
-- [3-5 actionable recommendations]
-
-**Progression Strategies:**
-- Lower Body: [Linear, undulating, double progression]
-- Upper Body: [Linear, undulating, double progression]
-- Accessories: [Rep/RPE focus]
-- Endurance: [Distance/pace targets]
-
-**Tracking & Accountability:**
-- [Logging improvements]
-- [New metrics to track]
-- [Assessment frequency]
-
-#### **Overall Assessment**
-
-**Grade:** [A+ to D]
-
-**Summary:** [2-3 paragraphs covering adherence, gains, fatigue management, injury status]
-
-**Strengths:** [Bulleted list with data support]
-
-**Growth Opportunities:** [Bulleted list with specific recommendations]
-
-#### **Next Actions**
-
-**Immediate (Next 7 Days):**
-1. [Specific action items]
-
-**Short-Term (Next Block):**
-1. [Week-by-week targets]
-
-**Long-Term (3-6 months):**
-1. [Strategic planning items]
+Immediate, short-term, and long-term action items:
+```json
+{
+  "type": "text",
+  "title": "✅ Next Actions",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Immediate (Next 7 Days) - Block X Week 1 Launch"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Design Block X Week 1 programming with vertical pull addition",
+        "Set Week 1 starting loads at 85-90% of previous peaks",
+        "Add dedicated core work to each session"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Short-Term (Block X - Next 4 Weeks)"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Week 1: Re-introduce movements at 85-90% loads, RPE 6-7",
+        "Week 2: Progressive overload to 95-100% of previous peaks",
+        "Week 3: Peak week - attempt +2.5-5% on major lifts"
+      ]
+    }
+  ]
+}
+```
 
 ---
 
-## 4. Analysis Guidelines
+## 5. Analysis Guidelines
 
 ### Load Progression Calculations
 - **% Change:** `((New Load - Old Load) / Old Load) × 100`
@@ -244,45 +500,67 @@ For each block in the reporting period:
 
 ---
 
-## 5. Output Formatting
+## 6. File Creation & Validation
 
-### Style Guidelines
-- **Professional and coach-like tone:** Direct, evidence-based, motivating
-- **Data-driven:** Every claim backed by numbers from logs
-- **Actionable:** Specific recommendations, not vague advice
-- **Honest:** Call out plateaus, overreaching, and areas needing work
-- **Encouraging:** Highlight wins and progress, even if small
+### Output Format
+**CRITICAL**: You MUST create a JSON file, not HTML.
 
-### Visual Elements
-- Use tables for progression tracking (markdown format)
-- Use emojis sparingly for section headers (📊, 💪, 🏃, 🎯, ✅, ❌)
-- Bold key metrics and percentages
-- Use bullet points for lists
+### File Naming Convention
+`reports/YYYY-MM-DD_blocks-X-Y.json`
 
-### Length Targets
-- **Executive Summary:** 200-300 words
-- **Strength Progression:** 1 table per major exercise (5-10 exercises)
-- **Detailed Observations:** 3-5 items per section
-- **Overall Assessment:** 300-500 words
-- **Total Report:** 2,500-4,000 words
+Examples:
+- `reports/2025-11-03_blocks-2-4.json` (Blocks 2-4 report generated on Nov 3, 2025)
+- `reports/2025-12-01_blocks-4-4.json` (Block 4 only report generated on Dec 1, 2025)
+
+### Validation Steps
+After generating the JSON:
+1. **Validate against schema**: Run `python3 scripts/validate_schemas.py`
+2. **Check structure**: Ensure all required fields are present (version, metadata, summary, sections)
+3. **Verify data**: No placeholders like "...", "[TBD]", or "TODO"
+4. **Test rendering**: Open `progress-report.html` in browser to verify visual rendering
+
+### Update Manifest
+After creating the report JSON, update `reports/index.json`:
+```json
+{
+  "version": "2.0",
+  "reports": [
+    {
+      "date": "2025-11-03",
+      "title": "Training Progress Report - Blocks 2-4",
+      "file": "2025-11-03_blocks-2-4.json",
+      "period": {
+        "startDate": "2025-08-22",
+        "endDate": "2025-11-03",
+        "blockRange": "2-4",
+        "weeks": 10.5
+      }
+    }
+  ]
+}
+```
 
 ---
 
-## 6. Example Usage
+## 7. Example Usage
 
 **User Request:**
 > "Generate a training progress report for Block 4"
 
-**AI Response:**
-1. Identify Block 4 date range from `performed/` logs
-2. Read all `*_perf1.json` files from that period
-3. Extract and analyze data per guidelines above
-4. Generate comprehensive report following structure
-5. Provide specific recommendations for Block 5
+**AI Response Workflow:**
+1. Read `schemas/progress-report.schema.json` to understand structure
+2. Identify Block 4 date range from `performed/` logs
+3. Read all `*_perf1.json` files from that period
+4. Extract and analyze data per guidelines above
+5. Generate JSON following schema structure
+6. Create file `reports/YYYY-MM-DD_blocks-4-4.json`
+7. Validate with `python3 scripts/validate_schemas.py`
+8. Update `reports/index.json` manifest
+9. Confirm with user that report is ready to view
 
 ---
 
-## 7. Special Cases
+## 8. Special Cases
 
 ### Incomplete Data
 - If RPE not logged: Note "RPE not recorded" in tables
@@ -304,18 +582,72 @@ For each block in the reporting period:
 - If hypertrophy focus: Emphasize volume trends over pure strength
 - If sport-specific: Relate findings to sport demands
 
+## 8. Special Cases
+
+### Incomplete Data
+- If RPE not logged: Use empty string "" or omit from table
+- If exercises only appear once: Mark as baseline, include in "firstSession" field only
+- If gaps in training: Note in adherence text section, investigate causes
+
+### Exercise Variations
+- Group similar exercises together (e.g., "Goblet Squat" and "Box Goblet Squat")
+- Note when exercise substitutions occur in observations
+- Track progression across variations if loads are comparable
+
+### Injury/Pain Notes
+- Highlight any sessions with pain comments in `injuryStatus` field
+- Create warning highlight boxes if pain correlates with load/volume changes
+- Provide conservative recommendations in next block plan
+
+### Multiple Training Goals
+- If both strength and endurance are primary: Give equal weight to both sections
+- If hypertrophy focus: Emphasize volume trends over pure strength
+- If sport-specific: Relate findings to sport demands
+
 ---
 
-## 8. Post-Report Actions
+## 9. Post-Report Actions
 
-After generating the report, ask the user:
-1. "Would you like me to generate the first session of your next block based on these findings?"
-2. "Are there any specific areas from this report you'd like to discuss further?"
-3. "Should I update any training parameters or goals based on this analysis?"
+After generating the report JSON and updating the manifest, ask the user:
+1. "Report generated and saved to `reports/YYYY-MM-DD_blocks-X-Y.json`. Would you like me to open it in your browser?"
+2. "Would you like me to generate the first session of your next block based on these findings?"
+3. "Are there any specific areas from this report you'd like to discuss further?"
+4. "Should I update any training parameters or goals based on this analysis?"
 
 ---
 
-## Notes for Kai
+## 10. Notes for Kai
+
+- **Always generate JSON, never HTML** - The app handles all rendering and styling
+- **Always read the actual performance logs** - Don't make up data or estimates
+- **Validate against schema** - Run `python3 scripts/validate_schemas.py` before finalizing
+- **Be honest about plateaus and regression** - It's better to identify and address them early
+- **Context matters** - A deload week showing "regression" is actually success
+- **Individual variation** - What's "good" progress depends on training age, recovery, and goals
+- **Safety first** - If data suggests overreaching or injury risk, call it out clearly
+- **Celebrate wins** - Even 2.5% gains are progress; acknowledge effort and consistency
+- **Follow the schema** - Use exact field names and structure from `schemas/progress-report.schema.json`
+- **No placeholders** - All data must be real; no "..." or "[TBD]" in final JSON
+
+---
+
+## Version
+**v2.0** - JSON-first training progress report prompt (replaces HTML generation)
+
+**Migration Note**: Old HTML reports are archived in `reports/archive/`. New reports are JSON-only, rendered by `assets/progress-report-renderer.ts` using the app's design system.
+```
+
+## 9. Post-Report Actions
+
+After generating the report JSON and updating the manifest, ask the user:
+1. "Report generated and saved to `reports/YYYY-MM-DD_blocks-X-Y.json`. Would you like me to open it in your browser?"
+2. "Would you like me to generate the first session of your next block based on these findings?"
+3. "Are there any specific areas from this report you'd like to discuss further?"
+4. "Should I update any training parameters or goals based on this analysis?"
+
+---
+
+## 10. Notes for Kai
 
 - **Always read the actual performance logs**—don't make up data or estimates
 - **Be honest about plateaus and regression**—it's better to identify and address them early

@@ -5,270 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Training Progress Report - exercAIse</title>
     <link rel="stylesheet" href="assets/styles.css">
-    <style>
-        /* Progress Report Page Styles - Following exercAIse Style Guide */
-        /* TODO: Move to assets/styles.css once finalized */
-        /* Progress Report Page Styles - Following exercAIse Style Guide */
-        /* TODO: Move to assets/styles.css once finalized */
-        
-        .progress-report {
-            max-width: var(--content-max-width, 1200px);
-            margin: 0 auto;
-            padding: var(--space-5);
-        }
-
-        .progress-report__header {
-            background: linear-gradient(135deg, var(--color-brand-purple) 0%, #764ba2 100%);
-            color: white;
-            padding: var(--space-8);
-            border-radius: var(--radius-lg, 8px);
-            margin-bottom: var(--space-8);
-        }
-
-        .progress-report__header h1 {
-            margin: 0 0 var(--space-3) 0;
-            font-size: var(--font-size-3xl);
-            color: white;
-        }
-
-        .progress-report__meta {
-            display: flex;
-            gap: var(--space-5);
-            flex-wrap: wrap;
-            margin-top: var(--space-4);
-            opacity: 0.9;
-        }
-
-        .progress-report__meta-item {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .progress-report__meta-label {
-            font-size: var(--font-size-sm);
-            opacity: 0.8;
-        }
-
-        .progress-report__meta-value {
-            font-size: var(--font-size-lg);
-            font-weight: var(--font-weight-bold);
-        }
-
-        .progress-report__section {
-            background: var(--color-bg);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-lg, 8px);
-            padding: var(--space-6);
-            margin-bottom: var(--space-6);
-        }
-
-        .progress-report__section h2 {
-            margin-top: 0;
-            color: var(--color-text);
-            border-bottom: 2px solid var(--color-primary);
-            padding-bottom: var(--space-3);
-            margin-bottom: var(--space-5);
-        }
-
-        .progress-report__section h3 {
-            color: var(--color-text);
-            margin-top: var(--space-6);
-            margin-bottom: var(--space-4);
-        }
-
-        .progress-report__kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--space-5);
-            margin: var(--space-5) 0;
-        }
-
-        .progress-report__kpi-card {
-            background: linear-gradient(135deg, var(--color-brand-purple) 0%, #764ba2 100%);
-            color: white;
-            padding: var(--space-5);
-            border-radius: var(--radius-lg, 8px);
-            text-align: center;
-        }
-
-        .progress-report__kpi-card--success {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-        }
-
-        .progress-report__kpi-card--warning {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        .progress-report__kpi-label {
-            font-size: var(--font-size-sm);
-            opacity: 0.9;
-            margin-bottom: var(--space-2);
-        }
-
-        .progress-report__kpi-value {
-            font-size: var(--font-size-3xl);
-            font-weight: var(--font-weight-bold);
-            margin-bottom: var(--space-1);
-        }
-
-        .progress-report__kpi-change {
-            font-size: var(--font-size-sm);
-            opacity: 0.9;
-        }
-
-        .progress-report__table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: var(--space-5) 0;
-            font-size: var(--font-size-sm);
-        }
-
-        .progress-report__table th,
-        .progress-report__table td {
-            padding: var(--space-3);
-            text-align: left;
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .progress-report__table th {
-            background: var(--color-bg-light);
-            font-weight: var(--font-weight-semibold);
-            color: var(--color-text);
-        }
-
-        .progress-report__table tr:hover {
-            background: var(--color-bg-light);
-        }
-
-        .progress-report__progress--positive {
-            color: var(--color-success);
-            font-weight: var(--font-weight-semibold);
-        }
-
-        .progress-report__progress--negative {
-            color: var(--color-error);
-            font-weight: var(--font-weight-semibold);
-        }
-
-        .progress-report__progress--neutral {
-            color: var(--color-text-light);
-        }
-
-        .progress-report__highlights {
-            list-style: none;
-            padding: 0;
-        }
-
-        .progress-report__highlights li {
-            padding: var(--space-3);
-            margin-bottom: var(--space-3);
-            border-left: 4px solid var(--color-primary);
-            background: var(--color-bg-light);
-            border-radius: var(--radius-sm, 4px);
-        }
-
-        .progress-report__highlights--success li {
-            border-left-color: var(--color-success);
-        }
-
-        .progress-report__highlights--warning li {
-            border-left-color: var(--color-warning);
-        }
-
-        .progress-report__grade-badge {
-            display: inline-block;
-            padding: var(--space-3) var(--space-5);
-            border-radius: 50px;
-            font-size: var(--font-size-2xl);
-            font-weight: var(--font-weight-bold);
-            background: linear-gradient(135deg, var(--color-brand-purple) 0%, #764ba2 100%);
-            color: white;
-            margin: var(--space-3) 0;
-        }
-
-        .progress-report__grade-badge--a-plus {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-        }
-
-        .progress-report__controls {
-            background: var(--color-bg);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-lg, 8px);
-            padding: var(--space-5);
-            margin-bottom: var(--space-6);
-        }
-
-        .progress-report__controls h3 {
-            margin-top: 0;
-        }
-
-        .progress-report__controls label {
-            display: block;
-            margin-bottom: var(--space-2);
-            font-weight: var(--font-weight-semibold);
-            color: var(--color-text);
-        }
-
-        .progress-report__controls select,
-        .progress-report__controls input {
-            width: 100%;
-            padding: var(--space-3);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-sm, 4px);
-            font-size: var(--font-size-base);
-            margin-bottom: var(--space-4);
-            background: var(--color-bg);
-            color: var(--color-text);
-        }
-
-        .progress-report__controls button {
-            background: var(--color-primary);
-            color: white;
-            border: none;
-            padding: var(--space-3) var(--space-6);
-            border-radius: var(--radius-sm, 4px);
-            font-size: var(--font-size-base);
-            cursor: pointer;
-            width: 100%;
-            font-weight: var(--font-weight-medium);
-        }
-
-        .progress-report__controls button:hover {
-            opacity: 0.9;
-        }
-
-        .progress-report__loading {
-            text-align: center;
-            padding: var(--space-8);
-            color: var(--color-text-light);
-        }
-
-        .progress-report__loading::after {
-            content: "...";
-            animation: dots 1.5s steps(3, end) infinite;
-        }
-
-        @keyframes dots {
-            0%, 20% { content: "."; }
-            40% { content: ".."; }
-            60%, 100% { content: "..."; }
-        }
-
-        @media (max-width: 768px) {
-            .progress-report__kpi-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .progress-report__table {
-                font-size: var(--font-size-xs);
-            }
-
-            .progress-report__table th,
-            .progress-report__table td {
-                padding: var(--space-2);
-            }
-        }
-    </style>
 </head>
 <body>
     <div id="header-placeholder"></div>
@@ -298,7 +34,13 @@
         </div>
 
         <div class="progress-report__controls">
-            <h3>Report Settings</h3>
+            <h3>View Saved Reports</h3>
+            <label for="report-selector">Select Report</label>
+            <select id="report-selector">
+                <option value="">Loading reports...</option>
+            </select>
+            
+            <h3 style="margin-top: var(--space-6, 24px);">Generate New Report</h3>
             <label for="time-range">Time Range</label>
             <select id="time-range">
                 <option value="all">All Time</option>
@@ -320,18 +62,27 @@
             <button id="generate-report">Generate Report</button>
         </div>
 
-        <div id="report-content">
-            <div class="progress-report__loading">Loading your training data</div>
+        <div id="report-content" class="report-container">
+            <div class="progress-report__loading">Loading your training data...</div>
         </div>
     </div>
 
     <script src="assets/header-loader.js"></script>
-    <script type="module">
-        // Initialize
-        document.addEventListener('DOMContentLoaded', async () => {
-            // Load most recent saved report if available
-            await loadMostRecentReport();
-
+    <script src="dist/assets/progress-report-renderer.js"></script>
+    <script>
+        // Initialize on DOMContentLoaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load available reports and populate selector
+            loadReportSelector();
+            
+            // Handle report selection changes
+            document.getElementById('report-selector').addEventListener('change', async (e) => {
+                const reportPath = e.target.value;
+                if (reportPath) {
+                    await loadSelectedReport(reportPath);
+                }
+            });
+            
             // Handle time range changes
             document.getElementById('time-range').addEventListener('change', (e) => {
                 const customDates = document.getElementById('custom-dates');
@@ -349,7 +100,110 @@
             });
         });
 
+        async function loadReportSelector() {
+            const reportSelector = document.getElementById('report-selector');
+            const reportContent = document.getElementById('report-content');
+            
+            try {
+                const response = await fetch('reports/index.json');
+                if (!response.ok) throw new Error('No saved reports found');
+                
+                const index = await response.json();
+                
+                if (!index.reports || index.reports.length === 0) {
+                    reportSelector.innerHTML = '<option value="">No reports available</option>';
+                    showWelcomeMessage();
+                    return;
+                }
+                
+                // Clear loading message
+                reportSelector.innerHTML = '';
+                
+                // Populate dropdown with reports (most recent first)
+                index.reports.forEach((report, idx) => {
+                    const option = document.createElement('option');
+                    option.value = `reports/${report.filename}`;
+                    
+                    // Format display text: date + title
+                    const dateStr = report.generatedDate || report.date || 'Unknown date';
+                    const titleStr = report.title || report.filename;
+                    option.textContent = `${dateStr} - ${titleStr}`;
+                    
+                    // Select the first (most recent) by default
+                    if (idx === 0) {
+                        option.selected = true;
+                    }
+                    
+                    reportSelector.appendChild(option);
+                });
+                
+                // Load the most recent report
+                if (index.reports.length > 0) {
+                    const latestPath = `reports/${index.reports[0].filename}`;
+                    await loadSelectedReport(latestPath);
+                }
+                
+            } catch (error) {
+                console.error('Error loading reports:', error);
+                reportSelector.innerHTML = '<option value="">No reports available</option>';
+                showWelcomeMessage();
+            }
+        }
+
+        async function loadSelectedReport(reportPath) {
+            const reportContent = document.getElementById('report-content');
+            
+            try {
+                const response = await fetch(reportPath);
+                if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                
+                const reportData = await response.json();
+                
+                // Update metadata in header
+                if (reportData.metadata) {
+                    const period = reportData.metadata.period;
+                    if (period && typeof period === 'object') {
+                        document.getElementById('report-period').textContent = 
+                            `${period.startDate} to ${period.endDate} (${period.weeks} weeks, Blocks ${period.blockRange})`;
+                    } else if (typeof period === 'string') {
+                        document.getElementById('report-period').textContent = period;
+                    }
+                    
+                    document.getElementById('report-date').textContent = reportData.metadata.generatedDate || '-';
+                }
+                
+                // Extract sessions/blocks from summary.kpis
+                if (reportData.summary && reportData.summary.kpis) {
+                    const totalSessionsKpi = reportData.summary.kpis.find(k => k.label === 'Total Sessions');
+                    const blocksKpi = reportData.summary.kpis.find(k => k.label === 'Blocks Completed');
+                    
+                    if (totalSessionsKpi) {
+                        document.getElementById('total-sessions').textContent = totalSessionsKpi.value;
+                    }
+                    if (blocksKpi) {
+                        document.getElementById('blocks-completed').textContent = blocksKpi.value;
+                    }
+                }
+                
+                // Render the report using ProgressReportRenderer
+                reportContent.innerHTML = '';
+                window.ExercAIse.ProgressReportRenderer.renderReport(reportData, reportContent);
+                
+            } catch (error) {
+                console.error('Error loading report:', error);
+                reportContent.innerHTML = `
+                    <div class="report-validation-errors">
+                        <h2>Error Loading Report</h2>
+                        <p>${error.message}</p>
+                        <p><em>Note: Legacy HTML reports are no longer supported. Please use JSON format.</em></p>
+                    </div>
+                `;
+            }
+        }
+
         async function loadMostRecentReport() {
+            // This function is now replaced by loadReportSelector()
+            // Keeping for backward compatibility but not called anymore
             const reportContent = document.getElementById('report-content');
             
             try {
@@ -361,7 +215,7 @@
                 if (index.reports && index.reports.length > 0) {
                     const latest = index.reports[0]; // Assumes sorted by date descending
                     const reportPath = `reports/${latest.filename}`;
-                    await displaySavedReport(reportPath);
+                    await displaySavedReport(reportPath, latest);
                 } else {
                     showWelcomeMessage();
                 }
@@ -370,75 +224,35 @@
             }
         }
 
-        async function displaySavedReport(reportPath) {
-            const reportContent = document.getElementById('report-content');
-            
-            try {
-                const response = await fetch(reportPath);
-                const reportHTML = await response.text();
-                
-                // Update metadata if available
-                const metadata = extractMetadataFromPath(reportPath);
-                if (metadata) {
-                    document.getElementById('report-period').textContent = metadata.period;
-                    document.getElementById('total-sessions').textContent = metadata.sessions || '-';
-                    document.getElementById('blocks-completed').textContent = metadata.blocks || '-';
-                    document.getElementById('report-date').textContent = metadata.date;
-                }
-                
-                // Display the AI-generated report
-                reportContent.innerHTML = reportHTML;
-            } catch (error) {
-                console.error('Error loading report:', error);
-                reportContent.innerHTML = `
-                    <div class="progress-report__section">
-                        <p>Error loading report: ${error.message}</p>
-                    </div>
-                `;
-            }
-        }
-
-        function extractMetadataFromPath(path) {
-            // Extract metadata from filename like: reports/2025-11-02_blocks-2-4.html
-            const match = path.match(/(\d{4}-\d{2}-\d{2})_blocks-(\d+)-(\d+)/);
-            if (match) {
-                return {
-                    date: new Date(match[1]).toLocaleDateString(),
-                    blocks: `${match[2]}-${match[3]}`,
-                    period: `Block ${match[2]} → Block ${match[3]}`,
-                    sessions: '-'
-                };
-            }
-            return null;
-        }
-
         function showWelcomeMessage() {
             const reportContent = document.getElementById('report-content');
             reportContent.innerHTML = `
-                <div class="progress-report__section">
+                <div class="report-section report-section--text">
                     <h2>Welcome to Progress Reports</h2>
-                    <p>Progress reports are AI-generated analyses of your training performance.</p>
-                    
-                    <h3>How it works:</h3>
-                    <ol>
-                        <li>Select a time range from the dropdown above</li>
-                        <li>Click "Generate Report"</li>
-                        <li>Use Kai (AI coach) in chat to analyze your performance logs</li>
-                        <li>Kai will generate a comprehensive report and save it to <code>reports/</code></li>
-                        <li>Reports are saved for offline viewing</li>
-                    </ol>
-                    
-                    <h3>What Kai analyzes:</h3>
-                    <ul>
-                        <li><strong>Strength progression</strong> by movement pattern (squat, press, pull, etc.)</li>
-                        <li><strong>Endurance improvements</strong> (distance, pace, time)</li>
-                        <li><strong>Volume trends</strong> and progressive overload</li>
-                        <li><strong>RPE patterns</strong> and recovery indicators</li>
-                        <li><strong>Injury/pain notes</strong> and adaptations made</li>
-                        <li><strong>Key achievements</strong> and areas for improvement</li>
-                    </ul>
-                    
-                    <p><strong>Ready to get started?</strong> Select a time range above and click "Generate Report".</p>
+                    <div class="report-section__content">
+                        <p>Progress reports are AI-generated analyses of your training performance.</p>
+                        
+                        <h3>How it works:</h3>
+                        <ol>
+                            <li>Select a time range from the dropdown above</li>
+                            <li>Click "Generate Report"</li>
+                            <li>Use Kai (AI coach) in chat to analyze your performance logs</li>
+                            <li>Kai will generate a comprehensive report and save it to <code>reports/</code></li>
+                            <li>Reports are saved for offline viewing</li>
+                        </ol>
+                        
+                        <h3>What Kai analyzes:</h3>
+                        <ul>
+                            <li><strong>Strength progression</strong> by movement pattern (squat, press, pull, etc.)</li>
+                            <li><strong>Endurance improvements</strong> (distance, pace, time)</li>
+                            <li><strong>Volume trends</strong> and progressive overload</li>
+                            <li><strong>RPE patterns</strong> and recovery indicators</li>
+                            <li><strong>Injury/pain notes</strong> and adaptations made</li>
+                            <li><strong>Key achievements</strong> and areas for improvement</li>
+                        </ul>
+                        
+                        <p><strong>Ready to get started?</strong> Select a time range above and click "Generate Report".</p>
+                    </div>
                 </div>
             `;
         }
@@ -451,17 +265,19 @@
             
             // Show instructions
             reportContent.innerHTML = `
-                <div class="progress-report__section">
+                <div class="report-section report-section--text">
                     <h2>🤖 Generate AI Progress Report</h2>
-                    <p>To generate a progress report for <strong>${formatDateRange(startDate, endDate)}</strong>:</p>
-                    
-                    <h3>Option 1: Use Chat (Recommended)</h3>
-                    <ol>
-                        <li>Open GitHub Copilot Chat (or your AI assistant)</li>
-                        <li>Use the following prompt:</li>
-                    </ol>
+                    <div class="report-section__content">
+                        <p>To generate a progress report for <strong>${formatDateRange(startDate, endDate)}</strong>:</p>
+                        
+                        <h3>Option 1: Use Chat (Recommended)</h3>
+                        <ol>
+                            <li>Open GitHub Copilot Chat (or your AI assistant)</li>
+                            <li>Use the following prompt:</li>
+                        </ol>
+                    </div>
                     <div style="position: relative;">
-                        <pre id="prompt-text" style="background: var(--color-bg-light); padding: var(--space-4); border-radius: var(--radius-sm, 4px); overflow-x: auto;"><code>Generate a training progress report for the period ${startDate} to ${endDate}.
+                        <pre id="prompt-text" style="background: var(--color-bg-light); padding: var(--space-4); border-radius: var(--radius-sm, 4px); overflow-x: auto; margin: var(--space-4) 0;"><code>Generate a training progress report for the period ${startDate} to ${endDate}.
 
 Follow the prompt in .github/prompts/generate-training-progress-report.prompt.md
 
@@ -472,17 +288,20 @@ Read all performance logs in performed/ within this date range and analyze:
 - RPE patterns and recovery
 - Key achievements and areas for improvement
 
+Output as JSON following schemas/progress-report.schema.json
 Save the report as: reports/${formatReportFilename(startDate, endDate)}</code></pre>
                         <button id="copy-prompt-btn" style="position: absolute; top: var(--space-2); right: var(--space-2); background: var(--color-primary); color: white; border: none; padding: var(--space-2); border-radius: var(--radius-sm, 4px); cursor: pointer; font-size: 1.2em; line-height: 1; width: 32px; height: 32px;" title="Copy prompt to clipboard">
                             📋
                         </button>
                     </div>
                     
-                    <h3>Option 2: Use Serverless Function (Coming Soon)</h3>
-                    <p>A dedicated API endpoint will be available to generate reports automatically.</p>
-                    
-                    <h3>After Generation</h3>
-                    <p>Once Kai saves the report to <code>reports/</code>, refresh this page to view it.</p>
+                    <div class="report-section__content">
+                        <h3>Option 2: Use Serverless Function (Coming Soon)</h3>
+                        <p>A dedicated API endpoint will be available to generate reports automatically.</p>
+                        
+                        <h3>After Generation</h3>
+                        <p>Once Kai saves the report to <code>reports/</code>, refresh this page to view it.</p>
+                    </div>
                 </div>
             `;
             
@@ -546,7 +365,7 @@ Save the report as: reports/${formatReportFilename(startDate, endDate)}</code></
         function formatReportFilename(start, end) {
             const startBlock = getBlockFromDate(start);
             const endBlock = getBlockFromDate(end);
-            return `${new Date().toISOString().split('T')[0]}_blocks-${startBlock}-${endBlock}.html`;
+            return `${new Date().toISOString().split('T')[0]}_blocks-${startBlock}-${endBlock}.json`;
         }
 
         function getBlockFromDate(dateStr) {

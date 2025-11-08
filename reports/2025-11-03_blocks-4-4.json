@@ -1,0 +1,565 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Training Progress Report - Block 4",
+    "period": {
+      "startDate": "2025-10-06",
+      "endDate": "2025-11-03",
+      "blockRange": "4-4",
+      "weeks": 4
+    },
+    "generatedDate": "2025-11-03"
+  },
+  "summary": {
+    "grade": "A",
+    "kpis": [
+      {
+        "label": "Total Sessions",
+        "value": "19",
+        "sentiment": "positive"
+      },
+      {
+        "label": "Adherence Rate",
+        "value": "100%",
+        "sentiment": "positive"
+      },
+      {
+        "label": "Injury-Free Days",
+        "value": "28/28",
+        "sentiment": "positive"
+      },
+      {
+        "label": "Avg Load Increase",
+        "value": "+12.9%",
+        "sentiment": "positive"
+      }
+    ],
+    "highlights": [
+      "Goblet Squat: 60 lb → 67.5 lb peak (+12.5%) with excellent RPE control",
+      "Dumbbell RDL: 120 lb → 135 lb total (+12.5%) maintaining perfect form",
+      "One-Arm DB Row: 50 lb → 55 lb (+10%) with 4-set volume progression",
+      "Chest-Supported DB Row: 80 lb → 90 lb total (+12.5%) load increase",
+      "Perfect Deload Execution: Week 4 showed textbook 10-20% load reduction with RPE 5-6"
+    ],
+    "injuryStatus": "✅ Zero injury reports throughout the entire block. All exercises executed with proper form and appropriate RPE management."
+  },
+  "sections": [
+    {
+      "type": "text",
+      "title": "Adherence",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Excellent consistency: 19 sessions over 4 weeks (4-5 sessions/week average). No training gaps exceeding 3 days."
+        }
+      ]
+    },
+    {
+      "type": "strength-analysis",
+      "title": "💪 Strength Progression by Movement Pattern",
+      "subsections": [
+        {
+          "subtitle": "Lower Body Primary Movements - Goblet Squat",
+          "table": {
+            "type": "generic",
+            "columns": ["Date", "Block-Week", "Load", "Reps × Sets", "RPE", "Best Set Volume", "% Change"],
+            "rows": [
+              ["Oct 7", "4-1", "60 lb", "8 × 3", "7", "480 lb", "Baseline"],
+              ["Oct 14", "4-2", "65 lb", "8 × 3", "7", "520 lb", "+8.3%"],
+              ["Oct 23", "4-3", "67.5 lb", "8 × 4", "7-8", "540 lb", "+12.5%"],
+              ["Oct 30", "4-4 (Deload)", "55 lb", "8 × 3", "6", "440 lb", "-8.3% (deload)"]
+            ]
+          },
+          "observation": "Overall Progress: 60 lb → 67.5 lb peak (+12.5%) | Volume: 480 lb → 540 lb (+12.5%)"
+        },
+        {
+          "subtitle": "Dumbbell Romanian Deadlift",
+          "table": {
+            "type": "generic",
+            "columns": ["Date", "Block-Week", "Load (Total)", "Reps × Sets", "RPE", "Best Set Volume", "% Change"],
+            "rows": [
+              ["Oct 7", "4-1", "120 lb (60×2)", "8 × 3", "7", "960 lb", "Baseline"],
+              ["Oct 14", "4-2", "130 lb (65×2)", "8 × 3", "7", "1,040 lb", "+8.3%"],
+              ["Oct 23", "4-3", "135 lb (67.5×2)", "8 × 4", "7-8", "1,080 lb", "+12.5%"],
+              ["Oct 30", "4-4 (Deload)", "110 lb (55×2)", "8 × 3", "6", "880 lb", "-8.3% (deload)"]
+            ]
+          },
+          "observation": "Overall Progress: 120 lb → 135 lb peak (+12.5%) | Volume: 960 lb → 1,080 lb (+12.5%)"
+        },
+        {
+          "subtitle": "Bulgarian Split Squat",
+          "table": {
+            "type": "generic",
+            "columns": ["Date", "Block-Week", "Load (Total)", "Reps × Sets", "RPE", "Best Set Volume", "% Change"],
+            "rows": [
+              ["Oct 7", "4-1", "80 lb (40×2)", "8 × 2", "6", "640 lb", "Baseline"],
+              ["Oct 14", "4-2", "90 lb (45×2)", "8 × 2", "7", "720 lb", "+12.5%"],
+              ["Oct 23", "4-3", "95 lb (47.5×2)", "8 × 3", "7-9", "760 lb", "+18.75%"],
+              ["Oct 30", "4-4 (Deload)", "75 lb (37.5×2)", "8 × 2", "5", "600 lb", "-6.25% (deload)"]
+            ]
+          },
+          "observation": "Overall Progress: 80 lb → 95 lb peak (+18.75%) | Volume: 640 lb → 760 lb (+18.75%). ⚠️ Note: RPE spike to 9 in Week 3, Set 3 suggests approaching technical limit at 47.5 lb per hand. This is a grip-limited exercise per previous analysis."
+        },
+        {
+          "subtitle": "Standing Calf Raise",
+          "table": {
+            "type": "generic",
+            "columns": ["Date", "Block-Week", "Load (Total)", "Reps × Sets", "RPE", "% Change"],
+            "rows": [
+              ["Oct 7", "4-1", "60 lb (30×2)", "12 × 3", "6", "Baseline"],
+              ["Oct 14", "4-2", "70 lb (35×2)", "15 × 3", "7", "+16.7%"],
+              ["Oct 23", "4-3", "75 lb (37.5×2)", "15 × 3", "7", "+25%"],
+              ["Oct 30", "4-4 (Deload)", "60 lb (30×2)", "15 × 2", "6", "0% (deload)"]
+            ]
+          },
+          "observation": "Overall Progress: 60 lb → 75 lb peak (+25%) with rep progression from 12 to 15"
+        },
+        {
+          "subtitle": "Upper Body Primary Movements - Neutral-Grip Flat Bench Press",
+          "table": {
+            "type": "generic",
+            "columns": ["Date", "Block-Week", "Load (Total)", "Reps × Sets", "RPE", "Best Set Volume", "% Change"],
+            "rows": [
+              ["Oct 6", "4-1", "100 lb (50×2)", "6 × 3", "8", "600 lb", "Baseline"],
+              ["Oct 13", "4-2", "100 lb (50×2)", "6 × 3", "7-9", "600 lb", "0%"],
+              ["Oct 21", "4-3", "100 lb (50×2)", "6 × 4", "7-9", "600 lb", "0% (volume +33%)"],
+              ["Oct 28", "4-4 (Deload)", "80 lb (40×2)", "6 × 3", "6", "480 lb", "-20% (deload)"]
+            ]
+          },
+          "observation": "Overall Progress: Load maintained at 100 lb, volume increased by adding 4th set in Week 3. RPE range 7-9 suggests we're at a training load plateau—next block should attempt 55 lb per hand or shift to 8-rep protocol."
+        },
+        {
+          "subtitle": "One-Arm Dumbbell Row",
+          "table": {
+            "type": "generic",
+            "columns": ["Date", "Block-Week", "Load", "Reps × Sets", "RPE", "Best Set Volume", "% Change"],
+            "rows": [
+              ["Oct 6", "4-1", "50 lb", "8 × 3", "7", "400 lb", "Baseline"],
+              ["Oct 13", "4-2", "50 lb", "8 × 3", "7", "400 lb", "0%"],
+              ["Oct 21", "4-3", "55 lb", "8 × 4", "7-8", "440 lb", "+10%"],
+              ["Oct 28", "4-4 (Deload)", "45 lb", "8 × 3", "6", "360 lb", "-10% (deload)"]
+            ]
+          },
+          "observation": "Overall Progress: 50 lb → 55 lb (+10%) with volume progression (3 sets → 4 sets)"
+        },
+        {
+          "subtitle": "Chest-Supported Dumbbell Row",
+          "table": {
+            "type": "generic",
+            "columns": ["Date", "Block-Week", "Load (Total)", "Reps × Sets", "RPE", "Best Set Volume", "% Change"],
+            "rows": [
+              ["Oct 6", "4-1", "80 lb (40×2)", "10 × 2", "7-8", "800 lb", "Baseline"],
+              ["Oct 13", "4-2", "80 lb (40×2)", "10 × 3", "7", "800 lb", "0% (volume +50%)"],
+              ["Oct 21", "4-3", "90 lb (45×2)", "10 × 3", "7-9", "900 lb", "+12.5%"],
+              ["Oct 28", "4-4 (Deload)", "70 lb (35×2)", "10 × 2", "6", "700 lb", "-12.5% (deload)"]
+            ]
+          },
+          "observation": "Overall Progress: 80 lb → 90 lb total (+12.5%)"
+        },
+        {
+          "subtitle": "Accessories",
+          "table": {
+            "type": "generic",
+            "columns": ["Exercise", "Progress Notes"],
+            "rows": [
+              ["Hammer Curl", "60 lb total (30×2) maintained across Weeks 1-2, reduced to 50 lb total (25×2) in deload. RPE 7-8 range suggests maintenance phase. Consider 32.5 lb or 35 lb per hand next block."],
+              ["Overhead Triceps Extension", "30 lb maintained for 12 reps at RPE 7-8 (Weeks 1-2), slight reduction to 27.5 lb in deload. Stable performance—ready for progression to 32.5 lb next block."]
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "title": "📈 Strength Gains Summary",
+      "table": {
+        "type": "generic",
+        "columns": ["Movement Pattern", "Starting Load", "Peak Load", "Absolute Gain", "% Increase"],
+        "rows": [
+          ["Squat (Goblet)", "60 lb", "67.5 lb", "+7.5 lb", "+12.5%"],
+          ["Hip Hinge (DB RDL)", "120 lb total", "135 lb total", "+15 lb", "+12.5%"],
+          ["Unilateral Leg (BSS)", "80 lb total", "95 lb total", "+15 lb", "+18.75%"],
+          ["Calves", "60 lb total", "75 lb total", "+15 lb", "+25%"],
+          ["Horizontal Press (Neutral Bench)", "100 lb total", "100 lb total", "0 lb", "0% (volume +33%)"],
+          ["Horizontal Pull (One-Arm Row)", "50 lb", "55 lb", "+5 lb", "+10%"],
+          ["Horizontal Pull (Chest-Supported Row)", "80 lb total", "90 lb total", "+10 lb", "+12.5%"]
+        ]
+      }
+    },
+    {
+      "type": "highlight-box",
+      "title": "✨ What's Working Exceptionally Well",
+      "sentiment": "positive",
+      "content": [
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Lower Body Progression: All major lower body movements showed 12.5-25% gains with excellent RPE control. Goblet Squat, RDL, and Calves progressed linearly without form breakdown.",
+            "Perfect Deload Execution: Week 4 showed textbook deload (10-20% load reduction, RPE 5-6 across all movements). This demonstrates excellent fatigue management and periodization adherence.",
+            "Volume Tolerance: Successfully added 4th sets to several movements (Neutral Bench, One-Arm Row, Goblet Squat, DB RDL) in Week 3 without excessive RPE spike, indicating good work capacity.",
+            "Bulgarian Split Squat Breakthrough: 18.75% gain despite grip limitations, showing improved unilateral leg strength and balance.",
+            "Consistency: Zero missed sessions, no training gaps >3 days, and no injury reports throughout the entire block."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "highlight-box",
+      "title": "Areas Requiring Strategic Adjustment",
+      "sentiment": "warning",
+      "content": [
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Neutral-Grip Bench Press Plateau: Load maintained at 50 lb per hand for entire block with RPE creeping to 9 by Week 3. This is a clear plateau signal. Recommendation: Either increase to 55 lb per hand with reduced reps (4-5) OR shift to 8-rep protocol at 45 lb per hand to rebuild volume tolerance before next load jump.",
+            "Grip Limitation on BSS: RPE spike to 9 in Week 3, Set 3 at 47.5 lb per hand suggests grip (not legs) is the limiting factor. Previous analysis confirmed this pattern. Recommendation: Use lifting straps for BSS or reorder exercises so BSS precedes RDL to avoid pre-fatigued grip.",
+            "Incline DB Press Inconsistency: Only logged in Week 3 (40 lb×2) with high RPE (9) and rep drop-off (8→6→4). This suggests either poor exercise placement in session or insufficient recovery from flat bench work. Recommendation: Track more consistently OR substitute with landmine press or push-ups for pressing volume.",
+            "Accessory Load Stagnation: Hammer Curls (30 lb×2) and Overhead Triceps Extension (30 lb) maintained same loads with no progression attempt. While RPE was manageable (7-8), these are ready for small increases. Recommendation: Attempt 32.5 lb or 35 lb next block."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "📊 Periodization Analysis",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Block 4 Overview: Strength Consolidation + Volume Progression"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Focus: Maintain and slightly increase loads on primary lifts while adding volume (4th sets)",
+            "Intensity: RPE 7-9 on primary lifts (Weeks 1-3), RPE 5-6 on deload (Week 4)",
+            "Volume: Steady progression from 2-3 sets (Week 1) to 3-4 sets (Week 3), proper reduction in Week 4",
+            "Outcome: Strong lower body gains (+12.5-25%), upper body showed mixed results (rowing progressed, pressing plateaued)"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Week-by-Week Breakdown"
+        },
+        {
+          "type": "paragraph",
+          "text": "Week 1 (Oct 6-12): Establishment week. Loads set conservatively at RPE 6-8. All movements felt manageable."
+        },
+        {
+          "type": "paragraph",
+          "text": "Week 2 (Oct 13-19): Load increases on lower body (Goblet Squat +5 lb, RDL +5 lb per hand, BSS +5 lb per hand). Upper body maintained loads but added volume. RPE range 7-8."
+        },
+        {
+          "type": "paragraph",
+          "text": "Week 3 (Oct 20-26): Peak week. Further load increases on most movements, 4th sets added to primary lifts. RPE climbed to 8-9 on several movements (appropriate peak week intensity). Some signs of fatigue (Incline Press rep drop-off, BSS grip issues)."
+        },
+        {
+          "type": "paragraph",
+          "text": "Week 4 (Oct 27-Nov 3): Perfect deload. Loads reduced 10-20%, volume reduced, RPE 5-6 across the board. Recovery week executed flawlessly."
+        }
+      ]
+    },
+    {
+      "type": "highlight-box",
+      "title": "Overall Periodization Grade: A",
+      "sentiment": "positive",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Strengths:"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Clear progression from Week 1 (conservative) → Week 3 (peak) → Week 4 (deload)",
+            "Appropriate RPE management (7-8 in Weeks 1-2, 8-9 in Week 3, 5-6 in Week 4)",
+            "Volume progression logical and well-tolerated",
+            "Deload properly executed with 10-20% load reduction"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Areas for Improvement:"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Could have attempted load increase on Neutral Bench in Week 2 or 3 instead of only adding volume",
+            "Incline Press needs more consistent tracking or should be replaced"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "🎯 Next Block Strategic Plan - Primary Goals for Block 5",
+      "content": [
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Break Neutral-Grip Bench Plateau: Attempt 55 lb per hand at reduced reps (4-5 × 3-4 sets) OR switch to 8-rep protocol at 45 lb per hand",
+            "Continue Lower Body Progression: Target 70 lb Goblet Squat, 70 lb per hand RDL, 50 lb per hand BSS",
+            "Address Grip Limitation: Implement lifting straps for BSS or reorder exercises",
+            "Progress Accessories: Increase Hammer Curl to 32.5-35 lb per hand, Overhead Extension to 32.5 lb",
+            "Consistent Incline Work: Track Incline DB Press every upper session OR replace with landmine press"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "title": "Recommended Load Targets",
+      "table": {
+        "type": "generic",
+        "columns": ["Exercise", "Block 4 Peak", "Block 5 Start (Week 1)", "Block 5 Target (Week 3)"],
+        "rows": [
+          ["Goblet Squat", "67.5 lb", "65 lb × 8", "70 lb × 8"],
+          ["DB Romanian Deadlift", "135 lb (67.5×2)", "130 lb (65×2) × 8", "140 lb (70×2) × 8"],
+          ["Bulgarian Split Squat", "95 lb (47.5×2)", "90 lb (45×2) × 8 *with straps*", "100 lb (50×2) × 8 *with straps*"],
+          ["Standing Calf Raise", "75 lb (37.5×2)", "70 lb (35×2) × 15", "80 lb (40×2) × 15"],
+          ["Neutral-Grip Bench", "100 lb (50×2) × 6", "110 lb (55×2) × 4-5", "110 lb (55×2) × 5-6"],
+          ["One-Arm DB Row", "55 lb", "55 lb × 8", "60 lb × 8"],
+          ["Chest-Supported Row", "90 lb (45×2)", "90 lb (45×2) × 10", "100 lb (50×2) × 10"],
+          ["Hammer Curl", "60 lb (30×2)", "65 lb (32.5×2) × 10", "70 lb (35×2) × 10"],
+          ["Overhead Triceps Ext", "30 lb", "32.5 lb × 12", "35 lb × 12"]
+        ]
+      }
+    },
+    {
+      "type": "text",
+      "title": "Programming Modifications",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Bench Press Protocol Change:"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Option A: Increase load to 55 lb per hand, reduce reps to 4-5, rebuild volume over 3 weeks",
+            "Option B: Reduce load to 45 lb per hand, increase reps to 8, build tolerance before next jump",
+            "Recommended: Option A (load increase with rep reduction) to break plateau"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Grip Management for BSS:"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Use lifting straps to isolate legs and remove grip as limiting factor",
+            "Alternatively, reorder exercises: BSS → RDL (instead of RDL → BSS) to avoid pre-fatigued grip"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Incline Press Consistency:"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Track in every upper body session OR replace with landmine press (less shoulder stress)",
+            "Start at 35 lb per hand × 8 reps if continuing with incline"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Accessory Progression:"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Hammer Curls: Attempt 32.5 lb per hand (or 35 lb if feeling strong)",
+            "Overhead Triceps Extension: 32.5 lb for 12 reps",
+            "Add face pulls or rear delt flyes if shoulder health is a concern"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Deload Strategy (Week 4 of Block 5):"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Reduce loads by 15-20% from Week 3 peak",
+            "Maintain movement quality and technique focus",
+            "Target RPE 5-7 (avoid pushing to failure)",
+            "Use as assessment week to identify any lingering fatigue or joint issues"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "💡 Recommendations for Continued Progress",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Technical/Programming"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Address the Bench Plateau Immediately: Maintaining 50 lb per hand for 4 weeks with RPE creep to 9 is a clear signal. Next block MUST attempt 55 lb per hand or change rep scheme.",
+            "Implement Grip Training or Straps: BSS is being limited by grip, not legs. Either use straps or add dedicated grip work (farmer carries, dead hangs).",
+            "Track Incline Press Consistently: Only one session logged in Block 4. Either commit to tracking every week OR replace with a more sustainable pressing variation.",
+            "Consider Adding Vertical Pull: You have horizontal pull (rows) but no vertical pull (pull-ups, lat pulldown). This would balance shoulder development.",
+            "Progressive Overload on Accessories: Hammer Curls and Triceps Extensions are ready for load increases. Don't leave gains on the table."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Recovery & Injury Prevention"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Continue Deload Discipline: Week 4 execution was perfect. Maintain this pattern in Block 5.",
+            "Monitor Shoulder Health: Incline Press RPE spiked to 9 with rep drop-off. If shoulder discomfort arises, substitute with landmine press or neutral-grip incline.",
+            "Joint-Friendly Loading: Goblet Squat and DB RDL are excellent choices for your joint history. Continue prioritizing these over barbell variations.",
+            "Mobility Work: Ensure adequate warm-up for pressing movements (band pull-aparts, scapular CARs) to prevent shoulder issues."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Progression Strategies"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Lower Body: Linear progression working well. Continue 2.5-5 lb jumps per week when RPE ≤ 8.",
+            "Upper Body Pressing: Use double progression (increase load, reduce reps initially, then rebuild reps before next load jump).",
+            "Upper Body Pulling: Linear progression still available. Continue 5 lb jumps when RPE ≤ 8.",
+            "Accessories: RPE-driven progression. If RPE ≤ 7 for target reps, increase load by one rung."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Tracking & Accountability"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Log Incline Press Every Session: Inconsistent tracking makes it impossible to assess progress. Commit to logging or remove from program.",
+            "Note Grip Fatigue: Add a field for 'grip limiting factor: Y/N' on BSS to track when straps are needed.",
+            "Pre-Session Check-In: Before each workout, note any lingering fatigue, joint discomfort, or sleep/stress issues to contextualize RPE."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "highlight-box",
+      "title": "🏆 Overall Assessment - Grade: A",
+      "sentiment": "positive",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Excellent Block with Strong Lower Body Gains"
+        },
+        {
+          "type": "paragraph",
+          "text": "Block 4 was a highly successful training block demonstrating excellent adherence, smart RPE management, and strong lower body progression. You completed all 19 planned sessions with zero injuries and executed a textbook deload in Week 4. Lower body movements progressed exceptionally well (+12.5-25% across Goblet Squat, RDL, BSS, and Calves), showing that your joint-friendly exercise selection is paying dividends."
+        },
+        {
+          "type": "paragraph",
+          "text": "The primary area of concern is the upper body pressing plateau. Neutral-Grip Bench Press maintained 50 lb per hand throughout the block with RPE creeping to 9, indicating you've reached a temporary ceiling at that load and rep scheme. This is not a failure—it's a signal that it's time to change the stimulus (increase load with reduced reps OR reduce load with increased reps)."
+        },
+        {
+          "type": "paragraph",
+          "text": "Grip strength continues to be a limiting factor for Bulgarian Split Squats, as identified in previous analysis. Implementing lifting straps or reordering exercises will allow your legs to progress without being held back by forearm fatigue."
+        },
+        {
+          "type": "paragraph",
+          "text": "Strengths"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "✅ Perfect Adherence: 19/19 sessions completed, no gaps >3 days",
+            "✅ Injury-Free Training: Zero pain reports, all movements executed with proper form",
+            "✅ Lower Body Excellence: +12.5-25% gains across all major lower body lifts",
+            "✅ Textbook Deload: Week 4 showed perfect 10-20% load reduction with RPE 5-6",
+            "✅ RPE Discipline: Appropriate intensity progression across weeks (7-8 → 8-9 → 5-6)",
+            "✅ Volume Tolerance: Successfully added 4th sets to multiple movements without excessive fatigue"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Growth Opportunities"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "⚠️ Upper Body Pressing Plateau: Neutral Bench needs load increase or rep scheme change",
+            "⚠️ Grip Limitation: BSS being held back by forearm fatigue, not leg strength",
+            "⚠️ Incline Press Inconsistency: Only tracked once; either commit or replace",
+            "⚠️ Accessory Stagnation: Hammer Curls and Triceps Extensions ready for progression but maintained same loads"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "📝 Next Actions",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Immediate (Next 7 Days)"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Decide on Bench Press Strategy: Choose Option A (55 lb per hand × 4-5 reps) or Option B (45 lb per hand × 8 reps) for Block 5 Week 1",
+            "Acquire Lifting Straps: If you don't already have them, get straps for BSS to remove grip limitation",
+            "Plan Block 5 Week 1: Use the recommended load targets table above to set first-week prescriptions"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Short-Term (Block 5, Weeks 1-4)"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Week 1: Start conservative with recommended loads, RPE 6-7 target",
+            "Week 2: Increase loads 2.5-5 lb where RPE ≤ 7 in Week 1",
+            "Week 3: Peak week—push loads to RPE 8-9, add 4th sets where appropriate",
+            "Week 4: Deload with 15-20% load reduction, RPE 5-7"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Long-Term (3-6 Months)"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Target Milestones by End of Block 6: Goblet Squat: 75 lb, DB RDL: 150 lb total (75 lb per hand), Neutral Bench: 110-120 lb total (55-60 lb per hand), One-Arm Row: 60-65 lb",
+            "Consider Equipment Additions: Pull-up bar or resistance bands for vertical pull work",
+            "Assess Barbell Readiness: If joint health remains excellent, consider introducing barbell bench or RDL in Block 6-7"
+          ]
+        }
+      ]
+    }
+  ]
+}
