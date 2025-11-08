@@ -1,0 +1,276 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/5-1_Chest_Triceps_Hypertrophy.json",
+  "timestamp": "2025-11-04T13:31:23.508Z",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "Primary Chest & Triceps - Superset A",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset A",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "flat-dumbbell-bench-press",
+                  "name": "Flat Dumbbell Bench Press",
+                  "weight": 40,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 7
+                },
+                {
+                  "key": "close-grip-dumbbell-press",
+                  "name": "Close-Grip Dumbbell Press",
+                  "weight": 30,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "flat-dumbbell-bench-press",
+                  "name": "Flat Dumbbell Bench Press",
+                  "weight": 40,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 8
+                },
+                {
+                  "key": "close-grip-dumbbell-press",
+                  "name": "Close-Grip Dumbbell Press",
+                  "weight": 30,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 8
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 3,
+              "exercises": [
+                {
+                  "key": "flat-dumbbell-bench-press",
+                  "name": "Flat Dumbbell Bench Press",
+                  "weight": 40,
+                  "multiplier": 2,
+                  "reps": 6,
+                  "rpe": 7
+                },
+                {
+                  "key": "close-grip-dumbbell-press",
+                  "name": "Close-Grip Dumbbell Press",
+                  "weight": 30,
+                  "multiplier": 2,
+                  "reps": 6,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 90
+            }
+          ],
+          "notes": "Perform both exercises back-to-back, then rest 90s before next round"
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Secondary Chest & Triceps - Superset B",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset B",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "incline-dumbbell-bench-press",
+                  "name": "Incline Dumbbell Bench Press",
+                  "weight": 30,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 8
+                },
+                {
+                  "key": "overhead-dumbbell-triceps-extension",
+                  "name": "Overhead Dumbbell Triceps Extension",
+                  "weight": 30,
+                  "reps": 10,
+                  "rpe": 8
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "incline-dumbbell-bench-press",
+                  "name": "Incline Dumbbell Bench Press",
+                  "weight": 30,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 8
+                },
+                {
+                  "key": "overhead-dumbbell-triceps-extension",
+                  "name": "Overhead Dumbbell Triceps Extension",
+                  "weight": 30,
+                  "reps": 10,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 90
+            }
+          ],
+          "notes": "Perform both exercises back-to-back, then rest 90s before next round"
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Chest & Triceps Finisher - Superset C",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset C",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "dumbbell-flyes",
+                  "name": "Dumbbell Flyes",
+                  "weight": 20,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 7
+                },
+                {
+                  "key": "diamond-push-ups",
+                  "name": "Diamond Push-ups",
+                  "reps": 10,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 60
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "dumbbell-flyes",
+                  "name": "Dumbbell Flyes",
+                  "weight": 20,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 7
+                },
+                {
+                  "key": "diamond-push-ups",
+                  "name": "Diamond Push-ups",
+                  "reps": 8,
+                  "rpe": 8
+                }
+              ],
+              "prescribedRestSeconds": 60
+            }
+          ],
+          "notes": "Perform both exercises back-to-back, then rest 60s before next round"
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Core Stability",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Pallof Press Hold",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 10,
+              "reps": 6,
+              "rpe": 7
+            }
+          ],
+          "notes": "Complete all reps on one side, then switch sides. Hold 20-30s per rep."
+        }
+      ]
+    }
+  ],
+  "date": "2025-11-04",
+  "block": 5,
+  "week": 1,
+  "title": "Chest & Triceps Hypertrophy",
+  "notes": "Block 5 Week 1: Hypertrophy mesocycle begins. Focus on chest and triceps with 10-15 rep range, RPE 7-8. Supersets for time efficiency and metabolic stress. Deload planned for Week 4.",
+  "exerciseIndex": {
+    "flat-dumbbell-bench-press": {
+      "name": "Flat Dumbbell Bench Press",
+      "sectionPath": "sections[0].items[0].rounds[*].exercises[0]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 7.3,
+      "totalVolume": 2080
+    },
+    "close-grip-dumbbell-press": {
+      "name": "Close-Grip Dumbbell Press",
+      "sectionPath": "sections[0].items[0].rounds[*].exercises[1]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 7.3,
+      "totalVolume": 1560
+    },
+    "incline-dumbbell-bench-press": {
+      "name": "Incline Dumbbell Bench Press",
+      "sectionPath": "sections[1].items[0].rounds[*].exercises[0]",
+      "totalSets": 2,
+      "totalRounds": 2,
+      "avgRPE": 8.0,
+      "totalVolume": 1200
+    },
+    "overhead-dumbbell-triceps-extension": {
+      "name": "Overhead Dumbbell Triceps Extension",
+      "sectionPath": "sections[1].items[0].rounds[*].exercises[1]",
+      "totalSets": 2,
+      "totalRounds": 2,
+      "avgRPE": 7.5,
+      "totalVolume": 600
+    },
+    "dumbbell-flyes": {
+      "name": "Dumbbell Flyes",
+      "sectionPath": "sections[2].items[0].rounds[*].exercises[0]",
+      "totalSets": 2,
+      "totalRounds": 2,
+      "avgRPE": 7.0,
+      "totalVolume": 880
+    },
+    "diamond-push-ups": {
+      "name": "Diamond Push-ups",
+      "sectionPath": "sections[2].items[0].rounds[*].exercises[1]",
+      "totalSets": 2,
+      "totalRounds": 2,
+      "avgRPE": 7.5,
+      "totalVolume": 0
+    },
+    "pallof-press-hold": {
+      "name": "Pallof Press Hold",
+      "sectionPath": "sections[3].items[0].sets[*]",
+      "totalSets": 1,
+      "totalRounds": 0,
+      "avgRPE": 7.0,
+      "totalVolume": 60
+    }
+  }
+}

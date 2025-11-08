@@ -869,24 +869,358 @@ window.ExercAIse.FormBuilder = (() => {
             }
             return errors;
         };
+        const exerciseKeyFromName = (name) => {
+            return deps.slugify(name);
+        };
+        const getNumSetsForExercise = (exKey) => {
+            const scope = deps.workoutContent || document;
+            const card = scope.querySelector(`[data-exkey="${exKey}"]`);
+            if (!card)
+                return 0;
+            const rows = card.getElementsByClassName('set-row');
+            return rows.length;
+        };
+        const getSetDataForExercise = (exKey, setNumber) => {
+            const scope = deps.workoutContent || document;
+            const card = scope.querySelector(`[data-exkey="${exKey}"]`);
+            if (!card)
+                return null;
+            const rows = card.getElementsByClassName('set-row');
+            if (setNumber < 1 || setNumber > rows.length)
+                return null;
+            const rowEl = rows[setNumber - 1];
+            const inputs = rowEl.getElementsByTagName('input');
+            const obj = {};
+            for (let k = 0; k < inputs.length; k++) {
+                const inEl = inputs[k];
+                const name = inEl.getAttribute('data-name');
+                const val = inEl.value;
+                if (val === '' || !name)
+                    continue;
+                if (name === 'distanceMeters' || name === 'distanceMiles') {
+                    const numDist = Number(val);
+                    if (!isNaN(numDist))
+                        obj.distanceMiles = numDist;
+                    continue;
+                }
+                if (name === 'timeSeconds' || name === 'holdSeconds') {
+                    const sec = deps.parseHMSToSeconds(val);
+                    if (sec != null)
+                        obj[name] = sec;
+                    continue;
+                }
+                const num = Number(val);
+                if (!isNaN(num))
+                    obj[name] = num;
+            }
+            const hasAny = (obj.weight != null || obj.multiplier != null || obj.reps != null ||
+                obj.rpe != null || obj.timeSeconds != null || obj.holdSeconds != null ||
+                obj.distanceMiles != null);
+            if (!hasAny)
+                return null;
+            return obj;
+        };
+        const collectSetsForExercise = (exKey) => {
+            const scope = deps.workoutContent || document;
+            const card = scope.querySelector(`[data-exkey="${exKey}"]`);
+            if (!card)
+                return [];
+            const rows = card.getElementsByClassName('set-row');
+            const setsArr = [];
+            for (let r = 0; r < rows.length; r++) {
+                const rowEl = rows[r];
+                const inputs = rowEl.getElementsByTagName('input');
+                const obj = { set: (r + 1) };
+                for (let k = 0; k < inputs.length; k++) {
+                    const inEl = inputs[k];
+                    const name = inEl.getAttribute('data-name');
+                    const val = inEl.value;
+                    if (val === '' || !name)
+                        continue;
+                    if (name === 'distanceMeters' || name === 'distanceMiles') {
+                        const numDist = Number(val);
+                        if (!isNaN(numDist))
+                            obj.distanceMiles = numDist;
+                        continue;
+                    }
+                    if (name === 'timeSeconds' || name === 'holdSeconds') {
+                        const sec = deps.parseHMSToSeconds(val);
+                        if (sec != null)
+                            obj[name] = sec;
+                        continue;
+                    }
+                    const num = Number(val);
+                    if (!isNaN(num))
+                        obj[name] = num;
+                }
+                const hasAny = (obj.weight != null || obj.multiplier != null || obj.reps != null ||
+                    obj.rpe != null || obj.timeSeconds != null || obj.holdSeconds != null ||
+                    obj.distanceMiles != null);
+                if (hasAny) {
+                    setsArr.push(obj);
+                }
+            }
+            return setsArr;
+        };
+        const collectRoundsForSuperset = (children, prescribedRest) => {
+            const exerciseKeys = children.map((child) => exerciseKeyFromName(child.name));
+            const numSets = Math.max(...exerciseKeys.map(key => getNumSetsForExercise(key)), 0);
+            const rounds = [];
+            for (let r = 1; r <= numSets; r++) {
+                const exercises = [];
+                for (const child of children) {
+                    const key = exerciseKeyFromName(child.name);
+                    const setData = getSetDataForExercise(key, r);
+                    if (setData) {
+                        exercises.push({
+                            key: key,
+                            name: child.name,
+                            ...setData
+                        });
+                    }
+                }
+                if (exercises.length > 0) {
+                    const round = {
+                        round: r,
+                        exercises: exercises
+                    };
+                    if (prescribedRest != null) {
+                        round.prescribedRestSeconds = prescribedRest;
+                    }
+                    rounds.push(round);
+                }
+            }
+            return rounds;
+        };
+        const buildExerciseIndex = (sections) => {
+            const index = {};
+            sections.forEach((section, sIdx) => {
+                section.items.forEach((item, iIdx) => {
+                    if (item.kind === 'exercise' && item.sets && item.sets.length > 0) {
+                        const key = exerciseKeyFromName(item.name);
+                        const totalVolume = item.sets.reduce((sum, set) => {
+                            const weight = (set.weight || 0) * (set.multiplier || 1);
+                            return sum + (weight * (set.reps || 0));
+                        }, 0);
+                        const avgRPE = item.sets.reduce((sum, set) => sum + (set.rpe || 0), 0) / item.sets.length;
+                        index[key] = {
+                            name: item.name,
+                            sectionPath: `sections[${sIdx}].items[${iIdx}].sets[*]`,
+                            totalSets: item.sets.length,
+                            totalRounds: 0,
+                            avgRPE: avgRPE,
+                            totalVolume: totalVolume
+                        };
+                    }
+                    else if ((item.kind === 'superset' || item.kind === 'circuit') && item.rounds && item.rounds.length > 0) {
+                        item.rounds[0]?.exercises.forEach((ex, exIdx) => {
+                            const totalVolume = item.rounds.reduce((sum, round) => {
+                                const exercise = round.exercises[exIdx];
+                                if (!exercise)
+                                    return sum;
+                                const weight = (exercise.weight || 0) * (exercise.multiplier || 1);
+                                return sum + (weight * (exercise.reps || 0));
+                            }, 0);
+                            const avgRPE = item.rounds.reduce((sum, round) => {
+                                return sum + (round.exercises[exIdx]?.rpe || 0);
+                            }, 0) / item.rounds.length;
+                            index[ex.key] = {
+                                name: ex.name,
+                                sectionPath: `sections[${sIdx}].items[${iIdx}].rounds[*].exercises[${exIdx}]`,
+                                totalSets: item.rounds.length,
+                                totalRounds: item.rounds.length,
+                                avgRPE: avgRPE,
+                                totalVolume: totalVolume
+                            };
+                        });
+                    }
+                });
+            });
+            return index;
+        };
+        const collectNestedData = (sessionJSON) => {
+            let sessionData = null;
+            try {
+                sessionData = JSON.parse(sessionJSON);
+            }
+            catch (e) {
+                console.error('Failed to parse session JSON:', e);
+                return null;
+            }
+            let wf = String(filePath || '');
+            wf = wf.replace(/^(?:\.\.\/)+/, '').replace(/^\.\//, '');
+            const mWf = wf.match(/workouts\/.*$/);
+            if (mWf)
+                wf = mWf[0];
+            const log = {
+                version: 'perf-2',
+                workoutFile: wf,
+                timestamp: new Date().toISOString(),
+                sections: []
+            };
+            if (sessionData.date)
+                log.date = sessionData.date;
+            if (sessionData.block != null)
+                log.block = sessionData.block;
+            if (sessionData.week != null)
+                log.week = sessionData.week;
+            if (sessionData.title)
+                log.title = sessionData.title;
+            if (sessionData.sections && Array.isArray(sessionData.sections)) {
+                for (const sessionSection of sessionData.sections) {
+                    const section = {
+                        type: sessionSection.type,
+                        title: sessionSection.title,
+                        items: []
+                    };
+                    if (sessionSection.notes)
+                        section.notes = sessionSection.notes;
+                    if (sessionSection.items && Array.isArray(sessionSection.items)) {
+                        for (const sessionItem of sessionSection.items) {
+                            if (sessionItem.kind === 'exercise') {
+                                const exKey = exerciseKeyFromName(sessionItem.name);
+                                const sets = collectSetsForExercise(exKey);
+                                if (sets.length > 0) {
+                                    const item = {
+                                        kind: 'exercise',
+                                        name: sessionItem.name,
+                                        sets: sets
+                                    };
+                                    if (sessionItem.notes)
+                                        item.notes = sessionItem.notes;
+                                    section.items.push(item);
+                                }
+                            }
+                            else if (sessionItem.kind === 'superset' || sessionItem.kind === 'circuit') {
+                                const prescribedRest = sessionItem.children?.[sessionItem.children.length - 1]?.prescription?.restSeconds;
+                                const rounds = collectRoundsForSuperset(sessionItem.children || [], prescribedRest);
+                                if (rounds.length > 0) {
+                                    const item = {
+                                        kind: sessionItem.kind,
+                                        name: sessionItem.name,
+                                        rounds: rounds
+                                    };
+                                    if (sessionItem.notes)
+                                        item.notes = sessionItem.notes;
+                                    section.items.push(item);
+                                }
+                            }
+                        }
+                    }
+                    if (section.items.length > 0) {
+                        log.sections.push(section);
+                    }
+                }
+            }
+            if (log.sections.length > 0) {
+                log.exerciseIndex = buildExerciseIndex(log.sections);
+            }
+            return log;
+        };
+        const validatePerformanceV2 = (data) => {
+            const errors = [];
+            const isNum = (v) => typeof v === 'number' && !isNaN(v);
+            if (!data || typeof data !== 'object') {
+                errors.push('root: not object');
+                return errors;
+            }
+            if (data.version !== 'perf-2')
+                errors.push('version must be perf-2');
+            if (!data.workoutFile || typeof data.workoutFile !== 'string')
+                errors.push('workoutFile missing');
+            if (!data.timestamp || typeof data.timestamp !== 'string')
+                errors.push('timestamp missing');
+            if (!data.sections || !Array.isArray(data.sections))
+                errors.push('sections missing or not array');
+            else {
+                data.sections.forEach((section, sIdx) => {
+                    if (!section.type)
+                        errors.push(`section ${sIdx}: type missing`);
+                    if (!section.title)
+                        errors.push(`section ${sIdx}: title missing`);
+                    if (!section.items || !Array.isArray(section.items))
+                        errors.push(`section ${sIdx}: items missing or not array`);
+                    else {
+                        section.items.forEach((item, iIdx) => {
+                            const itemPath = `section ${sIdx} item ${iIdx}`;
+                            if (!item.kind || !['exercise', 'superset', 'circuit'].includes(item.kind)) {
+                                errors.push(`${itemPath}: invalid kind`);
+                            }
+                            if (!item.name)
+                                errors.push(`${itemPath}: name missing`);
+                            if (item.kind === 'exercise') {
+                                if (!item.sets || !Array.isArray(item.sets))
+                                    errors.push(`${itemPath}: sets missing or not array`);
+                                else {
+                                    item.sets.forEach((set, setIdx) => {
+                                        if (!isNum(set.set) || set.set < 1)
+                                            errors.push(`${itemPath} set ${setIdx}: invalid set number`);
+                                    });
+                                }
+                            }
+                            else if (item.kind === 'superset' || item.kind === 'circuit') {
+                                if (!item.rounds || !Array.isArray(item.rounds))
+                                    errors.push(`${itemPath}: rounds missing or not array`);
+                                else {
+                                    item.rounds.forEach((round, rIdx) => {
+                                        if (!isNum(round.round) || round.round < 1)
+                                            errors.push(`${itemPath} round ${rIdx}: invalid round number`);
+                                        if (!round.exercises || !Array.isArray(round.exercises) || round.exercises.length === 0) {
+                                            errors.push(`${itemPath} round ${rIdx}: exercises missing or empty`);
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+            return errors;
+        };
         deps.saveBtn.onclick = () => {
             const data = collectData();
             deps.saveLocal(filePath, data);
             deps.status('Saved locally at ' + new Date().toLocaleTimeString(), { important: true });
         };
         deps.copyBtn.onclick = () => {
-            const data = collectData();
-            const errs = validatePerformance(data);
+            const sessionJSON = deps.getCurrentSessionJSON ? deps.getCurrentSessionJSON() : null;
+            let data;
+            let errs = [];
+            let format = 'perf-1';
+            if (sessionJSON) {
+                try {
+                    data = collectNestedData(sessionJSON);
+                    if (data) {
+                        errs = validatePerformanceV2(data);
+                        format = 'perf-2';
+                        console.log('✅ Using perf-2 nested structure format');
+                    }
+                    else {
+                        console.warn('⚠️ perf-2 collection returned null, falling back to perf-1');
+                        data = collectData();
+                        errs = validatePerformance(data);
+                    }
+                }
+                catch (e) {
+                    console.error('❌ Error collecting perf-2 data, falling back to perf-1:', e);
+                    data = collectData();
+                    errs = validatePerformance(data);
+                }
+            }
+            else {
+                data = collectData();
+                errs = validatePerformance(data);
+            }
             if (errs.length) {
                 data.validationErrors = errs.slice(0);
-                console.warn('Performance validation errors:', errs);
+                console.warn(`Performance validation errors (${format}):`, errs);
             }
             const json = JSON.stringify(data, null, 2);
             let didCopy = false;
             if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(json).then(() => {
                     didCopy = true;
-                    deps.status('Copied performance JSON' + (errs.length ? ' (WITH WARNINGS)' : '') + '.', { important: true });
+                    deps.status(`Copied ${format} JSON` + (errs.length ? ' (WITH WARNINGS)' : '') + '.', { important: true });
                 }).catch(() => {
                 });
             }
@@ -895,22 +1229,48 @@ window.ExercAIse.FormBuilder = (() => {
                 deps.copyTarget.value = json;
                 deps.copyTarget.focus();
                 deps.copyTarget.select();
-                deps.status('Copy JSON shown below; select-all and copy manually.' + (errs.length ? ' (Validation warnings in console)' : ''));
+                deps.status(`Copy ${format} JSON shown below; select-all and copy manually.` + (errs.length ? ' (Validation warnings in console)' : ''));
             }
         };
         if (deps.downloadBtn)
             deps.downloadBtn.onclick = () => {
-                const data = collectData();
-                const errs = validatePerformance(data);
+                const sessionJSON = deps.getCurrentSessionJSON ? deps.getCurrentSessionJSON() : null;
+                let data;
+                let errs = [];
+                let format = 'perf-1';
+                if (sessionJSON) {
+                    try {
+                        data = collectNestedData(sessionJSON);
+                        if (data) {
+                            errs = validatePerformanceV2(data);
+                            format = 'perf-2';
+                            console.log('✅ Using perf-2 nested structure format');
+                        }
+                        else {
+                            console.warn('⚠️ perf-2 collection returned null, falling back to perf-1');
+                            data = collectData();
+                            errs = validatePerformance(data);
+                        }
+                    }
+                    catch (e) {
+                        console.error('❌ Error collecting perf-2 data, falling back to perf-1:', e);
+                        data = collectData();
+                        errs = validatePerformance(data);
+                    }
+                }
+                else {
+                    data = collectData();
+                    errs = validatePerformance(data);
+                }
                 if (errs.length) {
                     data.validationErrors = errs.slice(0);
-                    console.warn('Performance validation errors:', errs);
+                    console.warn(`Performance validation errors (${format}):`, errs);
                 }
                 const json = JSON.stringify(data, null, 2);
                 const wf = data.workoutFile || 'session';
                 const base = wf.split('/').pop().replace(/\.[^.]+$/, '') || 'session';
                 const ts = (new Date().toISOString().replace(/[:]/g, '').replace(/\..+/, ''));
-                const fileName = base + '_' + ts + '_perf1.json';
+                const fileName = base + '_' + ts + `_${format}.json`;
                 try {
                     const blob = new Blob([json], { type: 'application/json' });
                     const url = URL.createObjectURL(blob);
@@ -927,7 +1287,7 @@ window.ExercAIse.FormBuilder = (() => {
                         catch (e) {
                         }
                     }, 250);
-                    deps.status('Downloaded ' + fileName + (errs.length ? ' (WITH WARNINGS)' : ''), { important: true });
+                    deps.status(`Downloaded ${fileName}` + (errs.length ? ' (WITH WARNINGS)' : ''), { important: true });
                 }
                 catch (e) {
                     deps.copyWrapper.style.display = 'block';

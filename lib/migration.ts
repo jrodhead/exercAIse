@@ -3,7 +3,7 @@
  * Migrates existing performance logs and settings from localStorage to IndexedDB
  */
 
-import { db } from './db';
+import { db } from './db.js';
 import type { PerformanceLog } from '../types/performance.types';
 import type { PerformanceLogRecord } from '../types/db.types';
 

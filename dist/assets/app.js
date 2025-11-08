@@ -25,6 +25,7 @@
     const logsList = document.getElementById('logs-list');
     const formSection = document.getElementById('form-section');
     const exerciseFormsEl = document.getElementById('exercise-forms');
+    let currentSessionJSON = null;
     const saveBtn = document.getElementById('save-local');
     const copyBtn = document.getElementById('copy-json');
     const downloadBtn = document.getElementById('download-json');
@@ -278,6 +279,9 @@
             console.warn('FormBuilder module not loaded');
             return;
         }
+        const getCurrentSessionJSON = () => {
+            return currentSessionJSON;
+        };
         window.ExercAIse.FormBuilder.init({
             slugify,
             extractExercisesFromJSON,
@@ -291,6 +295,7 @@
             renderMarkdownBasic,
             fixExerciseAnchors,
             status,
+            getCurrentSessionJSON,
             workoutContent,
             exerciseFormsEl,
             saveBtn,
@@ -669,6 +674,12 @@
             else {
                 workoutContent.innerHTML = renderMarkdownBasic(text || '');
                 fixExerciseAnchors(workoutContent);
+            }
+            if (isJSON) {
+                currentSessionJSON = text || null;
+            }
+            else {
+                currentSessionJSON = null;
             }
             setVisibility(formSection, true);
             buildForm(path, text || '', isJSON);

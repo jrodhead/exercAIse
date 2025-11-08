@@ -19,6 +19,7 @@ export interface FormBuilderDependencies {
   renderMarkdownBasic: (md: string) => string;
   fixExerciseAnchors: (el: HTMLElement) => void;
   status: (msg: string, opts?: { important?: boolean }) => void;
+  getCurrentSessionJSON: () => string | null; // For perf-2 structure extraction
   workoutContent: HTMLElement;
   exerciseFormsEl: HTMLElement;
   saveBtn: HTMLButtonElement;

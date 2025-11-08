@@ -78,11 +78,11 @@ AI-generated comprehensive training analysis at `progress-report.html`
 ## Schemas
 - `schemas/session.schema.json`: Canonical committed workout session files in `workouts/`.
 - `schemas/exercise.schema.json`: Source of truth for exercise detail files in `exercises/`.
-- `schemas/performance.schema.json`: Export format (`perf-1`) produced by the logger UI.
+- `schemas/performed-v2.schema.json`: **Current export format (`perf-2`)** - Nested structure preserving workout organization (sections, supersets, circuits, rounds). Used by logger UI for JSON workouts.
+- `schemas/performance.schema.json`: Legacy flat format (`perf-1`) - Used only for markdown workouts. Superseded by perf-2 for all JSON workouts.
 - `schemas/db.types.ts`: IndexedDB schema for performance logs, workout history, user settings, and exercise tracking.
-- Legacy (historical only): `performed.schema.json` (older performed logs); no longer exported by the app.
 
-Deprecated schemas removed: session_plan, session_v1, session_log (superseded by unified session + perf-1 export).
+Deprecated schemas removed: session_plan, session_v1, session_log (superseded by unified session + perf-2 export).
 
 ## Data Storage
 - **IndexedDB (Primary)**: Performance logs, workout history, user settings stored in browser IndexedDB
@@ -90,7 +90,123 @@ Deprecated schemas removed: session_plan, session_v1, session_log (superseded by
   - Automatic migration from localStorage on first app load
   - Type-safe operations via `lib/storage.ts` adapter
 - **localStorage (Fallback)**: Used when IndexedDB unavailable; dual-write ensures backwards compatibility
-- **Export Format**: Performance logs exported as `perf-1` JSON (see `schemas/performance.schema.json`)
+- **Export Formats**: 
+  - **perf-2** (current): Nested structure mirroring workout sessions - sections, supersets/circuits with rounds, exercise index for fast queries. Used for all JSON workouts.
+  - **perf-1** (legacy): Flat exercise map. Used only for markdown workouts. See migration notes below.
+
+### Performance Log Format (perf-2)
+
+**What is perf-2?**
+Nested performance logs that preserve workout structure for superior fatigue analysis. Instead of flattening all exercises into a single map, perf-2 mirrors the actual session organization.
+
+**Key Features**:
+- **Sections**: Warm-up, Strength, Conditioning, Accessory/Core, Cooldown/Recovery
+- **Items**: Standalone exercises (with `sets[]`) or supersets/circuits (with `rounds[]`)
+- **Rounds**: Round-by-round tracking for supersets and circuits - see how performance changes across rounds
+- **Exercise Index**: Optional flat index for fast queries without traversing nested structure
+- **Zero User Burden**: Structure automatically extracted from session JSON
+
+**Example perf-2 Log**:
+```json
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/5-1_Chest_Triceps_Hypertrophy.json",
+  "timestamp": "2025-11-08T10:30:00Z",
+  "title": "Chest & Triceps Hypertrophy",
+  "block": 5,
+  "week": 1,
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "Main Work",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset A: Bench + Close-Grip",
+          "rounds": [
+            {
+              "round": 1,
+              "prescribedRestSeconds": 90,
+              "exercises": [
+                {
+                  "key": "flat-dumbbell-bench-press",
+                  "name": "Flat Dumbbell Bench Press",
+                  "weight": 40,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 7
+                },
+                {
+                  "key": "close-grip-dumbbell-press",
+                  "name": "Close-Grip Dumbbell Press",
+                  "weight": 30,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 7
+                }
+              ]
+            },
+            {
+              "round": 2,
+              "exercises": [
+                { "key": "flat-dumbbell-bench-press", "name": "Flat Dumbbell Bench Press", "weight": 40, "multiplier": 2, "reps": 10, "rpe": 8 },
+                { "key": "close-grip-dumbbell-press", "name": "Close-Grip Dumbbell Press", "weight": 30, "multiplier": 2, "reps": 8, "rpe": 8 }
+              ]
+            },
+            {
+              "round": 3,
+              "exercises": [
+                { "key": "flat-dumbbell-bench-press", "name": "Flat Dumbbell Bench Press", "weight": 40, "multiplier": 2, "reps": 8, "rpe": 9 },
+                { "key": "close-grip-dumbbell-press", "name": "Close-Grip Dumbbell Press", "weight": 30, "multiplier": 2, "reps": 6, "rpe": 9 }
+              ]
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Overhead Triceps Extension",
+          "sets": [
+            { "set": 1, "weight": 30, "reps": 12, "rpe": 7 },
+            { "set": 2, "weight": 30, "reps": 12, "rpe": 8 },
+            { "set": 3, "weight": 30, "reps": 10, "rpe": 9 }
+          ]
+        }
+      ]
+    }
+  ],
+  "exerciseIndex": {
+    "flat-dumbbell-bench-press": {
+      "name": "Flat Dumbbell Bench Press",
+      "sectionPath": "sections[0].items[0].rounds[*].exercises[0]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 8.0,
+      "totalVolume": 2240
+    }
+  }
+}
+```
+
+**Why perf-2?**
+- **Fatigue Analysis**: See how performance degrades across superset rounds (e.g., triceps giving out in round 3)
+- **AI Decision-Making**: Distinguish "exercise too heavy" (round 1 RPE ≥9) vs "fatigue cascade from pairing" (RPE climbs across rounds)
+- **Structure Preservation**: Maintain context of how exercises were performed (superset vs straight sets)
+- **Fast Queries**: Exercise index provides O(1) lookup for volume calculations without tree traversal
+
+**Migration Notes**:
+- **Block 5 Week 1**: 3 sessions logged in perf-1 format before perf-2 implementation
+  - Successfully migrated to perf-2 using `scripts/migrate_perf1_to_perf2.py`
+  - Original perf-1 files preserved (with `_perf1.json` suffix)
+  - Migrated files validated against perf-2 schema ✅
+  - Round-by-round fatigue patterns now visible for AI analysis
+- **Migration Script**: `python3 scripts/migrate_perf1_to_perf2.py performed/*_perf1.json`
+  - Reconstructs nested structure from session JSON
+  - Groups sets into rounds based on superset/circuit definitions
+  - Generates exerciseIndex with volume calculations
+  - Preserves all performance data (weight, reps, RPE, etc.)
+- **Blocks 1-4**: Preserved in progress reports (44 sessions) - can be migrated via script if needed
+- **Current Usage**: All new JSON workouts automatically use perf-2 format
+- **Markdown Workouts**: Continue using perf-1 format (graceful fallback)
 
 ## Conventions
 - Dumbbell weights: log as number or string. Examples: `25` (per hand implied), `"25 x2"` (explicit per hand), `"50 total"`.

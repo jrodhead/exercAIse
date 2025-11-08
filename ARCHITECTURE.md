@@ -158,48 +158,138 @@ exercAIse is a JSON-first fitness program generator with a clear separation betw
 ```
 1. AI generates session with full prescription
    {
-     "name": "Incline DB Press",
-     "prescription": {
-       "sets": 4,
-       "reps": 8,
-       "weight": "45 x2 lb",
-       "rpe": 7.5,
-       "angle": 30,  // AI selected this
-       "restSeconds": 120
-     }
+     "metadata": { "title": "Chest & Triceps", "block": 5, "week": 1 },
+     "sections": [
+       {
+         "type": "Strength",
+         "title": "Main Work",
+         "items": [
+           {
+             "kind": "superset",
+             "name": "Superset A",
+             "children": [
+               {
+                 "name": "Flat DB Bench Press",
+                 "prescription": { 
+                   "sets": 3, "reps": 8, "weight": "45 x2 lb", 
+                   "rpe": 7.5, "restSeconds": 90
+                 }
+               },
+               {
+                 "name": "Close-Grip DB Press",
+                 "prescription": {
+                   "sets": 3, "reps": 10, "weight": "30 x2 lb",
+                   "rpe": 7.5
+                 }
+               }
+             ]
+           }
+         ]
+       }
+     ]
    }
    ↓
-2. App displays in UI
-   "Incline DB Press (30°)"
-   "4 × 8 @ 45 lb per hand, RPE 7.5, rest 120s"
+2. App displays in UI with superset structure
+   "Superset A (3 rounds, 90s rest)"
+   • Flat DB Bench: 3×8 @ 45×2, RPE 7.5
+   • Close-Grip DB Press: 3×10 @ 30×2, RPE 7.5
    ↓
 3. User logs actual performance
-   Set 1: 45 lb × 2, 8 reps, RPE 7.5
-   Set 2: 45 lb × 2, 8 reps, RPE 8
-   ...
+   Round 1: Bench 45×2 × 8 @ RPE 7.5, Close-Grip 30×2 × 10 @ RPE 7
+   Round 2: Bench 45×2 × 8 @ RPE 8,   Close-Grip 30×2 × 10 @ RPE 8
+   Round 3: Bench 45×2 × 6 @ RPE 9,   Close-Grip 30×2 × 8 @ RPE 9
    ↓
-4. App exports to performed/*.json
+4. App exports to performed/*.json (perf-2 format)
    {
-     "version": "perf-1",
-     "exercises": {
-       "incline_dumbbell_bench_press": {
-         "sets": [
-           {"set": 1, "weight": 45, "multiplier": 2, 
-            "reps": 8, "rpe": 7.5, "angle": 30}
+     "version": "perf-2",
+     "workoutFile": "workouts/5-1_Chest_Triceps.json",
+     "sections": [
+       {
+         "type": "Strength",
+         "title": "Main Work",
+         "items": [
+           {
+             "kind": "superset",
+             "name": "Superset A",
+             "rounds": [
+               {
+                 "round": 1,
+                 "prescribedRestSeconds": 90,
+                 "exercises": [
+                   {"key": "flat-dumbbell-bench-press", "weight": 45, 
+                    "multiplier": 2, "reps": 8, "rpe": 7.5},
+                   {"key": "close-grip-dumbbell-press", "weight": 30,
+                    "multiplier": 2, "reps": 10, "rpe": 7}
+                 ]
+               },
+               {
+                 "round": 2,
+                 "exercises": [
+                   {"key": "flat-dumbbell-bench-press", "weight": 45,
+                    "multiplier": 2, "reps": 8, "rpe": 8},
+                   {"key": "close-grip-dumbbell-press", "weight": 30,
+                    "multiplier": 2, "reps": 10, "rpe": 8}
+                 ]
+               },
+               {
+                 "round": 3,
+                 "exercises": [
+                   {"key": "flat-dumbbell-bench-press", "weight": 45,
+                    "multiplier": 2, "reps": 6, "rpe": 9},
+                   {"key": "close-grip-dumbbell-press", "weight": 30,
+                    "multiplier": 2, "reps": 8, "rpe": 9}
+                 ]
+               }
+             ]
+           }
          ]
+       }
+     ],
+     "exerciseIndex": {
+       "flat-dumbbell-bench-press": {
+         "sectionPath": "sections[0].items[0].rounds[*].exercises[0]",
+         "totalRounds": 3,
+         "avgRPE": 8.17,
+         "totalVolume": 1980
        }
      }
    }
    ↓
-5. App provides history to AI (next generation)
-   "Recent incline_db_press_30: 4×8 @ 45×2, RPE 7.5-8"
+5. AI reviews nested performance data
+   Observes:
+   - Bench press: Round 1-2 @ RPE 7.5-8 (good)
+   - Bench press: Round 3 @ RPE 9, reps dropped to 6 (fatigue)
+   - Close-grip: RPE 7→8→9 across rounds (compounding triceps fatigue)
+   
+   Analysis:
+   - NOT "exercise too heavy" (round 1 was RPE 7.5)
+   - YES "fatigue cascade from pairing" (triceps pre-fatigued by bench)
    ↓
 6. AI decides progression
-   - Sees RPE 7.5-8 (moderate)
-   - Applies ladder: 45 → next rung is 50
-   - Reduces reps: 4×8 → 4×6 to maintain RPE ≤8
-   - Prescribes: 4×6 @ 50×2, RPE 7-8, angle 30
+   Option A (increase load):
+   - Bench: 45×2 → 50×2 (ladder snap), reduce to 3×6 @ RPE 7-8
+   - Close-grip: maintain 30×2 but 3×8 instead of 3×10
+   
+   Option B (manage fatigue):
+   - Separate exercises (bench → straight sets)
+   - Or increase rest: 90s → 120s between rounds
+   - Or antagonist pairing (bench + rows instead of bench + triceps)
 ```
+
+### Performance Log Formats
+
+**perf-2 (Current)**: Nested structure preserving workout organization
+- Used for all JSON workouts
+- Captures sections, supersets/circuits with rounds
+- Round-by-round performance tracking
+- Exercise index for fast queries
+- Enables fatigue analysis and intelligent progression
+
+**perf-1 (Legacy)**: Flat exercise map
+- Used only for markdown workouts
+- Simple map: `{ "exercise_name": { "sets": [...] } }`
+- No structure preservation
+- Limited context for AI analysis
 
 ---
 
@@ -230,10 +320,13 @@ exercAIse is a JSON-first fitness program generator with a clear separation betw
 - **Prompt Assembly**: Combines instructions + context
 
 ### Validation & Testing
-- **JSON Schema**: Validate workouts, exercises, performance
+- **JSON Schema**: Validate workouts, exercises, performance (perf-2 and perf-1)
 - **TypeScript**: Compile-time type checking
 - **Vitest**: 78 unit tests (session parser, Kai integration, IndexedDB)
-- **Playwright**: 26 E2E tests (UI, workflows, error handling)
+- **Playwright**: 140 E2E tests (UI, workflows, error handling, perf-2 structure, progress reports)
+  - 11 perf-2-specific tests (structure validation, data quality, round tracking)
+  - 23 progress-report tests (JSON rendering, metadata, integration)
+  - 106 general UI tests (navigation, history, forms, etc.)
 - **Python Scripts**: Link validation, schema validation, session linting
 - **CI/CD**: GitHub Actions runs all tests on push/PR
 

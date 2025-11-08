@@ -29,6 +29,9 @@
   const logsList = document.getElementById('logs-list')!;
   const formSection = document.getElementById('form-section')!;
   const exerciseFormsEl = document.getElementById('exercise-forms')!;
+  
+  // Store the current session JSON for perf-2 structure extraction
+  let currentSessionJSON: string | null = null;
   const saveBtn = document.getElementById('save-local') as HTMLButtonElement;
   const copyBtn = document.getElementById('copy-json') as HTMLButtonElement;
   const downloadBtn = document.getElementById('download-json') as HTMLButtonElement;
@@ -304,6 +307,11 @@
       return;
     }
     
+    // Function to get current session JSON for perf-2 structure extraction
+    const getCurrentSessionJSON = (): string | null => {
+      return currentSessionJSON;
+    };
+    
     // Pass dependencies to FormBuilder module
     window.ExercAIse.FormBuilder.init({
       slugify,
@@ -318,6 +326,7 @@
       renderMarkdownBasic,
       fixExerciseAnchors,
       status,
+      getCurrentSessionJSON,
       // DOM elements
       workoutContent,
       exerciseFormsEl,
@@ -650,6 +659,14 @@
         workoutContent.innerHTML = renderMarkdownBasic(text || '');
         fixExerciseAnchors(workoutContent);
       }
+      
+      // Store session JSON for perf-2 structure extraction
+      if (isJSON) {
+        currentSessionJSON = text || null;
+      } else {
+        currentSessionJSON = null;
+      }
+      
       setVisibility(formSection, true);
       buildForm(path, text || '', isJSON);
       // Meta

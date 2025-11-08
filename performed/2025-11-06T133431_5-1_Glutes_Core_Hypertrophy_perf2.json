@@ -1,0 +1,281 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/5-1_Glutes_Core_Hypertrophy.json",
+  "timestamp": "2025-11-06T13:34:14.368Z",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "Primary Glute Work - Superset A",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset A",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "dumbbell-hip-thrust",
+                  "name": "Dumbbell Hip Thrust",
+                  "weight": 60,
+                  "reps": 12,
+                  "rpe": 7
+                },
+                {
+                  "key": "goblet-squat",
+                  "name": "Goblet Squat",
+                  "weight": 60,
+                  "reps": 10,
+                  "rpe": 7.5
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "dumbbell-hip-thrust",
+                  "name": "Dumbbell Hip Thrust",
+                  "weight": 60,
+                  "reps": 12,
+                  "rpe": 7
+                },
+                {
+                  "key": "goblet-squat",
+                  "name": "Goblet Squat",
+                  "weight": 60,
+                  "reps": 10,
+                  "rpe": 7.5
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 3,
+              "exercises": [
+                {
+                  "key": "dumbbell-hip-thrust",
+                  "name": "Dumbbell Hip Thrust",
+                  "weight": 60,
+                  "reps": 12,
+                  "rpe": 7
+                },
+                {
+                  "key": "goblet-squat",
+                  "name": "Goblet Squat",
+                  "weight": 60,
+                  "reps": 8,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 90
+            }
+          ],
+          "notes": "Perform both exercises back-to-back, then rest 90s before next round"
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Secondary Glute & Hamstring - Superset B",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset B",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "bulgarian-split-squat",
+                  "name": "Bulgarian Split Squat",
+                  "weight": 40,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 7
+                },
+                {
+                  "key": "dumbbell-rdl",
+                  "name": "Dumbbell RDL",
+                  "weight": 60,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 8
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "bulgarian-split-squat",
+                  "name": "Bulgarian Split Squat",
+                  "weight": 40,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 8
+                },
+                {
+                  "key": "dumbbell-rdl",
+                  "name": "Dumbbell RDL",
+                  "weight": 60,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 8
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 3,
+              "exercises": [
+                {
+                  "key": "bulgarian-split-squat",
+                  "name": "Bulgarian Split Squat",
+                  "weight": 40,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 8
+                },
+                {
+                  "key": "dumbbell-rdl",
+                  "name": "Dumbbell RDL",
+                  "weight": 60,
+                  "multiplier": 2,
+                  "reps": 8,
+                  "rpe": 8
+                }
+              ],
+              "prescribedRestSeconds": 90
+            }
+          ],
+          "notes": "Perform both exercises back-to-back, then rest 90s before next round"
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Calves & Core - Superset C",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset C",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "standing-calf-raise",
+                  "name": "Standing Calf Raise",
+                  "weight": 30,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 7
+                },
+                {
+                  "key": "pallof-press-hold",
+                  "name": "Pallof Press Hold",
+                  "reps": 6,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 60
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "standing-calf-raise",
+                  "name": "Standing Calf Raise",
+                  "weight": 30,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 7
+                },
+                {
+                  "key": "pallof-press-hold",
+                  "name": "Pallof Press Hold",
+                  "reps": 6,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 60
+            },
+            {
+              "round": 3,
+              "exercises": [
+                {
+                  "key": "standing-calf-raise",
+                  "name": "Standing Calf Raise",
+                  "weight": 30,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 60
+            }
+          ],
+          "notes": "Perform both exercises back-to-back, then rest 60s before next round"
+        }
+      ]
+    }
+  ],
+  "date": "2025-11-06",
+  "block": 5,
+  "week": 1,
+  "title": "Glutes, Calves & Core Hypertrophy",
+  "notes": "Block 5 Week 1: Glute, calf, and core-focused session with 10-15 rep range (12-15 for calves), RPE 7-8. Supersets and core circuit for volume and metabolic stress.",
+  "exerciseIndex": {
+    "dumbbell-hip-thrust": {
+      "name": "Dumbbell Hip Thrust",
+      "sectionPath": "sections[0].items[0].rounds[*].exercises[0]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 7.0,
+      "totalVolume": 2160
+    },
+    "goblet-squat": {
+      "name": "Goblet Squat",
+      "sectionPath": "sections[0].items[0].rounds[*].exercises[1]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 7.3,
+      "totalVolume": 1680
+    },
+    "bulgarian-split-squat": {
+      "name": "Bulgarian Split Squat",
+      "sectionPath": "sections[1].items[0].rounds[*].exercises[0]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 7.7,
+      "totalVolume": 2560
+    },
+    "dumbbell-rdl": {
+      "name": "Dumbbell RDL",
+      "sectionPath": "sections[1].items[0].rounds[*].exercises[1]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 8.0,
+      "totalVolume": 3360
+    },
+    "standing-calf-raise": {
+      "name": "Standing Calf Raise",
+      "sectionPath": "sections[2].items[0].rounds[*].exercises[0]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 7.0,
+      "totalVolume": 2160
+    },
+    "pallof-press-hold": {
+      "name": "Pallof Press Hold",
+      "sectionPath": "sections[2].items[0].rounds[*].exercises[1]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 4.7,
+      "totalVolume": 0
+    }
+  }
+}

@@ -1005,6 +1005,370 @@ interface CollectedBlocks {
       return errors;
     };
 
+    // ========================================================================
+    // perf-2: Nested Structure Collection
+    // ========================================================================
+
+    /**
+     * Convert exercise name to slug for exercise key mapping
+     * Reuses the slugify function from dependencies
+     */
+    const exerciseKeyFromName = (name: string): string => {
+      return deps.slugify!(name);
+    };
+
+    /**
+     * Get the number of sets/rows logged for a specific exercise
+     */
+    const getNumSetsForExercise = (exKey: string) => {
+      const scope = deps.workoutContent || document;
+      const card = scope.querySelector(`[data-exkey="${exKey}"]`) as HTMLElement;
+      if (!card) return 0;
+      const rows = card.getElementsByClassName('set-row');
+      return rows.length;
+    };
+
+    /**
+     * Get performance data for one set of an exercise
+     * Returns null if no data entered for that set
+     */
+    const getSetDataForExercise = (exKey: string, setNumber: number) => {
+      const scope = deps.workoutContent || document;
+      const card = scope.querySelector(`[data-exkey="${exKey}"]`) as HTMLElement;
+      if (!card) return null;
+      
+      const rows = card.getElementsByClassName('set-row');
+      if (setNumber < 1 || setNumber > rows.length) return null;
+      
+      const rowEl = rows[setNumber - 1]!;
+      const inputs = rowEl.getElementsByTagName('input');
+      const obj: Record<string, any> = {};
+      
+      for (let k = 0; k < inputs.length; k++) {
+        const inEl = inputs[k]!;
+        const name = inEl.getAttribute('data-name');
+        const val = inEl.value;
+        if (val === '' || !name) continue;
+        
+        if (name === 'distanceMeters' || name === 'distanceMiles') {
+          const numDist = Number(val);
+          if (!isNaN(numDist)) obj.distanceMiles = numDist;
+          continue;
+        }
+        
+        if (name === 'timeSeconds' || name === 'holdSeconds') {
+          const sec = deps.parseHMSToSeconds!(val);
+          if (sec != null) obj[name] = sec;
+          continue;
+        }
+        
+        const num = Number(val);
+        if (!isNaN(num)) obj[name] = num;
+      }
+      
+      // Return null if no data was entered
+      const hasAny = (obj.weight != null || obj.multiplier != null || obj.reps != null || 
+                     obj.rpe != null || obj.timeSeconds != null || obj.holdSeconds != null || 
+                     obj.distanceMiles != null);
+      if (!hasAny) return null;
+      
+      return obj;
+    };
+
+    /**
+     * Collect sets for a standalone exercise
+     */
+    const collectSetsForExercise = (exKey: string) => {
+      const scope = deps.workoutContent || document;
+      const card = scope.querySelector(`[data-exkey="${exKey}"]`) as HTMLElement;
+      if (!card) return [];
+      
+      const rows = card.getElementsByClassName('set-row');
+      const setsArr: any[] = [];
+      
+      for (let r = 0; r < rows.length; r++) {
+        const rowEl = rows[r]!;
+        const inputs = rowEl.getElementsByTagName('input');
+        const obj: Record<string, any> = { set: (r + 1) };
+        
+        for (let k = 0; k < inputs.length; k++) {
+          const inEl = inputs[k]!;
+          const name = inEl.getAttribute('data-name');
+          const val = inEl.value;
+          if (val === '' || !name) continue;
+          
+          if (name === 'distanceMeters' || name === 'distanceMiles') {
+            const numDist = Number(val);
+            if (!isNaN(numDist)) obj.distanceMiles = numDist;
+            continue;
+          }
+          
+          if (name === 'timeSeconds' || name === 'holdSeconds') {
+            const sec = deps.parseHMSToSeconds!(val);
+            if (sec != null) obj[name] = sec;
+            continue;
+          }
+          
+          const num = Number(val);
+          if (!isNaN(num)) obj[name] = num;
+        }
+        
+        const hasAny = (obj.weight != null || obj.multiplier != null || obj.reps != null || 
+                       obj.rpe != null || obj.timeSeconds != null || obj.holdSeconds != null || 
+                       obj.distanceMiles != null);
+        if (hasAny) {
+          setsArr.push(obj);
+        }
+      }
+      
+      return setsArr;
+    };
+
+    /**
+     * Group sets into rounds for supersets and circuits
+     * Each round contains performance data for all exercises in the superset/circuit
+     */
+    const collectRoundsForSuperset = (children: any[], prescribedRest?: number) => {
+      const exerciseKeys = children.map((child: any) => exerciseKeyFromName(child.name));
+      const numSets = Math.max(...exerciseKeys.map(key => getNumSetsForExercise(key)), 0);
+      const rounds: any[] = [];
+      
+      for (let r = 1; r <= numSets; r++) {
+        const exercises: any[] = [];
+        
+        for (const child of children) {
+          const key = exerciseKeyFromName(child.name);
+          const setData = getSetDataForExercise(key, r);
+          
+          if (setData) {
+            exercises.push({
+              key: key,
+              name: child.name,
+              ...setData
+            });
+          }
+        }
+        
+        if (exercises.length > 0) {
+          const round: any = {
+            round: r,
+            exercises: exercises
+          };
+          
+          if (prescribedRest != null) {
+            round.prescribedRestSeconds = prescribedRest;
+          }
+          
+          rounds.push(round);
+        }
+      }
+      
+      return rounds;
+    };
+
+    /**
+     * Build exercise index for fast queries
+     * Calculates volume, average RPE, and provides JSONPath to location
+     */
+    const buildExerciseIndex = (sections: any[]) => {
+      const index: Record<string, any> = {};
+      
+      sections.forEach((section, sIdx) => {
+        section.items.forEach((item: any, iIdx: number) => {
+          if (item.kind === 'exercise' && item.sets && item.sets.length > 0) {
+            const key = exerciseKeyFromName(item.name);
+            const totalVolume = item.sets.reduce((sum: number, set: any) => {
+              const weight = (set.weight || 0) * (set.multiplier || 1);
+              return sum + (weight * (set.reps || 0));
+            }, 0);
+            const avgRPE = item.sets.reduce((sum: number, set: any) => sum + (set.rpe || 0), 0) / item.sets.length;
+            
+            index[key] = {
+              name: item.name,
+              sectionPath: `sections[${sIdx}].items[${iIdx}].sets[*]`,
+              totalSets: item.sets.length,
+              totalRounds: 0,
+              avgRPE: avgRPE,
+              totalVolume: totalVolume
+            };
+          } else if ((item.kind === 'superset' || item.kind === 'circuit') && item.rounds && item.rounds.length > 0) {
+            item.rounds[0]?.exercises.forEach((ex: any, exIdx: number) => {
+              const totalVolume = item.rounds.reduce((sum: number, round: any) => {
+                const exercise = round.exercises[exIdx];
+                if (!exercise) return sum;
+                const weight = (exercise.weight || 0) * (exercise.multiplier || 1);
+                return sum + (weight * (exercise.reps || 0));
+              }, 0);
+              const avgRPE = item.rounds.reduce((sum: number, round: any) => {
+                return sum + (round.exercises[exIdx]?.rpe || 0);
+              }, 0) / item.rounds.length;
+              
+              index[ex.key] = {
+                name: ex.name,
+                sectionPath: `sections[${sIdx}].items[${iIdx}].rounds[*].exercises[${exIdx}]`,
+                totalSets: item.rounds.length,
+                totalRounds: item.rounds.length,
+                avgRPE: avgRPE,
+                totalVolume: totalVolume
+              };
+            });
+          }
+        });
+      });
+      
+      return index;
+    };
+
+    /**
+     * Collect nested performance data (perf-2 format)
+     * Mirrors session structure with sections, items, and rounds
+     * TODO: Wire this up to button handlers for perf-2 migration
+     */
+    // @ts-ignore - will be used for perf-2 migration
+    const collectNestedData = (sessionJSON: string) => {
+      // Parse session JSON to get structure
+      let sessionData: any = null;
+      try {
+        sessionData = JSON.parse(sessionJSON);
+      } catch (e) {
+        console.error('Failed to parse session JSON:', e);
+        return null;
+      }
+      
+      // Normalize workoutFile
+      let wf = String(filePath || '');
+      wf = wf.replace(/^(?:\.\.\/)+/, '').replace(/^\.\//, '');
+      const mWf = wf.match(/workouts\/.*$/);
+      if (mWf) wf = mWf[0]!;
+      
+      // Initialize perf-2 log
+      const log: any = {
+        version: 'perf-2',
+        workoutFile: wf,
+        timestamp: new Date().toISOString(),
+        sections: []
+      };
+      
+      // Copy metadata from session
+      if (sessionData.date) log.date = sessionData.date;
+      if (sessionData.block != null) log.block = sessionData.block;
+      if (sessionData.week != null) log.week = sessionData.week;
+      if (sessionData.title) log.title = sessionData.title;
+      
+      // Traverse session sections and build nested structure
+      if (sessionData.sections && Array.isArray(sessionData.sections)) {
+        for (const sessionSection of sessionData.sections) {
+          const section: any = {
+            type: sessionSection.type,
+            title: sessionSection.title,
+            items: []
+          };
+          
+          if (sessionSection.notes) section.notes = sessionSection.notes;
+          
+          // Process items in this section
+          if (sessionSection.items && Array.isArray(sessionSection.items)) {
+            for (const sessionItem of sessionSection.items) {
+              if (sessionItem.kind === 'exercise') {
+                // Standalone exercise: collect sets
+                const exKey = exerciseKeyFromName(sessionItem.name);
+                const sets = collectSetsForExercise(exKey);
+                
+                if (sets.length > 0) {
+                  const item: any = {
+                    kind: 'exercise',
+                    name: sessionItem.name,
+                    sets: sets
+                  };
+                  if (sessionItem.notes) item.notes = sessionItem.notes;
+                  section.items.push(item);
+                }
+              } else if (sessionItem.kind === 'superset' || sessionItem.kind === 'circuit') {
+                // Superset/circuit: group sets into rounds
+                const prescribedRest = sessionItem.children?.[sessionItem.children.length - 1]?.prescription?.restSeconds;
+                const rounds = collectRoundsForSuperset(sessionItem.children || [], prescribedRest);
+                
+                if (rounds.length > 0) {
+                  const item: any = {
+                    kind: sessionItem.kind,
+                    name: sessionItem.name,
+                    rounds: rounds
+                  };
+                  if (sessionItem.notes) item.notes = sessionItem.notes;
+                  section.items.push(item);
+                }
+              }
+            }
+          }
+          
+          // Only include sections with items that have data
+          if (section.items.length > 0) {
+            log.sections.push(section);
+          }
+        }
+      }
+      
+      // Build exercise index for fast queries
+      if (log.sections.length > 0) {
+        log.exerciseIndex = buildExerciseIndex(log.sections);
+      }
+      
+      return log;
+    };
+
+    /**
+     * Validate perf-2 performance log
+     * TODO: Wire this up for perf-2 validation
+     */
+    // @ts-ignore - will be used for perf-2 validation
+    const validatePerformanceV2 = (data: any) => {
+      const errors: string[] = [];
+      const isNum = (v: any): boolean => typeof v === 'number' && !isNaN(v);
+      
+      if (!data || typeof data !== 'object') { errors.push('root: not object'); return errors; }
+      if (data.version !== 'perf-2') errors.push('version must be perf-2');
+      if (!data.workoutFile || typeof data.workoutFile !== 'string') errors.push('workoutFile missing');
+      if (!data.timestamp || typeof data.timestamp !== 'string') errors.push('timestamp missing');
+      if (!data.sections || !Array.isArray(data.sections)) errors.push('sections missing or not array');
+      else {
+        data.sections.forEach((section: any, sIdx: number) => {
+          if (!section.type) errors.push(`section ${sIdx}: type missing`);
+          if (!section.title) errors.push(`section ${sIdx}: title missing`);
+          if (!section.items || !Array.isArray(section.items)) errors.push(`section ${sIdx}: items missing or not array`);
+          else {
+            section.items.forEach((item: any, iIdx: number) => {
+              const itemPath = `section ${sIdx} item ${iIdx}`;
+              if (!item.kind || !['exercise', 'superset', 'circuit'].includes(item.kind)) {
+                errors.push(`${itemPath}: invalid kind`);
+              }
+              if (!item.name) errors.push(`${itemPath}: name missing`);
+              
+              if (item.kind === 'exercise') {
+                if (!item.sets || !Array.isArray(item.sets)) errors.push(`${itemPath}: sets missing or not array`);
+                else {
+                  item.sets.forEach((set: any, setIdx: number) => {
+                    if (!isNum(set.set) || set.set < 1) errors.push(`${itemPath} set ${setIdx}: invalid set number`);
+                  });
+                }
+              } else if (item.kind === 'superset' || item.kind === 'circuit') {
+                if (!item.rounds || !Array.isArray(item.rounds)) errors.push(`${itemPath}: rounds missing or not array`);
+                else {
+                  item.rounds.forEach((round: any, rIdx: number) => {
+                    if (!isNum(round.round) || round.round < 1) errors.push(`${itemPath} round ${rIdx}: invalid round number`);
+                    if (!round.exercises || !Array.isArray(round.exercises) || round.exercises.length === 0) {
+                      errors.push(`${itemPath} round ${rIdx}: exercises missing or empty`);
+                    }
+                  });
+                }
+              }
+            });
+          }
+        });
+      }
+      
+      return errors;
+    };
+
     // Wire up action buttons
     deps.saveBtn!.onclick = () => {
       const data = collectData();
@@ -1013,12 +1377,41 @@ interface CollectedBlocks {
     };
 
     deps.copyBtn!.onclick = () => {
-      const data = collectData();
-      const errs = validatePerformance(data);
+      // Try perf-2 format if session JSON is available
+      const sessionJSON = deps.getCurrentSessionJSON ? deps.getCurrentSessionJSON() : null;
+      let data: any;
+      let errs: string[] = [];
+      let format: string = 'perf-1';
+      
+      if (sessionJSON) {
+        // Use perf-2 nested structure format
+        try {
+          data = collectNestedData(sessionJSON);
+          if (data) {
+            errs = validatePerformanceV2(data);
+            format = 'perf-2';
+            console.log('✅ Using perf-2 nested structure format');
+          } else {
+            // Fallback to perf-1 if perf-2 fails
+            console.warn('⚠️ perf-2 collection returned null, falling back to perf-1');
+            data = collectData();
+            errs = validatePerformance(data);
+          }
+        } catch (e) {
+          console.error('❌ Error collecting perf-2 data, falling back to perf-1:', e);
+          data = collectData();
+          errs = validatePerformance(data);
+        }
+      } else {
+        // No session JSON available, use perf-1 format
+        data = collectData();
+        errs = validatePerformance(data);
+      }
+      
       if (errs.length) {
         // Attach errors for debugging (not schema-defined) but do not block copy
         (data as any).validationErrors = errs.slice(0);
-        console.warn('Performance validation errors:', errs);
+        console.warn(`Performance validation errors (${format}):`, errs);
       }
       
       const json = JSON.stringify(data, null, 2);
@@ -1027,7 +1420,7 @@ interface CollectedBlocks {
       if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(json).then(() => { 
           didCopy = true; 
-          deps.status!('Copied performance JSON' + (errs.length ? ' (WITH WARNINGS)' : '') + '.', { important: true }); 
+          deps.status!(`Copied ${format} JSON` + (errs.length ? ' (WITH WARNINGS)' : '') + '.', { important: true }); 
         }).catch(() => {
           // Ignore
         });
@@ -1038,16 +1431,43 @@ interface CollectedBlocks {
         deps.copyTarget!.value = json;
         deps.copyTarget!.focus();
         deps.copyTarget!.select();
-        deps.status!('Copy JSON shown below; select-all and copy manually.' + (errs.length ? ' (Validation warnings in console)' : ''));
+        deps.status!(`Copy ${format} JSON shown below; select-all and copy manually.` + (errs.length ? ' (Validation warnings in console)' : ''));
       }
     };
 
     if (deps.downloadBtn) deps.downloadBtn.onclick = () => {
-      const data = collectData();
-      const errs = validatePerformance(data);
+      // Try perf-2 format if session JSON is available
+      const sessionJSON = deps.getCurrentSessionJSON ? deps.getCurrentSessionJSON() : null;
+      let data: any;
+      let errs: string[] = [];
+      let format: string = 'perf-1';
+      
+      if (sessionJSON) {
+        // Use perf-2 nested structure format
+        try {
+          data = collectNestedData(sessionJSON);
+          if (data) {
+            errs = validatePerformanceV2(data);
+            format = 'perf-2';
+            console.log('✅ Using perf-2 nested structure format');
+          } else {
+            console.warn('⚠️ perf-2 collection returned null, falling back to perf-1');
+            data = collectData();
+            errs = validatePerformance(data);
+          }
+        } catch (e) {
+          console.error('❌ Error collecting perf-2 data, falling back to perf-1:', e);
+          data = collectData();
+          errs = validatePerformance(data);
+        }
+      } else {
+        data = collectData();
+        errs = validatePerformance(data);
+      }
+      
       if (errs.length) {
         (data as any).validationErrors = errs.slice(0);
-        console.warn('Performance validation errors:', errs);
+        console.warn(`Performance validation errors (${format}):`, errs);
       }
       
       const json = JSON.stringify(data, null, 2);
@@ -1055,7 +1475,7 @@ interface CollectedBlocks {
       // Derive a safe base name (strip folders, extension)
       const base = wf.split('/').pop()!.replace(/\.[^.]+$/, '') || 'session';
       const ts = (new Date().toISOString().replace(/[:]/g, '').replace(/\..+/, ''));
-      const fileName = base + '_' + ts + '_perf1.json';
+      const fileName = base + '_' + ts + `_${format}.json`;
       
       try {
         const blob = new Blob([json], { type: 'application/json' });
@@ -1068,7 +1488,7 @@ interface CollectedBlocks {
         setTimeout(() => { try { document.body.removeChild(a); URL.revokeObjectURL(url); } catch (e) {
           // Ignore
         } }, 250);
-        deps.status!('Downloaded ' + fileName + (errs.length ? ' (WITH WARNINGS)' : ''), { important: true });
+        deps.status!(`Downloaded ${fileName}` + (errs.length ? ' (WITH WARNINGS)' : ''), { important: true });
       } catch (e) {
         // Fallback: reveal JSON for manual save
         deps.copyWrapper!.style.display = 'block';

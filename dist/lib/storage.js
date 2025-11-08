@@ -1,5 +1,5 @@
-import { db } from './db';
-import { autoMigrate, getMigrationStatus } from './migration';
+import { db } from './db.js';
+import { autoMigrate, getMigrationStatus } from './migration.js';
 export class StorageAdapter {
     constructor() {
         this.backend = 'localstorage';

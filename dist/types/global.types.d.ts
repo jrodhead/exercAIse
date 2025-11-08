@@ -19,6 +19,7 @@ export interface FormBuilderDependencies {
     status: (msg: string, opts?: {
         important?: boolean;
     }) => void;
+    getCurrentSessionJSON: () => string | null;
     workoutContent: HTMLElement;
     exerciseFormsEl: HTMLElement;
     saveBtn: HTMLButtonElement;

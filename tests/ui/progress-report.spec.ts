@@ -66,11 +66,11 @@ test.describe('Progress Report Page', () => {
         status: 200,
         contentType: 'application/json',
         body: JSON.stringify({
-          version: '1.0',
-          description: 'AI-generated training progress reports',
+          version: '2.0',
+          description: 'AI-generated training progress reports (JSON format)',
           reports: [
             {
-              filename: '2025-11-03_blocks-4-4.html',
+              filename: '2025-11-03_blocks-4-4.json',
               startDate: '2025-10-06',
               endDate: '2025-11-03',
               blockRange: '4-4',
@@ -84,31 +84,36 @@ test.describe('Progress Report Page', () => {
       });
     });
     
-    // Mock the actual report HTML
-    await page.route('**/reports/2025-11-03_blocks-4-4.html', route => {
+    // Mock the actual report JSON
+    await page.route('**/reports/2025-11-03_blocks-4-4.json', route => {
       route.fulfill({
         status: 200,
-        contentType: 'text/html',
-        body: `
-          <!DOCTYPE html>
-          <html>
-          <head><title>Test Report</title></head>
-          <body>
-            <h1>Training Progress Report</h1>
-            <p>Block 4 Test Report</p>
-          </body>
-          </html>
-        `
+        contentType: 'application/json',
+        body: JSON.stringify({
+          version: '1.0',
+          metadata: {
+            title: 'Training Progress Report - Block 4',
+            period: { startDate: '2025-10-06', endDate: '2025-11-03', blockRange: '4-4' },
+            generatedDate: '2025-11-03'
+          },
+          summary: { grade: 'A', highlights: [] },
+          sections: [
+            {
+              type: 'text',
+              title: 'Block 4 Report',
+              content: [{ type: 'paragraph', text: 'Test content for Block 4' }]
+            }
+          ]
+        })
       });
     });
     
     await page.goto('/progress-report.html');
     await page.waitForTimeout(500);
     
-    // Should load and display the report
+    // Should show the report content
     const reportContent = page.locator('#report-content');
-    await expect(reportContent).toContainText('Training Progress Report');
-    await expect(reportContent).toContainText('Block 4 Test Report');
+    await expect(reportContent).toContainText('Block 4');
   });
 
   test('time range selector is present and functional', async ({ page }) => {
@@ -196,17 +201,17 @@ test.describe('Progress Report Page', () => {
   test('metadata extraction from filename works correctly', async ({ page }) => {
     const testCases = [
       {
-        filename: '2025-11-03_blocks-4-4.html',
+        filename: '2025-11-03_blocks-4-4.json',
         expectedDate: '11/3/2025',
         expectedBlocks: '4-4'
       },
       {
-        filename: '2025-12-01_blocks-5-5.html',
+        filename: '2025-12-01_blocks-5-5.json',
         expectedDate: '12/1/2025',
         expectedBlocks: '5-5'
       },
       {
-        filename: '2025-10-06_blocks-3-4.html',
+        filename: '2025-10-06_blocks-3-4.json',
         expectedDate: '10/6/2025',
         expectedBlocks: '3-4'
       }
@@ -219,7 +224,7 @@ test.describe('Progress Report Page', () => {
           status: 200,
           contentType: 'application/json',
           body: JSON.stringify({
-            version: '1.0',
+            version: '2.0',
             reports: [
               {
                 filename: testCase.filename,
@@ -232,12 +237,26 @@ test.describe('Progress Report Page', () => {
         });
       });
       
-      // Mock the report HTML
+      // Mock the report JSON
       await page.route(`**/reports/${testCase.filename}`, route => {
         route.fulfill({
           status: 200,
-          contentType: 'text/html',
-          body: '<html><body><h1>Test</h1></body></html>'
+          contentType: 'application/json',
+          body: JSON.stringify({
+            version: '1.0',
+            metadata: {
+              title: `Test Report ${testCase.expectedBlocks}`,
+              period: { blockRange: testCase.expectedBlocks }
+            },
+            summary: { grade: 'A' },
+            sections: [
+              {
+                type: 'text',
+                title: `Report for ${testCase.expectedBlocks}`,
+                content: [{ type: 'paragraph', text: `Content for blocks ${testCase.expectedBlocks}` }]
+              }
+            ]
+          })
         });
       });
       
@@ -246,7 +265,7 @@ test.describe('Progress Report Page', () => {
       
       // Verify the page loaded the report
       const reportContent = page.locator('#report-content');
-      await expect(reportContent).toContainText('Test');
+      await expect(reportContent).toContainText(testCase.expectedBlocks);
     }
   });
 
@@ -322,10 +341,10 @@ test.describe('Progress Report Page', () => {
         status: 200,
         contentType: 'application/json',
         body: JSON.stringify({
-          version: '1.0',
+          version: '2.0',
           reports: [
             {
-              filename: 'missing-report.html',
+              filename: 'missing-report.json',
               startDate: '2025-10-06',
               endDate: '2025-11-03'
             }
@@ -335,7 +354,7 @@ test.describe('Progress Report Page', () => {
     });
     
     // Return 404 for the report file
-    await page.route('**/reports/missing-report.html', route => {
+    await page.route('**/reports/missing-report.json', route => {
       route.fulfill({ 
         status: 404,
         body: 'Not Found'
@@ -396,10 +415,11 @@ test.describe('Progress Report Integration', () => {
       const reportPath = path.join(process.cwd(), 'reports', report.filename);
       expect(fs.existsSync(reportPath)).toBe(true);
       
-      // Verify it's valid HTML
+      // Verify it's valid JSON
       const reportContent = fs.readFileSync(reportPath, 'utf-8');
-      expect(reportContent).toContain('<!DOCTYPE html>');
-      expect(reportContent).toContain('</html>');
+      const reportData = JSON.parse(reportContent); // This will throw if not valid JSON
+      expect(reportData).toHaveProperty('version');
+      expect(reportData).toHaveProperty('metadata');
     }
   });
 
@@ -408,7 +428,7 @@ test.describe('Progress Report Integration', () => {
     const indexContent = fs.readFileSync(indexPath, 'utf-8');
     const index = JSON.parse(indexContent);
     
-    const filenamePattern = /^\d{4}-\d{2}-\d{2}_blocks-\d+-\d+\.html$/;
+    const filenamePattern = /^\d{4}-\d{2}-\d{2}_blocks-\d+-\d+\.json$/;
     
     for (const report of index.reports) {
       expect(report.filename).toMatch(filenamePattern);
@@ -475,37 +495,43 @@ test.describe('Progress Report AI Workflow', () => {
 
 test.describe('Progress Report Display', () => {
   
-  test('displays report HTML without modification', async ({ page }) => {
-    const testReportHTML = `
-      <!DOCTYPE html>
-      <html>
-      <head><title>Test Report</title></head>
-      <body>
-        <h1>Test Progress Report</h1>
-        <p class="custom-class">This is a test paragraph</p>
-        <table>
-          <tr><td>Test Data</td></tr>
-        </table>
-      </body>
-      </html>
-    `;
+  test('displays report JSON correctly', async ({ page }) => {
+    const testReportJSON = {
+      version: '1.0',
+      metadata: {
+        title: 'Test Progress Report',
+        period: { startDate: '2025-10-06', endDate: '2025-11-03' },
+        generatedDate: '2025-11-03'
+      },
+      summary: {
+        grade: 'A',
+        highlights: ['Test highlight 1', 'Test highlight 2']
+      },
+      sections: [
+        {
+          type: 'text',
+          title: 'Test Section',
+          content: [{ type: 'paragraph', text: 'This is a test paragraph' }]
+        }
+      ]
+    };
     
     await page.route('**/reports/index.json', route => {
       route.fulfill({
         status: 200,
         contentType: 'application/json',
         body: JSON.stringify({
-          version: '1.0',
-          reports: [{ filename: 'test.html' }]
+          version: '2.0',
+          reports: [{ filename: 'test.json' }]
         })
       });
     });
     
-    await page.route('**/reports/test.html', route => {
+    await page.route('**/reports/test.json', route => {
       route.fulfill({
         status: 200,
-        contentType: 'text/html',
-        body: testReportHTML
+        contentType: 'application/json',
+        body: JSON.stringify(testReportJSON)
       });
     });
     
@@ -515,9 +541,5 @@ test.describe('Progress Report Display', () => {
     const reportContent = page.locator('#report-content');
     await expect(reportContent).toContainText('Test Progress Report');
     await expect(reportContent).toContainText('This is a test paragraph');
-    
-    // Verify the custom class is preserved
-    const customElement = reportContent.locator('.custom-class');
-    await expect(customElement).toBeVisible();
   });
 });

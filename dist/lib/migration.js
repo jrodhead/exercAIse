@@ -1,4 +1,4 @@
-import { db } from './db';
+import { db } from './db.js';
 const MIGRATION_KEY = 'indexeddb_migration_status';
 function extractPerformanceLogsFromLocalStorage() {
     const logs = [];

@@ -3,8 +3,8 @@
  * Unified interface for data persistence with IndexedDB (primary) and localStorage (fallback)
  */
 
-import { db } from './db';
-import { autoMigrate, getMigrationStatus } from './migration';
+import { db } from './db.js';
+import { autoMigrate, getMigrationStatus } from './migration.js';
 import type { PerformanceLog } from '../types/performance.types';
 import type { PerformanceLogRecord, QueryOptions } from '../types/db.types';
 

@@ -80,16 +80,35 @@ test('copy JSON reflects first-set modifications only', async ({ page }) => {
   let data: any;
   expect(() => { data = JSON.parse(copied); }).not.toThrow();
 
-  // Basic top-level structure
+  // Basic top-level structure (perf-2 format)
   expect(typeof data).toBe('object');
-  expect(data).toHaveProperty('exercises');
-  expect(typeof data.exercises).toBe('object');
+  expect(data).toHaveProperty('version');
+  expect(data.version).toBe('perf-2');
+  expect(data).toHaveProperty('sections');
+  expect(Array.isArray(data.sections)).toBe(true);
 
-  // Helper: locate exercise entry by matching name (values have shape { name, sets: [] })
+  // Helper: locate exercise in perf-2 nested structure
   function findExerciseByName(target: string) {
-    for (const key of Object.keys(data.exercises)) {
-      const ex = data.exercises[key];
-      if (ex && ex.name === target) return ex;
+    for (const section of data.sections) {
+      for (const item of section.items) {
+        if (item.kind === 'exercise' && item.name === target) {
+          return item;
+        }
+        // Check in supersets/circuits
+        if ((item.kind === 'superset' || item.kind === 'circuit') && item.rounds) {
+          for (const round of item.rounds) {
+            for (const ex of round.exercises) {
+              if (ex.name === target) {
+                // For exercises in rounds, we need to check the first round
+                return { name: target, sets: item.rounds.map((r: any) => {
+                  const found = r.exercises.find((e: any) => e.name === target);
+                  return found || {};
+                }) };
+              }
+            }
+          }
+        }
+      }
     }
     return null;
   }
