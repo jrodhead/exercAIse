@@ -1,0 +1,149 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/4-1_Lower_Body_Strength_Mobility.json",
+  "timestamp": "2025-10-07T12:09:41.020Z",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "Main Work",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Goblet Squat",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 60,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 60,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 3,
+              "weight": 60,
+              "reps": 8,
+              "rpe": 7
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Romanian Deadlift",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 60,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 60,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 3,
+              "weight": 60,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 7
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Bulgarian Split Squat",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 40,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 6
+            },
+            {
+              "set": 2,
+              "weight": 40,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 6
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Standing Calf Raise",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 12,
+              "rpe": 6
+            },
+            {
+              "set": 2,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 12,
+              "rpe": 6
+            },
+            {
+              "set": 3,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 12,
+              "rpe": 6
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "block": 4,
+  "week": 1,
+  "title": "Lower Body Strength & Mobility",
+  "notes": "Main lifts at 6–8 with small load bump from last block if RPE ≤8. Use heels-elevated or box as needed; protect knees/low back.",
+  "exerciseIndex": {
+    "goblet-squat": {
+      "name": "Goblet Squat",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 7.0,
+      "totalVolume": 1440
+    },
+    "dumbbell-romanian-deadlift": {
+      "name": "Dumbbell Romanian Deadlift",
+      "sectionPath": "sections[0].items[1].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 7.0,
+      "totalVolume": 2880
+    },
+    "bulgarian-split-squat": {
+      "name": "Bulgarian Split Squat",
+      "sectionPath": "sections[0].items[2].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 6.0,
+      "totalVolume": 1280
+    },
+    "standing-calf-raise": {
+      "name": "Standing Calf Raise",
+      "sectionPath": "sections[0].items[3].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 6.0,
+      "totalVolume": 2160
+    }
+  }
+}

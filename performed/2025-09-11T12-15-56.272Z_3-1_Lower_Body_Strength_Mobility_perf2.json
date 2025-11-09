@@ -1,0 +1,211 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/3-1_Lower_Body_Strength_Mobility.json",
+  "timestamp": "2025-09-11T12:15:33.849Z",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Prep (8–9 min)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Goblet Squat",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 45,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 45,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 3,
+              "weight": 45,
+              "reps": 8,
+              "rpe": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "A – Primary Squat",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Goblet Squat",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 45,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 45,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 3,
+              "weight": 45,
+              "reps": 8,
+              "rpe": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "B – Hinge + Unilateral Pair",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Romanian Deadlift",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 45,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 45,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 7
+            },
+            {
+              "set": 3,
+              "weight": 45,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 7
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Bulgarian Split Squat",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 8
+            },
+            {
+              "set": 2,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 8
+            },
+            {
+              "set": 3,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "C – Carry + Core",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Deadbug",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 10,
+              "multiplier": 2,
+              "reps": 8
+            },
+            {
+              "set": 2,
+              "weight": 10,
+              "multiplier": 2,
+              "reps": 8
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Pallof Press",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 10,
+              "reps": 10
+            },
+            {
+              "set": 2,
+              "weight": 10,
+              "reps": 10
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "date": "2025-09-11",
+  "block": 3,
+  "week": 1,
+  "title": "Lower Body Strength & Mobility – Block 3, Week 1 (Thursday)",
+  "notes": "Block 3 W1: Reintroduce bilateral + unilateral volume at moderate load. Emphasis: controlled depth, ankle prep, hinge quality. Keep RPE 6–7; no maxing. Limit deep knee flexion aggravation—use heel elevation if ankles stiff.",
+  "exerciseIndex": {
+    "goblet-squat": {
+      "name": "Goblet Squat",
+      "sectionPath": "sections[1].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 7.0,
+      "totalVolume": 1080
+    },
+    "dumbbell-romanian-deadlift": {
+      "name": "Dumbbell Romanian Deadlift",
+      "sectionPath": "sections[2].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 7.0,
+      "totalVolume": 2700
+    },
+    "bulgarian-split-squat": {
+      "name": "Bulgarian Split Squat",
+      "sectionPath": "sections[2].items[1].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1200
+    },
+    "deadbug": {
+      "name": "Deadbug",
+      "sectionPath": "sections[3].items[0].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 320
+    },
+    "pallof-press": {
+      "name": "Pallof Press",
+      "sectionPath": "sections[3].items[1].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 200
+    }
+  }
+}

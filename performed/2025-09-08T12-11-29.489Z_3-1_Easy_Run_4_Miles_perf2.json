@@ -1,0 +1,39 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/3-1_Easy_Run_4_Miles.json",
+  "timestamp": "2025-09-08T12:11:14.484Z",
+  "sections": [
+    {
+      "type": "Conditioning",
+      "title": "Main Run",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Easy Jog",
+          "sets": [
+            {
+              "set": 1,
+              "timeSeconds": 1794,
+              "distanceMiles": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "date": "2025-09-08",
+  "block": 3,
+  "week": 1,
+  "title": "Easy Run – 4 Miles (Block 3, Week 1, Monday)",
+  "notes": "Block 3 Week 1 aerobic reset: single weekly run. Keep RPE 5–6 (conversational). Focus on relaxed cadence, soft landings, ankle/foot prep, post-run calf + hip mobility. Overhead volume capped this block—running replaces Monday basketball.",
+  "exerciseIndex": {
+    "easy-jog": {
+      "name": "Easy Jog",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 1,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 0
+    }
+  }
+}

@@ -1,0 +1,173 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/4-3_Upper_Body_Strength_Mobility.json",
+  "timestamp": "2025-10-21T12:38:52.758Z",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "Primary Upper Body",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Neutral-Grip Flat Bench Press",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 50,
+              "multiplier": 2,
+              "reps": 6,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 50,
+              "multiplier": 2,
+              "reps": 6,
+              "rpe": 7
+            },
+            {
+              "set": 3,
+              "weight": 50,
+              "multiplier": 2,
+              "reps": 6,
+              "rpe": 8
+            },
+            {
+              "set": 4,
+              "weight": 50,
+              "multiplier": 2,
+              "reps": 6,
+              "rpe": 9
+            }
+          ],
+          "notes": "Same weight as last session but targeting RPE 7.5 vs 7-9. Next jump will be 55 x2 lb"
+        },
+        {
+          "kind": "exercise",
+          "name": "One-Arm Dumbbell Row",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 55,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 55,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 3,
+              "weight": 55,
+              "reps": 8,
+              "rpe": 8
+            },
+            {
+              "set": 4,
+              "weight": 55,
+              "reps": 8,
+              "rpe": 8
+            }
+          ],
+          "notes": "Progressive from 50 lb (+5 lb jump). Each arm, focus on lat engagement"
+        },
+        {
+          "kind": "exercise",
+          "name": "Incline Dumbbell Bench Press",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 40,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 40,
+              "multiplier": 2,
+              "reps": 6,
+              "rpe": 9
+            },
+            {
+              "set": 3,
+              "weight": 40,
+              "multiplier": 2,
+              "reps": 4,
+              "rpe": 9
+            }
+          ],
+          "notes": "30-45° incline, controlled tempo"
+        },
+        {
+          "kind": "exercise",
+          "name": "Chest-Supported Dumbbell Row",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 45,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 45,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 8
+            },
+            {
+              "set": 3,
+              "weight": 45,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 9
+            }
+          ],
+          "notes": "Progressive from 40 x2 lb (+5 lb jump). Incline bench support"
+        }
+      ]
+    }
+  ],
+  "date": "2024-10-22",
+  "block": 4,
+  "week": 3,
+  "title": "Upper Body Strength Mobility",
+  "exerciseIndex": {
+    "neutral-grip-flat-bench-press": {
+      "name": "Neutral-Grip Flat Bench Press",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 4,
+      "totalRounds": 0,
+      "avgRPE": 7.8,
+      "totalVolume": 2400
+    },
+    "one-arm-dumbbell-row": {
+      "name": "One-Arm Dumbbell Row",
+      "sectionPath": "sections[0].items[1].sets[*]",
+      "totalSets": 4,
+      "totalRounds": 0,
+      "avgRPE": 7.5,
+      "totalVolume": 1760
+    },
+    "incline-dumbbell-bench-press": {
+      "name": "Incline Dumbbell Bench Press",
+      "sectionPath": "sections[0].items[2].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 8.3,
+      "totalVolume": 1440
+    },
+    "chest-supported-dumbbell-row": {
+      "name": "Chest-Supported Dumbbell Row",
+      "sectionPath": "sections[0].items[3].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 8.0,
+      "totalVolume": 2700
+    }
+  }
+}

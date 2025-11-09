@@ -45,7 +45,7 @@ export class StorageAdapter {
             try {
                 const record = {
                     ...log,
-                    version: log.version || 'perf-1',
+                    version: log.version || 'perf-2',
                     date: log.timestamp?.split('T')[0] || log.date,
                     syncedToGit: false
                 };

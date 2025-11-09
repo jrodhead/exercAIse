@@ -1,0 +1,60 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/2-2_Easy_Run_4_Miles.json",
+  "timestamp": "2025-08-23T02:08:26.810Z",
+  "sections": [
+    {
+      "type": "Conditioning",
+      "title": "Conditioning",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Easy Run (Easy Jog)",
+          "sets": [
+            {
+              "set": 1,
+              "notes": "legacy empty entry"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Accessory/Core",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Strides",
+          "sets": [
+            {
+              "set": 1,
+              "notes": "legacy empty entry"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "block": 0,
+  "week": 0,
+  "title": "Easy Run – 4 Miles (Block 2, Week 2, Tuesday)",
+  "exerciseIndex": {
+    "easy-run": {
+      "name": "Easy Run (Easy Jog)",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 1,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 0
+    },
+    "strides": {
+      "name": "Strides",
+      "sectionPath": "sections[1].items[0].sets[*]",
+      "totalSets": 1,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 0
+    }
+  }
+}

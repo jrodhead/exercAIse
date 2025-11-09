@@ -1,0 +1,88 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/4-3_Upper_Body_Strength_Mobility.json",
+  "timestamp": "2025-10-22T03:22:07.199Z",
+  "sections": [
+    {
+      "type": "Accessory/Core",
+      "title": "Arms & Core",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Hammer Curl",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 12,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 12,
+              "rpe": 8
+            },
+            {
+              "set": 3,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 8
+            }
+          ],
+          "notes": "Same weight, increased reps from 10→12. Next jump will be 35 x2 lb for 8-10 reps"
+        },
+        {
+          "kind": "exercise",
+          "name": "Overhead Dumbbell Triceps Extension",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 35,
+              "reps": 12,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 35,
+              "reps": 12,
+              "rpe": 8
+            },
+            {
+              "set": 3,
+              "weight": 35,
+              "reps": 12,
+              "rpe": 8
+            }
+          ],
+          "notes": "Progressive from 30 lb (+5 lb jump). Single dumbbell, both hands"
+        }
+      ]
+    }
+  ],
+  "date": "2024-10-22",
+  "block": 4,
+  "week": 3,
+  "title": "Upper Body Strength Mobility",
+  "exerciseIndex": {
+    "hammer-curl": {
+      "name": "Hammer Curl",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 7.7,
+      "totalVolume": 1920
+    },
+    "overhead-dumbbell-triceps-extension": {
+      "name": "Overhead Dumbbell Triceps Extension",
+      "sectionPath": "sections[0].items[1].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 7.7,
+      "totalVolume": 1260
+    }
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/4-2_Arms_Core_Accessory.json",
+  "timestamp": "2025-10-18T03:59:58.602Z",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "Chest & Glute Circuit (3 rounds)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Flyes",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 15,
+              "multiplier": 2,
+              "reps": 12
+            },
+            {
+              "set": 2,
+              "weight": 20,
+              "multiplier": 2,
+              "reps": 12
+            },
+            {
+              "set": 3,
+              "weight": 20,
+              "multiplier": 2,
+              "reps": 12
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Glute Bridge",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 60,
+              "reps": 15
+            },
+            {
+              "set": 2,
+              "weight": 60,
+              "reps": 15
+            },
+            {
+              "set": 3,
+              "weight": 60,
+              "reps": 15
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Push-ups",
+          "sets": [
+            {
+              "set": 1,
+              "reps": 12
+            },
+            {
+              "set": 2,
+              "reps": 12
+            },
+            {
+              "set": 3,
+              "reps": 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Core Pump Circuit (3 rounds)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Deadbug",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 20,
+              "multiplier": 2,
+              "reps": 10
+            },
+            {
+              "set": 2,
+              "weight": 20,
+              "multiplier": 2,
+              "reps": 10
+            },
+            {
+              "set": 3,
+              "weight": 20,
+              "multiplier": 2,
+              "reps": 10
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Pallof Press",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 20,
+              "multiplier": 2,
+              "reps": 12
+            },
+            {
+              "set": 2,
+              "weight": 20,
+              "multiplier": 2,
+              "reps": 12
+            },
+            {
+              "set": 3,
+              "weight": 20,
+              "multiplier": 2,
+              "reps": 12
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "block": 4,
+  "week": 2,
+  "title": "Chest, Glutes & Core Pump",
+  "notes": "Accessory pump work for chest, glutes, and core. Keep intensity moderate; focus on movement quality, time under tension, and the pump.",
+  "exerciseIndex": {
+    "dumbbell-flyes": {
+      "name": "Dumbbell Flyes",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1320
+    },
+    "glute-bridge": {
+      "name": "Glute Bridge",
+      "sectionPath": "sections[0].items[1].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 2700
+    },
+    "push-ups": {
+      "name": "Push-ups",
+      "sectionPath": "sections[0].items[2].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 0
+    },
+    "deadbug": {
+      "name": "Deadbug",
+      "sectionPath": "sections[1].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1200
+    },
+    "pallof-press": {
+      "name": "Pallof Press",
+      "sectionPath": "sections[1].items[1].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1440
+    }
+  }
+}

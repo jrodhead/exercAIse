@@ -1,0 +1,183 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/4-1_Chest_Core_Glutes_Focus.json",
+  "timestamp": "2025-10-24T12:32:21.055Z",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "Main Work",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Flyes",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 20,
+              "multiplier": 2,
+              "reps": 15,
+              "rpe": 6
+            },
+            {
+              "set": 2,
+              "weight": 20,
+              "multiplier": 2,
+              "reps": 15,
+              "rpe": 7
+            },
+            {
+              "set": 3,
+              "weight": 20,
+              "multiplier": 2,
+              "reps": 15,
+              "rpe": 7
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Single-Arm Dumbbell Press",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 12,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 12,
+              "rpe": 7
+            },
+            {
+              "set": 3,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 12,
+              "rpe": 7
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Hip Thrust",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 50,
+              "reps": 20,
+              "rpe": 5
+            },
+            {
+              "set": 2,
+              "weight": 50,
+              "reps": 20,
+              "rpe": 5
+            },
+            {
+              "set": 3,
+              "weight": 50,
+              "reps": 15,
+              "rpe": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Core & Accessories",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Push-ups",
+          "sets": [
+            {
+              "set": 1,
+              "reps": 20,
+              "rpe": 6
+            },
+            {
+              "set": 2,
+              "reps": 12,
+              "rpe": 7
+            },
+            {
+              "set": 3,
+              "reps": 12,
+              "rpe": 7
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Hollow Body Hold",
+          "sets": [
+            {
+              "set": 1,
+              "reps": 45
+            },
+            {
+              "set": 2,
+              "reps": 45
+            },
+            {
+              "set": 3,
+              "reps": 45
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "date": "2025-01-18",
+  "block": 4,
+  "week": 1,
+  "title": "Chest, Core & Glutes Focus",
+  "notes": "Extra session targeting chest, core, and glutes with different exercise variations and new movements. 1-mile jog warmup for aerobic base.",
+  "exerciseIndex": {
+    "dumbbell-flyes": {
+      "name": "Dumbbell Flyes",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 6.7,
+      "totalVolume": 1800
+    },
+    "single-arm-dumbbell-press": {
+      "name": "Single-Arm Dumbbell Press",
+      "sectionPath": "sections[0].items[1].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 7.0,
+      "totalVolume": 2160
+    },
+    "hip-thrust": {
+      "name": "Hip Thrust",
+      "sectionPath": "sections[0].items[2].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 5.0,
+      "totalVolume": 2750
+    },
+    "push-ups": {
+      "name": "Push-ups",
+      "sectionPath": "sections[1].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 6.7,
+      "totalVolume": 0
+    },
+    "hollow-body-hold": {
+      "name": "Hollow Body Hold",
+      "sectionPath": "sections[1].items[1].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 0
+    }
+  }
+}

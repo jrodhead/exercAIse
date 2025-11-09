@@ -1,0 +1,239 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/2-3_Upper_Body_Strength_Mobility.json",
+  "timestamp": "2025-08-26T12:29:56.653Z",
+  "sections": [
+    {
+      "type": "Main Work",
+      "title": "1) [Neutral-Grip Flat Bench Press (Dumbbells)](../exercises/neutral_grip_flat_bench_press.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Neutral-Grip Flat Bench Press (Dumbbells)",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 47.5,
+              "multiplier": 2,
+              "reps": 6
+            },
+            {
+              "set": 2,
+              "weight": 47.5,
+              "multiplier": 2,
+              "reps": 6
+            },
+            {
+              "set": 3,
+              "weight": 47.5,
+              "multiplier": 2,
+              "reps": 5
+            },
+            {
+              "set": 4,
+              "weight": 47.5,
+              "multiplier": 2,
+              "reps": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "2) [One-Arm Dumbbell Row (Bench Supported)](../exercises/one_arm_dumbbell_row.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "One-Arm Dumbbell Row (Bench Supported)",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 37.5,
+              "multiplier": 1,
+              "reps": 8
+            },
+            {
+              "set": 2,
+              "weight": 37.5,
+              "multiplier": 1,
+              "reps": 10
+            },
+            {
+              "set": 3,
+              "weight": 37.5,
+              "multiplier": 1,
+              "reps": 10
+            },
+            {
+              "set": 4,
+              "weight": 37.5,
+              "multiplier": 1,
+              "reps": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "3) [Seated Arnold Press](../exercises/seated_arnold_press.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Seated Arnold Press",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 27.5,
+              "multiplier": 2,
+              "reps": 8
+            },
+            {
+              "set": 2,
+              "weight": 27.5,
+              "multiplier": 2,
+              "reps": 8
+            },
+            {
+              "set": 3,
+              "weight": 27.5,
+              "multiplier": 2,
+              "reps": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "4) [Biceps Curl (Alternating Dumbbells)](../exercises/biceps_curl.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Biceps Curl (Alternating Dumbbells)",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 27.5,
+              "multiplier": 2,
+              "reps": 12
+            },
+            {
+              "set": 2,
+              "weight": 27.5,
+              "multiplier": 2,
+              "reps": 12
+            },
+            {
+              "set": 3,
+              "weight": 27.5,
+              "multiplier": 2,
+              "reps": 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "5) [Overhead Dumbbell Triceps Extension (Two Hands)](../exercises/overhead_dumbbell_triceps_extension.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Overhead Dumbbell Triceps Extension (Two Hands)",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 37.5,
+              "reps": 12
+            },
+            {
+              "set": 2,
+              "weight": 37.5,
+              "reps": 10
+            },
+            {
+              "set": 3,
+              "weight": 37.5,
+              "reps": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "Optional Finisher",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Plank Shoulder Tap",
+          "sets": [
+            {
+              "set": 1,
+              "reps": 20
+            },
+            {
+              "set": 2,
+              "reps": 20
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "block": 0,
+  "week": 0,
+  "title": "Upper Body Strength & Mobility – Block 2, Week 3",
+  "exerciseIndex": {
+    "neutral-grip-flat-bench-press": {
+      "name": "Neutral-Grip Flat Bench Press (Dumbbells)",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 4,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1900.0
+    },
+    "one-arm-dumbbell-row": {
+      "name": "One-Arm Dumbbell Row (Bench Supported)",
+      "sectionPath": "sections[1].items[0].sets[*]",
+      "totalSets": 4,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1425.0
+    },
+    "seated-arnold-press": {
+      "name": "Seated Arnold Press",
+      "sectionPath": "sections[2].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1320.0
+    },
+    "biceps-curl": {
+      "name": "Biceps Curl (Alternating Dumbbells)",
+      "sectionPath": "sections[3].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1980.0
+    },
+    "overhead-dumbbell-triceps-extension": {
+      "name": "Overhead Dumbbell Triceps Extension (Two Hands)",
+      "sectionPath": "sections[4].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1125.0
+    },
+    "plank-shoulder-tap": {
+      "name": "Plank Shoulder Tap",
+      "sectionPath": "sections[5].items[0].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 0
+    }
+  }
+}

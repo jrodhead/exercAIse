@@ -1,58 +1,14 @@
 /**
  * Type definitions for performance log data structures
- * Based on schemas/performed.schema.json (perf-1) and schemas/performed-v2.schema.json (perf-2)
+ * Based on schemas/performance.schema.json (nested structure format)
  */
 
-import type { LogType, SectionType, ItemKind } from './workout.types';
+import type { SectionType, ItemKind } from './workout.types';
 
 export type SetSide = 'L' | 'R' | 'B';
 
 // ============================================================================
-// perf-1: Legacy flat format (for migration reference)
-// ============================================================================
-
-export interface SetEntry {
-  set?: number; // Set number (1-based index)
-  weight?: number | string;
-  reps?: number;
-  rpe?: number;
-  timeSeconds?: number;
-  holdSeconds?: number;
-  distanceMeters?: number;
-  distanceMiles?: number;
-  side?: SetSide;
-  tempo?: string;
-  restSeconds?: number;
-  multiplier?: number;
-  completed?: boolean;
-  notes?: string;
-}
-
-export interface PerformedExercise {
-  name?: string;
-  logType?: LogType; // Required for perf-1 format
-  notes?: string;
-  sets: SetEntry[];
-}
-
-export interface PerformanceLogV1 {
-  version?: string; // "perf-1" or "1"
-  workoutFile: string;
-  timestamp: string;
-  date?: string;
-  block?: number;
-  week?: number;
-  title?: string;
-  notes?: string;
-  device?: Record<string, unknown>;
-  exercises: Record<string, PerformedExercise>;
-}
-
-// Legacy alias for backward compatibility
-export type PerformanceLog = PerformanceLogV1;
-
-// ============================================================================
-// perf-2: Nested structure format (mirrors session organization)
+// Nested structure format (mirrors session organization)
 // ============================================================================
 
 /**
@@ -78,8 +34,8 @@ export interface ExercisePerformance {
 /**
  * One set of a standalone exercise
  */
-export interface SetEntryV2 {
-  set: number; // Required in perf-2
+export interface SetEntry {
+  set: number; // Required in nested format
   weight?: number;
   multiplier?: number;
   reps?: number;
@@ -116,7 +72,7 @@ export interface PerformanceItem {
   notes?: string;
   
   // For standalone exercises
-  sets?: SetEntryV2[];
+  sets?: SetEntry[];
   
   // For supersets and circuits
   rounds?: Round[];
@@ -146,10 +102,10 @@ export interface ExerciseSummary {
 }
 
 /**
- * perf-2: Nested structure performance log
+ * Nested structure performance log
  * Mirrors session organization for superior fatigue analysis
  */
-export interface PerformanceLogV2 {
+export interface PerformanceLog {
   version: 'perf-2';
   workoutFile: string;
   timestamp: string;

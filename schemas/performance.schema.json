@@ -1,45 +1,398 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "performance.schema.json",
-  "title": "Performance Export",
+  "title": "Performance Log (Nested Structure)",
+  "description": "Structured performance logs that mirror session organization for superior fatigue analysis. Captures sections, supersets/circuits with round-by-round data, and provides flat exercise index for fast queries.",
   "type": "object",
-  "required": ["version", "workoutFile", "timestamp", "exercises"],
+  "additionalProperties": false,
+  "required": ["version", "workoutFile", "timestamp", "sections"],
   "properties": {
-    "version": { "type": "string", "const": "perf-1" },
-    "workoutFile": { "type": "string", "pattern": "^workouts/.+\\.(json|md)$" },
-    "timestamp": { "type": "string" },
-    "exercises": {
+    "version": {
+      "type": "string",
+      "const": "perf-2",
+      "description": "Schema version for nested structure format"
+    },
+    "workoutFile": {
+      "type": "string",
+      "pattern": "^workouts/.+\\.json$",
+      "description": "Relative path to the source workout JSON file"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 timestamp when the log was created"
+    },
+    "date": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+      "description": "Calendar date of session (YYYY-MM-DD)"
+    },
+    "block": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Training block number"
+    },
+    "week": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Week number within block"
+    },
+    "title": {
+      "type": "string",
+      "description": "Session title"
+    },
+    "notes": {
+      "type": "string",
+      "description": "General session notes"
+    },
+    "device": {
       "type": "object",
-      "minProperties": 1,
+      "additionalProperties": true,
+      "description": "Device information (optional)"
+    },
+    "sections": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Workout sections (Warm-up, Strength, Accessory/Core, Cooldown/Recovery, etc.)",
+      "items": {
+        "$ref": "#/definitions/Section"
+      }
+    },
+    "exerciseIndex": {
+      "type": "object",
+      "description": "Optional flat index for fast exercise queries",
       "additionalProperties": {
-        "type": "object",
-        "required": ["name", "logType", "sets"],
-        "properties": {
-          "name": { "type": "string" },
-          "logType": { "type": "string", "enum": ["strength", "endurance", "carry", "mobility", "stretch"] },
-          "sets": {
-            "type": "array",
-            "minItems": 1,
-            "items": {
-              "type": "object",
-              "required": ["set"],
-              "properties": {
-                "set": { "type": "integer", "minimum": 1 },
-                "weight": { "type": "number" },
-                "multiplier": { "type": "number", "minimum": 0 },
-                "reps": { "type": "number", "minimum": 0 },
-                "rpe": { "type": "number", "minimum": 0, "maximum": 10 },
-                "timeSeconds": { "type": "number", "minimum": 0 },
-                "holdSeconds": { "type": "number", "minimum": 0 },
-                "distanceMiles": { "type": "number", "minimum": 0 }
-              },
-              "additionalProperties": false
-            }
-          }
-        },
-        "additionalProperties": false
+        "$ref": "#/definitions/ExerciseSummary"
       }
     }
   },
-  "additionalProperties": false
+  "definitions": {
+    "Section": {
+      "type": "object",
+      "required": ["type", "title", "items"],
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["Warm-up", "Main Work", "Strength", "Conditioning", "Accessory/Core", "Cooldown/Recovery", "Recovery", "Mobility"],
+          "description": "Section category"
+        },
+        "title": {
+          "type": "string",
+          "description": "Section display title"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Section-level notes"
+        },
+        "items": {
+          "type": "array",
+          "description": "Exercises, supersets, circuits within this section",
+          "items": {
+            "$ref": "#/definitions/Item"
+          }
+        }
+      }
+    },
+    "Item": {
+      "type": "object",
+      "required": ["kind", "name"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["exercise", "superset", "circuit"],
+          "description": "Item type: standalone exercise, superset, or circuit"
+        },
+        "name": {
+          "type": "string",
+          "description": "Item name (e.g., 'Goblet Squat' or 'Superset A')"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Item-level notes"
+        },
+        "sets": {
+          "type": "array",
+          "description": "For standalone exercises only",
+          "items": {
+            "$ref": "#/definitions/SetEntry"
+          }
+        },
+        "rounds": {
+          "type": "array",
+          "description": "For supersets and circuits only",
+          "items": {
+            "$ref": "#/definitions/Round"
+          }
+        }
+      },
+      "oneOf": [
+        {
+          "description": "Standalone exercise must have sets array",
+          "properties": {
+            "kind": {
+              "const": "exercise"
+            }
+          },
+          "required": ["sets"]
+        },
+        {
+          "description": "Superset/circuit must have rounds array",
+          "properties": {
+            "kind": {
+              "enum": ["superset", "circuit"]
+            }
+          },
+          "required": ["rounds"]
+        }
+      ]
+    },
+    "Round": {
+      "type": "object",
+      "required": ["round", "exercises"],
+      "additionalProperties": false,
+      "description": "One complete round through a superset or circuit",
+      "properties": {
+        "round": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Round number (1, 2, 3, ...)"
+        },
+        "prescribedRestSeconds": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Prescribed rest before next round"
+        },
+        "actualRestSeconds": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Actual rest taken (optional user input)"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Round-specific notes"
+        },
+        "exercises": {
+          "type": "array",
+          "minItems": 1,
+          "description": "Exercises performed in this round",
+          "items": {
+            "$ref": "#/definitions/ExercisePerformance"
+          }
+        }
+      }
+    },
+    "ExercisePerformance": {
+      "type": "object",
+      "required": ["key", "name"],
+      "additionalProperties": false,
+      "description": "Performance data for one exercise in one round/set",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "Exercise slug for linking to exercises/*.json"
+        },
+        "name": {
+          "type": "string",
+          "description": "Exercise display name"
+        },
+        "weight": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Load used (kg or lb, depending on user preference)"
+        },
+        "multiplier": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Load multiplier (e.g., 2 for dumbbells, per-hand tracking)"
+        },
+        "reps": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Repetitions completed"
+        },
+        "rpe": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Rate of perceived exertion (0-10 scale)"
+        },
+        "timeSeconds": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Duration in seconds"
+        },
+        "holdSeconds": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Isometric hold duration in seconds"
+        },
+        "distanceMeters": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Distance covered in meters"
+        },
+        "distanceMiles": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Distance covered in miles"
+        },
+        "side": {
+          "type": "string",
+          "enum": ["L", "R", "B"],
+          "description": "Body side: Left, Right, or Both"
+        },
+        "tempo": {
+          "type": "string",
+          "description": "Tempo notation (e.g., '3-1-1-0')"
+        },
+        "completed": {
+          "type": "boolean",
+          "description": "Whether the set was completed as prescribed"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Exercise-specific notes for this round/set"
+        }
+      }
+    },
+    "SetEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "One set of a standalone exercise",
+      "properties": {
+        "set": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Set number"
+        },
+        "weight": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Load used"
+        },
+        "multiplier": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Load multiplier (e.g., 2 for per-hand dumbbells)"
+        },
+        "reps": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Repetitions completed"
+        },
+        "rpe": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Rate of perceived exertion"
+        },
+        "timeSeconds": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Duration in seconds"
+        },
+        "holdSeconds": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Isometric hold duration"
+        },
+        "distanceMeters": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Distance in meters"
+        },
+        "distanceMiles": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Distance in miles"
+        },
+        "side": {
+          "type": "string",
+          "enum": ["L", "R", "B"],
+          "description": "Body side"
+        },
+        "tempo": {
+          "type": "string",
+          "description": "Tempo notation"
+        },
+        "restSeconds": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Rest after this set"
+        },
+        "completed": {
+          "type": "boolean",
+          "description": "Set completion status"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Set-specific notes"
+        }
+      },
+      "anyOf": [
+        {
+          "required": ["weight"]
+        },
+        {
+          "required": ["reps"]
+        },
+        {
+          "required": ["rpe"]
+        },
+        {
+          "required": ["timeSeconds"]
+        },
+        {
+          "required": ["holdSeconds"]
+        },
+        {
+          "required": ["distanceMeters"]
+        },
+        {
+          "required": ["distanceMiles"]
+        },
+        {
+          "required": ["notes"]
+        }
+      ]
+    },
+    "ExerciseSummary": {
+      "type": "object",
+      "description": "Pre-computed summary for fast queries",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Exercise display name"
+        },
+        "sectionPath": {
+          "type": "string",
+          "description": "JSONPath to exercise location in sections tree"
+        },
+        "totalSets": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of sets (for standalone exercises)"
+        },
+        "totalRounds": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of rounds (for supersets/circuits)"
+        },
+        "avgRPE": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 10,
+          "description": "Average RPE across all sets/rounds"
+        },
+        "totalVolume": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Sum of (weight * multiplier * reps) across all sets/rounds"
+        }
+      }
+    }
+  }
 }

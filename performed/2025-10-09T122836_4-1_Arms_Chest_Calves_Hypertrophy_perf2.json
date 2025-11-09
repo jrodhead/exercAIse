@@ -1,0 +1,239 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/4-1_Arms_Chest_Calves_Hypertrophy.json",
+  "timestamp": "2025-10-09T12:28:21.944Z",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "Supersets",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "A) Chest + Row",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "flat-dumbbell-bench-press",
+                  "name": "Flat Dumbbell Bench Press",
+                  "weight": 40,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 7
+                },
+                {
+                  "key": "chest-supported-dumbbell-row",
+                  "name": "Chest-Supported Dumbbell Row",
+                  "weight": 40,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 60
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "flat-dumbbell-bench-press",
+                  "name": "Flat Dumbbell Bench Press",
+                  "weight": 40,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 7
+                },
+                {
+                  "key": "chest-supported-dumbbell-row",
+                  "name": "Chest-Supported Dumbbell Row",
+                  "weight": 40,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 60
+            },
+            {
+              "round": 3,
+              "exercises": [
+                {
+                  "key": "flat-dumbbell-bench-press",
+                  "name": "Flat Dumbbell Bench Press",
+                  "weight": 40,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 7
+                },
+                {
+                  "key": "chest-supported-dumbbell-row",
+                  "name": "Chest-Supported Dumbbell Row",
+                  "weight": 40,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 60
+            }
+          ]
+        },
+        {
+          "kind": "superset",
+          "name": "B) Biceps + Triceps",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "biceps-curl",
+                  "name": "Biceps Curl",
+                  "weight": 30,
+                  "multiplier": 2,
+                  "reps": 8,
+                  "rpe": 8
+                },
+                {
+                  "key": "overhead-dumbbell-triceps-extension",
+                  "name": "Overhead Dumbbell Triceps Extension",
+                  "weight": 40,
+                  "reps": 12,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 60
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "biceps-curl",
+                  "name": "Biceps Curl",
+                  "weight": 30,
+                  "multiplier": 2,
+                  "reps": 8,
+                  "rpe": 8
+                },
+                {
+                  "key": "overhead-dumbbell-triceps-extension",
+                  "name": "Overhead Dumbbell Triceps Extension",
+                  "weight": 40,
+                  "reps": 12,
+                  "rpe": 8
+                }
+              ],
+              "prescribedRestSeconds": 60
+            },
+            {
+              "round": 3,
+              "exercises": [
+                {
+                  "key": "biceps-curl",
+                  "name": "Biceps Curl",
+                  "weight": 30,
+                  "multiplier": 2,
+                  "reps": 6,
+                  "rpe": 7
+                },
+                {
+                  "key": "overhead-dumbbell-triceps-extension",
+                  "name": "Overhead Dumbbell Triceps Extension",
+                  "weight": 40,
+                  "reps": 4
+                }
+              ],
+              "prescribedRestSeconds": 60
+            },
+            {
+              "round": 4,
+              "exercises": [
+                {
+                  "key": "biceps-curl",
+                  "name": "Biceps Curl",
+                  "weight": 30,
+                  "multiplier": 2,
+                  "reps": 8,
+                  "rpe": 8
+                },
+                {
+                  "key": "overhead-dumbbell-triceps-extension",
+                  "name": "Overhead Dumbbell Triceps Extension",
+                  "weight": 40,
+                  "reps": 12
+                }
+              ],
+              "prescribedRestSeconds": 60
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Standing Calf Raise",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 12,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 12,
+              "rpe": 7
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "block": 4,
+  "week": 1,
+  "title": "Arms, Chest & Calves Hypertrophy",
+  "notes": "Hypertrophy focus: 10–15 reps, short rests, controlled eccentrics. Use the dumbbell ladder and trim reps 1–2 on a rung jump if RPE would exceed 8.",
+  "exerciseIndex": {
+    "flat-dumbbell-bench-press": {
+      "name": "Flat Dumbbell Bench Press",
+      "sectionPath": "sections[0].items[0].rounds[*].exercises[0]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 7.0,
+      "totalVolume": 2400
+    },
+    "chest-supported-dumbbell-row": {
+      "name": "Chest-Supported Dumbbell Row",
+      "sectionPath": "sections[0].items[0].rounds[*].exercises[1]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 7.0,
+      "totalVolume": 2880
+    },
+    "biceps-curl": {
+      "name": "Biceps Curl",
+      "sectionPath": "sections[0].items[1].rounds[*].exercises[0]",
+      "totalSets": 4,
+      "totalRounds": 4,
+      "avgRPE": 7.8,
+      "totalVolume": 1800
+    },
+    "overhead-dumbbell-triceps-extension": {
+      "name": "Overhead Dumbbell Triceps Extension",
+      "sectionPath": "sections[0].items[1].rounds[*].exercises[1]",
+      "totalSets": 4,
+      "totalRounds": 4,
+      "avgRPE": 3.8,
+      "totalVolume": 1600
+    },
+    "standing-calf-raise": {
+      "name": "Standing Calf Raise",
+      "sectionPath": "sections[0].items[2].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 7.0,
+      "totalVolume": 1200
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/4-1_Easy_Run_Progression.json",
+  "timestamp": "2025-10-25T16:24:47.313Z",
+  "sections": [
+    {
+      "type": "Conditioning",
+      "title": "Main Run",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Easy Jog Segment 1",
+          "sets": [
+            {
+              "set": 1,
+              "rpe": 5,
+              "distanceMiles": 3.5
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "block": 4,
+  "week": 1,
+  "title": "Easy Run – 3.25–3.5 Mile Progression",
+  "notes": "Foot improving—progress total distance conservatively with short walk resets. Keep easy aerobic effort (RPE 5–6) and smooth cadence. If any foot discomfort >2/10, cut last segment.",
+  "exerciseIndex": {
+    "easy-jog-segment-1": {
+      "name": "Easy Jog Segment 1",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 1,
+      "totalRounds": 0,
+      "avgRPE": 5.0,
+      "totalVolume": 0
+    }
+  }
+}

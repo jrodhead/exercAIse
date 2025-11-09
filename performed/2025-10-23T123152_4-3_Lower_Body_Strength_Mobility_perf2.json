@@ -1,0 +1,173 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/4-3_Lower_Body_Strength_Mobility.json",
+  "timestamp": "2025-10-23T12:31:31.786Z",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "Primary Lower Body",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Goblet Squat",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 67.5,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 67.5,
+              "reps": 8,
+              "rpe": 8
+            },
+            {
+              "set": 3,
+              "weight": 67.5,
+              "reps": 8,
+              "rpe": 8
+            },
+            {
+              "set": 4,
+              "weight": 67.5,
+              "reps": 8,
+              "rpe": 8
+            }
+          ],
+          "notes": "Progressive from 65 lb. Focus on depth and control"
+        },
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Romanian Deadlift",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 67.5,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 67.5,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 8
+            },
+            {
+              "set": 3,
+              "weight": 67.5,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 8
+            },
+            {
+              "set": 4,
+              "weight": 67.5,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 8
+            }
+          ],
+          "notes": "Progressive from 65 x2 lb. Emphasize hip hinge pattern"
+        },
+        {
+          "kind": "exercise",
+          "name": "Bulgarian Split Squat",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 47.5,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 47.5,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 8
+            },
+            {
+              "set": 3,
+              "weight": 47.5,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 9
+            }
+          ],
+          "notes": "Progressive from 45 x2 lb. Each leg, focus on front leg loading"
+        },
+        {
+          "kind": "exercise",
+          "name": "Standing Calf Raise",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 37.5,
+              "multiplier": 2,
+              "reps": 15,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 37.5,
+              "multiplier": 2,
+              "reps": 15,
+              "rpe": 7
+            },
+            {
+              "set": 3,
+              "weight": 37.5,
+              "multiplier": 2,
+              "reps": 15,
+              "rpe": 7
+            }
+          ],
+          "notes": "Progressive from 35 x2 lb. Important for basketball jumping"
+        }
+      ]
+    }
+  ],
+  "date": "2024-10-24",
+  "block": 4,
+  "week": 3,
+  "title": "Lower Body Strength Mobility",
+  "exerciseIndex": {
+    "goblet-squat": {
+      "name": "Goblet Squat",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 4,
+      "totalRounds": 0,
+      "avgRPE": 7.8,
+      "totalVolume": 2160.0
+    },
+    "dumbbell-romanian-deadlift": {
+      "name": "Dumbbell Romanian Deadlift",
+      "sectionPath": "sections[0].items[1].sets[*]",
+      "totalSets": 4,
+      "totalRounds": 0,
+      "avgRPE": 7.8,
+      "totalVolume": 4320.0
+    },
+    "bulgarian-split-squat": {
+      "name": "Bulgarian Split Squat",
+      "sectionPath": "sections[0].items[2].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 8.0,
+      "totalVolume": 2280.0
+    },
+    "standing-calf-raise": {
+      "name": "Standing Calf Raise",
+      "sectionPath": "sections[0].items[3].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 7.0,
+      "totalVolume": 3375.0
+    }
+  }
+}

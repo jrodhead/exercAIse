@@ -1,0 +1,208 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/4-2_Full_Body_Endurance_Conditioning.json",
+  "timestamp": "2025-10-16T12:17:16.341Z",
+  "sections": [
+    {
+      "type": "Conditioning",
+      "title": "Circuit A (3 rounds)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Thruster",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 12
+            },
+            {
+              "set": 2,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 12
+            },
+            {
+              "set": 3,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 12
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Renegade Row",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 8
+            },
+            {
+              "set": 2,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 8
+            },
+            {
+              "set": 3,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 8
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Goblet Reverse Lunge",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 35,
+              "reps": 10
+            },
+            {
+              "set": 2,
+              "weight": 35,
+              "reps": 10
+            },
+            {
+              "set": 3,
+              "weight": 35,
+              "reps": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "Circuit B (3 rounds)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Push-Ups",
+          "sets": [
+            {
+              "set": 1,
+              "reps": 10
+            },
+            {
+              "set": 2,
+              "reps": 10
+            },
+            {
+              "set": 3,
+              "reps": 10
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Lateral Lunges",
+          "sets": [
+            {
+              "set": 1,
+              "reps": 8
+            },
+            {
+              "set": 2,
+              "reps": 8
+            },
+            {
+              "set": 3,
+              "reps": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "Finisher",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Farmer Carry",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 35,
+              "multiplier": 2,
+              "timeSeconds": 60
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Farmer Carry",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 35,
+              "multiplier": 2,
+              "timeSeconds": 60
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "block": 4,
+  "week": 2,
+  "title": "Full-Body Endurance & Conditioning",
+  "notes": "Full-body conditioning focus with circuit training and carries. Move with purpose; limit rest between exercises within circuits.",
+  "exerciseIndex": {
+    "dumbbell-thruster": {
+      "name": "Dumbbell Thruster",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1800
+    },
+    "renegade-row": {
+      "name": "Renegade Row",
+      "sectionPath": "sections[0].items[1].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1200
+    },
+    "goblet-reverse-lunge": {
+      "name": "Goblet Reverse Lunge",
+      "sectionPath": "sections[0].items[2].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1050
+    },
+    "push-ups": {
+      "name": "Push-Ups",
+      "sectionPath": "sections[1].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 0
+    },
+    "lateral-lunges": {
+      "name": "Lateral Lunges",
+      "sectionPath": "sections[1].items[1].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 0
+    },
+    "farmer-carry": {
+      "name": "Farmer Carry",
+      "sectionPath": "sections[2].items[1].sets[*]",
+      "totalSets": 1,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 0
+    }
+  }
+}

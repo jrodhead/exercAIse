@@ -1,0 +1,234 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/2-3_Full_Body_Conditioning_Core.json",
+  "timestamp": "2025-08-29T12:40:40.046Z",
+  "sections": [
+    {
+      "type": "Conditioning",
+      "title": "Conditioning (Main Work)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Thruster",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 27.5,
+              "multiplier": 2,
+              "reps": 10
+            },
+            {
+              "set": 2,
+              "weight": 27.5,
+              "multiplier": 2,
+              "reps": 10
+            },
+            {
+              "set": 3,
+              "weight": 27.5,
+              "multiplier": 2,
+              "reps": 10
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Renegade Row",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 27.5,
+              "multiplier": 2,
+              "reps": 8
+            },
+            {
+              "set": 2,
+              "weight": 27.5,
+              "multiplier": 2,
+              "reps": 8
+            },
+            {
+              "set": 3,
+              "weight": 27.5,
+              "multiplier": 2,
+              "reps": 8
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Step-Up",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 17.5,
+              "multiplier": 2,
+              "reps": 10
+            },
+            {
+              "set": 2,
+              "weight": 17.5,
+              "multiplier": 2,
+              "reps": 10
+            },
+            {
+              "set": 3,
+              "weight": 17.5,
+              "multiplier": 2,
+              "reps": 10
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Farmer Carry",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 37.5,
+              "multiplier": 2,
+              "timeSeconds": 45
+            },
+            {
+              "set": 2,
+              "weight": 37.5,
+              "multiplier": 2,
+              "timeSeconds": 45
+            },
+            {
+              "set": 3,
+              "weight": 37.5,
+              "multiplier": 2,
+              "timeSeconds": 45
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Accessory/Core",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Weighted Deadbug",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 7.5,
+              "reps": 8
+            },
+            {
+              "set": 2,
+              "weight": 7.5,
+              "reps": 8
+            },
+            {
+              "set": 3,
+              "weight": 7.5,
+              "reps": 8
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Russian Twist",
+          "sets": [
+            {
+              "set": 1,
+              "reps": 20
+            },
+            {
+              "set": 2,
+              "reps": 20
+            },
+            {
+              "set": 3,
+              "reps": 20
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Plank Shoulder Tap",
+          "sets": [
+            {
+              "set": 1,
+              "reps": 20
+            },
+            {
+              "set": 2,
+              "reps": 20
+            },
+            {
+              "set": 3,
+              "reps": 20
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "date": "2025-08-29",
+  "block": 2,
+  "week": 3,
+  "title": "Full-Body Conditioning & Core",
+  "exerciseIndex": {
+    "dumbbell-thruster": {
+      "name": "Dumbbell Thruster",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1650.0
+    },
+    "renegade-row": {
+      "name": "Renegade Row",
+      "sectionPath": "sections[0].items[1].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1320.0
+    },
+    "step-up": {
+      "name": "Step-Up",
+      "sectionPath": "sections[0].items[2].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1050.0
+    },
+    "farmer-carry": {
+      "name": "Farmer Carry",
+      "sectionPath": "sections[0].items[3].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 0.0
+    },
+    "weighted-deadbug": {
+      "name": "Weighted Deadbug",
+      "sectionPath": "sections[1].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 180.0
+    },
+    "russian-twist": {
+      "name": "Russian Twist",
+      "sectionPath": "sections[1].items[1].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 0
+    },
+    "plank-shoulder-tap": {
+      "name": "Plank Shoulder Tap",
+      "sectionPath": "sections[1].items[2].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 0
+    }
+  }
+}

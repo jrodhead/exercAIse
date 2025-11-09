@@ -1,0 +1,238 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/4-4_Lower_Body_Strength_Mobility.json",
+  "timestamp": "2025-10-30T12:32:02.659Z",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "Primary Lower Body",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Goblet Squat",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 55,
+              "reps": 8,
+              "rpe": 6
+            },
+            {
+              "set": 2,
+              "weight": 55,
+              "reps": 8,
+              "rpe": 6
+            },
+            {
+              "set": 3,
+              "weight": 55,
+              "reps": 8,
+              "rpe": 6
+            }
+          ],
+          "notes": "Deload: 3 sets (vs 4), ~80% load (55 vs 67.5 lb). Focus on depth and control"
+        },
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Romanian Deadlift",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 55,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 6
+            },
+            {
+              "set": 2,
+              "weight": 55,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 6
+            },
+            {
+              "set": 3,
+              "weight": 55,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 6
+            }
+          ],
+          "notes": "Deload: 3 sets, ~80% load (55 vs 67.5 lb per hand). Emphasize hip hinge pattern"
+        },
+        {
+          "kind": "exercise",
+          "name": "Bulgarian Split Squat",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 37.5,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 5
+            },
+            {
+              "set": 2,
+              "weight": 37.5,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 5
+            }
+          ],
+          "notes": "Deload: 2 sets, ~80% load (37.5 vs 47.5 lb per hand). Each leg, maintain form quality"
+        },
+        {
+          "kind": "exercise",
+          "name": "Standing Calf Raise",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 15,
+              "rpe": 6
+            },
+            {
+              "set": 2,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 15,
+              "rpe": 6
+            }
+          ],
+          "notes": "Deload: 2 sets, reduced load. Controlled tempo"
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Unilateral & Core",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Lateral Lunges",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 20,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 6
+            },
+            {
+              "set": 2,
+              "weight": 20,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 5
+            }
+          ],
+          "notes": "Deload: 2 sets, lighter load. Each side, basketball-specific movement pattern"
+        },
+        {
+          "kind": "exercise",
+          "name": "Single-Leg Deadlift",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 25,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 25,
+              "reps": 6,
+              "rpe": 6
+            }
+          ],
+          "notes": "Deload: 2 sets, lighter load. Each leg, balance and stability focus"
+        },
+        {
+          "kind": "exercise",
+          "name": "Loaded March",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 20,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 5
+            },
+            {
+              "set": 2,
+              "weight": 20,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 5
+            }
+          ],
+          "notes": "Deload: 2 sets, lighter load. Each leg, core stability"
+        }
+      ]
+    }
+  ],
+  "date": "2025-10-30",
+  "block": 4,
+  "week": 4,
+  "title": "Lower Body Strength Mobility – Deload",
+  "notes": "Deload week: reduced volume (fewer sets) and intensity (~80% of Week 3 loads). Focus on movement quality, RPE ≤7. Preparing for Block 5.",
+  "exerciseIndex": {
+    "goblet-squat": {
+      "name": "Goblet Squat",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 6.0,
+      "totalVolume": 1320
+    },
+    "dumbbell-romanian-deadlift": {
+      "name": "Dumbbell Romanian Deadlift",
+      "sectionPath": "sections[0].items[1].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 6.0,
+      "totalVolume": 2640
+    },
+    "bulgarian-split-squat": {
+      "name": "Bulgarian Split Squat",
+      "sectionPath": "sections[0].items[2].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 5.0,
+      "totalVolume": 1200.0
+    },
+    "standing-calf-raise": {
+      "name": "Standing Calf Raise",
+      "sectionPath": "sections[0].items[3].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 6.0,
+      "totalVolume": 1800
+    },
+    "lateral-lunges": {
+      "name": "Lateral Lunges",
+      "sectionPath": "sections[1].items[0].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 5.5,
+      "totalVolume": 640
+    },
+    "single-leg-deadlift": {
+      "name": "Single-Leg Deadlift",
+      "sectionPath": "sections[1].items[1].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 6.5,
+      "totalVolume": 350
+    },
+    "loaded-march": {
+      "name": "Loaded March",
+      "sectionPath": "sections[1].items[2].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 5.0,
+      "totalVolume": 800
+    }
+  }
+}

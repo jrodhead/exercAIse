@@ -1,0 +1,204 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/2-2_Full_Body_Conditioning_Core.json",
+  "timestamp": "2025-08-23T02:35:41.688Z",
+  "sections": [
+    {
+      "type": "Main Work",
+      "title": "Format: Circuit, 3–4 rounds; Rest 60–75 sec between rounds",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Thruster (Squat + Press)",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 12
+            },
+            {
+              "set": 2,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 12
+            },
+            {
+              "set": 3,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 12
+            },
+            {
+              "set": 4,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 10
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Renegade Row",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 25,
+              "multiplier": 1,
+              "reps": 8
+            },
+            {
+              "set": 2,
+              "weight": 25,
+              "multiplier": 1,
+              "reps": 8
+            },
+            {
+              "set": 3,
+              "weight": 25,
+              "multiplier": 1,
+              "reps": 8
+            },
+            {
+              "set": 4,
+              "weight": 25,
+              "multiplier": 1,
+              "reps": 6
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Step-Up",
+          "sets": [
+            {
+              "set": 1,
+              "reps": 10
+            },
+            {
+              "set": 2,
+              "reps": 10
+            },
+            {
+              "set": 3,
+              "reps": 10
+            },
+            {
+              "set": 4,
+              "reps": 10
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Plank Shoulder Tap",
+          "sets": [
+            {
+              "set": 1,
+              "reps": 20
+            },
+            {
+              "set": 2,
+              "reps": 20
+            },
+            {
+              "set": 3,
+              "reps": 20
+            },
+            {
+              "set": 4,
+              "reps": 20
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Core Finisher",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Weighted Deadbug",
+          "sets": [
+            {
+              "set": 1,
+              "reps": 12
+            },
+            {
+              "set": 2,
+              "reps": 12
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Hollow Hold",
+          "sets": [
+            {
+              "set": 1,
+              "timeSeconds": 20
+            },
+            {
+              "set": 2,
+              "timeSeconds": 20
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "block": 0,
+  "week": 0,
+  "title": "Full-Body Conditioning & Core – Block 2, Week 2 (Friday)",
+  "exerciseIndex": {
+    "dumbbell-thruster": {
+      "name": "Dumbbell Thruster (Squat + Press)",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 4,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 2300
+    },
+    "renegade-row": {
+      "name": "Renegade Row",
+      "sectionPath": "sections[0].items[1].sets[*]",
+      "totalSets": 4,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 750
+    },
+    "step-up": {
+      "name": "Step-Up",
+      "sectionPath": "sections[0].items[2].sets[*]",
+      "totalSets": 4,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 0
+    },
+    "plank-shoulder-tap": {
+      "name": "Plank Shoulder Tap",
+      "sectionPath": "sections[0].items[3].sets[*]",
+      "totalSets": 4,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 0
+    },
+    "weighted-deadbug": {
+      "name": "Weighted Deadbug",
+      "sectionPath": "sections[1].items[0].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 0
+    },
+    "hollow-hold": {
+      "name": "Hollow Hold",
+      "sectionPath": "sections[1].items[1].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 0
+    }
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/2-2_Lower_Body_Strength_Mobility.json",
+  "timestamp": "2025-08-23T02:21:57.506Z",
+  "sections": [
+    {
+      "type": "Main Work",
+      "title": "1) [Goblet Squat](../exercises/goblet_squat.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Goblet Squat",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 55,
+              "multiplier": 1,
+              "reps": 8
+            },
+            {
+              "set": 2,
+              "weight": 55,
+              "multiplier": 1,
+              "reps": 8
+            },
+            {
+              "set": 3,
+              "weight": 55,
+              "multiplier": 1,
+              "reps": 8
+            },
+            {
+              "set": 4,
+              "weight": 55,
+              "multiplier": 1,
+              "reps": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "2) [Dumbbell Romanian Deadlift](../exercises/dumbbell_romanian_deadlift.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Romanian Deadlift",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 55,
+              "multiplier": 2,
+              "reps": 10
+            },
+            {
+              "set": 2,
+              "weight": 55,
+              "multiplier": 2,
+              "reps": 8
+            },
+            {
+              "set": 3,
+              "weight": 55,
+              "multiplier": 2,
+              "reps": 8
+            },
+            {
+              "set": 4,
+              "weight": 55,
+              "multiplier": 2,
+              "reps": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "3) [Bulgarian Split Squat](../exercises/bulgarian_split_squat.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Bulgarian Split Squat",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 10
+            },
+            {
+              "set": 2,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 10
+            },
+            {
+              "set": 3,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "4) [Standing Calf Raise](../exercises/standing_calf_raise.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Standing Calf Raise",
+          "sets": [
+            {
+              "set": 1,
+              "reps": 15
+            },
+            {
+              "set": 2,
+              "reps": 15
+            },
+            {
+              "set": 3,
+              "reps": 15
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Core Accessory",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Side Plank",
+          "sets": [
+            {
+              "set": 1,
+              "timeSeconds": 45
+            },
+            {
+              "set": 2,
+              "timeSeconds": 45
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "block": 0,
+  "week": 0,
+  "title": "Lower Body Strength & Mobility – Block 2, Week 2",
+  "exerciseIndex": {
+    "goblet-squat": {
+      "name": "Goblet Squat",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 4,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1760
+    },
+    "dumbbell-romanian-deadlift": {
+      "name": "Dumbbell Romanian Deadlift",
+      "sectionPath": "sections[1].items[0].sets[*]",
+      "totalSets": 4,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 3740
+    },
+    "bulgarian-split-squat": {
+      "name": "Bulgarian Split Squat",
+      "sectionPath": "sections[2].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1500
+    },
+    "standing-calf-raise": {
+      "name": "Standing Calf Raise",
+      "sectionPath": "sections[3].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 0
+    },
+    "side-plank": {
+      "name": "Side Plank",
+      "sectionPath": "sections[4].items[0].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 0
+    }
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/3-4_Upper_Body_Pump_Finisher.json",
+  "timestamp": "2025-10-03T14:44:48.636Z",
+  "sections": [
+    {
+      "type": "Accessory/Core",
+      "title": "A/B/C Pump Circuit (2–3 Rounds)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Neutral-Grip Flat Bench Press (Dumbbells)",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 40,
+              "multiplier": 2,
+              "reps": 10
+            },
+            {
+              "set": 2,
+              "weight": 40,
+              "multiplier": 2,
+              "reps": 10
+            },
+            {
+              "set": 3,
+              "weight": 40,
+              "multiplier": 2,
+              "reps": 10
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Chest-Supported Dumbbell Row",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 12
+            },
+            {
+              "set": 2,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 12
+            },
+            {
+              "set": 3,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 12
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Incline Landmine Press",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 10
+            },
+            {
+              "set": 2,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 10
+            },
+            {
+              "set": 3,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "D/E/F Arm & Core Pump (2 Rounds)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Hammer Curl",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 12
+            },
+            {
+              "set": 2,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 12
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Overhead Triceps Extension",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 20,
+              "reps": 12
+            },
+            {
+              "set": 2,
+              "weight": 30,
+              "reps": 12
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Deadbug",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 10,
+              "reps": 8
+            },
+            {
+              "set": 2,
+              "weight": 10,
+              "reps": 8
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "date": "2025-10-03",
+  "block": 3,
+  "week": 4,
+  "title": "Upper Body Pump – Block 3, Week 4 (Deload Finisher, Friday)",
+  "notes": "Deload finisher: high blood flow, low joint stress. Keep RPE ~7, short rests, and crisp technique. No carries.",
+  "exerciseIndex": {
+    "neutral-grip-flat-bench-press": {
+      "name": "Neutral-Grip Flat Bench Press (Dumbbells)",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 2400
+    },
+    "chest-supported-dumbbell-row": {
+      "name": "Chest-Supported Dumbbell Row",
+      "sectionPath": "sections[0].items[1].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 2160
+    },
+    "incline-landmine-press": {
+      "name": "Incline Landmine Press",
+      "sectionPath": "sections[0].items[2].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1800
+    },
+    "hammer-curl": {
+      "name": "Hammer Curl",
+      "sectionPath": "sections[1].items[0].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1440
+    },
+    "overhead-triceps-extension": {
+      "name": "Overhead Triceps Extension",
+      "sectionPath": "sections[1].items[1].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 600
+    },
+    "deadbug": {
+      "name": "Deadbug",
+      "sectionPath": "sections[1].items[2].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 160
+    }
+  }
+}

@@ -1,40 +1,5 @@
-import type { LogType, SectionType, ItemKind } from './workout.types';
+import type { SectionType, ItemKind } from './workout.types';
 export type SetSide = 'L' | 'R' | 'B';
-export interface SetEntry {
-    set?: number;
-    weight?: number | string;
-    reps?: number;
-    rpe?: number;
-    timeSeconds?: number;
-    holdSeconds?: number;
-    distanceMeters?: number;
-    distanceMiles?: number;
-    side?: SetSide;
-    tempo?: string;
-    restSeconds?: number;
-    multiplier?: number;
-    completed?: boolean;
-    notes?: string;
-}
-export interface PerformedExercise {
-    name?: string;
-    logType?: LogType;
-    notes?: string;
-    sets: SetEntry[];
-}
-export interface PerformanceLogV1 {
-    version?: string;
-    workoutFile: string;
-    timestamp: string;
-    date?: string;
-    block?: number;
-    week?: number;
-    title?: string;
-    notes?: string;
-    device?: Record<string, unknown>;
-    exercises: Record<string, PerformedExercise>;
-}
-export type PerformanceLog = PerformanceLogV1;
 export interface ExercisePerformance {
     key: string;
     name: string;
@@ -51,7 +16,7 @@ export interface ExercisePerformance {
     completed?: boolean;
     notes?: string;
 }
-export interface SetEntryV2 {
+export interface SetEntry {
     set: number;
     weight?: number;
     multiplier?: number;
@@ -78,7 +43,7 @@ export interface PerformanceItem {
     kind: ItemKind;
     name: string;
     notes?: string;
-    sets?: SetEntryV2[];
+    sets?: SetEntry[];
     rounds?: Round[];
 }
 export interface PerformanceSection {
@@ -95,7 +60,7 @@ export interface ExerciseSummary {
     avgRPE: number;
     totalVolume: number;
 }
-export interface PerformanceLogV2 {
+export interface PerformanceLog {
     version: 'perf-2';
     workoutFile: string;
     timestamp: string;

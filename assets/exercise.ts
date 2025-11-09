@@ -5,7 +5,7 @@
 */
 
 import type { Exercise } from '../types/exercise.types';
-import type { PerformanceLog } from '../types/performance.types';
+import type { PerformanceLog, SetEntry } from '../types/performance.types';
 
 // ============================================================================
 // Type Definitions
@@ -24,6 +24,66 @@ interface GitHubFileItem {
 interface HistoryLogEntry {
   name: string;
   data: PerformanceLog | null;
+}
+
+// ============================================================================
+// Helper Functions
+// ============================================================================
+
+/**
+ * Find exercise performance data in a perf-2 log
+ * Returns sets array flattened from either standalone sets or superset/circuit rounds
+ */
+function findExerciseInPerf2(log: PerformanceLog, exerciseKey: string): SetEntry[] {
+  const sets: SetEntry[] = [];
+  
+  // Search through all sections and items
+  for (const section of log.sections) {
+    for (const item of section.items) {
+      // Standalone exercise with sets
+      if (item.kind === 'exercise' && item.sets) {
+        // Check exercise index or name to match key
+        if (log.exerciseIndex?.[exerciseKey]) {
+          // Found in index, return these sets
+          return item.sets;
+        }
+        // Fallback: check if item name matches (convert to key format)
+        const itemKey = item.name.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+        if (itemKey === exerciseKey) {
+          return item.sets;
+        }
+      }
+      
+      // Superset or circuit with rounds
+      if ((item.kind === 'superset' || item.kind === 'circuit') && item.rounds) {
+        // Find exercise within rounds
+        for (const round of item.rounds) {
+          for (const exercise of round.exercises) {
+            if (exercise.key === exerciseKey) {
+              // Flatten round data into sets format
+              sets.push({
+                set: round.round,
+                weight: exercise.weight,
+                multiplier: exercise.multiplier,
+                reps: exercise.reps,
+                rpe: exercise.rpe,
+                timeSeconds: exercise.timeSeconds,
+                holdSeconds: exercise.holdSeconds,
+                distanceMeters: exercise.distanceMeters,
+                distanceMiles: exercise.distanceMiles,
+                side: exercise.side,
+                tempo: exercise.tempo,
+                completed: exercise.completed,
+                notes: exercise.notes
+              });
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  return sets;
 }
 
 // ============================================================================
@@ -290,19 +350,21 @@ interface HistoryLogEntry {
         logs.sort((a, b) => a.name < b.name ? 1 : -1);
         for (let i = 0; i < logs.length; i++) {
           const data = logs[i]!.data; 
-          if (!data?.exercises) continue;
-          let ex = null;
+          if (!data) continue;
+          
+          // Extract exercise data from perf-2 nested structure
+          let exerciseSets: SetEntry[] = [];
           for (let v = 0; v < variants.length; v++) {
-            if (data.exercises.hasOwnProperty(variants[v]!)) { 
-              ex = data.exercises[variants[v]!]; 
-              break; 
-            }
+            exerciseSets = findExerciseInPerf2(data, variants[v]!);
+            if (exerciseSets.length > 0) break;
           }
-          if (!ex?.sets?.length) continue;
+          
+          if (exerciseSets.length === 0) continue;
+          
           const when = data.timestamp || logs[i]!.name.slice(0, 24);
           html += `<div class="history-item">` +
                   `<div class="muted mono">${when}</div>` +
-                  `<div>${ex.sets.map((s) => {
+                  `<div>${exerciseSets.map((s: SetEntry) => {
                     const parts: string[] = []; 
                     if (s.weight != null) { parts.push(`${s.weight}${s.multiplier != null ? (' ×' + s.multiplier) : ''}`); }
                     if (s.reps != null) { parts.push(`${s.reps} reps`); }

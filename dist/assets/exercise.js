@@ -1,3 +1,43 @@
+function findExerciseInPerf2(log, exerciseKey) {
+    const sets = [];
+    for (const section of log.sections) {
+        for (const item of section.items) {
+            if (item.kind === 'exercise' && item.sets) {
+                if (log.exerciseIndex?.[exerciseKey]) {
+                    return item.sets;
+                }
+                const itemKey = item.name.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+                if (itemKey === exerciseKey) {
+                    return item.sets;
+                }
+            }
+            if ((item.kind === 'superset' || item.kind === 'circuit') && item.rounds) {
+                for (const round of item.rounds) {
+                    for (const exercise of round.exercises) {
+                        if (exercise.key === exerciseKey) {
+                            sets.push({
+                                set: round.round,
+                                weight: exercise.weight,
+                                multiplier: exercise.multiplier,
+                                reps: exercise.reps,
+                                rpe: exercise.rpe,
+                                timeSeconds: exercise.timeSeconds,
+                                holdSeconds: exercise.holdSeconds,
+                                distanceMeters: exercise.distanceMeters,
+                                distanceMiles: exercise.distanceMiles,
+                                side: exercise.side,
+                                tempo: exercise.tempo,
+                                completed: exercise.completed,
+                                notes: exercise.notes
+                            });
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return sets;
+}
 (() => {
     const statusEl = document.getElementById('status');
     const status = (msg) => {
@@ -246,21 +286,20 @@
                 logs.sort((a, b) => a.name < b.name ? 1 : -1);
                 for (let i = 0; i < logs.length; i++) {
                     const data = logs[i].data;
-                    if (!data?.exercises)
+                    if (!data)
                         continue;
-                    let ex = null;
+                    let exerciseSets = [];
                     for (let v = 0; v < variants.length; v++) {
-                        if (data.exercises.hasOwnProperty(variants[v])) {
-                            ex = data.exercises[variants[v]];
+                        exerciseSets = findExerciseInPerf2(data, variants[v]);
+                        if (exerciseSets.length > 0)
                             break;
-                        }
                     }
-                    if (!ex?.sets?.length)
+                    if (exerciseSets.length === 0)
                         continue;
                     const when = data.timestamp || logs[i].name.slice(0, 24);
                     html += `<div class="history-item">` +
                         `<div class="muted mono">${when}</div>` +
-                        `<div>${ex.sets.map((s) => {
+                        `<div>${exerciseSets.map((s) => {
                             const parts = [];
                             if (s.weight != null) {
                                 parts.push(`${s.weight}${s.multiplier != null ? (' ×' + s.multiplier) : ''}`);

@@ -1,0 +1,204 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/2-4_Upper_Body_Strength_Mobility.json",
+  "timestamp": "2025-09-01T13:14:19.865Z",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "Press + Row",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Neutral-Grip Flat Bench Press",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 45,
+              "multiplier": 2,
+              "reps": 6,
+              "rpe": 6.5
+            },
+            {
+              "set": 2,
+              "weight": 45,
+              "multiplier": 2,
+              "reps": 6,
+              "rpe": 6.5
+            },
+            {
+              "set": 3,
+              "weight": 45,
+              "multiplier": 2,
+              "reps": 6,
+              "rpe": 6.5
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "One-Arm Dumbbell Row",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 35,
+              "reps": 10,
+              "rpe": 6.5
+            },
+            {
+              "set": 2,
+              "weight": 35,
+              "reps": 10,
+              "rpe": 6.5
+            },
+            {
+              "set": 3,
+              "weight": 35,
+              "reps": 10,
+              "rpe": 6.5
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Seated Arnold Press",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 6,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 6,
+              "rpe": 7
+            },
+            {
+              "set": 3,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 6,
+              "rpe": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Arms + Anti-rotation",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Biceps Curl",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 6.5
+            },
+            {
+              "set": 2,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 6.5
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Overhead Dumbbell Triceps Extension",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 35,
+              "reps": 10,
+              "rpe": 6.5
+            },
+            {
+              "set": 2,
+              "weight": 35,
+              "reps": 10,
+              "rpe": 6.5
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Plank Shoulder Tap",
+          "sets": [
+            {
+              "set": 1,
+              "reps": 16
+            },
+            {
+              "set": 2,
+              "reps": 16
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "date": "2025-08-31",
+  "block": 2,
+  "week": 4,
+  "title": "Upper Body Strength & Mobility – Block 2, Week 4 (Deload)",
+  "notes": "Deload week: reduce volume by ~25% and load by ~10–15%. Keep RPE ~6–7, move clean, and finish fresh.",
+  "exerciseIndex": {
+    "neutral-grip-flat-bench-press": {
+      "name": "Neutral-Grip Flat Bench Press",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 6.5,
+      "totalVolume": 1620
+    },
+    "one-arm-dumbbell-row": {
+      "name": "One-Arm Dumbbell Row",
+      "sectionPath": "sections[0].items[1].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 6.5,
+      "totalVolume": 1050
+    },
+    "seated-arnold-press": {
+      "name": "Seated Arnold Press",
+      "sectionPath": "sections[0].items[2].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 7.0,
+      "totalVolume": 900
+    },
+    "biceps-curl": {
+      "name": "Biceps Curl",
+      "sectionPath": "sections[1].items[0].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 6.5,
+      "totalVolume": 1000
+    },
+    "overhead-dumbbell-triceps-extension": {
+      "name": "Overhead Dumbbell Triceps Extension",
+      "sectionPath": "sections[1].items[1].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 6.5,
+      "totalVolume": 700
+    },
+    "plank-shoulder-tap": {
+      "name": "Plank Shoulder Tap",
+      "sectionPath": "sections[1].items[2].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 0
+    }
+  }
+}

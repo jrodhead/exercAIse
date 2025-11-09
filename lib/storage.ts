@@ -82,7 +82,7 @@ export class StorageAdapter {
       try {
         const record: PerformanceLogRecord = {
           ...log,
-          version: log.version || 'perf-1',
+          version: log.version || 'perf-2', // Default to perf-2 for new logs
           date: log.timestamp?.split('T')[0] || log.date,
           syncedToGit: false
         };

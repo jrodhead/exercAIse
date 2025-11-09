@@ -1,0 +1,225 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/3-4_Upper_Body_Strength_Mobility.json",
+  "timestamp": "2025-09-29T12:23:18.813Z",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "A1/A2 Press + Row (Alt)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Neutral-Grip Flat Bench Press (Dumbbells)",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 45,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 45,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 8
+            },
+            {
+              "set": 3,
+              "weight": 45,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 8
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "One-Arm Dumbbell Row (Bench Supported)",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 45,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 45,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 3,
+              "weight": 45,
+              "reps": 8,
+              "rpe": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "B1/B2 Incline + Chest-Supported Row",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Incline Landmine Press",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 25,
+              "reps": 10,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 25,
+              "reps": 10,
+              "rpe": 7
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Chest-Supported Dumbbell Row",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 35,
+              "multiplier": 2,
+              "reps": 10
+            },
+            {
+              "set": 2,
+              "weight": 35,
+              "multiplier": 2,
+              "reps": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "C – Light Pump + Core",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Hammer Curl",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 12
+            },
+            {
+              "set": 2,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 12
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Overhead Triceps Extension",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 25,
+              "reps": 12
+            },
+            {
+              "set": 2,
+              "weight": 25,
+              "reps": 12
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Deadbug",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 5,
+              "reps": 6
+            },
+            {
+              "set": 2,
+              "weight": 5,
+              "reps": 6
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "date": "2025-09-30",
+  "block": 3,
+  "week": 4,
+  "title": "Upper Body Strength & Mobility – Block 3, Week 4 (Deload, Tuesday)",
+  "notes": "Deload focus: reduce total volume and RPE (mostly 6–7). Maintain movement quality and scapular control. Keep overhead stress low (landmine/neutral grips). No carries this week to keep foot fully calm.",
+  "exerciseIndex": {
+    "neutral-grip-flat-bench-press": {
+      "name": "Neutral-Grip Flat Bench Press (Dumbbells)",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 7.7,
+      "totalVolume": 2160
+    },
+    "one-arm-dumbbell-row": {
+      "name": "One-Arm Dumbbell Row (Bench Supported)",
+      "sectionPath": "sections[0].items[1].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 7.0,
+      "totalVolume": 1080
+    },
+    "incline-landmine-press": {
+      "name": "Incline Landmine Press",
+      "sectionPath": "sections[1].items[0].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 7.0,
+      "totalVolume": 500
+    },
+    "chest-supported-dumbbell-row": {
+      "name": "Chest-Supported Dumbbell Row",
+      "sectionPath": "sections[1].items[1].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1400
+    },
+    "hammer-curl": {
+      "name": "Hammer Curl",
+      "sectionPath": "sections[2].items[0].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1200
+    },
+    "overhead-triceps-extension": {
+      "name": "Overhead Triceps Extension",
+      "sectionPath": "sections[2].items[1].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 600
+    },
+    "deadbug": {
+      "name": "Deadbug",
+      "sectionPath": "sections[2].items[2].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 60
+    }
+  }
+}

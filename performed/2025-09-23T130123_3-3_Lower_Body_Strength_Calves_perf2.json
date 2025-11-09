@@ -1,0 +1,257 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/3-3_Lower_Body_Strength_Calves.json",
+  "timestamp": "2025-09-23T13:01:04.068Z",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Prep (8–9 min)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Goblet Squat",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 45,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 45,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 3,
+              "weight": 45,
+              "reps": 10,
+              "rpe": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "A – Primary Squat",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Goblet Squat",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 45,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 45,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 3,
+              "weight": 45,
+              "reps": 10,
+              "rpe": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "B1/B2 Hinge + Unilateral",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Romanian Deadlift",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 45,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 45,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 7
+            },
+            {
+              "set": 3,
+              "weight": 45,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 8
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Bulgarian Split Squat",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 5
+            },
+            {
+              "set": 2,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 6
+            },
+            {
+              "set": 3,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "C1/C2/C3 Posterior + Calf + Tibialis (2–3 Rounds)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Glute Bridge",
+          "sets": [
+            {
+              "set": 1,
+              "reps": 12,
+              "rpe": 3
+            },
+            {
+              "set": 2,
+              "reps": 12,
+              "rpe": 3
+            },
+            {
+              "set": 3,
+              "reps": 12,
+              "rpe": 3
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Standing Calf Raise (DB)",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 15,
+              "rpe": 6
+            },
+            {
+              "set": 2,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 15,
+              "rpe": 7
+            },
+            {
+              "set": 3,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 15,
+              "rpe": 7
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Tibialis Raise (Wall Lean)",
+          "sets": [
+            {
+              "set": 1,
+              "reps": 15,
+              "rpe": 4
+            },
+            {
+              "set": 2,
+              "reps": 15,
+              "rpe": 4
+            },
+            {
+              "set": 3,
+              "reps": 15,
+              "rpe": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "date": "2025-09-25",
+  "block": 3,
+  "week": 3,
+  "title": "Lower Body Strength & Calves – Block 3, Week 3 (Thursday)",
+  "notes": "Week 3 after partial deload of foot (skipped W2 squat stress). Rebuild intensity conservatively: use W1 loads/volumes with small rep extension on final set only if pain-free (lateral right foot ≤2/10). No loaded carries. Focus crisp hinge + single-leg control. RPE cap 7–8 on primary sets.",
+  "exerciseIndex": {
+    "goblet-squat": {
+      "name": "Goblet Squat",
+      "sectionPath": "sections[1].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 7.3,
+      "totalVolume": 1170
+    },
+    "dumbbell-romanian-deadlift": {
+      "name": "Dumbbell Romanian Deadlift",
+      "sectionPath": "sections[2].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 7.3,
+      "totalVolume": 2700
+    },
+    "bulgarian-split-squat": {
+      "name": "Bulgarian Split Squat",
+      "sectionPath": "sections[2].items[1].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 5.7,
+      "totalVolume": 1400
+    },
+    "glute-bridge": {
+      "name": "Glute Bridge",
+      "sectionPath": "sections[3].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 3.0,
+      "totalVolume": 0
+    },
+    "standing-calf-raise": {
+      "name": "Standing Calf Raise (DB)",
+      "sectionPath": "sections[3].items[1].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 6.7,
+      "totalVolume": 2250
+    },
+    "tibialis-raise": {
+      "name": "Tibialis Raise (Wall Lean)",
+      "sectionPath": "sections[3].items[2].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 4.0,
+      "totalVolume": 0
+    }
+  }
+}

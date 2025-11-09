@@ -1,0 +1,39 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/2-4_Easy_Run_4_Miles.json",
+  "timestamp": "2025-09-02T12:12:37.359Z",
+  "sections": [
+    {
+      "type": "Conditioning",
+      "title": "Easy 3 miles",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Easy Run",
+          "sets": [
+            {
+              "set": 1,
+              "rpe": 4,
+              "timeSeconds": 1912,
+              "distanceMiles": 4
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "date": "2025-09-02",
+  "block": 2,
+  "week": 4,
+  "title": "Easy Run – 3 Miles – Block 2, Week 4 (Deload)",
+  "exerciseIndex": {
+    "easy-run": {
+      "name": "Easy Run",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 1,
+      "totalRounds": 0,
+      "avgRPE": 4.0,
+      "totalVolume": 0
+    }
+  }
+}

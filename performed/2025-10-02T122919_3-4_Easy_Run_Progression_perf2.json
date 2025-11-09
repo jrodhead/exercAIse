@@ -1,0 +1,117 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/3-4_Easy_Run_Progression.json",
+  "timestamp": "2025-10-02T12:29:03.577Z",
+  "sections": [
+    {
+      "type": "Conditioning",
+      "title": "Segmented Easy Run",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Easy Jog Segment 1",
+          "sets": [
+            {
+              "set": 1,
+              "rpe": 5,
+              "timeSeconds": 456,
+              "distanceMiles": 1
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Walk Reset",
+          "sets": [
+            {
+              "set": 1,
+              "timeSeconds": 120
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Easy Jog Segment 2",
+          "sets": [
+            {
+              "set": 1,
+              "rpe": 5,
+              "timeSeconds": 403,
+              "distanceMiles": 1
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Walk Reset 2",
+          "sets": [
+            {
+              "set": 1,
+              "timeSeconds": 60,
+              "distanceMiles": 3
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Easy Jog Segment 3",
+          "sets": [
+            {
+              "set": 1,
+              "rpe": 6,
+              "timeSeconds": 422,
+              "distanceMiles": 1
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "date": "2025-09-29",
+  "block": 3,
+  "week": 4,
+  "title": "Easy Run – 2.75–3.0 Mile Progression (Block 3, Week 4, Monday)",
+  "notes": "Deload week run while progressing distance from a recent 2 mi base. New barefoot shoes + low residual foot sensations: keep cadence up, short stride, RPE 5–6. Segment the run with brief walk resets to keep tissues calm. Stop if lateral foot pain >2/10 or gait changes.",
+  "exerciseIndex": {
+    "easy-jog-segment-1": {
+      "name": "Easy Jog Segment 1",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 1,
+      "totalRounds": 0,
+      "avgRPE": 5.0,
+      "totalVolume": 0
+    },
+    "walk-reset": {
+      "name": "Walk Reset",
+      "sectionPath": "sections[0].items[1].sets[*]",
+      "totalSets": 1,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 0
+    },
+    "easy-jog-segment-2": {
+      "name": "Easy Jog Segment 2",
+      "sectionPath": "sections[0].items[2].sets[*]",
+      "totalSets": 1,
+      "totalRounds": 0,
+      "avgRPE": 5.0,
+      "totalVolume": 0
+    },
+    "walk-reset-2": {
+      "name": "Walk Reset 2",
+      "sectionPath": "sections[0].items[3].sets[*]",
+      "totalSets": 1,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 0
+    },
+    "easy-jog-segment-3": {
+      "name": "Easy Jog Segment 3",
+      "sectionPath": "sections[0].items[4].sets[*]",
+      "totalSets": 1,
+      "totalRounds": 0,
+      "avgRPE": 6.0,
+      "totalVolume": 0
+    }
+  }
+}

@@ -3,7 +3,7 @@
  * Dynamic exercise card generation, form field management, and workout logging
  */
 
-import type { PerformanceLog, PerformedExercise, SetEntry } from '../types/performance.types';
+import type { PerformanceLog, SetEntry } from '../types/performance.types';
 import type { FormBuilderDependencies } from '../types/global.types';
 
 // ============================================================================
@@ -76,6 +76,68 @@ interface CollectedBlocks {
   const METERS_PER_MILE = 1609.34;
 
   /**
+   * Extract sets for a given exercise key from perf-2 nested structure
+   * Traverses sections → items → finds exercise by key
+   * Returns flat array of sets/rounds for form restoration
+   */
+  function extractSetsFromPerf2(log: PerformanceLog, exerciseKey: string): PrescriptionRow[] {
+    const rows: PrescriptionRow[] = [];
+    
+    for (const section of log.sections) {
+      for (const item of section.items) {
+        // Standalone exercise
+        if (item.kind === 'exercise' && item.sets) {
+          // Check if any set in this exercise matches the key
+          // For standalone exercises, we need to check the exercise name/key
+          // Since standalone exercises don't store the key, we'll need to match by position
+          // or rely on the exerciseIndex if available
+          
+          // Try exercise index first for fast lookup
+          if (log.exerciseIndex && log.exerciseIndex[exerciseKey]) {
+            // Found in index, extract from sets
+            item.sets.forEach((setEntry: SetEntry) => {
+              rows.push({
+                set: setEntry.set,
+                weight: setEntry.weight,
+                multiplier: setEntry.multiplier,
+                reps: setEntry.reps,
+                rpe: setEntry.rpe,
+                timeSeconds: setEntry.timeSeconds,
+                holdSeconds: setEntry.holdSeconds,
+                distanceMeters: setEntry.distanceMeters
+              });
+            });
+            return rows; // Found it, return early
+          }
+        }
+        
+        // Superset or circuit
+        if ((item.kind === 'superset' || item.kind === 'circuit') && item.rounds) {
+          for (const round of item.rounds) {
+            for (const exercise of round.exercises) {
+              if (exercise.key === exerciseKey) {
+                // Found exercise in this round
+                rows.push({
+                  set: round.round,
+                  weight: exercise.weight,
+                  multiplier: exercise.multiplier,
+                  reps: exercise.reps,
+                  rpe: exercise.rpe,
+                  timeSeconds: exercise.timeSeconds,
+                  holdSeconds: exercise.holdSeconds,
+                  distanceMeters: exercise.distanceMeters
+                });
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    return rows;
+  }
+
+  /**
    * Initialize the FormBuilder module with required dependencies from app.js
    */
   const init = (dependencies: Partial<FormBuilderDependencies>): void => {
@@ -110,7 +172,8 @@ interface CollectedBlocks {
     // Clear existing forms
     if (deps.exerciseFormsEl) deps.exerciseFormsEl.innerHTML = '';
 
-    const saved = deps.loadSaved!(filePath) || { file: filePath, updatedAt: new Date().toISOString(), exercises: {} };
+    const saved = deps.loadSaved!(filePath);
+    const isPerf2 = saved && (saved as any).version === 'perf-2';
 
     // Document-level helpers for fallback parsing (e.g., distance in title "4 Miles")
     const getFirstHeadingText = (tagName: string): string => {
@@ -639,11 +702,16 @@ interface CollectedBlocks {
       const sectionTitle = findPreviousHeading(container);
       const inWarmCool = isWarmOrCool(sectionTitle, a);
       
-      const savedEntry = saved.exercises[exKey];
+      // Extract saved data from perf-2 format
       let savedRows: PrescriptionRow[] = [];
-      if (savedEntry) {
-        if (Object.prototype.toString.call(savedEntry) === '[object Array]') savedRows = savedEntry as PrescriptionRow[];
-        else if ((savedEntry as PerformedExercise).sets && Object.prototype.toString.call((savedEntry as PerformedExercise).sets) === '[object Array]') savedRows = (savedEntry as PerformedExercise).sets as PrescriptionRow[];
+      if (saved) {
+        if (isPerf2) {
+          // perf-2: Extract from nested structure
+          savedRows = extractSetsFromPerf2(saved as PerformanceLog, exKey);
+        } else if ((saved as any).exercises) {
+          // Legacy format detected - should not happen after migration
+          console.warn('Legacy performance log format detected, ignoring saved data');
+        }
       }
       
       let preset = prescriptions[exKey] || prescriptions[deps.slugify!(title)] || [];
@@ -855,12 +923,17 @@ interface CollectedBlocks {
         if (skip) continue;
         
         const display = titleCaseFromKey(pKey);
-        const savedEnt2 = saved.exercises[pKey];
-        let savedRows2: PrescriptionRow[] = [];
         
-        if (savedEnt2) {
-          if (Object.prototype.toString.call(savedEnt2) === '[object Array]') savedRows2 = savedEnt2 as PrescriptionRow[];
-          else if ((savedEnt2 as PerformedExercise).sets && Object.prototype.toString.call((savedEnt2 as PerformedExercise).sets) === '[object Array]') savedRows2 = (savedEnt2 as PerformedExercise).sets as PrescriptionRow[];
+        // Extract saved data from perf-2 format
+        let savedRows2: PrescriptionRow[] = [];
+        if (saved) {
+          if (isPerf2) {
+            // perf-2: Extract from nested structure
+            savedRows2 = extractSetsFromPerf2(saved as PerformanceLog, pKey);
+          } else if ((saved as any).exercises) {
+            // Legacy format detected - should not happen after migration
+            console.warn('Legacy performance log format detected, ignoring saved data');
+          }
         }
         
         const cardX = createExerciseCard(display, presetRows, savedRows2);
@@ -876,134 +949,6 @@ interface CollectedBlocks {
         foundKeys[pKey] = true;
       }
     }
-
-    const inferLogTypeFromCard = (card: HTMLElement): string => {
-      try {
-        // Look for header anchor meta
-        const a = card.querySelector('a[data-exmeta]');
-        if (a) {
-          const raw = a.getAttribute('data-exmeta') || '';
-          if (raw) { const m: ExerciseMetadata = JSON.parse(raw); if (m && m.logType) return m.logType; }
-        }
-      } catch (e) {
-        // Ignore
-      }
-      
-      // Heuristic fallback based on which inputs exist
-      const hasHold = card.querySelector('input[data-name="holdSeconds"]');
-      const hasDistance = card.querySelector('input[data-name="distanceMiles"]');
-      const hasTime = card.querySelector('input[data-name="timeSeconds"]');
-      const hasReps = card.querySelector('input[data-name="reps"]');
-      const hasWeight = card.querySelector('input[data-name="weight"]');
-      
-      if (hasHold && !hasReps && !hasWeight) return 'mobility';
-      if (hasHold) return 'stretch';
-      if (hasDistance || (hasTime && !hasWeight && !hasReps)) return 'endurance';
-      if (hasTime && hasWeight && !hasReps) return 'carry';
-      return 'strength';
-    };
-
-    const collectData = (): PerformanceLog => {
-      // Normalize workoutFile to 'workouts/...'
-      let wf = String(filePath || '');
-      // Strip leading ../ or ./
-      wf = wf.replace(/^(?:\.\.\/)+/, '').replace(/^\.\//, '');
-      // If path includes 'workouts/' later in the string, extract from there
-      const mWf = wf.match(/workouts\/.*$/);
-      if (mWf) wf = mWf[0]!;
-      
-      const data: PerformanceLog = { version: 'perf-1', workoutFile: wf, timestamp: new Date().toISOString(), exercises: {} };
-      const scope = deps.workoutContent || document;
-      const cards = scope.getElementsByClassName('exercise-card');
-      
-      for (let c = 0; c < cards.length; c++) {
-        const card = cards[c] as HTMLElement;
-        const exKey = card.getAttribute('data-exkey');
-        const exName = card.getAttribute('data-name') || exKey;
-        if (!exKey) continue;
-        
-        const rows = card.getElementsByClassName('set-row');
-        const setsArr: SetEntry[] = [];
-        
-        for (let r = 0; r < rows.length; r++) {
-          const rowEl = rows[r]!;
-          const inputs = rowEl.getElementsByTagName('input');
-          const obj: Record<string, any> = { set: (r + 1) };
-          
-          for (let k = 0; k < inputs.length; k++) {
-            const inEl = inputs[k]!;
-            const name = inEl.getAttribute('data-name');
-            const val = inEl.value;
-            if (val === '' || !name) continue; // untouched field => rely on prescription absence
-            
-            if (name === 'distanceMeters' || name === 'distanceMiles') {
-              const numDist = Number(val);
-              if (!isNaN(numDist)) obj.distanceMiles = numDist; // store only miles
-              continue;
-            }
-            
-            if (name === 'timeSeconds' || name === 'holdSeconds') {
-              const sec = deps.parseHMSToSeconds!(val);
-              if (sec != null) obj[name] = sec;
-              continue;
-            }
-            
-            const num = Number(val);
-            if (!isNaN(num)) obj[name] = num;
-          }
-          
-          // Include even if only weight/multiplier zero values
-          const hasAny = (obj.weight != null || obj.multiplier != null || obj.reps != null || obj.rpe != null || obj.timeSeconds != null || obj.holdSeconds != null || obj.distanceMiles != null);
-          if (!hasAny) {
-            // Keep empty set placeholder? We retain set if prescription existed. For now skip empty.
-            continue;
-          }
-          
-          setsArr.push(obj);
-        }
-        
-        if (setsArr.length) {
-          data.exercises[exKey] = { name: exName, logType: inferLogTypeFromCard(card), sets: setsArr } as PerformedExercise;
-        }
-      }
-      
-      return data;
-    };
-
-    const validatePerformance = (data: PerformanceLog): string[] => {
-      const errors: string[] = [];
-      const isNum = (v: any): boolean => typeof v === 'number' && !isNaN(v);
-      
-      if (!data || typeof data !== 'object') { errors.push('root: not object'); return errors; }
-      if (data.version !== 'perf-1') errors.push('version must be perf-1');
-      if (!data.workoutFile || typeof data.workoutFile !== 'string') errors.push('workoutFile missing');
-      if (!data.timestamp || typeof data.timestamp !== 'string') errors.push('timestamp missing');
-      if (!data.exercises || typeof data.exercises !== 'object') errors.push('exercises missing');
-      else {
-        for (const k in data.exercises) if (data.exercises.hasOwnProperty(k)) {
-          const ex = data.exercises[k]!;
-          if (!ex || typeof ex !== 'object') { errors.push('exercise ' + k + ' not object'); continue; }
-          if (!ex.name) errors.push(k + ': name missing');
-          if (!(ex as any).logType || ['strength', 'endurance', 'carry', 'mobility', 'stretch'].indexOf((ex as any).logType) === -1) errors.push(k + ': invalid logType');
-          if (!ex.sets || Object.prototype.toString.call(ex.sets) !== '[object Array]' || !ex.sets.length) errors.push(k + ': sets missing');
-          else {
-            for (let i = 0; i < ex.sets.length; i++) {
-              const s = ex.sets[i]!;
-              if (typeof s !== 'object') { errors.push(k + ' set ' + (i + 1) + ': not object'); continue; }
-              if (!isNum(s.set) || s.set! < 1) errors.push(k + ' set ' + (i + 1) + ': invalid set index');
-              
-              ['weight', 'multiplier', 'reps', 'rpe', 'timeSeconds', 'holdSeconds', 'distanceMiles'].forEach((f) => {
-                if ((s as any)[f] != null && !isNum((s as any)[f])) errors.push(k + ' set ' + (i + 1) + ': ' + f + ' not number');
-              });
-              
-              if (s.rpe != null && (s.rpe < 0 || s.rpe > 10)) errors.push(k + ' set ' + (i + 1) + ': rpe out of range');
-            }
-          }
-        }
-      }
-      
-      return errors;
-    };
 
     // ========================================================================
     // perf-2: Nested Structure Collection
@@ -1371,71 +1316,67 @@ interface CollectedBlocks {
 
     // Wire up action buttons
     deps.saveBtn!.onclick = () => {
-      // Try perf-2 format if session JSON is available (same logic as copy/download/issue buttons)
+      // Use perf-2 format for localStorage (nested structure preserving workout organization)
       const sessionJSON = deps.getCurrentSessionJSON ? deps.getCurrentSessionJSON() : null;
       let data: any;
-      let format: string = 'perf-1';
       
       if (sessionJSON) {
         // Use perf-2 nested structure format
         try {
           data = collectNestedData(sessionJSON);
-          if (data) {
-            format = 'perf-2';
-            console.log('✅ Using perf-2 nested structure format for local save');
-          } else {
-            console.warn('⚠️ perf-2 collection returned null, falling back to perf-1');
-            data = collectData();
+          if (!data) {
+            console.error('❌ perf-2 collection returned null');
+            deps.status!('Error: Could not collect performance data', { important: true });
+            return;
           }
+          console.log('✅ Using perf-2 nested structure format for localStorage');
         } catch (e) {
-          console.error('❌ Error collecting perf-2 data, falling back to perf-1:', e);
-          data = collectData();
+          console.error('❌ Error collecting perf-2 data:', e);
+          deps.status!('Error: Could not collect performance data', { important: true });
+          return;
         }
       } else {
-        // No session JSON available, use perf-1 format
-        data = collectData();
+        console.error('❌ No session JSON available for perf-2 collection');
+        deps.status!('Error: Workout session data not available', { important: true });
+        return;
       }
       
       deps.saveLocal!(filePath, data);
-      deps.status!(`Saved locally (${format}) at ` + new Date().toLocaleTimeString(), { important: true });
+      deps.status!(`Saved locally at ` + new Date().toLocaleTimeString(), { important: true });
     };
 
     deps.copyBtn!.onclick = () => {
-      // Try perf-2 format if session JSON is available
+      // Use perf-2 nested structure format
       const sessionJSON = deps.getCurrentSessionJSON ? deps.getCurrentSessionJSON() : null;
+      
+      if (!sessionJSON) {
+        console.error('❌ No session JSON available for perf-2 collection');
+        deps.status!('Error: Workout session data not available', { important: true });
+        return;
+      }
+      
       let data: any;
       let errs: string[] = [];
-      let format: string = 'perf-1';
       
-      if (sessionJSON) {
-        // Use perf-2 nested structure format
-        try {
-          data = collectNestedData(sessionJSON);
-          if (data) {
-            errs = validatePerformanceV2(data);
-            format = 'perf-2';
-            console.log('✅ Using perf-2 nested structure format');
-          } else {
-            // Fallback to perf-1 if perf-2 fails
-            console.warn('⚠️ perf-2 collection returned null, falling back to perf-1');
-            data = collectData();
-            errs = validatePerformance(data);
-          }
-        } catch (e) {
-          console.error('❌ Error collecting perf-2 data, falling back to perf-1:', e);
-          data = collectData();
-          errs = validatePerformance(data);
+      try {
+        data = collectNestedData(sessionJSON);
+        if (!data) {
+          console.error('❌ perf-2 collection returned null');
+          deps.status!('Error: Could not collect performance data', { important: true });
+          return;
         }
-      } else {
-        // No session JSON available, use perf-1 format
-        data = collectData();
-        errs = validatePerformance(data);
+        errs = validatePerformanceV2(data);
+        console.log('✅ Using perf-2 nested structure format');
+      } catch (e) {
+        console.error('❌ Error collecting perf-2 data:', e);
+        deps.status!('Error: Could not collect performance data', { important: true });
+        return;
       }
       
       if (errs.length) {
         // Attach errors for debugging (not schema-defined) but do not block copy
         (data as any).validationErrors = errs.slice(0);
-        console.warn(`Performance validation errors (${format}):`, errs);
+        console.warn('Performance validation errors (perf-2):', errs);
       }
       
       const json = JSON.stringify(data, null, 2);
@@ -1444,7 +1385,7 @@ interface CollectedBlocks {
       if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(json).then(() => { 
           didCopy = true; 
-          deps.status!(`Copied ${format} JSON` + (errs.length ? ' (WITH WARNINGS)' : '') + '.', { important: true }); 
+          deps.status!('Copied JSON' + (errs.length ? ' (WITH WARNINGS)' : '') + '.', { important: true }); 
         }).catch(() => {
           // Ignore
         });
@@ -1455,43 +1396,41 @@ interface CollectedBlocks {
         deps.copyTarget!.value = json;
         deps.copyTarget!.focus();
         deps.copyTarget!.select();
-        deps.status!(`Copy ${format} JSON shown below; select-all and copy manually.` + (errs.length ? ' (Validation warnings in console)' : ''));
+        deps.status!('Copy JSON shown below; select-all and copy manually.' + (errs.length ? ' (Validation warnings in console)' : ''));
       }
     };
 
     if (deps.downloadBtn) deps.downloadBtn.onclick = () => {
-      // Try perf-2 format if session JSON is available
+      // Use perf-2 nested structure format
       const sessionJSON = deps.getCurrentSessionJSON ? deps.getCurrentSessionJSON() : null;
+      
+      if (!sessionJSON) {
+        console.error('❌ No session JSON available for perf-2 collection');
+        deps.status!('Error: Workout session data not available', { important: true });
+        return;
+      }
+      
       let data: any;
       let errs: string[] = [];
-      let format: string = 'perf-1';
       
-      if (sessionJSON) {
-        // Use perf-2 nested structure format
-        try {
-          data = collectNestedData(sessionJSON);
-          if (data) {
-            errs = validatePerformanceV2(data);
-            format = 'perf-2';
-            console.log('✅ Using perf-2 nested structure format');
-          } else {
-            console.warn('⚠️ perf-2 collection returned null, falling back to perf-1');
-            data = collectData();
-            errs = validatePerformance(data);
-          }
-        } catch (e) {
-          console.error('❌ Error collecting perf-2 data, falling back to perf-1:', e);
-          data = collectData();
-          errs = validatePerformance(data);
+      try {
+        data = collectNestedData(sessionJSON);
+        if (!data) {
+          console.error('❌ perf-2 collection returned null');
+          deps.status!('Error: Could not collect performance data', { important: true });
+          return;
         }
-      } else {
-        data = collectData();
-        errs = validatePerformance(data);
+        errs = validatePerformanceV2(data);
+        console.log('✅ Using perf-2 nested structure format');
+      } catch (e) {
+        console.error('❌ Error collecting perf-2 data:', e);
+        deps.status!('Error: Could not collect performance data', { important: true });
+        return;
       }
       
       if (errs.length) {
         (data as any).validationErrors = errs.slice(0);
-        console.warn(`Performance validation errors (${format}):`, errs);
+        console.warn('Performance validation errors (perf-2):', errs);
       }
       
       const json = JSON.stringify(data, null, 2);
@@ -1499,7 +1438,7 @@ interface CollectedBlocks {
       // Derive a safe base name (strip folders, extension)
       const base = wf.split('/').pop()!.replace(/\.[^.]+$/, '') || 'session';
       const ts = (new Date().toISOString().replace(/[:]/g, '').replace(/\..+/, ''));
-      const fileName = base + '_' + ts + `_${format}.json`;
+      const fileName = base + '_' + ts + '.json';
       
       try {
         const blob = new Blob([json], { type: 'application/json' });
@@ -1522,39 +1461,36 @@ interface CollectedBlocks {
     };
 
     deps.issueBtn!.onclick = () => {
-      // Try perf-2 format if session JSON is available (same logic as copy/download buttons)
+      // Use perf-2 nested structure format
       const sessionJSON = deps.getCurrentSessionJSON ? deps.getCurrentSessionJSON() : null;
+      
+      if (!sessionJSON) {
+        console.error('❌ No session JSON available for perf-2 collection');
+        deps.status!('Error: Workout session data not available', { important: true });
+        return;
+      }
+      
       let data: any;
       let errs: string[] = [];
-      let format: string = 'perf-1';
       
-      if (sessionJSON) {
-        // Use perf-2 nested structure format
-        try {
-          data = collectNestedData(sessionJSON);
-          if (data) {
-            errs = validatePerformanceV2(data);
-            format = 'perf-2';
-            console.log('✅ Using perf-2 nested structure format for GitHub issue');
-          } else {
-            console.warn('⚠️ perf-2 collection returned null, falling back to perf-1');
-            data = collectData();
-            errs = validatePerformance(data);
-          }
-        } catch (e) {
-          console.error('❌ Error collecting perf-2 data, falling back to perf-1:', e);
-          data = collectData();
-          errs = validatePerformance(data);
+      try {
+        data = collectNestedData(sessionJSON);
+        if (!data) {
+          console.error('❌ perf-2 collection returned null');
+          deps.status!('Error: Could not collect performance data', { important: true });
+          return;
         }
-      } else {
-        // No session JSON available, use perf-1 format
-        data = collectData();
-        errs = validatePerformance(data);
+        errs = validatePerformanceV2(data);
+        console.log('✅ Using perf-2 nested structure format for GitHub issue');
+      } catch (e) {
+        console.error('❌ Error collecting perf-2 data:', e);
+        deps.status!('Error: Could not collect performance data', { important: true });
+        return;
       }
       
       if (errs.length) {
         (data as any).validationErrors = errs.slice(0);
-        console.warn(`Performance validation errors (${format}):`, errs);
+        console.warn('Performance validation errors (perf-2):', errs);
       }
       
       const json = JSON.stringify(data, null, 2);

@@ -1,0 +1,276 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/4-4_Chest_Arms_Hypertrophy.json",
+  "timestamp": "2025-10-31T12:32:03.361Z",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Upper Body Activation",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Push-ups",
+          "sets": [
+            {
+              "set": 1,
+              "reps": 15,
+              "rpe": 6
+            },
+            {
+              "set": 2,
+              "reps": 15,
+              "rpe": 7
+            }
+          ],
+          "notes": "Controlled tempo, activate chest and triceps"
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Chest Light Pump",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Flat Dumbbell Bench Press",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 35,
+              "multiplier": 2,
+              "reps": 12,
+              "rpe": 6
+            },
+            {
+              "set": 2,
+              "weight": 35,
+              "multiplier": 2,
+              "reps": 12,
+              "rpe": 6
+            },
+            {
+              "set": 3,
+              "weight": 35,
+              "multiplier": 2,
+              "reps": 12,
+              "rpe": 6
+            }
+          ],
+          "notes": "Deload: light weight, higher reps. Focus on muscle connection and form"
+        },
+        {
+          "kind": "exercise",
+          "name": "Incline Dumbbell Bench Press",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 12,
+              "rpe": 6
+            },
+            {
+              "set": 2,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 9,
+              "rpe": 6
+            }
+          ],
+          "notes": "Deload: 2 sets, light load. 30-45° incline"
+        },
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Flyes",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 15,
+              "multiplier": 2,
+              "reps": 15,
+              "rpe": 5
+            },
+            {
+              "set": 2,
+              "weight": 15,
+              "multiplier": 2,
+              "reps": 15,
+              "rpe": 6
+            }
+          ],
+          "notes": "Deload: light stretch emphasis. Feel the pec contraction"
+        },
+        {
+          "kind": "exercise",
+          "name": "Push-ups",
+          "sets": [
+            {
+              "set": 1,
+              "reps": 15,
+              "rpe": 6
+            },
+            {
+              "set": 2,
+              "reps": 15,
+              "rpe": 7
+            }
+          ],
+          "notes": "Deload: moderate reps, keep it easy. Full range of motion"
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Arms Light Pump",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Alternating Dumbbell Biceps Curl",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 17.5,
+              "reps": 15,
+              "rpe": 5
+            },
+            {
+              "set": 2,
+              "weight": 17.5,
+              "reps": 15,
+              "rpe": 5
+            }
+          ],
+          "notes": "Deload: each arm. Light weight, focus on form and pump"
+        },
+        {
+          "kind": "exercise",
+          "name": "Hammer Curl",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 5
+            },
+            {
+              "set": 2,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 13,
+              "rpe": 6
+            }
+          ],
+          "notes": "Deload: light pump. Neutral grip throughout"
+        },
+        {
+          "kind": "exercise",
+          "name": "Overhead Dumbbell Triceps Extension",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 25,
+              "reps": 15,
+              "rpe": 6
+            },
+            {
+              "set": 2,
+              "weight": 25,
+              "reps": 15,
+              "rpe": 7
+            }
+          ],
+          "notes": "Deload: light load. Single dumbbell, both hands"
+        },
+        {
+          "kind": "exercise",
+          "name": "Diamond Push-ups",
+          "sets": [
+            {
+              "set": 1,
+              "reps": 10,
+              "rpe": 6
+            },
+            {
+              "set": 2,
+              "reps": 8,
+              "rpe": 6
+            }
+          ],
+          "notes": "Deload: moderate reps, keep it easy"
+        }
+      ]
+    }
+  ],
+  "date": "2025-10-31",
+  "block": 4,
+  "week": 4,
+  "title": "Chest & Arms Light Pump – Deload",
+  "notes": "Deload week: light pump session with reduced volume and intensity. RPE ≤6-7, focus on blood flow and recovery.",
+  "exerciseIndex": {
+    "push-ups": {
+      "name": "Push-ups",
+      "sectionPath": "sections[1].items[3].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 6.5,
+      "totalVolume": 0
+    },
+    "flat-dumbbell-bench-press": {
+      "name": "Flat Dumbbell Bench Press",
+      "sectionPath": "sections[1].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 6.0,
+      "totalVolume": 2520
+    },
+    "incline-dumbbell-bench-press": {
+      "name": "Incline Dumbbell Bench Press",
+      "sectionPath": "sections[1].items[1].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 6.0,
+      "totalVolume": 1260
+    },
+    "dumbbell-flyes": {
+      "name": "Dumbbell Flyes",
+      "sectionPath": "sections[1].items[2].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 5.5,
+      "totalVolume": 900
+    },
+    "alternating-dumbbell-biceps-curl": {
+      "name": "Alternating Dumbbell Biceps Curl",
+      "sectionPath": "sections[2].items[0].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 5.0,
+      "totalVolume": 525.0
+    },
+    "hammer-curl": {
+      "name": "Hammer Curl",
+      "sectionPath": "sections[2].items[1].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 5.5,
+      "totalVolume": 1150
+    },
+    "overhead-dumbbell-triceps-extension": {
+      "name": "Overhead Dumbbell Triceps Extension",
+      "sectionPath": "sections[2].items[2].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 6.5,
+      "totalVolume": 750
+    },
+    "diamond-push-ups": {
+      "name": "Diamond Push-ups",
+      "sectionPath": "sections[2].items[3].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 6.0,
+      "totalVolume": 0
+    }
+  }
+}

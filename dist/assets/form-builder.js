@@ -3,6 +3,49 @@ window.ExercAIse.FormBuilder = (() => {
     'use strict';
     let deps = {};
     const METERS_PER_MILE = 1609.34;
+    function extractSetsFromPerf2(log, exerciseKey) {
+        const rows = [];
+        for (const section of log.sections) {
+            for (const item of section.items) {
+                if (item.kind === 'exercise' && item.sets) {
+                    if (log.exerciseIndex && log.exerciseIndex[exerciseKey]) {
+                        item.sets.forEach((setEntry) => {
+                            rows.push({
+                                set: setEntry.set,
+                                weight: setEntry.weight,
+                                multiplier: setEntry.multiplier,
+                                reps: setEntry.reps,
+                                rpe: setEntry.rpe,
+                                timeSeconds: setEntry.timeSeconds,
+                                holdSeconds: setEntry.holdSeconds,
+                                distanceMeters: setEntry.distanceMeters
+                            });
+                        });
+                        return rows;
+                    }
+                }
+                if ((item.kind === 'superset' || item.kind === 'circuit') && item.rounds) {
+                    for (const round of item.rounds) {
+                        for (const exercise of round.exercises) {
+                            if (exercise.key === exerciseKey) {
+                                rows.push({
+                                    set: round.round,
+                                    weight: exercise.weight,
+                                    multiplier: exercise.multiplier,
+                                    reps: exercise.reps,
+                                    rpe: exercise.rpe,
+                                    timeSeconds: exercise.timeSeconds,
+                                    holdSeconds: exercise.holdSeconds,
+                                    distanceMeters: exercise.distanceMeters
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return rows;
+    }
     const init = (dependencies) => {
         deps = dependencies || {};
         const required = [
@@ -23,7 +66,8 @@ window.ExercAIse.FormBuilder = (() => {
         const prescriptions = isJSON ? deps.parseJSONPrescriptions(raw) : deps.parseMarkdownPrescriptions(raw);
         if (deps.exerciseFormsEl)
             deps.exerciseFormsEl.innerHTML = '';
-        const saved = deps.loadSaved(filePath) || { file: filePath, updatedAt: new Date().toISOString(), exercises: {} };
+        const saved = deps.loadSaved(filePath);
+        const isPerf2 = saved && saved.version === 'perf-2';
         const getFirstHeadingText = (tagName) => {
             if (!deps.workoutContent)
                 return '';
@@ -503,13 +547,14 @@ window.ExercAIse.FormBuilder = (() => {
             const container = nearestBlockContainer(a);
             const sectionTitle = findPreviousHeading(container);
             const inWarmCool = isWarmOrCool(sectionTitle, a);
-            const savedEntry = saved.exercises[exKey];
             let savedRows = [];
-            if (savedEntry) {
-                if (Object.prototype.toString.call(savedEntry) === '[object Array]')
-                    savedRows = savedEntry;
-                else if (savedEntry.sets && Object.prototype.toString.call(savedEntry.sets) === '[object Array]')
-                    savedRows = savedEntry.sets;
+            if (saved) {
+                if (isPerf2) {
+                    savedRows = extractSetsFromPerf2(saved, exKey);
+                }
+                else if (saved.exercises) {
+                    console.warn('Legacy performance log format detected, ignoring saved data');
+                }
             }
             let preset = prescriptions[exKey] || prescriptions[deps.slugify(title)] || [];
             if (!isJSON && !inWarmCool && (!preset || !preset.length)) {
@@ -713,13 +758,14 @@ window.ExercAIse.FormBuilder = (() => {
                 if (skip)
                     continue;
                 const display = titleCaseFromKey(pKey);
-                const savedEnt2 = saved.exercises[pKey];
                 let savedRows2 = [];
-                if (savedEnt2) {
-                    if (Object.prototype.toString.call(savedEnt2) === '[object Array]')
-                        savedRows2 = savedEnt2;
-                    else if (savedEnt2.sets && Object.prototype.toString.call(savedEnt2.sets) === '[object Array]')
-                        savedRows2 = savedEnt2.sets;
+                if (saved) {
+                    if (isPerf2) {
+                        savedRows2 = extractSetsFromPerf2(saved, pKey);
+                    }
+                    else if (saved.exercises) {
+                        console.warn('Legacy performance log format detected, ignoring saved data');
+                    }
                 }
                 const cardX = createExerciseCard(display, presetRows, savedRows2);
                 if (mainHead && mainHead.parentNode) {
@@ -735,140 +781,6 @@ window.ExercAIse.FormBuilder = (() => {
                 foundKeys[pKey] = true;
             }
         }
-        const inferLogTypeFromCard = (card) => {
-            try {
-                const a = card.querySelector('a[data-exmeta]');
-                if (a) {
-                    const raw = a.getAttribute('data-exmeta') || '';
-                    if (raw) {
-                        const m = JSON.parse(raw);
-                        if (m && m.logType)
-                            return m.logType;
-                    }
-                }
-            }
-            catch (e) {
-            }
-            const hasHold = card.querySelector('input[data-name="holdSeconds"]');
-            const hasDistance = card.querySelector('input[data-name="distanceMiles"]');
-            const hasTime = card.querySelector('input[data-name="timeSeconds"]');
-            const hasReps = card.querySelector('input[data-name="reps"]');
-            const hasWeight = card.querySelector('input[data-name="weight"]');
-            if (hasHold && !hasReps && !hasWeight)
-                return 'mobility';
-            if (hasHold)
-                return 'stretch';
-            if (hasDistance || (hasTime && !hasWeight && !hasReps))
-                return 'endurance';
-            if (hasTime && hasWeight && !hasReps)
-                return 'carry';
-            return 'strength';
-        };
-        const collectData = () => {
-            let wf = String(filePath || '');
-            wf = wf.replace(/^(?:\.\.\/)+/, '').replace(/^\.\//, '');
-            const mWf = wf.match(/workouts\/.*$/);
-            if (mWf)
-                wf = mWf[0];
-            const data = { version: 'perf-1', workoutFile: wf, timestamp: new Date().toISOString(), exercises: {} };
-            const scope = deps.workoutContent || document;
-            const cards = scope.getElementsByClassName('exercise-card');
-            for (let c = 0; c < cards.length; c++) {
-                const card = cards[c];
-                const exKey = card.getAttribute('data-exkey');
-                const exName = card.getAttribute('data-name') || exKey;
-                if (!exKey)
-                    continue;
-                const rows = card.getElementsByClassName('set-row');
-                const setsArr = [];
-                for (let r = 0; r < rows.length; r++) {
-                    const rowEl = rows[r];
-                    const inputs = rowEl.getElementsByTagName('input');
-                    const obj = { set: (r + 1) };
-                    for (let k = 0; k < inputs.length; k++) {
-                        const inEl = inputs[k];
-                        const name = inEl.getAttribute('data-name');
-                        const val = inEl.value;
-                        if (val === '' || !name)
-                            continue;
-                        if (name === 'distanceMeters' || name === 'distanceMiles') {
-                            const numDist = Number(val);
-                            if (!isNaN(numDist))
-                                obj.distanceMiles = numDist;
-                            continue;
-                        }
-                        if (name === 'timeSeconds' || name === 'holdSeconds') {
-                            const sec = deps.parseHMSToSeconds(val);
-                            if (sec != null)
-                                obj[name] = sec;
-                            continue;
-                        }
-                        const num = Number(val);
-                        if (!isNaN(num))
-                            obj[name] = num;
-                    }
-                    const hasAny = (obj.weight != null || obj.multiplier != null || obj.reps != null || obj.rpe != null || obj.timeSeconds != null || obj.holdSeconds != null || obj.distanceMiles != null);
-                    if (!hasAny) {
-                        continue;
-                    }
-                    setsArr.push(obj);
-                }
-                if (setsArr.length) {
-                    data.exercises[exKey] = { name: exName, logType: inferLogTypeFromCard(card), sets: setsArr };
-                }
-            }
-            return data;
-        };
-        const validatePerformance = (data) => {
-            const errors = [];
-            const isNum = (v) => typeof v === 'number' && !isNaN(v);
-            if (!data || typeof data !== 'object') {
-                errors.push('root: not object');
-                return errors;
-            }
-            if (data.version !== 'perf-1')
-                errors.push('version must be perf-1');
-            if (!data.workoutFile || typeof data.workoutFile !== 'string')
-                errors.push('workoutFile missing');
-            if (!data.timestamp || typeof data.timestamp !== 'string')
-                errors.push('timestamp missing');
-            if (!data.exercises || typeof data.exercises !== 'object')
-                errors.push('exercises missing');
-            else {
-                for (const k in data.exercises)
-                    if (data.exercises.hasOwnProperty(k)) {
-                        const ex = data.exercises[k];
-                        if (!ex || typeof ex !== 'object') {
-                            errors.push('exercise ' + k + ' not object');
-                            continue;
-                        }
-                        if (!ex.name)
-                            errors.push(k + ': name missing');
-                        if (!ex.logType || ['strength', 'endurance', 'carry', 'mobility', 'stretch'].indexOf(ex.logType) === -1)
-                            errors.push(k + ': invalid logType');
-                        if (!ex.sets || Object.prototype.toString.call(ex.sets) !== '[object Array]' || !ex.sets.length)
-                            errors.push(k + ': sets missing');
-                        else {
-                            for (let i = 0; i < ex.sets.length; i++) {
-                                const s = ex.sets[i];
-                                if (typeof s !== 'object') {
-                                    errors.push(k + ' set ' + (i + 1) + ': not object');
-                                    continue;
-                                }
-                                if (!isNum(s.set) || s.set < 1)
-                                    errors.push(k + ' set ' + (i + 1) + ': invalid set index');
-                                ['weight', 'multiplier', 'reps', 'rpe', 'timeSeconds', 'holdSeconds', 'distanceMiles'].forEach((f) => {
-                                    if (s[f] != null && !isNum(s[f]))
-                                        errors.push(k + ' set ' + (i + 1) + ': ' + f + ' not number');
-                                });
-                                if (s.rpe != null && (s.rpe < 0 || s.rpe > 10))
-                                    errors.push(k + ' set ' + (i + 1) + ': rpe out of range');
-                            }
-                        }
-                    }
-            }
-            return errors;
-        };
         const exerciseKeyFromName = (name) => {
             return deps.slugify(name);
         };
@@ -1180,69 +1092,64 @@ window.ExercAIse.FormBuilder = (() => {
         deps.saveBtn.onclick = () => {
             const sessionJSON = deps.getCurrentSessionJSON ? deps.getCurrentSessionJSON() : null;
             let data;
-            let format = 'perf-1';
             if (sessionJSON) {
                 try {
                     data = collectNestedData(sessionJSON);
-                    if (data) {
-                        format = 'perf-2';
-                        console.log('✅ Using perf-2 nested structure format for local save');
+                    if (!data) {
+                        console.error('❌ perf-2 collection returned null');
+                        deps.status('Error: Could not collect performance data', { important: true });
+                        return;
                     }
-                    else {
-                        console.warn('⚠️ perf-2 collection returned null, falling back to perf-1');
-                        data = collectData();
-                    }
+                    console.log('✅ Using perf-2 nested structure format for localStorage');
                 }
                 catch (e) {
-                    console.error('❌ Error collecting perf-2 data, falling back to perf-1:', e);
-                    data = collectData();
+                    console.error('❌ Error collecting perf-2 data:', e);
+                    deps.status('Error: Could not collect performance data', { important: true });
+                    return;
                 }
             }
             else {
-                data = collectData();
+                console.error('❌ No session JSON available for perf-2 collection');
+                deps.status('Error: Workout session data not available', { important: true });
+                return;
             }
             deps.saveLocal(filePath, data);
-            deps.status(`Saved locally (${format}) at ` + new Date().toLocaleTimeString(), { important: true });
+            deps.status(`Saved locally at ` + new Date().toLocaleTimeString(), { important: true });
         };
         deps.copyBtn.onclick = () => {
             const sessionJSON = deps.getCurrentSessionJSON ? deps.getCurrentSessionJSON() : null;
+            if (!sessionJSON) {
+                console.error('❌ No session JSON available for perf-2 collection');
+                deps.status('Error: Workout session data not available', { important: true });
+                return;
+            }
             let data;
             let errs = [];
-            let format = 'perf-1';
-            if (sessionJSON) {
-                try {
-                    data = collectNestedData(sessionJSON);
-                    if (data) {
-                        errs = validatePerformanceV2(data);
-                        format = 'perf-2';
-                        console.log('✅ Using perf-2 nested structure format');
-                    }
-                    else {
-                        console.warn('⚠️ perf-2 collection returned null, falling back to perf-1');
-                        data = collectData();
-                        errs = validatePerformance(data);
-                    }
+            try {
+                data = collectNestedData(sessionJSON);
+                if (!data) {
+                    console.error('❌ perf-2 collection returned null');
+                    deps.status('Error: Could not collect performance data', { important: true });
+                    return;
                 }
-                catch (e) {
-                    console.error('❌ Error collecting perf-2 data, falling back to perf-1:', e);
-                    data = collectData();
-                    errs = validatePerformance(data);
-                }
+                errs = validatePerformanceV2(data);
+                console.log('✅ Using perf-2 nested structure format');
             }
-            else {
-                data = collectData();
-                errs = validatePerformance(data);
+            catch (e) {
+                console.error('❌ Error collecting perf-2 data:', e);
+                deps.status('Error: Could not collect performance data', { important: true });
+                return;
             }
             if (errs.length) {
                 data.validationErrors = errs.slice(0);
-                console.warn(`Performance validation errors (${format}):`, errs);
+                console.warn('Performance validation errors (perf-2):', errs);
             }
             const json = JSON.stringify(data, null, 2);
             let didCopy = false;
             if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(json).then(() => {
                     didCopy = true;
-                    deps.status(`Copied ${format} JSON` + (errs.length ? ' (WITH WARNINGS)' : '') + '.', { important: true });
+                    deps.status('Copied JSON' + (errs.length ? ' (WITH WARNINGS)' : '') + '.', { important: true });
                 }).catch(() => {
                 });
             }
@@ -1251,48 +1158,43 @@ window.ExercAIse.FormBuilder = (() => {
                 deps.copyTarget.value = json;
                 deps.copyTarget.focus();
                 deps.copyTarget.select();
-                deps.status(`Copy ${format} JSON shown below; select-all and copy manually.` + (errs.length ? ' (Validation warnings in console)' : ''));
+                deps.status('Copy JSON shown below; select-all and copy manually.' + (errs.length ? ' (Validation warnings in console)' : ''));
             }
         };
         if (deps.downloadBtn)
             deps.downloadBtn.onclick = () => {
                 const sessionJSON = deps.getCurrentSessionJSON ? deps.getCurrentSessionJSON() : null;
+                if (!sessionJSON) {
+                    console.error('❌ No session JSON available for perf-2 collection');
+                    deps.status('Error: Workout session data not available', { important: true });
+                    return;
+                }
                 let data;
                 let errs = [];
-                let format = 'perf-1';
-                if (sessionJSON) {
-                    try {
-                        data = collectNestedData(sessionJSON);
-                        if (data) {
-                            errs = validatePerformanceV2(data);
-                            format = 'perf-2';
-                            console.log('✅ Using perf-2 nested structure format');
-                        }
-                        else {
-                            console.warn('⚠️ perf-2 collection returned null, falling back to perf-1');
-                            data = collectData();
-                            errs = validatePerformance(data);
-                        }
+                try {
+                    data = collectNestedData(sessionJSON);
+                    if (!data) {
+                        console.error('❌ perf-2 collection returned null');
+                        deps.status('Error: Could not collect performance data', { important: true });
+                        return;
                     }
-                    catch (e) {
-                        console.error('❌ Error collecting perf-2 data, falling back to perf-1:', e);
-                        data = collectData();
-                        errs = validatePerformance(data);
-                    }
+                    errs = validatePerformanceV2(data);
+                    console.log('✅ Using perf-2 nested structure format');
                 }
-                else {
-                    data = collectData();
-                    errs = validatePerformance(data);
+                catch (e) {
+                    console.error('❌ Error collecting perf-2 data:', e);
+                    deps.status('Error: Could not collect performance data', { important: true });
+                    return;
                 }
                 if (errs.length) {
                     data.validationErrors = errs.slice(0);
-                    console.warn(`Performance validation errors (${format}):`, errs);
+                    console.warn('Performance validation errors (perf-2):', errs);
                 }
                 const json = JSON.stringify(data, null, 2);
                 const wf = data.workoutFile || 'session';
                 const base = wf.split('/').pop().replace(/\.[^.]+$/, '') || 'session';
                 const ts = (new Date().toISOString().replace(/[:]/g, '').replace(/\..+/, ''));
-                const fileName = base + '_' + ts + `_${format}.json`;
+                const fileName = base + '_' + ts + '.json';
                 try {
                     const blob = new Blob([json], { type: 'application/json' });
                     const url = URL.createObjectURL(blob);
@@ -1319,36 +1221,31 @@ window.ExercAIse.FormBuilder = (() => {
             };
         deps.issueBtn.onclick = () => {
             const sessionJSON = deps.getCurrentSessionJSON ? deps.getCurrentSessionJSON() : null;
+            if (!sessionJSON) {
+                console.error('❌ No session JSON available for perf-2 collection');
+                deps.status('Error: Workout session data not available', { important: true });
+                return;
+            }
             let data;
             let errs = [];
-            let format = 'perf-1';
-            if (sessionJSON) {
-                try {
-                    data = collectNestedData(sessionJSON);
-                    if (data) {
-                        errs = validatePerformanceV2(data);
-                        format = 'perf-2';
-                        console.log('✅ Using perf-2 nested structure format for GitHub issue');
-                    }
-                    else {
-                        console.warn('⚠️ perf-2 collection returned null, falling back to perf-1');
-                        data = collectData();
-                        errs = validatePerformance(data);
-                    }
+            try {
+                data = collectNestedData(sessionJSON);
+                if (!data) {
+                    console.error('❌ perf-2 collection returned null');
+                    deps.status('Error: Could not collect performance data', { important: true });
+                    return;
                 }
-                catch (e) {
-                    console.error('❌ Error collecting perf-2 data, falling back to perf-1:', e);
-                    data = collectData();
-                    errs = validatePerformance(data);
-                }
+                errs = validatePerformanceV2(data);
+                console.log('✅ Using perf-2 nested structure format for GitHub issue');
             }
-            else {
-                data = collectData();
-                errs = validatePerformance(data);
+            catch (e) {
+                console.error('❌ Error collecting perf-2 data:', e);
+                deps.status('Error: Could not collect performance data', { important: true });
+                return;
             }
             if (errs.length) {
                 data.validationErrors = errs.slice(0);
-                console.warn(`Performance validation errors (${format}):`, errs);
+                console.warn('Performance validation errors (perf-2):', errs);
             }
             const json = JSON.stringify(data, null, 2);
             const owner = 'jrodhead';

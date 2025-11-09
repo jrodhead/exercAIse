@@ -113,20 +113,43 @@ def migrate_perf1_to_perf2(perf1_path: Path) -> Optional[Dict[str, Any]]:
     with open(perf1_path, 'r', encoding='utf-8') as f:
         perf1 = json.load(f)
     
-    # Validate perf-1 format
-    if perf1.get('version') != 'perf-1':
-        print(f"  ⚠️  Skipping: not perf-1 format (version={perf1.get('version')})")
+    # Validate perf-1 format (accept "perf-1", "1", or missing version with exercises key)
+    version = perf1.get('version')
+    has_exercises = 'exercises' in perf1 and isinstance(perf1['exercises'], dict)
+    
+    if version == 'perf-2':
+        print(f"  ⚠️  Skipping: already perf-2 format")
+        return None
+    
+    if not has_exercises:
+        print(f"  ⚠️  Skipping: not perf-1 format (no exercises key, version={version})")
+        return None
+    
+    if version not in ['perf-1', '1', None]:
+        print(f"  ⚠️  Skipping: unknown version format (version={version})")
         return None
     
     # Load session JSON
-    session = load_session_json(perf1['workoutFile'])
+    workout_file = perf1['workoutFile']
+    
+    # Convert .md references to .json (if session JSON exists)
+    if workout_file.endswith('.md'):
+        json_path = workout_file.replace('.md', '.json')
+        if Path(json_path).exists():
+            print(f"  🔄 Converting workout reference: {workout_file} → {json_path}")
+            workout_file = json_path
+        else:
+            print(f"  ⚠️  Skipping: no JSON version found for {workout_file}")
+            return None
+    
+    session = load_session_json(workout_file)
     if not session:
         return None
     
     # Initialize perf-2 log
     perf2: Dict[str, Any] = {
         'version': 'perf-2',
-        'workoutFile': perf1['workoutFile'],
+        'workoutFile': workout_file,  # Use JSON path
         'timestamp': perf1['timestamp'],
         'sections': []
     }
@@ -165,8 +188,10 @@ def migrate_perf1_to_perf2(perf1_path: Path) -> Optional[Dict[str, Any]]:
                 }
                 
                 # Copy sets, preserving all fields
-                for perf1_set in perf1_ex['sets']:
-                    set_data: Dict[str, Any] = {'set': perf1_set['set']}
+                for idx, perf1_set in enumerate(perf1_ex['sets'], start=1):
+                    # Use set number from data, or generate from index
+                    set_number = perf1_set.get('set', idx)
+                    set_data: Dict[str, Any] = {'set': set_number}
                     for field in ['weight', 'multiplier', 'reps', 'rpe', 'timeSeconds', 'holdSeconds', 'distanceMiles', 'tempo', 'notes']:
                         if field in perf1_set:
                             set_data[field] = perf1_set[field]

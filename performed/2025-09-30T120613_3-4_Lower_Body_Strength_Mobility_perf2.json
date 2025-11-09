@@ -1,0 +1,214 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/3-4_Lower_Body_Strength_Mobility.json",
+  "timestamp": "2025-09-30T12:05:58.771Z",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Prep (7–8 min)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Goblet Squat",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 55,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 55,
+              "reps": 8,
+              "rpe": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "A – Primary Squat",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Goblet Squat",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 55,
+              "reps": 8,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 55,
+              "reps": 8,
+              "rpe": 7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "B1/B2 Hinge + Unilateral",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Romanian Deadlift",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 55,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 55,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 7
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Bulgarian Split Squat",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 35,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 6
+            },
+            {
+              "set": 2,
+              "weight": 35,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 6
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "C1/C2/C3 Posterior + Calves (1–2 Rounds)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Glute Bridge",
+          "sets": [
+            {
+              "set": 1,
+              "reps": 12,
+              "rpe": 4
+            },
+            {
+              "set": 2,
+              "reps": 12,
+              "rpe": 4
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Standing Calf Raise (DB)",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 12,
+              "rpe": 5
+            },
+            {
+              "set": 2,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 12,
+              "rpe": 5
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Tibialis Raise (Wall Lean)",
+          "sets": [
+            {
+              "set": 1,
+              "reps": 12,
+              "rpe": 2
+            },
+            {
+              "set": 2,
+              "reps": 12,
+              "rpe": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "date": "2025-10-02",
+  "block": 3,
+  "week": 4,
+  "title": "Lower Body Strength & Mobility – Block 3, Week 4 (Deload, Thursday)",
+  "notes": "Deload focus: reduce volume and keep RPE ~6–7. Foot feeling better—still avoid carries and any high-impact. Rehearse patterns, maintain calf/tibialis capacity lightly.",
+  "exerciseIndex": {
+    "goblet-squat": {
+      "name": "Goblet Squat",
+      "sectionPath": "sections[1].items[0].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 7.0,
+      "totalVolume": 880
+    },
+    "dumbbell-romanian-deadlift": {
+      "name": "Dumbbell Romanian Deadlift",
+      "sectionPath": "sections[2].items[0].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 7.0,
+      "totalVolume": 1980
+    },
+    "bulgarian-split-squat": {
+      "name": "Bulgarian Split Squat",
+      "sectionPath": "sections[2].items[1].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 6.0,
+      "totalVolume": 1120
+    },
+    "glute-bridge": {
+      "name": "Glute Bridge",
+      "sectionPath": "sections[3].items[0].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 4.0,
+      "totalVolume": 0
+    },
+    "standing-calf-raise": {
+      "name": "Standing Calf Raise (DB)",
+      "sectionPath": "sections[3].items[1].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 5.0,
+      "totalVolume": 1200
+    },
+    "tibialis-raise": {
+      "name": "Tibialis Raise (Wall Lean)",
+      "sectionPath": "sections[3].items[2].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 2.0,
+      "totalVolume": 0
+    }
+  }
+}

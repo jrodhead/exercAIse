@@ -1,0 +1,231 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/3-2_Arms_Volume_Pump.json",
+  "timestamp": "2025-09-18T18:15:27.888Z",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "A1/A2 Alternating Curl + Extension",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Alternating Dumbbell Biceps Curl",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 8
+            },
+            {
+              "set": 2,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 8
+            },
+            {
+              "set": 3,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 8
+            },
+            {
+              "set": 4,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 8
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Floor Skullcrushers",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 15,
+              "multiplier": 2,
+              "reps": 12,
+              "rpe": 8
+            },
+            {
+              "set": 2,
+              "weight": 15,
+              "multiplier": 2,
+              "reps": 12,
+              "rpe": 8
+            },
+            {
+              "set": 3,
+              "weight": 15,
+              "multiplier": 2,
+              "reps": 12,
+              "rpe": 8
+            },
+            {
+              "set": 4,
+              "weight": 15,
+              "multiplier": 2,
+              "reps": 12,
+              "rpe": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "B1/B2/B3 Delt + Curl + Extension Giant Set",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Reverse Fly (Chest-Supported)",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 5,
+              "multiplier": 2,
+              "reps": 15
+            },
+            {
+              "set": 2,
+              "weight": 5,
+              "multiplier": 2,
+              "reps": 15
+            },
+            {
+              "set": 3,
+              "weight": 5,
+              "multiplier": 2,
+              "reps": 15
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Hammer Curl",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 12
+            },
+            {
+              "set": 2,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 12
+            },
+            {
+              "set": 3,
+              "weight": 25,
+              "multiplier": 2,
+              "reps": 12
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Overhead Triceps Extension",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 25,
+              "reps": 12
+            },
+            {
+              "set": 2,
+              "weight": 25,
+              "reps": 12
+            },
+            {
+              "set": 3,
+              "weight": 25,
+              "reps": 12
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "C1/C2 Forearm + Core Pair",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Hollow Hold",
+          "sets": [
+            {
+              "set": 1,
+              "reps": 40
+            },
+            {
+              "set": 2,
+              "reps": 40
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "date": "2025-09-19",
+  "block": 3,
+  "week": 2,
+  "title": "Arms Volume & Pump – Block 3, Week 2 (Friday)",
+  "notes": "Block 3 W2: Focus systemic arm volume (biceps/triceps/forearms) + delt cap without heavy axial load. Keep joints friendly, neutral/hammer grips. No Farmer Carry this week.",
+  "exerciseIndex": {
+    "alternating-dumbbell-biceps-curl": {
+      "name": "Alternating Dumbbell Biceps Curl",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 4,
+      "totalRounds": 0,
+      "avgRPE": 8.0,
+      "totalVolume": 2000
+    },
+    "dumbbell-floor-skullcrushers": {
+      "name": "Dumbbell Floor Skullcrushers",
+      "sectionPath": "sections[0].items[1].sets[*]",
+      "totalSets": 4,
+      "totalRounds": 0,
+      "avgRPE": 8.0,
+      "totalVolume": 1440
+    },
+    "reverse-fly": {
+      "name": "Reverse Fly (Chest-Supported)",
+      "sectionPath": "sections[1].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 450
+    },
+    "hammer-curl": {
+      "name": "Hammer Curl",
+      "sectionPath": "sections[1].items[1].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1800
+    },
+    "overhead-triceps-extension": {
+      "name": "Overhead Triceps Extension",
+      "sectionPath": "sections[1].items[2].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 900
+    },
+    "hollow-hold": {
+      "name": "Hollow Hold",
+      "sectionPath": "sections[2].items[0].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 0
+    }
+  }
+}

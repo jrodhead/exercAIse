@@ -6,7 +6,7 @@ Usage:
   python3 scripts/validate_schemas.py
 
 Behavior:
-        - Validates all JSON files under performed/ against schemas/performance.schema.json (perf-1 exports)
+        - Validates all JSON files under performed/ against schemas/performance.schema.json (nested structure)
     - Validates any JSON files under workouts/ against schemas/session.schema.json
     - If a Markdown workout contains a trailing fenced JSON block (```json or ```json session-structure), validate that block against the session schema
   - Exits non-zero on validation errors; prints a concise summary.

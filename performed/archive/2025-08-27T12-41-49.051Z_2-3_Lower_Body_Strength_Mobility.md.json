@@ -1,0 +1,183 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/2-3_Lower_Body_Strength_Mobility.json",
+  "timestamp": "2025-08-27T12:41:33.664Z",
+  "sections": [
+    {
+      "type": "Main Work",
+      "title": "Main Work",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Goblet Squat",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 57.5,
+              "reps": 8
+            },
+            {
+              "set": 2,
+              "weight": 57.5,
+              "reps": 8
+            },
+            {
+              "set": 3,
+              "weight": 57.5,
+              "reps": 8
+            },
+            {
+              "set": 4,
+              "weight": 57.5,
+              "reps": 8
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Romanian Deadlift",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 57.5,
+              "multiplier": 2,
+              "reps": 10
+            },
+            {
+              "set": 2,
+              "weight": 57.5,
+              "multiplier": 2,
+              "reps": 8
+            },
+            {
+              "set": 3,
+              "weight": 57.5,
+              "multiplier": 2,
+              "reps": 8
+            },
+            {
+              "set": 4,
+              "weight": 57.5,
+              "multiplier": 2,
+              "reps": 8
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Bulgarian Split Squat",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 27.5,
+              "multiplier": 2,
+              "reps": 10
+            },
+            {
+              "set": 2,
+              "weight": 27.5,
+              "multiplier": 2,
+              "reps": 10
+            },
+            {
+              "set": 3,
+              "weight": 27.5,
+              "multiplier": 2,
+              "reps": 10
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Standing Calf Raise",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 27.5,
+              "multiplier": 2,
+              "reps": 15
+            },
+            {
+              "set": 2,
+              "weight": 27.5,
+              "multiplier": 2,
+              "reps": 15
+            },
+            {
+              "set": 3,
+              "weight": 27.5,
+              "multiplier": 2,
+              "reps": 15
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Accessory/Core",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Side Plank",
+          "sets": [
+            {
+              "set": 1,
+              "timeSeconds": 45
+            },
+            {
+              "set": 2,
+              "timeSeconds": 45
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "date": "2025-08-27",
+  "block": 2,
+  "week": 3,
+  "title": "Lower Body Strength & Mobility",
+  "exerciseIndex": {
+    "goblet-squat": {
+      "name": "Goblet Squat",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 4,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1840.0
+    },
+    "dumbbell-romanian-deadlift": {
+      "name": "Dumbbell Romanian Deadlift",
+      "sectionPath": "sections[0].items[1].sets[*]",
+      "totalSets": 4,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 3910.0
+    },
+    "bulgarian-split-squat": {
+      "name": "Bulgarian Split Squat",
+      "sectionPath": "sections[0].items[2].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1650.0
+    },
+    "standing-calf-raise": {
+      "name": "Standing Calf Raise",
+      "sectionPath": "sections[0].items[3].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 2475.0
+    },
+    "side-plank": {
+      "name": "Side Plank",
+      "sectionPath": "sections[1].items[0].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 0
+    }
+  }
+}

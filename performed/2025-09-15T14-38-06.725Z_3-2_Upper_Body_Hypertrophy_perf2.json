@@ -1,0 +1,281 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/3-2_Upper_Body_Hypertrophy.json",
+  "timestamp": "2025-09-15T14:37:50.984Z",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "A1/A2 Alt Press + Row (Progressive)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Neutral-Grip Flat Bench Press (Dumbbells)",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 50,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 8
+            },
+            {
+              "set": 2,
+              "weight": 50,
+              "multiplier": 2,
+              "reps": 6,
+              "rpe": 8
+            },
+            {
+              "set": 3,
+              "weight": 50,
+              "multiplier": 2,
+              "reps": 5,
+              "rpe": 10
+            },
+            {
+              "set": 4,
+              "weight": 50,
+              "multiplier": 2,
+              "reps": 4,
+              "rpe": 10
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "One-Arm Dumbbell Row (Bench Supported)",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 50,
+              "reps": 8,
+              "rpe": 8
+            },
+            {
+              "set": 2,
+              "weight": 50,
+              "reps": 8,
+              "rpe": 8
+            },
+            {
+              "set": 3,
+              "weight": 50,
+              "reps": 8,
+              "rpe": 8
+            },
+            {
+              "set": 4,
+              "weight": 50,
+              "reps": 8,
+              "rpe": 8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "B1/B2 Incline + Row Pair",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Incline Landmine Press",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 20,
+              "reps": 10,
+              "rpe": 8
+            },
+            {
+              "set": 2,
+              "weight": 20,
+              "reps": 10,
+              "rpe": 8
+            },
+            {
+              "set": 3,
+              "weight": 20,
+              "reps": 10,
+              "rpe": 8
+            },
+            {
+              "set": 4,
+              "weight": 20,
+              "reps": 10,
+              "rpe": 8
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Chest-Supported Dumbbell Row",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 40,
+              "multiplier": 2,
+              "reps": 8
+            },
+            {
+              "set": 2,
+              "weight": 40,
+              "multiplier": 2,
+              "reps": 8
+            },
+            {
+              "set": 3,
+              "weight": 40,
+              "multiplier": 2,
+              "reps": 10
+            },
+            {
+              "set": 4,
+              "weight": 40,
+              "multiplier": 2,
+              "reps": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "C1/C2/C3 Pump Circuit (2–3 Rounds)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Hammer Curl",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 20,
+              "multiplier": 2,
+              "reps": 12
+            },
+            {
+              "set": 2,
+              "weight": 20,
+              "multiplier": 2,
+              "reps": 12
+            },
+            {
+              "set": 3,
+              "weight": 20,
+              "multiplier": 2,
+              "reps": 12
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Overhead Triceps Extension",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 20,
+              "reps": 12
+            },
+            {
+              "set": 2,
+              "weight": 20,
+              "reps": 12
+            },
+            {
+              "set": 3,
+              "weight": 20,
+              "reps": 12
+            }
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Reverse Fly (Chest-Supported)",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 10,
+              "multiplier": 2,
+              "reps": 10
+            },
+            {
+              "set": 2,
+              "weight": 10,
+              "multiplier": 2,
+              "reps": 10
+            },
+            {
+              "set": 3,
+              "weight": 10,
+              "multiplier": 2,
+              "reps": 10
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "date": "2025-09-16",
+  "block": 3,
+  "week": 2,
+  "title": "Upper Body Hypertrophy – Block 3, Week 2 (Tuesday)",
+  "notes": "Block 3 W2: Slight volume bump (added sets or higher rep bracket) while keeping RPE mostly 7–8. Emphasis: chest, back thickness, delts, arms. Avoid Farmer Carry this week; reduce axial loading on neck; neutral/hammer grips to protect wrists.",
+  "exerciseIndex": {
+    "neutral-grip-flat-bench-press": {
+      "name": "Neutral-Grip Flat Bench Press (Dumbbells)",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 4,
+      "totalRounds": 0,
+      "avgRPE": 9.0,
+      "totalVolume": 2300
+    },
+    "one-arm-dumbbell-row": {
+      "name": "One-Arm Dumbbell Row (Bench Supported)",
+      "sectionPath": "sections[0].items[1].sets[*]",
+      "totalSets": 4,
+      "totalRounds": 0,
+      "avgRPE": 8.0,
+      "totalVolume": 1600
+    },
+    "incline-landmine-press": {
+      "name": "Incline Landmine Press",
+      "sectionPath": "sections[1].items[0].sets[*]",
+      "totalSets": 4,
+      "totalRounds": 0,
+      "avgRPE": 8.0,
+      "totalVolume": 800
+    },
+    "chest-supported-dumbbell-row": {
+      "name": "Chest-Supported Dumbbell Row",
+      "sectionPath": "sections[1].items[1].sets[*]",
+      "totalSets": 4,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 2880
+    },
+    "hammer-curl": {
+      "name": "Hammer Curl",
+      "sectionPath": "sections[2].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 1440
+    },
+    "overhead-triceps-extension": {
+      "name": "Overhead Triceps Extension",
+      "sectionPath": "sections[2].items[1].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 720
+    },
+    "reverse-fly": {
+      "name": "Reverse Fly (Chest-Supported)",
+      "sectionPath": "sections[2].items[2].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 0.0,
+      "totalVolume": 600
+    }
+  }
+}

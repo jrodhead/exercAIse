@@ -97,7 +97,7 @@ exercAIse is a JSON-first fitness program generator with a clear separation betw
 **What App Does**:
 - Display prescribed workouts (render JSON to UI)
 - Collect user performance data (sets, reps, weight, RPE)
-- Export performance logs (perf-1 format to `performed/`)
+- Export performance logs (nested format to `performed/`)
 - Provide historical performance to AI for next prescription
 - Display AI-generated progress reports (render JSON, don't analyze)
 - Render progress reports from structured JSON using design system
@@ -276,20 +276,42 @@ exercAIse is a JSON-first fitness program generator with a clear separation betw
    - Or antagonist pairing (bench + rows instead of bench + triceps)
 ```
 
-### Performance Log Formats
+### Performance Log Format
 
-**perf-2 (Current)**: Nested structure preserving workout organization
-- Used for all JSON workouts
+**Nested Structure**: Preserves workout organization for superior analysis
+- Used for all workouts (JSON and Markdown)
 - Captures sections, supersets/circuits with rounds
 - Round-by-round performance tracking
 - Exercise index for fast queries
 - Enables fatigue analysis and intelligent progression
+- Migrated from flat format in November 2025
 
-**perf-1 (Legacy)**: Flat exercise map
-- Used only for markdown workouts
-- Simple map: `{ "exercise_name": { "sets": [...] } }`
-- No structure preservation
-- Limited context for AI analysis
+**Example Structure**:
+```json
+{
+  "version": "perf-2",
+  "sections": [
+    {
+      "type": "Strength",
+      "items": [
+        {
+          "kind": "superset",
+          "rounds": [
+            {"round": 1, "exercises": [...]},
+            {"round": 2, "exercises": [...]}
+          ]
+        }
+      ]
+    }
+  ],
+  "exerciseIndex": {
+    "exercise-key": {
+      "totalSets": 3,
+      "avgRPE": 8.0
+    }
+  }
+}
+```
 
 ---
 
@@ -320,11 +342,11 @@ exercAIse is a JSON-first fitness program generator with a clear separation betw
 - **Prompt Assembly**: Combines instructions + context
 
 ### Validation & Testing
-- **JSON Schema**: Validate workouts, exercises, performance (perf-2 and perf-1)
+- **JSON Schema**: Validate workouts, exercises, performance logs
 - **TypeScript**: Compile-time type checking
 - **Vitest**: 78 unit tests (session parser, Kai integration, IndexedDB)
-- **Playwright**: 140 E2E tests (UI, workflows, error handling, perf-2 structure, progress reports)
-  - 11 perf-2-specific tests (structure validation, data quality, round tracking)
+- **Playwright**: 140 E2E tests (UI, workflows, error handling, nested structure, progress reports)
+  - 11 structure-specific tests (nested format validation, data quality, round tracking)
   - 23 progress-report tests (JSON rendering, metadata, integration)
   - 106 general UI tests (navigation, history, forms, etc.)
 - **Python Scripts**: Link validation, schema validation, session linting
@@ -699,8 +721,9 @@ exercAIse/
 ├── exercises/                  # Exercise definitions
 │   └── *.json                  # Exercise details (v2 schema)
 │
-├── performed/                  # Performance logs (perf-1)
-│   └── *.json                  # Exported from app after workouts
+├── performed/                  # Performance logs
+│   ├── *.json                  # Exported from app (nested format)
+│   └── archive/                # Archived historical logs
 │
 ├── reports/                    # AI-generated progress reports
 │   ├── index.json              # Report manifest (v2.0 - JSON format)
@@ -714,7 +737,7 @@ exercAIse/
 ├── schemas/                    # JSON Schema definitions
 │   ├── session.schema.json     # Workout session structure
 │   ├── exercise.schema.json    # Exercise definition (v2)
-│   ├── performance.schema.json # Performance export (perf-1)
+│   ├── performance.schema.json # Performance export (nested format)
 │   ├── progress-report.schema.json  # Progress report structure
 │   └── ...
 │
