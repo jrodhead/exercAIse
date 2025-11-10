@@ -879,9 +879,60 @@
         setVisibility(logsSection, true);
         loadLogsList();
     };
+    const importPerformedLogs = async () => {
+        const importKey = 'exercAIse-imported-performed-logs';
+        try {
+            const lastImport = localStorage.getItem(importKey);
+            if (lastImport) {
+                const timeSinceImport = Date.now() - parseInt(lastImport, 10);
+                if (timeSinceImport < 24 * 60 * 60 * 1000) {
+                    console.log('✅ Performance logs already imported (skip)');
+                    return;
+                }
+            }
+        }
+        catch (e) {
+            console.warn('Could not check import timestamp:', e);
+        }
+        console.log('🔄 Importing performance logs from performed/ directory...');
+        try {
+            const indexResponse = await fetch('performed/index.json');
+            const index = await indexResponse.json();
+            let importCount = 0;
+            const errors = [];
+            for (const file of index.files) {
+                if (!file.name || !file.name.endsWith('.json') || file.name === 'index.json') {
+                    continue;
+                }
+                try {
+                    const logResponse = await fetch(`performed/${file.name}`);
+                    const logData = await logResponse.json();
+                    if (logData.workoutFile) {
+                        const key = STORAGE_KEY_PREFIX + logData.workoutFile;
+                        localStorage.setItem(key, JSON.stringify(logData));
+                        importCount++;
+                    }
+                }
+                catch (e) {
+                    errors.push(`Failed to import ${file.name}: ${e}`);
+                }
+            }
+            localStorage.setItem(importKey, Date.now().toString());
+            console.log(`✅ Imported ${importCount} performance logs into localStorage`);
+            if (errors.length > 0) {
+                console.warn('Import errors:', errors);
+            }
+        }
+        catch (e) {
+            console.error('Failed to import performance logs:', e);
+        }
+    };
     const load = () => {
         initializeFormBuilder();
         initializeKaiIntegration();
+        importPerformedLogs().catch(err => {
+            console.warn('Performance log import failed (non-critical):', err);
+        });
         const params = (() => {
             const q = {};
             try {

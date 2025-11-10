@@ -63,8 +63,10 @@ Read performance logs (`performed/*_perf2.json`) and identify:
 - **For weekly requests**: Generate all sessions for the week following the owner's weekly schedule in `.github/instructions/kai.personal.instructions.md`
 - Ensure all exercises are safe and appropriate for the owner's current fitness level and any injury considerations.
 - **Exercise selection balance**: Maintain consistency in main movement patterns for progression tracking, while introducing appropriate variety in accessory work, warm-ups, and cooldowns to address weaknesses, prevent staleness, and enhance movement quality.
-- Ensure every exercise item has a `link` to `exercises/<slug>.json`. JSON is the source of truth. If you introduce a new exercise, create `exercises/<slug>.json` conforming to `schemas/exercise.schema.json` (v2 fields).
- - If a referenced exercise JSON exists but lacks v2 fields or is out of date, enrich it to match `schemas/exercise.schema.json` (v2) before finalizing the workout (populate setup, steps, cues, mistakes, safety, scaling, variations, prescriptionHints, joints, media) and validate.
+- Ensure every exercise item has a `link` to `exercises/<slug>.json`. JSON is the source of truth. 
+- **BEFORE creating any new exercise file**: Search the `exercises/` directory for existing files with similar names (e.g., "Dumbbell Bench Press" vs "Flat Dumbbell Bench Press"). If a similar exercise exists, use the existing file instead of creating a duplicate.
+- If you introduce a new exercise that doesn't match any existing file, create `exercises/<slug>.json` conforming to `schemas/exercise.schema.json` (v2 fields).
+- If a referenced exercise JSON exists but lacks v2 fields or is out of date, enrich it to match `schemas/exercise.schema.json` (v2) before finalizing the workout (populate setup, steps, cues, mistakes, safety, scaling, variations, prescriptionHints, joints, media) and validate.
 - Structure the JSON into `sections` with consistent `type` values (e.g., Warm-up, Strength/Conditioning, Accessory/Core, Cooldown/Recovery). Avoid generic names like "Plan".
 - For each exercise item, include:
   - `name`

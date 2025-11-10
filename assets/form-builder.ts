@@ -87,14 +87,12 @@ interface CollectedBlocks {
       for (const item of section.items) {
         // Standalone exercise
         if (item.kind === 'exercise' && item.sets) {
-          // Check if any set in this exercise matches the key
-          // For standalone exercises, we need to check the exercise name/key
-          // Since standalone exercises don't store the key, we'll need to match by position
-          // or rely on the exerciseIndex if available
+          // For standalone exercises, match by slugified name
+          // (since they don't store a key field, only name)
+          const itemKey = (window as any).ExercAIse?.SessionParser?.slugify?.(item.name) || item.name.toLowerCase().replace(/\s+/g, '-');
           
-          // Try exercise index first for fast lookup
-          if (log.exerciseIndex && log.exerciseIndex[exerciseKey]) {
-            // Found in index, extract from sets
+          if (itemKey === exerciseKey) {
+            // Found the matching exercise, extract from sets
             item.sets.forEach((setEntry: SetEntry) => {
               rows.push({
                 set: setEntry.set,

@@ -1,13 +1,17 @@
 function findExerciseInPerf2(log, exerciseKey) {
     const sets = [];
+    if (!log || !log.sections || !Array.isArray(log.sections)) {
+        return sets;
+    }
+    if (log.exerciseIndex && log.exerciseIndex[exerciseKey]) {
+        console.log(`📇 Found "${exerciseKey}" in exerciseIndex`);
+    }
     for (const section of log.sections) {
         for (const item of section.items) {
             if (item.kind === 'exercise' && item.sets) {
-                if (log.exerciseIndex?.[exerciseKey]) {
-                    return item.sets;
-                }
-                const itemKey = item.name.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '');
+                const itemKey = item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
                 if (itemKey === exerciseKey) {
+                    console.log(`✅ Matched standalone exercise: "${item.name}" -> "${itemKey}"`);
                     return item.sets;
                 }
             }
@@ -15,6 +19,7 @@ function findExerciseInPerf2(log, exerciseKey) {
                 for (const round of item.rounds) {
                     for (const exercise of round.exercises) {
                         if (exercise.key === exerciseKey) {
+                            console.log(`✅ Matched exercise in ${item.kind}: "${exercise.key}"`);
                             sets.push({
                                 set: round.round,
                                 weight: exercise.weight,
@@ -244,6 +249,50 @@ function findExerciseInPerf2(log, exerciseKey) {
         }
     };
     const getRepoApiBase = () => 'https://api.github.com/repos/jrodhead/exercAIse/contents/';
+    const renderHistoryLogs = (logs, variants, target) => {
+        let html = '';
+        logs.sort((a, b) => a.name < b.name ? 1 : -1);
+        console.log(`🔍 Searching for exercise with key variants:`, variants);
+        for (let i = 0; i < logs.length; i++) {
+            const data = logs[i].data;
+            if (!data)
+                continue;
+            let exerciseSets = [];
+            for (let v = 0; v < variants.length; v++) {
+                exerciseSets = findExerciseInPerf2(data, variants[v]);
+                if (exerciseSets.length > 0) {
+                    console.log(`✅ Found ${exerciseSets.length} sets for "${variants[v]}" in ${logs[i].name}`);
+                    break;
+                }
+            }
+            if (exerciseSets.length === 0)
+                continue;
+            const when = data.timestamp || logs[i].name.slice(0, 24);
+            html += `<div class="history-item">` +
+                `<div class="muted mono">${when}</div>` +
+                `<div>${exerciseSets.map((s) => {
+                    const parts = [];
+                    if (s.weight != null) {
+                        parts.push(`${s.weight}${s.multiplier != null ? (' ×' + s.multiplier) : ''}`);
+                    }
+                    if (s.reps != null) {
+                        parts.push(`${s.reps} reps`);
+                    }
+                    if (s.timeSeconds != null) {
+                        parts.push(`${s.timeSeconds}s`);
+                    }
+                    if (s.distanceMiles != null) {
+                        parts.push(`${s.distanceMiles} mi`);
+                    }
+                    if (s.rpe != null) {
+                        parts.push(`RPE ${s.rpe}`);
+                    }
+                    return parts.join(', ');
+                }).join(' | ')}</div>` +
+                `</div>`;
+        }
+        target.innerHTML = html || '<div class="muted">No history for this exercise yet.</div>';
+    };
     const loadHistory = (exKey) => {
         const keyVariants = (k) => {
             const a = [];
@@ -262,6 +311,31 @@ function findExerciseInPerf2(log, exerciseKey) {
         if (!target)
             return;
         target.textContent = 'Loading history…';
+        const STORAGE_KEY_PREFIX = 'exercAIse-perf-';
+        const logs = [];
+        try {
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key && key.startsWith(STORAGE_KEY_PREFIX)) {
+                    try {
+                        const logData = JSON.parse(localStorage.getItem(key) || '{}');
+                        const name = logData.workoutFile || key.replace(STORAGE_KEY_PREFIX, '');
+                        logs.push({ name, data: logData });
+                    }
+                    catch (e) {
+                    }
+                }
+            }
+            if (logs.length > 0) {
+                console.log(`📊 Found ${logs.length} performance logs in localStorage`);
+                renderHistoryLogs(logs, variants, target);
+                return;
+            }
+        }
+        catch (e) {
+            console.warn('Failed to load from localStorage, falling back to GitHub API:', e);
+        }
+        console.log('📡 No localStorage logs found, fetching from GitHub API...');
         const url = `${getRepoApiBase()}performed?ref=main`;
         xhrGet(url, (err, text) => {
             if (err) {
@@ -279,48 +353,10 @@ function findExerciseInPerf2(log, exerciseKey) {
                 target.textContent = 'No history.';
                 return;
             }
-            const logs = [];
+            const apiLogs = [];
             let remaining = 0;
             const done = () => {
-                let html = '';
-                logs.sort((a, b) => a.name < b.name ? 1 : -1);
-                for (let i = 0; i < logs.length; i++) {
-                    const data = logs[i].data;
-                    if (!data)
-                        continue;
-                    let exerciseSets = [];
-                    for (let v = 0; v < variants.length; v++) {
-                        exerciseSets = findExerciseInPerf2(data, variants[v]);
-                        if (exerciseSets.length > 0)
-                            break;
-                    }
-                    if (exerciseSets.length === 0)
-                        continue;
-                    const when = data.timestamp || logs[i].name.slice(0, 24);
-                    html += `<div class="history-item">` +
-                        `<div class="muted mono">${when}</div>` +
-                        `<div>${exerciseSets.map((s) => {
-                            const parts = [];
-                            if (s.weight != null) {
-                                parts.push(`${s.weight}${s.multiplier != null ? (' ×' + s.multiplier) : ''}`);
-                            }
-                            if (s.reps != null) {
-                                parts.push(`${s.reps} reps`);
-                            }
-                            if (s.timeSeconds != null) {
-                                parts.push(`${s.timeSeconds}s`);
-                            }
-                            if (s.distanceMiles != null) {
-                                parts.push(`${s.distanceMiles} mi`);
-                            }
-                            if (s.rpe != null) {
-                                parts.push(`RPE ${s.rpe}`);
-                            }
-                            return parts.join(', ');
-                        }).join(' | ')}</div>` +
-                        `</div>`;
-                }
-                target.innerHTML = html || '<div class="muted">No history for this exercise yet.</div>';
+                renderHistoryLogs(apiLogs, variants, target);
             };
             for (let k = 0; k < items.length; k++) {
                 const it = items[k];
@@ -331,7 +367,7 @@ function findExerciseInPerf2(log, exerciseKey) {
                     xhrGet(it.download_url, (err2, txt) => {
                         try {
                             const data = err2 ? null : JSON.parse(txt || '{}');
-                            logs.push({ name: it.name, data: data });
+                            apiLogs.push({ name: it.name, data: data });
                         }
                         catch (e) {
                         }

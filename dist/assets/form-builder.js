@@ -8,7 +8,8 @@ window.ExercAIse.FormBuilder = (() => {
         for (const section of log.sections) {
             for (const item of section.items) {
                 if (item.kind === 'exercise' && item.sets) {
-                    if (log.exerciseIndex && log.exerciseIndex[exerciseKey]) {
+                    const itemKey = window.ExercAIse?.SessionParser?.slugify?.(item.name) || item.name.toLowerCase().replace(/\s+/g, '-');
+                    if (itemKey === exerciseKey) {
                         item.sets.forEach((setEntry) => {
                             rows.push({
                                 set: setEntry.set,

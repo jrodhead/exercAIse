@@ -892,10 +892,81 @@
     loadLogsList();
   };
 
+  /**
+   * Import all performance logs from performed/ directory into localStorage
+   * This ensures cross-workout exercise history works even after cache clearing
+   * Source of truth: performed/*.json files (from GitHub issue submissions)
+   */
+  const importPerformedLogs = async (): Promise<void> => {
+    const importKey = 'exercAIse-imported-performed-logs';
+    
+    // Check if we've already imported (don't re-import on every page load)
+    try {
+      const lastImport = localStorage.getItem(importKey);
+      if (lastImport) {
+        const timeSinceImport = Date.now() - parseInt(lastImport, 10);
+        // Re-import if more than 24 hours old (to pick up new logs)
+        if (timeSinceImport < 24 * 60 * 60 * 1000) {
+          console.log('✅ Performance logs already imported (skip)');
+          return;
+        }
+      }
+    } catch (e) {
+      console.warn('Could not check import timestamp:', e);
+    }
+
+    console.log('🔄 Importing performance logs from performed/ directory...');
+    
+    try {
+      // Fetch the manifest of all performed log files
+      const indexResponse = await fetch('performed/index.json');
+      const index = await indexResponse.json();
+      
+      let importCount = 0;
+      const errors: string[] = [];
+      
+      // Import each log file listed in the manifest
+      for (const file of index.files) {
+        if (!file.name || !file.name.endsWith('.json') || file.name === 'index.json') {
+          continue;
+        }
+        
+        try {
+          const logResponse = await fetch(`performed/${file.name}`);
+          const logData = await logResponse.json();
+          
+          // Extract workoutFile to use as localStorage key
+          if (logData.workoutFile) {
+            const key = STORAGE_KEY_PREFIX + logData.workoutFile;
+            localStorage.setItem(key, JSON.stringify(logData));
+            importCount++;
+          }
+        } catch (e) {
+          errors.push(`Failed to import ${file.name}: ${e}`);
+        }
+      }
+      
+      // Mark import as complete
+      localStorage.setItem(importKey, Date.now().toString());
+      
+      console.log(`✅ Imported ${importCount} performance logs into localStorage`);
+      if (errors.length > 0) {
+        console.warn('Import errors:', errors);
+      }
+    } catch (e) {
+      console.error('Failed to import performance logs:', e);
+    }
+  };
+
   const load = (): void => {
     // Initialize modules before handling any view
     initializeFormBuilder();
     initializeKaiIntegration();
+    
+    // Import performance logs from performed/ directory on first load
+    importPerformedLogs().catch(err => {
+      console.warn('Performance log import failed (non-critical):', err);
+    });
     
     // Respect deep link params on initial load
     const params = (() => {
