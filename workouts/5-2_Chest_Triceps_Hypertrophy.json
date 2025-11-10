@@ -4,7 +4,7 @@
   "date": "2025-11-10",
   "block": 5,
   "week": 2,
-  "notes": "Block 5 Week 2: Progressive overload from Week 1. Flat bench: aim 40×2 for 12,12,10,8 (add 4th set) OR progress to 45×2 if Week 1 felt easy. Close-grip stable at 30×2. Basketball-safe upper body work (AM training, PM basketball).",
+  "notes": "Block 5 Week 2: Restructured for fatigue management. Week 1 showed synergist fatigue (flat bench + close-grip = triceps fried by round 3). Week 2: Antagonist superset (bench + rows) keeps triceps fresh, straight sets for incline/close-grip. Same volume, better quality, time-efficient for AM training + PM basketball.",
   "sections": [
     {
       "type": "Warm-up",
@@ -18,30 +18,30 @@
     },
     {
       "type": "Strength",
-      "title": "Primary Chest & Triceps - Superset A",
+      "title": "Primary Chest - Antagonist Superset A",
       "items": [
         {
           "kind": "superset",
           "name": "Superset A",
-          "notes": "Perform both exercises back-to-back, then rest 90s before next round. Week 2: Added 4th round for volume progression.",
+          "notes": "Antagonist pairing: Chest press + back row. Allows chest/triceps to recover during rows. Rest 90s before next round.",
           "children": [
             {
               "kind": "exercise",
               "name": "Flat Dumbbell Bench Press",
               "link": "exercises/dumbbell_bench_press.json",
               "logType": "strength",
-              "prescription": { "sets": 4, "reps": "8-12", "weight": "40 x2", "rpe": 7.5 },
+              "prescription": { "sets": 4, "reps": "10-12", "weight": "40 x2", "rpe": 7.5 },
               "cues": ["Feet planted", "Shoulder blades retracted", "Control the negative"],
-              "notes": "Week 1: 10,10,6 @ 40×2. Week 2: Target 12,10,8,6 @ same load OR progress to 45×2 if RPE <7 last week."
+              "notes": "Week 1: 10,10,6 (synergist fatigue). Week 2: Antagonist pairing = target 10,10,10,8 @ same load. Triceps stay fresher."
             },
             {
               "kind": "exercise",
-              "name": "Close-Grip Dumbbell Press",
-              "link": "exercises/close_grip_dumbbell_press.json",
+              "name": "One-Arm Dumbbell Row",
+              "link": "exercises/one_arm_dumbbell_row.json",
               "logType": "strength",
-              "prescription": { "sets": 4, "reps": "8-12", "weight": "30 x2", "restSeconds": 90, "rpe": 7.5 },
-              "cues": ["DBs touching", "Elbows close", "Squeeze triceps at top"],
-              "notes": "Week 1: 10,10,6 @ 30×2. Week 2: Target 12,10,8,6 @ same load."
+              "prescription": { "sets": 4, "reps": "10-12 per arm", "weight": 50, "restSeconds": 90, "rpe": 7 },
+              "cues": ["Pull elbow back", "Squeeze lat at top", "Stable hips"],
+              "notes": "Back work between pressing sets. Keeps heart rate up, triceps recover. Time-efficient."
             }
           ]
         }
@@ -49,32 +49,25 @@
     },
     {
       "type": "Strength",
-      "title": "Secondary Chest & Triceps - Superset B",
+      "title": "Secondary Chest & Triceps - Straight Sets",
       "items": [
         {
-          "kind": "superset",
-          "name": "Superset B",
-          "notes": "Perform both exercises back-to-back, then rest 90s before next round",
-          "children": [
-            {
-              "kind": "exercise",
-              "name": "Incline Dumbbell Bench Press",
-              "link": "exercises/incline_dumbbell_bench_press.json",
-              "logType": "strength",
-              "prescription": { "sets": 2, "reps": "10-12", "weight": "30 x2", "rpe": 7.5 },
-              "cues": ["Upper chest focus", "Bench at 30-45°", "Full stretch"],
-              "notes": "Week 1: 10,10 @ 30×2, RPE 8. Week 2: Add 1-2 reps or maintain quality."
-            },
-            {
-              "kind": "exercise",
-              "name": "Overhead Dumbbell Triceps Extension",
-              "link": "exercises/overhead_triceps_extension.json",
-              "logType": "strength",
-              "prescription": { "sets": 2, "reps": "10-12", "weight": 30, "restSeconds": 90, "rpe": 7.5 },
-              "cues": ["Elbows close to ears", "Deep stretch", "Control the eccentric"],
-              "notes": "Week 1: 10,10 @ 30 lb, RPE 7.5. Maintain or add 1-2 reps."
-            }
-          ]
+          "kind": "exercise",
+          "name": "Incline Dumbbell Bench Press",
+          "link": "exercises/incline_dumbbell_bench_press.json",
+          "logType": "strength",
+          "prescription": { "sets": 3, "reps": "10-12", "weight": "30 x2", "restSeconds": 90, "rpe": 7.5 },
+          "cues": ["Upper chest focus", "Bench at 30-45°", "Full stretch"],
+          "notes": "Week 1: 10,10 @ 30×2, RPE 8. Week 2: Added 3rd set for volume. Target 10,10,8."
+        },
+        {
+          "kind": "exercise",
+          "name": "Close-Grip Dumbbell Press",
+          "link": "exercises/close_grip_dumbbell_press.json",
+          "logType": "strength",
+          "prescription": { "sets": 3, "reps": "10-12", "weight": "30 x2", "restSeconds": 90, "rpe": 7.5 },
+          "cues": ["DBs touching", "Elbows close", "Squeeze triceps at top"],
+          "notes": "Week 1: 10,10,6 (paired with flat bench = triceps fried). Week 2: Straight sets after incline = fresher triceps. Target 10,10,8."
         }
       ]
     },
