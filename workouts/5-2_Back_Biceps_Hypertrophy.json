@@ -1,0 +1,137 @@
+{
+  "version": "1",
+  "title": "Back & Biceps Hypertrophy",
+  "date": "2025-11-12",
+  "block": 5,
+  "week": 2,
+  "notes": "Block 5 Week 2: Progressive overload from Week 1. Reduce hammer curl to 27.5×2 (progress report: too heavy at 30×2, dropped to 5 reps rounds 2-3). Rows stable. Add reps where RPE allows. Basketball-safe upper body work (AM training).",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Upper Body & Shoulder Prep",
+      "items": [
+        { "kind": "exercise", "name": "Arm Circles", "link": "exercises/arm_circles.json", "logType": "mobility", "prescription": { "sets": 1, "reps": "10 each direction" } },
+        { "kind": "exercise", "name": "Band Pull-Aparts", "link": "exercises/band_pull_aparts.json", "logType": "mobility", "prescription": { "sets": 2, "reps": 15 } },
+        { "kind": "exercise", "name": "Cat-Cow Stretch", "link": "exercises/cat_cow_stretch.json", "logType": "mobility", "prescription": { "sets": 1, "reps": 8 } },
+        { "kind": "exercise", "name": "Scapular Wall Slides", "link": "exercises/scapular_wall_slides.json", "logType": "mobility", "prescription": { "sets": 1, "reps": 10 } }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Primary Back & Biceps - Superset A",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset A",
+          "notes": "Perform both exercises back-to-back, then rest 90s before next round",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "One-Arm Dumbbell Row",
+              "link": "exercises/one_arm_dumbbell_row.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "10-12", "weight": 50, "rpe": 7.5 },
+              "cues": ["Pull elbow back", "Squeeze lat at top", "Control the descent"],
+              "notes": "Week 1: 10,10,10 per arm @ 50 lb, RPE 7-8. Week 2: Target 12,10,10 OR progress to 55 lb if felt easy."
+            },
+            {
+              "kind": "exercise",
+              "name": "Hammer Curl",
+              "link": "exercises/hammer_curl.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "10-12", "weight": "27.5 x2", "restSeconds": 90, "rpe": 7.5 },
+              "cues": ["Neutral grip", "Elbows stable", "No swinging"],
+              "notes": "Week 1: 10,5,5 @ 30×2, RPE 8 (TOO HEAVY - dropped reps). Week 2: REDUCE to 27.5×2, target 10,10,8."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Secondary Back & Biceps - Superset B",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset B",
+          "notes": "Perform both exercises back-to-back, then rest 90s before next round",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Chest-Supported Dumbbell Row",
+              "link": "exercises/chest_supported_dumbbell_row.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "10-12", "weight": "40 x2", "rpe": 7 },
+              "cues": ["Chest on bench", "Pull elbows back", "Squeeze shoulder blades"],
+              "notes": "Week 1: 10,10,10 @ 40×2, RPE 7. Week 2: Add 1-2 reps (12,12,10) OR progress to 45×2."
+            },
+            {
+              "kind": "exercise",
+              "name": "Incline Dumbbell Curl",
+              "link": "exercises/incline_dumbbell_curl.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "12-15", "weight": "15 x2", "restSeconds": 90, "rpe": 7 },
+              "cues": ["Arms hang", "Full stretch", "No elbow drift"],
+              "notes": "Week 1: 5,15,15 @ varied loads (20→10). Week 2: Stabilize at 15×2 for 12,15,15."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Back & Biceps Finisher - Superset C",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset C",
+          "notes": "Perform both exercises back-to-back, then rest 90s before next round",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Alternating Dumbbell Biceps Curl",
+              "link": "exercises/alternating_dumbbell_biceps_curl.json",
+              "logType": "strength",
+              "prescription": { "sets": 2, "reps": "16-20 total", "weight": 20, "rpe": 7 },
+              "cues": ["Alternate sides", "Supinate at top", "Control tempo"],
+              "notes": "Week 1: 20,15 total reps @ 10-20 lb. Week 2: Stabilize 20 lb for 20,16."
+            },
+            {
+              "kind": "exercise",
+              "name": "Farmer Carry",
+              "link": "exercises/farmer_carry.json",
+              "logType": "carry",
+              "prescription": { "sets": 2, "timeSeconds": 60, "weight": "50 x2", "restSeconds": 90, "rpe": 7 },
+              "cues": ["Tall posture", "Shoulders packed", "Steady breathing"],
+              "notes": "Week 1: 52s × 2 @ 50×2, RPE 7. Week 2: Target full 60s × 2."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Core Work",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Deadbug",
+          "link": "exercises/deadbug.json",
+          "logType": "strength",
+          "prescription": { "sets": 2, "reps": "10-12 per side", "weight": 10, "restSeconds": 60, "rpe": 6.5 },
+          "notes": "Week 1: 10,8 per side @ 10 lb plate, RPE 6-7. Week 2: Target 12,10 per side.",
+          "cues": ["Lower back flat", "Opposite arm/leg", "Breathe steady"]
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Cooldown & Stretch",
+      "items": [
+        { "kind": "exercise", "name": "Lat Stretch (Doorframe)", "link": "exercises/lat_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "Hold 60s per side" },
+        { "kind": "exercise", "name": "Biceps Wall Stretch", "link": "exercises/biceps_wall_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "Hold 60s per arm" },
+        { "kind": "exercise", "name": "Child's Pose", "link": "exercises/childs_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 90 } }
+      ]
+    }
+  ]
+}

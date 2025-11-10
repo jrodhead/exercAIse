@@ -1,0 +1,131 @@
+{
+  "version": "1",
+  "title": "Chest & Shoulders - Volume Emphasis",
+  "date": "2025-11-14",
+  "block": 5,
+  "week": 2,
+  "notes": "Block 5 Week 2: NEW 4th session for chest specialization (2x/week chest frequency). Overhead press focus with lateral raises, flyes, push-ups. Higher reps (12-15), RPE 7-8. Second chest stimulus complements Monday's heavy pressing. Safe for AM training (no basketball conflict).",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Upper Body & Shoulder Prep",
+      "items": [
+        { "kind": "exercise", "name": "Arm Circles", "link": "exercises/arm_circles.json", "logType": "mobility", "prescription": { "sets": 1, "reps": "10 each direction" } },
+        { "kind": "exercise", "name": "Band Pull-Aparts", "link": "exercises/band_pull_aparts.json", "logType": "mobility", "prescription": { "sets": 2, "reps": 15 } },
+        { "kind": "exercise", "name": "Scapular Wall Slides", "link": "exercises/scapular_wall_slides.json", "logType": "mobility", "prescription": { "sets": 1, "reps": 10 } },
+        { "kind": "exercise", "name": "Inchworm", "link": "exercises/inchworm.json", "logType": "mobility", "prescription": { "sets": 1, "reps": 5 } }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Primary Shoulders - Overhead Press",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Seated Dumbbell Overhead Press",
+          "link": "exercises/seated_dumbbell_overhead_press.json",
+          "logType": "strength",
+          "prescription": { "sets": 3, "reps": "10-12", "weight": "30 x2", "restSeconds": 90, "rpe": 7.5 },
+          "cues": ["Core braced", "Press straight up", "Full lockout"],
+          "notes": "Week 2 baseline: 30×2 for 3 sets × 10-12 @ RPE 7-8. Shoulders + upper chest emphasis."
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Shoulder Volume - Superset A",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset A",
+          "notes": "Perform both exercises back-to-back, then rest 60s before next round",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Dumbbell Lateral Raise",
+              "link": "exercises/dumbbell_lateral_raise.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "12-15", "weight": "15 x2", "rpe": 7 },
+              "cues": ["Slight forward lean", "Lead with elbows", "Control descent"],
+              "notes": "Week 2 baseline: 15×2 for 12-15 reps, RPE 7. Medial delt focus."
+            },
+            {
+              "kind": "exercise",
+              "name": "Dumbbell Front Raise",
+              "link": "exercises/dumbbell_front_raise.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "12-15", "weight": "15 x2", "restSeconds": 60, "rpe": 7 },
+              "cues": ["Arms straight", "Raise to eye level", "No swinging"],
+              "notes": "Week 2 baseline: 15×2 for 12-15 reps, RPE 7. Anterior delt + upper chest."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Chest Volume - Superset B",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset B",
+          "notes": "Perform both exercises back-to-back, then rest 60s before next round",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Dumbbell Flyes",
+              "link": "exercises/dumbbell_flyes.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "12-15", "weight": "20 x2", "rpe": 7 },
+              "cues": ["Wide arc", "Chest stretch", "Slight elbow bend"],
+              "notes": "Week 2 baseline: 20×2 for 12-15 reps, RPE 7. Pec stretch emphasis."
+            },
+            {
+              "kind": "exercise",
+              "name": "Push-ups (Tempo)",
+              "link": "exercises/push_ups.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "10-15", "restSeconds": 60, "rpe": 7.5 },
+              "cues": ["3s down, 1s up", "Core tight", "Full range"],
+              "notes": "Week 2 baseline: Tempo push-ups (3-0-1-0), 10-15 reps @ RPE 7-8. Drop to knees if form breaks."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Rear Delt & Core",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Rear Delt Fly",
+          "link": "exercises/dumbbell_rear_delt_fly.json",
+          "logType": "strength",
+          "prescription": { "sets": 2, "reps": "15-20", "weight": "10 x2", "restSeconds": 60, "rpe": 7 },
+          "cues": ["Bent over 45°", "Lead with elbows", "Squeeze shoulder blades"],
+          "notes": "Week 2 baseline: 10×2 for 15-20 reps, RPE 7. Posterior shoulder health."
+        },
+        {
+          "kind": "exercise",
+          "name": "Plank",
+          "link": "exercises/plank.json",
+          "logType": "stretch",
+          "prescription": { "sets": 2, "holdSeconds": 60, "restSeconds": 60, "rpe": 7 },
+          "cues": ["Neutral spine", "Squeeze glutes", "Breathe steady"],
+          "notes": "Week 2 baseline: 2 × 60s @ RPE 7. Core stability after volume work."
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Cooldown & Stretch",
+      "items": [
+        { "kind": "exercise", "name": "Doorway Chest Stretch", "link": "exercises/doorway_chest_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "Hold 60s per side" },
+        { "kind": "exercise", "name": "Cross-Body Shoulder Stretch", "link": "exercises/cross_body_shoulder_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "Hold 60s per arm" },
+        { "kind": "exercise", "name": "Thread the Needle", "link": "exercises/thread_the_needle.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "Hold 60s per side" },
+        { "kind": "exercise", "name": "Child's Pose", "link": "exercises/childs_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 90 } }
+      ]
+    }
+  ]
+}

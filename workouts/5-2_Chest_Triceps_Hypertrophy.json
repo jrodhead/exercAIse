@@ -1,0 +1,138 @@
+{
+  "version": "1",
+  "title": "Chest & Triceps Hypertrophy",
+  "date": "2025-11-11",
+  "block": 5,
+  "week": 2,
+  "notes": "Block 5 Week 2: Progressive overload from Week 1. Flat bench: aim 40×2 for 12,12,10,8 (add 4th set) OR progress to 45×2 if Week 1 felt easy. Close-grip stable at 30×2. Basketball-safe upper body work (AM training, PM basketball).",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Upper Body Prep",
+      "items": [
+        { "kind": "exercise", "name": "Arm Circles", "link": "exercises/arm_circles.json", "logType": "mobility", "prescription": { "sets": 1, "reps": "10 each direction" } },
+        { "kind": "exercise", "name": "Band Pull-Aparts", "link": "exercises/band_pull_aparts.json", "logType": "mobility", "prescription": { "sets": 2, "reps": 15 } },
+        { "kind": "exercise", "name": "Cat-Cow Stretch", "link": "exercises/cat_cow_stretch.json", "logType": "mobility", "prescription": { "sets": 1, "reps": 8 } },
+        { "kind": "exercise", "name": "Bodyweight Push-ups", "link": "exercises/bodyweight_push_ups.json", "logType": "mobility", "prescription": { "sets": 1, "reps": 10 } }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Primary Chest & Triceps - Superset A",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset A",
+          "notes": "Perform both exercises back-to-back, then rest 90s before next round. Week 2: Added 4th round for volume progression.",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Flat Dumbbell Bench Press",
+              "link": "exercises/dumbbell_bench_press.json",
+              "logType": "strength",
+              "prescription": { "sets": 4, "reps": "8-12", "weight": "40 x2", "rpe": 7.5 },
+              "cues": ["Feet planted", "Shoulder blades retracted", "Control the negative"],
+              "notes": "Week 1: 10,10,6 @ 40×2. Week 2: Target 12,10,8,6 @ same load OR progress to 45×2 if RPE <7 last week."
+            },
+            {
+              "kind": "exercise",
+              "name": "Close-Grip Dumbbell Press",
+              "link": "exercises/close_grip_dumbbell_press.json",
+              "logType": "strength",
+              "prescription": { "sets": 4, "reps": "8-12", "weight": "30 x2", "restSeconds": 90, "rpe": 7.5 },
+              "cues": ["DBs touching", "Elbows close", "Squeeze triceps at top"],
+              "notes": "Week 1: 10,10,6 @ 30×2. Week 2: Target 12,10,8,6 @ same load."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Secondary Chest & Triceps - Superset B",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset B",
+          "notes": "Perform both exercises back-to-back, then rest 90s before next round",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Incline Dumbbell Bench Press",
+              "link": "exercises/incline_dumbbell_bench_press.json",
+              "logType": "strength",
+              "prescription": { "sets": 2, "reps": "10-12", "weight": "30 x2", "rpe": 7.5 },
+              "cues": ["Upper chest focus", "Bench at 30-45°", "Full stretch"],
+              "notes": "Week 1: 10,10 @ 30×2, RPE 8. Week 2: Add 1-2 reps or maintain quality."
+            },
+            {
+              "kind": "exercise",
+              "name": "Overhead Dumbbell Triceps Extension",
+              "link": "exercises/overhead_triceps_extension.json",
+              "logType": "strength",
+              "prescription": { "sets": 2, "reps": "10-12", "weight": 30, "restSeconds": 90, "rpe": 7.5 },
+              "cues": ["Elbows close to ears", "Deep stretch", "Control the eccentric"],
+              "notes": "Week 1: 10,10 @ 30 lb, RPE 7.5. Maintain or add 1-2 reps."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Chest & Triceps Finisher - Superset C",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset C",
+          "notes": "Perform both exercises back-to-back, then rest 60s before next round",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Dumbbell Flyes",
+              "link": "exercises/dumbbell_flyes.json",
+              "logType": "strength",
+              "prescription": { "sets": 2, "reps": "12-15", "weight": "20 x2", "rpe": 7 },
+              "cues": ["Wide arc", "Chest stretch", "Slight elbow bend"],
+              "notes": "Week 1: 10,12 @ 20×2, RPE 7. Week 2: Target 12,15."
+            },
+            {
+              "kind": "exercise",
+              "name": "Diamond Push-ups",
+              "link": "exercises/diamond_push_ups.json",
+              "logType": "strength",
+              "prescription": { "sets": 2, "reps": "10-15", "restSeconds": 60, "rpe": 7.5 },
+              "cues": ["Hands diamond shape", "Core tight", "To failure or near"],
+              "notes": "Week 1: 10,8 @ RPE 7-8. Week 2: Target 12,10."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Core Stability",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Pallof Press Hold",
+          "link": "exercises/pallof_press.json",
+          "logType": "strength",
+          "prescription": { "sets": 2, "reps": "6-8 each side", "holdSeconds": 25, "restSeconds": 45, "rpe": 7 },
+          "notes": "Complete all reps on one side, then switch sides. Hold 20-30s per rep.",
+          "cues": ["Resist rotation", "Breathe steady", "Ribs down"]
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Cooldown & Stretch",
+      "items": [
+        { "kind": "exercise", "name": "Doorway Chest Stretch", "link": "exercises/doorway_chest_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "Hold 60s on one side, then 60s on the other side" },
+        { "kind": "exercise", "name": "Overhead Triceps Stretch", "link": "exercises/overhead_triceps_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "Hold 60s on one arm, then 60s on the other arm" },
+        { "kind": "exercise", "name": "Child's Pose", "link": "exercises/childs_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 90 } },
+        { "kind": "exercise", "name": "Deep Breathing", "link": "exercises/deep_breathing.json", "logType": "stretch", "prescription": { "sets": 1, "holdSeconds": 150 }, "notes": "Box breathing (4-4-4-4) to calm nervous system before basketball" }
+      ]
+    }
+  ]
+}
