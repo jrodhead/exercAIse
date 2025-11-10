@@ -36,6 +36,14 @@ Read all performance logs in `performed/` directory within the specified time ra
 
 **Before generating the report, read the schema**: `schemas/progress-report.schema.json`
 
+**CRITICAL SCHEMA RULES**:
+1. **Exercise Progression Tables**: Must use EXACT column names: `["Exercise", "First Session", "Peak Performance", "Volume Change", "Sessions"]`
+   - Row fields: `exercise`, `firstSession`, `peakPerformance`, `volumeChange`, `volumeChangeSentiment`, `sessions`
+   - The renderer maps column names to row fields - custom names will not display!
+2. **Generic Tables**: Use any column names, but rows must be arrays of strings matching column count
+3. **Content Arrays**: Must specify `type: "paragraph"` or `type: "list"` for each item
+4. **Sentiments**: Use only `"positive"`, `"neutral"`, `"negative"` (or `"warning"` for highlight boxes)
+
 The report JSON has this top-level structure:
 ```json
 {
@@ -91,6 +99,11 @@ Required fields:
 
 #### **Sections: Strength Progression by Movement Pattern** (type: "strength-analysis")
 #### **Sections: Strength Progression by Movement Pattern** (type: "strength-analysis")
+
+**CRITICAL**: Always use these EXACT column names for exercise progression tables:
+- `["Exercise", "First Session", "Peak Performance", "Volume Change", "Sessions"]`
+- Row fields: `exercise`, `firstSession`, `peakPerformance`, `volumeChange`, `volumeChangeSentiment`, `sessions`
+- **DO NOT** use custom column names like "Block 4 Peak", "Load Change", "Status" - they will not render!
 
 Group exercises by movement pattern and create subsections:
 
@@ -628,11 +641,25 @@ After generating the report JSON and updating the manifest, ask the user:
 - **Celebrate wins** - Even 2.5% gains are progress; acknowledge effort and consistency
 - **Follow the schema** - Use exact field names and structure from `schemas/progress-report.schema.json`
 - **No placeholders** - All data must be real; no "..." or "[TBD]" in final JSON
+- **CRITICAL: Column Names** - Exercise progression tables MUST use: `["Exercise", "First Session", "Peak Performance", "Volume Change", "Sessions"]`
+
+### Pre-Submission Validation Checklist
+
+Before finalizing the report, verify:
+- [ ] All exercise progression tables use standard column names (not custom descriptive names)
+- [ ] Row fields match schema: `exercise`, `firstSession`, `peakPerformance`, `volumeChange`, `volumeChangeSentiment`, `sessions`
+- [ ] All generic tables have rows as arrays of strings matching column count
+- [ ] All content items have `type: "paragraph"` or `type: "list"`
+- [ ] Sentiments use only: `"positive"`, `"neutral"`, `"negative"`, `"warning"`
+- [ ] Schema validation passes: `python3 scripts/validate_schemas.py`
+- [ ] No placeholder text like "...", "[TBD]", "TODO"
+- [ ] All dates in YYYY-MM-DD format
+- [ ] Block range format: "X-Y" (e.g., "2-4", "5-5")
 
 ---
 
 ## Version
-**v2.0** - JSON-first training progress report prompt (replaces HTML generation)
+**v2.1** - Added critical column name validation and pre-submission checklist
 
 **Migration Note**: Old HTML reports are archived in `reports/archive/`. New reports are JSON-only, rendered by `assets/progress-report-renderer.ts` using the app's design system.
 ```

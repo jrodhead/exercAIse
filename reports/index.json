@@ -3,6 +3,23 @@
   "description": "AI-generated training progress reports (JSON format)",
   "reports": [
     {
+      "filename": "2025-11-10_block-5-1.json",
+      "startDate": "2025-11-04",
+      "endDate": "2025-11-07",
+      "blockRange": "5-5",
+      "title": "Training Progress Report - Block 5 Week 1",
+      "generatedDate": "2025-11-10",
+      "overallGrade": "A-",
+      "sessionCount": 3,
+      "highlights": [
+        "Excellent hypertrophy mesocycle launch with superset-dense programming",
+        "Perfect RPE discipline: All sessions 7.0-7.7 avg (below 8.0 target)",
+        "Smart load reductions (10-15% from Block 4) enabled high-rep targets",
+        "Injury-free transition to 10-15 rep range from 6-8 rep strength phase",
+        "3/3 sessions completed with excellent superset fatigue management"
+      ]
+    },
+    {
       "filename": "2025-11-03_blocks-2-4.json",
       "startDate": "2025-08-22",
       "endDate": "2025-11-03",
