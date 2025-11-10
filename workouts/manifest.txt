@@ -70,8 +70,8 @@ workouts/2-1_Lower_Body_Strength_Mobility.json
 workouts/2-1_Full_Body_Conditioning_Core.json
 workouts/1-4_Upper_Body_Strength_Deload.json
 workouts/1-4_Lower_Body_Mobility_Deload.json
-workouts/1-3_Upper_Body_Strength.json
 workouts/1-3_recovery_Yin_Yoga_Rest_Day.json
+workouts/1-3_Upper_Body_Strength.json
 workouts/1-3_Lower_Body_Strength.json
 workouts/1-3_Full_Body_Endurance_Conditioning_Adjusted.json
 workouts/1-2_Upper_Body_Strength_Modified.json
