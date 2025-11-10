@@ -1723,6 +1723,38 @@ a:hover {
   font-size: var(--font-size-sm);
 }
 
+/* BEM: Weekly Context Component (shows block/week summary) */
+.weekly-context {
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-brand-purple-light) 100%);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4);
+  margin: var(--space-4) 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.weekly-context__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-darker);
+  margin: 0 0 var(--space-2) 0;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.weekly-context__title::before {
+  content: '📅';
+  font-size: 1.25em;
+}
+
+.weekly-context__summary {
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+}
+
 /* BEM: Workout Grid Component (for week view) */
 .workout-grid {
   display: grid;
@@ -1801,12 +1833,18 @@ a:hover {
 }
 
 .workout-grid-card__title {
+  display: block;
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
   color: var(--color-primary);
   text-decoration: none;
   line-height: var(--line-height-normal);
   transition: color var(--transition-fast);
+  margin-bottom: var(--space-2);
+}
+
+.workout-grid-card__title:last-of-type {
+  margin-bottom: 0;
 }
 
 .workout-grid-card__title:hover {
@@ -3857,6 +3895,19 @@ a:hover {
   }
   
   /* ========== Workout Grid Dark Mode ========== */
+  .weekly-context {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.2) 0%, rgba(102, 126, 234, 0.2) 100%);
+    border-color: #60a5fa;
+  }
+
+  .weekly-context__title {
+    color: #93c5fd;
+  }
+
+  .weekly-context__summary {
+    color: #e2e8f0;
+  }
+
   .workout-grid-card {
     background: #1e293b;
     border-color: #334155;

@@ -1,6 +1,8 @@
+workouts/5-2_Yin_Yoga_Recovery.json
 workouts/5-2_Glutes_Core_Hypertrophy.json
 workouts/5-2_Chest_Triceps_Hypertrophy.json
 workouts/5-2_Chest_Shoulders_Volume.json
+workouts/5-2_Basketball_Warmup_Cooldown.json
 workouts/5-2_Back_Biceps_Hypertrophy.json
 workouts/5-1_Yin_Yoga_Recovery.json
 workouts/5-1_Glutes_Core_Hypertrophy.json

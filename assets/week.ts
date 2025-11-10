@@ -153,27 +153,60 @@
   };
 
   /**
-   * Filter workouts to current week
+   * Filter workouts to current week and group by date
    */
-  const filterCurrentWeek = (workouts: WorkoutFile[]): WorkoutFile[] => {
+  const filterCurrentWeek = (workouts: WorkoutFile[]): Map<string, WorkoutFile[]> => {
     const { start, end } = getCurrentWeekBounds();
+    const workoutsByDate = new Map<string, WorkoutFile[]>();
     
-    return workouts.filter(w => {
-      if (!w.date) return false;
-      const workoutDate = parseDate(w.date);
-      if (!workoutDate) return false;
-      return workoutDate >= start && workoutDate <= end;
-    }).sort((a, b) => {
-      // Sort by date ascending (earliest first)
-      if (!a.date || !b.date) return 0;
-      return a.date.localeCompare(b.date);
-    });
+    for (const workout of workouts) {
+      if (!workout.date) continue;
+      const workoutDate = parseDate(workout.date);
+      if (!workoutDate) continue;
+      if (workoutDate >= start && workoutDate <= end) {
+        const dateStr = workout.date;
+        if (!workoutsByDate.has(dateStr)) {
+          workoutsByDate.set(dateStr, []);
+        }
+        workoutsByDate.get(dateStr)!.push(workout);
+      }
+    }
+    
+    return workoutsByDate;
+  };
+
+  /**
+   * Get weekly context summary based on current block/week
+   */
+  const getWeeklyContext = (workoutsByDate: Map<string, WorkoutFile[]>): { block: number | null; week: number | null; summary: string } | null => {
+    // Find the most common block/week from this week's workouts
+    const allWorkouts = Array.from(workoutsByDate.values()).flat();
+    if (allWorkouts.length === 0) return null;
+    
+    const firstWorkout = allWorkouts[0];
+    const block = firstWorkout?.block || null;
+    const week = firstWorkout?.week || null;
+    
+    if (!block || !week) return null;
+
+    // Define context summaries for each block/week
+    const contextMap: Record<string, string> = {
+      '5-1': 'Week 1 baseline: Establishing loads and rep ranges for hypertrophy focus. RPE 7-8, building mind-muscle connection.',
+      '5-2': 'Week 2 chest specialization hybrid: 4 sessions (M/Tu/Th/F) with 2×/week chest frequency. Testing morning training + basketball logistics. Progressive overload on all lifts from Week 1.',
+      '5-3': 'Week 3 peak: Progressive overload continues across all muscle groups. Target top of rep ranges or increase loads. Maintain 2×/week chest frequency.',
+      '5-4': 'Week 4 deload: Reduce loads 15-20%, maintain rep ranges, RPE 5-7. Focus on movement quality and recovery before Block 6.'
+    };
+
+    const key = `${block}-${week}`;
+    const summary = contextMap[key] || `Block ${block}, Week ${week}: Continue progressive overload and maintain training consistency.`;
+    
+    return { block, week, summary };
   };
 
   /**
    * Render the week view
    */
-  const renderWeekView = (workouts: WorkoutFile[]): void => {
+  const renderWeekView = (workoutsByDate: Map<string, WorkoutFile[]>): void => {
     const { start, end } = getCurrentWeekBounds();
     const startFormatted = formatDateReadable(start);
     const endFormatted = formatDateReadable(end);
@@ -181,16 +214,18 @@
     const weekInfoEl = document.querySelector('.current-week-info')!;
     weekInfoEl.textContent = `${startFormatted} - ${endFormatted}`;
 
-    // Create a map of workouts by date
-    const workoutsByDate = new Map<string, WorkoutFile>();
-    for (const workout of workouts) {
-      if (workout.date) {
-        workoutsByDate.set(workout.date, workout);
-      }
+    // Generate weekly context summary
+    let html = '';
+    const context = getWeeklyContext(workoutsByDate);
+    if (context) {
+      html += '<div class="weekly-context">';
+      html += `<h3 class="weekly-context__title">Block ${context.block}, Week ${context.week}</h3>`;
+      html += `<p class="weekly-context__summary">${context.summary}</p>`;
+      html += '</div>';
     }
 
     // Generate grid of 7 cards (one for each day of the week)
-    let html = '<div class="workout-grid">';
+    html += '<div class="workout-grid">';
     const today = formatDate(new Date());
     
     // Loop through all 7 days of the week (Sunday to Saturday)
@@ -200,10 +235,10 @@
       const dateStr = formatDate(currentDate);
       const dayName = getDayName(currentDate);
       const isToday = today === dateStr;
-      const workout = workoutsByDate.get(dateStr);
+      const workouts = workoutsByDate.get(dateStr);
 
-      if (workout) {
-        // Workout card
+      if (workouts && workouts.length > 0) {
+        // Workout card(s)
         const cardClass = isToday ? 'workout-grid-card workout-grid-card--today' : 'workout-grid-card';
         
         html += `<div class="${cardClass}">`;
@@ -215,9 +250,14 @@
         html += `<div class="workout-grid-card__date">${currentDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</div>`;
         html += `</div>`;
         html += `<div class="workout-grid-card__body">`;
-        html += `<a href="index.html?file=workouts/${encodeURIComponent(workout.filename)}" class="workout-grid-card__title">${workout.title}</a>`;
-        if (workout.block && workout.week) {
-          html += `<div class="workout-grid-card__meta">Block ${workout.block}, Week ${workout.week}</div>`;
+        
+        // Display all workouts for this day
+        for (const workout of workouts) {
+          html += `<a href="index.html?file=workouts/${encodeURIComponent(workout.filename)}" class="workout-grid-card__title">${workout.title}</a>`;
+        }
+        
+        if (workouts[0]?.block && workouts[0]?.week) {
+          html += `<div class="workout-grid-card__meta">Block ${workouts[0].block}, Week ${workouts[0].week}</div>`;
         }
         html += `</div>`;
         html += `</div>`;

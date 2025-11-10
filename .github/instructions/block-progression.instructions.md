@@ -12,6 +12,8 @@ Block-based progression is a structured training method where workouts are organ
 
 ## 🏆 Current Training Focus (Block 5+): Hypertrophy & Aesthetics
 
+**Current Status: Block 5 Week 2 (November 11-15, 2025)** - Chest Specialization Hybrid Test
+
 **Primary Goal**: Muscle growth with emphasis on chest, arms (biceps/triceps), glutes, calves, and core
 
 **Training Philosophy**:
@@ -23,10 +25,27 @@ Block-based progression is a structured training method where workouts are organ
 - Tempo: Control eccentric (lowering) phase for time under tension (especially calves: 3s eccentric)
 - Supersets/circuits: Encouraged for metabolic stress and efficiency
 
-**Session Distribution** (3x/week: Tu/Th/F):
+**Session Distribution**:
+
+**Standard 3x/week (Block 5 Week 1: Tu/Th/F)**:
 - **Day 1**: Chest & Triceps focus + supporting muscles
 - **Day 2**: Glutes, Calves & Core focus + supporting muscles  
 - **Day 3**: Back & Biceps focus + shoulders/arms
+
+**Chest Specialization Hybrid (Block 5 Weeks 2-4: M/Tu/Th/F)**:
+- **Monday AM**: Chest & Triceps - Heavy Strength (flat/incline press, close-grip, dips) + **PM basketball**
+- **Tuesday AM**: Back & Biceps - Maintenance (rows, curls, carries)
+- **Wednesday**: Restore/Recovery (yoga, mobility)
+- **Thursday AM**: Glutes, Calves & Core - Maintenance (hip thrust, squat, RDL, split squat, calves)
+- **Friday AM**: Chest & Shoulders - Volume Emphasis (overhead press, lateral raises, flyes, push-ups) **[2nd chest stimulus]**
+- **Saturday**: Optional run
+
+**Rationale for Hybrid Approach** (Weeks 2-4):
+- Tests 4-day training + basketball logistics (AM training, PM basketball safe for upper body)
+- Achieves 2x/week chest frequency for specialization (Monday heavy, Friday volume)
+- Maintains progressive overload on back, legs, glutes (prevents regression during chest focus)
+- Provides 3-week test period before committing to full Block 6 specialization
+- Heavy lower body (Thursday) avoids basketball days to prevent fatigue conflicts
 
 **Supporting Work**: Include compound movements for full-body development:
 - Rows (back, biceps, core)

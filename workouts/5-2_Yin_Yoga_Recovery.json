@@ -1,0 +1,47 @@
+{
+  "version": "1",
+  "title": "Yin Yoga Recovery - Upper Body & Hips",
+  "date": "2025-11-12",
+  "block": 5,
+  "week": 2,
+  "notes": "Block 5 Week 2: Yin Yoga recovery session focused on releasing tension from Monday (chest/triceps) and Tuesday (back/biceps) training. Long-hold passive stretches (3-5 min each) for deep fascia release. Target: chest, shoulders, lats, hip flexors, hamstrings.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Centering & Breath (5 min)",
+      "items": [
+        { "kind": "exercise", "name": "Child's Pose with Deep Breathing", "link": "exercises/childs_pose_with_deep_breathing.json", "logType": "stretch", "prescription": { "holdSeconds": 180 }, "notes": "3 min. Settle into the practice, focus on breath (4-6-4 rhythm)" },
+        { "kind": "exercise", "name": "Cat-Cow to Cobra Stretch", "link": "exercises/cat_cow_to_cobra_stretch.json", "logType": "stretch", "prescription": { "sets": 1, "reps": 8 }, "notes": "8 rounds. Gentle spine mobility to prepare for deeper stretches" }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Upper Body Release (20-25 min)",
+      "items": [
+        { "kind": "exercise", "name": "Sphinx Pose (Chest & Shoulders)", "link": "exercises/sphinx_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 240 }, "notes": "4 min. Passive chest opener after Monday pressing. Forearms on ground, gentle backbend" },
+        { "kind": "exercise", "name": "Thread the Needle (Shoulders & Upper Back)", "link": "exercises/thread_the_needle.json", "logType": "stretch", "prescription": { "holdSeconds": 180 }, "notes": "3 min per side. Release shoulders and upper back from rows and pull-ups" },
+        { "kind": "exercise", "name": "Reclined Twist (Chest & Lats)", "link": "exercises/reclined_twist.json", "logType": "stretch", "prescription": { "holdSeconds": 240 }, "notes": "4 min per side. Deep chest and lat release. Knees to one side, arms in T-position" },
+        { "kind": "exercise", "name": "Supported Fish Pose (Chest Opener)", "link": "exercises/supported_fish_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 300 }, "notes": "5 min. Block or bolster under upper back. Deep chest, shoulder, neck release" }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Lower Body & Hip Release (20-25 min)",
+      "items": [
+        { "kind": "exercise", "name": "Dragon Pose (Hip Flexors & Quads)", "link": "exercises/dragon_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 240 }, "notes": "4 min per side. Deep hip flexor release after basketball and training. Low lunge variation" },
+        { "kind": "exercise", "name": "Sleeping Swan / Pigeon Pose (Glutes & Hips)", "link": "exercises/sleeping_swan.json", "logType": "stretch", "prescription": { "holdSeconds": 300 }, "notes": "5 min per side. Deep glute and hip release. Fold forward over bent front leg" },
+        { "kind": "exercise", "name": "Caterpillar Pose (Hamstrings & Spine)", "link": "exercises/caterpillar_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 300 }, "notes": "5 min. Seated forward fold. Let spine round naturally, release hamstrings and lower back" },
+        { "kind": "exercise", "name": "Supine Twist (Full Spine)", "link": "exercises/supine_twist.json", "logType": "stretch", "prescription": { "holdSeconds": 240 }, "notes": "4 min per side. Gentle spinal twist for full-body integration" }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Final Relaxation (10 min)",
+      "items": [
+        { "kind": "exercise", "name": "Butterfly Pose (Seated Forward Fold)", "link": "exercises/butterfly_pose_seated_forward_fold.json", "logType": "stretch", "prescription": { "holdSeconds": 240 }, "notes": "4 min. Inner thigh and hip release. Fold forward gently, let gravity do the work" },
+        { "kind": "exercise", "name": "Legs-Up-the-Wall", "link": "exercises/legs_up_the_wall.json", "logType": "stretch", "prescription": { "holdSeconds": 300 }, "notes": "5 min. Inversion for circulation, calming nervous system. Optional bolster under hips" },
+        { "kind": "exercise", "name": "Savasana (Final Relaxation)", "link": "exercises/savasana.json", "logType": "stretch", "prescription": { "holdSeconds": 300 }, "notes": "5 min. Complete relaxation. Focus on breath, body scan, let all tension release" }
+      ]
+    }
+  ]
+}

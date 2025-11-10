@@ -1,0 +1,42 @@
+{
+  "version": "1",
+  "title": "Basketball Warm-up & Cool-down",
+  "date": "2025-11-10",
+  "block": 5,
+  "week": 2,
+  "notes": "Block 5 Week 2: Basketball session (evening). Dynamic warm-up before playing + mobility cool-down after. Complements Monday AM chest/triceps training. Focus on movement prep and recovery.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Pre-Game Dynamic Warm-up (10-12 min)",
+      "items": [
+        { "kind": "exercise", "name": "Brisk Walk", "link": "exercises/brisk_walk.json", "logType": "mobility", "prescription": { "holdSeconds": 150 }, "notes": "Light cardio to raise heart rate and body temperature" },
+        { "kind": "exercise", "name": "Leg Swings", "link": "exercises/leg_swings.json", "logType": "mobility", "prescription": { "sets": 1, "reps": "10 each direction per leg" }, "notes": "Forward/back and side-to-side for hip mobility" },
+        { "kind": "exercise", "name": "Arm Circles", "link": "exercises/arm_circles.json", "logType": "mobility", "prescription": { "sets": 1, "reps": "10 forward, 10 backward" }, "notes": "Shoulder mobility and upper body activation" },
+        { "kind": "exercise", "name": "Bodyweight Squat", "link": "exercises/bodyweight_squat.json", "logType": "mobility", "prescription": { "sets": 1, "reps": 10 }, "notes": "Activate glutes, quads, and hip flexors" },
+        { "kind": "exercise", "name": "Inchworm", "link": "exercises/inchworm.json", "logType": "mobility", "prescription": { "sets": 1, "reps": 5 }, "notes": "Full-body activation: hamstrings, core, shoulders" },
+        { "kind": "exercise", "name": "High Knees", "link": "exercises/high_knees.json", "logType": "mobility", "prescription": { "holdSeconds": 30 }, "notes": "Light intensity to elevate heart rate" },
+        { "kind": "exercise", "name": "Butt Kicks", "link": "exercises/butt_kicks.json", "logType": "mobility", "prescription": { "holdSeconds": 30 }, "notes": "Activate hamstrings and warm up knee flexion" },
+        { "kind": "exercise", "name": "Lateral Shuffle", "link": "exercises/lateral_shuffle.json", "logType": "mobility", "prescription": { "holdSeconds": 60 }, "notes": "Basketball-specific movement pattern" },
+        { "kind": "exercise", "name": "Carioca Drill", "link": "exercises/carioca_drill.json", "logType": "mobility", "prescription": { "holdSeconds": 60 }, "notes": "Hip mobility and coordination for lateral movement" },
+        { "kind": "exercise", "name": "Basketball Movement Prep", "link": "exercises/basketball_movement_prep.json", "logType": "mobility", "prescription": { "holdSeconds": 150 }, "notes": "Light dribbling, layups, shooting to prepare for game intensity" }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Post-Game Cool-down & Mobility (10-15 min)",
+      "items": [
+        { "kind": "exercise", "name": "Brisk Walk", "link": "exercises/brisk_walk.json", "logType": "mobility", "prescription": { "holdSeconds": 150 }, "notes": "Bring heart rate down gradually after playing" },
+        { "kind": "exercise", "name": "Standing Quad Stretch", "link": "exercises/standing_quad_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 45 }, "notes": "30s per leg. Release tension from running/jumping" },
+        { "kind": "exercise", "name": "Standing Hamstring Stretch", "link": "exercises/standing_hamstring_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 45 }, "notes": "30s per leg. Target hamstrings after sprints" },
+        { "kind": "exercise", "name": "Hip Flexor Stretch", "link": "exercises/hip_flexor_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "30s per side. Release hip flexors from running/cutting" },
+        { "kind": "exercise", "name": "Figure-4 Glute Stretch", "link": "exercises/figure_4_glute_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "30s per side. Glute and hip recovery" },
+        { "kind": "exercise", "name": "Calf Stretch (Wall or Step)", "link": "exercises/calf_stretch_wall_or_step.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "30s per leg. Release calves after jumping" },
+        { "kind": "exercise", "name": "Doorway Chest Stretch", "link": "exercises/doorway_chest_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "30s per side. Open up chest after AM pressing" },
+        { "kind": "exercise", "name": "Cross-Body Shoulder Stretch", "link": "exercises/cross_body_shoulder_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "30s per arm. Shoulder recovery from shooting" },
+        { "kind": "exercise", "name": "Child's Pose", "link": "exercises/childs_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 90 }, "notes": "Full-body relaxation and recovery breathing" },
+        { "kind": "exercise", "name": "Deep Breathing", "link": "exercises/deep_breathing.json", "logType": "stretch", "prescription": { "sets": 1, "holdSeconds": 120 }, "notes": "2-3 min box breathing (4-4-4-4) to calm nervous system" }
+      ]
+    }
+  ]
+}
