@@ -3,7 +3,51 @@ mode: kai
 ---
 # Complete Workout Generation Prompt (JSON + File Creation)
 
-When prompted with workout generation requests, provide the workout content AND create the necessary files based on the user's input, history, and the current block/week focus.
+## CRITICAL: Data-Driven Progression Workflow
+
+**BEFORE generating ANY new workout, ALWAYS follow this sequence:**
+
+### Step 1: Generate Progress Report
+- **When:** User requests "next workout", "generate week X", or any new training session
+- **What:** Generate progress report for most recently completed week/block
+- **Use:** `.github/prompts/generate-training-progress-report.prompt.md`
+- **Why:** Ensures prescriptions are based on actual performance data, not assumptions
+
+**Example:**
+- User: "Generate Block 5 Week 3"
+- AI: First generates progress report for Block 5 Week 2 → THEN generates Week 3 workouts
+
+### Step 2: Analyze Progress Report (Round-Level Fatigue Patterns)
+Read performance logs (`performed/*_perf2.json`) and identify:
+
+**Fatigue Pattern Analysis:**
+- **Load Too Heavy**: RPE ≥9 on round 1, or reps dropped >50% by round 2
+  - **Action**: Reduce load 5-10% for next week
+- **Synergist Fatigue Cascade**: Paired exercises use same muscles (e.g., flat bench + close-grip = triceps fried)
+  - **Action**: Switch to antagonist supersets (push/pull pairing)
+- **Appropriate Challenge**: RPE 7→8→9 across rounds, minor rep drop (2-3 reps) in final round only
+  - **Action**: Progress as planned (add reps or load)
+- **Too Easy**: RPE ≤7 across all rounds, all reps completed
+  - **Action**: Add 1-2 reps or increase load 2.5-5 lb
+
+**Volume Tolerance Check:**
+- Verify 2-3 set philosophy was maintained (not 4+ sets per exercise)
+- Volume progression hierarchy:
+  1. **Primary**: Add reps within target range (Week 1: 3×8 → Week 2: 3×10 → Week 3: 3×12)
+  2. **Secondary**: Increase load when top of range reached (3×12 @ 40 lb → 3×8 @ 45 lb)
+  3. **Tertiary**: Add exercise variety for additional volume (not more sets per exercise)
+
+**Superset Compatibility:**
+- Antagonist pairings: bench + rows, squats + curls, overhead press + pulldowns ✅
+- Synergist pairings: bench + close-grip, rows + hammer curls ⚠️ (monitor for fatigue cascade)
+
+### Step 3: Apply Findings to New Workout Prescriptions
+- Adjust loads based on RPE analysis (see Step 2)
+- Restructure supersets if synergist fatigue detected
+- Respect 2-3 set principle throughout
+- Progress conservatively: RPE should start 7-8, not ≥9
+
+---
 
 ## Supported Request Types
 - **Single session**: "What's the next workout?" or "Generate [day] workout for Block X, Week Y"
@@ -81,7 +125,10 @@ When prompted with workout generation requests, provide the workout content AND 
   - Lower body patterns: +5–10 lb week-over-week under same conditions.
   - If transitioning rep range (e.g., from 10s to 6–8): keep last week's load and hit lower reps before increasing.
 - Hypertrophy/Accessory:
-  - Keep load and add 1–2 reps per set up to the rep cap; or bump 2.5–5 lb if all sets were at the top of the range and RPE ≤ 8.
+  - **Primary progression**: Add 1–2 reps per set within target range (8-15 reps) at same load
+  - **Secondary progression**: Increase load 2.5–5 lb when all sets hit top of range at RPE ≤ 8, then return to bottom of range
+  - **Tertiary progression**: Add exercise variety for additional volume (maintain 2-3 sets per exercise)
+  - **NEVER**: Add 4+ sets to a single exercise
 - Conditioning/Carries:
   - Progress time or distance first; increase load by 5 lb per hand if prior RPE < 7 and posture stayed clean.
 - Deload weeks:

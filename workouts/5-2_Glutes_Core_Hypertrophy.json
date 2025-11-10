@@ -4,7 +4,7 @@
   "date": "2025-11-13",
   "block": 5,
   "week": 2,
-  "notes": "Block 5 Week 2: Progressive overload from Week 1. Hip thrust stable at 60 lb (RPE 7), add reps. Goblet squat 60 lb good for 10,10,8 - target 12,10,10. RDL at 60×2 (RPE 8) - maintain or add reps. Split squat 40×2 solid. Add volume where RPE allows.",
+  "notes": "Block 5 Week 2: Progressive overload from Week 1. Hip thrust stable at 60 lb (RPE 7), add reps. Goblet squat 60 lb good for 10,10,8 - target 12,10,10. RDL at 60×2 (RPE 8) - maintain or add reps. Split squat 40×2 solid. Added single-leg calf raise during cooldown for additional calf volume. Estimated time: 32 minutes (working sets + rest, excludes warm-up/cooldown).",
   "sections": [
     {
       "type": "Warm-up",
@@ -113,6 +113,7 @@
       "type": "Cooldown/Recovery",
       "title": "Cooldown & Stretch",
       "items": [
+        { "kind": "exercise", "name": "Single-Leg Calf Raise", "link": "exercises/single_leg_calf_raise.json", "logType": "strength", "prescription": { "sets": 2, "reps": "12-15 per leg", "restSeconds": 45, "rpe": 7 }, "notes": "Week 2 addition: Unilateral calf work for balance + volume. Bodyweight or hold light DB for stability." },
         { "kind": "exercise", "name": "Hip Flexor Stretch", "link": "exercises/hip_flexor_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "Hold 60s per side" },
         { "kind": "exercise", "name": "Seated Hamstring Stretch", "link": "exercises/seated_hamstring_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "Hold 60s per leg" },
         { "kind": "exercise", "name": "Figure-4 Glute Stretch", "link": "exercises/figure_4_glute_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "Hold 60s per side" },

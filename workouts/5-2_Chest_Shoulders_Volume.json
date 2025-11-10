@@ -4,7 +4,7 @@
   "date": "2025-11-14",
   "block": 5,
   "week": 2,
-  "notes": "Block 5 Week 2: NEW 4th session for chest specialization (2x/week chest frequency). Overhead press focus with lateral raises, flyes, push-ups. Higher reps (12-15), RPE 7-8. Second chest stimulus complements Monday's heavy pressing. Safe for AM training (no basketball conflict).",
+  "notes": "Block 5 Week 2: NEW 4th session for chest specialization (2x/week chest frequency). Overhead press focus with lateral raises, flyes, push-ups. Higher reps (12-15), RPE 7-8. Second chest stimulus complements Monday's heavy pressing. Replaced front raise with standing calf raise for 3x/week calf frequency (anterior delt covered by overhead press). Estimated time: 30 minutes (working sets + rest, excludes warm-up/cooldown).",
   "sections": [
     {
       "type": "Warm-up",
@@ -51,12 +51,12 @@
             },
             {
               "kind": "exercise",
-              "name": "Dumbbell Front Raise",
-              "link": "exercises/dumbbell_front_raise.json",
+              "name": "Standing Calf Raise",
+              "link": "exercises/standing_calf_raise.json",
               "logType": "strength",
-              "prescription": { "sets": 3, "reps": "12-15", "weight": "15 x2", "restSeconds": 60, "rpe": 7 },
-              "cues": ["Arms straight", "Raise to eye level", "No swinging"],
-              "notes": "Week 2 baseline: 15×2 for 12-15 reps, RPE 7. Anterior delt + upper chest."
+              "prescription": { "sets": 3, "reps": "12-15", "weight": "30 x2", "restSeconds": 60, "rpe": 7 },
+              "cues": ["Full range", "Pause at top", "3s eccentric"],
+              "notes": "Week 2 addition: 3rd calf session per week (Tue/Thu/Fri frequency). Replaces front raise (anterior delt covered by overhead press)."
             }
           ]
         }

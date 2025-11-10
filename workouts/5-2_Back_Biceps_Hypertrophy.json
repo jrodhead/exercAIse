@@ -4,7 +4,7 @@
   "date": "2025-11-11",
   "block": 5,
   "week": 2,
-  "notes": "Block 5 Week 2: Progressive overload from Week 1. Reduce hammer curl to 27.5×2 (progress report: too heavy at 30×2, dropped to 5 reps rounds 2-3). Rows stable. Add reps where RPE allows. Basketball-safe upper body work (AM training).",
+  "notes": "Block 5 Week 2: Progressive overload from Week 1. Reduce hammer curl to 27.5×2 (progress report: too heavy at 30×2, dropped to 5 reps rounds 2-3). Rows stable. Add reps where RPE allows. Added dumbbell pullover for vertical pull pattern (lat development). Estimated time: 33 minutes (working sets + rest, excludes warm-up/cooldown).",
   "sections": [
     {
       "type": "Warm-up",
@@ -98,12 +98,12 @@
             },
             {
               "kind": "exercise",
-              "name": "Farmer Carry",
-              "link": "exercises/farmer_carry.json",
-              "logType": "carry",
-              "prescription": { "sets": 2, "timeSeconds": 60, "weight": "50 x2", "restSeconds": 90, "rpe": 7 },
-              "cues": ["Tall posture", "Shoulders packed", "Steady breathing"],
-              "notes": "Week 1: 52s × 2 @ 50×2, RPE 7. Week 2: Target full 60s × 2."
+              "name": "Dumbbell Pullover",
+              "link": "exercises/dumbbell_pullover.json",
+              "logType": "strength",
+              "prescription": { "sets": 2, "reps": "12-15", "weight": 30, "restSeconds": 90, "rpe": 7 },
+              "cues": ["Slight arm bend", "Stretch lats", "Ribs down"],
+              "notes": "Week 2 addition: Vertical pull pattern for lat development. Start conservative at 30 lb, focus on stretch."
             }
           ]
         }

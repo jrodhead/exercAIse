@@ -126,10 +126,18 @@ Block-based progression is a structured training method where workouts are organ
 
 ### Week to Week (within a hypertrophy block):
 - **Primary method**: Add reps (e.g., Week 1: 10 reps → Week 2: 11 reps → Week 3: 12 reps)
-- **Secondary method**: Add load once top of rep range is achieved (e.g., 3×12 → increase weight, return to 3×8-10)
-- **Tertiary method**: Improve tempo control (slower eccentric for more time under tension)
+  - Most effective for hypertrophy within target range (8-15 reps)
+  - Maintains movement quality and mind-muscle connection
+  - Allows consistent load and technique refinement
+- **Secondary method**: Add load once top of rep range is achieved (e.g., 3×12 @ 40 lb → 3×8-10 @ 45 lb, then build back to 3×12)
+  - Apply when all sets hit top of rep range at RPE ≤8
+  - Drop reps to bottom of range when load increases
+- **Tertiary method**: Add exercises for variety or weak point development (maintain 2-3 sets per exercise)
+  - Use when main exercise progression is solid but additional volume needed
+  - Rotate accessory movements to prevent adaptation
 - **Focus**: Mind-muscle connection, quality contractions, "the pump" sensation
 - **RPE Target**: 7-8 (leave 2-3 reps in reserve for sustainable volume)
+- **NEVER**: Add 4+ sets to a single exercise (volume via reps first, then exercise variety)
 
 ### Block to Block:
 - Keep **movement patterns the same** (horizontal press, vertical pull, hip hinge, etc.)
@@ -161,8 +169,9 @@ Block-based progression is a structured training method where workouts are organ
 ---
 
 ## ✅ Key Principles (Hypertrophy Focus)
-- **Progressive Overload**: Increase reps first, then load. Focus on quality over quantity.
+- **Progressive Overload**: Increase reps first (most effective for hypertrophy), then load when top of range reached. Focus on quality over quantity.
 - **Volume Distribution**: 2-3 sets per exercise, multiple exercises per muscle group (6-9 sets per muscle/week).
+  - Volume increases via: 1) More reps per set, 2) More load (when reps maxed), 3) More exercise variety (not more sets per exercise)
 - **Exercise Variety**: Rotate movements every 4 weeks to prevent adaptation and maintain engagement.
 - **Metabolic Stress**: Use supersets, circuits, and controlled tempo for "the pump" and growth stimulus.
 - **Mind-Muscle Connection**: Prioritize feeling the target muscle work over moving heavy weight.

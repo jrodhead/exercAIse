@@ -1,7 +1,24 @@
+````prompt
 # Training Progress Report Generation Prompt
 
 ## Purpose
 Generate a comprehensive, data-driven training progress report as structured JSON data analyzing objective performance metrics across a specified time period.
+
+## CRITICAL: When to Generate Reports
+
+**Weekly Progress Reports (Before Generating Next Week):**
+- **Trigger**: User requests "next workout", "generate week X", or any new training session
+- **Scope**: Most recently completed week (e.g., Week 1 complete → generate Week 1 report before Week 2 workouts)
+- **Purpose**: Identify fatigue patterns, load appropriateness, superset compatibility
+- **Use**: Informs progressive overload decisions for upcoming week
+
+**Block Progress Reports (End of Block):**
+- **Trigger**: User completes Week 4 (deload), or requests block summary
+- **Scope**: Entire block (4 weeks, typically 10-12 sessions)
+- **Purpose**: Comprehensive analysis of periodization effectiveness, movement pattern progression, adherence
+- **Use**: Informs next block planning, exercise selection, training focus
+
+**Default if not specified:** Last 4 weeks (1 complete block)
 
 ## CRITICAL: Output Format
 **You MUST generate a JSON file, not HTML.** The JSON structure is defined by `schemas/progress-report.schema.json`. The app will render the JSON data using the design system.
@@ -11,6 +28,13 @@ Generate a comprehensive, data-driven training progress report as structured JSO
 ## Instructions for AI (Kai)
 
 ### 1. Determine Reporting Period
+
+**For Weekly Reports (Before Next Week Generation):**
+- **Automatic**: Most recently completed week based on last performed session timestamp
+- **Format**: "Block X Week Y (Date Range)"
+- **Example**: User requests Week 3 workouts → Generate "Block 5 Week 2 (Nov 10-15, 2025)" report first
+
+**For Block Reports (End of Block Summary):**
 - **Ask the user for the time range:**
   - Start date (or "from beginning")
   - End date (or "to present")

@@ -1,0 +1,80 @@
+{
+  "name": "Dumbbell Pullover",
+  "equipment": [
+    "dumbbell",
+    "bench"
+  ],
+  "tags": [
+    "back",
+    "chest",
+    "lats",
+    "upper body",
+    "vertical pull"
+  ],
+  "setup": [
+    "Lie perpendicular across a flat bench with upper back supported",
+    "Hips below bench level, feet planted wide for stability",
+    "Hold one dumbbell with both hands under the top plate (diamond grip)",
+    "Start with dumbbell over chest, arms slightly bent (15-20° elbow angle)"
+  ],
+  "steps": [
+    "Inhale and lower dumbbell back overhead in an arc",
+    "Maintain slight elbow bend (don't straighten arms)",
+    "Lower until you feel a deep stretch in lats and chest (arms near ears)",
+    "Exhale and pull dumbbell back to start position using lats",
+    "Keep ribs down (avoid hyperextending lower back)",
+    "Pause briefly at top, repeat"
+  ],
+  "cues": [
+    "Slight arm bend (locked angle)",
+    "Stretch lats, don't hyperextend spine",
+    "Ribs down, core engaged",
+    "Pull with lats, not arms",
+    "Control the stretch at bottom"
+  ],
+  "mistakes": [
+    "Straightening arms (turns into triceps extension)",
+    "Hyperextending lower back (ribs flaring up)",
+    "Going too heavy (loses stretch, increases injury risk)",
+    "Rushing the eccentric (missing the stretch stimulus)",
+    "Dropping hips too low (unstable position)"
+  ],
+  "safety": "Start light (20-30 lb) to learn the stretch position. Avoid if shoulder impingement present. Keep core engaged to protect lower back. If wrists are sensitive, use neutral-grip attachment or two dumbbells (one in each hand).",
+  "scaling": {
+    "regressions": [
+      "Two-dumbbell pullover (easier grip, more stable)",
+      "Reduce range of motion (stop at 45° overhead)",
+      "Lying on bench lengthwise (less stretch demand)"
+    ],
+    "progressions": [
+      "Increase range of motion (arms closer to ears)",
+      "Pause at stretch (3-5s hold at bottom)",
+      "Slow eccentric (4-5s lowering phase)"
+    ]
+  },
+  "variations": [
+    "Stability ball pullover (adds core demand)",
+    "Bent-arm pullover (more lat emphasis)",
+    "Straight-arm pullover (more chest/serratus)"
+  ],
+  "prescriptionHints": {
+    "load": "20-40 lb for hypertrophy; lighter than you think (stretch is the stimulus)",
+    "reps": "12-15 for hypertrophy, 8-10 for strength",
+    "time": "3-4s eccentric, 1-2s concentric",
+    "distance": "—",
+    "rpe": "6-8 (focus on stretch quality, not load)",
+    "notes": "Vertical pull pattern substitute when no pull-up bar available. Hits lats, serratus, chest, and core stability."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "shoulders",
+      "lower back",
+      "wrists"
+    ],
+    "notes": "Maintain slight elbow bend to protect shoulder joint. Keep ribs down to avoid lower back hyperextension. Use diamond grip or two dumbbells if wrist discomfort."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

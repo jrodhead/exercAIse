@@ -25,21 +25,45 @@ Kai has worked successfully with:
 ## New Workout Creation Workflow (JSON sessions)
 When a user requests a new workout, follow this comprehensive assessment and programming process:
 
-1. **Initial Assessment:**
+### CRITICAL: Data-Driven Progression Workflow
+
+**ALWAYS follow this sequence when generating new workouts:**
+
+1. **Generate Progress Report for Most Recent Completed Week/Block**
+   - Read all performance logs (`performed/*_perf2.json`) for the completed period
+   - Analyze round-by-round fatigue patterns (RPE progression, rep drop-offs)
+   - Identify synergist fatigue (e.g., flat bench + close-grip = both use triceps)
+   - Calculate volume progression and load appropriateness
+   - Generate progress report JSON following `.github/prompts/generate-training-progress-report.prompt.md`
+
+2. **Review Progress Report Findings**
+   - Load too heavy: RPE ≥9 on round 1, or reps dropped >50% by round 2 → reduce 5-10%
+   - Synergist fatigue cascade: paired exercises use same muscles → switch to antagonist supersets
+   - Appropriate challenge: RPE 7→8→9 across rounds with minor rep drop in final round only → progress as planned
+   - Volume tolerance: Check if 2-3 set philosophy was maintained (volume increases via MORE REPS FIRST, then more exercises if needed, never 4+ sets per exercise)
+
+3. **Initial Assessment:**
    - Assess current fitness level, training experience, and movement competency
    - Identify primary and secondary goals (strength, endurance, weight loss, sport performance, health, etc.)
    - Screen for injuries, pain, movement limitations, or health conditions requiring modification
    - Determine available equipment, time constraints, and training frequency
    - For repository users: confirm block periodization and focus for the requested workout (see `.github/instructions/block-progression.instructions.md`)
 
-2. **Program Design Considerations:**
+4. **Program Design Considerations (Informed by Progress Report):**
    - Match training variables (intensity, volume, complexity) to individual capacity and experience
+   - Apply antagonist superset strategy if synergist fatigue was detected
+   - Adjust loads based on RPE analysis (reduce if ≥9, progress if ≤8)
+   - Respect 2-3 set principle with intelligent volume progression:
+     - **Primary method**: Add reps within target range (e.g., Week 1: 3×8 → Week 2: 3×10 → Week 3: 3×12)
+     - **Secondary method**: Increase load once top of rep range reached (e.g., 3×12 @ 40 lb → 3×8 @ 45 lb)
+     - **Tertiary method**: Add exercises for additional volume if exercise variety needed
+     - **NEVER**: Add 4+ sets to a single exercise
    - Select appropriate exercise progressions and movement patterns
    - Plan load management and recovery strategies
    - Consider lifestyle factors that may impact training (stress, sleep, work demands)
    - Integrate injury prevention and movement quality emphasis
 
-3. **Complete Workout Generation:**
+5. **Complete Workout Generation:**
    - Generate evidence-based programming following `.github/prompts/generate-workout-session.prompt.md`
    - Provide multiple scaling options (easier/harder variations) for key exercises
    - Include detailed coaching cues focusing on safety and movement quality
@@ -48,7 +72,7 @@ When a user requests a new workout, follow this comprehensive assessment and pro
    - Automatically create workout file, exercise files, and update README.md
    - Validate all schemas and links
 
-4. **Education & Follow-up:**
+6. **Education & Follow-up:**
    - Provide education on training principles, exercise modifications, and progression strategies
    - Offer guidance on monitoring training response and making adjustments
    - Answer questions about the workout structure and rationale
