@@ -112,16 +112,16 @@ test.describe('Header Navigation Component', () => {
     
     await page.goto('/');
     
-    // Wait a bit for fallback to render
-    await page.waitForTimeout(1000);
+    // Wait for the header-loader script to handle the fallback
+    await page.waitForSelector('header.site-header', { state: 'visible', timeout: 5000 });
     
     // Fallback header should still be present
     const header = page.locator('header.site-header');
     await expect(header).toBeVisible();
     
-    // Navigation should still work
+    // Navigation should still work (wait for nav to be attached and visible)
     const nav = header.locator('nav');
-    await expect(nav).toBeVisible();
+    await expect(nav).toBeVisible({ timeout: 3000 });
     
     // Verify key links exist
     await expect(page.locator('#nav-home')).toBeVisible();

@@ -428,7 +428,8 @@ test.describe('Progress Report Integration', () => {
     const indexContent = fs.readFileSync(indexPath, 'utf-8');
     const index = JSON.parse(indexContent);
     
-    const filenamePattern = /^\d{4}-\d{2}-\d{2}_blocks-\d+-\d+\.json$/;
+    // Updated pattern: accepts both "block-X-Y" (single block) and "blocks-X-Y" (multiple blocks)
+    const filenamePattern = /^\d{4}-\d{2}-\d{2}_blocks?-\d+-\d+\.json$/;
     
     for (const report of index.reports) {
       expect(report.filename).toMatch(filenamePattern);

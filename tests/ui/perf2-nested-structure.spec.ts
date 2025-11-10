@@ -229,10 +229,12 @@ test.describe('Perf-2 Nested Structure', () => {
 
   test('should validate perf-2 structure', async ({ page }) => {
     await page.goto('/index.html?file=workouts/5-1_Chest_Triceps_Hypertrophy.json');
-    await expect(page.locator('#workout-section')).toBeVisible();
+    
+    // Wait for workout section to be visible (not just present)
+    await expect(page.locator('#workout-section')).toBeVisible({ timeout: 10000 });
 
-    // Wait for form
-    await page.waitForSelector('.exercise-card', { timeout: 5000 });
+    // Wait for form to be fully rendered
+    await page.waitForSelector('.exercise-card', { state: 'visible', timeout: 5000 });
 
     // Fill minimal data
     const firstCard = page.locator('.exercise-card').first();

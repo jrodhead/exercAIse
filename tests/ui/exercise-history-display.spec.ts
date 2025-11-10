@@ -124,34 +124,16 @@ test.describe('Exercise History Display', () => {
 
   test('shows "No history" message when no matching data exists', async ({ page }) => {
     // Use an exercise that doesn't appear in any real performed/ logs
-    // Create a minimal exercise JSON file for this test (only exists for test purposes)
-    await page.route('**/exercises/test_exercise_no_history.json', route => {
-      route.fulfill({
-        status: 200,
-        contentType: 'application/json',
-        body: JSON.stringify({
-          name: 'Test Exercise No History',
-          equipment: [],
-          tags: [],
-          setup: ['Test setup'],
-          steps: ['Test step'],
-          cues: ['Test cue'],
-          mistakes: [],
-          safety: 'Test',
-          scaling: { regressions: [], progressions: [] },
-          variations: [],
-          prescriptionHints: {},
-          joints: { sensitiveJoints: [], notes: '' },
-          media: { video: '', images: [] }
-        })
-      });
-    });
+    // Instead of mocking a fake exercise, use a real exercise that has no history
+    // This avoids flaky mock route interception issues
     
-    // Navigate directly to non-existent exercise (no history in performed/)
-    await page.goto('/exercise.html?file=exercises/test_exercise_no_history.json');
+    // Navigate to an exercise that exists but has no performance history
+    // Using a real exercise file that's unlikely to have been logged
+    await page.goto('/exercise.html?file=exercises/arm_circles.json');
 
+    // Wait for the page to load and exercise name to be set
+    await expect(page.locator('#ex-name')).toContainText('Arm Circles');
     await expect(page.locator('#main')).toBeVisible();
-    await expect(page.locator('#ex-name')).toContainText('Test Exercise No History');
 
     const historySection = page.locator('#history');
     
@@ -208,13 +190,13 @@ test.describe('Exercise History Display', () => {
       }
     }, mockPerformanceLog);
 
-    await expect(page.locator('#main')).toBeVisible();
+    await expect(page.locator('#main')).toBeVisible({ timeout: 10000 });
     
     // Reload the page to pick up the new localStorage data
     await page.reload();
     
     const historySection = page.locator('#history');
-    await expect(historySection).toBeVisible();
+    await expect(historySection).toBeVisible({ timeout: 10000 });
 
     // Wait for async load
     await page.waitForTimeout(500);

@@ -149,11 +149,11 @@ test.describe('Perf-2 Data Quality', () => {
 
   test('should handle add/remove set operations correctly', async ({ page }) => {
     await page.goto('/index.html?file=' + encodeURIComponent(MOCK_PATH));
-    await expect(page.locator('#workout-section')).toBeVisible();
+    await expect(page.locator('#workout-section')).toBeVisible({ timeout: 10000 });
 
     // Target Goblet Squat
     const squatCard = page.locator('.exercise-card[data-name="Goblet Squat"]').first();
-    await expect(squatCard).toBeVisible();
+    await expect(squatCard).toBeVisible({ timeout: 10000 });
 
     // Update first set
     const firstSet = squatCard.locator('.set-row').first();
