@@ -1,0 +1,273 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/5-2_Chest_Triceps_Hypertrophy.json",
+  "timestamp": "2025-11-10T15:20:13.548Z",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "Primary Chest - Antagonist Superset A",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset A",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "flat-dumbbell-bench-press",
+                  "name": "Flat Dumbbell Bench Press",
+                  "weight": 40,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 6
+                },
+                {
+                  "key": "one-arm-dumbbell-row",
+                  "name": "One-Arm Dumbbell Row",
+                  "weight": 50,
+                  "reps": 10,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "flat-dumbbell-bench-press",
+                  "name": "Flat Dumbbell Bench Press",
+                  "weight": 40,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 7
+                },
+                {
+                  "key": "one-arm-dumbbell-row",
+                  "name": "One-Arm Dumbbell Row",
+                  "weight": 50,
+                  "reps": 10,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 3,
+              "exercises": [
+                {
+                  "key": "flat-dumbbell-bench-press",
+                  "name": "Flat Dumbbell Bench Press",
+                  "weight": 40,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 7
+                },
+                {
+                  "key": "one-arm-dumbbell-row",
+                  "name": "One-Arm Dumbbell Row",
+                  "weight": 50,
+                  "reps": 10,
+                  "rpe": 8
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 4,
+              "exercises": [
+                {
+                  "key": "flat-dumbbell-bench-press",
+                  "name": "Flat Dumbbell Bench Press",
+                  "weight": 40,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 8
+                },
+                {
+                  "key": "one-arm-dumbbell-row",
+                  "name": "One-Arm Dumbbell Row",
+                  "weight": 50,
+                  "reps": 10,
+                  "rpe": 8
+                }
+              ],
+              "prescribedRestSeconds": 90
+            }
+          ],
+          "notes": "Antagonist pairing: Chest press + back row. Allows chest/triceps to recover during rows. Rest 90s before next round."
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Secondary Chest & Triceps - Straight Sets",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Incline Dumbbell Bench Press",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 7
+            },
+            {
+              "set": 3,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 8
+            }
+          ],
+          "notes": "Week 1: 10,10 @ 30×2, RPE 8. Week 2: Added 3rd set for volume. Target 10,10,8."
+        },
+        {
+          "kind": "exercise",
+          "name": "Close-Grip Dumbbell Press",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 8
+            },
+            {
+              "set": 3,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 8
+            }
+          ],
+          "notes": "Week 1: 10,10,6 (paired with flat bench = triceps fried). Week 2: Straight sets after incline = fresher triceps. Target 10,10,8."
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Chest & Triceps Finisher - Superset C",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset C",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "dumbbell-flyes",
+                  "name": "Dumbbell Flyes",
+                  "weight": 20,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 7
+                },
+                {
+                  "key": "diamond-push-ups",
+                  "name": "Diamond Push-ups",
+                  "reps": 10,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 60
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "dumbbell-flyes",
+                  "name": "Dumbbell Flyes",
+                  "weight": 20,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 8
+                },
+                {
+                  "key": "diamond-push-ups",
+                  "name": "Diamond Push-ups",
+                  "reps": 10,
+                  "rpe": 8
+                }
+              ],
+              "prescribedRestSeconds": 60
+            }
+          ],
+          "notes": "Perform both exercises back-to-back, then rest 60s before next round"
+        }
+      ]
+    }
+  ],
+  "date": "2025-11-10",
+  "block": 5,
+  "week": 2,
+  "title": "Chest & Triceps Hypertrophy",
+  "exerciseIndex": {
+    "flat-dumbbell-bench-press": {
+      "name": "Flat Dumbbell Bench Press",
+      "sectionPath": "sections[0].items[0].rounds[*].exercises[0]",
+      "totalSets": 4,
+      "totalRounds": 4,
+      "avgRPE": 7,
+      "totalVolume": 3200
+    },
+    "one-arm-dumbbell-row": {
+      "name": "One-Arm Dumbbell Row",
+      "sectionPath": "sections[0].items[0].rounds[*].exercises[1]",
+      "totalSets": 4,
+      "totalRounds": 4,
+      "avgRPE": 7.5,
+      "totalVolume": 2000
+    },
+    "incline-dumbbell-bench-press": {
+      "name": "Incline Dumbbell Bench Press",
+      "sectionPath": "sections[1].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 7.333333333333333,
+      "totalVolume": 1680
+    },
+    "close-grip-dumbbell-press": {
+      "name": "Close-Grip Dumbbell Press",
+      "sectionPath": "sections[1].items[1].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 7.666666666666667,
+      "totalVolume": 1680
+    },
+    "dumbbell-flyes": {
+      "name": "Dumbbell Flyes",
+      "sectionPath": "sections[2].items[0].rounds[*].exercises[0]",
+      "totalSets": 2,
+      "totalRounds": 2,
+      "avgRPE": 7.5,
+      "totalVolume": 960
+    },
+    "diamond-push-ups": {
+      "name": "Diamond Push-ups",
+      "sectionPath": "sections[2].items[0].rounds[*].exercises[1]",
+      "totalSets": 2,
+      "totalRounds": 2,
+      "avgRPE": 7.5,
+      "totalVolume": 0
+    }
+  }
+}
