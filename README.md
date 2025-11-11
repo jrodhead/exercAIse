@@ -20,7 +20,6 @@ AI-generated personalized workout sessions with structured JSON logging and perf
 ## Documentation
 - **[Architecture](ARCHITECTURE.md)**: System design, separation of concerns, and development guidelines
 - **[Style Guide](style-guide.html)**: Interactive design system with live component examples and accessibility guidelines
-- **[User Stories](product-design/backlog/)**: Feature planning and requirements
 - **[AI Instructions](.github/instructions/)**: Kai persona rules
 - **[Contributing](.github/copilot-instructions.md)**: AI coding agent guidelines
 - **[Modernization](MODERNIZATION.md)**: ES6+, TypeScript, testing, and IndexedDB migration roadmap
