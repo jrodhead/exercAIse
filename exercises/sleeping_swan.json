@@ -1,0 +1,73 @@
+{
+  "name": "Sleeping Swan (Pigeon Pose - Yin Style)",
+  "equipment": ["yoga mat", "blocks or cushion (optional)"],
+  "tags": ["yin-yoga", "stretch", "glutes", "hips", "recovery", "flexibility"],
+  "setup": [
+    "Start on hands and knees",
+    "Bring right knee forward toward right wrist",
+    "Slide right foot toward left wrist (shin parallel to mat edge)",
+    "Extend left leg straight behind, top of foot on mat",
+    "Square hips to face forward"
+  ],
+  "steps": [
+    "Walk hands forward and lower torso toward floor",
+    "Rest on forearms or fully fold forward (sleeping position)",
+    "Use props under front hip if needed for support",
+    "Find your edge - moderate sensation in right hip/glute",
+    "Hold still for 3-5 minutes (yin yoga timing)",
+    "Breathe slowly and deeply, allowing body to relax",
+    "Exit slowly: press into hands, slide front leg back, switch sides"
+  ],
+  "cues": [
+    "Keep front shin as parallel as comfortable",
+    "Relax into pose, don't push",
+    "Breathe slowly - 4-6 breaths per minute",
+    "Let gravity do the work",
+    "Sensation should be 6-7 out of 10"
+  ],
+  "mistakes": [
+    "Forcing front leg into full parallel position",
+    "Twisting hips instead of keeping them square",
+    "Pushing too aggressively into stretch",
+    "Holding breath",
+    "Collapsing onto front hip without support"
+  ],
+  "safety": "Use cushion or block under front hip if needed. Exit slowly after long holds. Stop if you feel knee pain in front leg. This is a yin (passive) pose - never force.",
+  "scaling": {
+    "regressions": [
+      "Keep front shin less parallel (foot closer to hip)",
+      "Use block or cushion under front hip",
+      "Stay on hands instead of lowering to forearms",
+      "Reduce hold time (start with 2-3 minutes)",
+      "[Figure-4 Glute Stretch](figure_4_glute_stretch.json) (supine version)"
+    ],
+    "progressions": [
+      "Bring front shin more parallel to mat edge",
+      "Lower all the way to floor (sleeping swan)",
+      "Add side bend over front leg",
+      "Hold for full 5 minutes"
+    ]
+  },
+  "variations": [
+    "Thread-the-needle (supine version)",
+    "Eye of the needle pose",
+    "[Figure-4 Glute Stretch](figure_4_glute_stretch.json)",
+    "Seated pigeon"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight only",
+    "reps": "—",
+    "time": "3-5 minutes per side",
+    "distance": "—",
+    "rpe": "6-7 (moderate sensation)",
+    "notes": "Deep yin yoga hip opener. Targets glutes and external rotators. Hold still for extended time."
+  },
+  "joints": {
+    "sensitiveJoints": ["hips", "knees", "lower back"],
+    "notes": "Protect front knee by not forcing shin parallel. Use props generously. Exit slowly after long holds."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

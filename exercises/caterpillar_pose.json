@@ -1,0 +1,72 @@
+{
+  "name": "Caterpillar Pose (Seated Forward Fold - Yin Style)",
+  "equipment": ["yoga mat", "blocks or cushion (optional)"],
+  "tags": ["yin-yoga", "stretch", "hamstrings", "spine", "recovery", "flexibility"],
+  "setup": [
+    "Sit on mat with legs extended straight forward",
+    "Sit on cushion or folded blanket if hamstrings are tight",
+    "Flex feet, toes pointing up",
+    "Sit tall with upright spine initially"
+  ],
+  "steps": [
+    "Exhale and begin folding forward from hips",
+    "Allow spine to round naturally (yin style)",
+    "Let head hang heavy, arms relaxed",
+    "Hands rest on shins, ankles, or floor",
+    "Find your edge - moderate sensation in hamstrings and back",
+    "Hold still for 3-5 minutes (yin yoga timing)",
+    "Breathe slowly, allowing body to soften",
+    "Exit slowly: engage core, roll up vertebra by vertebra"
+  ],
+  "cues": [
+    "Let spine round - this is yin, not active stretching",
+    "Head and arms completely relaxed",
+    "Breathe slowly - 4-6 breaths per minute",
+    "Don't try to touch toes",
+    "Sensation should be 6-7 out of 10"
+  ],
+  "mistakes": [
+    "Trying to keep spine straight (this is yin - rounding is OK)",
+    "Bouncing or forcing stretch",
+    "Holding breath",
+    "Tensing muscles",
+    "Pointing toes (reduces hamstring stretch)"
+  ],
+  "safety": "Sit on cushion if hamstrings are very tight. Exit very slowly - spine may feel vulnerable after long hold. Stop if you feel sharp pain. This is a yin (passive) pose - never force.",
+  "scaling": {
+    "regressions": [
+      "Sit on folded blanket or cushion",
+      "Bend knees generously",
+      "Reduce hold time (start with 2-3 minutes)",
+      "Use strap around feet",
+      "[Seated Hamstring Stretch](seated_hamstring_stretch.json) (active version)"
+    ],
+    "progressions": [
+      "Legs wider (straddle forward fold)",
+      "Straighten legs more",
+      "Hold for full 5 minutes",
+      "Add gentle side-to-side sways"
+    ]
+  },
+  "variations": [
+    "Standing forward fold",
+    "Wide-legged straddle fold",
+    "[Seated Hamstring Stretch](seated_hamstring_stretch.json) (active)"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight only",
+    "reps": "—",
+    "time": "3-5 minutes",
+    "distance": "—",
+    "rpe": "6-7 (moderate sensation)",
+    "notes": "Yin yoga fold targeting hamstrings and entire spine. Let gravity do the work. Exit slowly."
+  },
+  "joints": {
+    "sensitiveJoints": ["hamstrings", "lower back", "knees"],
+    "notes": "Rounding spine is OK in yin yoga. Exit very slowly by engaging core. Use props generously."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

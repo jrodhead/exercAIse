@@ -1,0 +1,60 @@
+{
+  "name": "Inchworm",
+  "equipment": [],
+  "tags": ["warmup", "mobility", "full-body", "dynamic-stretch"],
+  "setup": [
+    "Stand tall with feet hip-width apart",
+    "Arms at sides, core engaged"
+  ],
+  "steps": [
+    "Hinge at hips and place hands on floor in front of feet",
+    "Walk hands forward until you're in a high plank position",
+    "Hold plank briefly, engaging core and glutes",
+    "Walk feet forward toward hands, keeping legs as straight as possible",
+    "Return to standing and repeat"
+  ],
+  "cues": [
+    "Keep core tight during plank",
+    "Move slowly and controlled",
+    "Stretch hamstrings as you walk feet forward",
+    "Breathe throughout movement"
+  ],
+  "mistakes": [
+    "Sagging hips in plank position",
+    "Rushing through the movement",
+    "Bending knees excessively when walking feet forward"
+  ],
+  "safety": "If hamstrings are tight, bend knees slightly when reaching for floor. Avoid if you have shoulder or wrist pain.",
+  "scaling": {
+    "regressions": [
+      "Bend knees when reaching down",
+      "Walk hands only halfway to plank",
+      "Perform on elevated surface (hands on box)"
+    ],
+    "progressions": [
+      "Add push-up at bottom of plank",
+      "Hold plank longer (5-10s)",
+      "Add shoulder taps in plank position"
+    ]
+  },
+  "variations": [
+    "Inchworm with push-up",
+    "Inchworm to downward dog"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight only",
+    "reps": "5-10",
+    "time": "—",
+    "distance": "—",
+    "rpe": "4-6",
+    "notes": "Excellent full-body warmup combining hamstring stretch, core activation, and shoulder mobility."
+  },
+  "joints": {
+    "sensitiveJoints": ["shoulders", "wrists", "lower back", "hamstrings"],
+    "notes": "Move slowly to avoid straining hamstrings. Keep core engaged to protect lower back."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

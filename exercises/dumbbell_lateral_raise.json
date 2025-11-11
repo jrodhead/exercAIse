@@ -1,0 +1,70 @@
+{
+  "name": "Dumbbell Lateral Raise",
+  "equipment": ["dumbbell"],
+  "tags": ["shoulders", "isolation", "lateral-delts", "upper-body"],
+  "setup": [
+    "Stand with feet hip-width apart",
+    "Hold dumbbells at sides, palms facing inward",
+    "Slight bend in elbows, core engaged",
+    "Shoulders relaxed down, chest up"
+  ],
+  "steps": [
+    "Raise dumbbells out to sides in a wide arc",
+    "Lead with elbows, not hands",
+    "Raise until arms are parallel to floor",
+    "Pause briefly at top",
+    "Lower with control back to starting position",
+    "Repeat for prescribed reps"
+  ],
+  "cues": [
+    "Lead with elbows, not hands",
+    "Keep slight elbow bend throughout",
+    "Stop at shoulder height (parallel to floor)",
+    "Control the descent (don't drop)",
+    "Avoid shrugging shoulders"
+  ],
+  "mistakes": [
+    "Using momentum or swinging body",
+    "Raising arms too high (above shoulder)",
+    "Shrugging shoulders toward ears",
+    "Straightening arms completely",
+    "Leaning forward or backward"
+  ],
+  "safety": "Use light weight to maintain form. Stop if you feel shoulder impingement. Avoid if you have shoulder pain.",
+  "scaling": {
+    "regressions": [
+      "Reduce weight (start with 5-10 lb)",
+      "Single-arm variation (better control)",
+      "Seated lateral raise",
+      "Partial range of motion"
+    ],
+    "progressions": [
+      "Increase weight gradually",
+      "Pause at top for 2-3 seconds",
+      "Tempo eccentric (slow lower)",
+      "Lean-away lateral raise"
+    ]
+  },
+  "variations": [
+    "Cable lateral raise",
+    "Single-arm lateral raise",
+    "Seated lateral raise",
+    "Band lateral raise"
+  ],
+  "prescriptionHints": {
+    "load": "5-20 lb per hand (light-moderate)",
+    "reps": "10-15",
+    "time": "—",
+    "distance": "—",
+    "rpe": "7-8",
+    "notes": "Isolation exercise for lateral deltoids. Use strict form with controlled tempo. Leave ego at the door - light weight is effective."
+  },
+  "joints": {
+    "sensitiveJoints": ["shoulders"],
+    "notes": "Common area for impingement. Stop at shoulder height and use controlled movement."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

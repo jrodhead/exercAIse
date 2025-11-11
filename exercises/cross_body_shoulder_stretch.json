@@ -1,0 +1,63 @@
+{
+  "name": "Cross-Body Shoulder Stretch",
+  "equipment": [],
+  "tags": ["stretch", "shoulders", "flexibility", "cooldown", "upper-body"],
+  "setup": [
+    "Stand or sit tall with good posture",
+    "Extend right arm straight across chest at shoulder height"
+  ],
+  "steps": [
+    "Use left hand to gently pull right arm closer to chest",
+    "Keep right arm straight or slightly bent",
+    "Keep shoulders relaxed and down",
+    "Feel stretch in back of right shoulder and upper arm",
+    "Hold for prescribed time, breathing deeply",
+    "Switch sides and repeat"
+  ],
+  "cues": [
+    "Pull arm toward chest, not down",
+    "Keep shoulders level, don't shrug",
+    "Maintain upright posture",
+    "Breathe and relax into stretch"
+  ],
+  "mistakes": [
+    "Shrugging shoulders up toward ears",
+    "Rotating torso instead of isolating shoulder",
+    "Pulling arm down instead of across",
+    "Holding breath"
+  ],
+  "safety": "Stop if you feel pinching in shoulder joint. Use gentle tension, no forcing. Avoid if you have recent shoulder injury.",
+  "scaling": {
+    "regressions": [
+      "Use lighter pressure",
+      "Bend elbow more",
+      "Shorter hold time (15-20s)"
+    ],
+    "progressions": [
+      "Add gentle rotation away from stretched arm",
+      "Combine with neck stretch (look over opposite shoulder)",
+      "Longer hold (60-90s)"
+    ]
+  },
+  "variations": [
+    "Doorway shoulder stretch",
+    "Overhead triceps stretch",
+    "Sleeper stretch (lying on side)"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight only",
+    "reps": "—",
+    "time": "30-60s per side",
+    "distance": "—",
+    "rpe": "2-4",
+    "notes": "Great for posterior shoulder and upper back. Essential after pressing or throwing movements."
+  },
+  "joints": {
+    "sensitiveJoints": ["shoulders", "upper back"],
+    "notes": "Use gentle pressure. Stop if you feel joint pain or pinching."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

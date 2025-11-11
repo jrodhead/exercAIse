@@ -1,0 +1,70 @@
+{
+  "name": "Dumbbell Rear Delt Fly",
+  "equipment": ["dumbbell", "bench"],
+  "tags": ["shoulders", "rear-delts", "upper-back", "isolation"],
+  "setup": [
+    "Sit on edge of bench, lean forward from hips",
+    "Chest near thighs, back flat",
+    "Hold dumbbells hanging below knees, palms facing each other",
+    "Slight bend in elbows"
+  ],
+  "steps": [
+    "Raise dumbbells out to sides in a wide arc",
+    "Lead with elbows, squeeze shoulder blades together",
+    "Raise until arms are parallel to floor",
+    "Pause and squeeze at top",
+    "Lower with control back to starting position",
+    "Repeat for prescribed reps"
+  ],
+  "cues": [
+    "Lead with elbows",
+    "Squeeze shoulder blades together at top",
+    "Keep back flat, chest on thighs",
+    "Control the movement, no swinging",
+    "Think about pulling elbows back, not lifting weights"
+  ],
+  "mistakes": [
+    "Using momentum or swinging torso",
+    "Rounding back excessively",
+    "Raising arms too high",
+    "Using too much weight",
+    "Not squeezing shoulder blades together"
+  ],
+  "safety": "Keep back flat to protect lower back. Use light weight for strict form. Stop if you feel shoulder or lower back pain.",
+  "scaling": {
+    "regressions": [
+      "Reduce weight (start with 5-10 lb)",
+      "Chest-supported on incline bench",
+      "Band rear delt fly",
+      "Face pulls (cable)"
+    ],
+    "progressions": [
+      "Standing bent-over rear delt fly",
+      "Single-arm variation",
+      "Tempo hold at top (3s pause)",
+      "Increase weight gradually"
+    ]
+  },
+  "variations": [
+    "[Chest-Supported Reverse Fly](reverse_fly_chest_supported.json)",
+    "Cable rear delt fly",
+    "Face pulls",
+    "Band pull-aparts"
+  ],
+  "prescriptionHints": {
+    "load": "5-15 lb per hand (light)",
+    "reps": "12-15",
+    "time": "—",
+    "distance": "—",
+    "rpe": "7-8",
+    "notes": "Essential for shoulder health and posture. Use light weight with strict form. Focus on squeeze at top."
+  },
+  "joints": {
+    "sensitiveJoints": ["shoulders", "lower back"],
+    "notes": "Keep back flat and core engaged. Light weight is appropriate - this is an isolation movement."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

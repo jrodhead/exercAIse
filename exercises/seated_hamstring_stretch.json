@@ -1,0 +1,69 @@
+{
+  "name": "Seated Hamstring Stretch",
+  "equipment": [],
+  "tags": ["stretch", "hamstrings", "flexibility", "cooldown", "lower-body"],
+  "setup": [
+    "Sit on floor with legs extended straight in front",
+    "Sit tall with upright spine",
+    "Flex feet, toes pointing up",
+    "Hands on floor beside hips"
+  ],
+  "steps": [
+    "Hinge forward from hips, keeping back flat",
+    "Reach hands toward feet or shins",
+    "Focus on folding from hips, not rounding spine",
+    "Feel stretch along back of legs",
+    "Hold position for prescribed time",
+    "Breathe deeply and relax into stretch"
+  ],
+  "cues": [
+    "Hinge from hips, not lower back",
+    "Keep spine long, avoid rounding",
+    "Flex feet throughout",
+    "Breathe and relax",
+    "Depth matters less than good form"
+  ],
+  "mistakes": [
+    "Rounding spine excessively",
+    "Bouncing to reach further",
+    "Holding breath",
+    "Forcing stretch too aggressively",
+    "Pointing toes (reduces hamstring stretch)"
+  ],
+  "safety": "Stop if you feel sharp pain. Bend knees slightly if needed. Avoid aggressive bouncing. This stretch is not about touching toes.",
+  "scaling": {
+    "regressions": [
+      "Sit on folded towel or cushion",
+      "Bend knees slightly",
+      "Use strap around feet",
+      "Stretch one leg at a time"
+    ],
+    "progressions": [
+      "Straddle position (legs wide)",
+      "Forward fold with straight legs",
+      "Add gentle oscillations",
+      "[Caterpillar Pose](caterpillar_pose.json) (yin yoga version)"
+    ]
+  },
+  "variations": [
+    "Standing hamstring stretch",
+    "Single-leg seated stretch",
+    "Lying hamstring stretch with strap"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight only",
+    "reps": "—",
+    "time": "30-90s",
+    "distance": "—",
+    "rpe": "3-5",
+    "notes": "Classic hamstring stretch. Focus on hip hinge, not how far you can reach. Consistency over intensity."
+  },
+  "joints": {
+    "sensitiveJoints": ["hamstrings", "lower back", "knees"],
+    "notes": "Keep spine long to protect lower back. Bend knees if needed to maintain good form."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

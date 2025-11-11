@@ -1,0 +1,64 @@
+{
+  "name": "Figure-4 Glute Stretch",
+  "equipment": [],
+  "tags": ["stretch", "glutes", "hip-mobility", "flexibility", "cooldown"],
+  "setup": [
+    "Lie on back with knees bent, feet flat on floor",
+    "Cross right ankle over left thigh, just above knee",
+    "Form a '4' shape with legs"
+  ],
+  "steps": [
+    "Reach hands through legs and clasp behind left thigh",
+    "Gently pull left thigh toward chest",
+    "Keep right foot flexed to protect knee",
+    "Feel stretch in right glute and outer hip",
+    "Hold for prescribed time, breathing deeply",
+    "Switch sides and repeat"
+  ],
+  "cues": [
+    "Keep head and shoulders relaxed on floor",
+    "Flex top foot (don't point toes)",
+    "Pull knee toward chest, not toward shoulder",
+    "Breathe into the stretch"
+  ],
+  "mistakes": [
+    "Pointing top foot (stresses knee)",
+    "Lifting head and shoulders off floor",
+    "Pulling knee toward shoulder instead of chest",
+    "Forcing the stretch too deep too quickly"
+  ],
+  "safety": "Stop if you feel knee pain. Flex top foot to protect knee joint. Avoid if you have hip impingement or recent hip injury.",
+  "scaling": {
+    "regressions": [
+      "Keep bottom foot on floor (don't pull knee toward chest)",
+      "Use towel around thigh if you can't reach",
+      "Perform seated in chair"
+    ],
+    "progressions": [
+      "Standing figure-4 (balance challenge)",
+      "Pigeon pose on floor",
+      "[Sleeping Swan](sleeping_swan.json) (yin yoga version)"
+    ]
+  },
+  "variations": [
+    "Seated figure-4 stretch",
+    "Standing figure-4 stretch",
+    "Pigeon pose"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight only",
+    "reps": "—",
+    "time": "30-90s per side",
+    "distance": "—",
+    "rpe": "3-5",
+    "notes": "Essential for hip and glute mobility. Particularly helpful after squats or deadlifts."
+  },
+  "joints": {
+    "sensitiveJoints": ["hips", "knees", "lower back"],
+    "notes": "Keep top foot flexed throughout to protect knee. Relax into stretch; don't force it."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

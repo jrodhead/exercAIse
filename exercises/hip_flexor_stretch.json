@@ -1,0 +1,63 @@
+{
+  "name": "Hip Flexor Stretch",
+  "equipment": [],
+  "tags": ["stretch", "hip-mobility", "flexibility", "cooldown"],
+  "setup": [
+    "Start in a kneeling lunge position",
+    "Back knee on ground, front foot flat on floor",
+    "Front knee directly above ankle"
+  ],
+  "steps": [
+    "Engage core and keep torso upright",
+    "Gently push hips forward",
+    "Feel stretch in front of back hip and thigh",
+    "Hold stretch position for prescribed time",
+    "Switch sides and repeat"
+  ],
+  "cues": [
+    "Keep torso upright, don't lean forward",
+    "Squeeze glute of back leg",
+    "Push hips forward, not down",
+    "Breathe deeply and relax into stretch"
+  ],
+  "mistakes": [
+    "Arching lower back excessively",
+    "Leaning torso forward",
+    "Letting front knee drift past toes",
+    "Holding breath"
+  ],
+  "safety": "Use padding under knee if needed. Avoid if you have knee pain. Stop if you feel pinching in hip joint.",
+  "scaling": {
+    "regressions": [
+      "Use thicker padding under knee",
+      "Reduce depth of lunge",
+      "Hold onto wall or chair for balance"
+    ],
+    "progressions": [
+      "Raise back arm overhead for deeper stretch",
+      "Add side bend away from stretched hip",
+      "Elevate back knee on cushion for more intensity"
+    ]
+  },
+  "variations": [
+    "Standing hip flexor stretch",
+    "Couch stretch (back foot elevated)",
+    "[Dragon Pose](dragon_pose_low_lunge_yin_style.json) (yin yoga version)"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight only",
+    "reps": "—",
+    "time": "30-90s per side",
+    "distance": "—",
+    "rpe": "3-5",
+    "notes": "Essential for anyone who sits frequently. Hold steady tension, no bouncing."
+  },
+  "joints": {
+    "sensitiveJoints": ["hips", "knees", "lower back"],
+    "notes": "Keep core engaged to avoid compensatory lower back arch. Use knee padding as needed."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

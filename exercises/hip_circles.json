@@ -1,0 +1,68 @@
+{
+  "name": "Hip Circles",
+  "equipment": [],
+  "tags": ["warmup", "mobility", "hips", "dynamic-stretch"],
+  "setup": [
+    "Stand tall with feet hip-width apart",
+    "Hands on hips or out to sides for balance",
+    "Engage core, maintain upright posture"
+  ],
+  "steps": [
+    "Lift right knee to hip height",
+    "Circle knee outward, making large circular motion",
+    "Move slowly and controlled through full range",
+    "Complete prescribed reps in one direction",
+    "Reverse direction for equal reps",
+    "Switch legs and repeat"
+  ],
+  "cues": [
+    "Keep standing leg slightly bent",
+    "Make circles as large as comfortable",
+    "Move slowly and controlled",
+    "Maintain upright torso",
+    "Balance by engaging core"
+  ],
+  "mistakes": [
+    "Moving too fast or using momentum",
+    "Leaning or swaying excessively",
+    "Making circles too small",
+    "Locking standing leg",
+    "Losing balance and breaking form"
+  ],
+  "safety": "Hold wall or chair if balance is challenging. Stop if you feel pinching in hip joint. Start with small circles if needed.",
+  "scaling": {
+    "regressions": [
+      "Hold wall or chair for balance",
+      "Make smaller circles",
+      "Reduce number of reps",
+      "Perform seated in chair"
+    ],
+    "progressions": [
+      "Close eyes for balance challenge",
+      "Make larger circles",
+      "Add ankle weight",
+      "Combine with other leg movements (figure-8s)"
+    ]
+  },
+  "variations": [
+    "Standing hip openers",
+    "Fire hydrants (on hands and knees)",
+    "Leg swings"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight only",
+    "reps": "10 each direction, each leg",
+    "time": "—",
+    "distance": "—",
+    "rpe": "3-5",
+    "notes": "Excellent hip warmup before squats, lunges, or lower body work. Focus on control over speed."
+  },
+  "joints": {
+    "sensitiveJoints": ["hips", "knees", "ankles"],
+    "notes": "Start with smaller circles if hips are tight. Move within comfortable range."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

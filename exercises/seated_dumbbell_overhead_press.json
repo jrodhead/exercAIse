@@ -1,0 +1,70 @@
+{
+  "name": "Seated Dumbbell Overhead Press",
+  "equipment": ["dumbbell", "bench"],
+  "tags": ["shoulders", "strength", "pressing", "upper-body"],
+  "setup": [
+    "Sit on bench with back support, feet flat on floor",
+    "Hold dumbbells at shoulder height, palms forward",
+    "Elbows bent at 90°, forearms vertical",
+    "Engage core, ribs down, neutral spine"
+  ],
+  "steps": [
+    "Inhale and brace core",
+    "Press dumbbells overhead in a slight arc",
+    "Fully extend arms without locking elbows",
+    "Dumbbells should end slightly in front of head",
+    "Lower with control to shoulder height",
+    "Repeat for prescribed reps"
+  ],
+  "cues": [
+    "Keep core braced, ribs down",
+    "Press slightly forward, not straight up",
+    "Control the descent",
+    "Breathe: exhale on press, inhale on descent",
+    "Keep wrists neutral"
+  ],
+  "mistakes": [
+    "Arching lower back excessively",
+    "Pressing straight up instead of slight arc",
+    "Flaring ribs forward",
+    "Bouncing dumbbells at bottom",
+    "Locking out elbows aggressively"
+  ],
+  "safety": "Use back support if available. Stop if you feel shoulder impingement or pain. Avoid excessive back arch.",
+  "scaling": {
+    "regressions": [
+      "Reduce weight",
+      "Use neutral grip (palms facing each other)",
+      "Landmine press (less overhead demand)",
+      "Seated with back support"
+    ],
+    "progressions": [
+      "Standing overhead press",
+      "Single-arm variation",
+      "Tempo press (3-1-1)",
+      "Pause at top"
+    ]
+  },
+  "variations": [
+    "Standing dumbbell overhead press",
+    "Single-arm dumbbell press",
+    "Arnold press",
+    "Landmine press"
+  ],
+  "prescriptionHints": {
+    "load": "15-40 lb per hand (moderate)",
+    "reps": "6-12",
+    "time": "—",
+    "distance": "—",
+    "rpe": "7-8",
+    "notes": "Seated version provides stability for shoulders. Keep core engaged to protect lower back."
+  },
+  "joints": {
+    "sensitiveJoints": ["shoulders", "lower back", "elbows"],
+    "notes": "Maintain neutral spine and engaged core throughout. Reduce weight if shoulders feel pinched."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

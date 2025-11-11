@@ -1,0 +1,70 @@
+{
+  "name": "Dragon Pose (Low Lunge - Yin Style)",
+  "equipment": ["yoga mat", "blocks (optional)"],
+  "tags": ["yin-yoga", "stretch", "hip-flexors", "recovery", "flexibility"],
+  "setup": [
+    "Start in low lunge position",
+    "Back knee on mat, front foot flat on floor",
+    "Front knee aligned over ankle",
+    "Hands on floor or blocks for support"
+  ],
+  "steps": [
+    "Settle into lunge, allowing hips to sink forward",
+    "Keep front knee over ankle, not past toes",
+    "Back leg extends behind, knee on mat",
+    "Find your edge - moderate sensation, not pain",
+    "Hold still for 3-5 minutes (yin yoga timing)",
+    "Breathe slowly and deeply, relaxing into pose",
+    "Exit slowly: shift weight back, then switch sides"
+  ],
+  "cues": [
+    "Find your edge, then back off 10%",
+    "Stay still - this is passive stretching",
+    "Breathe slowly, 4-6 breaths per minute",
+    "Relax muscles, let gravity do the work",
+    "Sensation should be 6-7 out of 10"
+  ],
+  "mistakes": [
+    "Moving dynamically (this is a static hold)",
+    "Pushing too deep into stretch",
+    "Holding breath or breathing shallowly",
+    "Tensing muscles instead of relaxing",
+    "Front knee drifting past toes"
+  ],
+  "safety": "Use thick padding under back knee. Exit slowly after long holds. Stop if you feel joint pain or sharp pinching. This is a yin (passive) pose - never force.",
+  "scaling": {
+    "regressions": [
+      "Use blocks under hands for support",
+      "Reduce hold time (start with 2-3 minutes)",
+      "Keep torso more upright",
+      "Use extra padding under knee"
+    ],
+    "progressions": [
+      "Lower onto forearms (deeper hip opening)",
+      "Raise back arm overhead",
+      "Add side bend away from back leg",
+      "Hold for full 5 minutes"
+    ]
+  },
+  "variations": [
+    "Dragon flying (back knee lifted)",
+    "Twisted dragon (torso rotation)",
+    "[Hip Flexor Stretch](hip_flexor_stretch.json) (active version)"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight only",
+    "reps": "—",
+    "time": "3-5 minutes per side",
+    "distance": "—",
+    "rpe": "6-7 (moderate sensation)",
+    "notes": "Yin yoga pose targeting hip flexors and quads. Hold still for extended time. Exit slowly."
+  },
+  "joints": {
+    "sensitiveJoints": ["hips", "knees", "lower back"],
+    "notes": "Yin yoga works connective tissue, not muscle. Hold still and breathe. Exit slowly after long holds."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

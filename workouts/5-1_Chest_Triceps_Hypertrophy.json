@@ -28,7 +28,7 @@
             {
               "kind": "exercise",
               "name": "Flat Dumbbell Bench Press",
-              "link": "exercises/dumbbell_bench_press.json",
+              "link": "exercises/flat_dumbbell_bench_press.json",
               "logType": "strength",
               "prescription": { "sets": 3, "reps": "10-12", "weight": "40 x2", "rpe": 7.5 },
               "cues": ["Feet planted", "Shoulder blades retracted", "Control the negative"]
