@@ -1,0 +1,304 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/5-2_Back_Biceps_Hypertrophy.json",
+  "timestamp": "2025-11-11T13:36:48.698Z",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "Primary Back & Biceps - Superset A",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset A",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "one-arm-dumbbell-row",
+                  "name": "One-Arm Dumbbell Row",
+                  "weight": 47.5,
+                  "reps": 10,
+                  "rpe": 7
+                },
+                {
+                  "key": "hammer-curl",
+                  "name": "Hammer Curl",
+                  "weight": 27.5,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "one-arm-dumbbell-row",
+                  "name": "One-Arm Dumbbell Row",
+                  "weight": 47.5,
+                  "reps": 10,
+                  "rpe": 7
+                },
+                {
+                  "key": "hammer-curl",
+                  "name": "Hammer Curl",
+                  "weight": 27.5,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 8
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 3,
+              "exercises": [
+                {
+                  "key": "one-arm-dumbbell-row",
+                  "name": "One-Arm Dumbbell Row",
+                  "weight": 47.5,
+                  "reps": 10,
+                  "rpe": 8
+                },
+                {
+                  "key": "hammer-curl",
+                  "name": "Hammer Curl",
+                  "weight": 27.5,
+                  "multiplier": 2,
+                  "reps": 8,
+                  "rpe": 8
+                }
+              ],
+              "prescribedRestSeconds": 90
+            }
+          ],
+          "notes": "Perform both exercises back-to-back, then rest 90s before next round"
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Secondary Back & Biceps - Superset B",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset B",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "chest-supported-dumbbell-row",
+                  "name": "Chest-Supported Dumbbell Row",
+                  "weight": 35,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 7
+                },
+                {
+                  "key": "incline-dumbbell-curl",
+                  "name": "Incline Dumbbell Curl",
+                  "weight": 15,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "chest-supported-dumbbell-row",
+                  "name": "Chest-Supported Dumbbell Row",
+                  "weight": 35,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 7
+                },
+                {
+                  "key": "incline-dumbbell-curl",
+                  "name": "Incline Dumbbell Curl",
+                  "weight": 15,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 8
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 3,
+              "exercises": [
+                {
+                  "key": "chest-supported-dumbbell-row",
+                  "name": "Chest-Supported Dumbbell Row",
+                  "weight": 35,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 7
+                },
+                {
+                  "key": "incline-dumbbell-curl",
+                  "name": "Incline Dumbbell Curl",
+                  "weight": 15,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 8
+                }
+              ],
+              "prescribedRestSeconds": 90
+            }
+          ],
+          "notes": "Perform both exercises back-to-back, then rest 90s before next round"
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Back & Biceps Finisher - Superset C",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset C",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "alternating-dumbbell-biceps-curl",
+                  "name": "Alternating Dumbbell Biceps Curl",
+                  "weight": 20,
+                  "reps": 10,
+                  "rpe": 6
+                },
+                {
+                  "key": "farmer-carry",
+                  "name": "Farmer Carry",
+                  "weight": 50,
+                  "multiplier": 2,
+                  "timeSeconds": 50,
+                  "rpe": 5
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "alternating-dumbbell-biceps-curl",
+                  "name": "Alternating Dumbbell Biceps Curl",
+                  "weight": 20,
+                  "reps": 10,
+                  "rpe": 6
+                },
+                {
+                  "key": "farmer-carry",
+                  "name": "Farmer Carry",
+                  "weight": 50,
+                  "multiplier": 2,
+                  "timeSeconds": 65,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 90
+            }
+          ],
+          "notes": "Perform both exercises back-to-back, then rest 90s before next round"
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Core Work",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Deadbug",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 12,
+              "reps": 10,
+              "rpe": 6.5
+            },
+            {
+              "set": 2,
+              "weight": 10,
+              "reps": 10,
+              "rpe": 6.5
+            }
+          ],
+          "notes": "Week 1: 10,8 per side @ 10 lb plate, RPE 6-7. Week 2: Target 12,10 per side."
+        }
+      ]
+    }
+  ],
+  "date": "2025-11-11",
+  "block": 5,
+  "week": 2,
+  "title": "Back & Biceps Hypertrophy",
+  "exerciseIndex": {
+    "one-arm-dumbbell-row": {
+      "name": "One-Arm Dumbbell Row",
+      "sectionPath": "sections[0].items[0].rounds[*].exercises[0]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 7.333333333333333,
+      "totalVolume": 1425
+    },
+    "hammer-curl": {
+      "name": "Hammer Curl",
+      "sectionPath": "sections[0].items[0].rounds[*].exercises[1]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 7.666666666666667,
+      "totalVolume": 1540
+    },
+    "chest-supported-dumbbell-row": {
+      "name": "Chest-Supported Dumbbell Row",
+      "sectionPath": "sections[1].items[0].rounds[*].exercises[0]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 7,
+      "totalVolume": 2520
+    },
+    "incline-dumbbell-curl": {
+      "name": "Incline Dumbbell Curl",
+      "sectionPath": "sections[1].items[0].rounds[*].exercises[1]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 7.666666666666667,
+      "totalVolume": 1080
+    },
+    "alternating-dumbbell-biceps-curl": {
+      "name": "Alternating Dumbbell Biceps Curl",
+      "sectionPath": "sections[2].items[0].rounds[*].exercises[0]",
+      "totalSets": 2,
+      "totalRounds": 2,
+      "avgRPE": 6,
+      "totalVolume": 400
+    },
+    "farmer-carry": {
+      "name": "Farmer Carry",
+      "sectionPath": "sections[2].items[0].rounds[*].exercises[1]",
+      "totalSets": 2,
+      "totalRounds": 2,
+      "avgRPE": 6,
+      "totalVolume": 0
+    },
+    "deadbug": {
+      "name": "Deadbug",
+      "sectionPath": "sections[3].items[0].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 6.5,
+      "totalVolume": 220
+    }
+  }
+}
