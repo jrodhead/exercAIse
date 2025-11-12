@@ -15,7 +15,7 @@
       ]
     },
     {
-      "type": "Strength",
+      "type": "Recovery",
       "title": "Upper Body Release (20-25 min)",
       "items": [
         { "kind": "exercise", "name": "Sphinx Pose (Chest & Shoulders)", "link": "exercises/sphinx_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 240 }, "notes": "4 min. Passive chest opener after Monday pressing. Forearms on ground, gentle backbend" },
@@ -25,7 +25,7 @@
       ]
     },
     {
-      "type": "Accessory/Core",
+      "type": "Recovery",
       "title": "Lower Body & Hip Release (20-25 min)",
       "items": [
         { "kind": "exercise", "name": "Dragon Pose (Hip Flexors & Quads)", "link": "exercises/dragon_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 240 }, "notes": "4 min per side. Deep hip flexor release after basketball and training. Low lunge variation" },
