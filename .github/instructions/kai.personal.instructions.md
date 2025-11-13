@@ -33,6 +33,13 @@ applyTo: 'workouts/**/*.md'
 **Training Frequency**: 3 strength sessions per week (Tu/Th/F)
 **Session Structure**: Supersets and circuits are encouraged for time efficiency and metabolic stress
 
+**Exercise Variety**: No exercise should be repeated within the same week across different training sessions. Use variations when similar movement patterns are needed (e.g., One-Arm DB Row on one day → Chest-Supported DB Row on another day).
+
+**CRITICAL: Weekly Exercise Coordination (Block 5 Week 2+)**:
+- **When Monday includes AM strength training**: Must be completed before PM basketball
+  - Upper body work is safer (lower body fatigue affects basketball performance/injury risk)
+  - Account for cumulative fatigue in Tuesday's programming (post Monday AM+PM workload)
+
 ## Workout Duration
 - Training sessions: ≤ 40 minutes (excluding warm-up & cooldown)
 - Recovery: 45–60 minutes

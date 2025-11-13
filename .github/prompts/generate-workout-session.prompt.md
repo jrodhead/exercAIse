@@ -56,8 +56,9 @@ Read performance logs (`performed/*_perf2.json`) and identify:
 ## General Guidelines
 - Use the Kai persona in `.github/instructions/kai.instructions.md` to generate the content for a workout.
 - Review the owner's personal instructions in `.github/instructions/kai.personal.instructions.md` for any specific adaptations or preferences.
+- **CRITICAL: Check existing week workouts FIRST**: Before generating any workout, search `workouts/` for ALL files matching `<block>-<week>_*.json` to identify exercises already prescribed in the same week. Do NOT repeat any exercise (except basic warm-up mobility).
 - Review the completed workout history in `workouts/` to ensure consistency and progression.
-- Pull prior performed log data from `performed/*.json` (perf-1 exports) to guide today’s prescriptions. Prefer the last 1–3 logs of the same exercise; if none, use the closest similar pattern (e.g., Goblet Squat ≈ Dumbbell Goblet Squat, Neutral-Grip DB Bench ≈ Flat DB Bench).
+- Pull prior performed log data from `performed/*_perf2.json` (nested format) to guide today's prescriptions. Prefer the last 1–3 logs of the same exercise; if none, use the closest similar pattern (e.g., Goblet Squat ≈ Dumbbell Goblet Squat, Neutral-Grip DB Bench ≈ Flat DB Bench).
 - Review the block periodization details in `.github/instructions/block-progression.instructions.md` for the current block and week.
 - Generate the workout content based on the user's input, history, and the current block/week focus. If user input is not provided, provide the next best option based on the current context and ask for clarification.
 - **For weekly requests**: Generate all sessions for the week following the owner's weekly schedule in `.github/instructions/kai.personal.instructions.md`
@@ -108,8 +109,9 @@ Read performance logs (`performed/*_perf2.json`) and identify:
 - Follow the block periodization details, see `.github/instructions/block-progression.instructions.md`.
 
 ### History-driven prescriptions (required)
-- Data source: `performed/*.json` files conforming to `schemas/performance.schema.json` (version `perf-1`).
+- Data source: `performed/*_perf2.json` files conforming to `schemas/performance.schema.json` (nested format with round-level data).
 - Matching: normalize exercise names to compare (case-insensitive; hyphens/underscores/spaces treated equally). If an exact match is missing, map to a similar movement pattern and implement a conservative adjustment.
+- **Round-level analysis**: Use round-by-round data (RPE progression, rep patterns across rounds) to identify fatigue cascades vs exercise being too heavy (see Step 2 above).
 - **Progression continuity**: For main movement patterns (primary squats, presses, rows, hinges), prefer consistent exercise selection across weeks to track progression effectively.
 - **Appropriate variety**: For accessory work, warm-ups, and cooldowns, introduce variety when it serves training goals, addresses weaknesses, or prevents staleness—while still referencing similar movement history for load guidance.
 - Units: Prescribe in pounds (lb). For dumbbells, specify per-hand load (e.g., "40 lb per hand") or "40 x2 lb". On machines/bodyweight, use RPE/time/holds as appropriate.
@@ -144,6 +146,47 @@ Read performance logs (`performed/*_perf2.json`) and identify:
   - Cooldown stretches to address session-specific tightness or provide novel mobility work
   - Conditioning exercises to prevent staleness and challenge different energy systems
 - **When adding variety**: Always create the corresponding exercise JSON file and ensure load guidance comes from similar movement patterns in the performance history
+
+### CRITICAL: No exercise repetition within same week
+**BEFORE generating ANY workout, check existing workouts for the same block/week to identify exercises already prescribed.**
+
+- **Rule**: Do NOT repeat the same exercise twice in the same week
+  - Example violation: Monday has "One-Arm Dumbbell Row" → Tuesday CANNOT also have "One-Arm Dumbbell Row"
+  - **Exception**: Basic warm-up mobility (Arm Circles, Cat-Cow, Band Pull-Aparts) can repeat as they're preparatory, not training stimulus
+  
+- **Variation strategies** when similar patterns are needed:
+  - **Row variations**: One-Arm DB Row → Chest-Supported DB Row → Bent-Over DB Row → Seal Row → Renegade Row
+  - **Press variations**: Flat DB Bench → Incline DB Bench → Decline DB Press → Floor Press → Neutral-Grip Bench
+  - **Curl variations**: Hammer Curl → Alternating DB Curl → Incline DB Curl → Concentration Curl → Zottman Curl
+  - **Squat variations**: Goblet Squat → Bulgarian Split Squat → Goblet Lateral Lunge → Box Squat → Sumo Squat
+  - **Hinge variations**: Romanian Deadlift → Single-Leg RDL → Good Morning → Hip Thrust → Stiff-Leg Deadlift
+  - **Triceps variations**: Close-Grip DB Press → Overhead DB Extension → Floor Skullcrushers → Diamond Push-ups → Bench Dips
+  
+- **Rationale**: 
+  - Prevents pattern fatigue and overuse (especially important with Monday AM training + PM basketball)
+  - Allows fuller recovery between similar movement patterns
+  - Maintains engagement and prevents staleness
+  - Addresses muscles from multiple angles for complete development
+
+### Per-side prescription clarity (unilateral exercises)
+For exercises performed on each side (single-leg/arm movements, stretches, alternating patterns), **ALWAYS include a `notes` field** specifying execution order:
+
+- **Complete one side fully first**: "Complete all reps on one arm, then switch sides" 
+  - Examples: One-Arm Dumbbell Row, Single-Leg RDL, Bulgarian Split Squat
+  
+- **Alternate each rep**: "Alternate arms each rep (12-15 reps per arm = 24-30 total reps)"
+  - Examples: Alternating Dumbbell Curl, Alternating Hammer Curl, Alternating Lunge
+  - **CRITICAL**: Specify "per arm" or "per leg" AND "total reps" to eliminate confusion
+  - Wrong: "16-20 reps" (ambiguous for alternating exercise)
+  - Right: "16-20 total reps (8-10 per arm)" OR "12-15 reps per arm (24-30 total)"
+  
+- **Hold duration per side**: "Hold 60s on one side, then 60s on the other side"
+  - Examples: Stretches, static holds, isometric exercises
+  
+- **Multi-directional per side**: "10 forward/back on left leg, 10 forward/back on right leg, then 10 side-to-side on each leg"
+  - Examples: Leg Swings, Hip Circles
+
+These notes display inline with the exercise name and prescription in the UI, especially critical for warm-up/cooldown sections.
 
 ### JSON details
 - Put sets, reps, rest and weight under `prescription`. Use a string for per-hand notation if needed (e.g., "45 x2 lb"). For circuits, omit `restSeconds` on children and place round-rest guidance in `section.notes`.
