@@ -1,5 +1,5 @@
 ---
-mode: kai
+agent: kai
 ---
 # Apply Dumbbell Ladder Snapping Prompt
 

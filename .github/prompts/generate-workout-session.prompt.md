@@ -1,5 +1,5 @@
 ---
-mode: kai
+agent: kai
 ---
 # Complete Workout Generation Prompt (JSON + File Creation)
 

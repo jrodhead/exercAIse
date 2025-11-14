@@ -1,4 +1,6 @@
-````prompt
+---
+agent: kai
+---
 # Training Progress Report Generation Prompt
 
 ## Purpose
