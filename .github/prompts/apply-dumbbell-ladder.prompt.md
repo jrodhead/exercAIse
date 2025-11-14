@@ -3,21 +3,28 @@ agent: kai
 ---
 # Apply Dumbbell Ladder Snapping Prompt
 
-When prompted with 'apply dumbbell ladder' or 'snap loads to ladder' for a specific workout session, apply the owner's dumbbell load ladder preferences to minimize plate changes while preserving training intent.
+When prompted with 'apply dumbbell ladder' or 'snap loads to ladder' for a specific workout session, apply the owner's dumbbell load ladder preferences to minimize plate changes **within supersets and circuits only**, while preserving training intent.
 
 ## When to Use
 - After generating a workout session with initial load prescriptions
-- When you want to optimize dumbbell changes for a specific session or multiple sessions
-- To manually review and adjust loads according to ladder preferences
+- When you want to optimize dumbbell changes within supersets/circuits for a specific session or multiple sessions
+- To manually review and adjust loads according to ladder preferences for paired/circuit exercises
 - Before finalizing a workout for execution
 
-## Session Independence
-**Each session establishes its own independent ladder** - when applying to multiple sessions (e.g., a full week), each session's ladder is determined by that session's first dumbbell exercise, not carried over from previous sessions.
+## Scope: Supersets and Circuits Only
+**Only apply ladder snapping to dumbbell exercises that are part of supersets or circuits.** Standalone exercises with standard rest periods (>60s) provide adequate time for plate changes and do not require ladder optimization.
 
-- **Monday's ladder**: Based on Monday's first dumbbell load
-- **Tuesday's ladder**: Based on Tuesday's first dumbbell load (independent of Monday)
-- **Wednesday's ladder**: Based on Wednesday's first dumbbell load (independent of prior days)
+## Superset/Circuit Independence
+**Each superset or circuit establishes its own independent ladder** - ladders are NOT shared across supersets/circuits, even within the same session.
+
+- **Superset A**: Ladder based on Superset A's first dumbbell exercise
+- **Superset B**: Ladder based on Superset B's first dumbbell exercise (independent of Superset A)
+- **Circuit C**: Ladder based on Circuit C's first dumbbell exercise (independent of Supersets A & B)
 - And so on...
+
+**Key principle**: Each superset/circuit is a distinct training block with its own weight change constraints. Different supersets may target different muscle groups with different load ranges, so independent ladders preserve optimal training stimulus.
+
+**Note**: If a session has no supersets or circuits with dumbbell exercises, no ladder snapping is applied to that session.
 
 ## Input Required
 - Specify the workout file to modify (e.g., `workouts/4-2_Upper_Body_Strength.json`)
@@ -27,18 +34,21 @@ When prompted with 'apply dumbbell ladder' or 'snap loads to ladder' for a speci
 Apply the owner preference from `.github/instructions/kai.personal.instructions.md`:
 
 ### Ladder Determination
-1. **For single session**: Identify the first working dumbbell per-hand load in the session (anchor; do not snap the first)
-2. **For multiple sessions**: Identify the first working dumbbell per-hand load in EACH session independently - each session gets its own ladder
-3. **Establish ladder based on each session's anchor load**:
-   - If ends in .5 (e.g., 7.5 or 2.5) → keep fractional anchor with 10 lb steps: 7.5/17.5/27.5/... or 2.5/12.5/22.5/...
-   - If ends in 5 (no decimal) → use 5/15/25/35/...
-   - Otherwise round the first per-hand load up to nearest 10 → 10/20/30/40/...
-4. **Display the determined ladder(s)** for confirmation
+1. **For each superset/circuit**: Identify the first working dumbbell per-hand load **within that specific superset or circuit** (anchor; do not snap the first exercise in that superset/circuit)
+2. **Independent ladders**: Each superset/circuit establishes its own ladder - ladders are NOT shared across different supersets/circuits
+3. **Skip standalone exercises**: If an exercise is not part of a superset/circuit, skip ladder application for that exercise
+4. **Establish ladder based on each superset/circuit's anchor load** (use only weights listed in the personal instructions) and extend it **both upward and downward** in consistent 10 lb increments so lighter exercises still have nearby rungs:
+   - If ends in .5 (e.g., 7.5 or 17.5) → ladder = .../27.5/37.5/47.5/57.5/... (fractional every 10 lb)
+   - If ends in 5 (no decimal) → ladder = .../25/35/45/55/... (5 + multiples of 10)
+   - Otherwise round the first per-hand load up to nearest 10 → ladder = .../20/30/40/50/...
+5. **Display the determined ladder(s)** for each superset/circuit for confirmation
 
 ### Snapping Rules
-- **Snap subsequent dumbbell loads upward** to the nearest rung within each session's ladder
-- **Hold prior rung** if snapping up would push RPE over target
-- **Session independence**: Do not carry ladder rungs between sessions - each session's subsequent exercises snap only to that session's ladder
+- **Snap only dumbbell exercises within supersets/circuits** to the closest rung within that specific superset/circuit's ladder (whichever option requires the fewest plate changes). Ladders extend **upward and downward**, so if the prescription is lighter than the anchor (e.g., anchor 47.5, target 25) use the lower rungs (37.5 → 27.5) and choose the nearest one. If the load is exactly between two rungs, default upward only when RPE can stay on target.
+- **Leave standalone exercises unchanged** - rest periods >60s provide adequate time for plate changes
+- **Adjust reps/sets** after snapping so the estimated RPE matches the prescription; when snapping downward, you may add a rep to stay in range, and when snapping upward, trim reps as outlined below.
+- **Hold the lower rung** if moving to a higher rung would exceed RPE even after rep adjustments.
+- **Superset/circuit independence**: Do not carry ladder rungs between supersets/circuits - each superset/circuit's exercises snap only to that superset/circuit's own ladder
 - **Always show per-hand notation** (e.g., "35 lb per hand")
 
 ### Adjustment Rules (must apply after snapping)
@@ -56,71 +66,51 @@ Apply the owner preference from `.github/instructions/kai.personal.instructions.
 
 **Documentation**:
 - Document adjustment intent in `notes` field if reps were altered solely due to ladder snap (e.g., "Reps trimmed 2 due to ladder jump to 50s to keep RPE ≤8")
-- If a superset contains two dumbbell movements, evaluate each separately
+- If a superset contains two or more dumbbell movements, evaluate each separately
 
-### Examples
-- **Planned**: 3x10 @ 32.5 lb per hand (prior week RPE 7). Ladder snap → 35s. Keep 3x10 if RPE estimate ≤8; otherwise 3x9
-- **Planned**: 4x12 @ 40s (RPE 8 last week). Progress intent = +load. Ladder snap → 45s. Adjust to 4x10 (or 1x10 + 3x9) to maintain RPE ≤8
-- **Planned**: 3x8 @ 55s incline press (RPE 8.5 last week). Snap would push to 60s. Since prior RPE >8, hold at 55s and keep reps 3x8 (note: "Held load; ladder step deferred")
+### Comprehensive Example Scenario
+Single session containing three supersets/circuits plus a standalone finisher:
 
-### Multi-Session Independence Example
-**Monday session** (first exercise: 32.5 lb per hand):
-- Ladder: 32.5/42.5/52.5/62.5... (fractional anchor)
-- All Monday dumbbell exercises snap to this ladder
+**Superset A** – Incline DB Press (anchor) + DB Fly
+- Press: 37.5 lb per hand (anchor). Ladder = 37.5/47.5/57.5.
+- Fly prescribed at 45 lb → nearest rung is 47.5 (difference 2.5). Snap to 47.5 and trim each set to 3×9 so RPE stays ≤ 8.
 
-**Tuesday session** (first exercise: 45 lb per hand):
-- Ladder: 45/55/65/75... (5s anchor, independent of Monday)
-- All Tuesday dumbbell exercises snap to this ladder
+**Superset B** – Chest-Supported Row (anchor) + Neutral-Grip Curl (independent ladder)
+- Row: 25 lb per hand (anchor). Ladder = 25/35/45/55.
+- Curl prescribed at 30 lb → nearest rung is 35 (difference 5). Snap up to 35, adjust to 4×10–11, and note the change.
 
-**Wednesday session** (first exercise: 37.5 lb per hand):
-- Ladder: 37.5/47.5/57.5/67.5... (fractional anchor, independent of Monday/Tuesday)
-- All Wednesday dumbbell exercises snap to this ladder
+**Superset C** – Flat DB Bench (anchor) + Lateral Raise (independent ladder)
+- Bench: 47.5 lb per hand (anchor). Ladder = .../27.5/37.5/47.5/57.5/...
+- Lateral raise prescribed at 25 lb → use the downward rungs of the same ladder. Nearest option is 27.5 (difference 2.5). Snap down to 27.5, add 1 rep per set to keep effort matched, and note the change.
+
+**Circuit D** – Reverse Lunge (anchor) + Standing DB Press + DB Shrug (independent ladder)
+- Lunge: 45 lb per hand (anchor). Ladder = 45/55/65.
+- Standing press prescribed at 50 lb → closest rung is 45. Snap down to 45 and add 1 rep per round to maintain intent.
+- DB shrug prescribed at 65 lb → already on the 65 rung, so leave unchanged.
+
+**Standalone Finisher** – Goblet squat 3×10 @ 35 lb per hand with 90 s rest → **no ladder snap** because rest time allows plate changes.
 
 ## Output Format
-**For single session:**
-1. **Display original workout** with current dumbbell prescriptions
-2. **Show determined ladder** based on anchor load
-3. **Present recommended changes**:
-   - Which loads to snap and to what values
+1. **Present recommended changes per superset/circuit**:
+   - Which loads in each superset/circuit to snap and to what values (within that superset/circuit's ladder)
    - Any rep/set adjustments needed to maintain RPE targets
    - Which loads to hold (if snapping would exceed RPE targets)
-4. **Ask for confirmation** before applying changes
-5. **Update the workout file** with approved modifications
-6. **Validate** the updated JSON against schema
-
-**For multiple sessions:**
-1. **Display all sessions** with current dumbbell prescriptions
-2. **Show determined ladder for each session** based on each session's anchor load
-3. **Present recommended changes session by session**:
-   - Which loads to snap within each session and to what values
-   - Any rep/set adjustments needed within each session
-   - Which loads to hold within each session
-4. **Ask for confirmation** before applying changes
-5. **Update all workout files** with approved modifications
-6. **Validate** all updated JSONs against schema
+   - Note that standalone exercises are excluded from snapping
+2. **Ask for confirmation** before applying changes
+3. **Update the workout file(s)** with approved modifications
+4. **Validate** the updated JSON against schema
 
 ## Workflow Summary
-**For single session:**
-1. Analyze workout for dumbbell exercises and identify anchor load
-2. Determine appropriate ladder (5s, 10s, or fractional)
-3. Calculate snaps for all subsequent dumbbell exercises within the session
-4. Assess RPE impact and adjust reps/sets as needed
-5. Present recommendations with clear rationale
-6. Apply approved changes to workout file
-7. Validate and confirm completion
-
-**For multiple sessions:**
-1. Analyze each session independently for dumbbell exercises and identify each session's anchor load
-2. Determine appropriate ladder for each session (5s, 10s, or fractional)
-3. Calculate snaps for all subsequent dumbbell exercises within each session to that session's ladder
-4. Assess RPE impact and adjust reps/sets as needed within each session
-5. Present recommendations session by session with clear rationale
-6. Apply approved changes to all workout files
-7. Validate all files and confirm completion
+1. Gather the session(s) to be updated and list every superset or circuit that contains dumbbell work.
+2. For each superset/circuit, identify the anchor exercise (first dumbbell prescription) and build its ladder using the rules above.
+3. For every other dumbbell movement inside that superset/circuit, snap the planned load to the nearest ladder rung, then adjust reps/sets to maintain the intended RPE.
+4. Document decisions (e.g., "Stayed at 50s due to tie and triceps fatigue") and keep standalone exercises unchanged because their rest windows allow plate swaps.
+5. Summarize recommendations per superset/circuit, obtain confirmation, apply the edits to the relevant workout file(s), and validate the JSON schema.
 
 ## Notes
-- This prompt only handles dumbbell load optimization - it doesn't change exercise selection or other prescription elements
-- **Session independence**: Each session establishes its own ladder - no cross-session dependencies
-- Focus on minimizing plate changes while maintaining training stimulus and safety
+- This prompt only handles dumbbell load optimization within supersets and circuits - it doesn't change exercise selection or other prescription elements
+- **Supersets/circuits only**: Standalone exercises with >60s rest provide adequate time for plate changes and are excluded
+- **Superset/circuit independence**: Each superset or circuit establishes its own ladder - no cross-superset/circuit dependencies (even within the same session)
+- Focus on minimizing plate changes during rapid transitions while maintaining training stimulus and safety
 - Always preserve the original training intent (RPE targets, volume goals)
-- Can be applied to both single sessions and multiple sessions with independent ladder optimization
+- Can be applied to both single sessions and multiple sessions with independent ladder optimization per superset/circuit
