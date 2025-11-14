@@ -1,0 +1,180 @@
+{
+  "version": "1",
+  "title": "Biceps, Triceps & Core Workout - Block 1, Week 2",
+  "block": 1,
+  "week": 2,
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Warm-Up (Optional – 5–7 min)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Arm circles",
+          "link": "exercises/arm_circles.json",
+          "cues": [],
+          "logType": "mobility"
+        },
+        {
+          "kind": "exercise",
+          "name": "Elbow openers",
+          "link": "exercises/elbow_openers.json",
+          "cues": [
+            "[Elbow openers](../exercises/elbow_openers.json) (hands at shoulders, rotate): 10 reps",
+            "[Cat-Cow to Cobra stretch](../exercises/cat_cow_to_cobra_stretch.json): 5 reps each",
+            "[Deadbug](../exercises/deadbug.json) (no weight): 2 sets x 10 reps (slow and controlled)"
+          ],
+          "logType": "mobility"
+        },
+        {
+          "kind": "exercise",
+          "name": "Cat-Cow to Cobra stretch",
+          "link": "exercises/cat_cow_to_cobra_stretch.json",
+          "cues": [
+            "[Cat-Cow to Cobra stretch](../exercises/cat_cow_to_cobra_stretch.json): 5 reps each",
+            "[Deadbug](../exercises/deadbug.json) (no weight): 2 sets x 10 reps (slow and controlled)"
+          ],
+          "logType": "mobility"
+        },
+        {
+          "kind": "exercise",
+          "name": "Deadbug",
+          "link": "exercises/deadbug.json",
+          "cues": [
+            "[Deadbug](../exercises/deadbug.json) (no weight): 2 sets x 10 reps (slow and controlled)"
+          ],
+          "logType": "mobility"
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Main Workout (30–35 min)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Zottman Curl",
+          "link": "exercises/zottman_curl.json",
+          "cues": [],
+          "logType": "strength"
+        },
+        {
+          "kind": "exercise",
+          "name": "Overhead Triceps Extension (Lying Down)",
+          "link": "exercises/overhead_triceps_extension_lying.json",
+          "cues": [
+            "[Cat-Cow to Cobra stretch](../exercises/cat_cow_to_cobra_stretch.json): 5 reps each",
+            "[Deadbug](../exercises/deadbug.json) (no weight): 2 sets x 10 reps (slow and controlled)"
+          ],
+          "logType": "strength"
+        },
+        {
+          "kind": "exercise",
+          "name": "Hammer Curl",
+          "link": "exercises/hammer_curl.json",
+          "cues": [
+            "Suggested Weight: 15–20 lb per dumbbell",
+            "Curl with palms up → rotate palms down on the way down",
+            "**[Overhead Triceps Extension (Lying Down)](../exercises/overhead_triceps_extension_lying.json) – 12–15 reps**",
+            "Suggested Weight: 25–30 lb dumbbell held with both hands",
+            "Lie on bench or mat, lower dumbbell behind head slowly",
+            "Rest 30–45 sec between sets",
+            "**[Hammer Curl](../exercises/hammer_curl.json) – 10–12 reps**",
+            "Suggested Weight: 20–25 lb per dumbbell",
+            "Keep wrists neutral and elbows close to body",
+            "**[Dumbbell Floor Skullcrushers](../exercises/dumbbell_floor_skullcrushers.json) – 10–12 reps**",
+            "Suggested Weight: 12.5–15 lb per dumbbell",
+            "Lower dumbbells toward ears, elbows stay fixed",
+            "Rest 30–60 sec between sets"
+          ],
+          "logType": "strength"
+        },
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Floor Skullcrushers",
+          "link": "exercises/dumbbell_floor_skullcrushers.json",
+          "cues": [
+            "**[Overhead Triceps Extension (Lying Down)](../exercises/overhead_triceps_extension_lying.json) – 12–15 reps**",
+            "Suggested Weight: 25–30 lb dumbbell held with both hands",
+            "Lie on bench or mat, lower dumbbell behind head slowly",
+            "Rest 30–45 sec between sets",
+            "**[Hammer Curl](../exercises/hammer_curl.json) – 10–12 reps**",
+            "Suggested Weight: 20–25 lb per dumbbell",
+            "Keep wrists neutral and elbows close to body",
+            "**[Dumbbell Floor Skullcrushers](../exercises/dumbbell_floor_skullcrushers.json) – 10–12 reps**",
+            "Suggested Weight: 12.5–15 lb per dumbbell",
+            "Lower dumbbells toward ears, elbows stay fixed",
+            "Rest 30–60 sec between sets"
+          ],
+          "logType": "mobility"
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Core Finisher (3 rounds)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Weighted Deadbug",
+          "link": "exercises/weighted_deadbug.json",
+          "cues": [],
+          "logType": "mobility"
+        },
+        {
+          "kind": "exercise",
+          "name": "Hollow Hold",
+          "link": "exercises/hollow_hold.json",
+          "cues": [
+            "[Cat-Cow to Cobra stretch](../exercises/cat_cow_to_cobra_stretch.json): 5 reps each",
+            "[Deadbug](../exercises/deadbug.json) (no weight): 2 sets x 10 reps (slow and controlled)"
+          ],
+          "logType": "mobility"
+        },
+        {
+          "kind": "exercise",
+          "name": "Russian Twist",
+          "link": "exercises/russian_twist.json",
+          "cues": [
+            "[Deadbug](../exercises/deadbug.json) (no weight): 2 sets x 10 reps (slow and controlled)"
+          ],
+          "logType": "stretch"
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Cooldown (5 min)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Seated forward fold or toe touch",
+          "link": "exercises/seated_forward_fold_or_toe_touch.json",
+          "cues": [],
+          "logType": "stretch"
+        },
+        {
+          "kind": "exercise",
+          "name": "Child’s Pose with deep breathing",
+          "link": "exercises/childs_pose_with_deep_breathing.json",
+          "cues": [
+            "[Elbow openers](../exercises/elbow_openers.json) (hands at shoulders, rotate): 10 reps",
+            "[Cat-Cow to Cobra stretch](../exercises/cat_cow_to_cobra_stretch.json): 5 reps each",
+            "[Deadbug](../exercises/deadbug.json) (no weight): 2 sets x 10 reps (slow and controlled)"
+          ],
+          "logType": "stretch"
+        },
+        {
+          "kind": "exercise",
+          "name": "Lying spinal twist",
+          "link": "exercises/lying_spinal_twist.json",
+          "cues": [
+            "[Cat-Cow to Cobra stretch](../exercises/cat_cow_to_cobra_stretch.json): 5 reps each",
+            "[Deadbug](../exercises/deadbug.json) (no weight): 2 sets x 10 reps (slow and controlled)"
+          ],
+          "logType": "stretch"
+        }
+      ]
+    }
+  ]
+}

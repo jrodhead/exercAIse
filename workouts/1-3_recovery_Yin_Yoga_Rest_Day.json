@@ -1,114 +1,149 @@
 {
   "version": "1",
   "title": "Yin Yoga Recovery Flow – Rest Day",
-  "block": 0,
-  "week": 0,
+  "date": "2025-07-30",
+  "block": 1,
+  "week": 3,
+  "notes": "Focus: Flexibility, recovery, and joint health. Duration: 30-40 minutes. Props: Yoga mat, pillow/bolster, blanket (optional)",
   "sections": [
     {
-      "type": "Main Work",
-      "title": "🧘 Sequence",
-      "items": []
-    },
-    {
-      "type": "Main Work",
-      "title": "1. [Butterfly Pose (Seated Forward Fold)](../exercises/butterfly_pose_seated_forward_fold.json)",
+      "type": "Recovery",
+      "title": "Yin Yoga Sequence",
       "items": [
         {
           "kind": "exercise",
           "name": "Butterfly Pose (Seated Forward Fold)",
-          "link": "exercises/butterfly_pose_seated_forward_fold.json",
-          "cues": [],
-          "logType": "stretch"
-        }
-      ]
-    },
-    {
-      "type": "Main Work",
-      "title": "2. [Supported Child's Pose](../exercises/supported_childs_pose.json)",
-      "items": [
+          "link": "../exercises/butterfly_pose_seated_forward_fold.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 240
+          },
+          "cues": [
+            "Sit with soles of feet together, knees falling open",
+            "Fold forward gently from the hips",
+            "Let spine round naturally",
+            "Relax shoulders and jaw",
+            "Breathe deeply into hips and low back"
+          ],
+          "notes": "Sit on a cushion or place pillows under knees"
+        },
         {
           "kind": "exercise",
           "name": "Supported Child's Pose",
-          "link": "exercises/supported_childs_pose.json",
-          "cues": [],
-          "logType": "stretch"
-        }
-      ]
-    },
-    {
-      "type": "Main Work",
-      "title": "3. [Dragon Pose (Low Lunge Yin Style)](../exercises/dragon_pose_low_lunge_yin_style.json)",
-      "items": [
+          "link": "../exercises/supported_childs_pose.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 180
+          },
+          "cues": [
+            "Kneel with big toes together, knees wide",
+            "Fold forward, arms extended or resting by sides",
+            "Rest forehead on mat or support",
+            "Let chest sink with each exhale",
+            "Focus on releasing shoulders"
+          ],
+          "notes": "Pillow or bolster under torso"
+        },
         {
           "kind": "exercise",
           "name": "Dragon Pose (Low Lunge Yin Style)",
-          "link": "exercises/dragon_pose_low_lunge_yin_style.json",
-          "cues": [],
-          "logType": "stretch"
-        }
-      ]
-    },
-    {
-      "type": "Main Work",
-      "title": "4. [Sleeping Swan (Yin Pigeon)](../exercises/sleeping_swan_yin_pigeon.json)",
-      "items": [
+          "link": "../exercises/dragon_pose_low_lunge_yin_style.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 180
+          },
+          "cues": [
+            "Step one foot forward into a deep lunge",
+            "Keep hands on floor or blocks for support",
+            "Sink hips forward gently",
+            "Keep chest lifted or fold forward for intensity",
+            "Breathe into hip flexors and quads"
+          ],
+          "notes": "Pillow under back knee if tender"
+        },
         {
           "kind": "exercise",
           "name": "Sleeping Swan (Yin Pigeon)",
-          "link": "exercises/sleeping_swan_yin_pigeon.json",
-          "cues": [],
-          "logType": "stretch"
-        }
-      ]
-    },
-    {
-      "type": "Main Work",
-      "title": "5. [Supported Fish Pose](../exercises/supported_fish_pose.json)",
-      "items": [
+          "link": "../exercises/sleeping_swan_yin_pigeon.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 180
+          },
+          "cues": [
+            "From hands and knees, bring one leg forward, shin angled",
+            "Stretch other leg straight behind",
+            "Fold torso forward over front leg",
+            "Keep hips square",
+            "Relax upper body fully"
+          ],
+          "notes": "Pillow under hip or chest if needed"
+        },
         {
           "kind": "exercise",
           "name": "Supported Fish Pose",
-          "link": "exercises/supported_fish_pose.json",
-          "cues": [],
-          "logType": "stretch"
-        }
-      ]
-    },
-    {
-      "type": "Main Work",
-      "title": "6. [Reclined Twist](../exercises/reclined_twist.json)",
-      "items": [
+          "link": "../exercises/supported_fish_pose.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 240
+          },
+          "cues": [
+            "Lie back with support under thoracic spine",
+            "Open arms to sides, palms up",
+            "Let chest expand and shoulders drop",
+            "Relax jaw and throat",
+            "Focus on long, slow breathing"
+          ],
+          "notes": "Place pillow/bolster under mid-back and head"
+        },
         {
           "kind": "exercise",
           "name": "Reclined Twist",
-          "link": "exercises/reclined_twist.json",
-          "cues": [],
-          "logType": "stretch"
-        }
-      ]
-    },
-    {
-      "type": "Main Work",
-      "title": "7. [Happy Baby](../exercises/happy_baby.json)",
-      "items": [
+          "link": "../exercises/reclined_twist.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 120
+          },
+          "cues": [
+            "Lie on back, knees bent",
+            "Drop both knees to one side",
+            "Extend arms into a 'T' shape",
+            "Keep shoulders grounded",
+            "Turn head opposite to knees"
+          ]
+        },
         {
           "kind": "exercise",
           "name": "Happy Baby",
-          "link": "exercises/happy_baby.json",
-          "cues": [],
-          "logType": "stretch"
+          "link": "../exercises/happy_baby.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 180
+          },
+          "cues": [
+            "Lie on back, draw knees toward armpits",
+            "Hold outer feet or shins",
+            "Keep lower back pressing into mat",
+            "Rock gently if comfortable",
+            "Release tension in hips"
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Final Savasana",
+          "link": "../exercises/savasana.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 300
+          },
+          "cues": [
+            "Lie flat on your back, arms at sides",
+            "Palms up, eyes closed",
+            "Allow body to soften completely",
+            "Focus on breath and stillness"
+          ],
+          "notes": "Blanket under head or knees for comfort"
         }
       ]
-    },
-    {
-      "type": "Main Work",
-      "title": "8. Final Savasana",
-      "items": []
-    },
-    {
-      "type": "Main Work",
-      "title": "🌙 Notes",
-      "items": []
     }
   ]
 }

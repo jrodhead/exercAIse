@@ -1,61 +1,59 @@
 {
   "version": "1",
-  "title": "Yin Yoga Recovery Flow – Block 2, Week 2 (Thursday)",
-  "block": 0,
-  "week": 0,
+  "title": "Yin Yoga Recovery Flow",
+  "date": "2025-08-21",
+  "block": 2,
+  "week": 2,
+  "notes": "Hold each pose 60-90s. Breathe: Inhale 4s, exhale 6-8s. Stay pain-free.",
   "sections": [
     {
-      "type": "Strength",
-      "title": "Strength",
+      "type": "Recovery",
+      "title": "Yin Flow",
       "items": [
         {
           "kind": "exercise",
-          "name": "Child’s Pose",
-          "link": "exercises/childs_pose.json",
-          "cues": [
-            "[Thread the Needle](../exercises/thread_the_needle.json)",
-            "[90/90 Hip Stretch](../exercises/90_90_hip_stretch.json)",
-            "[Seated Forward Fold](../exercises/seated_forward_fold.json)",
-            "[Lying Spinal Twist](../exercises/lying_spinal_twist.json)"
-          ],
-          "logType": "stretch"
+          "name": "Child's Pose",
+          "link": "../exercises/childs_pose.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 90
+          }
         },
         {
           "kind": "exercise",
           "name": "Thread the Needle",
-          "link": "exercises/thread_the_needle.json",
-          "cues": [
-            "[90/90 Hip Stretch](../exercises/90_90_hip_stretch.json)",
-            "[Seated Forward Fold](../exercises/seated_forward_fold.json)",
-            "[Lying Spinal Twist](../exercises/lying_spinal_twist.json)"
-          ],
-          "logType": "mobility"
+          "link": "../exercises/thread_the_needle.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 90
+          }
         },
         {
           "kind": "exercise",
           "name": "90/90 Hip Stretch",
-          "link": "exercises/90_90_hip_stretch.json",
-          "cues": [
-            "[Seated Forward Fold](../exercises/seated_forward_fold.json)",
-            "[Lying Spinal Twist](../exercises/lying_spinal_twist.json)"
-          ],
-          "logType": "stretch"
+          "link": "../exercises/90_90_hip_stretch.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 90
+          }
         },
         {
           "kind": "exercise",
           "name": "Seated Forward Fold",
-          "link": "exercises/seated_forward_fold.json",
-          "cues": [
-            "[Lying Spinal Twist](../exercises/lying_spinal_twist.json)"
-          ],
-          "logType": "stretch"
+          "link": "../exercises/seated_forward_fold.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 90
+          }
         },
         {
           "kind": "exercise",
           "name": "Lying Spinal Twist",
-          "link": "exercises/lying_spinal_twist.json",
-          "cues": [],
-          "logType": "stretch"
+          "link": "../exercises/lying_spinal_twist.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 90
+          }
         }
       ]
     }

@@ -1,0 +1,132 @@
+{
+  "version": "1",
+  "title": "Full-Body Endurance / Conditioning – Block 1, Week 3 (Adjusted)",
+  "block": 1,
+  "week": 3,
+  "sections": [
+    {
+      "type": "Main Work",
+      "title": "Duration:",
+      "items": []
+    },
+    {
+      "type": "Main Work",
+      "title": "Format:",
+      "items": []
+    },
+    {
+      "type": "Main Work",
+      "title": "Rounds:",
+      "items": []
+    },
+    {
+      "type": "Main Work",
+      "title": "Rest Between Rounds:",
+      "items": []
+    },
+    {
+      "type": "Main Work",
+      "title": "🔄 Circuit",
+      "items": []
+    },
+    {
+      "type": "Main Work",
+      "title": "1. [Dumbbell Thruster (Squat + Press)](../exercises/dumbbell_thruster.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Thruster (Squat + Press)",
+          "link": "exercises/dumbbell_thruster.json",
+          "cues": [],
+          "logType": "strength"
+        }
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "2. [Renegade Row (Hands on Dumbbells or Floor)](../exercises/renegade_row.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Renegade Row (Hands on Dumbbells or Floor)",
+          "link": "exercises/renegade_row.json",
+          "cues": [],
+          "logType": "strength"
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "3. [Step-Up (Onto Bench or Sturdy Surface)](../exercises/step_up.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Step-Up (Onto Bench or Sturdy Surface)",
+          "link": "exercises/step_up.json",
+          "cues": [],
+          "logType": "strength"
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "4. [Side Plank with Hip Dips](../exercises/side_plank_with_hip_dips.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Side Plank with Hip Dips",
+          "link": "exercises/side_plank_with_hip_dips.json",
+          "cues": [],
+          "logType": "strength"
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "5. [Farmer Carry (Dumbbells or Ruck)](../exercises/farmer_carry.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Farmer Carry (Dumbbells or Ruck)",
+          "link": "exercises/farmer_carry.json",
+          "cues": [],
+          "logType": "carry"
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "🧊 Cooldown (5 minutes)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Standing Quad Stretch",
+          "link": "exercises/standing_quad_stretch.json",
+          "cues": [],
+          "logType": "stretch"
+        },
+        {
+          "kind": "exercise",
+          "name": "Forward Fold",
+          "link": "exercises/forward_fold.json",
+          "cues": [],
+          "logType": "stretch"
+        },
+        {
+          "kind": "exercise",
+          "name": "Seated Spinal Twist",
+          "link": "exercises/seated_spinal_twist.json",
+          "cues": [],
+          "logType": "stretch"
+        },
+        {
+          "kind": "exercise",
+          "name": "Shoulder Stretch (hands clasped behind back)",
+          "link": "exercises/shoulder_stretch.json",
+          "cues": [],
+          "logType": "stretch"
+        }
+      ]
+    }
+  ]
+}

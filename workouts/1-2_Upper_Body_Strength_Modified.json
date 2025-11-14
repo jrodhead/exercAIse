@@ -1,71 +1,133 @@
 {
   "version": "1",
-  "title": "Upper Body Strength – Block 1, Week 2 (Modified)",
+  "title": "Upper Body Strength (Modified)",
+  "date": "2025-07-29",
   "block": 1,
   "week": 2,
+  "notes": "Bench press replaces seated dumbbell press due to neck sensitivity",
   "sections": [
     {
-      "type": "Main Work",
-      "title": "[Neutral-Grip Flat Bench Press (Dumbbells)](../exercises/neutral_grip_flat_bench_press.json)",
+      "type": "Warm-up",
+      "title": "Warm-Up",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Arm Circles",
+          "link": "exercises/arm_circles.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 1,
+            "reps": "30 sec each direction"
+          }
+        },
+        {
+          "kind": "exercise",
+          "name": "Band Pull-Aparts",
+          "link": "exercises/band_pull_aparts.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 15
+          }
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Main Workout",
       "items": [
         {
           "kind": "exercise",
           "name": "Neutral-Grip Flat Bench Press (Dumbbells)",
           "link": "exercises/neutral_grip_flat_bench_press.json",
-          "cues": [],
-          "logType": "strength"
-        }
-      ]
-    },
-    {
-      "type": "Conditioning",
-      "title": "[One-Arm Dumbbell Row (Bench Supported)](../exercises/one_arm_dumbbell_row.json)",
-      "items": [
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": "10-12",
+            "weight": "30-40 x2",
+            "restSeconds": 105
+          },
+          "cues": [
+            "Elbows at 45\u00b0",
+            "Pause at chest",
+            "Core braced"
+          ]
+        },
         {
           "kind": "exercise",
           "name": "One-Arm Dumbbell Row (Bench Supported)",
           "link": "exercises/one_arm_dumbbell_row.json",
-          "cues": [],
-          "logType": "strength"
-        }
-      ]
-    },
-    {
-      "type": "Main Work",
-      "title": "[Biceps Curl (Alternating Dumbbells)](../exercises/biceps_curl.json)",
-      "items": [
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": "10-12 per side",
+            "weight": "35-45",
+            "restSeconds": 75
+          },
+          "notes": "Complete all reps on one side, then switch sides",
+          "cues": [
+            "Row to ribcage",
+            "Elbow close to body",
+            "Avoid torso twist"
+          ]
+        },
         {
           "kind": "exercise",
           "name": "Biceps Curl (Alternating Dumbbells)",
-          "link": "exercises/biceps_curl.json",
-          "cues": [],
-          "logType": "strength"
-        }
-      ]
-    },
-    {
-      "type": "Main Work",
-      "title": "[Overhead Dumbbell Triceps Extension (Two Hands)](../exercises/overhead_dumbbell_triceps_extension.json)",
-      "items": [
+          "link": "exercises/alternating_dumbbell_biceps_curl.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": "12-15 per side (24-30 total)",
+            "weight": "15-25 x2",
+            "restSeconds": 60
+          },
+          "notes": "Alternate sides each rep",
+          "cues": [
+            "Avoid swinging",
+            "Control each rep"
+          ]
+        },
         {
           "kind": "exercise",
           "name": "Overhead Dumbbell Triceps Extension (Two Hands)",
           "link": "exercises/overhead_dumbbell_triceps_extension.json",
-          "cues": [],
-          "logType": "strength"
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": "12-15",
+            "weight": "25-35",
+            "restSeconds": 68
+          },
+          "notes": "Single dumbbell held with both hands",
+          "cues": [
+            "Elbows close to ears",
+            "Stable upper arms"
+          ]
         }
       ]
     },
     {
       "type": "Accessory/Core",
-      "title": "[Ruck March Hold (Core & Grip)](../exercises/ruck_march_hold.json)",
+      "title": "Core & Grip",
       "items": [
         {
           "kind": "exercise",
-          "name": "Ruck March Hold (Core & Grip)",
+          "name": "Ruck March Hold",
           "link": "exercises/ruck_march_hold.json",
-          "cues": [],
-          "logType": "mobility"
+          "logType": "carry",
+          "prescription": {
+            "sets": 2,
+            "holdSeconds": 30,
+            "weight": "30",
+            "restSeconds": 60
+          },
+          "notes": "30 lb ruck plate at chest",
+          "cues": [
+            "Upright posture",
+            "Core braced",
+            "Breathe under tension"
+          ]
         }
       ]
     }

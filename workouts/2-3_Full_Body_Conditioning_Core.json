@@ -4,37 +4,39 @@
   "date": "2025-08-29",
   "block": 2,
   "week": 3,
+  "notes": "Pinned loads based on Week 2 with small bump to 27.5lb per hand for thruster/row. Keep quality high, not a race; scale down if joints feel cranky.",
   "sections": [
     {
       "type": "Warm-up",
-      "title": "Warm-up",
+      "title": "Warm-Up",
       "items": [
         {
           "kind": "exercise",
           "name": "Jumping Jacks",
-          "link": "exercises/jumping_jacks.json",
+          "link": "../exercises/jumping_jacks.json",
+          "logType": "mobility",
           "prescription": {
-            "timeSeconds": 40
-          },
-          "logType": "mobility"
+            "holdSeconds": 40
+          }
         },
         {
           "kind": "exercise",
           "name": "Loaded March",
-          "link": "exercises/loaded_march.json",
+          "link": "../exercises/loaded_march.json",
+          "logType": "strength",
           "prescription": {
-            "reps": 20
-          },
-          "logType": "mobility"
+            "reps": "20 steps",
+            "weight": "light ruck or DBs"
+          }
         },
         {
           "kind": "exercise",
-          "name": "World’s Greatest Stretch",
-          "link": "exercises/worlds_greatest_stretch.json",
+          "name": "World's Greatest Stretch",
+          "link": "../exercises/worlds_greatest_stretch.json",
+          "logType": "strength",
           "prescription": {
-            "reps": 4
-          },
-          "logType": "stretch"
+            "reps": "4 per side"
+          }
         }
       ]
     },
@@ -43,50 +45,52 @@
       "title": "Conditioning (Main Work)",
       "items": [
         {
-          "kind": "exercise",
-          "name": "Dumbbell Thruster",
-          "link": "exercises/dumbbell_thruster.json",
-          "prescription": {
-            "sets": 3,
-            "reps": "10–12",
-            "weight": "27.5 lb per hand",
-            "restSeconds": 60
-          },
-          "logType": "strength"
-        },
-        {
-          "kind": "exercise",
-          "name": "Renegade Row",
-          "link": "exercises/renegade_row.json",
-          "prescription": {
-            "sets": 3,
-            "reps": "6–8/side",
-            "weight": "27.5 lb per hand"
-          },
-          "logType": "strength"
-        },
-        {
-          "kind": "exercise",
-          "name": "Step-Up",
-          "link": "exercises/step_up.json",
-          "prescription": {
-            "sets": 3,
-            "reps": "10/leg",
-            "weight": "20 lb per hand"
-          },
-          "logType": "strength"
-        },
-        {
-          "kind": "exercise",
-          "name": "Farmer Carry",
-          "link": "exercises/farmer_carry.json",
-          "prescription": {
-            "sets": 3,
-            "timeSeconds": 45,
-            "weight": "40 lb per hand",
-            "restSeconds": 60
-          },
-          "logType": "carry"
+          "kind": "circuit",
+          "name": "Main Conditioning Circuit",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Dumbbell Thruster",
+              "link": "../exercises/dumbbell_thruster.json",
+              "logType": "strength",
+              "prescription": {
+                "reps": "10-12",
+                "weight": "27.5"
+              }
+            },
+            {
+              "kind": "exercise",
+              "name": "Renegade Row",
+              "link": "../exercises/renegade_row.json",
+              "logType": "strength",
+              "prescription": {
+                "reps": "6-8",
+                "weight": "27.5"
+              },
+              "notes": "Complete all reps on one side, then switch sides (6-8 reps per side)"
+            },
+            {
+              "kind": "exercise",
+              "name": "Step-Up",
+              "link": "../exercises/step_up.json",
+              "logType": "strength",
+              "prescription": {
+                "reps": "10",
+                "weight": "20"
+              },
+              "notes": "Complete all reps on one leg, then switch sides (10 reps per leg). Knee-height step."
+            },
+            {
+              "kind": "exercise",
+              "name": "Farmer Carry",
+              "link": "../exercises/farmer_carry.json",
+              "logType": "mobility",
+              "prescription": {
+                "holdSeconds": 50,
+                "weight": "40"
+              }
+            }
+          ]
         }
       ]
     },
@@ -95,34 +99,38 @@
       "title": "Accessory/Core",
       "items": [
         {
-          "kind": "exercise",
-          "name": "Weighted Deadbug",
-          "link": "exercises/weighted_deadbug.json",
-          "prescription": {
-            "sets": 3,
-            "reps": "8/side"
-          },
-          "logType": "mobility"
-        },
-        {
-          "kind": "exercise",
-          "name": "Russian Twist",
-          "link": "exercises/russian_twist.json",
-          "prescription": {
-            "sets": 3,
-            "reps": "20 taps"
-          },
-          "logType": "stretch"
-        },
-        {
-          "kind": "exercise",
-          "name": "Plank Shoulder Tap",
-          "link": "exercises/plank_shoulder_tap.json",
-          "prescription": {
-            "sets": 3,
-            "reps": "20 taps"
-          },
-          "logType": "strength"
+          "kind": "circuit",
+          "name": "Core Circuit",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Weighted Deadbug",
+              "link": "../exercises/weighted_deadbug.json",
+              "logType": "strength",
+              "prescription": {
+                "reps": "8"
+              },
+              "notes": "Complete all reps on one side, then switch sides (8 reps per side). Slow 2-1-2 tempo."
+            },
+            {
+              "kind": "exercise",
+              "name": "Russian Twist",
+              "link": "../exercises/russian_twist.json",
+              "logType": "strength",
+              "prescription": {
+                "reps": "20 taps (10/side)"
+              }
+            },
+            {
+              "kind": "exercise",
+              "name": "Plank Shoulder Tap",
+              "link": "../exercises/plank_shoulder_tap.json",
+              "logType": "strength",
+              "prescription": {
+                "reps": "20 taps (10/side)"
+              }
+            }
+          ]
         }
       ]
     },
@@ -132,30 +140,30 @@
       "items": [
         {
           "kind": "exercise",
-          "name": "Child’s Pose",
-          "link": "exercises/childs_pose.json",
+          "name": "Child's Pose",
+          "link": "../exercises/childs_pose.json",
+          "logType": "mobility",
           "prescription": {
-            "timeSeconds": 90
-          },
-          "logType": "stretch"
+            "holdSeconds": 120
+          }
         },
         {
           "kind": "exercise",
           "name": "Thread the Needle",
-          "link": "exercises/thread_the_needle.json",
+          "link": "../exercises/thread_the_needle.json",
+          "logType": "mobility",
           "prescription": {
-            "holdSeconds": 45
-          },
-          "logType": "mobility"
+            "holdSeconds": 60
+          }
         },
         {
           "kind": "exercise",
           "name": "Seated Forward Fold",
-          "link": "exercises/seated_forward_fold.json",
+          "link": "../exercises/seated_forward_fold.json",
+          "logType": "mobility",
           "prescription": {
             "holdSeconds": 60
-          },
-          "logType": "stretch"
+          }
         }
       ]
     }

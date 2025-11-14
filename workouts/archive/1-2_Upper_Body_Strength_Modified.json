@@ -1,0 +1,73 @@
+{
+  "version": "1",
+  "title": "Upper Body Strength – Block 1, Week 2 (Modified)",
+  "block": 1,
+  "week": 2,
+  "sections": [
+    {
+      "type": "Main Work",
+      "title": "[Neutral-Grip Flat Bench Press (Dumbbells)](../exercises/neutral_grip_flat_bench_press.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Neutral-Grip Flat Bench Press (Dumbbells)",
+          "link": "exercises/neutral_grip_flat_bench_press.json",
+          "cues": [],
+          "logType": "strength"
+        }
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "[One-Arm Dumbbell Row (Bench Supported)](../exercises/one_arm_dumbbell_row.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "One-Arm Dumbbell Row (Bench Supported)",
+          "link": "exercises/one_arm_dumbbell_row.json",
+          "cues": [],
+          "logType": "strength"
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "[Biceps Curl (Alternating Dumbbells)](../exercises/biceps_curl.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Biceps Curl (Alternating Dumbbells)",
+          "link": "exercises/biceps_curl.json",
+          "cues": [],
+          "logType": "strength"
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "[Overhead Dumbbell Triceps Extension (Two Hands)](../exercises/overhead_dumbbell_triceps_extension.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Overhead Dumbbell Triceps Extension (Two Hands)",
+          "link": "exercises/overhead_dumbbell_triceps_extension.json",
+          "cues": [],
+          "logType": "strength"
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "[Ruck March Hold (Core & Grip)](../exercises/ruck_march_hold.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Ruck March Hold (Core & Grip)",
+          "link": "exercises/ruck_march_hold.json",
+          "cues": [],
+          "logType": "mobility"
+        }
+      ]
+    }
+  ]
+}

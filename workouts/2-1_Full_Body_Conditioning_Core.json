@@ -1,174 +1,192 @@
 {
   "version": "1",
-  "title": "Full-Body Conditioning & Core – Block 2, Week 1",
+  "title": "Full-Body Conditioning & Core",
+  "date": "2025-08-15",
   "block": 2,
   "week": 1,
+  "notes": "Maintain quality of movement over speed. Break early if form deteriorates. Hydrate well.",
   "sections": [
     {
       "type": "Warm-up",
-      "title": "Warm-Up (6–7 min)",
+      "title": "Warm-Up",
       "items": [
         {
           "kind": "exercise",
           "name": "Jumping Jacks",
-          "link": "exercises/jumping_jacks.json",
-          "cues": [],
-          "logType": "mobility"
+          "link": "../exercises/jumping_jacks.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 40
+          }
         },
         {
           "kind": "exercise",
           "name": "Loaded March",
-          "link": "exercises/loaded_march.json",
-          "cues": [
-            "[Jumping Jacks](../exercises/jumping_jacks.json): 30–40 sec",
-            "[Loaded March](../exercises/loaded_march.json): 2 x 20 steps (light weight or ruck)",
-            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
-          ],
-          "logType": "mobility"
+          "link": "../exercises/loaded_march.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": "20 steps",
+            "weight": "light weight or ruck"
+          }
         },
         {
           "kind": "exercise",
-          "name": "World’s Greatest Stretch",
-          "link": "exercises/worlds_greatest_stretch.json",
-          "cues": [
-            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
-          ],
-          "logType": "stretch"
+          "name": "World's Greatest Stretch",
+          "link": "../exercises/worlds_greatest_stretch.json",
+          "logType": "strength",
+          "prescription": {
+            "reps": "4 per side"
+          }
         }
       ]
     },
     {
       "type": "Conditioning",
-      "title": "Circuit A (Strength-Endurance Primer) – 3 Rounds",
+      "title": "Circuit A (Strength-Endurance Primer)",
       "items": [
         {
-          "kind": "exercise",
-          "name": "Dumbbell Thruster",
-          "link": "exercises/dumbbell_thruster.json",
-          "cues": [
-            "[Loaded March](../exercises/loaded_march.json): 2 x 20 steps (light weight or ruck)",
-            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
-          ],
-          "logType": "strength"
-        },
-        {
-          "kind": "exercise",
-          "name": "Renegade Row",
-          "link": "exercises/renegade_row.json",
-          "cues": [
-            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
-          ],
-          "logType": "strength"
-        },
-        {
-          "kind": "exercise",
-          "name": "Step Up",
-          "link": "exercises/step_up.json",
-          "cues": [],
-          "logType": "strength"
-        },
-        {
-          "kind": "exercise",
-          "name": "Farmer Carry",
-          "link": "exercises/farmer_carry.json",
-          "cues": [],
-          "logType": "carry"
+          "kind": "circuit",
+          "name": "Strength-Endurance Circuit",
+          "notes": "Maintain posture and core tension—move with intent, not speed. Adjust loads so last 2 reps of Thruster & Rows are challenging but clean.",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Dumbbell Thruster",
+              "link": "../exercises/dumbbell_thruster.json",
+              "logType": "strength",
+              "prescription": {
+                "reps": "10",
+                "weight": "moderate"
+              }
+            },
+            {
+              "kind": "exercise",
+              "name": "Renegade Row",
+              "link": "../exercises/renegade_row.json",
+              "logType": "strength",
+              "prescription": {
+                "reps": "8"
+              },
+              "notes": "Complete all reps on one side, then switch sides (8 reps per side)"
+            },
+            {
+              "kind": "exercise",
+              "name": "Step Up",
+              "link": "../exercises/step_up.json",
+              "logType": "strength",
+              "prescription": {
+                "reps": "10"
+              },
+              "notes": "Complete all reps on one leg, then switch sides (10 reps per leg). Knee height box/step."
+            },
+            {
+              "kind": "exercise",
+              "name": "Farmer Carry",
+              "link": "../exercises/farmer_carry.json",
+              "logType": "endurance",
+              "prescription": {
+                "distanceMeters": 40
+              }
+            }
+          ]
         }
       ]
     },
     {
       "type": "Accessory/Core",
-      "title": "Circuit B (Core & Capacity) – 3 Rounds",
+      "title": "Circuit B (Core & Capacity)",
       "items": [
         {
-          "kind": "exercise",
-          "name": "Weighted Deadbug",
-          "link": "exercises/weighted_deadbug.json",
-          "cues": [
-            "[Jumping Jacks](../exercises/jumping_jacks.json): 30–40 sec",
-            "[Loaded March](../exercises/loaded_march.json): 2 x 20 steps (light weight or ruck)",
-            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
-          ],
-          "logType": "mobility"
-        },
-        {
-          "kind": "exercise",
-          "name": "Russian Twist",
-          "link": "exercises/russian_twist.json",
-          "cues": [
-            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
-          ],
-          "logType": "stretch"
-        },
-        {
-          "kind": "exercise",
-          "name": "Plank Shoulder Tap",
-          "link": "exercises/plank_shoulder_tap.json",
-          "cues": [],
-          "logType": "strength"
-        },
-        {
-          "kind": "exercise",
-          "name": "Loaded March",
-          "link": "exercises/loaded_march.json",
-          "cues": [],
-          "logType": "mobility"
+          "kind": "circuit",
+          "name": "Core Circuit",
+          "notes": "Minimal rest between movements. If RPE <7 after Round 3, add a 4th round.",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Weighted Deadbug",
+              "link": "../exercises/weighted_deadbug.json",
+              "logType": "strength",
+              "prescription": {
+                "reps": "8"
+              },
+              "notes": "Complete all reps on one side, then switch sides (8 reps per side). Slow 2-1-2 tempo."
+            },
+            {
+              "kind": "exercise",
+              "name": "Russian Twist",
+              "link": "../exercises/russian_twist.json",
+              "logType": "strength",
+              "prescription": {
+                "reps": "20 taps (10/side) or 10 controlled rotations per side"
+              }
+            },
+            {
+              "kind": "exercise",
+              "name": "Plank Shoulder Tap",
+              "link": "../exercises/plank_shoulder_tap.json",
+              "logType": "strength",
+              "prescription": {
+                "reps": "20 taps (10/side)"
+              }
+            },
+            {
+              "kind": "exercise",
+              "name": "Loaded March",
+              "link": "../exercises/loaded_march.json",
+              "logType": "strength",
+              "prescription": {
+                "reps": "30 steps (15/side)",
+                "weight": "moderate ruck/dumbbells"
+              }
+            }
+          ]
         }
       ]
     },
     {
-      "type": "Main Work",
+      "type": "Conditioning",
       "title": "Finisher (Optional)",
       "items": [
         {
           "kind": "exercise",
-          "name": "Goblet Squat",
-          "link": "exercises/goblet_squat.json",
-          "cues": [],
-          "logType": "strength"
-        },
-        {
-          "kind": "exercise",
-          "name": "Farmer Carry",
-          "link": "exercises/farmer_carry.json",
-          "cues": [
-            "[Loaded March](../exercises/loaded_march.json): 2 x 20 steps (light weight or ruck)",
-            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
-          ],
-          "logType": "carry"
+          "name": "EMOM 6 Minutes",
+          "logType": "mobility",
+          "prescription": {},
+          "notes": "Minute 1: Goblet Squat x12 (moderate), Minute 2: Farmer Carry 40s. Alternate for 6 minutes total. Goal: Sustainable output (RPE 7-8). Skip if fatigued."
         }
       ]
     },
     {
       "type": "Cooldown/Recovery",
-      "title": "Cooldown (5–6 min)",
+      "title": "Cooldown",
       "items": [
         {
           "kind": "exercise",
-          "name": "Child’s Pose",
-          "link": "exercises/childs_pose.json",
-          "cues": [],
-          "logType": "stretch"
+          "name": "Child's Pose",
+          "link": "../exercises/childs_pose.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 120
+          }
         },
         {
           "kind": "exercise",
           "name": "Thread the Needle",
-          "link": "exercises/thread_the_needle.json",
-          "cues": [
-            "[Jumping Jacks](../exercises/jumping_jacks.json): 30–40 sec",
-            "[Loaded March](../exercises/loaded_march.json): 2 x 20 steps (light weight or ruck)",
-            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
-          ],
-          "logType": "mobility"
+          "link": "../exercises/thread_the_needle.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 45
+          }
         },
         {
           "kind": "exercise",
           "name": "Seated Forward Fold",
-          "link": "exercises/seated_forward_fold.json",
-          "cues": [
-            "[World’s Greatest Stretch](../exercises/worlds_greatest_stretch.json): 4 reps per side"
-          ],
-          "logType": "stretch"
+          "link": "../exercises/seated_forward_fold.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 60
+          }
         }
       ]
     }

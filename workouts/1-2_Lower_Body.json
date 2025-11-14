@@ -1,276 +1,142 @@
 {
   "version": "1",
-  "title": "Lower Body Strength – Block 1, Week 2",
+  "title": "Lower Body Workout",
   "block": 1,
   "week": 2,
   "sections": [
     {
       "type": "Warm-up",
-      "title": "Warm-Up (8–10 min)",
+      "title": "Warm-Up",
       "items": [
         {
           "kind": "exercise",
-          "name": "Foam roll",
-          "link": "exercises/foam_roll.json",
-          "cues": [],
-          "logType": "mobility"
+          "name": "Bodyweight Squat",
+          "link": "exercises/bodyweight_squat.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 12
+          }
         },
         {
           "kind": "exercise",
-          "name": "Calves",
-          "link": "exercises/calves.json",
-          "cues": [
-            "[Calves](../exercises/calves.json)",
-            "[Quads](../exercises/quads.json)",
-            "[Glutes](../exercises/glutes.json)",
-            "[Dynamic Flow](../exercises/dynamic_flow.json):",
-            "[Glute bridge](../exercises/glute_bridge.json) – 10 reps",
-            "[Bodyweight reverse lunge](../exercises/reverse_lunge.json) – 6 reps/leg",
-            "[World's greatest stretch](../exercises/worlds_greatest_stretch.json) – 4 reps/side",
-            "[Standing leg swings](../exercises/standing_leg_swings.json) – 10 reps/leg (forward-back & side-to-side)"
-          ],
-          "logType": "mobility"
-        },
-        {
-          "kind": "exercise",
-          "name": "Quads",
-          "link": "exercises/quads.json",
-          "cues": [
-            "[Quads](../exercises/quads.json)",
-            "[Glutes](../exercises/glutes.json)",
-            "[Dynamic Flow](../exercises/dynamic_flow.json):",
-            "[Glute bridge](../exercises/glute_bridge.json) – 10 reps",
-            "[Bodyweight reverse lunge](../exercises/reverse_lunge.json) – 6 reps/leg",
-            "[World's greatest stretch](../exercises/worlds_greatest_stretch.json) – 4 reps/side",
-            "[Standing leg swings](../exercises/standing_leg_swings.json) – 10 reps/leg (forward-back & side-to-side)"
-          ],
-          "logType": "mobility"
-        },
-        {
-          "kind": "exercise",
-          "name": "Glutes",
-          "link": "exercises/glutes.json",
-          "cues": [
-            "[Glutes](../exercises/glutes.json)",
-            "[Dynamic Flow](../exercises/dynamic_flow.json):",
-            "[Glute bridge](../exercises/glute_bridge.json) – 10 reps",
-            "[Bodyweight reverse lunge](../exercises/reverse_lunge.json) – 6 reps/leg",
-            "[World's greatest stretch](../exercises/worlds_greatest_stretch.json) – 4 reps/side",
-            "[Standing leg swings](../exercises/standing_leg_swings.json) – 10 reps/leg (forward-back & side-to-side)"
-          ],
-          "logType": "mobility"
-        },
-        {
-          "kind": "exercise",
-          "name": "Dynamic Flow",
-          "link": "exercises/dynamic_flow.json",
-          "cues": [
-            "[Dynamic Flow](../exercises/dynamic_flow.json):",
-            "[Glute bridge](../exercises/glute_bridge.json) – 10 reps",
-            "[Bodyweight reverse lunge](../exercises/reverse_lunge.json) – 6 reps/leg",
-            "[World's greatest stretch](../exercises/worlds_greatest_stretch.json) – 4 reps/side",
-            "[Standing leg swings](../exercises/standing_leg_swings.json) – 10 reps/leg (forward-back & side-to-side)"
-          ],
-          "logType": "mobility"
-        },
-        {
-          "kind": "exercise",
-          "name": "Glute bridge",
+          "name": "Glute Bridge",
           "link": "exercises/glute_bridge.json",
-          "cues": [
-            "[Glute bridge](../exercises/glute_bridge.json) – 10 reps",
-            "[Bodyweight reverse lunge](../exercises/reverse_lunge.json) – 6 reps/leg",
-            "[World's greatest stretch](../exercises/worlds_greatest_stretch.json) – 4 reps/side",
-            "[Standing leg swings](../exercises/standing_leg_swings.json) – 10 reps/leg (forward-back & side-to-side)"
-          ],
-          "logType": "mobility"
-        },
-        {
-          "kind": "exercise",
-          "name": "Bodyweight reverse lunge",
-          "link": "exercises/reverse_lunge.json",
-          "cues": [
-            "[Bodyweight reverse lunge](../exercises/reverse_lunge.json) – 6 reps/leg",
-            "[World's greatest stretch](../exercises/worlds_greatest_stretch.json) – 4 reps/side",
-            "[Standing leg swings](../exercises/standing_leg_swings.json) – 10 reps/leg (forward-back & side-to-side)"
-          ],
-          "logType": "strength"
-        },
-        {
-          "kind": "exercise",
-          "name": "World's greatest stretch",
-          "link": "exercises/worlds_greatest_stretch.json",
-          "cues": [
-            "[World's greatest stretch](../exercises/worlds_greatest_stretch.json) – 4 reps/side",
-            "[Standing leg swings](../exercises/standing_leg_swings.json) – 10 reps/leg (forward-back & side-to-side)"
-          ],
-          "logType": "stretch"
-        },
-        {
-          "kind": "exercise",
-          "name": "Standing leg swings",
-          "link": "exercises/standing_leg_swings.json",
-          "cues": [
-            "[Standing leg swings](../exercises/standing_leg_swings.json) – 10 reps/leg (forward-back & side-to-side)"
-          ],
-          "logType": "mobility"
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 10
+          }
         }
       ]
     },
     {
       "type": "Strength",
       "title": "Main Workout",
-      "items": []
-    },
-    {
-      "type": "Main Work",
-      "title": "Round 1",
       "items": [
         {
           "kind": "exercise",
-          "name": "Goblet Reverse Lunge",
-          "link": "exercises/goblet_reverse_lunge.json",
-          "cues": [],
-          "logType": "strength"
+          "name": "Goblet Squat",
+          "link": "exercises/goblet_squat.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 4,
+            "reps": "10-12",
+            "weight": "40-55",
+            "restSeconds": 90
+          },
+          "cues": [
+            "Chest upright",
+            "Core braced",
+            "Drive through heels"
+          ]
         },
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Romanian Deadlift",
+          "link": "exercises/dumbbell_romanian_deadlift.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 4,
+            "reps": "10-12",
+            "weight": "35-50 x2",
+            "restSeconds": 90
+          },
+          "cues": [
+            "Hinge at hips",
+            "Dumbbells close to legs",
+            "Squeeze glutes to stand"
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Reverse Lunge",
+          "link": "exercises/reverse_lunge.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": "10-12 per leg",
+            "weight": "25-35 x2",
+            "restSeconds": 75
+          },
+          "notes": "Alternate legs each rep",
+          "cues": [
+            "Control movement",
+            "Avoid leaning forward"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Core Work",
+      "items": [
         {
           "kind": "exercise",
           "name": "Hollow Hold",
           "link": "exercises/hollow_hold.json",
-          "cues": [
-            "[Quads](../exercises/quads.json)",
-            "[Glutes](../exercises/glutes.json)",
-            "[Dynamic Flow](../exercises/dynamic_flow.json):",
-            "[Glute bridge](../exercises/glute_bridge.json) – 10 reps",
-            "[Bodyweight reverse lunge](../exercises/reverse_lunge.json) – 6 reps/leg",
-            "[World's greatest stretch](../exercises/worlds_greatest_stretch.json) – 4 reps/side",
-            "[Standing leg swings](../exercises/standing_leg_swings.json) – 10 reps/leg (forward-back & side-to-side)"
-          ],
-          "logType": "mobility"
-        }
-      ]
-    },
-    {
-      "type": "Main Work",
-      "title": "Round 2",
-      "items": [
-        {
-          "kind": "exercise",
-          "name": "Dumbbell RDL",
-          "link": "exercises/dumbbell_rdl.json",
-          "cues": [],
-          "logType": "strength"
-        },
-        {
-          "kind": "exercise",
-          "name": "Seated Leg Extension (w/ Ruck)",
-          "link": "exercises/seated_leg_extension_with_ruck.json",
-          "cues": [
-            "[Quads](../exercises/quads.json)",
-            "[Glutes](../exercises/glutes.json)",
-            "[Dynamic Flow](../exercises/dynamic_flow.json):",
-            "[Glute bridge](../exercises/glute_bridge.json) – 10 reps",
-            "[Bodyweight reverse lunge](../exercises/reverse_lunge.json) – 6 reps/leg",
-            "[World's greatest stretch](../exercises/worlds_greatest_stretch.json) – 4 reps/side",
-            "[Standing leg swings](../exercises/standing_leg_swings.json) – 10 reps/leg (forward-back & side-to-side)"
-          ],
-          "logType": "strength"
-        }
-      ]
-    },
-    {
-      "type": "Main Work",
-      "title": "Round 3",
-      "items": [
-        {
-          "kind": "exercise",
-          "name": "Ruck Deadlift to Row",
-          "link": "exercises/ruck_deadlift_to_row.json",
-          "cues": [],
-          "logType": "strength"
-        },
-        {
-          "kind": "exercise",
-          "name": "Side Plank w/ Reach-Through",
-          "link": "exercises/side_plank_with_reach_through.json",
-          "cues": [
-            "[Quads](../exercises/quads.json)",
-            "[Glutes](../exercises/glutes.json)",
-            "[Dynamic Flow](../exercises/dynamic_flow.json):",
-            "[Glute bridge](../exercises/glute_bridge.json) – 10 reps",
-            "[Bodyweight reverse lunge](../exercises/reverse_lunge.json) – 6 reps/leg",
-            "[World's greatest stretch](../exercises/worlds_greatest_stretch.json) – 4 reps/side",
-            "[Standing leg swings](../exercises/standing_leg_swings.json) – 10 reps/leg (forward-back & side-to-side)"
-          ],
-          "logType": "strength"
-        }
-      ]
-    },
-    {
-      "type": "Main Work",
-      "title": "Optional Finisher (3–5 min)",
-      "items": [
-        {
-          "kind": "exercise",
-          "name": "Loaded March",
-          "link": "exercises/loaded_march.json",
-          "cues": [],
-          "logType": "mobility"
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "holdSeconds": 30,
+            "restSeconds": 45
+          },
+          "notes": "Bodyweight only"
         }
       ]
     },
     {
       "type": "Cooldown/Recovery",
-      "title": "Cooldown (5–7 min)",
+      "title": "Cooldown",
       "items": [
         {
           "kind": "exercise",
-          "name": "Supine twist",
-          "link": "exercises/supine_twist.json",
-          "cues": [],
-          "logType": "stretch"
+          "name": "Low Lunge Stretch",
+          "link": "exercises/low_lunge_stretch.json",
+          "logType": "stretch",
+          "prescription": {
+            "holdSeconds": 45
+          },
+          "notes": "45 sec per side"
         },
         {
           "kind": "exercise",
-          "name": "Pigeon pose or 90/90 hip stretch",
-          "link": "exercises/pigeon_pose_or_90_90_hip_stretch.json",
-          "cues": [
-            "[Calves](../exercises/calves.json)",
-            "[Quads](../exercises/quads.json)",
-            "[Glutes](../exercises/glutes.json)",
-            "[Dynamic Flow](../exercises/dynamic_flow.json):",
-            "[Glute bridge](../exercises/glute_bridge.json) – 10 reps",
-            "[Bodyweight reverse lunge](../exercises/reverse_lunge.json) – 6 reps/leg",
-            "[World's greatest stretch](../exercises/worlds_greatest_stretch.json) – 4 reps/side",
-            "[Standing leg swings](../exercises/standing_leg_swings.json) – 10 reps/leg (forward-back & side-to-side)"
-          ],
-          "logType": "stretch"
+          "name": "Calf Stretch",
+          "link": "exercises/calf_stretch_wall_or_step.json",
+          "logType": "stretch",
+          "prescription": {
+            "holdSeconds": 45
+          },
+          "notes": "45 sec per side"
         },
         {
           "kind": "exercise",
-          "name": "Quad + calf stretch",
-          "link": "exercises/quad_calf_stretch.json",
-          "cues": [
-            "[Glutes](../exercises/glutes.json)",
-            "[Dynamic Flow](../exercises/dynamic_flow.json):",
-            "[Glute bridge](../exercises/glute_bridge.json) – 10 reps",
-            "[Bodyweight reverse lunge](../exercises/reverse_lunge.json) – 6 reps/leg",
-            "[World's greatest stretch](../exercises/worlds_greatest_stretch.json) – 4 reps/side",
-            "[Standing leg swings](../exercises/standing_leg_swings.json) – 10 reps/leg (forward-back & side-to-side)"
-          ],
-          "logType": "stretch"
-        },
-        {
-          "kind": "exercise",
-          "name": "Deep breathing",
-          "link": "exercises/deep_breathing.json",
-          "cues": [
-            "[Glute bridge](../exercises/glute_bridge.json) – 10 reps",
-            "[Bodyweight reverse lunge](../exercises/reverse_lunge.json) – 6 reps/leg",
-            "[World's greatest stretch](../exercises/worlds_greatest_stretch.json) – 4 reps/side",
-            "[Standing leg swings](../exercises/standing_leg_swings.json) – 10 reps/leg (forward-back & side-to-side)"
-          ],
-          "logType": "mobility"
+          "name": "Seated Forward Fold",
+          "link": "exercises/seated_forward_fold.json",
+          "logType": "stretch",
+          "prescription": {
+            "holdSeconds": 60
+          }
         }
       ]
     }

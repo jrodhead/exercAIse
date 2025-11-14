@@ -1,40 +1,77 @@
 {
   "version": "1",
-  "title": "Full-Body Conditioning & Core – Block 2, Week 2 (Friday)",
-  "block": 0,
-  "week": 0,
+  "title": "Full-Body Conditioning & Core",
+  "date": "2025-08-22",
+  "block": 2,
+  "week": 2,
+  "notes": "Circuit format: 3-4 rounds, 60-75s rest between rounds",
   "sections": [
     {
-      "type": "Main Work",
-      "title": "Format: Circuit, 3–4 rounds; Rest 60–75 sec between rounds",
+      "type": "Conditioning",
+      "title": "Circuit (3-4 rounds)",
       "items": [
         {
-          "kind": "exercise",
-          "name": "Dumbbell Thruster (Squat + Press)",
-          "link": "exercises/dumbbell_thruster.json",
-          "cues": [],
-          "logType": "strength"
-        },
-        {
-          "kind": "exercise",
-          "name": "Renegade Row",
-          "link": "exercises/renegade_row.json",
-          "cues": [],
-          "logType": "strength"
-        },
-        {
-          "kind": "exercise",
-          "name": "Step-Up",
-          "link": "exercises/step_up.json",
-          "cues": [],
-          "logType": "strength"
-        },
-        {
-          "kind": "exercise",
-          "name": "Plank Shoulder Tap",
-          "link": "exercises/plank_shoulder_tap.json",
-          "cues": [],
-          "logType": "strength"
+          "kind": "circuit",
+          "name": "Main Circuit",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Dumbbell Thruster (Squat + Press)",
+              "link": "../exercises/dumbbell_thruster.json",
+              "logType": "strength",
+              "prescription": {
+                "reps": "10-12"
+              },
+              "cues": [
+                "Squat deep",
+                "Drive to press",
+                "Core braced"
+              ]
+            },
+            {
+              "kind": "exercise",
+              "name": "Renegade Row",
+              "link": "../exercises/renegade_row.json",
+              "logType": "strength",
+              "prescription": {
+                "reps": "6-8"
+              },
+              "cues": [
+                "Hips square",
+                "Row to ribs",
+                "Slow lower"
+              ],
+              "notes": "Complete all reps on one side, then switch sides (6-8 reps per side)"
+            },
+            {
+              "kind": "exercise",
+              "name": "Step-Up",
+              "link": "../exercises/step_up.json",
+              "logType": "strength",
+              "prescription": {
+                "reps": "10"
+              },
+              "cues": [
+                "Drive through heel",
+                "Control descent",
+                "Tall posture"
+              ],
+              "notes": "Complete all reps on one leg, then switch sides (10 reps per leg)"
+            },
+            {
+              "kind": "exercise",
+              "name": "Plank Shoulder Tap",
+              "link": "../exercises/plank_shoulder_tap.json",
+              "logType": "strength",
+              "prescription": {
+                "reps": "20 taps (10/side)"
+              },
+              "cues": [
+                "Minimize hip sway",
+                "Wide feet if needed"
+              ]
+            }
+          ]
         }
       ]
     },
@@ -45,43 +82,55 @@
         {
           "kind": "exercise",
           "name": "Weighted Deadbug",
-          "link": "exercises/weighted_deadbug.json",
-          "cues": [],
-          "logType": "mobility"
+          "link": "../exercises/weighted_deadbug.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": "12 (6/side)"
+          }
         },
         {
           "kind": "exercise",
           "name": "Hollow Hold",
-          "link": "exercises/hollow_hold.json",
-          "cues": [],
-          "logType": "mobility"
+          "link": "../exercises/hollow_hold.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "holdSeconds": 30
+          }
         }
       ]
     },
     {
       "type": "Cooldown/Recovery",
-      "title": "Cooldown (5–8 min)",
+      "title": "Cooldown",
       "items": [
         {
           "kind": "exercise",
-          "name": "Child’s Pose",
-          "link": "exercises/childs_pose.json",
-          "cues": [],
-          "logType": "stretch"
+          "name": "Child's Pose",
+          "link": "../exercises/childs_pose.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 120
+          }
         },
         {
           "kind": "exercise",
           "name": "Thread the Needle",
-          "link": "exercises/thread_the_needle.json",
-          "cues": [],
-          "logType": "mobility"
+          "link": "../exercises/thread_the_needle.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 60
+          }
         },
         {
           "kind": "exercise",
           "name": "Seated Forward Fold",
-          "link": "exercises/seated_forward_fold.json",
-          "cues": [],
-          "logType": "stretch"
+          "link": "../exercises/seated_forward_fold.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 60
+          }
         }
       ]
     }

@@ -1,53 +1,152 @@
 {
   "version": "1",
-  "title": "Upper Body Strength \u2013 Block 1, Week 4 (Deload)",
+  "title": "Upper Body Strength – Deload",
+  "date": "2025-08-09",
   "block": 1,
   "week": 4,
+  "notes": "Active recovery, reinforce form, reduce fatigue. Lighter loads (50-65% of normal), fewer sets, no failure. Duration: ~30 minutes.",
   "sections": [
     {
       "type": "Strength",
-      "title": "\ud83c\udfcb\ufe0f Main Workout",
-      "items": []
-    },
-    {
-      "type": "Main Work",
-      "title": "1. Dumbbell Bench Press",
-      "items": []
-    },
-    {
-      "type": "Main Work",
-      "title": "2. Neutral-Grip Seated Dumbbell Press",
-      "items": []
-    },
-    {
-      "type": "Conditioning",
-      "title": "3. Chest-Supported Row (Incline Bench)",
-      "items": []
-    },
-    {
-      "type": "Main Work",
-      "title": "4. Incline Landmine Press (Simulated with Dumbbell)",
-      "items": []
+      "title": "Main Workout",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Bench Press",
+          "link": "../exercises/dumbbell_bench_press.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": "6",
+            "weight": "25-30",
+            "restSeconds": 90
+          },
+          "cues": [
+            "Smooth tempo, control the lowering phase"
+          ],
+          "notes": "~60-65% of usual (e.g., 25-30 lb DBs if normal is 40-45)"
+        },
+        {
+          "kind": "exercise",
+          "name": "Neutral-Grip Seated Dumbbell Press",
+          "link": "../exercises/neutral_grip_seated_dumbbell_press.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": "8-10",
+            "weight": "50-60% of normal",
+            "restSeconds": 75
+          },
+          "cues": [
+            "Keep shoulders down, avoid neck strain"
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Chest-Supported Row (Incline Bench)",
+          "link": "../exercises/chest_supported_dumbbell_row.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": "8",
+            "weight": "50-60% of normal",
+            "restSeconds": 75
+          },
+          "cues": [
+            "Squeeze shoulder blades together, pause at top"
+          ]
+        },
+        {
+          "kind": "exercise",
+          "name": "Incline Landmine Press (Simulated with Dumbbell)",
+          "link": "../exercises/incline_landmine_press.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": "8-10",
+            "weight": "light/moderate",
+            "restSeconds": 75
+          },
+          "cues": [
+            "Controlled press at ~45° angle, core engaged"
+          ]
+        }
+      ]
     },
     {
       "type": "Accessory/Core",
-      "title": "\ud83c\udfaf Accessory Core",
-      "items": []
-    },
-    {
-      "type": "Main Work",
-      "title": "5. Pallof Press (Dumbbell or Ruck Plate)",
-      "items": []
-    },
-    {
-      "type": "Main Work",
-      "title": "6. Ruck March Hold",
-      "items": []
+      "title": "Accessory Core",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Pallof Press (Dumbbell or Ruck Plate)",
+          "link": "../exercises/pallof_press.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 1,
+            "reps": "8",
+            "weight": "light",
+            "restSeconds": 45
+          },
+          "cues": [
+            "Resist rotation, smooth arm extension"
+          ],
+          "notes": "Complete all reps on one side, then switch sides (8 reps per side). Light weight, just enough to feel core engagement."
+        },
+        {
+          "kind": "exercise",
+          "name": "Ruck March Hold",
+          "link": "../exercises/ruck_march_hold.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 1,
+            "holdSeconds": 20
+          },
+          "notes": "Balance and posture more than intensity"
+        }
+      ]
     },
     {
       "type": "Cooldown/Recovery",
-      "title": "\ud83e\uddca Cooldown (5 minutes)",
-      "items": []
+      "title": "Cooldown",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Chest Opener Stretch",
+          "link": "../exercises/chest_opener_stretch.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 45
+          }
+        },
+        {
+          "kind": "exercise",
+          "name": "Overhead Triceps Stretch",
+          "link": "../exercises/overhead_triceps_stretch.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 30
+          }
+        },
+        {
+          "kind": "exercise",
+          "name": "Doorway Pec Stretch",
+          "link": "../exercises/doorway_pec_stretch.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 30
+          }
+        },
+        {
+          "kind": "exercise",
+          "name": "Cat-Cow Flow",
+          "link": "../exercises/cat_cow_to_cobra_stretch.json",
+          "logType": "strength",
+          "prescription": {
+            "reps": "4-6 slow reps"
+          }
+        }
+      ]
     }
   ]
 }

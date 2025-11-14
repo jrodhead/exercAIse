@@ -4,20 +4,19 @@
   "date": "2025-08-28",
   "block": 2,
   "week": 3,
-  "notes": "Stay under pain threshold; adjust holds to comfort. Breathe 4-6s in / 6-8s out.",
   "sections": [
     {
       "type": "Warm-up",
-      "title": "Warm-Up",
+      "title": "Warm-up",
       "items": [
         {
           "kind": "exercise",
-          "name": "Child's Pose with Deep Breathing",
-          "link": "../exercises/childs_pose_with_deep_breathing.json",
-          "logType": "mobility",
+          "name": "Child’s Pose with Deep Breathing",
+          "link": "exercises/childs_pose_with_deep_breathing.json",
           "prescription": {
-            "holdSeconds": 180
-          }
+            "timeSeconds": 120
+          },
+          "logType": "stretch"
         }
       ]
     },
@@ -28,47 +27,47 @@
         {
           "kind": "exercise",
           "name": "Thread the Needle",
-          "link": "../exercises/thread_the_needle.json",
-          "logType": "mobility",
+          "link": "exercises/thread_the_needle.json",
           "prescription": {
-            "holdSeconds": 90
-          }
+            "holdSeconds": 60
+          },
+          "logType": "mobility"
         },
         {
           "kind": "exercise",
           "name": "90/90 Hip Stretch",
-          "link": "../exercises/90_90_hip_stretch.json",
-          "logType": "mobility",
+          "link": "exercises/90_90_hip_stretch.json",
           "prescription": {
-            "holdSeconds": 90
-          }
+            "holdSeconds": 60
+          },
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
           "name": "Seated Forward Fold",
-          "link": "../exercises/seated_forward_fold.json",
-          "logType": "mobility",
+          "link": "exercises/seated_forward_fold.json",
           "prescription": {
-            "holdSeconds": 90
-          }
+            "holdSeconds": 60
+          },
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
           "name": "Lying Spinal Twist",
-          "link": "../exercises/lying_spinal_twist.json",
-          "logType": "mobility",
+          "link": "exercises/lying_spinal_twist.json",
           "prescription": {
-            "holdSeconds": 90
-          }
+            "holdSeconds": 60
+          },
+          "logType": "stretch"
         },
         {
           "kind": "exercise",
           "name": "Supported Fish Pose",
-          "link": "../exercises/supported_fish_pose.json",
-          "logType": "mobility",
+          "link": "exercises/supported_fish_pose.json",
           "prescription": {
-            "holdSeconds": 90
-          }
+            "holdSeconds": 60
+          },
+          "logType": "stretch"
         }
       ]
     },
@@ -79,12 +78,11 @@
         {
           "kind": "exercise",
           "name": "Brisk Walk",
-          "link": "../exercises/brisk_walk.json",
-          "logType": "mobility",
+          "link": "exercises/brisk_walk.json",
           "prescription": {
-            "holdSeconds": 300
+            "timeSeconds": 300
           },
-          "notes": "Optional"
+          "logType": "endurance"
         }
       ]
     }

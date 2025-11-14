@@ -1,182 +1,202 @@
 {
   "version": "1",
-  "title": "Lower Body Strength – Block 1, Week 3",
+  "title": "Lower Body Strength",
+  "date": "2025-07-31",
   "block": 1,
   "week": 3,
   "sections": [
     {
-      "type": "Main Work",
-      "title": "Goal",
-      "items": []
-    },
-    {
-      "type": "Main Work",
-      "title": "Day",
-      "items": []
+      "type": "Warm-up",
+      "title": "Warm-Up",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Bodyweight Squat",
+          "link": "exercises/bodyweight_squat.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 12
+          }
+        },
+        {
+          "kind": "exercise",
+          "name": "Glute Bridge",
+          "link": "exercises/glute_bridge.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 2,
+            "reps": 10
+          }
+        },
+        {
+          "kind": "exercise",
+          "name": "World's Greatest Stretch",
+          "link": "exercises/worlds_greatest_stretch.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 1,
+            "reps": "5 per side"
+          }
+        }
+      ]
     },
     {
       "type": "Strength",
-      "title": "🏋️‍♂️ Main Workout (Straight Sets – finish all sets before moving on)",
-      "items": []
-    },
-    {
-      "type": "Main Work",
-      "title": "1. Dumbbell Goblet Squat",
-      "items": []
-    },
-    {
-      "type": "Main Work",
-      "title": "1. [Dumbbell Goblet Squat](../exercises/dumbbell_goblet_squat.json)",
+      "title": "Main Workout",
       "items": [
         {
           "kind": "exercise",
           "name": "Dumbbell Goblet Squat",
           "link": "exercises/dumbbell_goblet_squat.json",
-          "cues": [],
-          "logType": "strength"
-        }
-      ]
-    },
-    {
-      "type": "Main Work",
-      "title": "2. Dumbbell Romanian Deadlift",
-      "items": []
-    },
-    {
-      "type": "Main Work",
-      "title": "2. [Dumbbell Romanian Deadlift](../exercises/dumbbell_romanian_deadlift.json)",
-      "items": [
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": "10-12",
+            "weight": "40-55",
+            "restSeconds": 90
+          },
+          "cues": [
+            "Chest upright",
+            "Core braced",
+            "Drive through heels"
+          ]
+        },
         {
           "kind": "exercise",
           "name": "Dumbbell Romanian Deadlift",
           "link": "exercises/dumbbell_romanian_deadlift.json",
-          "cues": [],
-          "logType": "strength"
-        }
-      ]
-    },
-    {
-      "type": "Main Work",
-      "title": "3. Reverse Lunge (Alternating)",
-      "items": []
-    },
-    {
-      "type": "Main Work",
-      "title": "3. [Reverse Lunge (Alternating)](../exercises/reverse_lunge_alternating.json)",
-      "items": [
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": "10-12",
+            "weight": "35-50 x2",
+            "restSeconds": 90
+          },
+          "cues": [
+            "Pause, then drive hips forward",
+            "Keep dumbbells close to legs"
+          ]
+        },
         {
           "kind": "exercise",
           "name": "Reverse Lunge (Alternating)",
           "link": "exercises/reverse_lunge_alternating.json",
-          "cues": [],
-          "logType": "strength"
-        }
-      ]
-    },
-    {
-      "type": "Conditioning",
-      "title": "4. Ruck Deadlift to Row",
-      "items": []
-    },
-    {
-      "type": "Conditioning",
-      "title": "4. [Ruck Deadlift to Row](../exercises/ruck_deadlift_to_row.json)",
-      "items": [
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": "10-12 per leg",
+            "weight": "25-35 x2",
+            "restSeconds": 75
+          },
+          "notes": "Alternate legs each rep",
+          "cues": [
+            "Control movement",
+            "Avoid leaning forward"
+          ]
+        },
         {
           "kind": "exercise",
           "name": "Ruck Deadlift to Row",
           "link": "exercises/ruck_deadlift_to_row.json",
-          "cues": [],
-          "logType": "strength"
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": "10-12",
+            "weight": "30",
+            "restSeconds": 75
+          },
+          "notes": "30 lb ruck plate",
+          "cues": [
+            "Brace core",
+            "Avoid rounding back",
+            "Link deadlift + row smoothly"
+          ]
         }
       ]
     },
     {
       "type": "Accessory/Core",
-      "title": "🎯 Accessory Core & Stability",
-      "items": []
-    },
-    {
-      "type": "Main Work",
-      "title": "5. Seated Leg Extension with Ruck",
-      "items": []
-    },
-    {
-      "type": "Main Work",
-      "title": "5. [Seated Leg Extension with Ruck](../exercises/seated_leg_extension_with_ruck.json)",
+      "title": "Accessory Core & Stability",
       "items": [
         {
           "kind": "exercise",
           "name": "Seated Leg Extension with Ruck",
           "link": "exercises/seated_leg_extension_with_ruck.json",
-          "cues": [],
-          "logType": "strength"
-        }
-      ]
-    },
-    {
-      "type": "Main Work",
-      "title": "6. Hollow Hold",
-      "items": []
-    },
-    {
-      "type": "Main Work",
-      "title": "6. [Hollow Hold](../exercises/hollow_hold.json)",
-      "items": [
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": "12-15 each leg",
+            "weight": "20-30",
+            "restSeconds": 60
+          },
+          "notes": "Ruck plate on shin",
+          "cues": [
+            "Lower slowly",
+            "Keep torso upright"
+          ]
+        },
         {
           "kind": "exercise",
           "name": "Hollow Hold",
           "link": "exercises/hollow_hold.json",
-          "cues": [],
-          "logType": "mobility"
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "holdSeconds": 30,
+            "restSeconds": 45
+          },
+          "cues": [
+            "Core tight",
+            "Steady breathing"
+          ]
         }
       ]
     },
     {
       "type": "Cooldown/Recovery",
-      "title": "🧊 Cooldown (5–7 minutes)",
+      "title": "Cooldown",
       "items": [
         {
           "kind": "exercise",
           "name": "Supine Twist",
           "link": "exercises/supine_twist.json",
-          "cues": [],
-          "logType": "stretch"
+          "logType": "stretch",
+          "prescription": {
+            "holdSeconds": 60
+          },
+          "notes": "60 sec per side"
         },
         {
           "kind": "exercise",
           "name": "Low Lunge Stretch",
           "link": "exercises/low_lunge_stretch.json",
-          "cues": [],
-          "logType": "stretch"
+          "logType": "stretch",
+          "prescription": {
+            "holdSeconds": 45
+          },
+          "notes": "45 sec per side"
         },
         {
           "kind": "exercise",
-          "name": "Calf Stretch (wall or step)",
+          "name": "Calf Stretch",
           "link": "exercises/calf_stretch_wall_or_step.json",
-          "cues": [
-            "**Rest:** 90 sec",
-            "**Suggested Weight:** 40–55 lb dumbbell or ruck plate",
-            "Keep chest upright, core braced",
-            "Drive through heels to return to standing"
-          ],
-          "logType": "stretch"
+          "logType": "stretch",
+          "prescription": {
+            "holdSeconds": 45
+          },
+          "notes": "45 sec per side"
         },
         {
           "kind": "exercise",
           "name": "Seated Forward Fold",
           "link": "exercises/seated_forward_fold.json",
-          "cues": [
-            "Drive through heels to return to standing"
-          ],
-          "logType": "stretch"
+          "logType": "stretch",
+          "prescription": {
+            "holdSeconds": 60
+          }
         }
       ]
-    },
-    {
-      "type": "Main Work",
-      "title": "✅ Notes",
-      "items": []
     }
   ]
 }

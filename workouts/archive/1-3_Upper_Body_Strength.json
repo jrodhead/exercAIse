@@ -1,0 +1,91 @@
+{
+  "version": "1",
+  "title": "Upper Body Strength – Block 1, Week 3",
+  "block": 1,
+  "week": 3,
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "🏋️‍♂️ Main Workout",
+      "items": []
+    },
+    {
+      "type": "Main Work",
+      "title": "1. [Flat Dumbbell Bench Press](../exercises/flat_dumbbell_bench_press.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Flat Dumbbell Bench Press",
+          "link": "exercises/flat_dumbbell_bench_press.json",
+          "cues": [],
+          "logType": "strength"
+        }
+      ]
+    },
+    {
+      "type": "Conditioning",
+      "title": "2. [Chest-Supported Dumbbell Row](../exercises/chest_supported_dumbbell_row.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Chest-Supported Dumbbell Row",
+          "link": "exercises/chest_supported_dumbbell_row.json",
+          "cues": [],
+          "logType": "strength"
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "3. [Incline Landmine Press (Simulated with Dumbbell)](../exercises/incline_landmine_press.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Incline Landmine Press (Simulated with Dumbbell)",
+          "link": "exercises/incline_landmine_press.json",
+          "cues": [],
+          "logType": "strength"
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "4. [Alternating or Supinated Dumbbell Biceps Curl](../exercises/alternating_dumbbell_biceps_curl.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Alternating or Supinated Dumbbell Biceps Curl",
+          "link": "exercises/alternating_dumbbell_biceps_curl.json",
+          "cues": [],
+          "logType": "strength"
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "5. [Overhead Triceps Extension (Single DB or Ruck Plate)](../exercises/overhead_triceps_extension.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Overhead Triceps Extension (Single DB or Ruck Plate)",
+          "link": "exercises/overhead_triceps_extension.json",
+          "cues": [],
+          "logType": "strength"
+        }
+      ]
+    },
+    {
+      "type": "Main Work",
+      "title": "6. [Pallof Press (with Ruck or Dumbbell)](../exercises/pallof_press.json)",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Pallof Press (with Ruck or Dumbbell)",
+          "link": "exercises/pallof_press.json",
+          "cues": [],
+          "logType": "strength"
+        }
+      ]
+    }
+  ]
+}

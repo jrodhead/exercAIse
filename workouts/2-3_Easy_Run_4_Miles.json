@@ -1,67 +1,89 @@
 {
   "version": "1",
-  "title": "Easy Run – 4 Miles (Block 2, Week 3, Tuesday)",
-  "block": 0,
-  "week": 0,
+  "title": "Easy Run – 4 Miles",
+  "date": "2025-08-26",
+  "block": 2,
+  "week": 3,
+  "notes": "Soft surface if possible, cadence ~170-180, relaxed shoulders, pain-free pacing",
   "sections": [
     {
       "type": "Warm-up",
-      "title": "Warm-up",
+      "title": "Warm-Up",
       "items": [
         {
           "kind": "exercise",
           "name": "Brisk Walk",
-          "link": "exercises/brisk_walk.json",
-          "cues": [],
-          "logType": "endurance"
+          "link": "../exercises/brisk_walk.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 600
+          }
         },
         {
           "kind": "exercise",
           "name": "Leg Swings",
-          "link": "exercises/leg_swings.json",
-          "cues": [],
-          "logType": "mobility"
+          "link": "../exercises/leg_swings.json",
+          "logType": "strength",
+          "prescription": {
+            "reps": "10-15 per direction/leg"
+          }
         }
       ]
     },
     {
       "type": "Conditioning",
-      "title": "Conditioning (Main Work)",
-      "items": []
+      "title": "Main",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Easy Run",
+          "link": "../exercises/easy_jog.json",
+          "logType": "endurance",
+          "prescription": {
+            "distanceMiles": 4.0,
+            "rpe": 5.0
+          },
+          "notes": "Conversational pace"
+        }
+      ]
     },
     {
       "type": "Accessory/Core",
-      "title": "Accessory/Core",
+      "title": "Strides (Optional)",
       "items": [
         {
           "kind": "exercise",
           "name": "Strides",
-          "link": "exercises/strides.json",
-          "cues": [],
-          "logType": "mobility"
+          "link": "../exercises/strides.json",
+          "logType": "mobility",
+          "prescription": {
+            "sets": 4,
+            "holdSeconds": 20
+          }
         }
       ]
     },
     {
       "type": "Cooldown/Recovery",
-      "title": "Cooldown/Recovery",
+      "title": "Cooldown",
       "items": [
         {
           "kind": "exercise",
           "name": "Brisk Walk",
-          "link": "exercises/brisk_walk.json",
-          "cues": [],
-          "logType": "endurance"
+          "link": "../exercises/brisk_walk.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 600
+          }
         },
         {
           "kind": "exercise",
           "name": "Calf Stretch",
-          "link": "exercises/calf_stretch.json",
-          "cues": [
-            "[Brisk Walk](../exercises/brisk_walk.json): 5–10 min",
-            "[Leg Swings](../exercises/leg_swings.json): 10–15 per direction/leg"
-          ],
-          "logType": "stretch"
+          "link": "../exercises/calf_stretch.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 45
+          }
         }
       ]
     }

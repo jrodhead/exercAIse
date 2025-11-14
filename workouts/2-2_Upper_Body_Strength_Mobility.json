@@ -1,140 +1,159 @@
 {
   "version": "1",
-  "title": "Upper Body Strength & Mobility – Block 2, Week 2",
-  "block": 0,
-  "week": 0,
+  "title": "Upper Body Strength & Mobility",
+  "date": "2025-08-18",
+  "block": 2,
+  "week": 2,
   "sections": [
     {
       "type": "Warm-up",
-      "title": "Warm-Up (5–7 min)",
+      "title": "Warm-Up",
       "items": [
         {
           "kind": "exercise",
           "name": "Arm Circles",
-          "link": "exercises/arm_circles.json",
-          "cues": [],
-          "logType": "mobility"
+          "link": "../exercises/arm_circles.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 30
+          }
         },
         {
           "kind": "exercise",
           "name": "Band Pull-Aparts",
-          "link": "exercises/band_pull_aparts.json",
-          "cues": [
-            "[Arm Circles](../exercises/arm_circles.json): 30 sec each direction",
-            "[Band Pull-Aparts](../exercises/band_pull_aparts.json): 2 x 12",
-            "[Cat-Cow to Cobra Stretch](../exercises/cat_cow_to_cobra_stretch.json): 5 reps each"
-          ],
-          "logType": "mobility"
+          "link": "../exercises/band_pull_aparts.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 2,
+            "reps": "12"
+          }
         },
         {
           "kind": "exercise",
           "name": "Cat-Cow to Cobra Stretch",
-          "link": "exercises/cat_cow_to_cobra_stretch.json",
-          "cues": [
-            "[Band Pull-Aparts](../exercises/band_pull_aparts.json): 2 x 12",
-            "[Cat-Cow to Cobra Stretch](../exercises/cat_cow_to_cobra_stretch.json): 5 reps each"
-          ],
-          "logType": "mobility"
+          "link": "../exercises/cat_cow_to_cobra_stretch.json",
+          "logType": "strength",
+          "prescription": {
+            "reps": "5 each"
+          }
         }
       ]
     },
     {
       "type": "Strength",
       "title": "Main Sets",
-      "items": []
-    },
-    {
-      "type": "Main Work",
-      "title": "1) [Neutral-Grip Flat Bench Press (Dumbbells)](../exercises/neutral_grip_flat_bench_press.json)",
       "items": [
         {
           "kind": "exercise",
           "name": "Neutral-Grip Flat Bench Press (Dumbbells)",
-          "link": "exercises/neutral_grip_flat_bench_press.json",
-          "cues": [],
-          "logType": "strength"
-        }
-      ]
-    },
-    {
-      "type": "Conditioning",
-      "title": "2) [One-Arm Dumbbell Row (Bench Supported)](../exercises/one_arm_dumbbell_row.json)",
-      "items": [
+          "link": "../exercises/neutral_grip_flat_bench_press.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 4,
+            "reps": "6-8",
+            "restSeconds": 90
+          },
+          "cues": [
+            "Elbows ~45°",
+            "Pause at chest",
+            "Core braced"
+          ]
+        },
         {
           "kind": "exercise",
           "name": "One-Arm Dumbbell Row (Bench Supported)",
-          "link": "exercises/one_arm_dumbbell_row.json",
-          "cues": [],
-          "logType": "strength"
-        }
-      ]
-    },
-    {
-      "type": "Main Work",
-      "title": "3) [Seated Arnold Press](../exercises/seated_arnold_press.json)",
-      "items": [
+          "link": "../exercises/one_arm_dumbbell_row.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 4,
+            "reps": "8-10",
+            "restSeconds": 75
+          },
+          "cues": [
+            "Row to hip",
+            "Hips square",
+            "Slow lower"
+          ],
+          "notes": "Complete all reps on one side, then switch sides (8-10 reps per side)"
+        },
         {
           "kind": "exercise",
           "name": "Seated Arnold Press",
-          "link": "exercises/seated_arnold_press.json",
-          "cues": [],
-          "logType": "strength"
-        }
-      ]
-    },
-    {
-      "type": "Main Work",
-      "title": "4) [Biceps Curl (Alternating Dumbbells)](../exercises/biceps_curl.json)",
-      "items": [
+          "link": "../exercises/seated_arnold_press.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": "8-10",
+            "restSeconds": 75
+          },
+          "cues": [
+            "Rotate palms through press",
+            "Back on bench"
+          ]
+        },
         {
           "kind": "exercise",
           "name": "Biceps Curl (Alternating Dumbbells)",
-          "link": "exercises/biceps_curl.json",
-          "cues": [],
-          "logType": "strength"
-        }
-      ]
-    },
-    {
-      "type": "Main Work",
-      "title": "5) [Overhead Dumbbell Triceps Extension (Two Hands)](../exercises/overhead_dumbbell_triceps_extension.json)",
-      "items": [
+          "link": "../exercises/alternating_dumbbell_biceps_curl.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": "10-12",
+            "restSeconds": 60
+          },
+          "cues": [
+            "Elbows close",
+            "Avoid swinging"
+          ]
+        },
         {
           "kind": "exercise",
           "name": "Overhead Dumbbell Triceps Extension (Two Hands)",
-          "link": "exercises/overhead_dumbbell_triceps_extension.json",
-          "cues": [],
-          "logType": "strength"
+          "link": "../exercises/overhead_dumbbell_triceps_extension.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": "10-12",
+            "restSeconds": 60
+          },
+          "cues": [
+            "Elbows close",
+            "Full stretch",
+            "Control"
+          ]
         }
       ]
     },
     {
       "type": "Cooldown/Recovery",
-      "title": "Cooldown (5–8 min)",
+      "title": "Cooldown",
       "items": [
         {
           "kind": "exercise",
-          "name": "Child’s Pose",
-          "link": "exercises/childs_pose.json",
-          "cues": [],
-          "logType": "stretch"
+          "name": "Child's Pose",
+          "link": "../exercises/childs_pose.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 120
+          }
         },
         {
           "kind": "exercise",
           "name": "Thread the Needle",
-          "link": "exercises/thread_the_needle.json",
-          "cues": [],
-          "logType": "mobility"
+          "link": "../exercises/thread_the_needle.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 60
+          }
         },
         {
           "kind": "exercise",
           "name": "Seated Forward Fold",
-          "link": "exercises/seated_forward_fold.json",
-          "cues": [
-            "[Band Pull-Aparts](../exercises/band_pull_aparts.json): 2 x 12",
-            "[Cat-Cow to Cobra Stretch](../exercises/cat_cow_to_cobra_stretch.json): 5 reps each"
-          ],
-          "logType": "stretch"
+          "link": "../exercises/seated_forward_fold.json",
+          "logType": "mobility",
+          "prescription": {
+            "holdSeconds": 60
+          }
         }
       ]
     }
