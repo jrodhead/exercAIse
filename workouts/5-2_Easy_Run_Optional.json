@@ -4,7 +4,7 @@
   "date": "2025-11-16",
   "block": 5,
   "week": 2,
-  "notes": "Block 5 Week 2: Optional active recovery run for Saturday. Keep truly easy (RPE 5, conversational pace). Skip if fatigued from the week's training or prioritize rest. 2-3 miles at easy pace.",
+  "notes": "Block 5 Week 2: Optional active recovery run for Saturday. Keep truly easy (RPE 5, conversational pace). Skip if fatigued from the week's training or prioritize rest. 2-3 miles at easy pace. Estimated working time: ~25 minutes (warm-up/cooldown adds ~17 minutes).",
   "sections": [
     {
       "type": "Warm-up",
@@ -55,7 +55,8 @@
           "logType": "endurance",
           "prescription": {
             "distanceMiles": 2.5,
-            "rpe": 5
+            "rpe": 5,
+            "estimatedSetSeconds": 1500
           },
           "notes": "Conversational pace. 2-3 miles at RPE 5. Keep it truly easy - this is active recovery, not training stress. Listen to your body after the week's strength training."
         }

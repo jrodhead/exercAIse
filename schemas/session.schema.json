@@ -74,7 +74,8 @@
         "distanceMeters": { "type": "number", "minimum": 0 },
         "distanceMiles": { "type": "number", "minimum": 0 },
         "tempo": { "type": "string" },
-        "restSeconds": { "type": "integer", "minimum": 0 }
+        "restSeconds": { "type": "integer", "minimum": 0 },
+        "estimatedSetSeconds": { "type": "number", "minimum": 0 }
       }
     }
   }

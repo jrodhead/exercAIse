@@ -4,7 +4,7 @@
   "date": "2025-11-13",
   "block": 5,
   "week": 2,
-  "notes": "Block 5 Week 2: Progressive overload from Week 1. Hip thrust stable at 60 lb (RPE 7), add reps. Goblet squat 60 lb good for 10,10,8 - target 12,10,10. RDL at 60×2 (RPE 8) - maintain or add reps. Split squat 40×2 solid. Added single-leg calf raise during cooldown for additional calf volume. Estimated time: 32 minutes (working sets + rest, excludes warm-up/cooldown).",
+  "notes": "Block 5 Week 2: Progressive overload from Week 1. Hip thrust stable at 60 lb (RPE 7), add reps. Goblet squat 60 lb good for 10,10,8 - target 12,10,10. RDL at 60×2 (RPE 8) - maintain or add reps. Split squat 40×2 solid. Superset C trimmed to 2 rounds to keep session under 40 minutes; Pallof hold still delivers anti-rotation volume. Added single-leg calf raise during cooldown for additional calf volume. Estimated time: 33 minutes (working sets + rest, excludes warm-up/cooldown).",
   "sections": [
     {
       "type": "Warm-up",
@@ -92,7 +92,7 @@
               "name": "Standing Calf Raise",
               "link": "exercises/standing_calf_raise.json",
               "logType": "strength",
-              "prescription": { "sets": 3, "reps": "12-15", "weight": "30 x2", "rpe": 7 },
+              "prescription": { "sets": 2, "reps": "12-15", "weight": "30 x2", "rpe": 7, "estimatedSetSeconds": 70 },
               "cues": ["Full range", "Pause at top", "Control descent"],
               "notes": "Week 1: 12,12,12 @ 30×2, RPE 7. Week 2: Target 15,12,12 OR add load."
             },
@@ -101,8 +101,8 @@
               "name": "Pallof Press Hold",
               "link": "exercises/pallof_press.json",
               "logType": "strength",
-              "prescription": { "sets": 3, "reps": "6-8 each side", "holdSeconds": 25, "restSeconds": 60, "rpe": 7 },
-              "notes": "Week 1: 6,6 each side @ RPE 7 (only 2 rounds logged). Week 2: Complete 3 rounds, 6-8 per side.",
+              "prescription": { "sets": 2, "reps": "6-8 each side", "holdSeconds": 25, "restSeconds": 60, "rpe": 7, "estimatedSetSeconds": 320 },
+                "notes": "Week 1: 6,6 each side @ RPE 7 (only 2 rounds logged). Week 2: Complete 2 controlled rounds (25s holds) to stay within 40-minute session cap.",
               "cues": ["Resist rotation", "Breathe steady", "Ribs down"]
             }
           ]
@@ -113,7 +113,7 @@
       "type": "Cooldown/Recovery",
       "title": "Cooldown & Stretch",
       "items": [
-        { "kind": "exercise", "name": "Single-Leg Calf Raise", "link": "exercises/single_leg_calf_raise.json", "logType": "strength", "prescription": { "sets": 2, "reps": "12-15 per leg", "restSeconds": 45, "rpe": 7 }, "notes": "Week 2 addition: Unilateral calf work for balance + volume. Bodyweight or hold light DB for stability." },
+        { "kind": "exercise", "name": "Single-Leg Calf Raise", "link": "exercises/single_leg_calf_raise.json", "logType": "strength", "prescription": { "sets": 2, "reps": "12-15 per leg", "restSeconds": 45, "rpe": 7, "estimatedSetSeconds": 90 }, "notes": "Week 2 addition: Unilateral calf work for balance + volume. Bodyweight or hold light DB for stability." },
         { "kind": "exercise", "name": "Hip Flexor Stretch", "link": "exercises/hip_flexor_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "Hold 60s per side" },
         { "kind": "exercise", "name": "Seated Hamstring Stretch", "link": "exercises/seated_hamstring_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "Hold 60s per leg" },
         { "kind": "exercise", "name": "Figure-4 Glute Stretch", "link": "exercises/figure_4_glute_stretch.json", "logType": "stretch", "prescription": { "holdSeconds": 60 }, "notes": "Hold 60s per side" },

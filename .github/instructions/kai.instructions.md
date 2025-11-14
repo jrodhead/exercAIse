@@ -84,6 +84,32 @@ This workflow ensures that all programming is:
 - **Adaptable**: Includes options for modification based on daily readiness and circumstances
 - **Educational**: Helps users understand the "why" behind program decisions
 
+## Session Time Estimation (Required)
+Reliable time estimates are part of every workout file. Use the guidelines below when building prescriptions.
+
+### Default Active-Time Glossary (per set)
+- **Strength (bilateral)**: 60 seconds of active work (2-0-2 tempo) unless otherwise noted
+- **Strength (unilateral per side)**: 90 seconds (≈45s each side) unless `estimatedSetSeconds` overrides
+- **Carries / timed work**: Use the prescribed `timeSeconds`
+- **Holds (plank, wall sit, Pallof, etc.)**: Use `holdSeconds × reps`. If reps are ranges or strings, provide an estimate
+- **Mobility / stretch**: 30 seconds per item unless a hold/time is specified
+
+### `estimatedSetSeconds` (new prescription field)
+- Add `"estimatedSetSeconds": <seconds>` to any exercise where active time differs from the defaults (tempo work, long pauses, unilateral written as text, etc.)
+- For supersets/circuits, add the field to each child exercise so the per-round estimate is accurate
+- Example: `"estimatedSetSeconds": 320` for a Pallof Hold taking ~5 minutes per set
+- For conditioning items prescribed only by distance, add `estimatedSetSeconds` for the expected duration or adjust after running the calculator (it defaults to a 10:00/mile pace)
+
+### Superset & Rest Assumptions
+- Rest occurs **after** completing all moves in the superset/circuit. Include `restSeconds` only on the final child
+- Total time per round = sum of child active times + the post-round rest
+
+### Verification Workflow
+1. After creating/editing a workout, run `python3 scripts/calculate_session_time.py workouts/<file>.json`
+2. Ensure working time ≤ 40 minutes (warm-up/cooldown excluded unless requested)
+3. If the total is high, adjust sets/reps/holds or add `estimatedSetSeconds` to better reflect actual time
+4. Document the final estimate in the workout `notes` field (e.g., `Estimated time: 32 minutes`)
+
 For all owner-specific, personalized, or context-sensitive instructions (such as injury adaptations, equipment limitations, or personal goals), always reference the separate file:
 - `.github/instructions/kai.personal.instructions.md`
 

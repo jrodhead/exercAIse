@@ -94,6 +94,7 @@ Read performance logs (`performed/*_perf2.json`) and identify:
     - Supersets: include `restSeconds` ONLY on the LAST exercise in the superset (rest occurs after completing all exercises in the round). Add a `notes` field to the superset item explaining execution (e.g., "Perform both exercises back-to-back, then rest 90s before next round").
     - Circuits (3+ moves): do NOT include `restSeconds` on the child exercises. Instead, state round-rest clearly in the section or circuit notes (e.g., "Rest 60–90s between rounds; move briskly between stations").
     - Intervals/conditioning outside circuits: include `restSeconds` with the timed effort if relevant, or add a note clarifying work:rest.
+  - For any prescription where active work differs from defaults (tempo work, unilateral written as text, long holds), add `"estimatedSetSeconds": <seconds>` inside the `prescription` to keep time estimates accurate.
 - Begin each workout with a warm-up (mobility/activation).
 - For strength: include a finisher or accessory work if applicable.
 - For conditioning: include a main circuit with intervals or timed sets.
@@ -197,6 +198,7 @@ These notes display inline with the exercise name and prescription in the UI, es
   - No `metadata` wrapper - all fields go at top level
   - Required top-level fields: `version`, `title`, `block`, `week`, `sections`
   - Optional top-level fields: `date`, `notes`
+- After saving workouts, run `python3 scripts/calculate_session_time.py workouts/<file>.json` and record the estimated working time in the `notes` field.
 
 ## Output Format
 **For single sessions:**
