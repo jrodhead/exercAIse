@@ -1,0 +1,273 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/5-2_Chest_Shoulders_Volume.json",
+  "timestamp": "2025-11-14T13:26:04.772Z",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "Primary Shoulders - Overhead Press",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Seated Dumbbell Overhead Press",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 8,
+              "rpe": 8
+            },
+            {
+              "set": 3,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 7,
+              "rpe": 8
+            }
+          ],
+          "notes": "Week 2 baseline: 30×2 for 3 sets × 10-12 @ RPE 7-8. Shoulders + upper chest emphasis."
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Shoulder Volume - Superset A",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset A",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "dumbbell-lateral-raise",
+                  "name": "Dumbbell Lateral Raise",
+                  "weight": 12,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 6
+                },
+                {
+                  "key": "standing-calf-raise",
+                  "name": "Standing Calf Raise",
+                  "weight": 30,
+                  "multiplier": 2,
+                  "reps": 15,
+                  "rpe": 6
+                }
+              ],
+              "prescribedRestSeconds": 60
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "dumbbell-lateral-raise",
+                  "name": "Dumbbell Lateral Raise",
+                  "weight": 15,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 7
+                },
+                {
+                  "key": "standing-calf-raise",
+                  "name": "Standing Calf Raise",
+                  "weight": 30,
+                  "multiplier": 2,
+                  "reps": 15,
+                  "rpe": 6
+                }
+              ],
+              "prescribedRestSeconds": 60
+            },
+            {
+              "round": 3,
+              "exercises": [
+                {
+                  "key": "dumbbell-lateral-raise",
+                  "name": "Dumbbell Lateral Raise",
+                  "weight": 10,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 7
+                },
+                {
+                  "key": "standing-calf-raise",
+                  "name": "Standing Calf Raise",
+                  "weight": 30,
+                  "multiplier": 2,
+                  "reps": 15,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 60
+            }
+          ],
+          "notes": "Perform both exercises back-to-back, then rest 60s before next round"
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Chest Volume - Superset B",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset B",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "dumbbell-flyes",
+                  "name": "Dumbbell Flyes",
+                  "weight": 20,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 60
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "dumbbell-flyes",
+                  "name": "Dumbbell Flyes",
+                  "weight": 20,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 60
+            },
+            {
+              "round": 3,
+              "exercises": [
+                {
+                  "key": "dumbbell-flyes",
+                  "name": "Dumbbell Flyes",
+                  "weight": 20,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 8
+                }
+              ],
+              "prescribedRestSeconds": 60
+            }
+          ],
+          "notes": "Perform both exercises back-to-back, then rest 60s before next round"
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Rear Delt & Core",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Dumbbell Rear Delt Fly",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 10,
+              "multiplier": 2,
+              "reps": 15,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "weight": 10,
+              "multiplier": 2,
+              "reps": 15,
+              "rpe": 7
+            }
+          ],
+          "notes": "Week 2 baseline: 10×2 for 15-20 reps, RPE 7. Posterior shoulder health."
+        },
+        {
+          "kind": "exercise",
+          "name": "Plank",
+          "sets": [
+            {
+              "set": 1,
+              "holdSeconds": 60,
+              "rpe": 6
+            },
+            {
+              "set": 2,
+              "holdSeconds": 60,
+              "rpe": 6
+            }
+          ],
+          "notes": "Week 2 baseline: 2 × 60s @ RPE 7. Core stability after volume work."
+        }
+      ]
+    }
+  ],
+  "date": "2025-11-14",
+  "block": 5,
+  "week": 2,
+  "title": "Chest & Shoulders - Volume Emphasis",
+  "exerciseIndex": {
+    "seated-dumbbell-overhead-press": {
+      "name": "Seated Dumbbell Overhead Press",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 7.666666666666667,
+      "totalVolume": 1500
+    },
+    "dumbbell-lateral-raise": {
+      "name": "Dumbbell Lateral Raise",
+      "sectionPath": "sections[1].items[0].rounds[*].exercises[0]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 6.666666666666667,
+      "totalVolume": 840
+    },
+    "standing-calf-raise": {
+      "name": "Standing Calf Raise",
+      "sectionPath": "sections[1].items[0].rounds[*].exercises[1]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 6.333333333333333,
+      "totalVolume": 2700
+    },
+    "dumbbell-flyes": {
+      "name": "Dumbbell Flyes",
+      "sectionPath": "sections[2].items[0].rounds[*].exercises[0]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 7.333333333333333,
+      "totalVolume": 1440
+    },
+    "dumbbell-rear-delt-fly": {
+      "name": "Dumbbell Rear Delt Fly",
+      "sectionPath": "sections[3].items[0].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 7,
+      "totalVolume": 600
+    },
+    "plank": {
+      "name": "Plank",
+      "sectionPath": "sections[3].items[1].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 6,
+      "totalVolume": 0
+    }
+  }
+}
