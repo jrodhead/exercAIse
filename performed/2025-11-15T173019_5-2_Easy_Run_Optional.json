@@ -1,0 +1,40 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/5-2_Easy_Run_Optional.json",
+  "timestamp": "2025-11-15T17:30:06.909Z",
+  "sections": [
+    {
+      "type": "Conditioning",
+      "title": "Easy Run",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Easy Jog",
+          "sets": [
+            {
+              "set": 1,
+              "distanceMiles": 4,
+              "timeSeconds": 2150,
+              "rpe": 5
+            }
+          ],
+          "notes": "Conversational pace. 2-3 miles at RPE 5. Keep it truly easy - this is active recovery, not training stress. Listen to your body after the week's strength training."
+        }
+      ]
+    }
+  ],
+  "date": "2025-11-15",
+  "block": 5,
+  "week": 2,
+  "title": "Optional Easy Run",
+  "exerciseIndex": {
+    "easy-jog": {
+      "name": "Easy Jog",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 1,
+      "totalRounds": 0,
+      "avgRPE": 5,
+      "totalVolume": 0
+    }
+  }
+}
