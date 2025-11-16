@@ -13,7 +13,7 @@
         {
           "kind": "exercise",
           "name": "Dumbbell Bench Press",
-          "link": "../exercises/dumbbell_bench_press.json",
+          "link": "exercises/dumbbell_bench_press.json",
           "logType": "strength",
           "prescription": {
             "sets": 2,
@@ -29,7 +29,7 @@
         {
           "kind": "exercise",
           "name": "Neutral-Grip Seated Dumbbell Press",
-          "link": "../exercises/neutral_grip_seated_dumbbell_press.json",
+          "link": "exercises/neutral_grip_seated_dumbbell_press.json",
           "logType": "strength",
           "prescription": {
             "sets": 2,
@@ -44,7 +44,7 @@
         {
           "kind": "exercise",
           "name": "Chest-Supported Row (Incline Bench)",
-          "link": "../exercises/chest_supported_dumbbell_row.json",
+          "link": "exercises/chest_supported_dumbbell_row.json",
           "logType": "strength",
           "prescription": {
             "sets": 2,
@@ -59,7 +59,7 @@
         {
           "kind": "exercise",
           "name": "Incline Landmine Press (Simulated with Dumbbell)",
-          "link": "../exercises/incline_landmine_press.json",
+          "link": "exercises/incline_landmine_press.json",
           "logType": "strength",
           "prescription": {
             "sets": 2,
@@ -80,7 +80,7 @@
         {
           "kind": "exercise",
           "name": "Pallof Press (Dumbbell or Ruck Plate)",
-          "link": "../exercises/pallof_press.json",
+          "link": "exercises/pallof_press.json",
           "logType": "strength",
           "prescription": {
             "sets": 1,
@@ -96,7 +96,7 @@
         {
           "kind": "exercise",
           "name": "Ruck March Hold",
-          "link": "../exercises/ruck_march_hold.json",
+          "link": "exercises/ruck_march_hold.json",
           "logType": "mobility",
           "prescription": {
             "sets": 1,
@@ -113,7 +113,7 @@
         {
           "kind": "exercise",
           "name": "Chest Opener Stretch",
-          "link": "../exercises/chest_opener_stretch.json",
+          "link": "exercises/chest_opener_stretch.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 45
@@ -122,7 +122,7 @@
         {
           "kind": "exercise",
           "name": "Overhead Triceps Stretch",
-          "link": "../exercises/overhead_triceps_stretch.json",
+          "link": "exercises/overhead_triceps_stretch.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 30
@@ -131,7 +131,7 @@
         {
           "kind": "exercise",
           "name": "Doorway Pec Stretch",
-          "link": "../exercises/doorway_pec_stretch.json",
+          "link": "exercises/doorway_pec_stretch.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 30
@@ -140,7 +140,7 @@
         {
           "kind": "exercise",
           "name": "Cat-Cow Flow",
-          "link": "../exercises/cat_cow_to_cobra_stretch.json",
+          "link": "exercises/cat_cow_to_cobra_stretch.json",
           "logType": "strength",
           "prescription": {
             "reps": "4-6 slow reps"

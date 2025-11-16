@@ -17,7 +17,7 @@
             {
               "kind": "exercise",
               "name": "Dumbbell Thruster (Squat + Press)",
-              "link": "../exercises/dumbbell_thruster.json",
+              "link": "exercises/dumbbell_thruster.json",
               "logType": "strength",
               "prescription": {
                 "reps": "10-12",
@@ -33,7 +33,7 @@
             {
               "kind": "exercise",
               "name": "Renegade Row (Hands on Dumbbells or Floor)",
-              "link": "../exercises/renegade_row.json",
+              "link": "exercises/renegade_row.json",
               "logType": "strength",
               "prescription": {
                 "reps": "6-8",
@@ -50,7 +50,7 @@
             {
               "kind": "exercise",
               "name": "Step-Up (Onto Bench or Sturdy Surface)",
-              "link": "../exercises/step_up.json",
+              "link": "exercises/step_up.json",
               "logType": "strength",
               "prescription": {
                 "reps": "10",
@@ -67,7 +67,7 @@
             {
               "kind": "exercise",
               "name": "Side Plank with Hip Dips",
-              "link": "../exercises/side_plank_with_hip_dips.json",
+              "link": "exercises/side_plank_with_hip_dips.json",
               "logType": "mobility",
               "prescription": {
                 "holdSeconds": 30
@@ -82,7 +82,7 @@
             {
               "kind": "exercise",
               "name": "Farmer Carry (Dumbbells or Ruck)",
-              "link": "../exercises/farmer_carry.json",
+              "link": "exercises/farmer_carry.json",
               "logType": "mobility",
               "prescription": {
                 "holdSeconds": 40,
@@ -107,7 +107,7 @@
         {
           "kind": "exercise",
           "name": "Standing Quad Stretch",
-          "link": "../exercises/standing_quad_stretch.json",
+          "link": "exercises/standing_quad_stretch.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 30
@@ -116,7 +116,7 @@
         {
           "kind": "exercise",
           "name": "Forward Fold",
-          "link": "../exercises/forward_fold.json",
+          "link": "exercises/forward_fold.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 45
@@ -125,7 +125,7 @@
         {
           "kind": "exercise",
           "name": "Seated Spinal Twist",
-          "link": "../exercises/seated_spinal_twist.json",
+          "link": "exercises/seated_spinal_twist.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 30
@@ -134,7 +134,7 @@
         {
           "kind": "exercise",
           "name": "Shoulder Stretch (hands clasped behind back)",
-          "link": "../exercises/shoulder_stretch.json",
+          "link": "exercises/shoulder_stretch.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 45

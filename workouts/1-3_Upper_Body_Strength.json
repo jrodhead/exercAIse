@@ -13,7 +13,7 @@
         {
           "kind": "exercise",
           "name": "Flat Dumbbell Bench Press",
-          "link": "../exercises/flat_dumbbell_bench_press.json",
+          "link": "exercises/flat_dumbbell_bench_press.json",
           "logType": "strength",
           "prescription": {
             "sets": 3,
@@ -32,7 +32,7 @@
         {
           "kind": "exercise",
           "name": "Chest-Supported Dumbbell Row",
-          "link": "../exercises/chest_supported_dumbbell_row.json",
+          "link": "exercises/chest_supported_dumbbell_row.json",
           "logType": "strength",
           "prescription": {
             "sets": 3,
@@ -51,7 +51,7 @@
         {
           "kind": "exercise",
           "name": "Incline Landmine Press (Simulated with Dumbbell)",
-          "link": "../exercises/incline_landmine_press.json",
+          "link": "exercises/incline_landmine_press.json",
           "logType": "strength",
           "prescription": {
             "sets": 3,
@@ -71,7 +71,7 @@
         {
           "kind": "exercise",
           "name": "Alternating or Supinated Dumbbell Biceps Curl",
-          "link": "../exercises/alternating_dumbbell_biceps_curl.json",
+          "link": "exercises/alternating_dumbbell_biceps_curl.json",
           "logType": "strength",
           "prescription": {
             "sets": 3,
@@ -90,7 +90,7 @@
         {
           "kind": "exercise",
           "name": "Overhead Triceps Extension (Single DB or Ruck Plate)",
-          "link": "../exercises/overhead_triceps_extension.json",
+          "link": "exercises/overhead_triceps_extension.json",
           "logType": "strength",
           "prescription": {
             "sets": 3,
@@ -110,7 +110,7 @@
         {
           "kind": "exercise",
           "name": "Pallof Press (with Ruck or Dumbbell)",
-          "link": "../exercises/pallof_press.json",
+          "link": "exercises/pallof_press.json",
           "logType": "strength",
           "prescription": {
             "sets": 3,

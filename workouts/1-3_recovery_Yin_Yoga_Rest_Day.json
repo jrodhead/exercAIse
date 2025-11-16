@@ -13,7 +13,7 @@
         {
           "kind": "exercise",
           "name": "Butterfly Pose (Seated Forward Fold)",
-          "link": "../exercises/butterfly_pose_seated_forward_fold.json",
+          "link": "exercises/butterfly_pose_seated_forward_fold.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 240
@@ -30,7 +30,7 @@
         {
           "kind": "exercise",
           "name": "Supported Child's Pose",
-          "link": "../exercises/supported_childs_pose.json",
+          "link": "exercises/supported_childs_pose.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 180
@@ -47,7 +47,7 @@
         {
           "kind": "exercise",
           "name": "Dragon Pose (Low Lunge Yin Style)",
-          "link": "../exercises/dragon_pose_low_lunge_yin_style.json",
+          "link": "exercises/dragon_pose_low_lunge_yin_style.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 180
@@ -64,7 +64,7 @@
         {
           "kind": "exercise",
           "name": "Sleeping Swan (Yin Pigeon)",
-          "link": "../exercises/sleeping_swan_yin_pigeon.json",
+          "link": "exercises/sleeping_swan_yin_pigeon.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 180
@@ -81,7 +81,7 @@
         {
           "kind": "exercise",
           "name": "Supported Fish Pose",
-          "link": "../exercises/supported_fish_pose.json",
+          "link": "exercises/supported_fish_pose.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 240
@@ -98,7 +98,7 @@
         {
           "kind": "exercise",
           "name": "Reclined Twist",
-          "link": "../exercises/reclined_twist.json",
+          "link": "exercises/reclined_twist.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 120
@@ -114,7 +114,7 @@
         {
           "kind": "exercise",
           "name": "Happy Baby",
-          "link": "../exercises/happy_baby.json",
+          "link": "exercises/happy_baby.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 180
@@ -130,7 +130,7 @@
         {
           "kind": "exercise",
           "name": "Final Savasana",
-          "link": "../exercises/savasana.json",
+          "link": "exercises/savasana.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 300

@@ -13,7 +13,7 @@
         {
           "kind": "exercise",
           "name": "Brisk Walk",
-          "link": "../exercises/brisk_walk.json",
+          "link": "exercises/brisk_walk.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 600
@@ -22,7 +22,7 @@
         {
           "kind": "exercise",
           "name": "Leg Swings",
-          "link": "../exercises/leg_swings.json",
+          "link": "exercises/leg_swings.json",
           "logType": "strength",
           "prescription": {
             "reps": "10-15 per direction/leg"
@@ -37,7 +37,7 @@
         {
           "kind": "exercise",
           "name": "Easy Run",
-          "link": "../exercises/easy_jog.json",
+          "link": "exercises/easy_jog.json",
           "logType": "endurance",
           "prescription": {
             "distanceMiles": 4.0,
@@ -54,7 +54,7 @@
         {
           "kind": "exercise",
           "name": "Strides",
-          "link": "../exercises/strides.json",
+          "link": "exercises/strides.json",
           "logType": "mobility",
           "prescription": {
             "sets": 4,
@@ -70,7 +70,7 @@
         {
           "kind": "exercise",
           "name": "Brisk Walk",
-          "link": "../exercises/brisk_walk.json",
+          "link": "exercises/brisk_walk.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 600
@@ -79,7 +79,7 @@
         {
           "kind": "exercise",
           "name": "Calf Stretch",
-          "link": "../exercises/calf_stretch.json",
+          "link": "exercises/calf_stretch.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 45

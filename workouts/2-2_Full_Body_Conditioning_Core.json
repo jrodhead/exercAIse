@@ -17,7 +17,7 @@
             {
               "kind": "exercise",
               "name": "Dumbbell Thruster (Squat + Press)",
-              "link": "../exercises/dumbbell_thruster.json",
+              "link": "exercises/dumbbell_thruster.json",
               "logType": "strength",
               "prescription": {
                 "reps": "10-12"
@@ -31,7 +31,7 @@
             {
               "kind": "exercise",
               "name": "Renegade Row",
-              "link": "../exercises/renegade_row.json",
+              "link": "exercises/renegade_row.json",
               "logType": "strength",
               "prescription": {
                 "reps": "6-8"
@@ -46,7 +46,7 @@
             {
               "kind": "exercise",
               "name": "Step-Up",
-              "link": "../exercises/step_up.json",
+              "link": "exercises/step_up.json",
               "logType": "strength",
               "prescription": {
                 "reps": "10"
@@ -61,7 +61,7 @@
             {
               "kind": "exercise",
               "name": "Plank Shoulder Tap",
-              "link": "../exercises/plank_shoulder_tap.json",
+              "link": "exercises/plank_shoulder_tap.json",
               "logType": "strength",
               "prescription": {
                 "reps": "20 taps (10/side)"
@@ -82,7 +82,7 @@
         {
           "kind": "exercise",
           "name": "Weighted Deadbug",
-          "link": "../exercises/weighted_deadbug.json",
+          "link": "exercises/weighted_deadbug.json",
           "logType": "strength",
           "prescription": {
             "sets": 2,
@@ -92,7 +92,7 @@
         {
           "kind": "exercise",
           "name": "Hollow Hold",
-          "link": "../exercises/hollow_hold.json",
+          "link": "exercises/hollow_hold.json",
           "logType": "mobility",
           "prescription": {
             "sets": 2,
@@ -108,7 +108,7 @@
         {
           "kind": "exercise",
           "name": "Child's Pose",
-          "link": "../exercises/childs_pose.json",
+          "link": "exercises/childs_pose.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 120
@@ -117,7 +117,7 @@
         {
           "kind": "exercise",
           "name": "Thread the Needle",
-          "link": "../exercises/thread_the_needle.json",
+          "link": "exercises/thread_the_needle.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 60
@@ -126,7 +126,7 @@
         {
           "kind": "exercise",
           "name": "Seated Forward Fold",
-          "link": "../exercises/seated_forward_fold.json",
+          "link": "exercises/seated_forward_fold.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 60

@@ -13,7 +13,7 @@
         {
           "kind": "exercise",
           "name": "Arm Circles",
-          "link": "../exercises/arm_circles.json",
+          "link": "exercises/arm_circles.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 30
@@ -22,7 +22,7 @@
         {
           "kind": "exercise",
           "name": "Band Pull-Aparts",
-          "link": "../exercises/band_pull_aparts.json",
+          "link": "exercises/band_pull_aparts.json",
           "logType": "strength",
           "prescription": {
             "sets": 2,
@@ -32,7 +32,7 @@
         {
           "kind": "exercise",
           "name": "Cat-Cow to Cobra Stretch",
-          "link": "../exercises/cat_cow_to_cobra_stretch.json",
+          "link": "exercises/cat_cow_to_cobra_stretch.json",
           "logType": "strength",
           "prescription": {
             "reps": "5 each"
@@ -47,7 +47,7 @@
         {
           "kind": "exercise",
           "name": "Neutral-Grip Flat Bench Press (Dumbbells)",
-          "link": "../exercises/neutral_grip_flat_bench_press.json",
+          "link": "exercises/neutral_grip_flat_bench_press.json",
           "logType": "strength",
           "prescription": {
             "sets": 4,
@@ -65,7 +65,7 @@
         {
           "kind": "exercise",
           "name": "One-Arm Dumbbell Row (Bench Supported)",
-          "link": "../exercises/one_arm_dumbbell_row.json",
+          "link": "exercises/one_arm_dumbbell_row.json",
           "logType": "strength",
           "prescription": {
             "sets": 4,
@@ -83,7 +83,7 @@
         {
           "kind": "exercise",
           "name": "Seated Arnold Press",
-          "link": "../exercises/seated_arnold_press.json",
+          "link": "exercises/seated_arnold_press.json",
           "logType": "strength",
           "prescription": {
             "sets": 3,
@@ -100,7 +100,7 @@
         {
           "kind": "exercise",
           "name": "Hammer Curl",
-          "link": "../exercises/hammer_curl.json",
+          "link": "exercises/hammer_curl.json",
           "logType": "strength",
           "prescription": {
             "sets": 3,
@@ -116,7 +116,7 @@
         {
           "kind": "exercise",
           "name": "Overhead Dumbbell Triceps Extension (Two Hands)",
-          "link": "../exercises/overhead_dumbbell_triceps_extension.json",
+          "link": "exercises/overhead_dumbbell_triceps_extension.json",
           "logType": "strength",
           "prescription": {
             "sets": 3,
@@ -132,7 +132,7 @@
         {
           "kind": "exercise",
           "name": "Plank Shoulder Tap (Optional)",
-          "link": "../exercises/plank_shoulder_tap.json",
+          "link": "exercises/plank_shoulder_tap.json",
           "logType": "strength",
           "prescription": {
             "sets": 2,
@@ -149,7 +149,7 @@
         {
           "kind": "exercise",
           "name": "Child's Pose with Deep Breathing",
-          "link": "../exercises/childs_pose.json",
+          "link": "exercises/childs_pose.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 120
@@ -158,7 +158,7 @@
         {
           "kind": "exercise",
           "name": "Thread the Needle Stretch",
-          "link": "../exercises/thread_the_needle.json",
+          "link": "exercises/thread_the_needle.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 60
@@ -167,7 +167,7 @@
         {
           "kind": "exercise",
           "name": "Seated Forward Fold",
-          "link": "../exercises/seated_forward_fold.json",
+          "link": "exercises/seated_forward_fold.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 60

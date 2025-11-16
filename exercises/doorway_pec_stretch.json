@@ -1,0 +1,42 @@
+{
+  "name": "Doorway Pec Stretch",
+  "equipment": ["none", "doorway"],
+  "tags": ["stretch", "chest", "mobility"],
+  "setup": [
+    "Stand in a doorway, raise arm to shoulder height, elbow bent at 90°",
+    "Place forearm against door frame"
+  ],
+  "steps": [
+    "Gently lean forward until stretch is felt in chest",
+    "Hold position, breathe deeply",
+    "Repeat on other side"
+  ],
+  "cues": [
+    "Keep shoulders down",
+    "Do not force stretch",
+    "Breathe slowly"
+  ],
+  "mistakes": [
+    "Twisting torso",
+    "Shrugging shoulders",
+    "Holding breath"
+  ],
+  "safety": "Stop if shoulder pain occurs. Do not force range of motion.",
+  "scaling": {
+    "regressions": ["Reduce lean", "Lower arm position"],
+    "progressions": ["Increase hold time", "Add gentle rotation"]
+  },
+  "variations": ["Chest Opener Stretch", "Standing Pec Stretch"],
+  "prescriptionHints": {
+    "holdSeconds": "20-40 typical",
+    "notes": "Gentle stretch, avoid pain"
+  },
+  "joints": {
+    "sensitiveJoints": ["shoulders", "chest"],
+    "notes": "Do not force range of motion."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

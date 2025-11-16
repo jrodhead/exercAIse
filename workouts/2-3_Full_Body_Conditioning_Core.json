@@ -13,7 +13,7 @@
         {
           "kind": "exercise",
           "name": "Jumping Jacks",
-          "link": "../exercises/jumping_jacks.json",
+          "link": "exercises/jumping_jacks.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 40
@@ -22,7 +22,7 @@
         {
           "kind": "exercise",
           "name": "Loaded March",
-          "link": "../exercises/loaded_march.json",
+          "link": "exercises/loaded_march.json",
           "logType": "strength",
           "prescription": {
             "reps": "20 steps",
@@ -32,7 +32,7 @@
         {
           "kind": "exercise",
           "name": "World's Greatest Stretch",
-          "link": "../exercises/worlds_greatest_stretch.json",
+          "link": "exercises/worlds_greatest_stretch.json",
           "logType": "strength",
           "prescription": {
             "reps": "4 per side"
@@ -51,7 +51,7 @@
             {
               "kind": "exercise",
               "name": "Dumbbell Thruster",
-              "link": "../exercises/dumbbell_thruster.json",
+              "link": "exercises/dumbbell_thruster.json",
               "logType": "strength",
               "prescription": {
                 "reps": "10-12",
@@ -61,7 +61,7 @@
             {
               "kind": "exercise",
               "name": "Renegade Row",
-              "link": "../exercises/renegade_row.json",
+              "link": "exercises/renegade_row.json",
               "logType": "strength",
               "prescription": {
                 "reps": "6-8",
@@ -72,7 +72,7 @@
             {
               "kind": "exercise",
               "name": "Step-Up",
-              "link": "../exercises/step_up.json",
+              "link": "exercises/step_up.json",
               "logType": "strength",
               "prescription": {
                 "reps": "10",
@@ -83,7 +83,7 @@
             {
               "kind": "exercise",
               "name": "Farmer Carry",
-              "link": "../exercises/farmer_carry.json",
+              "link": "exercises/farmer_carry.json",
               "logType": "mobility",
               "prescription": {
                 "holdSeconds": 50,
@@ -105,7 +105,7 @@
             {
               "kind": "exercise",
               "name": "Weighted Deadbug",
-              "link": "../exercises/weighted_deadbug.json",
+              "link": "exercises/weighted_deadbug.json",
               "logType": "strength",
               "prescription": {
                 "reps": "8"
@@ -115,7 +115,7 @@
             {
               "kind": "exercise",
               "name": "Russian Twist",
-              "link": "../exercises/russian_twist.json",
+              "link": "exercises/russian_twist.json",
               "logType": "strength",
               "prescription": {
                 "reps": "20 taps (10/side)"
@@ -124,7 +124,7 @@
             {
               "kind": "exercise",
               "name": "Plank Shoulder Tap",
-              "link": "../exercises/plank_shoulder_tap.json",
+              "link": "exercises/plank_shoulder_tap.json",
               "logType": "strength",
               "prescription": {
                 "reps": "20 taps (10/side)"
@@ -141,7 +141,7 @@
         {
           "kind": "exercise",
           "name": "Child's Pose",
-          "link": "../exercises/childs_pose.json",
+          "link": "exercises/childs_pose.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 120
@@ -150,7 +150,7 @@
         {
           "kind": "exercise",
           "name": "Thread the Needle",
-          "link": "../exercises/thread_the_needle.json",
+          "link": "exercises/thread_the_needle.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 60
@@ -159,7 +159,7 @@
         {
           "kind": "exercise",
           "name": "Seated Forward Fold",
-          "link": "../exercises/seated_forward_fold.json",
+          "link": "exercises/seated_forward_fold.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 60

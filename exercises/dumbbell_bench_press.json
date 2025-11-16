@@ -1,0 +1,44 @@
+{
+  "name": "Dumbbell Bench Press",
+  "equipment": ["dumbbell", "bench"],
+  "tags": ["chest", "press", "strength"],
+  "setup": [
+    "Lie flat on a bench with feet planted on the floor",
+    "Hold a dumbbell in each hand, arms extended above chest, palms facing forward"
+  ],
+  "steps": [
+    "Lower dumbbells slowly to chest, elbows at ~45°",
+    "Pause briefly, then press back up to full extension",
+    "Keep wrists neutral and core braced"
+  ],
+  "cues": [
+    "Control the lowering phase",
+    "Press evenly with both arms",
+    "Keep shoulders down and back"
+  ],
+  "mistakes": [
+    "Flaring elbows too wide",
+    "Arching lower back excessively",
+    "Bouncing weights off chest"
+  ],
+  "safety": "Use a spotter if lifting heavy. Stop if shoulder pain occurs. Maintain neutral spine.",
+  "scaling": {
+    "regressions": ["Use lighter dumbbells", "Reduce range of motion", "Perform on floor (floor press)", "Single-arm dumbbell bench press"],
+    "progressions": ["Increase load", "Add tempo (3-2-1)", "Incline or decline bench press"]
+  },
+  "variations": ["Incline Dumbbell Bench Press", "Decline Dumbbell Bench Press", "Barbell Bench Press"],
+  "prescriptionHints": {
+    "load": "Start with 50-65% of normal working weight for deload",
+    "reps": "6-12 typical",
+    "rpe": "6-7 for deload",
+    "notes": "Smooth tempo, avoid failure"
+  },
+  "joints": {
+    "sensitiveJoints": ["shoulders", "elbows", "wrists"],
+    "notes": "Keep elbows at 45°, avoid excessive arching."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

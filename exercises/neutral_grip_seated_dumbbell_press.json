@@ -1,0 +1,44 @@
+{
+  "name": "Neutral-Grip Seated Dumbbell Press",
+  "equipment": ["dumbbell", "bench"],
+  "tags": ["shoulders", "press", "strength"],
+  "setup": [
+    "Sit upright on a bench with back support",
+    "Hold a dumbbell in each hand at shoulder height, palms facing each other (neutral grip)"
+  ],
+  "steps": [
+    "Press dumbbells overhead until arms are fully extended",
+    "Lower dumbbells slowly back to shoulder height",
+    "Keep core braced and feet planted"
+  ],
+  "cues": [
+    "Keep shoulders down and away from ears",
+    "Press straight up, avoid arching back",
+    "Control the descent"
+  ],
+  "mistakes": [
+    "Shrugging shoulders",
+    "Overarching lower back",
+    "Locking out elbows forcefully"
+  ],
+  "safety": "Use moderate weight for control. Stop if neck or shoulder pain occurs. Maintain neutral spine.",
+  "scaling": {
+    "regressions": ["Use lighter dumbbells", "Reduce range of motion", "Perform standing neutral-grip press"],
+    "progressions": ["Increase load", "Add tempo (3-2-1)", "Single-arm press"]
+  },
+  "variations": ["Standing Neutral-Grip Dumbbell Press", "Arnold Press", "Barbell Overhead Press"],
+  "prescriptionHints": {
+    "load": "50-60% of normal working weight for deload",
+    "reps": "8-12 typical",
+    "rpe": "6-7 for deload",
+    "notes": "Keep shoulders down, avoid neck strain"
+  },
+  "joints": {
+    "sensitiveJoints": ["shoulders", "elbows", "wrists", "neck"],
+    "notes": "Maintain neutral grip and avoid excessive arching."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
+}

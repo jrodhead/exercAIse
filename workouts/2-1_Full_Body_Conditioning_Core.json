@@ -13,7 +13,7 @@
         {
           "kind": "exercise",
           "name": "Jumping Jacks",
-          "link": "../exercises/jumping_jacks.json",
+          "link": "exercises/jumping_jacks.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 40
@@ -22,7 +22,7 @@
         {
           "kind": "exercise",
           "name": "Loaded March",
-          "link": "../exercises/loaded_march.json",
+          "link": "exercises/loaded_march.json",
           "logType": "strength",
           "prescription": {
             "sets": 2,
@@ -33,7 +33,7 @@
         {
           "kind": "exercise",
           "name": "World's Greatest Stretch",
-          "link": "../exercises/worlds_greatest_stretch.json",
+          "link": "exercises/worlds_greatest_stretch.json",
           "logType": "strength",
           "prescription": {
             "reps": "4 per side"
@@ -53,7 +53,7 @@
             {
               "kind": "exercise",
               "name": "Dumbbell Thruster",
-              "link": "../exercises/dumbbell_thruster.json",
+              "link": "exercises/dumbbell_thruster.json",
               "logType": "strength",
               "prescription": {
                 "reps": "10",
@@ -63,7 +63,7 @@
             {
               "kind": "exercise",
               "name": "Renegade Row",
-              "link": "../exercises/renegade_row.json",
+              "link": "exercises/renegade_row.json",
               "logType": "strength",
               "prescription": {
                 "reps": "8"
@@ -73,7 +73,7 @@
             {
               "kind": "exercise",
               "name": "Step Up",
-              "link": "../exercises/step_up.json",
+              "link": "exercises/step_up.json",
               "logType": "strength",
               "prescription": {
                 "reps": "10"
@@ -83,7 +83,7 @@
             {
               "kind": "exercise",
               "name": "Farmer Carry",
-              "link": "../exercises/farmer_carry.json",
+              "link": "exercises/farmer_carry.json",
               "logType": "endurance",
               "prescription": {
                 "distanceMeters": 40
@@ -105,7 +105,7 @@
             {
               "kind": "exercise",
               "name": "Weighted Deadbug",
-              "link": "../exercises/weighted_deadbug.json",
+              "link": "exercises/weighted_deadbug.json",
               "logType": "strength",
               "prescription": {
                 "reps": "8"
@@ -115,7 +115,7 @@
             {
               "kind": "exercise",
               "name": "Russian Twist",
-              "link": "../exercises/russian_twist.json",
+              "link": "exercises/russian_twist.json",
               "logType": "strength",
               "prescription": {
                 "reps": "20 taps (10/side) or 10 controlled rotations per side"
@@ -124,7 +124,7 @@
             {
               "kind": "exercise",
               "name": "Plank Shoulder Tap",
-              "link": "../exercises/plank_shoulder_tap.json",
+              "link": "exercises/plank_shoulder_tap.json",
               "logType": "strength",
               "prescription": {
                 "reps": "20 taps (10/side)"
@@ -133,7 +133,7 @@
             {
               "kind": "exercise",
               "name": "Loaded March",
-              "link": "../exercises/loaded_march.json",
+              "link": "exercises/loaded_march.json",
               "logType": "strength",
               "prescription": {
                 "reps": "30 steps (15/side)",
@@ -149,11 +149,35 @@
       "title": "Finisher (Optional)",
       "items": [
         {
-          "kind": "exercise",
+          "kind": "circuit",
           "name": "EMOM 6 Minutes",
-          "logType": "mobility",
-          "prescription": {},
-          "notes": "Minute 1: Goblet Squat x12 (moderate), Minute 2: Farmer Carry 40s. Alternate for 6 minutes total. Goal: Sustainable output (RPE 7-8). Skip if fatigued."
+          "notes": "Alternate each minute: Minute 1: Goblet Squat x12 (moderate), Minute 2: Farmer Carry 40s. Repeat for 6 minutes. Goal: Sustainable output (RPE 7-8). Skip if fatigued.",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Goblet Squat",
+              "link": "exercises/goblet_squat.json",
+              "logType": "strength",
+              "prescription": {
+                "reps": 12,
+                "weight": "moderate",
+                "rpe": 7
+              },
+              "notes": "Minute 1 of EMOM."
+            },
+            {
+              "kind": "exercise",
+              "name": "Farmer Carry",
+              "link": "exercises/farmer_carry.json",
+              "logType": "endurance",
+              "prescription": {
+                "holdSeconds": 40,
+                "weight": "moderate ruck/dumbbells",
+                "rpe": 7
+              },
+              "notes": "Minute 2 of EMOM."
+            }
+          ]
         }
       ]
     },
@@ -164,7 +188,7 @@
         {
           "kind": "exercise",
           "name": "Child's Pose",
-          "link": "../exercises/childs_pose.json",
+          "link": "exercises/childs_pose.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 120
@@ -173,7 +197,7 @@
         {
           "kind": "exercise",
           "name": "Thread the Needle",
-          "link": "../exercises/thread_the_needle.json",
+          "link": "exercises/thread_the_needle.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 45
@@ -182,7 +206,7 @@
         {
           "kind": "exercise",
           "name": "Seated Forward Fold",
-          "link": "../exercises/seated_forward_fold.json",
+          "link": "exercises/seated_forward_fold.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 60

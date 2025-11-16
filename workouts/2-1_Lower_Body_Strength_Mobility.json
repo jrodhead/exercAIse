@@ -13,7 +13,7 @@
         {
           "kind": "exercise",
           "name": "Bodyweight Squat",
-          "link": "../exercises/bodyweight_squat.json",
+          "link": "exercises/bodyweight_squat.json",
           "logType": "strength",
           "prescription": {
             "sets": 2,
@@ -23,7 +23,7 @@
         {
           "kind": "exercise",
           "name": "Glute Bridge",
-          "link": "../exercises/glute_bridge.json",
+          "link": "exercises/glute_bridge.json",
           "logType": "strength",
           "prescription": {
             "sets": 2,
@@ -33,7 +33,7 @@
         {
           "kind": "exercise",
           "name": "World's Greatest Stretch",
-          "link": "../exercises/worlds_greatest_stretch.json",
+          "link": "exercises/worlds_greatest_stretch.json",
           "logType": "strength",
           "prescription": {
             "reps": "5 per side"
@@ -48,7 +48,7 @@
         {
           "kind": "exercise",
           "name": "Goblet Squat",
-          "link": "../exercises/goblet_squat.json",
+          "link": "exercises/goblet_squat.json",
           "logType": "strength",
           "prescription": {
             "sets": 4,
@@ -66,7 +66,7 @@
         {
           "kind": "exercise",
           "name": "Dumbbell Romanian Deadlift",
-          "link": "../exercises/dumbbell_romanian_deadlift.json",
+          "link": "exercises/dumbbell_romanian_deadlift.json",
           "logType": "strength",
           "prescription": {
             "sets": 4,
@@ -84,7 +84,7 @@
         {
           "kind": "exercise",
           "name": "Reverse Lunge",
-          "link": "../exercises/reverse_lunge.json",
+          "link": "exercises/reverse_lunge.json",
           "logType": "strength",
           "prescription": {
             "sets": 3,
@@ -102,7 +102,7 @@
         {
           "kind": "exercise",
           "name": "Standing Calf Raise",
-          "link": "../exercises/standing_calf_raise.json",
+          "link": "exercises/standing_calf_raise.json",
           "logType": "strength",
           "prescription": {
             "sets": 3,
@@ -117,7 +117,7 @@
         {
           "kind": "exercise",
           "name": "Wall Sit (Optional)",
-          "link": "../exercises/wall_sit.json",
+          "link": "exercises/wall_sit.json",
           "logType": "mobility",
           "prescription": {
             "sets": 2,
@@ -134,7 +134,7 @@
         {
           "kind": "exercise",
           "name": "90/90 Hip Stretch",
-          "link": "../exercises/90_90_hip_stretch.json",
+          "link": "exercises/90_90_hip_stretch.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 60
@@ -143,7 +143,7 @@
         {
           "kind": "exercise",
           "name": "Seated Forward Fold",
-          "link": "../exercises/seated_forward_fold.json",
+          "link": "exercises/seated_forward_fold.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 60
@@ -152,7 +152,7 @@
         {
           "kind": "exercise",
           "name": "Lying Spinal Twist",
-          "link": "../exercises/lying_spinal_twist.json",
+          "link": "exercises/lying_spinal_twist.json",
           "logType": "mobility",
           "prescription": {
             "holdSeconds": 60
