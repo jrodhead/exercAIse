@@ -1,0 +1,173 @@
+{
+  "version": "1",
+  "title": "Chest & Triceps Strength",
+  "date": "2025-11-17",
+  "block": 5,
+  "week": 3,
+  "notes": "Block 5 Week 3 Monday heavy press day. No basketball this week so we can lean on quality volume (RPE 7-8) and add reps before bumping load. Time audit: 34.2 min total / 25.8 min working.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Scap + Press Prep",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Arm Circles",
+          "link": "exercises/arm_circles.json",
+          "logType": "mobility",
+          "prescription": { "sets": 1, "reps": "10 each direction" }
+        },
+        {
+          "kind": "exercise",
+          "name": "Cat-Cow to Cobra Stretch",
+          "link": "exercises/cat_cow_to_cobra_stretch.json",
+          "logType": "mobility",
+          "prescription": { "sets": 1, "reps": "3 slow waves" },
+          "notes": "Move segment-by-segment and breathe into end ranges."
+        },
+        {
+          "kind": "exercise",
+          "name": "Band Pull-Aparts",
+          "link": "exercises/band_pull_aparts.json",
+          "logType": "mobility",
+          "prescription": { "sets": 2, "reps": 15 },
+          "notes": "Elbows soft, pause 1s at end range."
+        },
+        {
+          "kind": "exercise",
+          "name": "Scapular Wall Slides",
+          "link": "exercises/scapular_wall_slides.json",
+          "logType": "mobility",
+          "prescription": { "sets": 2, "reps": 10 },
+          "notes": "Keep ribs stacked; slide hands overhead without arching."
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Primary Press Power - Superset A",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset A",
+          "notes": "Perform bench then renegade rows. Rest 90s after each round; stay braced to resist rotation.",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Flat Dumbbell Bench Press",
+              "link": "exercises/flat_dumbbell_bench_press.json",
+              "logType": "strength",
+              "prescription": { "sets": 4, "reps": "10-12", "weight": "40 x2 lb", "rpe": 7.5, "angle": 0 },
+              "cues": ["Feet planted, slight arch", "Lower for 3s, quick drive", "Aim for 11 reps on sets 1-2"]
+            },
+            {
+              "kind": "exercise",
+              "name": "Renegade Row",
+              "link": "exercises/renegade_row.json",
+              "logType": "strength",
+              "prescription": { "sets": 4, "reps": "8-10 per arm", "weight": "35 x2 lb", "restSeconds": 90, "rpe": 7 },
+              "cues": ["Feet wide for stability", "Pull to back pocket", "No hip sway"],
+              "notes": "Alternate arms each rep; keep plank tension the entire round."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Upper-Chest Straight Sets",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Incline Dumbbell Bench Press",
+          "link": "exercises/incline_dumbbell_bench_press.json",
+          "logType": "strength",
+          "prescription": { "sets": 3, "reps": "10-12", "weight": "30 x2 lb", "restSeconds": 90, "rpe": 7.5, "angle": 15 },
+          "cues": ["Bench set one click up (15°)", "Elbows 45°", "Pause 1s above chest"],
+          "notes": "Progress by hitting 11+ reps on first two sets before considering a load bump."
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Triceps Density - Superset B",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset B",
+          "notes": "Press with narrow path, then roll straight into skullcrushers. Rest 75s between rounds.",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Close-Grip Dumbbell Press",
+              "link": "exercises/close_grip_dumbbell_press.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "10-12", "weight": "30 x2 lb", "rpe": 7.5, "angle": 0 },
+              "cues": ["DBs touching", "Elbows graze ribs", "Drive up but stop short of lockout"]
+            },
+            {
+              "kind": "exercise",
+              "name": "Dumbbell Floor Skullcrushers",
+              "link": "exercises/dumbbell_floor_skullcrushers.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "12-15", "weight": "20 x2 lb", "restSeconds": 75, "rpe": 7 },
+              "cues": ["Upper arms vertical", "Lower DBs to floor lightly", "Extend without locking hard"],
+              "notes": "Use slow 3s descents to keep elbows happy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Core Bracing",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Hollow Hold",
+          "link": "exercises/hollow_hold.json",
+          "logType": "strength",
+          "prescription": { "sets": 3, "holdSeconds": 30, "restSeconds": 45, "rpe": 7 },
+          "notes": "Lower extend only if low back stays glued down."
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Chest & Triceps Downshift",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Doorway Chest Stretch",
+          "link": "exercises/doorway_chest_stretch.json",
+          "logType": "stretch",
+          "prescription": { "sets": 1, "holdSeconds": 60 },
+          "notes": "Hold 60s per side, ribs stacked."
+        },
+        {
+          "kind": "exercise",
+          "name": "Overhead Triceps Stretch",
+          "link": "exercises/overhead_triceps_stretch.json",
+          "logType": "stretch",
+          "prescription": { "sets": 1, "holdSeconds": 60 },
+          "notes": "Hold 60s per arm, gently pull elbow behind head."
+        },
+        {
+          "kind": "exercise",
+          "name": "Child's Pose",
+          "link": "exercises/childs_pose.json",
+          "logType": "stretch",
+          "prescription": { "sets": 1, "holdSeconds": 90 }
+        },
+        {
+          "kind": "exercise",
+          "name": "Deep Breathing",
+          "link": "exercises/deep_breathing.json",
+          "logType": "stretch",
+          "prescription": { "sets": 1, "holdSeconds": 120 },
+          "notes": "Box breathing 4-4-4-4 to downshift before workday."
+        }
+      ]
+    }
+  ]
+}

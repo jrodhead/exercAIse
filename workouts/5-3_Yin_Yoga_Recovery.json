@@ -1,0 +1,88 @@
+{
+  "version": "1",
+  "title": "Yin Yoga Restoration",
+  "date": "2025-11-19",
+  "block": 5,
+  "week": 3,
+  "notes": "Wednesday parasympathetic reset. Hold each pose 2-4 minutes unless noted. Time audit: 39.0 min total / 0.0 min working (all recovery).",
+  "sections": [
+    {
+      "type": "Recovery",
+      "title": "Yin Flow",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Cat-Cow to Cobra Stretch",
+          "link": "exercises/cat_cow_to_cobra_stretch.json",
+          "logType": "mobility",
+          "prescription": { "sets": 1, "reps": "5 slow waves", "estimatedSetSeconds": 90 },
+          "notes": "Move with breath to lubricate spine before settling into long holds."
+        },
+        {
+          "kind": "exercise",
+          "name": "90/90 Hip Stretch",
+          "link": "exercises/90_90_hip_stretch.json",
+          "logType": "stretch",
+          "prescription": { "sets": 2, "holdSeconds": 150 },
+          "notes": "Hold 150s forward fold then 60s upright rotation per side; use props to keep knees supported."
+        },
+        {
+          "kind": "exercise",
+          "name": "Pigeon Pose",
+          "link": "exercises/pigeon_pose.json",
+          "logType": "stretch",
+          "prescription": { "sets": 2, "holdSeconds": 120 },
+          "notes": "Hold 120s per side; fold over front shin and use a bolster under hip if knee talks back."
+        },
+        {
+          "kind": "exercise",
+          "name": "Sphinx Pose",
+          "link": "exercises/sphinx_pose.json",
+          "logType": "stretch",
+          "prescription": { "sets": 1, "holdSeconds": 210 },
+          "notes": "Let ribs melt toward floor while forearms press lightly; backbends stay gentle."
+        },
+        {
+          "kind": "exercise",
+          "name": "Caterpillar Pose (Seated Forward Fold - Yin Style)",
+          "link": "exercises/caterpillar_pose.json",
+          "logType": "stretch",
+          "prescription": { "sets": 1, "holdSeconds": 240 },
+          "notes": "Allow spine to round; focus on long exhales (4-6s)."
+        },
+        {
+          "kind": "exercise",
+          "name": "Child's Pose",
+          "link": "exercises/childs_pose.json",
+          "logType": "stretch",
+          "prescription": { "sets": 1, "holdSeconds": 180 },
+          "notes": "Walk hands to each side for 60s to bias lats, then return center."
+        },
+        {
+          "kind": "exercise",
+          "name": "Supine Spinal Twist",
+          "link": "exercises/supine_spinal_twist.json",
+          "logType": "stretch",
+          "prescription": { "sets": 2, "holdSeconds": 120 },
+          "notes": "Hold 120s per side; extend top leg if it feels good, otherwise keep knees bent."
+        },
+        {
+          "kind": "exercise",
+          "name": "Legs Up the Wall",
+          "link": "exercises/legs_up_the_wall.json",
+          "logType": "stretch",
+          "prescription": { "sets": 1, "holdSeconds": 450 },
+          "notes": "Prop hips on folded blanket if hamstrings need slack; relax arms palms-up."
+        },
+        {
+          "kind": "exercise",
+          "name": "Deep Breathing",
+          "link": "exercises/deep_breathing.json",
+          "logType": "stretch",
+          "prescription": { "sets": 1, "holdSeconds": 390 },
+          "notes": "Box breathing 4-4-6-2 while supine to finish—stay until breath rate slows naturally."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "version": "1",
+  "title": "Back & Biceps Maintenance + Carry",
+  "date": "2025-11-18",
+  "block": 5,
+  "week": 3,
+  "notes": "Tuesday keeps pulling volume humming while triceps recover from Monday. Add anti-rotation suitcase carries per Week 3 priorities. Time audit: 26.0 min total / 22.0 min working.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Upper Back Priming",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Cat-Cow Stretch",
+          "link": "exercises/cat_cow_stretch.json",
+          "logType": "mobility",
+          "prescription": { "sets": 1, "reps": 8 }
+        },
+        {
+          "kind": "exercise",
+          "name": "Thread the Needle",
+          "link": "exercises/thread_the_needle.json",
+          "logType": "mobility",
+          "prescription": { "sets": 1, "holdSeconds": 45 },
+          "notes": "Hold 45s per side, breathe into upper back."
+        },
+        {
+          "kind": "exercise",
+          "name": "Band Pull-Aparts",
+          "link": "exercises/band_pull_aparts.json",
+          "logType": "mobility",
+          "prescription": { "sets": 2, "reps": 15 },
+          "notes": "Supinated grip to wake lats before rows."
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Upper-Back Volume - Superset A",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset A",
+          "notes": "Bench set to 30°. Stay chest-down, squeeze at top, rest 90s between rounds.",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Chest-Supported Dumbbell Row",
+              "link": "exercises/chest_supported_dumbbell_row.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": 12, "weight": "37.5 x2 lb", "rpe": 7, "angle": 30 },
+              "cues": ["Forehead stays down", "Lead with elbows", "2s squeeze"]
+            },
+            {
+              "kind": "exercise",
+              "name": "Hammer Curl",
+              "link": "exercises/hammer_curl.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "10-12", "weight": "27.5 x2 lb", "restSeconds": 90, "rpe": 7.5 },
+              "cues": ["Neutral wrists", "No sway", "3s lowering"],
+              "notes": "Hold peak for 1s to reinforce brachialis without needing heavier bells."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Pulling Symmetry - Superset B",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset B",
+          "notes": "Keep hips square on rows, then alternate curls under control. Rest 90s.",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "One-Arm Dumbbell Row",
+              "link": "exercises/one_arm_dumbbell_row.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "10-12 per arm", "weight": 50, "rpe": 7.5 },
+              "cues": ["Plant same-side knee/hand", "Pull elbow toward hip", "Complete all reps on one arm before switching"],
+              "notes": "Return to 50 lb per Week 3 plan; stop two reps shy of grind."
+            },
+            {
+              "kind": "exercise",
+              "name": "Alternating Dumbbell Biceps Curl",
+              "link": "exercises/alternating_dumbbell_biceps_curl.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "10-12 per arm", "weight": "20 x2 lb", "restSeconds": 90, "rpe": 7 },
+              "cues": ["Elbows stay by ribs", "Supinate fully", "Alternate smoothly"],
+              "notes": "12 reps per arm = 24 total; keep cadence even."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Carry + Core",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Suitcase Carry",
+          "link": "exercises/suitcase_carry.json",
+          "logType": "carry",
+          "prescription": { "sets": 3, "timeSeconds": 35, "weight": 55, "restSeconds": 45, "rpe": 7.5 },
+          "notes": "Walk 35s per side each set; switch hands immediately before resting."
+        },
+        {
+          "kind": "exercise",
+          "name": "Deadbug",
+          "link": "exercises/deadbug.json",
+          "logType": "strength",
+          "prescription": { "sets": 3, "reps": "10 per side", "weight": 10, "restSeconds": 45, "rpe": 6.5 },
+          "notes": "Press low back into floor, alternate limbs with slow 3s reach."
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Upper Back Reset",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Cross-Body Shoulder Stretch",
+          "link": "exercises/cross_body_shoulder_stretch.json",
+          "logType": "stretch",
+          "prescription": { "sets": 1, "holdSeconds": 45 },
+          "notes": "Hold 45s per arm; keep shoulder down."
+        },
+        {
+          "kind": "exercise",
+          "name": "Child's Pose",
+          "link": "exercises/childs_pose.json",
+          "logType": "stretch",
+          "prescription": { "sets": 1, "holdSeconds": 60 },
+          "notes": "Walk hands to each side 30s for lat length."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+{
+  "version": "1",
+  "title": "Glutes, Calves & Core Progression",
+  "date": "2025-11-20",
+  "block": 5,
+  "week": 3,
+  "notes": "Thursday keeps lower body volume steady (2-3 sets per move) while adding tempo pauses for hypertrophy. Time audit: 29.2 min total / 24.8 min working.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Lower Body Activation",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "World’s Greatest Stretch",
+          "link": "exercises/worlds_greatest_stretch.json",
+          "logType": "mobility",
+          "prescription": { "sets": 1, "reps": "3 per side" }
+        },
+        {
+          "kind": "exercise",
+          "name": "Glute Bridge",
+          "link": "exercises/glute_bridge.json",
+          "logType": "strength",
+          "prescription": { "sets": 2, "reps": 12 },
+          "notes": "2s squeeze at top to wake up posterior chain."
+        },
+        {
+          "kind": "exercise",
+          "name": "Butt Kicks",
+          "link": "exercises/butt_kicks.json",
+          "logType": "mobility",
+          "prescription": { "sets": 1, "timeSeconds": 30 },
+          "notes": "Stay tall, light on feet."
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Primary Glute Volume - Superset A",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset A",
+          "notes": "Pause final rep of each set for 2s to build mind-muscle connection. Rest 90s between rounds.",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Dumbbell Hip Thrust",
+              "link": "exercises/dumbbell_hip_thrust.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": 15, "weight": 60, "rpe": 7.5, "angle": 0 },
+              "cues": ["Bench edge under shoulder blades", "Drive through heels", "2s squeeze on rep 15"],
+              "notes": "Hold last rep of Round 3 for 3 extra seconds before lowering."
+            },
+            {
+              "kind": "exercise",
+              "name": "Heels-elevated Goblet Squat",
+              "link": "exercises/heels_elevated_goblet_squat.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "10-12", "weight": 60, "restSeconds": 90, "rpe": 7.5 },
+              "cues": ["3s descent", "Pause 1s at bottom", "Drive up through elevated heels"],
+              "notes": "Tempo 3-1-1. If knees talk back, drop to 55 lb and keep tempo."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Unilateral Strength - Superset B",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset B",
+          "notes": "Control balance-first moves. Complete all reps on one leg before switching. Rest 90s.",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Single-Leg Deadlift",
+              "link": "exercises/single_leg_deadlift.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "8-10 per leg", "weight": 35, "rpe": 7 },
+              "cues": ["Soft knee", "Hinge from hip", "Reach heel long behind"],
+              "notes": "Use wall fingertip support if ankle wobbles show up but stay honest with load."
+            },
+            {
+              "kind": "exercise",
+              "name": "Walking Lunges",
+              "link": "exercises/walking_lunges.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "12 per leg", "weight": "25 x2 lb", "restSeconds": 90, "rpe": 7.5 },
+              "cues": ["Long stride", "Front shin vertical", "Torso tall"],
+              "notes": "24 total reps per set. Turn slowly, no rush between lengths."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Calves + Anti-Rotation",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Single-leg Calf Raise",
+          "link": "exercises/single_leg_calf_raise.json",
+          "logType": "strength",
+          "prescription": { "sets": 3, "reps": "15 per leg", "weight": 20, "restSeconds": 45, "rpe": 7 },
+          "notes": "Perform all reps on one leg first, then switch. 3s eccentric each rep."
+        },
+        {
+          "kind": "exercise",
+          "name": "Tibialis Raise (Wall Lean)",
+          "link": "exercises/tibialis_raise_wall_lean.json",
+          "logType": "strength",
+          "prescription": { "sets": 2, "reps": 20, "restSeconds": 45, "rpe": 6.5 },
+          "notes": "Lift toes high, heels heavy."
+        },
+        {
+          "kind": "exercise",
+          "name": "Pallof Press",
+          "link": "exercises/pallof_press.json",
+          "logType": "strength",
+          "prescription": { "sets": 3, "reps": "8 per side", "weight": 15, "restSeconds": 45, "rpe": 7 },
+          "notes": "Tall-kneeling version. Complete all reps on one side, then switch."
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Lower Body Cooldown",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Calf Stretch (Wall or Step)",
+          "link": "exercises/calf_stretch_wall_or_step.json",
+          "logType": "stretch",
+          "prescription": { "sets": 1, "holdSeconds": 60 },
+          "notes": "Hold 60s per side with heel heavy."
+        },
+        {
+          "kind": "exercise",
+          "name": "Figure-4 Glute Stretch",
+          "link": "exercises/figure_4_glute_stretch.json",
+          "logType": "stretch",
+          "prescription": { "sets": 1, "holdSeconds": 60 },
+          "notes": "Hold 60s per leg; lie on back and pull knee toward chest."
+        }
+      ]
+    }
+  ]
+}

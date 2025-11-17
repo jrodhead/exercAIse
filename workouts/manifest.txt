@@ -1,3 +1,9 @@
+workouts/5-3_Yin_Yoga_Recovery.json
+workouts/5-3_Optional_Easy_Run.json
+workouts/5-3_Glutes_Calves_Core.json
+workouts/5-3_Chest_Triceps_Strength.json
+workouts/5-3_Chest_Shoulders_Volume.json
+workouts/5-3_Back_Biceps_Maintenance.json
 workouts/5-2_Yin_Yoga_Recovery.json
 workouts/5-2_Glutes_Core_Hypertrophy.json
 workouts/5-2_Easy_Run_Optional.json
@@ -73,8 +79,8 @@ workouts/2-1_Lower_Body_Strength_Mobility.json
 workouts/2-1_Full_Body_Conditioning_Core.json
 workouts/1-4_Upper_Body_Strength_Deload.json
 workouts/1-4_Lower_Body_Mobility_Deload.json
-workouts/1-3_recovery_Yin_Yoga_Rest_Day.json
 workouts/1-3_Upper_Body_Strength.json
+workouts/1-3_recovery_Yin_Yoga_Rest_Day.json
 workouts/1-3_Lower_Body_Strength.json
 workouts/1-3_Full_Body_Endurance_Conditioning_Adjusted.json
 workouts/1-2_Upper_Body_Strength_Modified.json

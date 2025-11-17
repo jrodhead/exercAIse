@@ -1,0 +1,181 @@
+{
+  "version": "1",
+  "title": "Chest & Shoulders Volume",
+  "date": "2025-11-21",
+  "block": 5,
+  "week": 3,
+  "notes": "Friday keeps the second chest exposure lighter but pumpy. Focus on tempo and full ranges to avoid stacking fatigue into next week. Time audit: 31.5 min total / 28.0 min working.",
+  "sections": [
+    {
+      "type": "Warm-up",
+      "title": "Shoulder Prep",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Arm Circles",
+          "link": "exercises/arm_circles.json",
+          "logType": "mobility",
+          "prescription": { "sets": 1, "reps": "12 each direction" }
+        },
+        {
+          "kind": "exercise",
+          "name": "Band Pull-Aparts",
+          "link": "exercises/band_pull_aparts.json",
+          "logType": "mobility",
+          "prescription": { "sets": 2, "reps": 20 },
+          "notes": "Mix overhand + underhand sets to wake rear delts."
+        },
+        {
+          "kind": "exercise",
+          "name": "Cat-Cow to Cobra Stretch",
+          "link": "exercises/cat_cow_to_cobra_stretch.json",
+          "logType": "mobility",
+          "prescription": { "sets": 1, "reps": "4 slow waves" }
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Vertical Press Anchor",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Seated Dumbbell Overhead Press",
+          "link": "exercises/seated_dumbbell_overhead_press.json",
+          "logType": "strength",
+          "prescription": { "sets": 3, "reps": "10-12", "weight": "30 x2 lb", "restSeconds": 120, "rpe": 7.5, "angle": 85 },
+          "cues": ["Back supported, ribs down", "Drive biceps to ears", "Stop before elbows lock"],
+          "notes": "Match Week 2 load but chase 10/10/9 before nudging up."
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Chest Pump - Superset A",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset A",
+          "notes": "Neutral grip bench then incline fly. Rest 90s before next round.",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Neutral-Grip Flat Bench Press (Dumbbells)",
+              "link": "exercises/neutral_grip_flat_bench_press.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "10-12", "weight": "35 x2 lb", "rpe": 7.5, "angle": 0 },
+              "cues": ["Wrists stacked", "Elbows 30°", "Tempo 2-0-2"],
+              "notes": "Add reps before considering 37.5s to keep shoulders calm."
+            },
+            {
+              "kind": "exercise",
+              "name": "Incline Dumbbell Flyes",
+              "link": "exercises/incline_dumbbell_flyes.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "12-15", "weight": "17.5 x2 lb", "restSeconds": 90, "rpe": 7, "angle": 30 },
+              "cues": ["Soft elbows", "Wide arc", "Squeeze at top"],
+              "notes": "Use 3s lowers; stop when biceps align with torso."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Delts + Calves - Superset B",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset B",
+          "notes": "Raise + calf pairing for shoulder burn and second calf hit. Rest 60s.",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Dumbbell Lateral Raise",
+              "link": "exercises/dumbbell_lateral_raise.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": "12-15", "weight": "12.5 x2 lb", "rpe": 7 },
+              "cues": ["Lead with elbows", "Stop at shoulder height", "Control down"],
+              "notes": "Last set drop to 10s if needed to finish reps with perfect form."
+            },
+            {
+              "kind": "exercise",
+              "name": "Standing Calf Raise (DB)",
+              "link": "exercises/standing_calf_raise_db.json",
+              "logType": "strength",
+              "prescription": { "sets": 3, "reps": 20, "weight": "30 x2 lb", "restSeconds": 60, "rpe": 7 },
+              "cues": ["Big toe pressure", "Full stretch", "No bounce"],
+              "notes": "3s eccentrics. If grip fatigues, switch to single DB goblet style."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Chest Finisher - Superset C",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset C",
+          "notes": "Stretch + pump combo. Rest 60s between rounds.",
+          "children": [
+            {
+              "kind": "exercise",
+              "name": "Dumbbell Pullover",
+              "link": "exercises/dumbbell_pullover.json",
+              "logType": "strength",
+              "prescription": { "sets": 2, "reps": "12-15", "weight": 30, "rpe": 7 },
+              "cues": ["Diamond grip", "Ribs down", "4s lower"],
+              "notes": "Let lats/serratus stretch but keep elbows soft."
+            },
+            {
+              "kind": "exercise",
+              "name": "Diamond Push-ups",
+              "link": "exercises/diamond_push_ups.json",
+              "logType": "strength",
+              "prescription": { "sets": 2, "reps": "AMRAP - 2", "restSeconds": 60, "rpe": 8 },
+              "cues": ["Elbows tight", "Body straight", "Stop 2 reps shy of failure"],
+              "notes": "If fewer than 8 reps, elevate hands on bench."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Core Control",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Plank Shoulder Tap",
+          "link": "exercises/plank_shoulder_tap.json",
+          "logType": "strength",
+          "prescription": { "sets": 3, "reps": 20, "restSeconds": 45, "rpe": 7 },
+          "notes": "20 taps = 10 per side. Feet wider than hips to resist rotation."
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Shoulder & Chest Cooldown",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Chest Opener Stretch",
+          "link": "exercises/chest_opener_stretch.json",
+          "logType": "stretch",
+          "prescription": { "sets": 1, "holdSeconds": 60 }
+        },
+        {
+          "kind": "exercise",
+          "name": "Cat-Cow Stretch",
+          "link": "exercises/cat_cow_stretch.json",
+          "logType": "mobility",
+          "prescription": { "sets": 1, "reps": 8 },
+          "notes": "Slow controlled breaths to downshift."
+        }
+      ]
+    }
+  ]
+}

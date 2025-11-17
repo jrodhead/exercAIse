@@ -1,0 +1,46 @@
+{
+  "version": "1",
+  "title": "Optional Easy Run",
+  "date": "2025-11-22",
+  "block": 5,
+  "week": 3,
+  "notes": "Carryover aerobic flush. Keep it conversational and adjust distance if legs feel heavy from Thursday squats. Time audit: 39.0 min total / 36.0 min working.",
+  "sections": [
+    {
+      "type": "Conditioning",
+      "title": "Steady Aerobic",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Easy Jog",
+          "link": "exercises/easy_jog.json",
+          "logType": "endurance",
+          "prescription": { "sets": 1, "distanceMiles": 4, "timeSeconds": 2160, "rpe": 5 },
+          "notes": "Aim for 8:45-9:00/mi pace. Walk for 1 minute if HR spikes above Zone 2."
+        }
+      ]
+    },
+    {
+      "type": "Cooldown/Recovery",
+      "title": "Post-Run Reset",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Calf Stretch (Wall or Step)",
+          "link": "exercises/calf_stretch_wall_or_step.json",
+          "logType": "stretch",
+          "prescription": { "sets": 1, "holdSeconds": 60 },
+          "notes": "Hold 60s per side, keep heel heavy."
+        },
+        {
+          "kind": "exercise",
+          "name": "Supine Spinal Twist",
+          "link": "exercises/supine_spinal_twist.json",
+          "logType": "stretch",
+          "prescription": { "sets": 2, "holdSeconds": 60 },
+          "notes": "Relax shoulders and breathe into belly."
+        }
+      ]
+    }
+  ]
+}
