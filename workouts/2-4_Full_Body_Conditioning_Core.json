@@ -17,9 +17,9 @@
           "prescription": {
             "timeSeconds": 60
           },
-          "logType": "mobility"
-        },
-        {
+              "kind": "exercise",
+              "name": "Hollow Body Hold",
+              "link": "exercises/hollow_body_hold.json",
           "kind": "exercise",
           "name": "Bodyweight Squat",
           "link": "exercises/bodyweight_squat.json",
@@ -90,8 +90,8 @@
             },
             {
               "kind": "exercise",
-              "name": "Hollow Hold",
-              "link": "exercises/hollow_hold.json",
+              "name": "Hollow Body Hold",
+              "link": "exercises/hollow_body_hold.json",
               "prescription": {
                 "holdSeconds": 30
               },

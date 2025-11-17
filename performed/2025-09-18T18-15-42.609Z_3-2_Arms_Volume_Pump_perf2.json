@@ -158,15 +158,15 @@
       "items": [
         {
           "kind": "exercise",
-          "name": "Hollow Hold",
+          "name": "Hollow Body Hold",
           "sets": [
             {
               "set": 1,
-              "reps": 40
+              "holdSeconds": 40
             },
             {
               "set": 2,
-              "reps": 40
+              "holdSeconds": 40
             }
           ]
         }
@@ -176,7 +176,7 @@
   "date": "2025-09-19",
   "block": 3,
   "week": 2,
-  "title": "Arms Volume & Pump – Block 3, Week 2 (Friday)",
+  "title": "Arms Volume & Pump \u2013 Block 3, Week 2 (Friday)",
   "notes": "Block 3 W2: Focus systemic arm volume (biceps/triceps/forearms) + delt cap without heavy axial load. Keep joints friendly, neutral/hammer grips. No Farmer Carry this week.",
   "exerciseIndex": {
     "alternating-dumbbell-biceps-curl": {
@@ -219,8 +219,8 @@
       "avgRPE": 0.0,
       "totalVolume": 900
     },
-    "hollow-hold": {
-      "name": "Hollow Hold",
+    "hollow-body-hold": {
+      "name": "Hollow Body Hold",
       "sectionPath": "sections[2].items[0].sets[*]",
       "totalSets": 2,
       "totalRounds": 0,

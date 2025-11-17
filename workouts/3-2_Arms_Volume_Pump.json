@@ -21,7 +21,7 @@
       { "kind": "exercise", "name": "Overhead Triceps Extension", "link": "exercises/overhead_triceps_extension.json", "logType": "strength", "prescription": { "sets": 3, "reps": 12, "weight": "20 lb" }, "cues": ["Elbows narrow", "No sway"] }
     ] },
     { "type": "Accessory/Core", "title": "C1/C2 Forearm + Core Pair", "notes": "Optional 1–2 rounds if time.", "items": [
-      { "kind": "exercise", "name": "Hollow Hold", "link": "exercises/hollow_hold.json", "logType": "strength", "prescription": { "sets": 2, "holdSeconds": 25 }, "cues": ["Lower back press", "Controlled breath"] }
+      { "kind": "exercise", "name": "Hollow Body Hold", "link": "exercises/hollow_body_hold.json", "logType": "strength", "prescription": { "sets": 2, "holdSeconds": 25 }, "cues": ["Lower back press", "Controlled breath"] }
     ] },
     { "type": "Cooldown/Recovery", "title": "Downshift (4–5 min)", "items": [
       { "kind": "exercise", "name": "Child’s Pose", "link": "exercises/childs_pose.json", "logType": "stretch", "prescription": { "holdSeconds": 40 }, "cues": ["Slow exhale"] },

@@ -123,8 +123,8 @@
         },
         {
           "kind": "exercise",
-          "name": "Hollow Hold",
-          "link": "exercises/hollow_hold.json",
+          "name": "Hollow Body Hold",
+          "link": "exercises/hollow_body_hold.json",
           "cues": [
             "[Cat-Cow to Cobra stretch](../exercises/cat_cow_to_cobra_stretch.json): 5 reps each",
             "[Deadbug](../exercises/deadbug.json) (no weight): 2 sets x 10 reps (slow and controlled)"

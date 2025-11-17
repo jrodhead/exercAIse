@@ -51,8 +51,8 @@
         },
         {
           "kind": "exercise",
-          "name": "Hollow Hold",
-          "link": "exercises/hollow_hold.json",
+          "name": "Hollow Body Hold",
+          "link": "exercises/hollow_body_hold.json",
           "cues": [],
           "logType": "mobility"
         }

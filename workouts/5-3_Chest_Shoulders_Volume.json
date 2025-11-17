@@ -125,7 +125,7 @@
               "name": "Dumbbell Pullover",
               "link": "exercises/dumbbell_pullover.json",
               "logType": "strength",
-              "prescription": { "sets": 2, "reps": "12-15", "weight": 30, "rpe": 7 },
+              "prescription": { "sets": 2, "reps": "12-15", "weight": 30, "rpe": 7, "angle": 0 },
               "cues": ["Diamond grip", "Ribs down", "4s lower"],
               "notes": "Let lats/serratus stretch but keep elbows soft."
             },

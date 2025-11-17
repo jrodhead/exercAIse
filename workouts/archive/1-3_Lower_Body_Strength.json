@@ -116,17 +116,17 @@
     },
     {
       "type": "Main Work",
-      "title": "6. Hollow Hold",
+      "title": "6. Hollow Body Hold",
       "items": []
     },
     {
       "type": "Main Work",
-      "title": "6. [Hollow Hold](../exercises/hollow_hold.json)",
+      "title": "6. [Hollow Body Hold](../exercises/hollow_body_hold.json)",
       "items": [
         {
           "kind": "exercise",
-          "name": "Hollow Hold",
-          "link": "exercises/hollow_hold.json",
+          "name": "Hollow Body Hold",
+          "link": "exercises/hollow_body_hold.json",
           "cues": [],
           "logType": "mobility"
         }

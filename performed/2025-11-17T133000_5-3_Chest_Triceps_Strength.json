@@ -204,25 +204,24 @@
       "items": [
         {
           "kind": "exercise",
-          "name": "Hollow Hold",
+          "name": "Hollow Body Hold",
           "sets": [
             {
               "set": 1,
-              "reps": 40,
+              "holdSeconds": 40,
               "rpe": 7
             },
             {
               "set": 2,
-              "reps": 40,
+              "holdSeconds": 40,
               "rpe": 7
             },
             {
               "set": 3,
-              "reps": 40,
+              "holdSeconds": 40,
               "rpe": 7
             }
-          ],
-          "notes": "Lower extend only if low back stays glued down."
+          ]
         }
       ]
     }

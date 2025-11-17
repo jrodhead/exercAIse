@@ -125,8 +125,8 @@
       "items": [
         {
           "kind": "exercise",
-          "name": "Hollow Hold",
-          "link": "exercises/hollow_hold.json",
+          "name": "Hollow Body Hold",
+          "link": "exercises/hollow_body_hold.json",
           "logType": "strength",
           "prescription": { "sets": 3, "holdSeconds": 30, "restSeconds": 45, "rpe": 7 },
           "notes": "Lower extend only if low back stays glued down."

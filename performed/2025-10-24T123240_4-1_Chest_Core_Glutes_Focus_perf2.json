@@ -118,15 +118,15 @@
           "sets": [
             {
               "set": 1,
-              "reps": 45
+              "holdSeconds": 45
             },
             {
               "set": 2,
-              "reps": 45
+              "holdSeconds": 45
             },
             {
               "set": 3,
-              "reps": 45
+              "holdSeconds": 45
             }
           ]
         }
