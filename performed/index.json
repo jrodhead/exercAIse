@@ -1,6 +1,24 @@
 {
-  "generatedAt": "2025-11-15T23:53:53.976Z",
+  "generatedAt": "2025-11-17T17:34:57.060Z",
   "files": [
+    {
+      "name": "2025-11-17T133000_5-3_Chest_Triceps_Strength.json",
+      "path": "performed/2025-11-17T133000_5-3_Chest_Triceps_Strength.json",
+      "size": 7997,
+      "mtimeMs": 1763396471533.6875
+    },
+    {
+      "name": "2025-10-24T123240_4-1_Chest_Core_Glutes_Focus_perf2.json",
+      "path": "performed/2025-10-24T123240_4-1_Chest_Core_Glutes_Focus_perf2.json",
+      "size": 4172,
+      "mtimeMs": 1763394941050.5808
+    },
+    {
+      "name": "2025-09-18T18-15-42.609Z_3-2_Arms_Volume_Pump_perf2.json",
+      "path": "performed/2025-09-18T18-15-42.609Z_3-2_Arms_Volume_Pump_perf2.json",
+      "size": 5533,
+      "mtimeMs": 1763394941049.5505
+    },
     {
       "name": "2025-11-15T173019_5-2_Easy_Run_Optional.json",
       "path": "performed/2025-11-15T173019_5-2_Easy_Run_Optional.json",
@@ -74,12 +92,6 @@
       "mtimeMs": 1762660929738.8674
     },
     {
-      "name": "2025-09-18T18-15-42.609Z_3-2_Arms_Volume_Pump_perf2.json",
-      "path": "performed/2025-09-18T18-15-42.609Z_3-2_Arms_Volume_Pump_perf2.json",
-      "size": 5500,
-      "mtimeMs": 1762660929733.0454
-    },
-    {
       "name": "2025-09-15T14-38-06.725Z_3-2_Upper_Body_Hypertrophy_perf2.json",
       "path": "performed/2025-09-15T14-38-06.725Z_3-2_Upper_Body_Hypertrophy_perf2.json",
       "size": 6791,
@@ -114,12 +126,6 @@
       "path": "performed/2025-10-25T162533_4-1_Easy_Run_Progression_perf2.json",
       "size": 995,
       "mtimeMs": 1762660929677.2378
-    },
-    {
-      "name": "2025-10-24T123240_4-1_Chest_Core_Glutes_Focus_perf2.json",
-      "path": "performed/2025-10-24T123240_4-1_Chest_Core_Glutes_Focus_perf2.json",
-      "size": 4150,
-      "mtimeMs": 1762660929673.0063
     },
     {
       "name": "2025-10-23T123152_4-3_Lower_Body_Strength_Mobility_perf2.json",
