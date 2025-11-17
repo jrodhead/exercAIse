@@ -65,9 +65,9 @@
               "name": "Renegade Row",
               "link": "exercises/renegade_row.json",
               "logType": "strength",
-              "prescription": { "sets": 4, "reps": "8-10 per arm", "weight": "35 x2 lb", "restSeconds": 90, "rpe": 7 },
+              "prescription": { "sets": 4, "reps": "8-10 per arm", "weight": "40 x2 lb", "restSeconds": 90, "rpe": 7 },
               "cues": ["Feet wide for stability", "Pull to back pocket", "No hip sway"],
-              "notes": "Alternate arms each rep; keep plank tension the entire round."
+              "notes": "Snapped to the bench ladder (40s) so plates stay put; alternate arms each rep and keep plank tension."
             }
           ]
         }
