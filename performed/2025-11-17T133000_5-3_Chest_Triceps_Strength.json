@@ -1,0 +1,290 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/5-3_Chest_Triceps_Strength.json",
+  "timestamp": "2025-11-17T13:29:45.930Z",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "Primary Press Power - Superset A",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset A",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "flat-dumbbell-bench-press",
+                  "name": "Flat Dumbbell Bench Press",
+                  "weight": 40,
+                  "multiplier": 2,
+                  "reps": 11,
+                  "rpe": 7
+                },
+                {
+                  "key": "renegade-row",
+                  "name": "Renegade Row",
+                  "weight": 40,
+                  "multiplier": 2,
+                  "reps": 8,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "flat-dumbbell-bench-press",
+                  "name": "Flat Dumbbell Bench Press",
+                  "weight": 40,
+                  "multiplier": 2,
+                  "reps": 11,
+                  "rpe": 7
+                },
+                {
+                  "key": "renegade-row",
+                  "name": "Renegade Row",
+                  "weight": 40,
+                  "multiplier": 2,
+                  "reps": 6,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 3,
+              "exercises": [
+                {
+                  "key": "flat-dumbbell-bench-press",
+                  "name": "Flat Dumbbell Bench Press",
+                  "weight": 40,
+                  "multiplier": 2,
+                  "reps": 11,
+                  "rpe": 8
+                },
+                {
+                  "key": "renegade-row",
+                  "name": "Renegade Row",
+                  "weight": 40,
+                  "multiplier": 2,
+                  "reps": 4,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 90
+            }
+          ],
+          "notes": "Perform bench then renegade rows. Rest 90s after each round; stay braced to resist rotation."
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Upper-Chest Straight Sets",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Incline Dumbbell Bench Press",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 11,
+              "rpe": 7,
+              "angle": 15
+            },
+            {
+              "set": 2,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 11,
+              "rpe": 7,
+              "angle": 15
+            },
+            {
+              "set": 3,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 13,
+              "rpe": 8,
+              "angle": 15
+            }
+          ],
+          "notes": "Progress by hitting 11+ reps on first two sets before considering a load bump."
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Triceps Density - Superset B",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset B",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "close-grip-dumbbell-press",
+                  "name": "Close-Grip Dumbbell Press",
+                  "weight": 30,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 7
+                },
+                {
+                  "key": "dumbbell-floor-skullcrushers",
+                  "name": "Dumbbell Floor Skullcrushers",
+                  "weight": 20,
+                  "multiplier": 2,
+                  "reps": 6,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 75
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "close-grip-dumbbell-press",
+                  "name": "Close-Grip Dumbbell Press",
+                  "weight": 30,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 7
+                },
+                {
+                  "key": "dumbbell-floor-skullcrushers",
+                  "name": "Dumbbell Floor Skullcrushers",
+                  "weight": 20,
+                  "multiplier": 2,
+                  "reps": 6,
+                  "rpe": 8
+                }
+              ],
+              "prescribedRestSeconds": 75
+            },
+            {
+              "round": 3,
+              "exercises": [
+                {
+                  "key": "close-grip-dumbbell-press",
+                  "name": "Close-Grip Dumbbell Press",
+                  "weight": 30,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 8
+                },
+                {
+                  "key": "dumbbell-floor-skullcrushers",
+                  "name": "Dumbbell Floor Skullcrushers",
+                  "weight": 10,
+                  "multiplier": 2,
+                  "reps": 20,
+                  "rpe": 8
+                }
+              ],
+              "prescribedRestSeconds": 75
+            }
+          ],
+          "notes": "Press with narrow path, then roll straight into skullcrushers. Rest 75s between rounds."
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Core Bracing",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Hollow Hold",
+          "sets": [
+            {
+              "set": 1,
+              "reps": 40,
+              "rpe": 7
+            },
+            {
+              "set": 2,
+              "reps": 40,
+              "rpe": 7
+            },
+            {
+              "set": 3,
+              "reps": 40,
+              "rpe": 7
+            }
+          ],
+          "notes": "Lower extend only if low back stays glued down."
+        }
+      ]
+    }
+  ],
+  "date": "2025-11-17",
+  "block": 5,
+  "week": 3,
+  "title": "Chest & Triceps Strength",
+  "exerciseIndex": {
+    "flat-dumbbell-bench-press_0": {
+      "angle": 0,
+      "name": "Flat Dumbbell Bench Press",
+      "sectionPath": "sections[0].items[0].rounds[*].exercises[0]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 7.333333333333333,
+      "totalVolume": 2640
+    },
+    "renegade-row_0": {
+      "angle": 0,
+      "name": "Renegade Row",
+      "sectionPath": "sections[0].items[0].rounds[*].exercises[1]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 7,
+      "totalVolume": 1440
+    },
+    "incline-dumbbell-bench-press_15": {
+      "angle": 15,
+      "name": "Incline Dumbbell Bench Press",
+      "sectionPath": "sections[1].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 7.333333333333333,
+      "totalVolume": 2100
+    },
+    "close-grip-dumbbell-press_0": {
+      "angle": 0,
+      "name": "Close-Grip Dumbbell Press",
+      "sectionPath": "sections[2].items[0].rounds[*].exercises[0]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 7.333333333333333,
+      "totalVolume": 1920
+    },
+    "dumbbell-floor-skullcrushers_0": {
+      "angle": 0,
+      "name": "Dumbbell Floor Skullcrushers",
+      "sectionPath": "sections[2].items[0].rounds[*].exercises[1]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 7.666666666666667,
+      "totalVolume": 880
+    },
+    "hollow-hold_0": {
+      "angle": 0,
+      "name": "Hollow Hold",
+      "sectionPath": "sections[3].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 7,
+      "totalVolume": 0
+    }
+  }
+}
