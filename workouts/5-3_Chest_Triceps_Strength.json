@@ -4,7 +4,7 @@
   "date": "2025-11-17",
   "block": 5,
   "week": 3,
-  "notes": "Block 5 Week 3 Monday heavy press day. No basketball this week so we can lean on quality volume (RPE 7-8) and add reps before bumping load. Time audit: 34.2 min total / 25.8 min working.",
+  "notes": "Block 5 Week 3 Monday heavy press day. No basketball this week so we can lean on quality volume (RPE 7-8) and add reps before bumping load. Time audit: 31.2 min total / 22.8 min working.",
   "sections": [
     {
       "type": "Warm-up",
@@ -57,17 +57,18 @@
               "name": "Flat Dumbbell Bench Press",
               "link": "exercises/flat_dumbbell_bench_press.json",
               "logType": "strength",
-              "prescription": { "sets": 4, "reps": "10-12", "weight": "40 x2 lb", "rpe": 7.5, "angle": 0 },
-              "cues": ["Feet planted, slight arch", "Lower for 3s, quick drive", "Aim for 11 reps on sets 1-2"]
+              "prescription": { "sets": 3, "reps": "10-12", "weight": "40 x2 lb", "rpe": 7.5, "angle": 0 },
+              "cues": ["Feet planted, slight arch", "Lower for 3s, quick drive", "Aim for 11 reps on sets 1-2"],
+              "notes": "Stopped at 3 quality sets to honor 2-3 set rule—add reps before bumping load."
             },
             {
               "kind": "exercise",
               "name": "Renegade Row",
               "link": "exercises/renegade_row.json",
               "logType": "strength",
-              "prescription": { "sets": 4, "reps": "8-10 per arm", "weight": "40 x2 lb", "restSeconds": 90, "rpe": 7 },
+              "prescription": { "sets": 3, "reps": "8-10 per arm", "weight": "40 x2 lb", "restSeconds": 90, "rpe": 7 },
               "cues": ["Feet wide for stability", "Pull to back pocket", "No hip sway"],
-              "notes": "Snapped to the bench ladder (40s) so plates stay put; alternate arms each rep and keep plank tension."
+              "notes": "Snapped to the bench ladder (40s) so plates stay put—3 rounds keep within set guideline; alternate arms each rep."
             }
           ]
         }
