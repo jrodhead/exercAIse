@@ -1,19 +1,81 @@
 {
   "name": "90/90 Hip Stretch",
   "equipment": [
-    "bodyweight"
+    "bodyweight",
+    "yoga blocks (optional)",
+    "blanket (optional)"
   ],
   "tags": [
+    "hip mobility",
+    "glutes",
+    "external rotation",
     "stretch"
   ],
-  "cues": [
-    "Sit on the floor with one leg in front, knee bent at 90°, and the other leg behind, also bent at 90°",
-    "Keep both sit bones on the floor",
-    "Lean forward over the front leg for a deeper stretch",
-    "Hold, then switch sides",
-    "Keep chest tall",
-    "Avoid rounding your back",
-    "Breathe deeply into the stretch"
+  "setup": [
+    "Sit tall with front leg bent at 90° (shin parallel to torso) and back leg bent at 90° behind you",
+    "Line up both knees with hips; adjust distance to stay pain-free",
+    "Square chest over front shin and brace lightly",
+    "Elevate hips on folded blanket if sitting tall is difficult"
   ],
-  "safety": "Only go as far as comfortable; do not force the stretch."
+  "steps": [
+    "Inhale to lengthen spine, then hinge forward over the front shin until you feel moderate glute stretch",
+    "Hold the forward fold 30-60s while breathing slowly",
+    "Return upright, rotate torso toward back leg, and gently lean back to open hip flexors",
+    "Optionally perform gentle pulses or rotations, then switch sides",
+    "Repeat sequence 2-3 times per side for prescribed hold"
+  ],
+  "cues": [
+    "Both sit bones grounded (use props if needed)",
+    "Chest tall before hinging forward",
+    "Breathe into tight spots, soften jaw",
+    "Stop short of knee discomfort",
+    "Drive back knee into floor gently to engage"
+  ],
+  "mistakes": [
+    "Allowing spine to round aggressively",
+    "Letting front knee lift off floor",
+    "Rotating torso instead of hinging",
+    "Forcing range and holding breath",
+    "Ignoring back hip stretch"
+  ],
+  "safety": "Keep stretch in the hip capsule—never force the knees. Use props under hips or knees if there is joint discomfort and exit the pose if sharp pain occurs.",
+  "scaling": {
+    "regressions": [
+      "Sit on block/bolster to reduce hip angle",
+      "Keep torso upright and lean only slightly",
+      "Place cushion under front knee for support",
+      "Perform figure-4 stretch lying on back"
+    ],
+    "progressions": [
+      "Walk hands further forward for deeper glute stretch",
+      "Add thoracic rotation reaches",
+      "Lift back knee for active lift-offs",
+      "Transition between sides without using hands"
+    ]
+  },
+  "variations": [
+    "[Sleeping Swan (Yin Pigeon)](sleeping_swan_yin_pigeon.json)",
+    "[Pigeon Pose or 90/90 Hip Stretch](pigeon_pose_or_90_90_hip_stretch.json)",
+    "Seated figure-4 stretch"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight only",
+    "reps": "2-3 transitions per side",
+    "time": "45-90s holds forward + 30s upright",
+    "distance": "—",
+    "rpe": "5-6 (moderate stretch)",
+    "notes": "Great Yin-style hip opener. Use props so knees feel supported."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "hips",
+      "knees",
+      "ankles"
+    ],
+    "notes": "Keep shin supported if knee pressure shows up; maintain neutral spine before hinging."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
 }

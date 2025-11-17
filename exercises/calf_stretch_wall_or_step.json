@@ -1,9 +1,79 @@
 {
   "name": "Calf Stretch (Wall or Step)",
   "equipment": [
-    "bodyweight"
+    "wall",
+    "step or curb (optional)",
+    "support surface"
   ],
   "tags": [
+    "calves",
+    "ankles",
+    "mobility",
     "stretch"
-  ]
+  ],
+  "setup": [
+    "Stand facing a wall, hands at shoulder height",
+    "Step one foot back 2-3 feet with heel down",
+    "Front leg bent slightly, back leg straight for gastrocnemius stretch",
+    "Optional: place ball of front foot on step for deeper stretch"
+  ],
+  "steps": [
+    "Gently drive hips forward until you feel a calf stretch in the back leg",
+    "Hold 30-60s breathing steadily",
+    "To hit soleus, bend back knee slightly while keeping heel grounded",
+    "Switch legs and repeat",
+    "If using a step, drop heel below step edge and keep knee straight"
+  ],
+  "cues": [
+    "Keep heel heavy and grounded",
+    "Square hips toward wall",
+    "Ribs stacked over pelvis",
+    "No bouncing—steady pressure",
+    "Adjust knee bend to bias different calf fibers"
+  ],
+  "mistakes": [
+    "Letting back heel lift",
+    "Arching lower back to force range",
+    "Bouncing in and out",
+    "Turning toes outward excessively",
+    "Holding breath"
+  ],
+  "safety": "Stop if Achilles pain or nerve symptoms occur. Keep stretches gentle and pain-free; reduce depth if tingling travels down the leg.",
+  "scaling": {
+    "regressions": [
+      "Shorten stance",
+      "Use wall lean with heel slightly elevated",
+      "Perform seated calf stretch with strap"
+    ],
+    "progressions": [
+      "Add slight pulses at end range",
+      "Use step deficit to lower heel",
+      "Perform single-leg stretch with knee bent and straight variants"
+    ]
+  },
+  "variations": [
+    "Standing calf stretch on step",
+    "Runner's stretch against wall",
+    "Downward dog calf pedals"
+  ],
+  "prescriptionHints": {
+    "load": "Bodyweight",
+    "reps": "2-3 holds per leg",
+    "time": "30-60s per hold",
+    "distance": "—",
+    "rpe": "3-5",
+    "notes": "Add both straight-leg and bent-knee variations to capture gastrocnemius and soleus."
+  },
+  "joints": {
+    "sensitiveJoints": [
+      "ankles",
+      "Achilles",
+      "knees"
+    ],
+    "notes": "Keep heel down and knee tracking over toes. Ease off if Achilles feels sharp or inflamed."
+  },
+  "media": {
+    "video": "",
+    "images": []
+  }
 }

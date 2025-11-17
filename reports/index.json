@@ -3,6 +3,23 @@
   "description": "AI-generated training progress reports (JSON format)",
   "reports": [
     {
+      "filename": "2025-11-16_block-5-2.json",
+      "startDate": "2025-11-10",
+      "endDate": "2025-11-15",
+      "blockRange": "5-5",
+      "title": "Training Progress Report - Block 5 Week 2",
+      "generatedDate": "2025-11-16",
+      "overallGrade": "A",
+      "sessionCount": 5,
+      "highlights": [
+        "Antagonist bench + row pairing unlocked 4x10 @ 40x2 lb while rows held 50 lb.",
+        "Close-grip DB press regained 10/10/8 once moved to straight sets.",
+        "Hip thrust + goblet squat climbed to 60 lb x 15/10 across 3 rounds.",
+        "Standing calf raise now hits twice per week for 5,400 lb weekly load.",
+        "Optional 4 mi run at 8:57/mi kept recovery aerobic."
+      ]
+    },
+    {
       "filename": "2025-11-10_block-5-1.json",
       "startDate": "2025-11-04",
       "endDate": "2025-11-07",

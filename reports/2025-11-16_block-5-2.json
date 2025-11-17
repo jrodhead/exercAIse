@@ -1,0 +1,358 @@
+{
+  "version": "1.0",
+  "metadata": {
+    "title": "Training Progress Report - Block 5 Week 2",
+    "period": {
+      "startDate": "2025-11-10",
+      "endDate": "2025-11-15",
+      "blockRange": "5-5",
+      "weeks": 1
+    },
+    "generatedDate": "2025-11-16"
+  },
+  "summary": {
+    "grade": "A",
+    "kpis": [
+      {
+        "label": "Total Sessions",
+        "value": "5 (4 strength + 1 run)",
+        "sentiment": "positive"
+      },
+      {
+        "label": "Strength Volume",
+        "value": "37,585 lb",
+        "sentiment": "positive"
+      },
+      {
+        "label": "Avg Strength RPE",
+        "value": "≈7.2",
+        "sentiment": "positive"
+      },
+      {
+        "label": "Chest Frequency",
+        "value": "2 dedicated doses",
+        "sentiment": "positive"
+      },
+      {
+        "label": "Calf Volume",
+        "value": "5,400 lb (+150%)",
+        "sentiment": "positive"
+      },
+      {
+        "label": "Adherence",
+        "value": "100% of planned lifts",
+        "sentiment": "positive"
+      }
+    ],
+    "highlights": [
+      "💪 Antagonist bench + row pairing delivered 4×10 @ 40×2 lb with RPE 6-8 while rows held 50 lb, eliminating the triceps crash from Week 1.",
+      "🔁 Close-grip DB press moved to straight sets and regained 10/10/8 @ 30×2 lb for +8% more chest/triceps volume.",
+      "🦵 Hip thrust + goblet squat superset climbed to 60 lb × 15/10 across 3 rounds (RPE 7-8), producing +25% hip thrust volume.",
+      "💥 Standing calf raise hit twice (Thu + Fri) for 5,400 lb total load, up 150% from Week 1.",
+      "🤜🤛 Hammer curls dropped to 27.5×2 lb and re-established 10/10/8, adding +28% useful biceps volume with lower RPE.",
+      "🏃 Optional 4 mi run at 8:57/mi (RPE 5) kept recovery aerobic without adding unnecessary fatigue."
+    ],
+    "injuryStatus": "No wrist, ankle, or neck flare-ups despite four AM lifts plus the run. Maintain scapular retraction on presses and heel drive on squats to keep joints quiet."
+  },
+  "sections": [
+    {
+      "type": "strength-analysis",
+      "title": "💪 Strength Progression by Movement Pattern",
+      "subsections": [
+        {
+          "subtitle": "Horizontal Press & Chest Volume",
+          "table": {
+            "type": "exercise-progression",
+            "columns": ["Exercise", "First Session", "Peak Performance", "Volume Change", "Sessions"],
+            "rows": [
+              {
+                "exercise": "Flat DB Bench Press (0°)",
+                "firstSession": "40×2 × 10,10,6 @ RPE 7-8 (Nov 4)",
+                "peakPerformance": "40×2 × 10,10,10,10 @ RPE 6-8 (Nov 10)",
+                "volumeChange": "+54% weekly volume (2,080 -> 3,200 lb)",
+                "volumeChangeSentiment": "positive",
+                "sessions": "2"
+              },
+              {
+                "exercise": "Incline DB Bench Press (30°)",
+                "firstSession": "30×2 × 10,10 @ RPE 8 (Nov 4)",
+                "peakPerformance": "30×2 × 10,10,8 @ RPE 7-8 (Nov 10)",
+                "volumeChange": "+40% volume (1,200 -> 1,680 lb)",
+                "volumeChangeSentiment": "positive",
+                "sessions": "2"
+              },
+              {
+                "exercise": "Close-Grip DB Press (0°)",
+                "firstSession": "30×2 × 10,10,6 @ RPE 7-8 (Nov 4, paired with bench)",
+                "peakPerformance": "30×2 × 10,10,8 straight sets @ RPE 7-8 (Nov 10)",
+                "volumeChange": "+8% volume, no rep crash (1,560 -> 1,680 lb)",
+                "volumeChangeSentiment": "positive",
+                "sessions": "2"
+              },
+              {
+                "exercise": "Dumbbell Flyes (0°)",
+                "firstSession": "20×2 × 10,12 @ RPE 7 (Nov 4)",
+                "peakPerformance": "20×2 × 12 across 5 sets (Nov 10 & 14)",
+                "volumeChange": "+173% stretch volume (880 -> 2,400 lb)",
+                "volumeChangeSentiment": "positive",
+                "sessions": "2"
+              }
+            ]
+          },
+          "observation": "Switching Monday to an antagonist pairing kept triceps fresh while still driving pressing volume. Flat bench now sustains 4 quality rounds, incline bench added a third set without raising RPE, and straight-set close-grip press regained the full 10/10/8 target. Extra flye work on Friday layered in the second chest exposure required for this specialization block."
+        },
+        {
+          "subtitle": "Horizontal Pull & Back Density",
+          "table": {
+            "type": "exercise-progression",
+            "columns": ["Exercise", "First Session", "Peak Performance", "Volume Change", "Sessions"],
+            "rows": [
+              {
+                "exercise": "One-Arm DB Row",
+                "firstSession": "50 lb × 10×3 @ RPE 7-8 (Nov 7)",
+                "peakPerformance": "50 lb × 10×4 + 47.5 lb × 10×3 @ RPE 7-8 (Nov 10-11)",
+                "volumeChange": "+128% weekly volume (1,500 -> 3,425 lb)",
+                "volumeChangeSentiment": "positive",
+                "sessions": "2"
+              },
+              {
+                "exercise": "Chest-Supported DB Row (30°)",
+                "firstSession": "40×2 × 10×3 @ RPE 7 (Nov 7)",
+                "peakPerformance": "35×2 × 12×3 @ RPE 7 (Nov 11)",
+                "volumeChange": "+5% volume with longer ROM (2,400 -> 2,520 lb)",
+                "volumeChangeSentiment": "positive",
+                "sessions": "2"
+              },
+              {
+                "exercise": "Hammer Curl",
+                "firstSession": "30×2 × 10,5,5 @ RPE 7-8 (Nov 7)",
+                "peakPerformance": "27.5×2 × 10,10,8 @ RPE 7-8 (Nov 11)",
+                "volumeChange": "+28% effective volume (1,200 -> 1,540 lb)",
+                "volumeChangeSentiment": "positive",
+                "sessions": "2"
+              },
+              {
+                "exercise": "Incline DB Curl",
+                "firstSession": "20×2 × 5 then 10×2 × 15,15 (Nov 7)",
+                "peakPerformance": "15×2 × 12×3 @ RPE 7-8 (Nov 11)",
+                "volumeChange": "+35% steady tension (800 -> 1,080 lb)",
+                "volumeChangeSentiment": "positive",
+                "sessions": "2"
+              }
+            ]
+          },
+          "observation": "Rows now appear twice per week: Monday keeps lats engaged during the chest superset, then Tuesday preserves the dedicated back day. Dropping hammer curls to 27.5×2 lb removed the synergist fatigue crash seen last week, and incline curls settled into an 8-12 rep groove instead of the failed heavy experiment."
+        },
+        {
+          "subtitle": "Lower Body & Posterior Chain",
+          "table": {
+            "type": "exercise-progression",
+            "columns": ["Exercise", "First Session", "Peak Performance", "Volume Change", "Sessions"],
+            "rows": [
+              {
+                "exercise": "Dumbbell Hip Thrust",
+                "firstSession": "60 lb × 12×3 @ RPE 7 (Nov 6)",
+                "peakPerformance": "60 lb × 15×3 @ RPE 7-8 (Nov 13)",
+                "volumeChange": "+25% glute volume (2,160 -> 2,700 lb)",
+                "volumeChangeSentiment": "positive",
+                "sessions": "2"
+              },
+              {
+                "exercise": "Goblet Squat",
+                "firstSession": "60 lb × 10,10,8 @ RPE 7-7.5 (Nov 6)",
+                "peakPerformance": "60 lb × 10×3 @ RPE 7-8 (Nov 13)",
+                "volumeChange": "+7% volume (1,680 -> 1,800 lb)",
+                "volumeChangeSentiment": "positive",
+                "sessions": "2"
+              },
+              {
+                "exercise": "Bulgarian Split Squat",
+                "firstSession": "40×2 × 12,10,10 @ RPE 7-8 (Nov 6)",
+                "peakPerformance": "40×2 × 12×3 @ RPE 7-8 (Nov 13)",
+                "volumeChange": "+12% per-leg work (2,560 -> 2,880 lb)",
+                "volumeChangeSentiment": "positive",
+                "sessions": "2"
+              },
+              {
+                "exercise": "Dumbbell RDL",
+                "firstSession": "60×2 × 10,10,8 @ RPE 8 (Nov 6)",
+                "peakPerformance": "60×2 × 10×3 @ RPE 8 (Nov 13)",
+                "volumeChange": "+7% hinge load (3,360 -> 3,600 lb)",
+                "volumeChangeSentiment": "positive",
+                "sessions": "2"
+              }
+            ]
+          },
+          "observation": "Lower-body work maintained the 60 lb anchor while adding reps instead of chasing heavier loads. Hip thrusts now hit the top of the 12-15 range, split squats held 12 per leg for all three rounds, and RDLs matched Week 1 load with zero rep drop-off—showing the athlete can stay in the hypertrophy sweet spot without stressing the back or ankles."
+        },
+        {
+          "subtitle": "Shoulders, Calves & Core Stability",
+          "table": {
+            "type": "exercise-progression",
+            "columns": ["Exercise", "First Session", "Peak Performance", "Volume Change", "Sessions"],
+            "rows": [
+              {
+                "exercise": "Seated DB Overhead Press (85°)",
+                "firstSession": "New: 30×2 × 10,8,7 @ RPE 7-8 (Nov 14)",
+                "peakPerformance": "Baseline established for Friday volume day",
+                "volumeChange": "Baseline established",
+                "volumeChangeSentiment": "neutral",
+                "sessions": "1"
+              },
+              {
+                "exercise": "Dumbbell Lateral Raise",
+                "firstSession": "New: 12-15×2 × 10-12×3 @ RPE 6-7 (Nov 14)",
+                "peakPerformance": "Baseline established",
+                "volumeChange": "Baseline established",
+                "volumeChangeSentiment": "neutral",
+                "sessions": "1"
+              },
+              {
+                "exercise": "Standing Calf Raise",
+                "firstSession": "30×2 × 12×3 @ RPE 7 (Nov 6)",
+                "peakPerformance": "30×2 × 15×6 across Thu/Fri (Nov 13-14)",
+                "volumeChange": "+150% weekly load (2,160 -> 5,400 lb)",
+                "volumeChangeSentiment": "positive",
+                "sessions": "2"
+              },
+              {
+                "exercise": "Plank",
+                "firstSession": "New: 2 × 60s @ RPE 6 (Nov 14)",
+                "peakPerformance": "Baseline established",
+                "volumeChange": "Baseline established",
+                "volumeChangeSentiment": "positive",
+                "sessions": "1"
+              }
+            ]
+          },
+          "observation": "Friday’s chest/shoulder volume session is now live with seated presses, lateral raises, and a second calf exposure. Core volume improved via long planks plus the existing Pallof work, giving the trunk two unique stimuli heading into Week 3."
+        }
+      ]
+    },
+    {
+      "type": "table",
+      "title": "📊 Training Volume & Session Distribution",
+      "subtitle": "Block 5 Week 2 Session Breakdown",
+      "table": {
+        "type": "generic",
+        "columns": ["Date", "Session", "Primary Focus", "Total Volume (lb)", "Avg RPE"],
+        "rows": [
+          ["Nov 10 (Mon)", "Chest & Triceps Hypertrophy", "Flat bench + antagonist rows", "9,520", "7.2"],
+          ["Nov 11 (Tue)", "Back & Biceps Maintenance", "Rows, curls, carries", "7,185", "7.3"],
+          ["Nov 13 (Thu)", "Glutes, Calves & Core", "Hip thrust, split squat, RDL", "13,800", "7.4"],
+          ["Nov 14 (Fri)", "Chest & Shoulders Volume", "Seated OHP, lateral raise, flyes", "7,080", "7.1"]
+        ]
+      },
+      "summary": "Four AM lifting sessions were completed on plan (Mon/Tue/Thu/Fri) for 37,585 lb of total strength volume. Average session RPE stayed inside the 7.1-7.4 window, confirming Weeks 3-4 can push load or reps without risking early burnout."
+    },
+    {
+      "type": "table",
+      "title": "🏃 Endurance & Recovery",
+      "table": {
+        "type": "generic",
+        "columns": ["Date", "Workout", "Distance", "Time", "Pace", "RPE"],
+        "rows": [
+          ["Nov 15 (Sat)", "Optional Easy Run", "4.0 mi", "35:50", "8:57/mi", "5"]
+        ]
+      },
+      "summary": "Conversational run flushed the legs the day after the Friday volume session. Pace stayed aerobic and there were no notes of ankle discomfort, so the optional Saturday run can remain in play as long as Monday’s double-day (lift + basketball) still feels fresh."
+    },
+    {
+      "type": "text",
+      "title": "🔍 Fatigue & Superset Findings",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Superset restructuring solved the Week 1 triceps bottleneck and clarified where additional rest is (and is not) needed."
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Flat bench + one-arm row (Nov 10): Bench held 40×2 × 10 for four straight rounds at RPE 6-8 while rows alternated 50 lb and 47.5 lb—showing the antagonist pairing provided just enough rest for triceps recovery.",
+            "Close-grip press: Removing it from the chest superset prevented the R3 collapse (6 reps last week -> 8 reps this week) without raising RPE beyond 8.",
+            "Hammer curls: Dropping to 27.5×2 lb kept all three sets inside the 8-12 rep target so Tuesday’s back day no longer ends with forearm failure.",
+            "Hip thrust + goblet squat: Both movements now finish with only a 1-rep drop (15->15 and 10->10) before RPE hits 8, confirming the load is perfect for hypertrophy work capacity."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Core sequencing also improved: Pallof presses handled anti-rotation duties mid-week, then long planks on Friday locked in anterior core stiffness without aggravating the wrists."
+        }
+      ]
+    },
+    {
+      "type": "highlight-box",
+      "title": "✅ Antagonist Superset Win",
+      "sentiment": "positive",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Round-by-round data from Monday shows the new pairing works exactly as intended."
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Rounds 1-4 bench: 40×2 × 10 each, RPE 6 -> 8 (no rep loss).",
+            "Rows in the same rounds: 50 lb held RPE 7-8 with neutral elbows, so lats got high-quality time under tension while chest fibers recovered.",
+            "Close-grip presses moved outside the superset and immediately restored 10/10/8 with calmer RPE.",
+            "Net effect: Chest received ~1,120 lb more weekly volume while triceps and elbows stayed pain-free."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "highlight-box",
+      "title": "⚠️ Watch Upcoming Press Fatigue",
+      "sentiment": "warning",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Friday’s seated DB overhead press hit RPE 8 by set 2 (30×2 × 10,8,7). Keep an eye on shoulder freshness so Monday’s heavy chest day does not inherit fatigue."
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "Option: hold overhead press at 30×2 lb until all three sets clear 10 reps, then bump to 32.5×2.",
+            "If Tuesday basketball demand spikes, swap the third set for a mechanical drop (half-reps) instead of grinding to RPE 9.",
+            "Maintain 90s rest between lateral raise + calf rounds so forearms do not compromise grip for Friday flyes."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "title": "🎯 Week 3 Priorities",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Immediate (Week 3)"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Bump flat bench or close-grip press by +2.5 lb per hand only if RPE stays ≤7.5 on the first two rounds; otherwise add a rep before loading up.",
+            "Return Tuesday one-arm rows to 50 lb while keeping hammer curls at 27.5×2 to reinforce pull symmetry without reintroducing synergist fatigue.",
+            "Keep hip thrusts at 60 lb but add a 2-second pause in Round 3 to extend glute tension instead of chasing heavier bells mid-block."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Short-Term (Weeks 3-4)"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Maintain two chest exposures per week: Monday heavy, Friday volume. Use Week 4 deload to drop 15-20% load but keep reps.",
+            "Sustain the new calf frequency—if ankles stay calm, progress to tempo work (3s eccentric) in Week 3.",
+            "Add 1 extra anti-rotation set during Friday core work so Week 3 totals include Pallof (Thu) + Plank (Fri) + optional suitcase carry on Tuesday."
+          ]
+        }
+      ]
+    }
+  ]
+}
