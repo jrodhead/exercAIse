@@ -543,7 +543,11 @@ window.ExercAIse.KaiIntegration = (() => {
             deps.workoutContent.innerHTML = parts.join('\n');
             deps.fixExerciseAnchors(deps.workoutContent);
             deps.setVisibility(deps.formSection, true);
-            deps.buildForm('(pasted-json)', JSON.stringify(obj), true);
+            const serialized = JSON.stringify(obj);
+            if (typeof deps.setCurrentSessionJSON === 'function') {
+                deps.setCurrentSessionJSON(serialized);
+            }
+            deps.buildForm('(pasted-json)', serialized, true);
             if (deps.workoutTitleEl)
                 deps.workoutTitleEl.textContent = obj.title || 'Generated Session';
             if (deps.workoutMetaEl)

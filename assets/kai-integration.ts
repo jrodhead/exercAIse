@@ -520,7 +520,11 @@
       
       // Build interactive form cards in #exercise-forms
       deps.setVisibility(deps.formSection, true);
-      deps.buildForm('(pasted-json)', JSON.stringify(obj), true);
+      const serialized = JSON.stringify(obj);
+      if (typeof deps.setCurrentSessionJSON === 'function') {
+        deps.setCurrentSessionJSON(serialized);
+      }
+      deps.buildForm('(pasted-json)', serialized, true);
       
       // Update meta/title
       if (deps.workoutTitleEl) deps.workoutTitleEl.textContent = obj.title || 'Generated Session';

@@ -382,10 +382,23 @@ interface CollectedBlocks {
           if (rr.reps != null) hasReps = true;
         }
         
+        // Prioritize hold/time-only prescriptions before forcing defaults based on logType
+        if (hasHold) {
+          const fields = hasWeight ? ['weight', 'multiplier', 'holdSeconds', 'rpe'] : ['holdSeconds', 'rpe'];
+          return fields;
+        }
+        if (hasTime && !hasReps && !hasDist) {
+          const fields = hasWeight ? ['weight', 'multiplier', 'timeSeconds', 'rpe'] : ['timeSeconds', 'rpe'];
+          return fields;
+        }
+
         if (explicitLogType === 'mobility' || explicitLogType === 'stretch') return ['holdSeconds', 'rpe'];
         if (explicitLogType === 'endurance') return ['distanceMiles', 'timeSeconds', 'rpe'];
         if (explicitLogType === 'carry') return ['weight', 'multiplier', 'timeSeconds', 'rpe'];
-        if (explicitLogType === 'strength') return ['weight', 'multiplier', 'reps', 'rpe'];
+        if (explicitLogType === 'strength') {
+          if (!hasReps && (hasTime || hasDist)) return ['timeSeconds', 'rpe'];
+          return ['weight', 'multiplier', 'reps', 'rpe'];
+        }
         
         // Ensure reps are not hidden when both weight & reps are prescribed, even if time is also present
         if (hasReps && hasWeight && hasTime) return ['weight', 'multiplier', 'reps', 'timeSeconds', 'rpe'];

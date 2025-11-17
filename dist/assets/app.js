@@ -274,6 +274,9 @@
             });
         }
     };
+    const setCurrentSessionJSON = (value) => {
+        currentSessionJSON = value;
+    };
     const initializeFormBuilder = () => {
         if (!window.ExercAIse?.FormBuilder) {
             console.warn('FormBuilder module not loaded');
@@ -685,10 +688,10 @@
                 fixExerciseAnchors(workoutContent);
             }
             if (isJSON) {
-                currentSessionJSON = text || null;
+                setCurrentSessionJSON(text || null);
             }
             else {
-                currentSessionJSON = null;
+                setCurrentSessionJSON(null);
             }
             setVisibility(formSection, true);
             buildForm(path, text || '', isJSON);
@@ -752,7 +755,8 @@
             genSubmit,
             linkValidation,
             kaiUiEnabled,
-            parseHMSToSeconds
+            parseHMSToSeconds,
+            setCurrentSessionJSON
         });
     };
     const fixExerciseAnchors = (scope) => {

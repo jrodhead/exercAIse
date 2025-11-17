@@ -26,6 +26,28 @@ interface HistoryLogEntry {
   data: PerformanceLog | null;
 }
 
+const HOLD_NAME_REGEX = /\bhold\b/i;
+
+const looksLikeHoldExercise = (slug?: string | null, label?: string | null): boolean => {
+  const keyText = String(slug || '');
+  const nameText = String(label || '');
+  return HOLD_NAME_REGEX.test(keyText) || HOLD_NAME_REGEX.test(nameText);
+};
+
+const normalizeHoldEntry = (entry: SetEntry, slug?: string | null, label?: string | null): SetEntry => {
+  if (!entry) return entry;
+  const normalized: SetEntry = { ...entry };
+  if (
+    normalized.holdSeconds == null &&
+    typeof normalized.reps === 'number' &&
+    looksLikeHoldExercise(slug, label)
+  ) {
+    normalized.holdSeconds = normalized.reps;
+    normalized.reps = undefined;
+  }
+  return normalized;
+};
+
 // ============================================================================
 // Helper Functions
 // ============================================================================
@@ -57,7 +79,7 @@ function findExerciseInPerf2(log: PerformanceLog, exerciseKey: string): SetEntry
         
         if (itemKey === exerciseKey) {
           console.log(`✅ Matched standalone exercise: "${item.name}" -> "${itemKey}"`);
-          return item.sets;
+          return item.sets.map(set => normalizeHoldEntry(set, exerciseKey, item.name));
         }
       }
       
@@ -69,7 +91,7 @@ function findExerciseInPerf2(log: PerformanceLog, exerciseKey: string): SetEntry
             if (exercise.key === exerciseKey) {
               console.log(`✅ Matched exercise in ${item.kind}: "${exercise.key}"`);
               // Flatten round data into sets format
-              sets.push({
+              const flattenedSet = {
                 set: round.round,
                 weight: exercise.weight,
                 multiplier: exercise.multiplier,
@@ -84,7 +106,8 @@ function findExerciseInPerf2(log: PerformanceLog, exerciseKey: string): SetEntry
                 completed: exercise.completed,
                 notes: exercise.notes,
                 angle: exercise.angle, // Added angle field
-              });
+              };
+              sets.push(normalizeHoldEntry(flattenedSet, exercise.key || exerciseKey, exercise.name));
             }
           }
         }
@@ -379,9 +402,13 @@ function findExerciseInPerf2(log: PerformanceLog, exerciseKey: string): SetEntry
       const multiplier = set.multiplier != null ? ` ×${set.multiplier}` : '';
       parts.push(`${set.weight}${multiplier}`);
     }
-    if (set.reps != null) parts.push(`${set.reps} reps`);
     if (set.timeSeconds != null) parts.push(`${set.timeSeconds}s`);
+    if (set.holdSeconds != null) parts.push(`${set.holdSeconds}s hold`);
+    if (set.reps != null && set.timeSeconds == null && set.holdSeconds == null) {
+      parts.push(`${set.reps} reps`);
+    }
     if (set.distanceMiles != null) parts.push(`${set.distanceMiles} mi`);
+    else if (set.distanceMeters != null) parts.push(`${set.distanceMeters} m`);
     if (set.rpe != null) parts.push(`RPE ${set.rpe}`);
     return parts.join(', ');
   };
@@ -440,15 +467,38 @@ function findExerciseInPerf2(log: PerformanceLog, exerciseKey: string): SetEntry
 
   const loadHistory = (exKey: string): void => {
     // Accept multiple key variants to match performed logs (which use hyphens via app slugify)
+    const LEGACY_SLUG_ALIASES: Record<string, string[]> = {
+      'hollow-body-hold': ['hollow-hold']
+    };
+
+    const appendSlugForms = (slug: string, bucket: Set<string>): void => {
+      if (!slug) return;
+      bucket.add(slug);
+      bucket.add(slug.replace(/_/g, '-'));
+      bucket.add(slug.replace(/-/g, '_'));
+    };
+
     const keyVariants = (k: string): string[] => {
-      const a: string[] = [];
-      const k1 = String(k || '');
-      const k2 = k1.replace(/_/g, '-');
-      const k3 = k1.replace(/-/g, '_');
-      a.push(k1);
-      if (a.indexOf(k2) === -1) a.push(k2);
-      if (a.indexOf(k3) === -1) a.push(k3);
-      return a;
+      const variants = new Set<string>();
+      const base = String(k || '').toLowerCase();
+      appendSlugForms(base, variants);
+
+      const aliasLookupKeys = Array.from(new Set([
+        base,
+        base.replace(/_/g, '-'),
+        base.replace(/-/g, '_')
+      ]));
+
+      for (const key of aliasLookupKeys) {
+        const aliases = LEGACY_SLUG_ALIASES[key];
+        if (aliases) {
+          for (const alias of aliases) {
+            appendSlugForms(alias, variants);
+          }
+        }
+      }
+
+      return Array.from(variants).filter(Boolean);
     };
     const variants = keyVariants(exKey);
     const target = document.getElementById('history');

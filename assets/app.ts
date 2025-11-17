@@ -296,6 +296,10 @@
     }
   };
 
+  const setCurrentSessionJSON = (value: string | null): void => {
+    currentSessionJSON = value;
+  };
+
   // Form building functions now imported from form-builder.js module
   // Includes: buildForm, createExerciseCard, pickFieldsFromRows, addSetRow,
   // findNearestHeadingEl, findPreviousHeading, collectFollowingBlocks, and all form management logic
@@ -671,9 +675,9 @@
       
       // Store session JSON for perf-2 structure extraction
       if (isJSON) {
-        currentSessionJSON = text || null;
+        setCurrentSessionJSON(text || null);
       } else {
-        currentSessionJSON = null;
+        setCurrentSessionJSON(null);
       }
       
       setVisibility(formSection, true);
@@ -742,7 +746,8 @@
       genSubmit,
       linkValidation,
       kaiUiEnabled,
-      parseHMSToSeconds
+      parseHMSToSeconds,
+      setCurrentSessionJSON
     });
   };
 
