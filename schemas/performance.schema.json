@@ -202,6 +202,12 @@
           "minimum": 0,
           "description": "Load used (kg or lb, depending on user preference)"
         },
+        "angle": {
+          "type": "integer",
+          "minimum": -10,
+          "maximum": 90,
+          "description": "Bench angle in degrees (copied from prescription; omit when flat or not bench-supported)"
+        },
         "multiplier": {
           "type": "number",
           "minimum": 0,
@@ -271,6 +277,12 @@
           "type": "number",
           "minimum": 0,
           "description": "Load used"
+        },
+        "angle": {
+          "type": "integer",
+          "minimum": -10,
+          "maximum": 90,
+          "description": "Bench angle in degrees for this set (copied from prescription; omit when flat)"
         },
         "multiplier": {
           "type": "number",
@@ -363,6 +375,12 @@
       "description": "Pre-computed summary for fast queries",
       "additionalProperties": false,
       "properties": {
+        "angle": {
+          "type": "integer",
+          "minimum": -10,
+          "maximum": 90,
+          "description": "Bench angle in degrees for this exercise (0 = flat; default when not bench-supported)"
+        },
         "name": {
           "type": "string",
           "description": "Exercise display name"

@@ -31,6 +31,7 @@ interface PrescriptionRow {
   holdSeconds?: number;
   distanceMeters?: number;
   distanceMiles?: number;
+  angle?: number;
 }
 
 interface PrescriptionsByExercise {
@@ -231,9 +232,16 @@ interface WeightSpec {
       let s = String(name == null ? '' : name).trim();
       // Drop leading numbering like "1)", "1.", "1 -"
       s = s.replace(/^\s*\d+[\)\.-]\s*/, '');
-      // If markdown-style link, extract the text inside []
+      // If markdown-style link, prefer the exercise slug from the URL when available
       const m = s.match(/^\s*\[([^\]]+)\]\(([^)]+)\)/);
-      if (m) return m[1]!;
+      if (m) {
+        const link = m[2]!;
+        const slugMatch = link.match(/exercises\/([\w\-]+)\.(?:json|md)/i);
+        if (slugMatch && slugMatch[1]) {
+          return slugMatch[1]!.replace(/_/g, '-');
+        }
+        return m[1]!;
+      }
       return s;
     };
 
@@ -280,7 +288,10 @@ interface WeightSpec {
       const exKey = slugify(plainName(String(name)));
       let sets: number | null = null, reps: number | null = null, weight: number | null = null, rpe: number | null = null, multiplier: number | null = null;
       let timeSeconds: number | null = null, holdSeconds: number | null = null, distanceMeters: number | null = null, distanceMiles: number | null = null;
+      let angle: number | null = null;
       if (cfg) {
+        if (cfg.angle != null && !isNaN(Number(cfg.angle))) angle = Number(cfg.angle);
+
         if (typeof cfg.sets === 'number') sets = cfg.sets;
         if (typeof cfg.reps === 'number') reps = cfg.reps;
         else if (typeof cfg.reps === 'string') reps = firstNumberFrom(cfg.reps);
@@ -288,7 +299,11 @@ interface WeightSpec {
           const rows: PrescriptionRow[] = [];
           for (let i = 0; i < cfg.reps.length; i++) {
             const r = parseInt(cfg.reps[i], 10);
-            if (!isNaN(r)) rows.push({ set: i + 1, reps: r });
+            if (!isNaN(r)) {
+              const row: PrescriptionRow = { set: i + 1, reps: r };
+              if (angle != null && angle !== 0) row.angle = angle;
+              rows.push(row);
+            }
           }
           if (rows.length) { byEx[exKey] = rows; return; }
         }
@@ -335,6 +350,7 @@ interface WeightSpec {
         if (holdSeconds != null) row.holdSeconds = holdSeconds;
         if (distanceMeters != null) row.distanceMeters = distanceMeters;
         if (distanceMiles != null) row.distanceMiles = distanceMiles;
+        if (angle != null && angle !== 0) row.angle = angle;
         rows2.push(row);
       }
       if (rows2.length) byEx[exKey] = rows2;

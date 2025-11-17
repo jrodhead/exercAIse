@@ -17,6 +17,11 @@ applyTo: 'workouts/**/*.md'
   - Note: Prescriptions should snap to these available weights (see dumbbell ladder rules below)
 - **Adjustable bench**: Incline/decline options
   - Available angles: 85°, 60°, 45°, 30°, 15°, 0° (flat), -10° (decline)
+- **Bench angle prescriptions (required)**:
+	- Include an explicit `"angle"` property for every exercise performed on the adjustable bench or with the bench providing the primary support surface (presses, flyes, skull crushers, chest-supported rows, incline/decline curls, etc.).
+	- Use the exact angle the athlete should set: choose from the available presets above. Flat bench work still records `"angle": 0` so history and tooling differentiate flat vs incline vs decline.
+	- Non-bench movements (floor press variations without the bench back, bodyweight floor work, standing curls) omit the field entirely.
+	- When prescribing decline work, use negative integers (e.g., `-10`). For angles between presets, pick the closest available rung and mention any nuance in the cues/notes if needed.
 - **30 lb ruck plate**: For weighted carries, ruck walks, or weighted movements
 - **Yoga mat**: For floor work, stretching, and mobility
 - **Foam roller**: For myofascial release and recovery

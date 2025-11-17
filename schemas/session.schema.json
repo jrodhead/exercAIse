@@ -68,6 +68,12 @@
         "sets": { "type": "integer", "minimum": 1 },
         "reps": { "oneOf": [ { "type": "integer", "minimum": 0 }, { "type": "string" } ] },
         "weight": { "oneOf": [ { "type": "number" }, { "type": "string" } ] },
+        "angle": {
+          "type": "integer",
+          "minimum": -10,
+          "maximum": 90,
+          "description": "Bench angle in degrees. 0 = flat; omit when not bench-supported."
+        },
         "rpe": { "type": "number", "minimum": 0, "maximum": 10 },
         "timeSeconds": { "type": "integer", "minimum": 0 },
         "holdSeconds": { "type": "integer", "minimum": 0 },

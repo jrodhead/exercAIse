@@ -82,7 +82,8 @@ function findExerciseInPerf2(log: PerformanceLog, exerciseKey: string): SetEntry
                 side: exercise.side,
                 tempo: exercise.tempo,
                 completed: exercise.completed,
-                notes: exercise.notes
+                notes: exercise.notes,
+                angle: exercise.angle, // Added angle field
               });
             }
           }
@@ -320,6 +321,77 @@ function findExerciseInPerf2(log: PerformanceLog, exerciseKey: string): SetEntry
     }
   };
 
+  const normalizeAngleValue = (value: unknown): number | null => {
+    if (value == null) return null;
+    const num = Number(value);
+    return Number.isFinite(num) ? Math.round(num) : null;
+  };
+
+  const describeAngleBadge = (angle: number): { label: string; modifier: string; title: string } => {
+    if (angle > 0) {
+      return { label: `${angle}° Incline`, modifier: 'ex-angle--incline', title: 'Incline bench angle' };
+    }
+    if (angle < 0) {
+      return { label: `${Math.abs(angle)}° Decline`, modifier: 'ex-angle--decline', title: 'Decline bench angle' };
+    }
+    return { label: 'Flat (0°)', modifier: 'ex-angle--flat', title: 'Flat bench angle' };
+  };
+
+  const buildAngleBadge = (angle: number | null): string => {
+    if (angle == null) return '';
+    const meta = describeAngleBadge(angle);
+    return `<span class="ex-angle ex-angle--chip ${meta.modifier}" title="${meta.title}">${meta.label}</span>`;
+  };
+
+  const detectAngleFromSetEntries = (sets: SetEntry[]): number | null => {
+    for (const set of sets) {
+      const candidate = normalizeAngleValue(set?.angle);
+      if (candidate != null) return candidate;
+    }
+    return null;
+  };
+
+  const findAngleFromExerciseIndex = (log: PerformanceLog, matchedVariant: string | null): number | null => {
+    if (!matchedVariant || !log.exerciseIndex) return null;
+    const base = matchedVariant.toLowerCase();
+    const variants = Array.from(new Set([
+      base,
+      base.replace(/_/g, '-'),
+      base.replace(/-/g, '_')
+    ]));
+    for (const slug of variants) {
+      const prefix = `${slug}_`;
+      for (const [key, summary] of Object.entries(log.exerciseIndex)) {
+        if (!key.startsWith(prefix)) continue;
+        if (summary && typeof summary.angle === 'number' && isFinite(summary.angle)) {
+          return summary.angle;
+        }
+        const suffix = Number(key.slice(prefix.length));
+        if (!Number.isNaN(suffix)) return suffix;
+      }
+    }
+    return null;
+  };
+
+  const formatSetMetrics = (set: SetEntry): string => {
+    const parts: string[] = [];
+    if (set.weight != null) {
+      const multiplier = set.multiplier != null ? ` ×${set.multiplier}` : '';
+      parts.push(`${set.weight}${multiplier}`);
+    }
+    if (set.reps != null) parts.push(`${set.reps} reps`);
+    if (set.timeSeconds != null) parts.push(`${set.timeSeconds}s`);
+    if (set.distanceMiles != null) parts.push(`${set.distanceMiles} mi`);
+    if (set.rpe != null) parts.push(`RPE ${set.rpe}`);
+    return parts.join(', ');
+  };
+
+  const formatHistorySet = (set: SetEntry, index: number): string => {
+    const label = set.set != null ? `Set ${set.set}` : `Set ${index + 1}`;
+    const metrics = formatSetMetrics(set) || '—';
+    return `<div class="exercise-history-set"><span class="exercise-history-set__label">${label}</span><span class="exercise-history-set__metrics">${metrics}</span></div>`;
+  };
+
   const getRepoApiBase = (): string => 'https://api.github.com/repos/jrodhead/exercAIse/contents/';
 
   /**
@@ -328,39 +400,39 @@ function findExerciseInPerf2(log: PerformanceLog, exerciseKey: string): SetEntry
    */
   const renderHistoryLogs = (logs: HistoryLogEntry[], variants: string[], target: HTMLElement): void => {
     let html = '';
-    // Sort newest first by name (timestamp prefix or workoutFile)
     logs.sort((a, b) => a.name < b.name ? 1 : -1);
-    
     console.log(`🔍 Searching for exercise with key variants:`, variants);
     
     for (let i = 0; i < logs.length; i++) {
       const data = logs[i]!.data;
       if (!data) continue;
-      
-      // Extract exercise data from perf-2 nested structure
+
+      let matchedVariant: string | null = null;
       let exerciseSets: SetEntry[] = [];
       for (let v = 0; v < variants.length; v++) {
-        exerciseSets = findExerciseInPerf2(data, variants[v]!);
-        if (exerciseSets.length > 0) {
-          console.log(`✅ Found ${exerciseSets.length} sets for "${variants[v]}" in ${logs[i]!.name}`);
+        const variantKey = variants[v]!;
+        const candidateSets = findExerciseInPerf2(data, variantKey);
+        if (candidateSets.length > 0) {
+          exerciseSets = candidateSets;
+          matchedVariant = variantKey;
+          console.log(`✅ Found ${candidateSets.length} sets for "${variantKey}" in ${logs[i]!.name}`);
           break;
         }
       }
-      
+
       if (exerciseSets.length === 0) continue;
-      
+
+      const entryAngle = detectAngleFromSetEntries(exerciseSets) ?? findAngleFromExerciseIndex(data, matchedVariant);
+      const angleBadge = buildAngleBadge(entryAngle);
       const when = data.timestamp || logs[i]!.name.slice(0, 24);
-      html += `<div class="history-item">` +
-              `<div class="muted mono">${when}</div>` +
-              `<div>${exerciseSets.map((s: SetEntry) => {
-                const parts: string[] = [];
-                if (s.weight != null) { parts.push(`${s.weight}${s.multiplier != null ? (' ×' + s.multiplier) : ''}`); }
-                if (s.reps != null) { parts.push(`${s.reps} reps`); }
-                if (s.timeSeconds != null) { parts.push(`${s.timeSeconds}s`); }
-                if (s.distanceMiles != null) { parts.push(`${s.distanceMiles} mi`); }
-                if (s.rpe != null) { parts.push(`RPE ${s.rpe}`); }
-                return parts.join(', ');
-              }).join(' | ')}</div>` +
+      const setsMarkup = exerciseSets.map((set, idx) => formatHistorySet(set, idx)).join('');
+
+            html += `<div class="exercise-history-item">` +
+              `<div class="exercise-history-item__meta">` +
+              `<span class="exercise-history-item__timestamp mono muted">${when}</span>` +
+              `${angleBadge ? `<span class="exercise-history-item__angle">${angleBadge}</span>` : ''}` +
+              `</div>` +
+              `<div class="exercise-history-item__sets">${setsMarkup}</div>` +
               `</div>`;
     }
     target.innerHTML = html || '<div class="muted">No history for this exercise yet.</div>';

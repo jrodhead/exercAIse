@@ -3,6 +3,88 @@ window.ExercAIse.FormBuilder = (() => {
     'use strict';
     let deps = {};
     const METERS_PER_MILE = 1609.34;
+    const isValidAngle = (value) => {
+        return typeof value === 'number' && isFinite(value) && value !== 0;
+    };
+    const angleDirectionLabel = (angle) => {
+        return angle > 0 ? 'Incline' : 'Decline';
+    };
+    const findAngleInRows = (rows) => {
+        if (!rows || !rows.length)
+            return null;
+        for (let i = 0; i < rows.length; i++) {
+            const candidate = rows[i]?.angle;
+            if (isValidAngle(candidate))
+                return candidate;
+        }
+        return null;
+    };
+    const resolveAngleValue = (metadata, presetRows, savedRows) => {
+        const fromMeta = metadata?.prescription?.angle;
+        if (isValidAngle(fromMeta))
+            return fromMeta;
+        const fromPreset = findAngleInRows(presetRows);
+        if (fromPreset != null)
+            return fromPreset;
+        return findAngleInRows(savedRows);
+    };
+    const applyAngleBadgeToHeader = (angle, headerEl, cardEl) => {
+        const direction = angleDirectionLabel(angle);
+        const modifier = angle > 0 ? 'ex-angle--incline' : 'ex-angle--decline';
+        let badge = headerEl.querySelector('.ex-angle');
+        if (!badge) {
+            badge = document.createElement('span');
+            headerEl.appendChild(badge);
+        }
+        badge.textContent = `${angle}° ${direction}`;
+        badge.className = `exercise-card__angle ex-angle ex-angle--chip ${modifier}`;
+        badge.setAttribute('title', `${direction} bench angle`);
+        cardEl.setAttribute('data-angle', String(angle));
+    };
+    const readAngleFromCard = (card) => {
+        if (!card)
+            return null;
+        const attr = card.getAttribute('data-angle');
+        if (!attr && attr !== '0')
+            return null;
+        const num = Number(attr);
+        if (!isValidAngle(num))
+            return null;
+        return num;
+    };
+    const normalizeAngleValue = (value) => {
+        if (value == null)
+            return null;
+        const num = Number(value);
+        return Number.isFinite(num) ? Math.round(num) : null;
+    };
+    const detectAngleFromSets = (sets) => {
+        if (!sets || !Array.isArray(sets))
+            return null;
+        for (let i = 0; i < sets.length; i++) {
+            const candidate = normalizeAngleValue(sets[i]?.angle);
+            if (candidate != null)
+                return candidate;
+        }
+        return null;
+    };
+    const detectAngleFromRounds = (rounds, exerciseIndex) => {
+        if (!rounds || !Array.isArray(rounds))
+            return null;
+        for (let i = 0; i < rounds.length; i++) {
+            const ex = rounds[i]?.exercises?.[exerciseIndex];
+            if (!ex)
+                continue;
+            const candidate = normalizeAngleValue(ex.angle);
+            if (candidate != null)
+                return candidate;
+        }
+        return null;
+    };
+    const buildExerciseIndexKey = (slug, angle) => {
+        const normalized = typeof angle === 'number' && isFinite(angle) ? angle : 0;
+        return `${slug}_${normalized}`;
+    };
     function extractSetsFromPerf2(log, exerciseKey) {
         const rows = [];
         for (const section of log.sections) {
@@ -19,7 +101,8 @@ window.ExercAIse.FormBuilder = (() => {
                                 rpe: setEntry.rpe,
                                 timeSeconds: setEntry.timeSeconds,
                                 holdSeconds: setEntry.holdSeconds,
-                                distanceMeters: setEntry.distanceMeters
+                                distanceMeters: setEntry.distanceMeters,
+                                angle: setEntry.angle
                             });
                         });
                         return rows;
@@ -37,7 +120,8 @@ window.ExercAIse.FormBuilder = (() => {
                                     rpe: exercise.rpe,
                                     timeSeconds: exercise.timeSeconds,
                                     holdSeconds: exercise.holdSeconds,
-                                    distanceMeters: exercise.distanceMeters
+                                    distanceMeters: exercise.distanceMeters,
+                                    angle: exercise.angle
                                 });
                             }
                         }
@@ -88,7 +172,7 @@ window.ExercAIse.FormBuilder = (() => {
             return null;
         };
         const docRoundsHint = detectRoundsHint(fullDocText);
-        const createExerciseCard = (title, presetRows, savedRows, headerHTML, opts) => {
+        const createExerciseCard = (title, presetRows = [], savedRows = [], headerHTML, opts) => {
             const options = opts || {};
             const isReadOnly = !!options.readOnly;
             const exKey = deps.slugify(title);
@@ -96,26 +180,39 @@ window.ExercAIse.FormBuilder = (() => {
             card.className = 'exercise-card exercise-card--compact' + (isReadOnly ? ' exercise-card--readonly' : '');
             card.setAttribute('data-exkey', exKey);
             card.setAttribute('data-name', title);
+            let resolvedAngle = null;
             if (headerHTML) {
                 const header = document.createElement('div');
                 header.className = 'exercise-card__header';
                 header.innerHTML = headerHTML;
+                let metadata = null;
                 try {
                     const metaElement = header.querySelector('[data-exmeta]');
                     if (metaElement) {
                         const metaRaw = metaElement.getAttribute('data-exmeta') || '';
-                        const metadata = metaRaw ? JSON.parse(metaRaw) : null;
-                        if (metadata && metadata.notes) {
-                            const notesDiv = document.createElement('div');
-                            notesDiv.className = 'exercise-card__notes';
-                            notesDiv.textContent = metadata.notes;
-                            header.appendChild(notesDiv);
-                        }
+                        metadata = metaRaw ? JSON.parse(metaRaw) : null;
                     }
                 }
                 catch (e) {
+                    metadata = null;
+                }
+                if (metadata && metadata.notes) {
+                    const notesDiv = document.createElement('div');
+                    notesDiv.className = 'exercise-card__notes';
+                    notesDiv.textContent = metadata.notes;
+                    header.appendChild(notesDiv);
+                }
+                resolvedAngle = resolveAngleValue(metadata, presetRows, savedRows);
+                if (resolvedAngle != null) {
+                    applyAngleBadgeToHeader(resolvedAngle, header, card);
                 }
                 card.appendChild(header);
+            }
+            else {
+                resolvedAngle = resolveAngleValue(null, presetRows, savedRows);
+            }
+            if (resolvedAngle != null && !card.getAttribute('data-angle')) {
+                card.setAttribute('data-angle', String(resolvedAngle));
             }
             let setsWrap = null;
             let addBtn = null;
@@ -826,6 +923,9 @@ window.ExercAIse.FormBuilder = (() => {
                 if (!isNaN(num))
                     obj[name] = num;
             }
+            const angleForCard = readAngleFromCard(card);
+            if (angleForCard != null)
+                obj.angle = angleForCard;
             const hasAny = (obj.weight != null || obj.multiplier != null || obj.reps != null ||
                 obj.rpe != null || obj.timeSeconds != null || obj.holdSeconds != null ||
                 obj.distanceMiles != null);
@@ -866,6 +966,9 @@ window.ExercAIse.FormBuilder = (() => {
                     if (!isNaN(num))
                         obj[name] = num;
                 }
+                const angleForCard = readAngleFromCard(card);
+                if (angleForCard != null)
+                    obj.angle = angleForCard;
                 const hasAny = (obj.weight != null || obj.multiplier != null || obj.reps != null ||
                     obj.rpe != null || obj.timeSeconds != null || obj.holdSeconds != null ||
                     obj.distanceMiles != null);
@@ -911,12 +1014,16 @@ window.ExercAIse.FormBuilder = (() => {
                 section.items.forEach((item, iIdx) => {
                     if (item.kind === 'exercise' && item.sets && item.sets.length > 0) {
                         const key = exerciseKeyFromName(item.name);
+                        const angleValue = detectAngleFromSets(item.sets);
+                        const indexKey = buildExerciseIndexKey(key, angleValue);
+                        const storedAngle = typeof angleValue === 'number' && isFinite(angleValue) ? angleValue : 0;
                         const totalVolume = item.sets.reduce((sum, set) => {
                             const weight = (set.weight || 0) * (set.multiplier || 1);
                             return sum + (weight * (set.reps || 0));
                         }, 0);
                         const avgRPE = item.sets.reduce((sum, set) => sum + (set.rpe || 0), 0) / item.sets.length;
-                        index[key] = {
+                        index[indexKey] = {
+                            angle: storedAngle,
                             name: item.name,
                             sectionPath: `sections[${sIdx}].items[${iIdx}].sets[*]`,
                             totalSets: item.sets.length,
@@ -927,6 +1034,10 @@ window.ExercAIse.FormBuilder = (() => {
                     }
                     else if ((item.kind === 'superset' || item.kind === 'circuit') && item.rounds && item.rounds.length > 0) {
                         item.rounds[0]?.exercises.forEach((ex, exIdx) => {
+                            const slug = (typeof ex.key === 'string' && ex.key.length) ? ex.key : exerciseKeyFromName(ex.name);
+                            const angleValue = detectAngleFromRounds(item.rounds, exIdx);
+                            const indexKey = buildExerciseIndexKey(slug, angleValue);
+                            const storedAngle = typeof angleValue === 'number' && isFinite(angleValue) ? angleValue : 0;
                             const totalVolume = item.rounds.reduce((sum, round) => {
                                 const exercise = round.exercises[exIdx];
                                 if (!exercise)
@@ -937,7 +1048,8 @@ window.ExercAIse.FormBuilder = (() => {
                             const avgRPE = item.rounds.reduce((sum, round) => {
                                 return sum + (round.exercises[exIdx]?.rpe || 0);
                             }, 0) / item.rounds.length;
-                            index[ex.key] = {
+                            index[indexKey] = {
+                                angle: storedAngle,
                                 name: ex.name,
                                 sectionPath: `sections[${sIdx}].items[${iIdx}].rounds[*].exercises[${exIdx}]`,
                                 totalSets: item.rounds.length,

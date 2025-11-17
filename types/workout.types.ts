@@ -21,6 +21,7 @@ export interface Prescription {
   sets?: number;
   reps?: number | string;
   weight?: number | string;
+  angle?: number;
   rpe?: number;
   timeSeconds?: number;
   holdSeconds?: number;

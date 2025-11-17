@@ -321,6 +321,62 @@ describe('SessionParser - JSON Parsing', () => {
       // Rep ranges are parsed as the first number
       expect(prescriptions.squat[0].reps).toBe(8);
     });
+
+    it('should attach non-zero bench angles from prescription metadata', () => {
+      const json = JSON.stringify({
+        sections: [
+          {
+            type: 'Strength',
+            title: 'Pressing',
+            items: [
+              {
+                kind: 'exercise',
+                name: '[Incline DB Bench Press](../exercises/incline_dumbbell_bench_press.json)',
+                prescription: {
+                  sets: 2,
+                  reps: 8,
+                  weight: '45 lb per hand',
+                  angle: 30
+                }
+              }
+            ]
+          }
+        ]
+      });
+
+      const prescriptions = SessionParser.parseJSONPrescriptions(json);
+      const incline = prescriptions['incline-dumbbell-bench-press'];
+      expect(incline).toBeDefined();
+      expect(incline).toHaveLength(2);
+      expect(incline[0].angle).toBe(30);
+    });
+
+    it('should omit zero-degree bench angles to keep flat variants clean', () => {
+      const json = JSON.stringify({
+        sections: [
+          {
+            type: 'Strength',
+            title: 'Pressing',
+            items: [
+              {
+                kind: 'exercise',
+                name: 'Flat Dumbbell Bench Press',
+                prescription: {
+                  sets: 2,
+                  reps: 8,
+                  angle: 0
+                }
+              }
+            ]
+          }
+        ]
+      });
+
+      const prescriptions = SessionParser.parseJSONPrescriptions(json);
+      const flat = prescriptions['flat-dumbbell-bench-press'];
+      expect(flat).toBeDefined();
+      expect(flat[0].angle).toBeUndefined();
+    });
   });
 });
 

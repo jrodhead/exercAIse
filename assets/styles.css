@@ -625,6 +625,58 @@ a:focus-visible { outline: 2px solid var(--color-link-hover); outline-offset: 2p
   font-size: var(--font-size-sm);
 }
 
+.ex-angle {
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-hint);
+}
+
+.ex-angle--inline {
+  margin-left: var(--space-1);
+}
+
+.ex-angle--chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 10px;
+  border-radius: var(--radius-full);
+  background: var(--color-gray-100);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: var(--color-gray-700);
+}
+
+.ex-angle--incline {
+  color: var(--color-primary-darker);
+}
+
+.ex-angle--decline {
+  color: var(--color-warning-dark);
+}
+
+.ex-angle--chip.ex-angle--incline {
+  background: rgba(37, 99, 235, 0.12);
+}
+
+.ex-angle--chip.ex-angle--decline {
+  background: rgba(245, 158, 11, 0.18);
+}
+
+.ex-angle--flat {
+  color: var(--color-gray-600);
+}
+
+.ex-angle--chip.ex-angle--flat {
+  background: rgba(148, 163, 184, 0.25);
+}
+
+.exercise-card__angle {
+  margin-left: var(--space-2);
+}
+
 .ex-notes {
   display: block;
   margin-top: var(--space-1);
@@ -1265,10 +1317,47 @@ textarea { width: 100%; }
 }
 
 .exercise-history-item {
-  border-left: 3px solid var(--color-gray-200);
-  padding-left: 12px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
   margin: var(--space-3) 0;
-  padding: var(--space-2) 0 8px 12px;
+  background: var(--color-white);
+  box-shadow: var(--shadow-sm);
+}
+
+.exercise-history-item__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.exercise-history-item__sets {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.exercise-history-set {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  border-left: 2px solid var(--color-border-light);
+  padding-left: var(--space-2);
+}
+
+.exercise-history-set__label {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-gray-700);
+}
+
+.exercise-history-set__metrics {
+  color: var(--color-gray-800);
+  font-size: var(--font-size-sm);
 }
 
 .exercise-mono {
@@ -3603,6 +3692,25 @@ a:hover {
     background: #0f172a;
     color: var(--color-gray-100);
   }
+
+  .ex-angle--chip {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-gray-100);
+  }
+
+  .ex-angle--chip.ex-angle--incline {
+    background: rgba(96, 165, 250, 0.2);
+    color: var(--color-primary-light);
+  }
+
+  .ex-angle--chip.ex-angle--decline {
+    background: rgba(251, 191, 36, 0.25);
+    color: var(--color-warning-lighter);
+  }
+
+  .ex-angle--inline {
+    color: var(--color-gray-400);
+  }
   
   /* ========== Typography ========== */
   h1, h2, h3, h4, h5, h6 {
@@ -4126,7 +4234,30 @@ a:hover {
   }
   
   .exercise-history-item {
+    border-color: #334155;
+    background: #1e293b;
+    box-shadow: none;
+  }
+
+  .exercise-history-set {
     border-left-color: #475569;
+  }
+
+  .exercise-history-set__label {
+    color: #e2e8f0;
+  }
+
+  .exercise-history-set__metrics {
+    color: #cbd5f5;
+  }
+
+  .exercise-history-item__timestamp {
+    color: #94a3b8;
+  }
+
+  .ex-angle--chip.ex-angle--flat {
+    background: rgba(148, 163, 184, 0.35);
+    color: #e2e8f0;
   }
   
   /* ========== RPE Components ========== */

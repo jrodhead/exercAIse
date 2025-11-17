@@ -9,6 +9,7 @@ AI-generated personalized workout sessions with structured JSON logging and perf
 - **Progress Reports**: Comprehensive training analysis with progression tracking at `progress-report.html`
 - **Exercise Library**: Detailed exercise descriptions with setup, steps, cues, and safety notes
 - **Offline Support**: PWA with service worker for offline viewing and logging
+- **Bench Angle Metadata**: Adjustable-bench prescriptions carry explicit angle data (flat, incline, decline) so the UI, logger, and history/AI tooling stay in sync
 - **Type Safety**: Full TypeScript implementation with compiled ES2020 output
 
 ## Browser Support
@@ -198,6 +199,7 @@ Nested performance logs that preserve workout structure for superior fatigue ana
 ## Conventions
 - Dumbbell weights: log as number or string. Examples: `25` (per hand implied), `"25 x2"` (explicit per hand), `"50 total"`.
 - Movements without sets/weights: use time/hold/distance fields (e.g., `timeSeconds`, `holdSeconds`, `distanceMiles`; `distanceMeters` is supported for legacy files).
+- Bench-supported exercises: include an integer `angle` (-10, 0, 15, 30, 45, 60, 85) at the exercise level—flat bench uses `0` so the UI can suppress the badge while still logging angle-specific history.
 - Supersets vs circuits: both are supported; supersets typically pair 2 movements back-to-back, circuits are 3+ movements. In JSON (if used), `kind: "superset" | "circuit"` with `children` items.
 
 ### Dumbbell Ladder Personalization

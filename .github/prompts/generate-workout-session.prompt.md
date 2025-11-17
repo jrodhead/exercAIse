@@ -69,6 +69,7 @@ Read performance logs (`performed/*_perf2.json`) and identify:
 - If you introduce a new exercise that doesn't match any existing file, create `exercises/<slug>.json` conforming to `schemas/exercise.schema.json` (v2 fields).
 - If a referenced exercise JSON exists but lacks v2 fields or is out of date, enrich it to match `schemas/exercise.schema.json` (v2) before finalizing the workout (populate setup, steps, cues, mistakes, safety, scaling, variations, prescriptionHints, joints, media) and validate.
 - Structure the JSON into `sections` with consistent `type` values (e.g., Warm-up, Strength/Conditioning, Accessory/Core, Cooldown/Recovery). Avoid generic names like "Plan".
+ - **Bench angles (required)**: Whenever an exercise is performed on the adjustable bench—or the bench provides the support surface (all dumbbell presses, flyes, skull crushers, chest-supported rows, incline/decline curls, etc.)—set `prescription.angle` to one of the owner's presets (85, 60, 45, 30, 15, 0, -10). Flat bench work must record `"angle": 0` inside the `prescription`. Movements that do not involve the bench omit the field.
 - For each exercise item, include:
   - `name`
   - `link` (to exercises JSON)
@@ -78,6 +79,7 @@ Read performance logs (`performed/*_perf2.json`) and identify:
     - Loaded carries (farmer/suitcase/rack/march) → `carry`
     - Resistance training and core strength (press/row/squat/hinge/deadbug/Pallof) → `strength`
   - `prescription` with sets/reps/weight/rpe/time/distance as appropriate
+  - `angle` for any bench-supported prescription (see rule above)
   - optional `cues` array (3–5 brief execution cues)
   - optional `notes` field for execution clarifications (see "Per-side prescriptions" below)
 - **Per-side prescriptions (unilateral exercises)**:
@@ -113,6 +115,7 @@ Read performance logs (`performed/*_perf2.json`) and identify:
 - Data source: `performed/*_perf2.json` files conforming to `schemas/performance.schema.json` (nested format with round-level data).
 - Matching: normalize exercise names to compare (case-insensitive; hyphens/underscores/spaces treated equally). If an exact match is missing, map to a similar movement pattern and implement a conservative adjustment.
 - **Round-level analysis**: Use round-by-round data (RPE progression, rep patterns across rounds) to identify fatigue cascades vs exercise being too heavy (see Step 2 above).
+- **Angle-aware history**: Match historical sets by slug **and** bench angle. If angle-specific history exists (e.g., `incline_dumbbell_bench_press_30`), progress that stream independently of flat (`_0`). When prescribing a new angle variation, explain the rationale briefly in section notes.
 - **Progression continuity**: For main movement patterns (primary squats, presses, rows, hinges), prefer consistent exercise selection across weeks to track progression effectively.
 - **Appropriate variety**: For accessory work, warm-ups, and cooldowns, introduce variety when it serves training goals, addresses weaknesses, or prevents staleness—while still referencing similar movement history for load guidance.
 - Units: Prescribe in pounds (lb). For dumbbells, specify per-hand load (e.g., "40 lb per hand") or "40 x2 lb". On machines/bodyweight, use RPE/time/holds as appropriate.
@@ -192,6 +195,7 @@ These notes display inline with the exercise name and prescription in the UI, es
 ### JSON details
 - Put sets, reps, rest and weight under `prescription`. Use a string for per-hand notation if needed (e.g., "45 x2 lb"). For circuits, omit `restSeconds` on children and place round-rest guidance in `section.notes`.
 - Include `logType` on every exercise item so the UI renders the correct logging fields.
+- Include an `angle` integer on every bench-supported exercise item. Use `0` for flat bench prescriptions so UI/tooling can suppress the badge while still logging angle data.
 - **Critical structure requirements**:
   - Use `items` arrays within sections, NOT `exercises`
   - Each exercise item must include `kind: "exercise"` 
@@ -245,13 +249,13 @@ After generating the workout content JSON(s), immediately proceed with file crea
 1. **Create the workout file** in `workouts/` directory using format `<blockNumber>-<weekNumber>_<title>.json` (e.g., `4-2_Lower_Body_Strength_Mobility.json`).
 2. **Insert the JSON content** into the new file, ensuring each exercise has `link` and `logType` fields.
 3. **Create missing exercise files**: For any exercise without an existing JSON file in `exercises/`, create `exercises/<slug>.json` conforming to `schemas/exercise.schema.json` (v2 fields: setup, steps, cues, mistakes, safety, scaling, variations, prescriptionHints, joints, media).
-4. **Validate everything**: Run validation scripts to ensure schema compliance and link integrity. The workout manifest is automatically updated by git hooks or CI/CD.
+4. **Validate everything + refresh manifest**: Run validation scripts to ensure schema compliance and link integrity. If your local git hooks haven’t auto-updated the manifest, run `bash scripts/update_workout_manifest.sh` so `workouts/manifest.txt` includes the new files.
 
 **For weekly plans:**
 1. **Create 5 workout files** in `workouts/` directory using format `<blockNumber>-<weekNumber>_<DayTitle>.json` (e.g., `4-2_Monday_Basketball_Conditioning.json`, `4-2_Tuesday_Upper_Body_Strength.json`, etc.).
 2. **Insert each JSON content** into its respective file, ensuring all exercises have `link` and `logType` fields.
 3. **Create all missing exercise files**: Collect all unique exercises from all 5 sessions and create any missing `exercises/<slug>.json` files conforming to the schema.
-4. **Validate everything**: Run validation scripts to ensure all schemas comply and link integrity is maintained across all files. The workout manifest is automatically updated by git hooks or CI/CD.
+4. **Validate everything + refresh manifest**: Run validation scripts to ensure all schemas comply and link integrity is maintained. If hooks don’t update automatically, run `bash scripts/update_workout_manifest.sh` once after saving the week’s files so `workouts/manifest.txt` stays current.
 
 ## Complete Workflow Summary
 **For single sessions:**
@@ -259,14 +263,16 @@ After generating the workout content JSON(s), immediately proceed with file crea
 2. Create workout file with proper naming convention
 3. Create any missing exercise JSON files
 4. Validate schemas and links (manifest auto-updates via git hooks/CI)
-5. Confirm completion to user
+5. Run `python3 scripts/calculate_session_time.py workouts/<file>.json`, ensure working time ≤ 40 minutes, add the total/working minutes to the session `notes`, adjust prescriptions if needed
+6. Apply dumbbell ladder snapping per `.github/prompts/apply-dumbbell-ladder.prompt.md` (only for supersets/circuits). Document any load or rep changes, then confirm completion to the user
 
 **For weekly plans:**
 1. Generate 5 JSON workout sessions following all guidelines above
 2. Create all 5 workout files with proper naming conventions
 3. Create any missing exercise JSON files for all sessions
 4. Validate all schemas and links (manifest auto-updates via git hooks/CI)
-5. Provide summary of the week's training focus and confirm completion
+5. Run `python3 scripts/calculate_session_time.py` for each new file, keep working time ≤ 40 minutes (revise prescriptions if any session exceeds the cap), append the total/working minutes to every session `notes`
+6. Apply dumbbell ladder snapping per `.github/prompts/apply-dumbbell-ladder.prompt.md` to each session that contains supersets/circuits, note the changes, then provide the training-focus summary and confirm completion
 
 ## Weekly Planning Considerations
 When generating full weeks:

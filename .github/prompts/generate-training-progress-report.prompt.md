@@ -50,6 +50,7 @@ Read all performance logs in `performed/` directory within the specified time ra
 - Extract exercise names, loads, reps, sets, RPE data
 - Capture endurance metrics (distance, time, pace)
 - Note any pain/injury comments
+- Track bench-supported exercises with their recorded `angle` field so incline/decline variations stay separated (e.g., `flat_dumbbell_bench_press_0` vs `incline_dumbbell_bench_press_30`).
 
 **Key data to collect per exercise:**
 - First recorded instance (baseline)
@@ -150,6 +151,8 @@ Group exercises by movement pattern and create subsections:
 - Triceps (Extensions, Dips, Close-Grip Press)
 - Shoulders (Lateral Raises, Face Pulls, Reverse Flyes)
 - Core (Planks, Dead Bugs, Pallof Press, Carries)
+
+> **Bench-Angle Callout:** When reporting on pressing work or any bench-supported accessory (presses, flyes, skull crushers, chest-supported rows, etc.), keep angle-specific history streams separate. Cite incline vs. flat vs. decline progress individually if both appear in the period, and use the stored `angle` values when calculating volume deltas.
 
 **JSON Structure:**
 ```json

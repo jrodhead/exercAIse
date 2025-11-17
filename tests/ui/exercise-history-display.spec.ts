@@ -57,9 +57,9 @@ test.describe('Exercise History Display', () => {
               kind: 'exercise',
               name: 'Flat Dumbbell Bench Press',
               sets: [
-                { set: 1, weight: 40, multiplier: 2, reps: 10, rpe: 7 },
-                { set: 2, weight: 40, multiplier: 2, reps: 10, rpe: 7.5 },
-                { set: 3, weight: 40, multiplier: 2, reps: 9, rpe: 8 }
+                { set: 1, weight: 40, multiplier: 2, reps: 10, rpe: 7, angle: 30 },
+                { set: 2, weight: 40, multiplier: 2, reps: 10, rpe: 7.5, angle: 30 },
+                { set: 3, weight: 40, multiplier: 2, reps: 9, rpe: 8, angle: 30 }
               ]
             },
             {
@@ -120,6 +120,12 @@ test.describe('Exercise History Display', () => {
     await expect(historySection).toContainText('40');
     await expect(historySection).toContainText('10 reps');
     await expect(historySection).toContainText('RPE');
+    await expect(historySection).toContainText('30° Incline');
+
+    // Ensure the angle badge renders with the correct styling hook
+    const angleBadge = historySection.locator('.exercise-history-item__angle .ex-angle');
+    await expect(angleBadge.first()).toHaveText('30° Incline');
+    await expect(angleBadge.first()).toHaveClass(/ex-angle--incline/);
   });
 
   test('shows "No history" message when no matching data exists', async ({ page }) => {

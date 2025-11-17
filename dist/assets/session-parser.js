@@ -182,8 +182,14 @@ window.ExercAIse.SessionParser = (() => {
             let s = String(name == null ? '' : name).trim();
             s = s.replace(/^\s*\d+[\)\.-]\s*/, '');
             const m = s.match(/^\s*\[([^\]]+)\]\(([^)]+)\)/);
-            if (m)
+            if (m) {
+                const link = m[2];
+                const slugMatch = link.match(/exercises\/([\w\-]+)\.(?:json|md)/i);
+                if (slugMatch && slugMatch[1]) {
+                    return slugMatch[1].replace(/_/g, '-');
+                }
                 return m[1];
+            }
             return s;
         };
         const firstNumberFrom = (text) => {
@@ -238,7 +244,10 @@ window.ExercAIse.SessionParser = (() => {
             const exKey = slugify(plainName(String(name)));
             let sets = null, reps = null, weight = null, rpe = null, multiplier = null;
             let timeSeconds = null, holdSeconds = null, distanceMeters = null, distanceMiles = null;
+            let angle = null;
             if (cfg) {
+                if (cfg.angle != null && !isNaN(Number(cfg.angle)))
+                    angle = Number(cfg.angle);
                 if (typeof cfg.sets === 'number')
                     sets = cfg.sets;
                 if (typeof cfg.reps === 'number')
@@ -249,8 +258,12 @@ window.ExercAIse.SessionParser = (() => {
                     const rows = [];
                     for (let i = 0; i < cfg.reps.length; i++) {
                         const r = parseInt(cfg.reps[i], 10);
-                        if (!isNaN(r))
-                            rows.push({ set: i + 1, reps: r });
+                        if (!isNaN(r)) {
+                            const row = { set: i + 1, reps: r };
+                            if (angle != null && angle !== 0)
+                                row.angle = angle;
+                            rows.push(row);
+                        }
                     }
                     if (rows.length) {
                         byEx[exKey] = rows;
@@ -317,6 +330,8 @@ window.ExercAIse.SessionParser = (() => {
                     row.distanceMeters = distanceMeters;
                 if (distanceMiles != null)
                     row.distanceMiles = distanceMiles;
+                if (angle != null && angle !== 0)
+                    row.angle = angle;
                 rows2.push(row);
             }
             if (rows2.length)

@@ -4,6 +4,7 @@ export interface ExercisePerformance {
     key: string;
     name: string;
     weight?: number;
+    angle?: number;
     multiplier?: number;
     reps?: number;
     rpe?: number;
@@ -19,6 +20,7 @@ export interface ExercisePerformance {
 export interface SetEntry {
     set: number;
     weight?: number;
+    angle?: number;
     multiplier?: number;
     reps?: number;
     rpe?: number;
@@ -53,6 +55,7 @@ export interface PerformanceSection {
     items: PerformanceItem[];
 }
 export interface ExerciseSummary {
+    angle?: number;
     name: string;
     sectionPath: string;
     totalSets: number;

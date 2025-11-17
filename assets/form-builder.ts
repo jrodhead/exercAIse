@@ -20,6 +20,7 @@ interface PrescriptionRow {
   holdSeconds?: number;
   distanceMeters?: number;
   distanceMiles?: number;
+  angle?: number;
 }
 
 interface ExerciseMetadata {
@@ -38,6 +39,7 @@ interface ExerciseMetadata {
     distanceMeters?: number;
     distanceMiles?: number;
     restSeconds?: number;
+    angle?: number;
   };
 }
 
@@ -75,6 +77,89 @@ interface CollectedBlocks {
   // Constants
   const METERS_PER_MILE = 1609.34;
 
+  const isValidAngle = (value: unknown): value is number => {
+    return typeof value === 'number' && isFinite(value) && value !== 0;
+  };
+
+  const angleDirectionLabel = (angle: number): 'Incline' | 'Decline' => {
+    return angle > 0 ? 'Incline' : 'Decline';
+  };
+
+  const findAngleInRows = (rows?: PrescriptionRow[] | null): number | null => {
+    if (!rows || !rows.length) return null;
+    for (let i = 0; i < rows.length; i++) {
+      const candidate = rows[i]?.angle;
+      if (isValidAngle(candidate)) return candidate;
+    }
+    return null;
+  };
+
+  const resolveAngleValue = (
+    metadata: ExerciseMetadata | null,
+    presetRows?: PrescriptionRow[] | null,
+    savedRows?: PrescriptionRow[] | null
+  ): number | null => {
+    const fromMeta = metadata?.prescription?.angle;
+    if (isValidAngle(fromMeta)) return fromMeta as number;
+    const fromPreset = findAngleInRows(presetRows);
+    if (fromPreset != null) return fromPreset;
+    return findAngleInRows(savedRows);
+  };
+
+  const applyAngleBadgeToHeader = (angle: number, headerEl: HTMLElement, cardEl: HTMLElement): void => {
+    const direction = angleDirectionLabel(angle);
+    const modifier = angle > 0 ? 'ex-angle--incline' : 'ex-angle--decline';
+    let badge = headerEl.querySelector('.ex-angle') as HTMLElement | null;
+    if (!badge) {
+      badge = document.createElement('span');
+      headerEl.appendChild(badge);
+    }
+    badge.textContent = `${angle}° ${direction}`;
+    badge.className = `exercise-card__angle ex-angle ex-angle--chip ${modifier}`;
+    badge.setAttribute('title', `${direction} bench angle`);
+    cardEl.setAttribute('data-angle', String(angle));
+  };
+
+  const readAngleFromCard = (card: HTMLElement | null): number | null => {
+    if (!card) return null;
+    const attr = card.getAttribute('data-angle');
+    if (!attr && attr !== '0') return null;
+    const num = Number(attr);
+    if (!isValidAngle(num)) return null;
+    return num;
+  };
+
+  const normalizeAngleValue = (value: unknown): number | null => {
+    if (value == null) return null;
+    const num = Number(value);
+    return Number.isFinite(num) ? Math.round(num) : null;
+  };
+
+  const detectAngleFromSets = (sets?: Array<{ angle?: number }> | null): number | null => {
+    if (!sets || !Array.isArray(sets)) return null;
+    for (let i = 0; i < sets.length; i++) {
+      const candidate = normalizeAngleValue(sets[i]?.angle);
+      if (candidate != null) return candidate;
+    }
+    return null;
+  };
+
+  const detectAngleFromRounds = (rounds: any[] | undefined, exerciseIndex: number): number | null => {
+    if (!rounds || !Array.isArray(rounds)) return null;
+    for (let i = 0; i < rounds.length; i++) {
+      const ex = rounds[i]?.exercises?.[exerciseIndex];
+      if (!ex) continue;
+      const candidate = normalizeAngleValue(ex.angle);
+      if (candidate != null) return candidate;
+    }
+    return null;
+  };
+
+  const buildExerciseIndexKey = (slug: string, angle: number | null): string => {
+    const normalized = typeof angle === 'number' && isFinite(angle) ? angle : 0;
+    return `${slug}_${normalized}`;
+  };
+
   /**
    * Extract sets for a given exercise key from perf-2 nested structure
    * Traverses sections → items → finds exercise by key
@@ -102,7 +187,8 @@ interface CollectedBlocks {
                 rpe: setEntry.rpe,
                 timeSeconds: setEntry.timeSeconds,
                 holdSeconds: setEntry.holdSeconds,
-                distanceMeters: setEntry.distanceMeters
+                distanceMeters: setEntry.distanceMeters,
+                angle: setEntry.angle
               });
             });
             return rows; // Found it, return early
@@ -123,7 +209,8 @@ interface CollectedBlocks {
                   rpe: exercise.rpe,
                   timeSeconds: exercise.timeSeconds,
                   holdSeconds: exercise.holdSeconds,
-                  distanceMeters: exercise.distanceMeters
+                  distanceMeters: exercise.distanceMeters,
+                  angle: exercise.angle
                 });
               }
             }
@@ -198,7 +285,13 @@ interface CollectedBlocks {
     /**
      * Create an exercise card with logging inputs
      */
-    const createExerciseCard = (title: string, presetRows: PrescriptionRow[], savedRows: PrescriptionRow[], headerHTML?: string, opts?: CardOptions): HTMLElement => {
+    const createExerciseCard = (
+      title: string,
+      presetRows: PrescriptionRow[] = [],
+      savedRows: PrescriptionRow[] = [],
+      headerHTML?: string,
+      opts?: CardOptions
+    ): HTMLElement => {
       const options = opts || {};
       const isReadOnly = !!options.readOnly;
       const exKey = deps.slugify!(title);
@@ -209,29 +302,42 @@ interface CollectedBlocks {
       card.setAttribute('data-name', title);
 
       // Optional header area to include the original exercise text (name + notes) inside the card
+      let resolvedAngle: number | null = null;
       if (headerHTML) {
         const header = document.createElement('div');
         header.className = 'exercise-card__header';
         header.innerHTML = headerHTML;
-        
-        // Extract and display notes from metadata if available
+
+        let metadata: ExerciseMetadata | null = null;
         try {
           const metaElement = header.querySelector('[data-exmeta]');
           if (metaElement) {
             const metaRaw = metaElement.getAttribute('data-exmeta') || '';
-            const metadata: ExerciseMetadata | null = metaRaw ? JSON.parse(metaRaw) : null;
-            if (metadata && metadata.notes) {
-              const notesDiv = document.createElement('div');
-              notesDiv.className = 'exercise-card__notes';
-              notesDiv.textContent = metadata.notes;
-              header.appendChild(notesDiv);
-            }
+            metadata = metaRaw ? JSON.parse(metaRaw) : null;
           }
         } catch (e) {
-          // Ignore JSON parse errors
+          metadata = null;
         }
-        
+
+        if (metadata && metadata.notes) {
+          const notesDiv = document.createElement('div');
+          notesDiv.className = 'exercise-card__notes';
+          notesDiv.textContent = metadata.notes;
+          header.appendChild(notesDiv);
+        }
+
+        resolvedAngle = resolveAngleValue(metadata, presetRows, savedRows);
+        if (resolvedAngle != null) {
+          applyAngleBadgeToHeader(resolvedAngle, header, card);
+        }
+
         card.appendChild(header);
+      } else {
+        resolvedAngle = resolveAngleValue(null, presetRows, savedRows);
+      }
+      
+      if (resolvedAngle != null && !card.getAttribute('data-angle')) {
+        card.setAttribute('data-angle', String(resolvedAngle));
       }
 
       // In read-only mode (warm-up/mobility/recovery), don't render logging inputs
@@ -1009,10 +1115,12 @@ interface CollectedBlocks {
         if (!isNaN(num)) obj[name] = num;
       }
       
+      const angleForCard = readAngleFromCard(card);
+      if (angleForCard != null) obj.angle = angleForCard;
       // Return null if no data was entered
       const hasAny = (obj.weight != null || obj.multiplier != null || obj.reps != null || 
-                     obj.rpe != null || obj.timeSeconds != null || obj.holdSeconds != null || 
-                     obj.distanceMiles != null);
+             obj.rpe != null || obj.timeSeconds != null || obj.holdSeconds != null || 
+             obj.distanceMiles != null);
       if (!hasAny) return null;
       
       return obj;
@@ -1056,9 +1164,11 @@ interface CollectedBlocks {
           if (!isNaN(num)) obj[name] = num;
         }
         
+        const angleForCard = readAngleFromCard(card);
+        if (angleForCard != null) obj.angle = angleForCard;
         const hasAny = (obj.weight != null || obj.multiplier != null || obj.reps != null || 
-                       obj.rpe != null || obj.timeSeconds != null || obj.holdSeconds != null || 
-                       obj.distanceMiles != null);
+                 obj.rpe != null || obj.timeSeconds != null || obj.holdSeconds != null || 
+                 obj.distanceMiles != null);
         if (hasAny) {
           setsArr.push(obj);
         }
@@ -1120,13 +1230,17 @@ interface CollectedBlocks {
         section.items.forEach((item: any, iIdx: number) => {
           if (item.kind === 'exercise' && item.sets && item.sets.length > 0) {
             const key = exerciseKeyFromName(item.name);
+            const angleValue = detectAngleFromSets(item.sets);
+            const indexKey = buildExerciseIndexKey(key, angleValue);
+            const storedAngle = typeof angleValue === 'number' && isFinite(angleValue) ? angleValue : 0;
             const totalVolume = item.sets.reduce((sum: number, set: any) => {
               const weight = (set.weight || 0) * (set.multiplier || 1);
               return sum + (weight * (set.reps || 0));
             }, 0);
             const avgRPE = item.sets.reduce((sum: number, set: any) => sum + (set.rpe || 0), 0) / item.sets.length;
             
-            index[key] = {
+            index[indexKey] = {
+              angle: storedAngle,
               name: item.name,
               sectionPath: `sections[${sIdx}].items[${iIdx}].sets[*]`,
               totalSets: item.sets.length,
@@ -1136,6 +1250,10 @@ interface CollectedBlocks {
             };
           } else if ((item.kind === 'superset' || item.kind === 'circuit') && item.rounds && item.rounds.length > 0) {
             item.rounds[0]?.exercises.forEach((ex: any, exIdx: number) => {
+              const slug = (typeof ex.key === 'string' && ex.key.length) ? ex.key : exerciseKeyFromName(ex.name);
+              const angleValue = detectAngleFromRounds(item.rounds, exIdx);
+              const indexKey = buildExerciseIndexKey(slug, angleValue);
+              const storedAngle = typeof angleValue === 'number' && isFinite(angleValue) ? angleValue : 0;
               const totalVolume = item.rounds.reduce((sum: number, round: any) => {
                 const exercise = round.exercises[exIdx];
                 if (!exercise) return sum;
@@ -1146,7 +1264,8 @@ interface CollectedBlocks {
                 return sum + (round.exercises[exIdx]?.rpe || 0);
               }, 0) / item.rounds.length;
               
-              index[ex.key] = {
+              index[indexKey] = {
+                angle: storedAngle,
                 name: ex.name,
                 sectionPath: `sections[${sIdx}].items[${iIdx}].rounds[*].exercises[${exIdx}]`,
                 totalSets: item.rounds.length,

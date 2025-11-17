@@ -1,0 +1,45 @@
+{
+  "version": "1",
+  "title": "Bench Angle Test Session",
+  "date": "2025-11-16",
+  "block": 5,
+  "week": 2,
+  "notes": "Fixture for verifying incline vs flat bench behaviors",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "Pressing Focus",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Incline Dumbbell Bench Press",
+          "link": "exercises/incline_dumbbell_bench_press.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": 10,
+            "weight": "40 lb per hand",
+            "restSeconds": 90,
+            "rpe": 7,
+            "angle": 30
+          },
+          "cues": ["Upper chest drive", "Bench locked at 30°", "Stay stacked"]
+        },
+        {
+          "kind": "exercise",
+          "name": "Flat Dumbbell Bench Press",
+          "link": "exercises/flat_dumbbell_bench_press.json",
+          "logType": "strength",
+          "prescription": {
+            "sets": 3,
+            "reps": 8,
+            "weight": "45 lb per hand",
+            "rpe": 7,
+            "angle": 0
+          },
+          "cues": ["Soft lockout", "Elbows ~45°", "No bench angle badge"]
+        }
+      ]
+    }
+  ]
+}

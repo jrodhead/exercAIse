@@ -12,6 +12,7 @@ interface PrescriptionRow {
     holdSeconds?: number;
     distanceMeters?: number;
     distanceMiles?: number;
+    angle?: number;
 }
 interface PrescriptionsByExercise {
     [exerciseKey: string]: PrescriptionRow[];

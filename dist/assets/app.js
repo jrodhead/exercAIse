@@ -495,6 +495,7 @@
                     }
                     if (kind === 'exercise') {
                         const clean = String(name).replace(/^\s*\d+[\)\.-]\s*/, '');
+                        const angleValue = (it.prescription && typeof it.prescription.angle === 'number') ? it.prescription.angle : null;
                         const meta = { cues: (it.cues || []), prescription: (it.prescription || null) };
                         if (it.logType)
                             meta.logType = it.logType;
@@ -507,6 +508,14 @@
                         let html = `<li>${asLink
                             ? `<a href="${esc(exerciseHref)}" data-exmeta="${attrEscape(JSON.stringify(meta))}">${esc(clean)}</a>`
                             : `<span class="ex-name no-link" data-exmeta="${attrEscape(JSON.stringify(meta))}">${esc(clean)}</span>`}`;
+                        if (angleValue != null && angleValue !== 0) {
+                            const angleClass = angleValue > 0
+                                ? 'ex-angle ex-angle--inline ex-angle--incline'
+                                : 'ex-angle ex-angle--inline ex-angle--decline';
+                            const angleTitle = angleValue > 0 ? 'Incline bench angle' : 'Decline bench angle';
+                            const angleLabel = `(${angleValue}°)`;
+                            html += ` <span class="${angleClass}" title="${attrEscape(angleTitle)}">${esc(angleLabel)}</span>`;
+                        }
                         if (it.prescription && typeof it.prescription === 'object') {
                             try {
                                 const p = it.prescription || {};

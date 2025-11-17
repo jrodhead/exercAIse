@@ -18,6 +18,7 @@ export interface ExercisePerformance {
   key: string; // Exercise slug for linking to exercises/*.json
   name: string; // Display name
   weight?: number;
+  angle?: number;
   multiplier?: number;
   reps?: number;
   rpe?: number;
@@ -37,6 +38,7 @@ export interface ExercisePerformance {
 export interface SetEntry {
   set: number; // Required in nested format
   weight?: number;
+  angle?: number;
   multiplier?: number;
   reps?: number;
   rpe?: number;
@@ -93,6 +95,7 @@ export interface PerformanceSection {
  * Pre-computed summary for fast queries (optional)
  */
 export interface ExerciseSummary {
+  angle?: number;
   name: string;
   sectionPath: string; // JSONPath to location in sections tree
   totalSets: number; // For standalone exercises
