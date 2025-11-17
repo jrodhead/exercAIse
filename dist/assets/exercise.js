@@ -284,7 +284,7 @@ function findExerciseInPerf2(log, exerciseKey) {
         return { label: 'Flat (0°)', modifier: 'ex-angle--flat', title: 'Flat bench angle' };
     };
     const buildAngleBadge = (angle) => {
-        if (angle == null)
+        if (angle == null || angle === 0)
             return '';
         const meta = describeAngleBadge(angle);
         return `<span class="ex-angle ex-angle--chip ${meta.modifier}" title="${meta.title}">${meta.label}</span>`;

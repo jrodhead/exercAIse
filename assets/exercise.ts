@@ -361,7 +361,7 @@ function findExerciseInPerf2(log: PerformanceLog, exerciseKey: string): SetEntry
   };
 
   const buildAngleBadge = (angle: number | null): string => {
-    if (angle == null) return '';
+    if (angle == null || angle === 0) return '';
     const meta = describeAngleBadge(angle);
     return `<span class="ex-angle ex-angle--chip ${meta.modifier}" title="${meta.title}">${meta.label}</span>`;
   };
