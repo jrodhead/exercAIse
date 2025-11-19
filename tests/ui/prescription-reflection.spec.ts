@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { setupClipboard } from './_helpers';
+import { setupClipboard, ensureLoadInputsVisible } from './_helpers';
 
 // New focus: verify copied JSON output (structural + modified first-set values) rather than localStorage persistence.
 // Steps:
@@ -56,6 +56,7 @@ test('copy JSON reflects first-set modifications only', async ({ page }) => {
   for (const [name, cfg] of Object.entries(PLAN)) {
     const card = page.locator(`.exercise-card[data-name="${name}"]`).first();
     await expect(card, name + ' card').toBeVisible();
+    await ensureLoadInputsVisible(card);
     const rows = card.locator('.set-row');
     await expect(rows, name + ' set count').toHaveCount(cfg.expectSets);
     const first = rows.first();

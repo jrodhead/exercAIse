@@ -1,5 +1,5 @@
 import { test, expect, Locator } from '@playwright/test';
-import { setupClipboard, clickCopyAndGetJSON } from './_helpers';
+import { setupClipboard, clickCopyAndGetJSON, ensureLoadInputsVisible } from './_helpers';
 
 const SESSION_FILE = 'tests/sessionplans/bench_angle_session.json';
 const SESSION_URL = '/index.html?file=' + encodeURIComponent(SESSION_FILE);
@@ -18,6 +18,7 @@ const findExerciseSectionItem = (payload: any, target: string) => {
 };
 
 const fillFirstSet = async (cardLocator: Locator, values: Record<string, string>) => {
+  await ensureLoadInputsVisible(cardLocator);
   const firstRow = cardLocator.locator('.set-row').first();
   await expect(firstRow, 'set row should render').toBeVisible();
   for (const [field, raw] of Object.entries(values)) {

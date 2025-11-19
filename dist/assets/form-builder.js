@@ -3,6 +3,48 @@ window.ExercAIse.FormBuilder = (() => {
     'use strict';
     let deps = {};
     const METERS_PER_MILE = 1609.34;
+    const LOAD_FIELD_NAMES = new Set(['weight', 'multiplier']);
+    const isLoadFieldName = (name) => {
+        if (!name)
+            return false;
+        return LOAD_FIELD_NAMES.has(name);
+    };
+    const coerceNumber = (value) => {
+        if (value == null || value === '')
+            return null;
+        if (typeof value === 'number') {
+            return Number.isFinite(value) ? value : null;
+        }
+        const num = Number(value);
+        return Number.isFinite(num) ? num : null;
+    };
+    const formatNumeric = (value) => {
+        if (value == null)
+            return '';
+        return Number.isInteger(value) ? String(value) : value.toFixed(1).replace(/\.0$/, '');
+    };
+    const formatLoadSummaryFromValues = (weight, multiplier) => {
+        const weightNum = coerceNumber(weight);
+        const multiplierNum = coerceNumber(multiplier);
+        const parts = [];
+        if (weightNum != null && weightNum > 0) {
+            parts.push(`${formatNumeric(weightNum)} lb`);
+        }
+        if (multiplierNum != null) {
+            if (multiplierNum === 0) {
+                if (!parts.length)
+                    parts.push('Bodyweight');
+                else
+                    parts.push('(Bodyweight)');
+            }
+            else if (multiplierNum !== 1) {
+                parts.push(`×${formatNumeric(multiplierNum)}`);
+            }
+        }
+        if (!parts.length)
+            return null;
+        return parts.join(' ');
+    };
     const isValidAngle = (value) => {
         return typeof value === 'number' && isFinite(value) && value !== 0;
     };
@@ -214,18 +256,6 @@ window.ExercAIse.FormBuilder = (() => {
             if (resolvedAngle != null && !card.getAttribute('data-angle')) {
                 card.setAttribute('data-angle', String(resolvedAngle));
             }
-            let setsWrap = null;
-            let addBtn = null;
-            if (!isReadOnly) {
-                setsWrap = document.createElement('div');
-                setsWrap.className = 'exercise-sets';
-                card.appendChild(setsWrap);
-                addBtn = document.createElement('button');
-                addBtn.className = 'button--secondary';
-                addBtn.type = 'button';
-                addBtn.appendChild(document.createTextNode('Add set'));
-                card.appendChild(addBtn);
-            }
             const updateSetLabelsLocal = () => {
                 if (isReadOnly || !setsWrap)
                     return;
@@ -311,6 +341,60 @@ window.ExercAIse.FormBuilder = (() => {
                 }
             }
             const fieldOrder = isReadOnly ? [] : pickFieldsFromRows(initialRows, title, explicitType);
+            const hasLoadControls = !isReadOnly && fieldOrder.some((name) => isLoadFieldName(name));
+            let loadEditBtn = null;
+            let setsWrap = null;
+            let addBtn = null;
+            const updateRowLoadSummary = (rowEl) => {
+                if (!hasLoadControls || !rowEl)
+                    return;
+                const indicator = rowEl.querySelector('.set-row__load');
+                if (!indicator)
+                    return;
+                const weightInput = rowEl.querySelector('input[data-name="weight"]');
+                const multiplierInput = rowEl.querySelector('input[data-name="multiplier"]');
+                const summary = formatLoadSummaryFromValues(weightInput?.value, multiplierInput?.value);
+                indicator.textContent = summary || '—';
+            };
+            if (!isReadOnly) {
+                setsWrap = document.createElement('div');
+                setsWrap.className = 'exercise-sets';
+                card.appendChild(setsWrap);
+                const actionsBar = document.createElement('div');
+                actionsBar.className = 'exercise-card__set-actions';
+                addBtn = document.createElement('button');
+                addBtn.className = 'button--secondary';
+                addBtn.type = 'button';
+                addBtn.appendChild(document.createTextNode('Add set'));
+                actionsBar.appendChild(addBtn);
+                if (hasLoadControls) {
+                    loadEditBtn = document.createElement('button');
+                    loadEditBtn.type = 'button';
+                    loadEditBtn.className = 'button--ghost exercise-card__load-edit';
+                    loadEditBtn.textContent = 'Edit load';
+                    actionsBar.appendChild(loadEditBtn);
+                }
+                card.appendChild(actionsBar);
+                if (hasLoadControls && loadEditBtn) {
+                    const editBtn = loadEditBtn;
+                    editBtn.onclick = () => {
+                        const editing = card.classList.toggle('is-load-editing');
+                        editBtn.textContent = editing ? 'Done editing load' : 'Edit load';
+                    };
+                }
+                if (hasLoadControls && setsWrap) {
+                    setsWrap.addEventListener('input', (event) => {
+                        const target = event.target;
+                        if (!target)
+                            return;
+                        const fieldName = target.getAttribute('data-name');
+                        if (isLoadFieldName(fieldName)) {
+                            const rowEl = target.closest('.set-row');
+                            updateRowLoadSummary(rowEl);
+                        }
+                    });
+                }
+            }
             const addSetRow = (row, idx) => {
                 if (isReadOnly || !setsWrap)
                     return;
@@ -320,6 +404,13 @@ window.ExercAIse.FormBuilder = (() => {
                 label.className = 'set-label';
                 label.appendChild(document.createTextNode('Set'));
                 r.appendChild(label);
+                let perSetLoad = null;
+                if (hasLoadControls) {
+                    perSetLoad = document.createElement('span');
+                    perSetLoad.className = 'set-row__load';
+                    perSetLoad.textContent = '—';
+                    r.appendChild(perSetLoad);
+                }
                 const placeholders = {
                     weight: 'Weight',
                     multiplier: 'Multiplier',
@@ -348,12 +439,16 @@ window.ExercAIse.FormBuilder = (() => {
                 }
                 for (let i = 0; i < inputs.length; i++) {
                     const spec = inputs[i];
+                    const fieldWrap = document.createElement('div');
+                    fieldWrap.className = 'set-field';
+                    if (isLoadFieldName(spec.name))
+                        fieldWrap.classList.add('set-field--load');
                     if (spec.name === 'multiplier') {
                         const times = document.createElement('span');
                         times.appendChild(document.createTextNode('×'));
+                        times.className = 'set-field__times';
                         times.setAttribute('aria-hidden', 'true');
-                        times.style.margin = '0 4px 0 8px';
-                        r.appendChild(times);
+                        fieldWrap.appendChild(times);
                     }
                     const input = document.createElement('input');
                     input.type = spec.type;
@@ -433,7 +528,12 @@ window.ExercAIse.FormBuilder = (() => {
                         }
                     }
                     input.setAttribute('data-name', spec.name);
-                    r.appendChild(input);
+                    if (spec.name === 'reps' || spec.name === 'rpe') {
+                        fieldWrap.classList.add('set-field--compact');
+                        input.classList.add('input--compact');
+                    }
+                    fieldWrap.appendChild(input);
+                    r.appendChild(fieldWrap);
                 }
                 const del = document.createElement('button');
                 del.type = 'button';
@@ -444,10 +544,16 @@ window.ExercAIse.FormBuilder = (() => {
                 iconText.className = 'icon-text';
                 iconText.textContent = '🗑';
                 del.appendChild(iconText);
-                del.onclick = () => { setsWrap.removeChild(r); updateSetLabelsLocal(); };
+                del.onclick = () => {
+                    setsWrap.removeChild(r);
+                    updateSetLabelsLocal();
+                };
                 r.appendChild(del);
                 setsWrap.appendChild(r);
                 updateSetLabelsLocal();
+                if (hasLoadControls) {
+                    updateRowLoadSummary(r);
+                }
             };
             const snapshotLastRow = () => {
                 if (!setsWrap)

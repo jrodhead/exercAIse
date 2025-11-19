@@ -4,7 +4,7 @@
  */
 
 import { test, expect } from '@playwright/test';
-import { setupClipboard, clickCopyAndGetJSON } from './_helpers';
+import { setupClipboard, clickCopyAndGetJSON, ensureLoadInputsVisible } from './_helpers';
 
 test.beforeEach(async ({ page }) => {
   await setupClipboard(page);
@@ -22,6 +22,7 @@ test.describe('Perf-2 Nested Structure', () => {
     // Fill in some performance data for the first exercise
     const firstCard = page.locator('.exercise-card').first();
     await expect(firstCard).toBeVisible();
+    await ensureLoadInputsVisible(firstCard);
 
     const firstSetRow = firstCard.locator('.set-row').first();
     const weightInput = firstSetRow.locator('input[data-name="weight"]');
@@ -191,6 +192,9 @@ test.describe('Perf-2 Nested Structure', () => {
 
     for (let i = 0; i < Math.min(cardCount, 3); i++) {
       const card = cards.nth(i);
+      if (await card.locator('.exercise-card__load-edit').count()) {
+        await ensureLoadInputsVisible(card);
+      }
       const firstRow = card.locator('.set-row').first();
 
       const weightInput = firstRow.locator('input[data-name="weight"]');
@@ -238,6 +242,7 @@ test.describe('Perf-2 Nested Structure', () => {
 
     // Fill minimal data
     const firstCard = page.locator('.exercise-card').first();
+    await ensureLoadInputsVisible(firstCard);
     const firstRow = firstCard.locator('.set-row').first();
     const weightInput = firstRow.locator('input[data-name="weight"]');
     if (await weightInput.count() > 0) {

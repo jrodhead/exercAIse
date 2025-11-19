@@ -577,16 +577,41 @@
           }
           if (kind === 'superset' || kind === 'circuit') {
             const cap = kind.charAt(0).toUpperCase() + kind.slice(1);
+            const containerClass = `session-superset session-superset--${kind}`;
             let inner = '';
             if (it.children && it.children.length) {
               inner = it.children.map((ch: any) => renderItem(ch, options)).join('');
               if (inner && inner.indexOf('<li') !== -1) inner = `<ul>${inner}</ul>`;
             }
+            const metaParts: string[] = [];
+            if (typeof it.rounds === 'number') {
+              metaParts.push(`${it.rounds} round${it.rounds === 1 ? '' : 's'}`);
+            }
+            if (typeof it.restSeconds === 'number') {
+              metaParts.push(`Rest ${it.restSeconds}s`);
+            }
             let notesHtml = '';
             if (it.notes) {
-              notesHtml = `<div class="exercise-card__notes">${esc(it.notes)}</div>`;
+              notesHtml = `<div class="session-superset__notes">${esc(it.notes)}</div>`;
             }
-            return `<div><h3>${esc(cap + (it.name ? `: ${it.name}` : ''))}</h3>${notesHtml}${inner}</div>`;
+            const metaHtml = metaParts.length ? `<span class="session-superset__meta">${esc(metaParts.join(' · '))}</span>` : '';
+            const rawName = typeof it.name === 'string' ? it.name : '';
+            const typePattern = new RegExp(`^${cap}\\s*`, 'i');
+            const cleanedName = rawName.replace(typePattern, '').trim();
+            const displayName = cleanedName.replace(/^[-:\u2013\u2014]+\s*/, '').trim() || rawName;
+            const badgeTitle = displayName || cap;
+            return `
+              <div class="${containerClass}">
+                <div class="session-superset__header">
+                  <h3 class="session-superset__heading">
+                    <span class="session-superset__badge" title="${esc(badgeTitle)}">${esc(cap)}</span>
+                  </h3>
+                  ${metaHtml}
+                </div>
+                ${notesHtml}
+                <div class="session-superset__body">${inner}</div>
+              </div>
+            `;
           }
           return '';
         };

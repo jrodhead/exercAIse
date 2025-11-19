@@ -19,17 +19,19 @@ test('mock session renders all sections and types', async ({ page }) => {
   await expect(page.locator('.exercise-card:has-text("Goblet Squat")')).toBeVisible();
   await expect(page.locator('.exercise-card:has-text("Farmer Carry")')).toBeVisible();
 
-  // Superset heading visible; children become logging cards in main sections
-  await expect(page.getByRole('heading', { level: 3, name: /Bench \+ Row/i })).toBeVisible();
-  // Verify superset notes are displayed
-  await expect(page.locator('.exercise-card__notes:has-text("Perform both exercises back-to-back")')).toBeVisible();
+  // Superset container renders badge/title metadata and notes
+  const superset = page.locator('.session-superset--superset').first();
+  await expect(superset).toBeVisible();
+  await expect(superset.locator('.session-superset__badge')).toHaveAttribute('title', /Bench \+ Row/i);
+  await expect(superset.locator('.session-superset__notes')).toContainText('Perform both exercises back-to-back');
   await expect(page.locator('.exercise-card[data-name="Flat DB Bench Press"]').first()).toBeVisible();
   await expect(page.locator('.exercise-card[data-name="Chest Supported Dumbbell Row"]').first()).toBeVisible();
 
-  // Circuit heading and children
-  await expect(page.getByRole('heading', { level: 3, name: /RDL \+ Thruster \+ Deadbug/i })).toBeVisible();
-  // Verify circuit notes are displayed
-  await expect(page.locator('.exercise-card__notes:has-text("Move quickly between exercises")')).toBeVisible();
+  // Circuit container renders badge/title metadata and notes
+  const circuit = page.locator('.session-superset--circuit').first();
+  await expect(circuit).toBeVisible();
+  await expect(circuit.locator('.session-superset__badge')).toHaveAttribute('title', /RDL \+ Thruster \+ Deadbug/i);
+  await expect(circuit.locator('.session-superset__notes')).toContainText('Move quickly between exercises');
   await expect(page.locator('.exercise-card[data-name="Dumbbell RDL"]').first()).toBeVisible();
   await expect(page.locator('.exercise-card[data-name="Dumbbell Thruster"]').first()).toBeVisible();
   await expect(page.locator('.exercise-card[data-name="Deadbug"]').first()).toBeVisible();

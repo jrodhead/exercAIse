@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { ensureLoadInputsVisible } from './_helpers';
 
 const MOCK_PATH = 'workouts/mock_All_Types_Test.json';
 
@@ -9,6 +10,7 @@ test('logging persistence: edit first set of Goblet Squat and restore after relo
 
   const card = page.locator('.exercise-card[data-name="Goblet Squat"]').first();
   await expect(card).toBeVisible();
+  await ensureLoadInputsVisible(card);
 
   const firstSet = card.locator('.set-row').first();
   await expect(firstSet).toBeVisible();
@@ -24,6 +26,7 @@ test('logging persistence: edit first set of Goblet Squat and restore after relo
   await page.goto(url);
   const card2 = page.locator('.exercise-card[data-name="Goblet Squat"]').first();
   await expect(card2).toBeVisible();
+  await ensureLoadInputsVisible(card2);
   const firstSet2 = card2.locator('.set-row').first();
   const weightAfter = firstSet2.locator('input[data-name="weight"]');
   const rpeAfter = firstSet2.locator('input[data-name="rpe"]');

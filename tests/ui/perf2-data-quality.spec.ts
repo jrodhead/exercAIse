@@ -4,7 +4,7 @@
  */
 
 import { test, expect } from '@playwright/test';
-import { setupClipboard, clickCopyAndGetJSON } from './_helpers';
+import { setupClipboard, clickCopyAndGetJSON, ensureLoadInputsVisible } from './_helpers';
 
 const MOCK_PATH = 'workouts/mock_All_Types_Test.json';
 
@@ -20,6 +20,7 @@ test.describe('Perf-2 Data Quality', () => {
     // Set RDL first set weight to 0 to ensure zero is retained
     const rdlCard = page.locator('.exercise-card[data-name="Dumbbell RDL"]').first();
     await expect(rdlCard).toBeVisible();
+    await ensureLoadInputsVisible(rdlCard);
     const rdlFirst = rdlCard.locator('.set-row').first();
     const rdlWeight = rdlFirst.locator('input[data-name="weight"]');
     if (await rdlWeight.count()) {
@@ -89,6 +90,7 @@ test.describe('Perf-2 Data Quality', () => {
     // 1. Replace Goblet Squat first-set weight with non-numeric (should be ignored)
     const gsCard = page.locator('.exercise-card[data-name="Goblet Squat"]').first();
     await expect(gsCard).toBeVisible();
+    await ensureLoadInputsVisible(gsCard);
     const gsFirst = gsCard.locator('.set-row').first();
     const gsWeight = gsFirst.locator('input[data-name="weight"]');
     await gsWeight.click({ clickCount: 3 });
@@ -99,6 +101,7 @@ test.describe('Perf-2 Data Quality', () => {
     // 2. Add a blank set to Hammer Curl and clear all inputs
     const hcCard = page.locator('.exercise-card[data-name="Hammer Curl"]').first();
     await expect(hcCard).toBeVisible();
+    await ensureLoadInputsVisible(hcCard);
     const addBtn = hcCard.locator('button').filter({ hasText: /add/i }).first();
     if (await addBtn.count()) {
       await addBtn.click();
@@ -154,6 +157,7 @@ test.describe('Perf-2 Data Quality', () => {
     // Target Goblet Squat
     const squatCard = page.locator('.exercise-card[data-name="Goblet Squat"]').first();
     await expect(squatCard).toBeVisible({ timeout: 10000 });
+    await ensureLoadInputsVisible(squatCard);
 
     // Update first set
     const firstSet = squatCard.locator('.set-row').first();
@@ -193,6 +197,7 @@ test.describe('Perf-2 Data Quality', () => {
     // Remove a set from Hammer Curl
     const hammerCard = page.locator('.exercise-card[data-name="Hammer Curl"]').first();
     if (await hammerCard.count()) {
+      await ensureLoadInputsVisible(hammerCard);
       const hammerSets = hammerCard.locator('.set-row');
       if (await hammerSets.count() > 1) {
         const lastHammerSet = hammerSets.last();
@@ -313,6 +318,7 @@ test.describe('Perf-2 Data Quality', () => {
     // Make some edits
     const squatCard = page.locator('.exercise-card[data-name="Goblet Squat"]').first();
     await expect(squatCard).toBeVisible();
+    await ensureLoadInputsVisible(squatCard);
     
     const firstSet = squatCard.locator('.set-row').first();
     const weightInput = firstSet.locator('input[data-name="weight"]');
@@ -377,6 +383,10 @@ test.describe('Perf-2 Data Quality', () => {
     for (let i = 0; i < Math.min(cardCount, 3); i++) {
       const card = cards.nth(i);
       const firstRow = card.locator('.set-row').first();
+
+      if (await card.locator('.exercise-card__load-edit').count()) {
+        await ensureLoadInputsVisible(card);
+      }
       
       // Try to fill various field types
       const fields = ['weight', 'reps', 'rpe', 'timeSeconds', 'holdSeconds', 'distanceMiles'];

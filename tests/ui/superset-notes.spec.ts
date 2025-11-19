@@ -5,30 +5,36 @@ test.describe('Superset and Circuit Notes Display', () => {
     await page.goto('/index.html?file=' + encodeURIComponent('workouts/mock_All_Types_Test.json'));
     
     // Verify superset notes are present
-    const supersetNotes = page.locator('.exercise-card__notes:has-text("Perform both exercises back-to-back")');
+    const superset = page.locator('.session-superset--superset').first();
+    const supersetNotes = superset.locator('.session-superset__notes');
+    await expect(superset).toBeVisible();
     await expect(supersetNotes).toBeVisible();
+    await expect(supersetNotes).toContainText('Perform both exercises back-to-back');
     
-    // Verify the notes appear between the heading and the exercise cards
-    const supersetDiv = page.locator('div:has(h3:has-text("Bench + Row"))');
-    await expect(supersetDiv.locator('.exercise-card__notes')).toBeVisible();
+    // Verify the notes live between the header and the exercise cards
+    await expect(superset.locator('.session-superset__header + .session-superset__notes')).toBeVisible();
+    await expect(superset.locator('.session-superset__body .exercise-card').first()).toBeVisible();
     
     // Verify notes have correct CSS class
-    await expect(supersetNotes).toHaveClass(/exercise-card__notes/);
+    await expect(supersetNotes).toHaveClass(/session-superset__notes/);
   });
 
   test('circuit notes are visible and styled correctly in light mode', async ({ page }) => {
     await page.goto('/index.html?file=' + encodeURIComponent('workouts/mock_All_Types_Test.json'));
     
     // Verify circuit notes are present
-    const circuitNotes = page.locator('.exercise-card__notes:has-text("Move quickly between exercises")');
+    const circuit = page.locator('.session-superset--circuit').first();
+    const circuitNotes = circuit.locator('.session-superset__notes');
+    await expect(circuit).toBeVisible();
     await expect(circuitNotes).toBeVisible();
+    await expect(circuitNotes).toContainText('Move quickly between exercises');
     
     // Verify the notes appear between the heading and the exercise cards
-    const circuitDiv = page.locator('div:has(h3:has-text("RDL + Thruster + Deadbug"))');
-    await expect(circuitDiv.locator('.exercise-card__notes')).toBeVisible();
+    await expect(circuit.locator('.session-superset__header + .session-superset__notes')).toBeVisible();
+    await expect(circuit.locator('.session-superset__body .exercise-card').first()).toBeVisible();
     
     // Verify notes have correct CSS class
-    await expect(circuitNotes).toHaveClass(/exercise-card__notes/);
+    await expect(circuitNotes).toHaveClass(/session-superset__notes/);
   });
 
   test('superset notes have adequate contrast in dark mode', async ({ page }) => {
@@ -37,7 +43,8 @@ test.describe('Superset and Circuit Notes Display', () => {
     await page.goto('/index.html?file=' + encodeURIComponent('workouts/mock_All_Types_Test.json'));
     
     // Verify superset notes are visible
-    const supersetNotes = page.locator('.exercise-card__notes:has-text("Perform both exercises back-to-back")');
+    const superset = page.locator('.session-superset--superset').first();
+    const supersetNotes = superset.locator('.session-superset__notes');
     await expect(supersetNotes).toBeVisible();
     
     // Check computed color (should be lighter in dark mode: #cbd5e1)
@@ -56,7 +63,8 @@ test.describe('Superset and Circuit Notes Display', () => {
     await page.goto('/index.html?file=' + encodeURIComponent('workouts/mock_All_Types_Test.json'));
     
     // Verify circuit notes are visible
-    const circuitNotes = page.locator('.exercise-card__notes:has-text("Move quickly between exercises")');
+    const circuit = page.locator('.session-superset--circuit').first();
+    const circuitNotes = circuit.locator('.session-superset__notes');
     await expect(circuitNotes).toBeVisible();
     
     // Check computed color
@@ -73,11 +81,12 @@ test.describe('Superset and Circuit Notes Display', () => {
     await page.goto('/index.html?file=' + encodeURIComponent('workouts/5-1_Chest_Triceps_Hypertrophy.json'));
     
     // Verify at least one superset note is visible
-    const supersetNotes = page.locator('.exercise-card__notes');
-    await expect(supersetNotes.first()).toBeVisible();
+    const supersetNotes = page.locator('.session-superset__notes');
+    const firstNoteEl = supersetNotes.first();
+    await expect(firstNoteEl).toBeVisible();
     
     // Verify the note contains rest timing information
-    const firstNote = await supersetNotes.first().textContent();
+    const firstNote = await firstNoteEl.textContent();
     expect(firstNote).toMatch(/rest.*\d+s/i);
   });
 });

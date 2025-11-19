@@ -1,4 +1,4 @@
-import { Page, expect } from '@playwright/test';
+import { Page, expect, Locator } from '@playwright/test';
 
 export async function setupClipboard(page: Page) {
   await page.addInitScript(() => {
@@ -23,4 +23,14 @@ export function findExerciseByName(data: any, name: string) {
     if (ex && ex.name === name) return ex;
   }
   return null;
+}
+
+export async function ensureLoadInputsVisible(card: Locator): Promise<void> {
+  if (!(await card.count())) return;
+  const editBtn = card.locator('.exercise-card__load-edit');
+  if (!(await editBtn.count())) return;
+  const isEditing = await card.evaluate((el) => el.classList.contains('is-load-editing'));
+  if (!isEditing) {
+    await editBtn.click();
+  }
 }
