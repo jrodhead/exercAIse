@@ -1,0 +1,281 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/5-3_Back_Biceps_Maintenance.json",
+  "timestamp": "2025-11-18T13:31:06.483Z",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "Upper-Back Volume - Superset A",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset A",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "chest-supported-dumbbell-row",
+                  "name": "Chest-Supported Dumbbell Row",
+                  "weight": 37.5,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 6,
+                  "angle": 30
+                },
+                {
+                  "key": "hammer-curl",
+                  "name": "Hammer Curl",
+                  "weight": 27.5,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "chest-supported-dumbbell-row",
+                  "name": "Chest-Supported Dumbbell Row",
+                  "weight": 37.5,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 7,
+                  "angle": 30
+                },
+                {
+                  "key": "hammer-curl",
+                  "name": "Hammer Curl",
+                  "weight": 27.5,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 8
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 3,
+              "exercises": [
+                {
+                  "key": "chest-supported-dumbbell-row",
+                  "name": "Chest-Supported Dumbbell Row",
+                  "weight": 37.5,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 7,
+                  "angle": 30
+                },
+                {
+                  "key": "hammer-curl",
+                  "name": "Hammer Curl",
+                  "weight": 27.5,
+                  "multiplier": 2,
+                  "reps": 6,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 90
+            }
+          ],
+          "notes": "Bench set to 30°. Stay chest-down, squeeze at top, rest 90s between rounds."
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Pulling Symmetry - Superset B",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset B",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "one-arm-dumbbell-row",
+                  "name": "One-Arm Dumbbell Row",
+                  "weight": 50,
+                  "reps": 10,
+                  "rpe": 8
+                },
+                {
+                  "key": "alternating-dumbbell-biceps-curl",
+                  "name": "Alternating Dumbbell Biceps Curl",
+                  "weight": 24,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 5
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "one-arm-dumbbell-row",
+                  "name": "One-Arm Dumbbell Row",
+                  "weight": 50,
+                  "reps": 10,
+                  "rpe": 8
+                },
+                {
+                  "key": "alternating-dumbbell-biceps-curl",
+                  "name": "Alternating Dumbbell Biceps Curl",
+                  "weight": 24,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 6
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 3,
+              "exercises": [
+                {
+                  "key": "one-arm-dumbbell-row",
+                  "name": "One-Arm Dumbbell Row",
+                  "weight": 50,
+                  "reps": 10,
+                  "rpe": 8
+                },
+                {
+                  "key": "alternating-dumbbell-biceps-curl",
+                  "name": "Alternating Dumbbell Biceps Curl",
+                  "weight": 24,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 6
+                }
+              ],
+              "prescribedRestSeconds": 90
+            }
+          ],
+          "notes": "Keep hips square on rows, then alternate curls under control. Rest 90s."
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Carry + Core",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Suitcase Carry",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 55,
+              "timeSeconds": 35,
+              "rpe": 5
+            },
+            {
+              "set": 2,
+              "weight": 55,
+              "timeSeconds": 35,
+              "rpe": 5
+            },
+            {
+              "set": 3,
+              "weight": 55,
+              "timeSeconds": 35,
+              "rpe": 5
+            }
+          ],
+          "notes": "Walk 35s per side each set; switch hands immediately before resting."
+        },
+        {
+          "kind": "exercise",
+          "name": "Deadbug",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 10,
+              "reps": 10,
+              "rpe": 6
+            },
+            {
+              "set": 2,
+              "weight": 10,
+              "reps": 10,
+              "rpe": 7
+            },
+            {
+              "set": 3,
+              "weight": 10,
+              "reps": 10,
+              "rpe": 7
+            }
+          ],
+          "notes": "Press low back into floor, alternate limbs with slow 3s reach."
+        }
+      ]
+    }
+  ],
+  "date": "2025-11-18",
+  "block": 5,
+  "week": 3,
+  "title": "Back & Biceps Maintenance + Carry",
+  "exerciseIndex": {
+    "chest-supported-dumbbell-row_30": {
+      "angle": 30,
+      "name": "Chest-Supported Dumbbell Row",
+      "sectionPath": "sections[0].items[0].rounds[*].exercises[0]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 6.666666666666667,
+      "totalVolume": 2700
+    },
+    "hammer-curl_0": {
+      "angle": 0,
+      "name": "Hammer Curl",
+      "sectionPath": "sections[0].items[0].rounds[*].exercises[1]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 7.333333333333333,
+      "totalVolume": 1430
+    },
+    "one-arm-dumbbell-row_0": {
+      "angle": 0,
+      "name": "One-Arm Dumbbell Row",
+      "sectionPath": "sections[1].items[0].rounds[*].exercises[0]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 8,
+      "totalVolume": 1500
+    },
+    "alternating-dumbbell-biceps-curl_0": {
+      "angle": 0,
+      "name": "Alternating Dumbbell Biceps Curl",
+      "sectionPath": "sections[1].items[0].rounds[*].exercises[1]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 5.666666666666667,
+      "totalVolume": 1440
+    },
+    "suitcase-carry_0": {
+      "angle": 0,
+      "name": "Suitcase Carry",
+      "sectionPath": "sections[2].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 5,
+      "totalVolume": 0
+    },
+    "deadbug_0": {
+      "angle": 0,
+      "name": "Deadbug",
+      "sectionPath": "sections[2].items[1].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 6.666666666666667,
+      "totalVolume": 300
+    }
+  }
+}
