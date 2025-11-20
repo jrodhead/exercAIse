@@ -1,0 +1,231 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/5-3_Glutes_Calves_Core.json",
+  "timestamp": "2025-11-20T13:27:37.358Z",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "Primary Glute Volume - Superset A",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset A",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "dumbbell-hip-thrust",
+                  "name": "Dumbbell Hip Thrust",
+                  "weight": 60,
+                  "reps": 15,
+                  "rpe": 6
+                },
+                {
+                  "key": "heels-elevated-goblet-squat",
+                  "name": "Heels-elevated Goblet Squat",
+                  "weight": 60,
+                  "reps": 10,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "dumbbell-hip-thrust",
+                  "name": "Dumbbell Hip Thrust",
+                  "weight": 60,
+                  "reps": 15,
+                  "rpe": 7
+                },
+                {
+                  "key": "heels-elevated-goblet-squat",
+                  "name": "Heels-elevated Goblet Squat",
+                  "weight": 60,
+                  "reps": 10,
+                  "rpe": 8
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 3,
+              "exercises": [
+                {
+                  "key": "dumbbell-hip-thrust",
+                  "name": "Dumbbell Hip Thrust",
+                  "weight": 60,
+                  "reps": 15,
+                  "rpe": 7
+                },
+                {
+                  "key": "heels-elevated-goblet-squat",
+                  "name": "Heels-elevated Goblet Squat",
+                  "weight": 60,
+                  "reps": 10,
+                  "rpe": 8
+                }
+              ],
+              "prescribedRestSeconds": 90
+            }
+          ],
+          "notes": "Pause final rep of each set for 2s to build mind-muscle connection. Rest 90s between rounds."
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Unilateral Strength - Superset B",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset B",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "single-leg-deadlift",
+                  "name": "Single-Leg Deadlift",
+                  "weight": 35,
+                  "reps": 8,
+                  "rpe": 8
+                },
+                {
+                  "key": "walking-lunges",
+                  "name": "Walking Lunges",
+                  "weight": 25,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 6
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "single-leg-deadlift",
+                  "name": "Single-Leg Deadlift",
+                  "weight": 35,
+                  "reps": 8,
+                  "rpe": 8
+                },
+                {
+                  "key": "walking-lunges",
+                  "name": "Walking Lunges",
+                  "weight": 25,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 6
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 3,
+              "exercises": [
+                {
+                  "key": "walking-lunges",
+                  "name": "Walking Lunges",
+                  "weight": 25,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 6
+                }
+              ],
+              "prescribedRestSeconds": 90
+            }
+          ],
+          "notes": "Control balance-first moves. Complete all reps on one leg before switching. Rest 90s."
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Calves + Anti-Rotation",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Single-leg Calf Raise",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 20,
+              "reps": 15,
+              "rpe": 8
+            },
+            {
+              "set": 2,
+              "weight": 20,
+              "reps": 10,
+              "rpe": 8
+            },
+            {
+              "set": 3,
+              "weight": 20,
+              "reps": 8,
+              "rpe": 8
+            }
+          ],
+          "notes": "Perform all reps on one leg first, then switch. 3s eccentric each rep."
+        }
+      ]
+    }
+  ],
+  "date": "2025-11-20",
+  "block": 5,
+  "week": 3,
+  "title": "Glutes, Calves & Core Progression",
+  "exerciseIndex": {
+    "dumbbell-hip-thrust_0": {
+      "angle": 0,
+      "name": "Dumbbell Hip Thrust",
+      "sectionPath": "sections[0].items[0].rounds[*].exercises[0]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 6.666666666666667,
+      "totalVolume": 2700
+    },
+    "heels-elevated-goblet-squat_0": {
+      "angle": 0,
+      "name": "Heels-elevated Goblet Squat",
+      "sectionPath": "sections[0].items[0].rounds[*].exercises[1]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 7.666666666666667,
+      "totalVolume": 1800
+    },
+    "single-leg-deadlift_0": {
+      "angle": 0,
+      "name": "Single-Leg Deadlift",
+      "sectionPath": "sections[1].items[0].rounds[*].exercises[0]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 7.333333333333333,
+      "totalVolume": 1160
+    },
+    "walking-lunges_0": {
+      "angle": 0,
+      "name": "Walking Lunges",
+      "sectionPath": "sections[1].items[0].rounds[*].exercises[1]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 4,
+      "totalVolume": 1200
+    },
+    "single-leg-calf-raise_0": {
+      "angle": 0,
+      "name": "Single-leg Calf Raise",
+      "sectionPath": "sections[2].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 8,
+      "totalVolume": 660
+    }
+  }
+}
