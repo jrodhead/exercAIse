@@ -25,7 +25,6 @@ interface PrescriptionRow {
 
 interface ExerciseMetadata {
   logType?: string;
-  loggable?: boolean;
   notes?: string;
   cues?: string[];
   prescription?: {
@@ -61,6 +60,8 @@ interface CollectedBlocks {
   html: string;
   nodes: Node[];
 }
+
+type SectionDisplayMode = 'reference' | 'log';
 
 // ============================================================================
 // Implementation
@@ -875,30 +876,59 @@ interface CollectedBlocks {
       return '';
     };
 
-    const isWarmOrCool = (sectionTitle: string, anchorEl: HTMLElement): boolean => {
-      // Prefer explicit section type if available
-      let secType = '';
-      try {
-        let secEl: Node | null = anchorEl;
-        while (secEl && secEl !== deps.workoutContent && !((secEl as Element).tagName && (secEl as Element).tagName.toLowerCase() === 'section')) secEl = secEl.parentNode;
-        if (secEl && (secEl as Element).getAttribute) secType = ((secEl as Element).getAttribute('data-sectype') || '');
-      } catch (e) {
-        // Ignore errors
+    const DISPLAY_MODE_REFERENCE: SectionDisplayMode = 'reference';
+    const DISPLAY_MODE_LOG: SectionDisplayMode = 'log';
+    const LEGACY_REFERENCE_REGEX = /(warm|warm-up|warmup|cool|cool-down|cooldown|mobility|recovery|yin|flow)/i;
+
+    const findEnclosingSection = (node: Node | null): HTMLElement | null => {
+      let current: Node | null = node;
+      while (current && current !== deps.workoutContent) {
+        if (current.nodeType === 1) {
+          const el = current as Element;
+          if (el.tagName && el.tagName.toLowerCase() === 'section') {
+            return el as HTMLElement;
+          }
+        }
+        current = current.parentNode;
       }
-      
-      const t = String((secType || sectionTitle) || '').toLowerCase();
-      return (
-        t.indexOf('warm') !== -1 ||
-        t.indexOf('warm-up') !== -1 ||
-        t.indexOf('warm up') !== -1 ||
-        t.indexOf('warmup') !== -1 ||
-        t.indexOf('cool') !== -1 ||
-        t.indexOf('cool-down') !== -1 ||
-        t.indexOf('cool down') !== -1 ||
-        t.indexOf('cooldown') !== -1 ||
-        t.indexOf('mobility') !== -1 ||
-        t.indexOf('recovery') !== -1
-      );
+      return null;
+    };
+
+    const inferLegacyDisplayMode = (sectionTitle: string, sectionType: string): SectionDisplayMode => {
+      const haystack = `${sectionType || ''} ${sectionTitle || ''}`.toLowerCase();
+      if (haystack && LEGACY_REFERENCE_REGEX.test(haystack)) return DISPLAY_MODE_REFERENCE;
+      return DISPLAY_MODE_LOG;
+    };
+
+    const resolveSectionModeFromJSON = (section: any): SectionDisplayMode => {
+      if (!section || typeof section !== 'object') return DISPLAY_MODE_LOG;
+      try {
+        const parserApi = (window as any).ExercAIse?.SessionParser;
+        if (parserApi && typeof parserApi.resolveSectionDisplayMode === 'function') {
+          return parserApi.resolveSectionDisplayMode(section);
+        }
+      } catch (e) {
+        console.warn('SessionParser.resolveSectionDisplayMode failed, defaulting to legacy inference.', e);
+      }
+      const sectionTitle = typeof section.title === 'string' ? section.title : '';
+      const sectionType = typeof section.type === 'string' ? section.type : '';
+      return inferLegacyDisplayMode(sectionTitle, sectionType);
+    };
+
+    const resolveSectionModeForAnchor = (anchorEl: HTMLElement, sectionTitle: string): SectionDisplayMode => {
+      const sectionEl = findEnclosingSection(anchorEl);
+      if (sectionEl) {
+        const raw = (sectionEl.getAttribute('data-display-mode') || '').toLowerCase();
+        if (raw === DISPLAY_MODE_REFERENCE || raw === DISPLAY_MODE_LOG) {
+          return raw as SectionDisplayMode;
+        }
+        if (raw) {
+          console.warn('Unknown data-display-mode "%s"; falling back to legacy heuristics.', raw);
+        }
+        const secTypeAttr = sectionEl.getAttribute('data-sectype') || '';
+        return inferLegacyDisplayMode(sectionTitle, secTypeAttr);
+      }
+      return inferLegacyDisplayMode(sectionTitle, '');
     };
 
     let foundCount = 0;
@@ -920,7 +950,7 @@ interface CollectedBlocks {
       
       const exKey = deps.slugify!(normTitle);
       
-      // Inspect anchor meta for explicit loggable flag
+      // Inspect anchor meta for embedded cues/log type metadata
       const metaRaw0 = a.getAttribute('data-exmeta') || '';
       let meta0: ExerciseMetadata | null = null; 
       try { meta0 = metaRaw0 ? JSON.parse(metaRaw0) : null; } catch (e) { meta0 = null; }
@@ -928,7 +958,8 @@ interface CollectedBlocks {
       // Determine section by nearest previous heading; skip warm-up/cool-down
       const container = nearestBlockContainer(a);
       const sectionTitle = findPreviousHeading(container);
-      const inWarmCool = isWarmOrCool(sectionTitle, a);
+      const sectionMode = resolveSectionModeForAnchor(a, sectionTitle);
+      const isReferenceSection = sectionMode === DISPLAY_MODE_REFERENCE;
       
       // Extract saved data from perf-2 format
       let savedRows: PrescriptionRow[] = [];
@@ -945,7 +976,7 @@ interface CollectedBlocks {
       let preset = prescriptions[exKey] || prescriptions[deps.slugify!(title)] || [];
       
       // Do not seed defaults for JSON-driven sessions; rely on explicit prescriptions
-      if (!isJSON && !inWarmCool && (!preset || !preset.length)) {
+      if (!isJSON && !isReferenceSection && (!preset || !preset.length)) {
         const secRounds = detectRoundsHint(sectionTitle) || docRoundsHint || 3;
         const defaults: PrescriptionRow[] = [];
         for (let di = 1; di <= Math.max(1, secRounds); di++) defaults.push({ set: di });
@@ -1014,9 +1045,8 @@ interface CollectedBlocks {
         headerHTML = (headEl as HTMLElement).outerHTML || '';
       }
       
-      // Respect explicit loggable=false or warm-up/cooldown/mobility sections: do not inject logging card
-      const isExplicitNonLoggable = !!(meta0 && meta0.loggable === false);
-      if (inWarmCool || isExplicitNonLoggable) {
+      // Skip card injection for sections marked as reference-only
+      if (isReferenceSection) {
         // Do not inject cards for warm-up/cooldown/mobility; mark as handled so we don't auto-inject later
         foundKeys[exKey] = true;
         continue;
@@ -1444,6 +1474,10 @@ interface CollectedBlocks {
       // Traverse session sections and build nested structure
       if (sessionData.sections && Array.isArray(sessionData.sections)) {
         for (const sessionSection of sessionData.sections) {
+          const sectionMode = resolveSectionModeFromJSON(sessionSection);
+          if (sectionMode === DISPLAY_MODE_REFERENCE) {
+            continue; // Do not include reference-only sections in perf logs
+          }
           const section: any = {
             type: sessionSection.type,
             title: sessionSection.title,

@@ -2,6 +2,7 @@ interface ExerciseReference {
     title: string;
     url?: string;
 }
+type SectionDisplayMode = 'reference' | 'log';
 interface PrescriptionRow {
     set: number;
     reps?: number;

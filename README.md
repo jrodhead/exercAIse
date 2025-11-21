@@ -10,6 +10,7 @@ AI-generated personalized workout sessions with structured JSON logging and perf
 - **Exercise Library**: Detailed exercise descriptions with setup, steps, cues, and safety notes
 - **Offline Support**: PWA with service worker for offline viewing and logging
 - **Bench Angle Metadata**: Adjustable-bench prescriptions carry explicit angle data (flat, incline, decline) so the UI, logger, and history/AI tooling stay in sync
+- **Section Display Modes**: Each session section declares `displayMode: "reference" | "log"`, letting the AI dictate whether the UI renders condensed read-only content or full logging inputs
 - **Type Safety**: Full TypeScript implementation with compiled ES2020 output
 
 ## Browser Support
@@ -76,7 +77,7 @@ AI-generated comprehensive training analysis at `progress-report.html`
 - CI: GitHub Actions runs both validators on pushes and PRs.
 
 ## Schemas
-- `schemas/session.schema.json`: Canonical committed workout session files in `workouts/`.
+- `schemas/session.schema.json`: Canonical committed workout session files in `workouts/`, including section-level `displayMode` to control UI/logging behavior.
 - `schemas/exercise.schema.json`: Source of truth for exercise detail files in `exercises/`.
 - `schemas/performance.schema.json`: Performance log export format - Nested structure preserving workout organization (sections, supersets, circuits, rounds). Used by logger UI for all workouts.
 - `schemas/db.types.ts`: IndexedDB schema for performance logs, workout history, user settings, and exercise tracking.
@@ -200,6 +201,7 @@ Nested performance logs that preserve workout structure for superior fatigue ana
 - Dumbbell weights: log as number or string. Examples: `25` (per hand implied), `"25 x2"` (explicit per hand), `"50 total"`.
 - Movements without sets/weights: use time/hold/distance fields (e.g., `timeSeconds`, `holdSeconds`, `distanceMiles`; `distanceMeters` is supported for legacy files).
 - Bench-supported exercises: include an integer `angle` (-10, 0, 15, 30, 45, 60, 85) at the exercise level—flat bench uses `0` so the UI can suppress the badge while still logging angle-specific history.
+- Sections: Set `displayMode` explicitly on every section (`reference` for Warm-up/Cooldown/Mobility style blocks, `log` for Strength/Conditioning/Accessory/etc.) so the logger and perf exports follow AI intent. The legacy per-exercise `loggable` flag has been removed.
 - Supersets vs circuits: both are supported; supersets typically pair 2 movements back-to-back, circuits are 3+ movements. In JSON (if used), `kind: "superset" | "circuit"` with `children` items.
 
 ### Dumbbell Ladder Personalization

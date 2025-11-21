@@ -240,6 +240,10 @@ See `.github/prompts/generate-workout-session.prompt.md` for all output formatti
 ## 🔗 Repository Conventions (Explicit)
 - Exercise linking: In session JSON, every exercise item must include a `link` pointing to the JSON detail under `exercises/`, e.g., `"exercises/goblet_squat.json"`. JSON is the source of truth and is rendered by the viewer.
  - Exercise typing: Add `logType` to each exercise item to drive the logger UI: `strength | endurance | carry | mobility | stretch`.
+- **Section display modes (required):** Every section entry must explicitly set `displayMode`:
+   - `"reference"` → condensed read-only view (no logging inputs). Default this mode for Warm-up, Cooldown/Recovery, Recovery, Mobility, and similar prep/recovery sections unless the user must log data.
+   - `"log"` → renders full logging cards. Use this for Strength, Conditioning, Accessory/Core, Skill Work, etc.
+   - Do **not** rely on legacy defaults; set the flag on every section so the UI mirrors Kai’s intent. The old per-exercise `loggable` field has been removed—section-level `displayMode` now owns the decision.
 - **Per-side prescriptions**: For unilateral exercises (single-leg/arm exercises, stretches), always include a `notes` field clarifying execution order:
   - "Complete all reps on one arm, then switch sides" (for unilateral strength exercises)
   - "Alternate arms (12-15 reps per arm = 24-30 total reps)" (for alternating exercises)

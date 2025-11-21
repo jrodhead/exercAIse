@@ -245,7 +245,7 @@
         return lines.join('\n');
     };
     const SessionParser = window.ExercAIse.SessionParser;
-    const { slugify, parseHMSToSeconds, secondsToHHMMSS, extractExercisesFromMarkdown, parseMarkdownPrescriptions, extractExercisesFromJSON, parseJSONPrescriptions } = SessionParser;
+    const { slugify, parseHMSToSeconds, secondsToHHMMSS, extractExercisesFromMarkdown, parseMarkdownPrescriptions, extractExercisesFromJSON, parseJSONPrescriptions, resolveSectionDisplayMode } = SessionParser;
     const KaiIntegration = window.ExercAIse.KaiIntegration;
     const linkValidation = KaiIntegration.linkValidation;
     const loadSaved = (filePath) => {
@@ -502,8 +502,6 @@
                         const meta = { cues: (it.cues || []), prescription: (it.prescription || null) };
                         if (it.logType)
                             meta.logType = it.logType;
-                        if (it.loggable === false)
-                            meta.loggable = false;
                         if (it.notes)
                             meta.notes = it.notes;
                         const asLink = !!link && isInternalExerciseLink(link);
@@ -613,6 +611,20 @@
                     }
                     return '';
                 };
+                const getSectionDisplayMode = (sec) => {
+                    try {
+                        if (typeof resolveSectionDisplayMode === 'function') {
+                            return resolveSectionDisplayMode(sec);
+                        }
+                    }
+                    catch (e) {
+                        console.warn('resolveSectionDisplayMode failed, defaulting to log', e);
+                    }
+                    const typePart = String(sec?.type || '').toLowerCase();
+                    const titlePart = String(sec?.title || '').toLowerCase();
+                    const haystack = `${typePart} ${titlePart}`;
+                    return /warm|warm-up|warmup|cool|cool-down|cooldown|mobility|recovery|yin|flow/.test(haystack) ? 'reference' : 'log';
+                };
                 const renderSection = (sec) => {
                     if (!sec)
                         return '';
@@ -627,8 +639,9 @@
                         return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
                     };
                     const typeText = type || 'Section';
+                    const displayMode = getSectionDisplayMode(sec);
                     const display = typeText + (title ? ` — ${title}` : '');
-                    let h = `<section data-sectype="${attrEscapeLocal(typeText)}"><h2>${esc(display)}${esc(rounds)}</h2>`;
+                    let h = `<section data-sectype="${attrEscapeLocal(typeText)}" data-display-mode="${attrEscapeLocal(displayMode)}"><h2>${esc(display)}${esc(rounds)}</h2>`;
                     if (sec.notes) {
                         try {
                             h += renderMarkdownBasic(String(sec.notes));

@@ -25,7 +25,13 @@
       "properties": {
         "type": { "type": "string", "enum": ["Warm-up", "Main Work", "Strength", "Conditioning", "Accessory/Core", "Cooldown/Recovery", "Recovery", "Mobility"] },
         "title": { "type": "string" },
-  "rounds": { "type": "integer", "minimum": 1 },
+        "displayMode": {
+          "type": "string",
+          "enum": ["reference", "log"],
+          "default": "log",
+          "description": "Controls whether the UI renders a read-only reference block or interactive logging cards."
+        },
+        "rounds": { "type": "integer", "minimum": 1 },
         "notes": { "type": "string" },
         "items": {
           "type": "array",
@@ -41,8 +47,7 @@
         "kind": { "type": "string", "enum": ["exercise", "superset", "circuit", "note"] },
         "name": { "type": "string" },
         "link": { "type": "string" },
-  "logType": { "type": "string", "enum": ["strength", "endurance", "carry", "mobility", "stretch"] },
-  "loggable": { "type": "boolean" },
+        "logType": { "type": "string", "enum": ["strength", "endurance", "carry", "mobility", "stretch"] },
         "prescription": { "$ref": "#/definitions/Prescription" },
         "children": {
           "type": "array",

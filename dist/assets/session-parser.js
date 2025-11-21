@@ -49,6 +49,48 @@ window.ExercAIse.SessionParser = (() => {
         const pad = (n) => (n < 10 ? '0' : '') + n;
         return `${pad(h)}:${pad(m)}:${pad(s)}`;
     };
+    const DISPLAY_MODE_REFERENCE = 'reference';
+    const DISPLAY_MODE_LOG = 'log';
+    const LEGACY_REFERENCE_KEYWORDS = ['warm', 'warm-up', 'warmup', 'cool', 'cool-down', 'cooldown', 'mobility', 'recovery', 'yin', 'flow'];
+    const normalizeDisplayMode = (value) => {
+        if (typeof value !== 'string')
+            return null;
+        const normalized = value.trim().toLowerCase();
+        if (normalized === DISPLAY_MODE_REFERENCE || normalized === DISPLAY_MODE_LOG) {
+            return normalized;
+        }
+        return null;
+    };
+    const inferDisplayModeFromLegacyType = (section) => {
+        if (!section)
+            return DISPLAY_MODE_LOG;
+        const typePart = String(section.type || '').toLowerCase();
+        const titlePart = String(section.title || '').toLowerCase();
+        const haystack = `${typePart} ${titlePart}`.trim();
+        for (let i = 0; i < LEGACY_REFERENCE_KEYWORDS.length; i++) {
+            if (haystack.includes(LEGACY_REFERENCE_KEYWORDS[i])) {
+                return DISPLAY_MODE_REFERENCE;
+            }
+        }
+        return DISPLAY_MODE_LOG;
+    };
+    const resolveSectionDisplayMode = (section) => {
+        if (!section || typeof section !== 'object')
+            return DISPLAY_MODE_LOG;
+        const explicit = normalizeDisplayMode(section.displayMode);
+        if (explicit)
+            return explicit;
+        if (Object.prototype.hasOwnProperty.call(section, 'displayMode') && section.displayMode != null) {
+            try {
+                const label = String(section.title || section.type || 'section');
+                console.warn('[SessionParser] Unknown displayMode "%s" on %s; defaulting to log.', section.displayMode, label);
+            }
+            catch (e) {
+                console.warn('[SessionParser] Unknown displayMode provided; defaulting to log.');
+            }
+        }
+        return inferDisplayModeFromLegacyType(section);
+    };
     const extractExercisesFromMarkdown = (md) => {
         const re = /\[(.*?)\]\(((?:https?:\/\/[^\)]+\/exercAIse\/)?(?:\.\.\/)?(?:\.\/)??exercises\/[\w\-]+\.(?:md|json))\)/g;
         const ex = [];
@@ -433,7 +475,8 @@ window.ExercAIse.SessionParser = (() => {
         extractExercisesFromMarkdown: extractExercisesFromMarkdown,
         parseMarkdownPrescriptions: parseMarkdownPrescriptions,
         extractExercisesFromJSON: extractExercisesFromJSON,
-        parseJSONPrescriptions: parseJSONPrescriptions
+        parseJSONPrescriptions: parseJSONPrescriptions,
+        resolveSectionDisplayMode: resolveSectionDisplayMode
     };
 })();
 //# sourceMappingURL=session-parser.js.map

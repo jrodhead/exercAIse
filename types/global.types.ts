@@ -41,6 +41,7 @@ export interface SessionParserAPI {
   parseMarkdownPrescriptions: (md: string) => { [key: string]: any[] };
   extractExercisesFromJSON: (json: string) => any[];
   parseJSONPrescriptions: (json: string) => { [key: string]: any[] };
+  resolveSectionDisplayMode: (section: any) => 'reference' | 'log';
 }
 
 // KaiIntegration API interface

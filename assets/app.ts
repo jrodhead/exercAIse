@@ -258,8 +258,8 @@
 
   // Import session parser utilities from module - reference directly to avoid tree-shaking
   const SessionParser = window.ExercAIse.SessionParser!;
-  const { slugify, parseHMSToSeconds, secondsToHHMMSS, extractExercisesFromMarkdown, 
-          parseMarkdownPrescriptions, extractExercisesFromJSON, parseJSONPrescriptions } = SessionParser;
+    const { slugify, parseHMSToSeconds, secondsToHHMMSS, extractExercisesFromMarkdown, 
+      parseMarkdownPrescriptions, extractExercisesFromJSON, parseJSONPrescriptions, resolveSectionDisplayMode } = SessionParser;
 
   // Import Kai integration utilities from module (will be initialized after DOM elements are ready)
   const KaiIntegration = window.ExercAIse.KaiIntegration!;
@@ -516,7 +516,6 @@
             const angleValue = (it.prescription && typeof it.prescription.angle === 'number') ? it.prescription.angle : null;
             const meta: any = { cues: (it.cues || []), prescription: (it.prescription || null) };
             if (it.logType) meta.logType = it.logType;
-            if (it.loggable === false) meta.loggable = false;
             if (it.notes) meta.notes = it.notes;
             // If a JSON workout provides a link, render it as a link regardless of slug presence.
             const asLink = !!link && isInternalExerciseLink(link);
@@ -615,6 +614,20 @@
           }
           return '';
         };
+        const getSectionDisplayMode = (sec: any): 'reference' | 'log' => {
+          try {
+            if (typeof resolveSectionDisplayMode === 'function') {
+              return resolveSectionDisplayMode(sec);
+            }
+          } catch (e) {
+            console.warn('resolveSectionDisplayMode failed, defaulting to log', e);
+          }
+          const typePart = String(sec?.type || '').toLowerCase();
+          const titlePart = String(sec?.title || '').toLowerCase();
+          const haystack = `${typePart} ${titlePart}`;
+          return /warm|warm-up|warmup|cool|cool-down|cooldown|mobility|recovery|yin|flow/.test(haystack) ? 'reference' : 'log';
+        };
+
         const renderSection = (sec: any): string => {
           if (!sec) return '';
           let title = String(sec.title || '');
@@ -628,8 +641,9 @@
             return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
           };
           const typeText = type || 'Section';
+          const displayMode = getSectionDisplayMode(sec);
           const display = typeText + (title ? ` — ${title}` : '');
-          let h = `<section data-sectype="${attrEscapeLocal(typeText)}"><h2>${esc(display)}${esc(rounds)}</h2>`;
+          let h = `<section data-sectype="${attrEscapeLocal(typeText)}" data-display-mode="${attrEscapeLocal(displayMode)}"><h2>${esc(display)}${esc(rounds)}</h2>`;
           // Detect warm-up / cooldown / mobility / recovery sections (for future use)
           // const tlow = (title + ' ' + type).toLowerCase();
           // const isWarmish = (tlow.indexOf('warm') !== -1 || tlow.indexOf('cool') !== -1 || tlow.indexOf('mobility') !== -1 || tlow.indexOf('recovery') !== -1);

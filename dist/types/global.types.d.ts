@@ -43,6 +43,7 @@ export interface SessionParserAPI {
     parseJSONPrescriptions: (json: string) => {
         [key: string]: any[];
     };
+    resolveSectionDisplayMode: (section: any) => 'reference' | 'log';
 }
 export interface KaiIntegrationAPI {
     init: (dependencies: any) => boolean;

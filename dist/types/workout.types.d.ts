@@ -1,6 +1,7 @@
 export type SectionType = 'Warm-up' | 'Main Work' | 'Strength' | 'Conditioning' | 'Accessory/Core' | 'Cooldown/Recovery' | 'Recovery' | 'Mobility';
 export type ItemKind = 'exercise' | 'superset' | 'circuit' | 'note';
 export type LogType = 'strength' | 'endurance' | 'carry' | 'mobility' | 'stretch';
+export type SectionDisplayMode = 'reference' | 'log';
 export interface Prescription {
     sets?: number;
     reps?: number | string;
@@ -13,13 +14,13 @@ export interface Prescription {
     distanceMiles?: number;
     tempo?: string;
     restSeconds?: number;
+    estimatedSetSeconds?: number;
 }
 export interface Item {
     kind: ItemKind;
     name: string;
     link?: string;
     logType?: LogType;
-    loggable?: boolean;
     prescription?: Prescription;
     children?: Item[];
     cues?: string[];
@@ -28,6 +29,7 @@ export interface Item {
 export interface Section {
     type: SectionType;
     title: string;
+    displayMode?: SectionDisplayMode;
     rounds?: number;
     notes?: string;
     items?: Item[];

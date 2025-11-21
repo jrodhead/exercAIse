@@ -94,3 +94,61 @@ test('Exercise not found screen is shown for missing internal file', async ({ pa
   await expect(page.locator('#not-found')).toBeVisible({ timeout: 5000 });
   await expect(page.locator('#nf-path')).toContainText('exercises/this_file_should_not_exist_abc123.json');
 });
+
+test('display mode controls logging when SessionPlan is pasted', async ({ page }) => {
+  await page.goto('/index.html');
+
+  const plan = {
+    version: '1.0',
+    title: 'Display Mode Paste Test',
+    sections: [
+      {
+        type: 'Warm-up',
+        title: 'Joint Prep',
+        displayMode: 'reference',
+        items: [
+          {
+            kind: 'exercise',
+            name: 'Cat Cow',
+            link: 'exercises/cat_cow_stretch.json',
+            logType: 'mobility',
+            prescription: { sets: 1, reps: '8 slow cycles' }
+          }
+        ]
+      },
+      {
+        type: 'Strength',
+        title: 'Main Work',
+        displayMode: 'log',
+        items: [
+          {
+            kind: 'exercise',
+            name: 'Goblet Squat',
+            link: 'exercises/goblet_squat.json',
+            logType: 'strength',
+            prescription: { sets: 3, reps: 8, weight: '45 x2 lb' }
+          }
+        ]
+      }
+    ]
+  };
+
+  await page.locator('#gen-json').fill(JSON.stringify(plan));
+  await page.locator('#gen-load-json').click();
+
+  const warmupSection = page.locator('section[data-display-mode="reference"]', {
+    has: page.getByRole('heading', { level: 2, name: /Warm-up/i })
+  });
+  await expect(warmupSection).toBeVisible();
+  await expect(warmupSection.locator('li a', { hasText: 'Cat Cow' })).toBeVisible();
+  await expect(warmupSection.locator('.exercise-card')).toHaveCount(0);
+
+  const strengthSection = page.locator('section[data-display-mode="log"]', {
+    has: page.getByRole('heading', { level: 2, name: /Strength/i })
+  });
+  await expect(strengthSection).toBeVisible();
+  await expect(strengthSection.locator('.exercise-card[data-name="Goblet Squat"]')).toBeVisible();
+
+  // Ensure reference-section exercise never becomes a card anywhere else
+  await expect(page.locator('.exercise-card[data-name="Cat Cow"]')).toHaveCount(0);
+});

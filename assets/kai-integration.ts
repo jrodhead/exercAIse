@@ -9,6 +9,7 @@
 
   // Dependencies (injected via init())
   let deps: any = {};
+  const SessionParser = (window as any).ExercAIse?.SessionParser || null;
   
   // Track link validation results for pasted/generated SessionPlans and workout JSON
   const linkValidation: { invalid: string[]; missing: string[] } = { invalid: [], missing: [] };
@@ -20,6 +21,35 @@
   const init = (dependencies: any): boolean => {
     deps = dependencies || {};
     return true;
+  };
+
+  const legacyDisplayModeRegex = /warm|warm-up|warmup|cool|cool-down|cooldown|mobility|recovery|yin|flow/i;
+
+  const inferDisplayMode = (section: any): 'reference' | 'log' => {
+    if (!section) return 'log';
+    const typePart = String(section.type || '').toLowerCase();
+    const titlePart = String(section.title || '').toLowerCase();
+    if (legacyDisplayModeRegex.test(`${typePart} ${titlePart}`)) return 'reference';
+    return 'log';
+  };
+
+  const resolveDisplayModeForSection = (section: any): 'reference' | 'log' => {
+    try {
+      if (SessionParser && typeof SessionParser.resolveSectionDisplayMode === 'function') {
+        return SessionParser.resolveSectionDisplayMode(section);
+      }
+    } catch (e) {
+      console.warn('SessionParser.resolveSectionDisplayMode failed, defaulting to legacy inference', e);
+    }
+    return inferDisplayMode(section);
+  };
+
+  const ensureSectionDisplayMode = (section: any): 'reference' | 'log' => {
+    const resolved = resolveDisplayModeForSection(section);
+    if (section && typeof section === 'object') {
+      (section as any).displayMode = resolved;
+    }
+    return resolved;
   };
 
   // ============================================================================
@@ -405,7 +435,6 @@
           const presObj = (it.prescribed != null ? it.prescribed : it.prescription);
           const meta: any = { cues: (it.cues || []), prescription: (presObj || null) };
           if (it.logType) meta.logType = it.logType;
-          if (it.loggable === false) meta.loggable = false;
           if (it.notes) meta.notes = it.notes;
           
           // Decide whether to render as link or non-link
@@ -462,8 +491,9 @@
         const type = String(sec.type || '');
         const rounds = (sec.rounds != null) ? (' — ' + sec.rounds + ' rounds') : '';
         const typeText = type || 'Section';
+        const displayMode = ensureSectionDisplayMode(sec);
         const display = typeText + (title ? (' — ' + title) : '');
-        let h = '<section data-sectype="' + attrEscape(typeText) + '"><h2>' + esc(display) + esc(rounds) + '</h2>';
+        let h = '<section data-sectype="' + attrEscape(typeText) + '" data-display-mode="' + attrEscape(displayMode) + '"><h2>' + esc(display) + esc(rounds) + '</h2>';
         if (sec.notes) {
           try { h += deps.renderMarkdownBasic(String(sec.notes)); }
           catch (e) { h += '<p>' + esc(sec.notes) + '</p>'; }
@@ -501,7 +531,7 @@
             slug: ex.slug || ''
           });
         }
-        obj.sections = [{ type: 'Main', title: 'Main Sets', items }];
+        obj.sections = [{ type: 'Main', title: 'Main Sets', items, displayMode: 'log' }];
       }
 
       const parts: string[] = [];

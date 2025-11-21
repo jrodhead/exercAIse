@@ -81,6 +81,7 @@ exercAIse is a JSON-first fitness program generator with a clear separation betw
 - Rest periods between sets
 - Progression logic (when to increase weight/reps)
 - Workout structure (warm-up, main work, accessories, cooldown)
+- Section display modes (`displayMode: "reference" | "log"`) for every section, ensuring the UI knows whether to render condensed read-only content or full logging cards
 - Exercise substitutions for injuries or equipment limitations
 - Deload timing and intensity
 
@@ -104,6 +105,7 @@ exercAIse is a JSON-first fitness program generator with a clear separation betw
 - Validate data against schemas
 - Handle backward compatibility (e.g., missing fields)
 - Link validation and exercise stub generation
+- Infer `displayMode` only for legacy sections lacking the field (Warm-up/Cooldown defaults) while honoring AI-specified values everywhere else
 
 **What App Never Does**:
 - ❌ Calculate workout progressions
@@ -312,6 +314,12 @@ exercAIse is a JSON-first fitness program generator with a clear separation betw
   }
 }
 ```
+
+### SessionPlan Copy/Paste Validation Path
+- The “Kai generator” textarea in `index.html` lets contributors paste raw SessionPlan JSON (version 1.0) to preview and validate sessions before committing them to `workouts/`.
+- `assets/kai-integration.ts` owns this workflow: `openGeneratedSession` renders the pasted plan directly, and the downstream DOM structure bypasses `assets/session-parser.ts` entirely.
+- When adding new session fields or UI behaviors (bench angles, `displayMode`, new badges, etc.) make sure **both** ingest paths stay in sync: committed workout JSON parsed by `SessionParser` **and** pasted SessionPlans routed through Kai Integration. For `displayMode`, this means: AI must set the field on every section, SessionParser preserves it, Kai Integration injects it into the DOM, and FormBuilder relies on it instead of heuristics.
+- Manual QA for new features should include a generator-paste test so the copy/paste preview matches the final workout file and FormBuilder gets the same metadata.
 
 ---
 

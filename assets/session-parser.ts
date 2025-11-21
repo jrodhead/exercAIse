@@ -21,6 +21,8 @@ interface ExerciseReference {
   url?: string;
 }
 
+type SectionDisplayMode = 'reference' | 'log';
+
 interface PrescriptionRow {
   set: number;
   reps?: number;
@@ -99,6 +101,52 @@ interface WeightSpec {
     const s = rem % 60;
     const pad = (n: number): string => (n < 10 ? '0' : '') + n;
     return `${pad(h)}:${pad(m)}:${pad(s)}`;
+  };
+
+  // ==========================================================================
+  // Section Display Mode Helpers
+  // ==========================================================================
+
+  const DISPLAY_MODE_REFERENCE: SectionDisplayMode = 'reference';
+  const DISPLAY_MODE_LOG: SectionDisplayMode = 'log';
+  const LEGACY_REFERENCE_KEYWORDS = ['warm', 'warm-up', 'warmup', 'cool', 'cool-down', 'cooldown', 'mobility', 'recovery', 'yin', 'flow'];
+
+  const normalizeDisplayMode = (value: any): SectionDisplayMode | null => {
+    if (typeof value !== 'string') return null;
+    const normalized = value.trim().toLowerCase();
+    if (normalized === DISPLAY_MODE_REFERENCE || normalized === DISPLAY_MODE_LOG) {
+      return normalized as SectionDisplayMode;
+    }
+    return null;
+  };
+
+  const inferDisplayModeFromLegacyType = (section: any): SectionDisplayMode => {
+    if (!section) return DISPLAY_MODE_LOG;
+    const typePart = String(section.type || '').toLowerCase();
+    const titlePart = String(section.title || '').toLowerCase();
+    const haystack = `${typePart} ${titlePart}`.trim();
+    for (let i = 0; i < LEGACY_REFERENCE_KEYWORDS.length; i++) {
+      if (haystack.includes(LEGACY_REFERENCE_KEYWORDS[i]!)) {
+        return DISPLAY_MODE_REFERENCE;
+      }
+    }
+    return DISPLAY_MODE_LOG;
+  };
+
+  const resolveSectionDisplayMode = (section: any): SectionDisplayMode => {
+    if (!section || typeof section !== 'object') return DISPLAY_MODE_LOG;
+    const explicit = normalizeDisplayMode((section as any).displayMode);
+    if (explicit) return explicit;
+
+    if (Object.prototype.hasOwnProperty.call(section, 'displayMode') && (section as any).displayMode != null) {
+      try {
+        const label = String(section.title || section.type || 'section');
+        console.warn('[SessionParser] Unknown displayMode "%s" on %s; defaulting to log.', (section as any).displayMode, label);
+      } catch (e) {
+        console.warn('[SessionParser] Unknown displayMode provided; defaulting to log.');
+      }
+    }
+    return inferDisplayModeFromLegacyType(section);
   };
 
   // ============================================================================
@@ -449,7 +497,8 @@ interface WeightSpec {
     extractExercisesFromMarkdown: extractExercisesFromMarkdown,
     parseMarkdownPrescriptions: parseMarkdownPrescriptions,
     extractExercisesFromJSON: extractExercisesFromJSON,
-    parseJSONPrescriptions: parseJSONPrescriptions
+    parseJSONPrescriptions: parseJSONPrescriptions,
+    resolveSectionDisplayMode: resolveSectionDisplayMode
   };
 })();
 
