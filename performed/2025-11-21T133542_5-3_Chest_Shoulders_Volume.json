@@ -1,0 +1,296 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/5-3_Chest_Shoulders_Volume.json",
+  "timestamp": "2025-11-21T13:35:28.320Z",
+  "sections": [
+    {
+      "type": "Strength",
+      "title": "Vertical Press Anchor",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Seated Dumbbell Overhead Press",
+          "sets": [
+            {
+              "set": 1,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 7,
+              "angle": 85
+            },
+            {
+              "set": 2,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 10,
+              "rpe": 8,
+              "angle": 85
+            },
+            {
+              "set": 3,
+              "weight": 30,
+              "multiplier": 2,
+              "reps": 7,
+              "rpe": 7,
+              "angle": 85
+            }
+          ],
+          "notes": "Match Week 2 load but chase 10/10/9 before nudging up."
+        }
+      ]
+    },
+    {
+      "type": "Strength",
+      "title": "Chest Pump - Superset A",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset A",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "incline-dumbbell-flyes",
+                  "name": "Incline Dumbbell Flyes",
+                  "weight": 15,
+                  "multiplier": 2,
+                  "reps": 16,
+                  "rpe": 7,
+                  "angle": 30
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "incline-dumbbell-flyes",
+                  "name": "Incline Dumbbell Flyes",
+                  "weight": 15,
+                  "multiplier": 2,
+                  "reps": 16,
+                  "rpe": 7,
+                  "angle": 30
+                }
+              ],
+              "prescribedRestSeconds": 90
+            },
+            {
+              "round": 3,
+              "exercises": [
+                {
+                  "key": "incline-dumbbell-flyes",
+                  "name": "Incline Dumbbell Flyes",
+                  "weight": 15,
+                  "multiplier": 2,
+                  "reps": 13,
+                  "rpe": 7,
+                  "angle": 30
+                }
+              ],
+              "prescribedRestSeconds": 90
+            }
+          ],
+          "notes": "Neutral grip bench then incline fly. Rest 90s before next round."
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Delts + Calves - Superset B",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset B",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "dumbbell-lateral-raise",
+                  "name": "Dumbbell Lateral Raise",
+                  "weight": 15,
+                  "multiplier": 2,
+                  "reps": 10,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 60
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "dumbbell-lateral-raise",
+                  "name": "Dumbbell Lateral Raise",
+                  "weight": 15,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 7
+                }
+              ],
+              "prescribedRestSeconds": 60
+            },
+            {
+              "round": 3,
+              "exercises": [
+                {
+                  "key": "dumbbell-lateral-raise",
+                  "name": "Dumbbell Lateral Raise",
+                  "weight": 15,
+                  "multiplier": 2,
+                  "reps": 12,
+                  "rpe": 8
+                }
+              ],
+              "prescribedRestSeconds": 60
+            }
+          ],
+          "notes": "Raise + calf pairing for shoulder burn and second calf hit. Rest 60s."
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Chest Finisher - Superset C",
+      "items": [
+        {
+          "kind": "superset",
+          "name": "Superset C",
+          "rounds": [
+            {
+              "round": 1,
+              "exercises": [
+                {
+                  "key": "dumbbell-pullover",
+                  "name": "Dumbbell Pullover",
+                  "weight": 30,
+                  "reps": 12,
+                  "rpe": 7
+                },
+                {
+                  "key": "diamond-push-ups",
+                  "name": "Diamond Push-ups",
+                  "reps": 14,
+                  "rpe": 8
+                }
+              ],
+              "prescribedRestSeconds": 60
+            },
+            {
+              "round": 2,
+              "exercises": [
+                {
+                  "key": "dumbbell-pullover",
+                  "name": "Dumbbell Pullover",
+                  "weight": 30,
+                  "reps": 12,
+                  "rpe": 7
+                },
+                {
+                  "key": "diamond-push-ups",
+                  "name": "Diamond Push-ups",
+                  "reps": 10,
+                  "rpe": 8
+                }
+              ],
+              "prescribedRestSeconds": 60
+            }
+          ],
+          "notes": "Stretch + pump combo. Rest 60s between rounds."
+        }
+      ]
+    },
+    {
+      "type": "Accessory/Core",
+      "title": "Core Control",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Plank Shoulder Tap",
+          "sets": [
+            {
+              "set": 1,
+              "reps": 20,
+              "rpe": 5
+            },
+            {
+              "set": 2,
+              "reps": 20,
+              "rpe": 5
+            },
+            {
+              "set": 3,
+              "reps": 20,
+              "rpe": 5
+            }
+          ],
+          "notes": "20 taps = 10 per side. Feet wider than hips to resist rotation."
+        }
+      ]
+    }
+  ],
+  "date": "2025-11-21",
+  "block": 5,
+  "week": 3,
+  "title": "Chest & Shoulders Volume",
+  "exerciseIndex": {
+    "seated-dumbbell-overhead-press_85": {
+      "angle": 85,
+      "name": "Seated Dumbbell Overhead Press",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 7.333333333333333,
+      "totalVolume": 1620
+    },
+    "incline-dumbbell-flyes_30": {
+      "angle": 30,
+      "name": "Incline Dumbbell Flyes",
+      "sectionPath": "sections[1].items[0].rounds[*].exercises[0]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 7,
+      "totalVolume": 1350
+    },
+    "dumbbell-lateral-raise_0": {
+      "angle": 0,
+      "name": "Dumbbell Lateral Raise",
+      "sectionPath": "sections[2].items[0].rounds[*].exercises[0]",
+      "totalSets": 3,
+      "totalRounds": 3,
+      "avgRPE": 7.333333333333333,
+      "totalVolume": 1020
+    },
+    "dumbbell-pullover_0": {
+      "angle": 0,
+      "name": "Dumbbell Pullover",
+      "sectionPath": "sections[3].items[0].rounds[*].exercises[0]",
+      "totalSets": 2,
+      "totalRounds": 2,
+      "avgRPE": 7,
+      "totalVolume": 720
+    },
+    "diamond-push-ups_0": {
+      "angle": 0,
+      "name": "Diamond Push-ups",
+      "sectionPath": "sections[3].items[0].rounds[*].exercises[1]",
+      "totalSets": 2,
+      "totalRounds": 2,
+      "avgRPE": 8,
+      "totalVolume": 0
+    },
+    "plank-shoulder-tap_0": {
+      "angle": 0,
+      "name": "Plank Shoulder Tap",
+      "sectionPath": "sections[4].items[0].sets[*]",
+      "totalSets": 3,
+      "totalRounds": 0,
+      "avgRPE": 5,
+      "totalVolume": 0
+    }
+  }
+}
