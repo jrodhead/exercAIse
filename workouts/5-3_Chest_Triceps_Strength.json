@@ -9,6 +9,7 @@
     {
       "type": "Warm-up",
       "title": "Scap + Press Prep",
+      "displayMode": "reference",
       "items": [
         {
           "kind": "exercise",
@@ -46,6 +47,7 @@
     {
       "type": "Strength",
       "title": "Primary Press Power - Superset A",
+      "displayMode": "log",
       "items": [
         {
           "kind": "superset",
@@ -77,6 +79,7 @@
     {
       "type": "Strength",
       "title": "Upper-Chest Straight Sets",
+      "displayMode": "log",
       "items": [
         {
           "kind": "exercise",
@@ -92,6 +95,7 @@
     {
       "type": "Strength",
       "title": "Triceps Density - Superset B",
+      "displayMode": "log",
       "items": [
         {
           "kind": "superset",
@@ -122,6 +126,7 @@
     {
       "type": "Accessory/Core",
       "title": "Core Bracing",
+      "displayMode": "log",
       "items": [
         {
           "kind": "exercise",
@@ -136,6 +141,7 @@
     {
       "type": "Cooldown/Recovery",
       "title": "Chest & Triceps Downshift",
+      "displayMode": "reference",
       "items": [
         {
           "kind": "exercise",

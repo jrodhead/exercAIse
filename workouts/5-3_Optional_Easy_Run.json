@@ -9,6 +9,7 @@
     {
       "type": "Conditioning",
       "title": "Steady Aerobic",
+      "displayMode": "log",
       "items": [
         {
           "kind": "exercise",
@@ -23,6 +24,7 @@
     {
       "type": "Cooldown/Recovery",
       "title": "Post-Run Reset",
+      "displayMode": "reference",
       "items": [
         {
           "kind": "exercise",

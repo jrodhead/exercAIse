@@ -9,6 +9,7 @@
     {
       "type": "Recovery",
       "title": "Yin Flow",
+      "displayMode": "reference",
       "items": [
         {
           "kind": "exercise",

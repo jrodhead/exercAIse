@@ -9,6 +9,7 @@
     {
       "type": "Warm-up",
       "title": "Warm-up Walk",
+      "displayMode": "reference",
       "items": [
         {
           "kind": "exercise",
@@ -38,13 +39,13 @@
     {
       "type": "Conditioning",
       "title": "Easy Jog",
+      "displayMode": "log",
       "items": [
         {
           "kind": "exercise",
           "name": "Easy Jog",
           "link": "exercises/easy_jog.json",
           "logType": "endurance",
-          "loggable": true,
           "prescription": { "timeSeconds": 1200, "rpe": 5 },
           "notes": "20-30 min at conversational pace (RPE 4-5). You should be able to talk easily. If feeling fatigued, shorten to 15 min or walk instead.",
           "cues": [
@@ -60,6 +61,7 @@
     {
       "type": "Cooldown/Recovery",
       "title": "Cool-down & Stretch",
+      "displayMode": "reference",
       "items": [
         {
           "kind": "exercise",

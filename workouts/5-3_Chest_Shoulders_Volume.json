@@ -9,6 +9,7 @@
     {
       "type": "Warm-up",
       "title": "Shoulder Prep",
+      "displayMode": "reference",
       "items": [
         {
           "kind": "exercise",
@@ -37,6 +38,7 @@
     {
       "type": "Strength",
       "title": "Vertical Press Anchor",
+      "displayMode": "log",
       "items": [
         {
           "kind": "exercise",
@@ -52,6 +54,7 @@
     {
       "type": "Strength",
       "title": "Chest Pump - Superset A",
+      "displayMode": "log",
       "items": [
         {
           "kind": "superset",
@@ -83,6 +86,7 @@
     {
       "type": "Accessory/Core",
       "title": "Delts + Calves - Superset B",
+      "displayMode": "log",
       "items": [
         {
           "kind": "superset",
@@ -114,6 +118,7 @@
     {
       "type": "Accessory/Core",
       "title": "Chest Finisher - Superset C",
+      "displayMode": "log",
       "items": [
         {
           "kind": "superset",
@@ -145,6 +150,7 @@
     {
       "type": "Accessory/Core",
       "title": "Core Control",
+      "displayMode": "log",
       "items": [
         {
           "kind": "exercise",
@@ -159,6 +165,7 @@
     {
       "type": "Cooldown/Recovery",
       "title": "Shoulder & Chest Cooldown",
+      "displayMode": "reference",
       "items": [
         {
           "kind": "exercise",

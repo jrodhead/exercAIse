@@ -9,6 +9,7 @@
     {
       "type": "Warm-up",
       "title": "Upper Back Priming",
+      "displayMode": "reference",
       "items": [
         {
           "kind": "exercise",
@@ -38,6 +39,7 @@
     {
       "type": "Strength",
       "title": "Upper-Back Volume - Superset A",
+      "displayMode": "log",
       "items": [
         {
           "kind": "superset",
@@ -68,6 +70,7 @@
     {
       "type": "Strength",
       "title": "Pulling Symmetry - Superset B",
+      "displayMode": "log",
       "items": [
         {
           "kind": "superset",
@@ -99,6 +102,7 @@
     {
       "type": "Accessory/Core",
       "title": "Carry + Core",
+      "displayMode": "log",
       "items": [
         {
           "kind": "exercise",
@@ -121,6 +125,7 @@
     {
       "type": "Cooldown/Recovery",
       "title": "Upper Back Reset",
+      "displayMode": "reference",
       "items": [
         {
           "kind": "exercise",
