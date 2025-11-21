@@ -4071,6 +4071,16 @@ a:hover {
   .session-superset__notes {
     color: #cbd5e1;
   }
+
+  section[data-display-mode="reference"] .session-superset__badge {
+    background: rgba(148, 163, 184, 0.25);
+    color: #f8fafc;
+    border-color: transparent;
+  }
+
+  section[data-display-mode="reference"] .session-superset__meta {
+    color: #d4d9e1;
+  }
   
   /* ========== Page Header Dark Mode ========== */
   .page-header {
