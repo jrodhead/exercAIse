@@ -10,6 +10,15 @@ window.ExercAIse.KaiIntegration = (() => {
         return true;
     };
     const legacyDisplayModeRegex = /warm|warm-up|warmup|cool|cool-down|cooldown|mobility|recovery|yin|flow/i;
+    const normalizeDisplayMode = (value) => {
+        if (typeof value !== 'string')
+            return null;
+        const normalized = value.trim().toLowerCase();
+        if (normalized === 'reference' || normalized === 'log') {
+            return normalized;
+        }
+        return null;
+    };
     const inferDisplayMode = (section) => {
         if (!section)
             return 'log';
@@ -20,6 +29,9 @@ window.ExercAIse.KaiIntegration = (() => {
         return 'log';
     };
     const resolveDisplayModeForSection = (section) => {
+        const explicit = normalizeDisplayMode(section?.displayMode);
+        if (explicit)
+            return explicit;
         try {
             if (SessionParser && typeof SessionParser.resolveSectionDisplayMode === 'function') {
                 return SessionParser.resolveSectionDisplayMode(section);
@@ -494,6 +506,55 @@ window.ExercAIse.KaiIntegration = (() => {
                     }
                     html += '</li>';
                     return html;
+                }
+                if (kind === 'superset' || kind === 'circuit') {
+                    const cap = kind.charAt(0).toUpperCase() + kind.slice(1);
+                    const containerClass = `session-superset session-superset--${kind}`;
+                    let inner = '';
+                    if (it.children && it.children.length) {
+                        inner = it.children.map((child) => renderItem(child, options)).join('');
+                        if (inner && inner.indexOf('<li') !== -1) {
+                            inner = `<ul>${inner}</ul>`;
+                        }
+                    }
+                    const metaParts = [];
+                    if (typeof it.rounds === 'number' && isFinite(it.rounds)) {
+                        metaParts.push(`${it.rounds} round${it.rounds === 1 ? '' : 's'}`);
+                    }
+                    const restSecondsFromChildren = (() => {
+                        try {
+                            const kids = Array.isArray(it.children) ? it.children : [];
+                            const lastChild = kids.length ? kids[kids.length - 1] : null;
+                            const restVal = lastChild?.prescription?.restSeconds ?? lastChild?.prescribed?.restSeconds;
+                            return typeof restVal === 'number' ? restVal : null;
+                        }
+                        catch (e) {
+                            return null;
+                        }
+                    })();
+                    const restSeconds = typeof it.restSeconds === 'number' ? it.restSeconds : restSecondsFromChildren;
+                    if (typeof restSeconds === 'number' && isFinite(restSeconds)) {
+                        metaParts.push(`Rest ${restSeconds}s`);
+                    }
+                    const metaHtml = metaParts.length ? `<span class="session-superset__meta">${esc(metaParts.join(' · '))}</span>` : '';
+                    const notesHtml = it.notes ? `<div class="session-superset__notes">${inlineMarkdown(it.notes)}</div>` : '';
+                    const rawName = typeof it.name === 'string' ? it.name : '';
+                    const typePattern = new RegExp(`^${cap}\s*`, 'i');
+                    const cleanedName = rawName.replace(typePattern, '').trim();
+                    const displayName = cleanedName.replace(/^[-:\u2013\u2014]+\s*/, '').trim() || rawName;
+                    const badgeTitle = displayName || cap;
+                    return `
+            <div class="${containerClass}">
+              <div class="session-superset__header">
+                <h3 class="session-superset__heading">
+                  <span class="session-superset__badge" title="${esc(badgeTitle)}">${esc(cap)}</span>
+                </h3>
+                ${metaHtml}
+              </div>
+              ${notesHtml}
+              <div class="session-superset__body">${inner}</div>
+            </div>
+          `;
                 }
                 return '';
             };

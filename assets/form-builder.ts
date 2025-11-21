@@ -803,6 +803,27 @@ type SectionDisplayMode = 'reference' | 'log';
       return null;
     };
 
+    const findSupersetBody = (node: Node): HTMLElement | null => {
+      let current: Node | null = node;
+      while (current && current !== deps.workoutContent) {
+        if ((current as Element).classList && (current as Element).classList.contains('session-superset__body')) {
+          return current as HTMLElement;
+        }
+        current = current.parentNode;
+      }
+      return null;
+    };
+
+    const ensureSupersetCardsWrapper = (bodyEl: HTMLElement): HTMLElement => {
+      let wrapper = bodyEl.querySelector('.session-superset__cards') as HTMLElement | null;
+      if (!wrapper) {
+        wrapper = document.createElement('div');
+        wrapper.className = 'session-superset__cards';
+        bodyEl.appendChild(wrapper);
+      }
+      return wrapper;
+    };
+
     // Find the actual nearest heading element (H1-H4) above a node
     const findNearestHeadingEl = (node: Node): Element | null => {
       let n: Node | null = node;
@@ -1064,34 +1085,21 @@ type SectionDisplayMode = 'reference' | 'log';
       }
       
       // Place card and remove original blocks.
-      if (container && container.tagName === 'LI') {
-        // Insert the card OUTSIDE the list (after UL/OL) to avoid any bullet rendering
+      const supersetBody = findSupersetBody(container);
+      if (supersetBody) {
+        const cardWrapper = ensureSupersetCardsWrapper(supersetBody);
+        cardWrapper.appendChild(card);
+      } else if (container && container.tagName === 'LI') {
         const parentList = findListParent(container);
         const listHolder = parentList && parentList.parentNode ? parentList.parentNode : deps.workoutContent!;
         const insertAfter = parentList && (parentList as any).__lastCard ? (parentList as any).__lastCard : parentList;
-        
         if (listHolder && (listHolder as Element).insertBefore) {
           if (insertAfter && insertAfter.nextSibling) (listHolder as Element).insertBefore(card, insertAfter.nextSibling);
           else listHolder.appendChild(card);
         } else {
           deps.workoutContent!.appendChild(card);
         }
-        
         if (parentList) (parentList as any).__lastCard = card;
-        
-        // Remove the original LI
-        try { container.parentNode && container.parentNode.removeChild(container); } catch (e) {
-          // Ignore
-        }
-        
-        // If the list is now empty of LI children, remove it
-        try {
-          if (parentList && !parentList.querySelector('li')) {
-            parentList.parentNode && parentList.parentNode.removeChild(parentList);
-          }
-        } catch (e) {
-          // Ignore
-        }
       } else {
         const parent = container.parentNode || deps.workoutContent!;
         if (parent && (parent as Element).insertBefore) {
@@ -1100,9 +1108,19 @@ type SectionDisplayMode = 'reference' | 'log';
         } else {
           deps.workoutContent!.appendChild(card);
         }
-        
-        // Remove the original container entirely
-        try { container.parentNode && container.parentNode.removeChild(container); } catch (e) {
+      }
+
+      // Remove the original container entirely
+      try { container.parentNode && container.parentNode.removeChild(container); } catch (e) {
+        // Ignore
+      }
+
+      // Clean up empty reference lists (e.g., superset ULs) to avoid blank bullets in log sections
+      const parentListCleanup = findListParent(container);
+      if (parentListCleanup && !parentListCleanup.querySelector('li')) {
+        try {
+          parentListCleanup.parentNode && parentListCleanup.parentNode.removeChild(parentListCleanup);
+        } catch (cleanupErr) {
           // Ignore
         }
       }

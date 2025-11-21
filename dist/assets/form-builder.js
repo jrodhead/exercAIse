@@ -648,6 +648,25 @@ window.ExercAIse.FormBuilder = (() => {
             }
             return null;
         };
+        const findSupersetBody = (node) => {
+            let current = node;
+            while (current && current !== deps.workoutContent) {
+                if (current.classList && current.classList.contains('session-superset__body')) {
+                    return current;
+                }
+                current = current.parentNode;
+            }
+            return null;
+        };
+        const ensureSupersetCardsWrapper = (bodyEl) => {
+            let wrapper = bodyEl.querySelector('.session-superset__cards');
+            if (!wrapper) {
+                wrapper = document.createElement('div');
+                wrapper.className = 'session-superset__cards';
+                bodyEl.appendChild(wrapper);
+            }
+            return wrapper;
+        };
         const findNearestHeadingEl = (node) => {
             let n = node;
             while (n && n !== deps.workoutContent) {
@@ -885,7 +904,12 @@ window.ExercAIse.FormBuilder = (() => {
                 notes.innerHTML = extra.html;
                 card.appendChild(notes);
             }
-            if (container && container.tagName === 'LI') {
+            const supersetBody = findSupersetBody(container);
+            if (supersetBody) {
+                const cardWrapper = ensureSupersetCardsWrapper(supersetBody);
+                cardWrapper.appendChild(card);
+            }
+            else if (container && container.tagName === 'LI') {
                 const parentList = findListParent(container);
                 const listHolder = parentList && parentList.parentNode ? parentList.parentNode : deps.workoutContent;
                 const insertAfter = parentList && parentList.__lastCard ? parentList.__lastCard : parentList;
@@ -900,18 +924,6 @@ window.ExercAIse.FormBuilder = (() => {
                 }
                 if (parentList)
                     parentList.__lastCard = card;
-                try {
-                    container.parentNode && container.parentNode.removeChild(container);
-                }
-                catch (e) {
-                }
-                try {
-                    if (parentList && !parentList.querySelector('li')) {
-                        parentList.parentNode && parentList.parentNode.removeChild(parentList);
-                    }
-                }
-                catch (e) {
-                }
             }
             else {
                 const parent = container.parentNode || deps.workoutContent;
@@ -924,10 +936,18 @@ window.ExercAIse.FormBuilder = (() => {
                 else {
                     deps.workoutContent.appendChild(card);
                 }
+            }
+            try {
+                container.parentNode && container.parentNode.removeChild(container);
+            }
+            catch (e) {
+            }
+            const parentListCleanup = findListParent(container);
+            if (parentListCleanup && !parentListCleanup.querySelector('li')) {
                 try {
-                    container.parentNode && container.parentNode.removeChild(container);
+                    parentListCleanup.parentNode && parentListCleanup.parentNode.removeChild(parentListCleanup);
                 }
-                catch (e) {
+                catch (cleanupErr) {
                 }
             }
             if (extra && extra.nodes) {
