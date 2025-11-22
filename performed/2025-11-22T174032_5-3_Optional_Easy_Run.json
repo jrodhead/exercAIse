@@ -1,0 +1,47 @@
+{
+  "version": "perf-2",
+  "workoutFile": "workouts/5-3_Optional_Easy_Run.json",
+  "timestamp": "2025-11-22T17:40:20.999Z",
+  "sections": [
+    {
+      "type": "Conditioning",
+      "title": "Steady Aerobic",
+      "items": [
+        {
+          "kind": "exercise",
+          "name": "Easy Jog",
+          "sets": [
+            {
+              "set": 1,
+              "distanceMiles": 1.5,
+              "timeSeconds": 690,
+              "rpe": 5
+            },
+            {
+              "set": 2,
+              "distanceMiles": 1.5,
+              "timeSeconds": 690,
+              "rpe": 5
+            }
+          ],
+          "notes": "Aim for 8:45-9:00/mi pace. Walk for 1 minute if HR spikes above Zone 2."
+        }
+      ]
+    }
+  ],
+  "date": "2025-11-22",
+  "block": 5,
+  "week": 3,
+  "title": "Optional Easy Run",
+  "exerciseIndex": {
+    "easy-jog_0": {
+      "angle": 0,
+      "name": "Easy Jog",
+      "sectionPath": "sections[0].items[0].sets[*]",
+      "totalSets": 2,
+      "totalRounds": 0,
+      "avgRPE": 5,
+      "totalVolume": 0
+    }
+  }
+}
